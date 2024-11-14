@@ -1,0 +1,60 @@
+<ConfigurationFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-usercube-com:configuration">
+    <ExportTask Identifier="sNow_Full_sys_user" Agent="Default" Connection="ServiceNowExportFulfillment" OpenIdClient="Job"
+    DisplayName_L1="sys_user- Extraction" IgnoreCookieFile="true" />
+    <ExportTask Identifier="sNow_Full_sys_group" Agent="Default" Connection="ServiceNowExportFulfillment" OpenIdClient="Job"
+    DisplayName_L1="sys_group - Extraction" IgnoreCookieFile="true" />
+    <ExportTask Identifier="sNow_manual_sys_user" Agent="Default" Connection="ServiceNowFulfillManual" OpenIdClient="Job"
+    DisplayName_L1="sys_user- Extraction" IgnoreCookieFile="true" />
+    <ExportTask Identifier="sNow_manual_sys_group" Agent="Default" Connection="ServiceNowFulfillManual" OpenIdClient="Job"
+    DisplayName_L1="sys_group - Extraction" IgnoreCookieFile="true" />
+
+    <PrepareSynchronizationTask Identifier="sNow_PrepareSynchro_Complete"
+    DisplayName_L1="sNow - Collecte de données" Connector="ServiceNow"
+    SynchronizationMode="Complete" Agent="Default" OpenIdClient="Job" />
+
+    <SynchronizeTask Identifier="sNow_Synchro_Complete" DisplayName_L1="sNow -Synchonization" 
+    DisplayName_L2="sNow - Synchronisation" Connector="ServiceNow" />
+
+    <Job Identifier="SynchroCompletesNow" DisplayName_L1="sNow : Complete synchronization"
+    Agent="Default">
+    <Step Identifier="sNow_Full_sys_user" />
+    <Step Identifier="sNow_Full_sys_group" />
+    <Step Identifier="sNow_PrepareSynchro_Complete" />
+    <Step Identifier="sNow_Synchro_Complete" />
+   
+    </Job>
+    <CreateConnectorSynchroComplete Connector="ServiceNow" DisplayName_L1="sNow - Synchro Complete Scaffolding" JobIdentifier="sNow_Synchronize_Complete_Scaffolding">
+        <OpenIdIdentifier Identifier="Job" />
+        <NoProvisioning />
+    </CreateConnectorSynchroComplete>
+    <CreateConnectorSynchroIncremental Connector="ServiceNow" DisplayName_L1="sNow - Incremental Synchronization Scaffolding" JobIdentifier="sNow_Synchronize_Incremental_Scaffolding">
+        <OpenIdIdentifier Identifier="Job" />
+        <NoProvisioning />
+    </CreateConnectorSynchroIncremental>
+<!-- Provisionning-->
+    <Job Identifier="ComputeAllCorrelationKeys" DisplayName_L1="Compute All Correlation Keys" Agent="Default">
+        <ComputeCorrelationKeysTask Identifier="ComputeAllCorrelationKeys" DisplayName_L1="Update Correlation Keys" AllEntityType="true" />
+    </Job>
+    <ComputeRoleModelTask Identifier="sNow_ComputeRoleModel" DisplayName_L1="Apply the Role Model - sNow" BlockProvisioning="false">
+        <TaskEntityType EntityType="Directory_User" />
+    </ComputeRoleModelTask>
+  
+    <GenerateProvisioningOrdersTask Identifier="sNow_GenerateProvisioningOrders" DisplayName_L1="Generate Provisioning Orders - sNow" ForceProvisioning="true">
+        <TaskResourceType ResourceType="Directory_User_To_sNow_user_Fulfill_Automatic" />
+    </GenerateProvisioningOrdersTask>
+  
+    <FulfillTask Identifier="sNow_Fulfill" DisplayName_L1="Fulfillment - sNow" Agent="Default" OpenIdClient="Job" Dirty="false" ContinueOnError="true">
+        <TaskResourceType ResourceType="Directory_User_To_sNow_user_Fulfill_Automatic" />
+    </FulfillTask>
+    <CreateConnectorSynchroComplete JobIdentifier="sNowComplete" Connector="ServiceNow" DisplayName_L1="sNow Complete" Agent="Default">
+        <OpenIdIdentifier Identifier="Job" />
+        <AddTask Task="sNow_ComputeRoleModel" After="true" TaskToCompareWith="MaintainIndexes" />
+        <AddTask Task="sNow_GenerateProvisioningOrders" After="true" TaskToCompareWith="sNow_ComputeRoleModel" />
+        <AddTask Task="sNow_Fulfill" After="true" TaskToCompareWith="sNow_GenerateProvisioningOrders" />
+    </CreateConnectorSynchroComplete>
+
+    <CreateConnectorSynchroIncremental JobIdentifier="sNowIncremental"  Connector="ServiceNow" DisplayName_L1="sNow Incremental" Agent="Default">
+        <OpenIdIdentifier Identifier="Job" />
+    </CreateConnectorSynchroIncremental>
+    
+</ConfigurationFile>

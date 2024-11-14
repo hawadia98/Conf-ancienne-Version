@@ -1,0 +1,26 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <MenuItem Identifier="View_Directory_User" DisplayName_L1="Menu">
+
+    <MenuItem Identifier="Menu_Directory_User_Changes" DisplayName_L1="Actions">
+      <MenuItem Identifier="Menu_Directory_User_Changes_Update" DisplayName_L1="Section">
+        <MenuItem Identifier="Menu_Directory_User_Changes_UpdatePersonalData" DisplayName_L1="Update Personal Data" IconCode="Edit" Workflow="Directory_User_UpdatePersonalData" />
+        <MenuItem Identifier="Menu_Directory_User_Changes_ManageContracts" DisplayName_L1="Manage Contracts" IconCode="Edit" Workflow="Directory_User_ManageContracts" />
+        <MenuItem Identifier="Menu_Directory_User_Changes_ManagePositions" DisplayName_L1="Manage Positions" IconCode="Edit" Workflow="Directory_User_ManagePositions" />
+
+        <MenuItem Identifier="Menu_Directory_User_Changes_ResourcesUpdate" DisplayName_L1="Modify Permissions" IconCode="Edit" Workflow="Directory_User_UpdateResources" />
+
+        <MenuItem Identifier="Menu_Directory_User_Changes_Suspend" DisplayName_L1="Suspend" IconCode="Edit" Workflow="Directory_User_Suspend" />
+        <MenuItem Identifier="Menu_Directory_User_Changes_Reactivate" DisplayName_L1="Reactivate" IconCode="Edit" Workflow="Directory_User_Reactivate" />
+      </MenuItem>
+    </MenuItem>
+
+    <MenuItem Identifier="View_Directory_User_Helpdesk" DisplayName_L1="Helpdesk" IconCode="Phone">
+      <MenuItem Identifier="View_Directory_User_Helpdesk_Update" DisplayName_L1="Section">
+        <MenuItem Identifier="View_Directory_User_Helpdesk_FixRecord" DisplayName_L1="Repair Data (helpdesk)" IconCode="Edit" Workflow="Helpdesk_Directory_User_FixRecord" />
+      </MenuItem>
+      <MenuItem Identifier="View_Directory_User_Helpdesk_Delete" DisplayName_L1="Section">
+        <MenuItem Identifier="View_Directory_User_Helpdesk_Directory_User_Delete" DisplayName_L1="Delete User (helpdesk)" IconCode="Cancel" Workflow="Helpdesk_Directory_User_Delete" />
+      </MenuItem>
+    </MenuItem>
+  </MenuItem>
+</ConfigurationFile>

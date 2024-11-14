@@ -1,0 +1,2 @@
+import{j as o}from"./vendor.pXw3tIE5.chunk.js";import{nL as a,cd as s}from"./index.l-mljrK4.js";function r(e){return o.jsx(s,{onChange:t=>e.onUserUpdateFilter(t.key),options:e.options,placeholder:e.placeholder,selectedKey:e.value,testId:e.testId})}function c(e){const t=e.options;return o.jsx(a,{...e,className:"ucDetailListHeader__Dropdown",SearchComponent:n=>o.jsx(r,{...n,options:t})})}export{c as D};
+//# sourceMappingURL=index.Jr_jSRPh.chunk.js.map

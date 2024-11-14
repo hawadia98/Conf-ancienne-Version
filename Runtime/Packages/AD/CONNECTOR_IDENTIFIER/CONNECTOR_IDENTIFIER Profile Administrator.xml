@@ -1,0 +1,13 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <AccessControlRule Profile="Administrator" EntityType="CONNECTOR_IDENTIFIER_Entry" Identifier="Administrator_PWR_CONNECTOR_IDENTIFIER_Entry" DisplayName_L1="Administrator_PWR_CONNECTOR_IDENTIFIER_Entry">
+    <Entry Permission="/Custom/Resources/CONNECTOR_IDENTIFIER_Entry/View" CanExecute="true" />
+    <Entry Permission="/Custom/Resources/CONNECTOR_IDENTIFIER_Entry/ResetPassword" CanExecute="true" />
+    <Entry Permission="/Custom/Resources/CONNECTOR_IDENTIFIER_Entry/IndirectResetPassword" CanExecute="true" />
+    <Entry Permission="/Custom/Resources/CONNECTOR_IDENTIFIER_Entry/ToggleLock" CanExecute="true" />
+    <Entry Permission="/Custom/Resources/CONNECTOR_IDENTIFIER_Entry/ChangePassword" CanExecute="true" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Administrator" EntityType="Category" Identifier="Administrator_ResourceTypeSelector_category_CONNECTOR_IDENTIFIER_Entry" DisplayName_L1="Administrator_ResourceTypeSelector_category_AD">
+    <Entry Permission="/Custom/Resources/CONNECTOR_IDENTIFIER_Entry/View" />
+  </AccessControlRule>
+</ConfigurationFile>

@@ -1,0 +1,3 @@
+﻿<ConfigurationFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-usercube-com:configuration">
+  <SingleRole Identifier="SingleRoleServiceNow_groups" DisplayName_L1="SingleRoleServiceNow_groups" ApprovalWorkflowType="One" Category="sNow" EntityType="sys_group" Policy="Default" />
+</ConfigurationFile>

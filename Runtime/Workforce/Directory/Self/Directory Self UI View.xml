@@ -1,0 +1,8 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <ResourceViewRecordEntityForm Identifier="View_Self" EntityType="Directory_User" RecordProperty="Directory_User:Records" RecordStartProperty="Directory_UserRecord:StartDate" RecordEndProperty="Directory_UserRecord:EndDate" RecordFilter="Current" IsDefaultSelfForm="true" FormTitle_L1="My Data">
+    <MainControl OutputType="LayoutContainer"></MainControl>
+    <RecordControl OutputType="TransformImport" EmbeddedForm="Directory_UserRecord_View" />
+    <RecordItemControl OutputType="TransformImport" EmbeddedForm="Directory_UserRecord_ViewPosition" />
+    <RecordUniqueItemControl OutputType="TransformImport" EmbeddedForm="Directory_UserRecord_ViewPosition" />
+  </ResourceViewRecordEntityForm>
+</ConfigurationFile>

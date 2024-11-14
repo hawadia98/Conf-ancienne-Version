@@ -1,0 +1,17 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <!-- Gender is only M/F while Personal Title contains Mr, Mrs, Dr...-->
+  <EntityType Identifier="Directory_PersonalTitle" DisplayName_L1="Personal Title">
+    <Property Identifier="Identifier" DisplayName_L1="Code" Type="String" TargetColumnIndex="4" IsKey="true" />
+    <Property Identifier="DisplayName" DisplayName_L1="Name" Type="String" TargetColumnIndex="5" TemplateTransformation="OnePerLanguage" />
+    <Property Identifier="UserRecords" DisplayName_L1="Users" Type="ForeignKey" />
+  </EntityType>
+
+  <DisplayEntityType PluralDisplayName_L1="Personal Titles" Identifier="Directory_PersonalTitle" Color="#95c18b" HideRoles="true">
+    <Property DisplayOrder="-1" IsRequired="true" Identifier="Identifier" />
+    <Property IsRequired="true" Identifier="DisplayName" />
+    <Property OutputType="BasicCollection" Identifier="UserRecords" NavigationBinding="Directory_UserRecord:User" />
+  </DisplayEntityType>
+
+  <CreateUpdateDeleteTemplate EntityType="Directory_PersonalTitle" Profile="Administrator" />
+  <ConnectorMappings Connector="Directory" EntityType="Directory_PersonalTitle" IsIncremental="1" Package="Usercube.Excel@0000001" />
+</ConfigurationFile>

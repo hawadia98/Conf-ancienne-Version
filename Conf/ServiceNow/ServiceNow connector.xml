@@ -1,0 +1,39 @@
+<ConfigurationFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-usercube-com:configuration">
+    <Connector Identifier="ServiceNow" DisplayName_L1="ServiceNow" Agent="Default" IncrementalJob="NotUsed" />
+    <Connection Identifier="ServiceNowExportFulfillment" DisplayName_L1="ServiceNowExportFulfillment" Connector="ServiceNow" Package="Usercube.ServiceNow@0000001" />
+    <Connection Identifier="ServiceNowFulfillManual" DisplayName_L1="ServiceNowFulfillManual" Connector="ServiceNow" Package="Usercube.SnowTicket@0000001" />
+    <EntityType Identifier="sys_user" DisplayName_L1="ServiceNow sys_user">
+      <Property Identifier="email" DisplayName_L1="email" TargetColumnIndex="4" Type="String" />
+      <Property Identifier="group" DisplayName_L1="group" Type="ForeignKey" />
+      <Property Identifier="name" DisplayName_L1="name" TargetColumnIndex="2" Type="String" />
+      <Property Identifier="sys_id" DisplayName_L1="sys_id" IsKey="true" TargetColumnIndex="1" Type="String" />
+      <Property Identifier="user_name" DisplayName_L1="user_name" TargetColumnIndex="3" Type="String" />
+    </EntityType>
+    <EntityType Identifier="sys_group" DisplayName_L1="ServiceNow sys_group">
+      <Property Identifier="description" DisplayName_L1="description" TargetColumnIndex="3" Type="String" />
+      <Property Identifier="name" DisplayName_L1="name" TargetColumnIndex="5" Type="String" />
+      <Property Identifier="sys_id" DisplayName_L1="sys_id" IsKey="true" TargetColumnIndex="4" Type="String" />
+      <Property Identifier="user" DisplayName_L1="user" Type="ForeignKey" />
+    </EntityType>
+
+    <EntityTypeMapping Identifier="sys_user" ConnectionTable="ServiceNowExportFulfillment_sys_user" Connector="ServiceNow">
+      <Property Identifier="email" ConnectionColumn="email" />
+      <Property Identifier="name" ConnectionColumn="name" />
+      <Property Identifier="sys_id" ConnectionColumn="sys_id" IsPrimaryKey="true" />
+      <Property Identifier="user_name" ConnectionColumn="user_name" />
+    </EntityTypeMapping>
+    <EntityTypeMapping Identifier="sys_group" ConnectionTable="ServiceNowExportFulfillment_sys_user_group" Connector="ServiceNow">
+      <Property Identifier="description" ConnectionColumn="description" />
+      <Property Identifier="name" ConnectionColumn="name" />
+      <Property Identifier="sys_id" ConnectionColumn="sys_id" IsPrimaryKey="true" />
+    </EntityTypeMapping>
+
+    <EntityAssociation Identifier="Group_Members" IsProperty1Collection="true" IsProperty2Collection="true" Property1="sys_user:group" Property2="sys_group:user" />
+    <EntityAssociationMapping Identifier="Group_Members" C0="sys_user_grmember" Column1="user" Column2="group" ConnectionTable="ServiceNowExportFulfillment_sys_user_grmember" Connector="ServiceNow" EntityPropertyMapping1="sys_user:sys_id" EntityPropertyMapping2="sys_group:sys_id" />
+   
+    <ViewTemplate EntityType="sys_user" Profile="Administrator" />
+    <ViewTemplate EntityType="sys_user" Profile="Administrator" />
+    <TargetResourceReport EntityType="sys_user" />
+    <TargetResourceReportAccessControlRules EntityType="sys_user" Profile="Administrator" />
+    <TargetResourceReportMenus EntityType="sys_user" />
+</ConfigurationFile>

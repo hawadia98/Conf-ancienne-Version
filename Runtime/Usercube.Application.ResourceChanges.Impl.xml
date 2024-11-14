@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Usercube.Application.ResourceChanges.Impl</name>
+    </assembly>
+    <members>
+        <member name="M:Usercube.Application.ResourceChanges.Impl.WebApi.Controllers.ResourceChangeController.List(System.String,Usercube.Application.Jobs.EntitiesRef.JobInstanceRef,Usercube.Application.Api.QueryApiContext,Usercube.Application.Api.PaginationContext,System.String,System.Nullable{Usercube.Application.ResourceChanges.Api.Entities.ChangeOperation},System.Threading.CancellationToken)">
+            <summary>
+            Returns all the resource changes according to the provided query.
+            </summary>
+            <param name="type">Entity type identifier.</param>
+            <param name="id">Identifier of the job instance.</param>
+            <param name="context">Access control context.</param>
+            <param name="paginationContext">Page size and continuationToken.</param>
+            <param name="primaryKeyFilter">Filter on primary key value.</param>
+            <param name="changeOperationType">Filter on change operation type.</param>
+            <response code="200">The resource changes list.</response>
+        </member>
+        <member name="M:Usercube.Application.ResourceChanges.Impl.WebApi.Controllers.ResourceFileChangeController.List(System.String,Usercube.Application.Jobs.EntitiesRef.JobInstanceRef,Usercube.Application.Api.QueryApiContext,Usercube.Application.Api.PaginationContext,System.Nullable{Usercube.Application.ResourceChanges.Api.Entities.ChangeOperation},System.Threading.CancellationToken)">
+            <summary>
+            Returns all the resource file changes according to the provided job instance id.
+            </summary>
+            <param name="type">Entity type identifier.</param>
+            <param name="id">Identifier of the job instance.</param>
+            <param name="context">Access control context.</param>
+            <param name="paginationContext">Page size and continuationToken.</param>
+            <param name="changeOperationType">Filter on change operation type.</param>
+            <response code="200">The resource file change.</response>
+        </member>
+        <member name="M:Usercube.Application.ResourceChanges.Impl.WebApi.Controllers.ResourceLinkChangeController.List(System.String,System.String,Usercube.Application.Jobs.EntitiesRef.JobInstanceRef,Usercube.Application.Api.QueryApiContext,Usercube.Application.Api.PaginationContext,System.Nullable{Usercube.Application.ResourceChanges.Api.Entities.ChangeOperation},System.Threading.CancellationToken)">
+            <summary>
+            Returns all the resource link changes according to the provided job instance id.
+            </summary>
+            <param name="type">Entity type identifier.</param>
+            <param name="property">Navigation property identifier.</param>
+            <param name="id">Identifier of the job instance.</param>
+            <param name="context">Access control context.</param>
+            <param name="paginationContext">Page size and continuationToken.</param>
+            <param name="changeOperationType">Filter on change operation type.</param>
+            <response code="200">The resource link changes.</response>
+        </member>
+    </members>
+</doc>

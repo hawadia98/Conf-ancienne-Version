@@ -1,0 +1,57 @@
+﻿<ConfigurationFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-usercube-com:configuration">
+  
+  <Category Identifier="sNow" DisplayName_L1="sNow" Policy="Default" />
+<!-- Role-->
+  <CompositeRole Identifier="CompositeRoleServiceNow " DisplayName_L1="CompositeRoleServiceNow " Category="sNow" EntityType="Directory_User" Policy="Default" />
+  <SingleRole Identifier="SingleRoleSNow_user Manager" DisplayName_L1="SingleRole sNow_user Manager" Category="sNow" Description_L1="Role pour regrouper les users de sNow" EntityType="Directory_User" Policy="Default" />
+  <SingleRole Identifier="SingleRoleSNow_user_Manual" DisplayName_L1="SingleRoleSNow_user_Manual provisionning" ApprovalWorkflowType="One" Category="sNow" EntityType="Directory_User" Policy="Default" />
+  <SingleRole Identifier="SingleRoleService sNow_users Admin" DisplayName_L1="SingleRoleService sNow_users Admin" ApprovalWorkflowType="One" Category="sNow" EntityType="Directory_User" Policy="Default" />
+  
+  <CompositeRoleRule Policy="Default" Role="CompositeRoleServiceNow " Type="RequestedAutomatically" />
+  <SingleRoleRule Policy="Default" Role="SingleRoleSNow_user_Manual" Type="RequestedAutomatically" />
+  <SingleRoleRule Policy="Default" Role="SingleRoleSNow_user Manager" />
+  <SingleRoleRule Policy="Default" Role="SingleRoleService sNow_users Admin" Type="Suggested" />
+  <!-- ResourceType-->
+  <ResourceType Identifier="Directory_User_To_sNow_user_Fulfill_Automatic" DisplayName_L1="User Record (from sNow) Fulfill_Automatic"
+    BlockProvisioning="false" Category="sNow" Policy="Default" SourceEntityType="Directory_User" TargetEntityType="sys_user" 
+    AllowAdd="true" AllowRemove="true" CorrelateMultipleResources="false">
+    <ScalarRule Property="email" Binding="Email" Policy="Default" />
+    <ScalarRule Property="name" Expression="C#:user:return user.FirstName + &quot; &quot; + user.LastName;" Policy="Default" />
+    <ScalarRule Property="sys_id" Binding="EmployeeId" Policy="Default" />
+    <ScalarRule Property="user_name" Binding="Login" Policy="Default" />
+    <NavigationRule Policy="Default" Property="group" Resource="App Engine Admins" SingleRole="SingleRoleService sNow_users Admin"  />
+    <NavigationRule Policy="Default" Property="group" Resource="Analytics Settings Managers" 
+    SingleRole="SingleRoleSNow_user Manager"  />
+    <TypeRule Policy="Default" />
+  </ResourceType>
+  <ServiceNowResourceTypeMapping Identifier="Directory_User_To_sNow_user_Fulfill_Automatic" Connection="ServiceNowExportFulfillment"
+    DefaultObjectClass="sys_user">
+    <Property Property="sys_id" IsDNProperty="true" />
+  </ServiceNowResourceTypeMapping>
+  <ResourceType Identifier="Directory_User_To_sNow_user_Fulfill_Manual" DisplayName_L1="User Record (from sNow) Fulfill_Manual" 
+    BlockProvisioning="false" Category="sNow" Policy="Default" SourceEntityType="Directory_User" TargetEntityType="sys_user">
+    <ScalarRule Property="email" Binding="Email" Policy="Default" />
+    <ScalarRule Property="name" Expression="C#:user:return user.FirstName + &quot; &quot; + user.LastName;" Policy="Default" />
+    <ScalarRule Property="sys_id" Binding="EmployeeId" Policy="Default" />
+    <ScalarRule Property="user_name" Binding="Login" Policy="Default" />
+    <TypeRule Policy="Default" />
+    <NavigationRule Property="group" Resource="Application Development" 
+      SingleRole="SingleRoleSNow_user_Manual" Policy="Default" />
+  <!-- 
+   <QueryRule Property="group" Policy="Default" TargetBinding="sys_group:sys_id" 
+    SourceBinding="EmployeeId" TargetMatchedConfidenceLevel="100" />
+    -->
+  </ResourceType>
+  <ServiceNowResourceTypeMapping Identifier="Directory_User_To_sNow_user_Fulfill_Manual" Connection="ServiceNowFulfillManual" 
+    DefaultObjectClass="sys_user" TicketCallerId="12345">
+    <Property Property="sys_id" IsDNProperty="true" />
+  </ServiceNowResourceTypeMapping>
+  <ResourceCorrelationRule Policy="Default" ResourceType="Directory_User_To_sNow_user_Fulfill_Manual" SourceBinding="Email" SourceExpression="ToLower" SourceMatchedConfidenceLevel="100" TargetBinding="email" TargetExpression="ToLower" />
+
+  <ResourceCorrelationRule Policy="Default" ResourceType="Directory_User_To_sNow_user_Fulfill_Automatic" SourceBinding="Email" SourceExpression="ToLower" SourceMatchedConfidenceLevel="100" TargetBinding="email" TargetExpression="ToLower" />
+
+ <!-- <Connection Identifier="FulfillServiceNowUser" DisplayName_L1 ="FulfillServiceNowUser" Connector="ServiceNow" Package="Usercube.Powershell@0000001" />
+ <ResourceTypeMapping Identifier="Directory_User_To_sNow_user_Fulfill_Automatic" Connection="FulfillServiceNowUser" />--> 
+
+ 
+</ConfigurationFile>

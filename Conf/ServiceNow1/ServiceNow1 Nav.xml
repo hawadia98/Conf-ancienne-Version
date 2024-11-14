@@ -1,0 +1,5 @@
+﻿<ConfigurationFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-usercube-com:configuration">
+  <MenuItem Identifier="Nav_Connectors_ServiceNow1" DisplayName_L1="ServiceNow1" ParentMenuItem="Nav_Connectors">
+    <MenuItem Identifier="Nav_Connectors_ServiceNow1_ServiceNow_User" DisplayName_L1="ServiceNow User" EntityType="ServiceNow_User" />
+  </MenuItem>
+</ConfigurationFile>

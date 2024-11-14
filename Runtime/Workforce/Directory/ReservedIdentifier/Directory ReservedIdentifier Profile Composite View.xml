@@ -1,0 +1,7 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Profile Identifier="Workforce/Directory/Directory_ReservedIdentifier/View" DisplayName_L1="Workforce/Directory/View Reserved Identifiers" IsComponent="true" />
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_ReservedIdentifier/View" EntityType="Directory_ReservedIdentifier" Identifier="Composite_Directory_Directory_ReservedIdentifier_View_*" DisplayName_L1="Composite_Directory_Directory_ReservedIdentifier_View_*">
+    <Entry Permission="/Custom/Resources/Directory_ReservedIdentifier/View" CanExecute="true" />
+  </AccessControlRule>
+</ConfigurationFile>

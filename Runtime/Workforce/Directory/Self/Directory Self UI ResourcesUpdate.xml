@@ -1,0 +1,10 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <WorkflowUpdateRecordEntityForm Identifier="Workflow_Self_ResourcesUpdate" EntityType="Workflow_Directory_User" MainProperty="Workflow_Directory_User:Directory_User" RecordProperty="Directory_User:Records" WorkflowRequestType="Self" Activity="Self_ResourcesUpdate:Request" FormTitle_L1="Update My Permissions">
+    <MainControl OutputType="LayoutContainer"></MainControl>
+    <RecordControl OutputType="LayoutContainer" EntityType="Directory_UserRecord">
+      <Control Binding="LastName" IsReadOnly="true" />
+      <Control Binding="FirstName" IsReadOnly="true" />
+    </RecordControl>
+  </WorkflowUpdateRecordEntityForm>
+</ConfigurationFile>

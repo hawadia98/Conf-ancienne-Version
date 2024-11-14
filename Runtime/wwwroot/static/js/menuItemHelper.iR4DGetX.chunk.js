@@ -1,0 +1,2 @@
+import{j as r,S as a,a as o,R as c}from"./vendor.pXw3tIE5.chunk.js";function l(n){return n.map(e=>({...e,onRenderContent:(i,t)=>e.isFetching?r.jsxs("div",{style:{display:"flex",alignItems:"center"},children:[s(i,t),r.jsx(a,{size:o.small})]}):s(i,t)}))}function s(n,e){return r.jsxs(c.Fragment,{children:[n.item.iconProps&&e.renderItemIcon(n),e.renderItemName(n)]})}export{l as m};
+//# sourceMappingURL=menuItemHelper.iR4DGetX.chunk.js.map

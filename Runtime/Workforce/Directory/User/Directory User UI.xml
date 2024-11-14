@@ -1,0 +1,23 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Form Identifier="Workflow_Directory_UserRecord_ReadOnlyData_Base" EntityType="Directory_UserRecord">
+    <Control DisplayName_L1="Personal Data" OutputType="LayoutFieldset" Name="Personal Data">
+      <Control DisplayName_L1="Full Name" OutputType="LayoutRowset" Name="Full Name">
+        <Control Binding="LastName" IsReadOnly="true" />
+        <Control Binding="FirstName" IsReadOnly="true" />
+      </Control>
+      <Control Binding="BirthName" ColumnSize="4" IsReadOnly="true" />
+      <Control Binding="BirthDate" IsReadOnly="true" />
+      <Control Binding="Email" ColumnSize="6" IsReadOnly="true" />
+      <!--<Control Binding="ProxyAddress" ColumnSize="8" />-->
+      <Control DisplayName_L1="Phone Numbers" OutputType="LayoutRowset" Name="Phone Numbers">
+        <Control Binding="PhoneNumber" IsReadOnly="true" />
+        <Control Binding="MobileNumber" IsReadOnly="true" />
+      </Control>
+      <Control Binding="UserIdentifier" ColumnSize="4" IsReadOnly="true" />
+      <Control Binding="Login" ColumnSize="4" IsReadOnly="true" />
+      <Control Binding="VIP" IsReadOnly="true" />
+    </Control>
+  </Form>
+  
+</ConfigurationFile>

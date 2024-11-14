@@ -1,0 +1,2 @@
+import{o as i,bh as S,R as o}from"./vendor.pXw3tIE5.chunk.js";function P(u,s="pageShownId"){const h=i(),[a,r]=S(),n=()=>{const e=parseInt(a.get(s));return(Number.isNaN(e)?0:e)%(Object.keys(u).length/2)},[t,c]=o.useState(n());return o.useEffect(()=>{const e=n();t!==e&&c(n())},[h]),o.useEffect(()=>{if(!a.has(s)){r([[s,""+t],...a],{replace:!0});return}const e=[...a];e[e.findIndex(g=>g[0]===s)][1]=""+t,r(e,{replace:!0})},[t]),[t,c]}export{P as u};
+//# sourceMappingURL=usePageShown.WKeu0iQz.chunk.js.map

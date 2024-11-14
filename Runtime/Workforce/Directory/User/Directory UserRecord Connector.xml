@@ -1,0 +1,211 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <EntityType Identifier="Directory_UserRecord" DisplayName_L1="User Record">
+
+    <Property Identifier="RecordIdentifier" DisplayName_L1="Record Identifier" Type="String" TargetColumnIndex="3" IsKey="true" />
+    <Property Identifier="PositionIdentifier" DisplayName_L1="Position Identifier" Type="String" TargetColumnIndex="26" />
+
+    <Property Identifier="StartDate" DisplayName_L1="Start Date" Type="DateTime" TargetColumnIndex="5" />
+    <Property Identifier="EndDate" DisplayName_L1="End Date" Type="DateTime" TargetColumnIndex="6" />
+    <Property Identifier="UserIdentifier" DisplayName_L1="User Identifier" Type="String" TargetColumnIndex="4" />
+    <Property Identifier="EmployeeId" DisplayName_L1="Employee Id" Type="String" TargetColumnIndex="7" />
+    <Property Identifier="FirstName" DisplayName_L1="First Name" Type="String" TargetColumnIndex="8" />
+    <Property Identifier="LastName" DisplayName_L1="Last Name" Type="String" TargetColumnIndex="9" />
+    <Property Identifier="Login" DisplayName_L1="Login" Type="String" TargetColumnIndex="10" />
+    <Property Identifier="Email" DisplayName_L1="Email" Type="String" TargetColumnIndex="11" />
+    <Property Identifier="EmailAliases" DisplayName_L1="Email Aliases" Type="String" TargetColumnIndex="31" />
+    <Property Identifier="PhoneNumber" DisplayName_L1="Phone Number" Type="String" TargetColumnIndex="12" />
+    <Property Identifier="MobileNumber" DisplayName_L1="Mobile Number" Type="String" TargetColumnIndex="13" />
+    <Property Identifier="BirthDate" DisplayName_L1="Birth Date" Type="DateTime" TargetColumnIndex="14" />
+    <Property Identifier="BirthName" DisplayName_L1="Birth Name" Type="String" TargetColumnIndex="15" />
+    <Property Identifier="VIP" DisplayName_L1="VIP" Type="Bool" TargetColumnIndex="16" />
+    <Property Identifier="Suspended" DisplayName_L1="Suspended" Type="Bool" TargetColumnIndex="17" />
+    <Property Identifier="AccessesExpirationDate" DisplayName_L1="Accesses Expiration Date" Type="DateTime" TargetColumnIndex="28" />
+    <Property Identifier="User" DisplayName_L1="User" Type="ForeignKey" TargetColumnIndex="128" />
+    <Property Identifier="MainUser" DisplayName_L1="User (main)" Type="ForeignKey" />
+    <Property Identifier="Gender" DisplayName_L1="Gender" Type="ForeignKey" TargetColumnIndex="136" />
+    <Property Identifier="PersonalTitle" DisplayName_L1="Personal Title" Type="ForeignKey" TargetColumnIndex="135" />
+
+    <Property Identifier="ContractStartDate" DisplayName_L1="Contract Start Date" Type="DateTime" TargetColumnIndex="20" />
+    <Property Identifier="ContractEndDate" DisplayName_L1="Contract End Date" Type="DateTime" TargetColumnIndex="21" />
+    <Property Identifier="EffectiveEndDate" DisplayName_L1="Effective End Date" Type="DateTime" TargetColumnIndex="23" />
+    <Property Identifier="ContractIdentifier" DisplayName_L1="Contract Identifier" Type="String" TargetColumnIndex="36" />
+    <Property Identifier="UserType" DisplayName_L1="User Type" Type="ForeignKey" TargetColumnIndex="129" />
+    <Property Identifier="ExternalCompany" DisplayName_L1="External Company" Type="ForeignKey" TargetColumnIndex="132" />
+    <Property Identifier="Subsidiary" DisplayName_L1="Subsidiary" Type="ForeignKey" TargetColumnIndex="134" />
+
+    <Property Identifier="PositionStartDate" DisplayName_L1="Position Start Date" Type="DateTime" TargetColumnIndex="24" />
+    <Property Identifier="PositionEndDate" DisplayName_L1="Position End Date" Type="DateTime" TargetColumnIndex="25" />
+    <Property Identifier="JobTitle" DisplayName_L1="Job Title" Type="String" TargetColumnIndex="27" />
+    <Property Identifier="OfficeNumber" DisplayName_L1="Office Number" Type="String" TargetColumnIndex="29" />
+
+    <Property Identifier="PhoneticFirstLastName" DisplayName_L1="Phonetic First/Last Name" Type="String"
+              FlexibleComparisonExpression="C#:value:return value.Approximate();" TargetColumnIndex="32" />
+    <Property Identifier="PhoneticLastFirstName" DisplayName_L1="Phonetic Last/First Name" Type="String"
+              FlexibleComparisonExpression="C#:value:return value.Approximate();" TargetColumnIndex="33" />
+    <Property Identifier="PhoneticFirstName" DisplayName_L1="Phonetic First Name" DisplayName_L2="Prénom phonétique"
+              Type="String" FlexibleComparisonExpression="C#:value:return value.Approximate();"
+              TargetColumnIndex="34" />
+    <Property Identifier="PhoneticLastName" DisplayName_L1="Phonetic Last Name" DisplayName_L2="Nom phonétique"
+              Type="String" FlexibleComparisonExpression="C#:value:return value.Approximate();"
+              TargetColumnIndex="35" />
+
+    <Property Identifier="Organization" DisplayName_L1="Department" Type="ForeignKey" TargetColumnIndex="130" />
+    <Property Identifier="Site" DisplayName_L1="Site" Type="ForeignKey" TargetColumnIndex="131" />
+    <Property Identifier="Title" DisplayName_L1="Title" Type="ForeignKey" TargetColumnIndex="133" />
+    <Property Identifier="Office" DisplayName_L1="Office" Type="ForeignKey" TargetColumnIndex="137" />
+    <Property Identifier="IsMainPosition" DisplayName_L1="Is Main Position" Type="Bool" TargetColumnIndex="30" />
+
+    <!--
+    The Manager comes from the HR or is edited manually. In that case, IGA Manager is useless.
+    If the Manager is not filled, the EffectiveIGAManager is computed from the Organization.Manager.
+    The organization's manager value can be overridden by the IGAManager property.
+    -->
+    <Property Identifier="Manager" DisplayName_L1="Manager" Type="ForeignKey" TargetColumnIndex="138" />
+    <Property Identifier="IGAManager" DisplayName_L1="IGA Manager" Type="ForeignKey" TargetColumnIndex="139" />
+    <Property Identifier="EffectiveIGAManager" DisplayName_L1="IGA Manager (effective)" Type="ForeignKey" TargetColumnIndex="140" />
+
+    <Property Identifier="IsActivePosition" DisplayName_L1="Is Active Position" Type="Bool" TargetColumnIndex="37" />
+  </EntityType>
+
+  <DisplayEntityType PluralDisplayName_L1="User Records" Identifier="Directory_UserRecord">
+    <Property IsRequired="true" Identifier="FirstName" />
+    <Property IsRequired="true" Identifier="LastName" />
+
+    <Property Identifier="EndDate" AddedMinutes="1440" />
+    <Property Identifier="ContractEndDate" AddedMinutes="1440" />
+    <Property Identifier="AccessesExpirationDate" AddedMinutes="1440" />
+    <Property Identifier="PositionEndDate" AddedMinutes="1440" />
+
+    <Property Identifier="PersonalTitle" InputType="Combobox" />
+    <Property Identifier="Gender" InputType="Combobox" />
+    <Property Identifier="UserType" InputType="Combobox" />
+  </DisplayEntityType>
+
+  <EntityAssociation Identifier="Directory_UserRecord_User" IsProperty2Collection="true" Property1="Directory_UserRecord:User" Property2="Directory_User:Records" />
+
+
+  <EntityAssociation Identifier="Directory_UserRecord_Title_User_Records" IsProperty2Collection="true" Property1="Directory_UserRecord:Title" Property2="Directory_Title:UserRecords" />
+
+  <EntityAssociation Identifier="Directory_UserRecord_Gender" IsProperty2Collection="true" Property1="Directory_UserRecord:Gender" Property2="Directory_Gender:UserRecords" />
+  <EntityAssociation Identifier="Directory_UserRecord_PersonalTitle" IsProperty2Collection="true" Property1="Directory_UserRecord:PersonalTitle" Property2="Directory_PersonalTitle:UserRecords" />
+  <EntityAssociation Identifier="Directory_UserRecord_UserType" IsProperty2Collection="true" Property1="Directory_UserRecord:UserType" Property2="Directory_UserType:UserRecords" />
+  <EntityAssociation Identifier="Directory_UserRecord_Site" IsProperty2Collection="true" Property1="Directory_UserRecord:Site" Property2="Directory_Site:UserRecords" />
+  <EntityAssociation Identifier="Directory_UserRecord_Office" IsProperty2Collection="true" Property1="Directory_UserRecord:Office" Property2="Directory_Office:UserRecords" />
+  <EntityAssociation Identifier="Directory_UserRecord_Organization" IsProperty2Collection="true" Property1="Directory_UserRecord:Organization" Property2="Directory_Organization:UserRecords" />
+  <EntityAssociation Identifier="Directory_UserRecord_ExternalCompany" IsProperty2Collection="true" Property1="Directory_UserRecord:ExternalCompany" Property2="Directory_ExternalCompany:UserRecords" />
+  <EntityAssociation Identifier="Directory_UserRecord_Subsidiary" IsProperty2Collection="true" Property1="Directory_UserRecord:Subsidiary" Property2="Directory_Subsidiary:UserRecords" />
+
+  <EntityAssociation Identifier="Directory_UserRecord_Manager" IsProperty2Collection="true" Property1="Directory_UserRecord:Manager" Property2="Directory_User:DirectReports" />
+  <EntityAssociation Identifier="Directory_UserRecord_IGAManager" IsProperty2Collection="true" Property1="Directory_UserRecord:IGAManager" Property2="Directory_User:IGADirectReports" />
+  <EntityAssociation Identifier="Directory_UserRecord_EffectiveIGAManager" IsProperty2Collection="true" Property1="Directory_UserRecord:EffectiveIGAManager" Property2="Directory_User:EffectiveIGADirectReports" />
+
+
+  <EntityPropertyExpression Identifier="Directory_UserRecord_InternalDisplayName" EntityType="Directory_UserRecord" Property="InternalDisplayName" Expression="C#:record:
+var ret = &quot;&quot;;
+
+if (record.UserIdentifier != null)
+{
+  ret += record.UserIdentifier + &quot; - &quot;;
+}
+
+ret += record.LastName + ' ' + record.FirstName;
+
+return ret;"
+ />
+
+  <EntityPropertyExpression Identifier="Directory_UserRecord_IsActivePosition" EntityType="Directory_UserRecord" Property="IsActivePosition"
+                            Expression="C#:record:
+if(!record.PositionEndDate.HasValue &amp;&amp; !record.ContractEndDate.HasValue)
+{
+  return true;
+}
+
+if(record.PositionEndDate.HasValue)
+{
+  return record.PositionEndDate &gt; DateTime.UtcNow;
+}
+
+return record.ContractEndDate &gt; DateTime.UtcNow;;"
+  />
+
+  <EntityPropertyExpression Identifier="Directory_UserRecord_EffectiveIGAManager" EntityType="Directory_UserRecord" Property="EffectiveIGAManager" Expression="C#:record:
+var managerId = record.IGAManager?.Id;
+if (managerId != default)
+{
+  /* There is an explicit IGA Manager */
+  return managerId;
+}
+
+managerId = record.Manager?.Id;
+if (managerId != default)
+{
+  /* There is an explicit Manager */
+  return managerId;
+}
+
+if (record.Organization == null)
+{
+  /* No org => we can't get any manager */
+  return managerId;
+}
+
+managerId = record.Organization.Manager?.Id;
+if (managerId == null)
+{
+  /* No org manager => we can't get any manager */
+  return managerId;
+}
+
+if (record.User?.Id != managerId)
+{
+  /* The current user is not his org's manager => we take the org's manager */
+  return managerId;
+}
+
+/* We take the N+2 org's manager */
+managerId = record.Organization.Parent?.Manager?.Id;
+return managerId;"
+  />
+
+  <EntityPropertyExpression Identifier="Directory_UserRecord_EffectiveEndDate"
+                            Expression="C#:record:return record.AccessesExpirationDate ?? record.ContractEndDate;"
+                            EntityType="Directory_UserRecord" Property="EffectiveEndDate" />
+
+  <EntityPropertyExpression Identifier="Directory_UserRecord_PhoneticFirstLastName"
+                            Expression="C#:record:return (record.FirstName + ' ' + record.LastName).Approximate();"
+                            EntityType="Directory_UserRecord" Property="PhoneticFirstLastName" />
+  <EntityPropertyExpression Identifier="Directory_UserRecord_PhoneticLastFirstName"
+                            Expression="C#:record:return (record.LastName + ' ' + record.FirstName).Approximate();"
+                            EntityType="Directory_UserRecord" Property="PhoneticLastFirstName" />
+  <EntityPropertyExpression Identifier="Directory_UserRecord_PhoneticFirstName"
+                            Expression="C#:person:return person.FirstName.Approximate();" EntityType="Directory_UserRecord" Property="PhoneticFirstName" />
+  <EntityPropertyExpression Identifier="Directory_UserRecord_PhoneticLastName"
+                            Expression="C#:person:return person.LastName.Approximate();" EntityType="Directory_UserRecord" Property="PhoneticLastName" />
+
+  <AccessControlPropertyGroup Identifier="Directory_UserRecord_HR" DisplayName_L1="User Record - HR Properties" />
+  <AccessControlPropertyGroup Identifier="Directory_UserRecord_Administration" DisplayName_L1="User Record - Administration Properties" />
+  <AccessControlEntityType Identifier="Directory_UserRecord">
+    <Property VisibilityGroup="Directory_UserRecord_HR" Identifier="ContractStartDate" />
+    <Property VisibilityGroup="Directory_UserRecord_HR" Identifier="ContractEndDate" />
+    <Property VisibilityGroup="Directory_UserRecord_HR" Identifier="UserType" />
+    <Property VisibilityGroup="Directory_UserRecord_HR" Identifier="ExternalCompany" />
+    <Property VisibilityGroup="Directory_UserRecord_HR" Identifier="UserIdentifier" />
+    <Property VisibilityGroup="Directory_UserRecord_HR" Identifier="EmployeeId" />
+    <Property VisibilityGroup="Directory_UserRecord_HR" Identifier="BirthDate" />
+    <Property VisibilityGroup="Directory_UserRecord_HR" Identifier="BirthName" />
+    <Property VisibilityGroup="Directory_UserRecord_HR" Identifier="AccessesExpirationDate" />
+    <Property VisibilityGroup="Directory_UserRecord_HR" Identifier="PositionIdentifier" />
+
+    <Property VisibilityGroup="Directory_UserRecord_Administration" Identifier="VIP" />
+    <Property VisibilityGroup="Directory_UserRecord_Administration" Identifier="Suspended" />
+  </AccessControlEntityType>
+
+  <ViewTemplate EntityType="Directory_UserRecord" Profile="Administrator" />
+
+  <ConnectorMappings Connector="Directory" EntityType="Directory_UserRecord" IsIncremental="1" Package="Usercube.Excel@0000001" />
+
+  <!-- In the Excel file, the same column must be used to load the user identifier and link to the user tab (same column is both a scalar and a navigation) -->
+  <EntityTypeMapping Identifier="Directory_UserRecord" ConsolidationMode="Merge">
+    <Property Identifier="UserIdentifier" ConnectionColumn="User" />
+  </EntityTypeMapping>
+</ConfigurationFile>

@@ -1,0 +1,12 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Form Identifier="Workflow_Directory_UserRecord_UpdateResources_Base" EntityType="Directory_UserRecord">
+    <Control OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_ReadOnlyData_Base" />
+  </Form>
+  
+  <WorkflowUpdateRecordEntityForm Identifier="Workflow_Directory_User_UpdateResources" EntityType="Workflow_Directory_User" MainProperty="Workflow_Directory_User:Directory_User" RecordProperty="Directory_User:Records" WorkflowRequestType="Self" Activity="Directory_User_UpdateResources:Request" FormTitle_L1="Modify Permissions">
+    <MainControl OutputType="LayoutContainer" EntityType="Directory_User"></MainControl>
+    <RecordControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_UpdateResources_Base" />
+  </WorkflowUpdateRecordEntityForm>
+
+</ConfigurationFile>

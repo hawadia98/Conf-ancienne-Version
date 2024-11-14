@@ -1,0 +1,61 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <DisplayEntityType Identifier="Directory_Organization">
+    <Property OutputType="BasicCollection" Identifier="UserRecords" NavigationBinding="Directory_UserRecord:User" />
+    <Property OutputType="BasicCollection" Identifier="Children" />
+  </DisplayEntityType>
+
+  <!-- For perf, we only sort/filter on path -->
+  <DisplayTable Identifier="Directory_Organization" EntityType="Directory_Organization" DisplayTableDesignElement="table" IsEntityTypeDefault="true" ParentProperty="Parent">
+    <Column DefaultSortPriority="1" DisplayBinding="DisplayName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="6" />
+    <Column DisplayBinding="Manager.InternalDisplayName" DisplayName_L1="Manager" IsDisplayInSummaryView="true" IsResizable="true" ColumnSize="4" />
+    <Column DisplayBinding="Type.InternalDisplayName" DisplayName_L1="Type" IsDisplayInSummaryView="true" IsResizable="true" ColumnSize="2" />
+  </DisplayTable>
+
+  <!-- CRUD forms -->
+  <Form Identifier="Base_Directory_Organization" EntityType="Directory_Organization">
+    <Control DisplayName_L1="Organizational Data" OutputType="LayoutFieldset" Name="Organizational Data">
+      <Control Binding="Type" />
+      <Control Binding="Identifier" />
+      <Control Binding="DisplayName" />
+      <Control Binding="FullName" IsReadOnly="true" />
+      <Control Binding="Manager" />
+      <Control Binding="Assistant" />
+    </Control>
+
+    <Control DisplayName_L1="Additional Data" OutputType="LayoutFieldset" Name="Additional Data">
+      <Control Binding="Parent" />
+      <Control Binding="Children" IsReadOnly="true" />
+      <Control Binding="UserRecords" IsReadOnly="true" />
+    </Control>
+  </Form>
+
+  <ResourceViewEntityForm Identifier="View_Directory_Organization" EntityType="Directory_Organization" Menu="View_Directory_Organization" IsDefaultViewForm="true">
+    <Control OutputType="TransformImport" EmbeddedForm="Base_Directory_Organization" />
+  </ResourceViewEntityForm>
+
+  <WorkflowCreateEntityForm Identifier="Workflow_Directory_Organization_Create" EntityType="Workflow_Directory_Organization" MainProperty="Workflow_Directory_Organization:Directory_Organization" WorkflowRequestType="Self" Activity="Directory_Organization_Create:Request" FormTitle_L1="New Department" HideRoles="true">
+    <MainControl OutputType="TransformImport" EmbeddedForm="Base_Directory_Organization" />
+  </WorkflowCreateEntityForm>
+
+  <WorkflowEditEntityForm Identifier="Workflow_Directory_Organization_Update" EntityType="Workflow_Directory_Organization" MainProperty="Workflow_Directory_Organization:Directory_Organization" WorkflowRequestType="Self" Activity="Directory_Organization_Update:Request" FormTitle_L1="Update Department" HideRoles="true">
+    <MainControl OutputType="TransformImport" EmbeddedForm="Base_Directory_Organization" />
+  </WorkflowEditEntityForm>
+
+  <WorkflowEditEntityForm Identifier="Workflow_Directory_Organization_Delete" EntityType="Workflow_Directory_Organization" MainProperty="Workflow_Directory_Organization:Directory_Organization" WorkflowRequestType="Self" Activity="Directory_Organization_Delete:Request" FormTitle_L1="Delete Department" IsDeleteForm="true" HideRoles="true">
+    <MainControl OutputType="TransformImport" EmbeddedForm="Base_Directory_Organization" IsReadOnly="true" />
+  </WorkflowEditEntityForm>
+
+  <AssertValueRequiredAspect Identifier="Directory_Organization_ValueRequired_Identifier" Binding="Workflow_Directory_Organization:Directory_Organization.Identifier" Message_L1="The code is required">
+    <PointCut Activity="Directory_Organization_Create:Request" ActivityState="Action-Executed" Mode="Before" />
+    <PointCut Activity="Directory_Organization_Update:Request" ActivityState="Action-Executed" Mode="Before" />
+  </AssertValueRequiredAspect>
+
+  <AssertValueRequiredAspect Identifier="Directory_Organization_ValueRequired_DisplayName" Binding="Workflow_Directory_Organization:Directory_Organization.DisplayName"
+                             Message_L1="The default displayName is required"
+                             TemplateTransformation="ComputeDefaultLanguage">
+    <PointCut Activity="Directory_Organization_Create:Request" ActivityState="Action-Executed" Mode="Before" />
+    <PointCut Activity="Directory_Organization_Update:Request" ActivityState="Action-Executed" Mode="Before" />
+  </AssertValueRequiredAspect>
+
+</ConfigurationFile>

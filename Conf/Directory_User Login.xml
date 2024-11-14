@@ -1,0 +1,21 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <!--TODO: Once the users are loaded, the Administrator profile can be assigned to an existing user
+   TODO: and the fake administrator user can be removed. -->
+  <Resource Id="-1" Type="Directory_User" C4="administrator" CA="administrator" CB="administrator" DisplayName_L1="administrator" />
+  <AssignedProfile Id="-1" Profile="Administrator" UserId="-1" ContextId="-1" AccessState="Approved" />
+  <Connector Identifier="Directory" ConsolidationMode="Merge" MaximumDeletedLines="0" MaximumInsertedLines="0" MaximumLinkDeletedLines="0" MaximumLinkInsertedLines="0" MaximumUpdatedLines="0" MaxLinkPercentageDeletedLines="0" MaxLinkPercentageInsertedLines="0" MaxPercentageDeletedLines="0" MaxPercentageInsertedLines="0" MaxPercentageUpdatedLines="0" />
+
+  <SelectPersonasByFilterQueryHandlerSetting ResourceDisplayNameProperty="Directory_User:LastFirstName" MailProperty="Directory_User:Email" PersonTypeFilterProperty="Directory_User:PresenceState" PersonTypeFilter="-101" />
+  <SelectUserByIdentityQueryHandlerSetting ResourceIdentityProperty="Directory_User:Email" ResourceDisplayNameProperty="Directory_User:LastFirstName" />
+  <MailSetting MailProperty="Directory_User:Email"/>
+
+  <ProfileRuleContext SubBinding="Directory_User:ManagedOrganizations" IsAppliedToRoot="false"
+                      EntityType="Directory_User">
+    <ProfileRule Profile="Manager" B0="Id" />
+  </ProfileRuleContext>
+
+  <ProfileRuleContext IsAppliedToRoot="true" EntityType="Directory_User">
+    <ProfileRule Profile="User" RootExpression="C#:person:return person.PresenceState?.Id == -101L;" />
+  </ProfileRuleContext>
+</ConfigurationFile>

@@ -1,0 +1,64 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <!-- The default sort match the country/region/site hierarchy -->
+  <DisplayTable Identifier="Directory_Site" EntityType="Directory_Site" DisplayTableDesignElement="table" IsEntityTypeDefault="true">
+    <Column DefaultSortPriority="1" DisplayBinding="Region.Country.DisplayName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="2" DisplayName_L1="Country" />
+    <Column DefaultSortPriority="2" DisplayBinding="Region.DisplayName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="2" DisplayName_L1="State" />
+    <Column DefaultSortPriority="3" DisplayBinding="DisplayName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="8" />
+  </DisplayTable>
+
+  <!-- CRUD forms -->
+  <Form Identifier="Base_Directory_Site" EntityType="Directory_Site">
+    <Control DisplayName_L1="Address" OutputType="LayoutFieldset" Name="Address">
+      <Control Binding="Name" />
+      <Control Binding="StreetNumber" />
+      <Control Binding="StreetName" />
+      <Control Binding="StreetType" />
+      <Control Binding="Floor" />
+      <Control Binding="PostalCode" />
+      <Control Binding="City" />
+      <Control Binding="Region" />
+      <Control Binding="Region.Country" IsReadOnly="true" />
+      <Control Binding="Photo" OutputType="Image" />
+    </Control>
+
+    <Control DisplayName_L1="Additional Data" OutputType="LayoutFieldset" Name="Additional Data">
+      <Control Binding="Identifier" />
+      <Control Binding="DisplayName" />
+      <Control Binding="UserRecords" />
+      <Control Binding="Longitude" />
+      <Control Binding="Latitude" />
+      <Control Binding="Url" />
+      <Control Binding="PreferredLanguage" />
+      <Control Binding="TimeZone" />
+    </Control>
+  </Form>
+
+  <ResourceViewEntityForm Identifier="View_Directory_Site" EntityType="Directory_Site" Menu="View_Directory_Site" IsDefaultViewForm="true">
+    <Control OutputType="TransformImport" EmbeddedForm="Base_Directory_Site" />
+  </ResourceViewEntityForm>
+
+  <WorkflowCreateEntityForm Identifier="Workflow_Directory_Site_Create" EntityType="Workflow_Directory_Site" MainProperty="Workflow_Directory_Site:Directory_Site" WorkflowRequestType="Self" Activity="Directory_Site_Create:Request" FormTitle_L1="New Site" HideRoles="true">
+    <MainControl OutputType="TransformImport" EmbeddedForm="Base_Directory_Site" />
+  </WorkflowCreateEntityForm>
+
+  <WorkflowEditEntityForm Identifier="Workflow_Directory_Site_Update" EntityType="Workflow_Directory_Site" MainProperty="Workflow_Directory_Site:Directory_Site" WorkflowRequestType="Self" Activity="Directory_Site_Update:Request" FormTitle_L1="Update Site" HideRoles="true">
+    <MainControl OutputType="TransformImport" EmbeddedForm="Base_Directory_Site" />
+  </WorkflowEditEntityForm>
+
+  <WorkflowEditEntityForm Identifier="Workflow_Directory_Site_Delete" EntityType="Workflow_Directory_Site" MainProperty="Workflow_Directory_Site:Directory_Site" WorkflowRequestType="Self" Activity="Directory_Site_Delete:Request" FormTitle_L1="Delete Site" IsDeleteForm="true" HideRoles="true">
+    <MainControl OutputType="TransformImport" EmbeddedForm="Base_Directory_Site" IsReadOnly="true" />
+  </WorkflowEditEntityForm>
+
+  <AssertValueRequiredAspect Identifier="Directory_Site_ValueRequired_Identifier" Binding="Workflow_Directory_Site:Directory_Site.Identifier" Message_L1="The code is required">
+    <PointCut Activity="Directory_Site_Create:Request" ActivityState="Action-Executed" Mode="Before" />
+    <PointCut Activity="Directory_Site_Update:Request" ActivityState="Action-Executed" Mode="Before" />
+  </AssertValueRequiredAspect>
+
+  <AssertValueRequiredAspect Identifier="Directory_Site_ValueRequired_DisplayName_enUS" Binding="Workflow_Directory_Site:Directory_Site.DisplayName"
+                             Message_L1="The default display name is required"
+                             TemplateTransformation="ComputeDefaultLanguage">
+    <PointCut Activity="Directory_Site_Create:Request" ActivityState="Action-Executed" Mode="Before" />
+    <PointCut Activity="Directory_Site_Update:Request" ActivityState="Action-Executed" Mode="Before" />
+  </AssertValueRequiredAspect>
+
+</ConfigurationFile>

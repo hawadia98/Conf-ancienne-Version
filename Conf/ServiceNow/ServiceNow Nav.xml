@@ -1,0 +1,23 @@
+<ConfigurationFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-usercube-com:configuration">
+    <MenuItem Identifier="Nav_Connectors_ServiceNow" DisplayName_L1="ServiceNow" ParentMenuItem="Nav_Connectors">
+        <MenuItem Identifier="Nav_Connectors_ServiceNow_sys_user" DisplayName_L1="sNow sys_user" EntityType="sys_user" IconCode="People" />
+        <MenuItem Identifier="Nav_Connectors_ServiceNow_sys_group" DisplayName_L1="sNow sys_group" EntityType="sys_group" IconCode="List"/>
+    </MenuItem>
+<!-- La barre de recherche est un élément de l'interface utilisateur qui vous permet d'effectuer une
+  recherche dans une liste de propriétés d'un EntityType.-->
+    <SearchBar EntityType="Directory_User" SearchBarDesignElement="Inline">    
+        <Criterion Binding1="MainRecord.EmployeeId" PlaceHolderText_L1="Employee Id"  InputType="Auto"
+            ColumnSize="2" />    
+        <Criterion Binding1="MainRecord.LastName" InputType="Auto" ColumnSize="2" />    
+        <Criterion Binding1="MainRecord.FirstName" InputType="Auto" ColumnSize="2" />    
+        <Criterion Binding1="MainRecord.Organization" PlaceHolderText_L1="Department"  
+            InputType="Auto" ColumnSize="2" />
+    </SearchBar>
+  <SearchBar EntityType="sys_user" SearchBarDesignElement="Inline">    
+        <Criterion Binding1="name" Binding2="user_name" PlaceHolderText_L1="Name"  InputType="Auto"
+            ColumnSize="2" />    
+        <Criterion Binding1="email" InputType="Auto" ColumnSize="2" />   
+        
+       
+    </SearchBar>   
+</ConfigurationFile>

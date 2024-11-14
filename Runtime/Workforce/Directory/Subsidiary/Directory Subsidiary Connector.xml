@@ -1,0 +1,44 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <EntityType Identifier="Directory_Subsidiary" DisplayName_L1="Subsidiary">
+    <Property Identifier="Identifier" DisplayName_L1="Code" Type="String" TargetColumnIndex="4" IsKey="true" />
+    <Property Identifier="DisplayName" DisplayName_L1="Name" Type="String" TargetColumnIndex="5" />
+
+    <Property Identifier="PhotoTag" DisplayName_L1="Photo Tag" Type="Int64" TargetColumnIndex="6" />
+    <Property Identifier="Photo" DisplayName_L1="Logo" Type="Binary" />
+
+    <Property Identifier="EmailDomain" DisplayName_L1="Email Domain" Type="String" TargetColumnIndex="7" />
+
+    <Property Identifier="UserRecords" DisplayName_L1="Users" Type="ForeignKey" />
+  </EntityType>
+
+  <DisplayEntityType PluralDisplayName_L1="Subsidiaries" IconCode="Suitcase" Identifier="Directory_Subsidiary" Color="#95c18b" HideRoles="true">
+    <Property DisplayOrder="-1" IsRequired="true" Identifier="Identifier" />
+    <Property IsRequired="true" Identifier="DisplayName" />
+    <Property IsReadOnly="true" IsHidden="true" Identifier="PhotoTag" />
+
+    <Property OutputType="BasicCollection" Identifier="UserRecords" NavigationBinding="Directory_UserRecord:User" />
+  </DisplayEntityType>
+
+  <EntityPropertyExpression Identifier="Directory_Subsidiary_PhotoTag" Binding="Photo.Id" EntityType="Directory_Subsidiary" Property="PhotoTag" />
+
+  <AccessControlPropertyGroup Identifier="Directory_Subsidiary_Administration" DisplayName_L1="Subsidiary - Administration Properties" />
+  <AccessControlEntityType Identifier="Directory_Subsidiary">
+    <Property VisibilityGroup="Directory_Subsidiary_Administration" Identifier="EmailDomain" />
+  </AccessControlEntityType>
+
+  <CreateUpdateDeleteTemplate EntityType="Directory_Subsidiary" Profile="Administrator" />
+  <ConnectorMappings Connector="Directory" EntityType="Directory_Subsidiary" IsIncremental="1" Package="Usercube.Excel@0000001" />
+
+  <AssertValueRequiredAspect Identifier="Directory_Subsidiary_ValueRequired_Identifier" Binding="Workflow_Directory_Subsidiary:Directory_Subsidiary.Identifier"
+                             Message_L1="The code is required">
+    <PointCut Activity="Directory_Subsidiary_Create:Request" ActivityState="Action-Executed" Mode="Before" />
+    <PointCut Activity="Directory_Subsidiary_Update:Request" ActivityState="Action-Executed" Mode="Before" />
+  </AssertValueRequiredAspect>
+
+  <AssertValueRequiredAspect Identifier="Directory_Subsidiary_ValueRequired_DisplayName"
+                             Binding="Workflow_Directory_Subsidiary:Directory_Subsidiary.DisplayName"
+                             Message_L1="The display name is required" >
+    <PointCut Activity="Directory_Subsidiary_Create:Request" ActivityState="Action-Executed" Mode="Before" />
+    <PointCut Activity="Directory_Subsidiary_Update:Request" ActivityState="Action-Executed" Mode="Before" />
+  </AssertValueRequiredAspect>
+</ConfigurationFile>

@@ -1,0 +1,20 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <EntityType Identifier="Directory_OrganizationType" DisplayName_L1="Department Type">
+    <Property Identifier="Identifier" DisplayName_L1="Code" Type="String" IsKey="true" TargetColumnIndex="4" />
+    <Property Identifier="DisplayName" DisplayName_L1="Name" Type="String" TargetColumnIndex="5" TemplateTransformation="OnePerLanguage" />
+
+    <Property Identifier="Organizations" DisplayName_L1="Departments" Type="ForeignKey" />
+  </EntityType>
+
+  <DisplayEntityType PluralDisplayName_L1="Department Types" IconCode="Suitcase" Identifier="Directory_OrganizationType" Color="#95c18b" HideRoles="true">
+    <Property DisplayOrder="-1" IsRequired="true" Identifier="Identifier" />
+    <Property IsRequired="true" Identifier="DisplayName" />
+    <Property OutputType="BasicCollection" Identifier="Organizations" />
+  </DisplayEntityType>
+
+  <EntityAssociation Identifier="Directory_Organization_Type" IsProperty2Collection="true" Property1="Directory_Organization:Type" Property2="Directory_OrganizationType:Organizations" />
+
+  <CreateUpdateDeleteTemplate EntityType="Directory_OrganizationType" Profile="Administrator" />
+  <ConnectorMappings Connector="Directory" EntityType="Directory_OrganizationType" IsIncremental="1" Package="Usercube.Excel@0000001" />
+
+</ConfigurationFile>

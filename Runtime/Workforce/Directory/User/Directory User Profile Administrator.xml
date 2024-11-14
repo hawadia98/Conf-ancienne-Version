@@ -1,0 +1,14 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <CreateAdministratorProfile EntityType="Directory_User" />
+  <ManageAccounts EntityType="Directory_User" Profile="Administrator"/>
+
+  <WorkflowAccessControlRules Profile="Administrator" EntityType="Workflow_Directory_User" />
+
+  <!--TODO: scaffolding admin? these enable the "My Tasks" top menu while not giving access to the pending tasks themselves -->
+  <AccessControlRule Profile="Administrator" EntityType="Workflow_Directory_User" Identifier="Administrator_Workflows_Directory_User_*" DisplayName_L1="Administrator_Workflows_Directory_User_*">
+    <Entry Permission="/Workflows/UserActivityInstance/Query" CanExecute="true" />
+    <Entry Permission="/Workflows/UserActivityInstance/ExpectedDate" CanExecute="true" />
+    <Entry Permission="/Workflows/UserActivityInstance/AssignedTo" CanExecute="true" />
+  </AccessControlRule>
+</ConfigurationFile>

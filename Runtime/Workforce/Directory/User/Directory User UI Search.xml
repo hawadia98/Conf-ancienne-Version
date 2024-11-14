@@ -1,0 +1,45 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+ 
+  <Tile Identifier="Directory_User_Tile1" DisplayName_L1="User: first/last name" EntityType="Directory_User" TileDesignElement="picture-text">
+    <Item Binding="MainRecord.FirstName" LineDisplayOrderIndicator="1" LineNumber="2" />
+    <Item Binding="MainRecord.LastName" LineDisplayOrderIndicator="2" LineNumber="2" />
+    <Item Binding="MainRecord.Title.DisplayName" LineNumber="3" />
+    <Item Binding="Id" LineNumber="5" />
+    <Item Binding="PhotoTag" LineNumber="6" />
+  </Tile>
+
+  <Tile Identifier="Directory_User_Tile2" DisplayName_L1="User: dep/loc" EntityType="Directory_User" TileDesignElement="inline data-icon">
+    <Item Binding="MainRecord.Organization.DisplayName" LineNumber="1" />
+    <Item Binding="MainRecord.Site.DisplayName" LineNumber="2" />
+  </Tile>
+
+  <Tile Identifier="Directory_User_Tile3" DisplayName_L1="User: contact" EntityType="Directory_User" TileDesignElement="inline data-icon">
+    <Item Binding="MainRecord.PhoneNumber" LineNumber="1" />
+    <Item Binding="MainRecord.MobileNumber" LineNumber="2" />
+  </Tile>
+
+  <DisplayTable Identifier="Directory_User" EntityType="Directory_User" DisplayTableDesignElement="list" IsEntityTypeDefault="true">
+    <Column DefaultSortPriority="1" ColumnSize="6" IsDisplayInSummaryView="true" SortBinding="MainRecord.LastName" Tile="Directory_User_Tile1" />
+    <Column ColumnSize="3" IsDisplayInSummaryView="true" Tile="Directory_User_Tile2" SortBinding="MainRecord.FirstName" />
+    <Column ColumnSize="3" Tile="Directory_User_Tile3" />
+  </DisplayTable>
+
+  <OptimizeDisplayTable DisplayTableIdentifier="Directory_User" />
+
+  <SearchBar EntityType="Directory_User" Menu="Search_Directory_User" SearchBarDesignElement="Inline">
+    <Criterion Binding1="Identifier" PlaceHolderText_L1="Identifier" InputType="Auto" ColumnSize="2" />
+    <Criterion Binding1="PhoneticFirstLastName" Binding2="PhoneticLastFirstName" Binding3="MainRecord.LastName" Operator="FlexibleStartWith" PlaceHolderText_L1="Name" InputType="Auto" ColumnSize="2" />
+    <Criterion Binding1="MainRecord.Organization" PlaceHolderText_L1="Department" InputType="Auto" ColumnSize="2" />
+    <Criterion Binding1="PresenceState" InputType="ComboboxMultiSelection" ColumnSize="2" DefaultValue="-101;-102" Operator="Equal" />
+    <Criterion Binding1="MainRecord.Site" PlaceHolderText_L1="Site" InputType="Auto" ColumnSize="2" IsVisibleInAdvancedView="true" />
+    <Criterion Binding1="MainRecord.Subsidiary" PlaceHolderText_L1="Subsidiary" InputType="Auto" ColumnSize="2" IsVisibleInAdvancedView="true" />
+    <Criterion Binding1="MainRecord.Title" PlaceHolderText_L1="Title" InputType="Auto" ColumnSize="2" IsVisibleInAdvancedView="true" />
+    <Criterion Binding1="MainRecord.UserType" PlaceHolderText_L1="User Type" InputType="Auto" ColumnSize="2" IsVisibleInAdvancedView="true" />
+  </SearchBar>
+
+  <MenuItem Identifier="Search_Directory_User" DisplayName_L1="Menu">
+    <MenuItem Identifier="Search_Directory_User_NewInternal" DisplayName_L1="New Employee" IconCode="AddFriend" Workflow="Directory_User_NewInternal" />
+    <MenuItem  Identifier="Search_Directory_User_NewExternal" DisplayName_L1="New Contractor" IconCode="AddFriend" Workflow="Directory_User_NewExternal" />
+    <MenuItem Identifier="Search_Directory_User_Helpdesk_Start" DisplayName_L1="New User (helpdesk)" IconCode="AddFriend" Workflow="Helpdesk_Directory_User_New" />
+  </MenuItem>
+</ConfigurationFile>

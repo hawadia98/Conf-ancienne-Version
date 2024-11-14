@@ -1,0 +1,6 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <DisplayTable Identifier="Directory_ExternalCompany" EntityType="Directory_ExternalCompany" DisplayTableDesignElement="table" IsEntityTypeDefault="true">
+    <Column DefaultSortPriority="1" DisplayBinding="DisplayName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="12" />
+ </DisplayTable>
+</ConfigurationFile>

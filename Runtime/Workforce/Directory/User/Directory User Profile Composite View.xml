@@ -1,0 +1,80 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <!--
+  Profiles to view the users, their special properties and their resources.
+  -->
+  <Profile Identifier="Workforce/Directory/Directory_User/View" DisplayName_L1="Workforce/Directory/View User" IsComponent="true" />
+  <Profile Identifier="Workforce/Directory/Directory_User/ViewResources" DisplayName_L1="Workforce/Directory/View User (resources)" IsComponent="true" />
+  <Profile Identifier="Workforce/Directory/Directory_User/ViewHR" DisplayName_L1="Workforce/Directory/View User (HR)" IsComponent="true" />
+  <Profile Identifier="Workforce/Directory/Directory_User/ViewAdministration" DisplayName_L1="Workforce/Directory/View User (admin)" IsComponent="true" />
+  <Profile Identifier="Workforce/Directory/Directory_User/ViewPhoto" DisplayName_L1="Workforce/Directory/View User (photos)" IsComponent="true" />
+  <Profile Identifier="Workforce/Directory/Directory_User/ViewHistory" DisplayName_L1="Workforce/Directory/View User (history)" IsComponent="true" />
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_User/View" EntityType="Directory_User" Identifier="Composite_Directory_Directory_User_View_*" DisplayName_L1="Composite_Directory_Directory_User_View_*" TemplateTransformation="AllowLinkedEntities;Directory_User;/Custom/Resources/Directory_User/View">
+    <Entry Permission="/Custom/Resources/Directory_User/View" CanExecute="true" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_User/ViewResources" EntityType="Directory_User" Identifier="Composite_Directory_Directory_User_ViewResources_*" DisplayName_L1="Composite_Directory_Directory_User_ViewResources_*">
+    <Entry Permission="/Custom/Resources/Directory_User/ViewTargetResources" CanExecute="true" />
+    <Entry Permission="/Custom/Resources/Directory_User/ViewOwnedResources" CanExecute="true" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_User/ViewResources" EntityType="Category" Identifier="Composite_Category_Directory_Directory_User_ViewResources_*" DisplayName_L1="Composite_Category_Directory_Directory_User_ViewResources_*">
+    <Entry Permission="/Custom/Resources/Directory_User" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_User/ViewResources" EntityType="CompositeRole" Identifier="Composite_CompositeRole_Directory_Directory_User_ViewResources_*" DisplayName_L1="Composite_CompositeRole_Directory_Directory_User_ViewResources_*">
+    <Entry Permission="/Custom/Resources/Directory_User" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_User/ViewResources" EntityType="SingleRole" Identifier="Composite_SingleRole_Directory_Directory_User_ViewResources_*" DisplayName_L1="Composite_SingleRole_Directory_Directory_User_ViewResources_*">
+    <Entry Permission="/Custom/Resources/Directory_User" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_User/ViewResources" EntityType="ResourceType" Identifier="Composite_ResourceType_Directory_Directory_User_ViewResources_*" DisplayName_L1="Composite_ResourceType_Directory_Directory_User_ViewResources_*">
+    <Entry Permission="/Custom/Resources/Directory_User" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_User/ViewResources" EntityType="Policy" Identifier="Composite_Policy_Directory_Directory_User_ViewResources_*" DisplayName_L1="Composite_Policy_Directory_Directory_User_ViewResources_*">
+    <Entry Permission="/Custom/Resources/Directory_User" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_User/ViewResources" EntityType="AssignedCompositeRole" Identifier="Composite_AssignedCompositeRole_Directory_Directory_User_ViewResources_*" DisplayName_L1="Composite_AssignedCompositeRole_Directory_Directory_User_ViewResources_*">
+    <Entry Permission="/Custom/Resources/Directory_User" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_User/ViewResources" EntityType="AssignedSingleRole" Identifier="Composite_AssignedSingleRole_Directory_Directory_User_ViewResources_*" DisplayName_L1="Composite_AssignedSingleRole_Directory_Directory_User_ViewResources_*">
+    <Entry Permission="/Custom/Resources/Directory_User" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_User/ViewResources" EntityType="AssignedResourceType" Identifier="Composite_AssignedResourceType_Directory_Directory_User_ViewResources_*" DisplayName_L1="Composite_AssignedResourceType_Directory_Directory_User_ViewResources_*">
+    <Entry Permission="/Custom/Resources/Directory_User" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_User/ViewResources" EntityType="AssignedResourceNavigation" Identifier="Composite_AssignedResourceNavigation_Directory_Directory_User_ViewResources_*" DisplayName_L1="Composite_AssignedResourceNavigation_Directory_Directory_User_ViewResources_*">
+    <Entry Permission="/Custom/Resources/Directory_User" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_User/ViewResources" EntityType="AssignedResourceScalar" Identifier="Composite_AssignedResourceScalar_Directory_Directory_User_ViewResources_*" DisplayName_L1="Composite_AssignedResourceScalar_Directory_Directory_User_ViewResources_*">
+    <Entry Permission="/Custom/Resources/Directory_User" />
+  </AccessControlRule>
+
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_User/ViewHR" EntityType="Directory_User" Identifier="Composite_Directory_Directory_User_ViewHR_*" DisplayName_L1="Composite_Directory_Directory_User_ViewHR_*">
+
+    <Entry Permission="/Custom/Resources/Directory_User" PropertyGroup="Directory_UserRecord_HR" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_User/ViewAdministration" EntityType="Directory_User" Identifier="Composite_Directory_Directory_User_ViewAdministration_*" DisplayName_L1="Composite_Directory_Directory_User_ViewAdministration_*">
+
+    <Entry Permission="/Custom/Resources/Directory_User" PropertyGroup="Directory_UserRecord_Administration" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_User/ViewPhoto" EntityType="Directory_User" Identifier="Composite_Directory_Directory_User_ViewPhoto_*" DisplayName_L1="Composite_Directory_Directory_User_ViewPhoto_*">
+
+    <Entry Permission="/Custom/ResourceFiles/Directory_User" CanExecute="true" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_User/ViewHistory" EntityType="Directory_User" Identifier="Composite_Directory_Directory_User_ViewHistory_*" DisplayName_L1="Composite_Directory_Directory_User_ViewHistory_*">
+    <Entry Permission="/Custom/Resources/Directory_User/ViewHistory" CanExecute="true" />
+  </AccessControlRule>
+</ConfigurationFile>

@@ -1,0 +1,170 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <EntityType Identifier="Directory_User" DisplayName_L1="User">
+    <Property Identifier="Identifier" DisplayName_L1="Unique Identifier" Type="String" TargetColumnIndex="4" IsKey="true" />
+
+    <Property Identifier="PhotoTag" DisplayName_L1="Photo Tag" Type="Int64" TargetColumnIndex="5" />
+    <Property Identifier="Photo" DisplayName_L1="Photo" Type="Binary" />
+    <Property Identifier="ConsentPhotoUsage" DisplayName_L1="Consent to Photo Usage" Type="Bool" TargetColumnIndex="9" />
+
+    <Property Identifier="Records" DisplayName_L1="Records" Type="ForeignKey" />
+
+    <Property Identifier="IsDraft" DisplayName_L1="Record is draft" Type="Bool" TargetColumnIndex="6" />
+
+    <Property Identifier="AssistantOf" DisplayName_L1="Assistant of" Type="ForeignKey" />
+    <Property Identifier="ManagedOrganizations" DisplayName_L1="Managed Departments" Type="ForeignKey" />
+
+    <Property Identifier="DirectReports" DisplayName_L1="Direct Reports" Type="ForeignKey" />
+    <Property Identifier="IGADirectReports" DisplayName_L1="IGA Direct Reports" Type="ForeignKey" />
+    <Property Identifier="EffectiveIGADirectReports" DisplayName_L1="IGA Direct Reports (effective)" Type="ForeignKey" />
+
+    <Property Identifier="PresenceState" DisplayName_L1="Status" DisplayName_L2="Présence" Type="ForeignKey" TargetColumnIndex="128" />
+    <Property Identifier="MainRecord" DisplayName_L1="Main Record"  Type="ForeignKey" TargetColumnIndex="129" />
+
+    <Property Identifier="PhoneticFirstLastName" DisplayName_L1="Phonetic First/Last Name" Type="String" FlexibleComparisonExpression="C#:value:return value.Approximate();" TargetColumnIndex="7" />
+    <Property Identifier="PhoneticLastFirstName" DisplayName_L1="Phonetic Last/First Name" Type="String" FlexibleComparisonExpression="C#:value:return value.Approximate();" TargetColumnIndex="8" />
+
+    <Property Identifier="LastFirstName" DisplayName_L1="Last/First Name" Type="String" TargetColumnIndex="10" />
+    <Property Identifier="Email" DisplayName_L1="Email" Type="String" FlexibleComparisonExpression="C#:value:return value.Approximate();" TargetColumnIndex="11" />
+    <!--
+    <Property Identifier="NormalizedPhoneNumber" DisplayName_L1="Normalized Phone Number" Type="String" TargetColumnIndex="16" />
+    <Property Identifier="NormalizedMobileNumber" DisplayName_L1="Normalized Mobile Number" Type="String" TargetColumnIndex="17" />-->
+  </EntityType>
+
+
+  <DisplayEntityType Priority="0" PluralDisplayName_L1="Users" IconCode="People" Identifier="Directory_User" Color="#79C3D2"
+                     D0IsActive="true"
+                     D1IsActive="true"
+                     D2IsActive="true"
+                     D3IsActive="true"
+                     D4IsActive="true"
+                     D5IsActive="true"
+                     D6IsActive="true"
+                     D7IsActive="true"
+                     >
+    <Property DisplayOrder="-1" Identifier="Identifier" />
+    <Property IsReadOnly="true" IsHidden="true" Identifier="PhotoTag" />
+    <Property OutputType="BasicCollection" Identifier="Records" NavigationBinding="Directory_UserRecord:User" />
+    <Property OutputType="BasicCollection" Identifier="AssistantOf" />
+    <Property OutputType="BasicCollection" Identifier="ManagedOrganizations" InputType="Picker" />
+  </DisplayEntityType>
+
+  <DisplayEntityType Priority="0" Identifier="Workflow_Directory_User" Color="#79C3D2" />
+
+  <EntityAssociation Identifier="Directory_User_PresenceState" IsProperty2Collection="true" Property1="Directory_User:PresenceState" Property2="Directory_PresenceState:Users" />
+
+  <EntityAssociation Identifier="Directory_UserRecord_MainRecord" Property1="Directory_UserRecord:MainUser" Property2="Directory_User:MainRecord" />
+
+  <EntityPropertyExpression Identifier="Directory_User_PhotoTag" Binding="Photo.Id" EntityType="Directory_User" Property="PhotoTag" />
+
+
+  <EntityPropertyExpression Identifier="Directory_User_PhoneticFirstLastName" Expression="C#:user:return user.MainRecord == null ? null : user.MainRecord.PhoneticFirstLastName;" EntityType="Directory_User" Property="PhoneticFirstLastName" />
+  <EntityPropertyExpression Identifier="Directory_User_PhoneticLastFirstName" Expression="C#:user:return user.MainRecord == null ? null : user.MainRecord.PhoneticLastFirstName;" EntityType="Directory_User" Property="PhoneticLastFirstName" />
+
+  <EntityPropertyExpression Identifier="Directory_User_LastFirstName" Expression="C#:user:return user.MainRecord == null ? null : (user.MainRecord.LastName + ' ' + user.MainRecord.FirstName);" EntityType="Directory_User" Property="LastFirstName" />
+  <EntityPropertyExpression Identifier="Directory_User_Email" Binding="MainRecord.Email" EntityType="Directory_User" Property="Email" />
+
+  <EntityPropertyExpression Identifier="Directory_User_InternalDisplayName"  EntityType="Directory_User" Property="InternalDisplayName"  Expression="C#:user:
+var ret = &quot;&quot;;
+
+if (user.Identifier != null)
+{
+    ret += user.Identifier;
+}
+
+if (user.MainRecord != null)
+{
+    if (user.Identifier != null)
+    {
+        ret += &quot; - &quot;;
+    }
+
+    ret += user.MainRecord.LastName + ' ' + user.MainRecord.FirstName;
+}
+
+return ret;"
+ />
+
+
+
+  <EntityPropertyExpression Identifier="Directory_User_PresenceState" Expression="C#:user:
+if (user.IsDraft.GetValueOrDefault())
+{
+    return -103L;
+}
+
+if ((user.Records == null) || (user.Records.Count == 0))
+{
+    return -100L;
+}
+
+/* at least of current record */
+if (user.Records.Any(r => (!r.ContractStartDate.HasValue || (r.ContractStartDate &lt; DateTime.UtcNow)) &amp;&amp; (!r.ContractEndDate.HasValue || (r.ContractEndDate &gt; DateTime.UtcNow))))
+{
+    return -101L;
+}
+
+/* at least of record in the future */
+if (user.Records.Any(r => r.ContractStartDate.HasValue &amp;&amp; (r.ContractStartDate &gt; DateTime.UtcNow)))
+{
+    return -102L;
+}
+
+return -100L;" EntityType="Directory_User" Property="PresenceState" />
+
+
+  <!--TODO: compute the closest date to "now" for each record from the PositionxxxDate, ContractxxxDate and xxxDate.
+  Then, apply the rules to find the best main record.
+  We must always sort by Id to make sure to return a consistent value.
+  -->
+  <EntityPropertyExpression Identifier="Directory_User_MainRecord" Property="MainRecord" EntityType="Directory_User" Priority="-2" Expression="C#:user:
+/* trivial cases first */
+if ((user.Records == null) || (user.Records.Count == 0))
+{
+    return default(long?);
+}
+
+if (user.Records.Count == 1)
+{
+    return user.Records[0].Id;
+}
+
+var now = DateTime.UtcNow;
+var records = new System.Collections.Generic.List&lt;(long? id, bool main, System.DateTime start, System.DateTime end)&gt;();
+foreach (var record in user.Records)
+{
+    var id = record.Id;
+    records.Add((id, record.IsMainPosition.GetValueOrDefault(), record.StartDate ?? System.DateTime.MinValue, record.EndDate ?? System.DateTime.MaxValue));
+    records.Add((id, record.IsMainPosition.GetValueOrDefault(), record.ContractStartDate ?? System.DateTime.MinValue, record.ContractEndDate ?? System.DateTime.MaxValue));
+    records.Add((id, record.IsMainPosition.GetValueOrDefault(), record.PositionStartDate ?? System.DateTime.MinValue, record.PositionEndDate ?? System.DateTime.MaxValue));
+}
+
+/* all the records are in the future, take the closest one */
+if (records.All(r => r.start &gt; now))
+{
+    return records.OrderBy(r => (r.start, r.main, r.id)).First().id;
+}
+
+/* all the records are in the past, take the closest one */
+if (records.All(r => r.end &lt; now))
+{
+    return records.OrderByDescending(r => (r.end, r.main, r.id.HasValue ? -r.id.Value : long.MinValue)).First().id;
+}
+
+/* find the closest current record */
+var currentRecord = records.Where(r => (r.start &lt; now) &amp;&amp; (r.end &gt; now)).OrderByDescending(r => (r.start, r.main, r.id.HasValue ? -r.id.Value : long.MinValue)).Select(r => r.id).FirstOrDefault();
+if (currentRecord == null)
+{
+    /* current record not found : take the first */
+    currentRecord = records.OrderBy(r => (r.main, r.id)).First().id;
+}
+
+return currentRecord;
+" />
+
+  <ViewTemplate EntityType="Directory_User" Profile="Administrator" />
+  <WorkflowEntityType EntityType="Directory_User" />
+  <ConnectorMappings Connector="Directory" EntityType="Directory_User" IsIncremental="1" Package="Usercube.Excel@0000001" />
+  <WorkflowEntityTypeSearchBar EntityType="Directory_User" />
+  <WorkflowEntityTypeDisplayTable EntityType="Directory_User" />
+
+</ConfigurationFile>

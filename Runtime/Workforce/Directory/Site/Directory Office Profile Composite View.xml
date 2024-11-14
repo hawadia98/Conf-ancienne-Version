@@ -1,0 +1,7 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Profile Identifier="Workforce/Directory/Directory_Office/View" DisplayName_L1="Workforce/Directory/View Offices" IsComponent="true" />
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_Office/View" EntityType="Directory_Office" Identifier="Composite_Directory_Directory_Office_View_*" DisplayName_L1="Composite_Directory_Directory_Office_View_*" TemplateTransformation="AllowLinkedEntities;Directory_Office;/Custom/Resources/Directory_Office/View">
+    <Entry Permission="/Custom/Resources/Directory_Office/View" CanExecute="true" />
+  </AccessControlRule>
+</ConfigurationFile>

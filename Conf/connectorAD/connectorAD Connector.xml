@@ -1,0 +1,13 @@
+﻿<ConfigurationFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-usercube-com:configuration">
+  <EntityType Identifier="Personnels" DisplayName_L1="Personnels">
+    <Property Identifier="dn" DisplayName_L1="dn" IsKey="true" TargetColumnIndex="4" Type="String" />
+    <Property Identifier="member" DisplayName_L1="member" TargetColumnIndex="5" Type="String" />
+  </EntityType>
+  <Connector Identifier="connectorAD" DisplayName_L1="Connector AD" Agent="Default" IncrementalJob="NotUsed" />
+  <Connection Identifier="connectionAD" DisplayName_L1="connectionAD Demo" Connector="connectorAD" Package="Usercube.AD@0000001" />
+  <EntityTypeMapping Identifier="Personnels" ConnectionTable="connectionAD_member" Connector="connectorAD">
+    <Property Identifier="dn" ConnectionColumn="dn" Format="multivaluedtext" IsPrimaryKey="true" IsUniqueKey="true" />
+    <Property Identifier="member" ConnectionColumn="member" Format="multivaluedtext" />
+  </EntityTypeMapping>
+  <ViewTemplateAdaptable EntityType="Personnels" Profile="Administrator" />
+</ConfigurationFile>

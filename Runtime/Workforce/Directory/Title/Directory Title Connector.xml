@@ -1,0 +1,20 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <EntityType Identifier="Directory_Title" DisplayName_L1="Title">
+    <Property Identifier="Identifier" DisplayName_L1="Code" Type="String" IsKey="true" TargetColumnIndex="4" />
+    <Property Identifier="DisplayName" DisplayName_L1="Name" Type="String" TargetColumnIndex="5" TemplateTransformation="OnePerLanguage" />
+
+    <Property Identifier="JobCategory" DisplayName_L1="Business Category" Type="ForeignKey" TargetColumnIndex="128" />
+    <Property Identifier="UserRecords" DisplayName_L1="Users" Type="ForeignKey" />
+  </EntityType>
+
+  <DisplayEntityType PluralDisplayName_L1="Titles" IconCode="Suitcase" Identifier="Directory_Title" AutocompleteBinding="Directory_Title:Identifier" MinSearchLength="5" Color="#95c18b" HideRoles="true">
+    <Property DisplayOrder="-1" IsRequired="true" Identifier="Identifier" />
+    <Property IsRequired="true" Identifier="DisplayName" />
+    <Property OutputType="BasicCollection" Identifier="UserRecords" NavigationBinding="Directory_UserRecord:User" />
+  </DisplayEntityType>
+
+  <EntityAssociation Identifier="Directory_Title_JobCategory" IsProperty2Collection="true" Property1="Directory_Title:JobCategory" Property2="Directory_JobCategory:Titles" />
+
+  <CreateUpdateDeleteTemplate EntityType="Directory_Title" Profile="Administrator" />
+  <ConnectorMappings Connector="Directory" EntityType="Directory_Title" IsIncremental="1" Package="Usercube.Excel@0000001" />
+</ConfigurationFile>

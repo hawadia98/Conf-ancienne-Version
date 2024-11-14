@@ -1,0 +1,391 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <ReportQuery Identifier="Workforce_RoleModel_CompositeRoles" ReturnedEntityType="CompositeRole" DisplayName_L1="Workforce/Role Model/Composite Roles">
+    <XmlQuery>
+      <Select Property="CompositeRole:FullName" />
+      <Select Property="CompositeRole:Identifier" />
+      <Select Property="CompositeRole:DisplayName" />
+      <Select Property="CompositeRole:Description" />
+      <Select Property="CompositeRole:ApprovalWorkflowType" />
+      <Join Property="CompositeRole:EntityType" JoinAlias="et" />
+      <Where Operator="=" Value="&quot;Directory_User&quot;">
+        <Property1 Alias="et" Property="EntityType:Identifier" />
+      </Where>
+    </XmlQuery>
+  </ReportQuery>
+
+  <ReportQuery Identifier="Workforce_RoleModel_SingleRoles" ReturnedEntityType="SingleRole" DisplayName_L1="Workforce/Role Model/Single Roles">
+    <XmlQuery>
+      <Select Property="SingleRole:FullName" />
+      <Select Property="SingleRole:Identifier" />
+      <Select Property="SingleRole:DisplayName" />
+      <Select Property="SingleRole:Description" />
+      <Select Property="SingleRole:ApprovalWorkflowType" />
+      <Join Property="SingleRole:EntityType" JoinAlias="et" />
+      <Where Operator="=" Value="&quot;Directory_User&quot;">
+        <Property1 Alias="et" Property="EntityType:Identifier" />
+      </Where>
+    </XmlQuery>
+  </ReportQuery>
+
+  <ReportQuery Identifier="Workforce_RoleModel_ResourceTypes" ReturnedEntityType="ResourceType" DisplayName_L1="Workforce/Role Model/Resource Types">
+    <XmlQuery>
+      <Select Property="ResourceType:FullName" />
+      <Select Property="ResourceType:Identifier" />
+      <Select Property="ResourceType:DisplayName" />
+      <Select Property="ResourceType:Description" />
+      <Select Property="ResourceType:ApprovalWorkflowType" />
+      <Join Property="ResourceType:SourceEntityType" JoinAlias="et" />
+      <Where Operator="=" Value="&quot;Directory_User&quot;">
+        <Property1 Alias="et" Property="EntityType:Identifier" />
+      </Where>
+    </XmlQuery>
+  </ReportQuery>
+
+  <ReportQuery Identifier="Workforce_Directory_Users" ReturnedEntityType="Directory_UserRecord" DisplayName_L1="Workforce/Directory/All Users">
+    <XmlQuery>
+      <Select Property="Directory_UserRecord:EmployeeId" />
+      <Select Property="Directory_UserRecord:LastName" />
+      <Select Property="Directory_UserRecord:FirstName" />
+      <Select Alias="o" Property="Directory_Organization:FullName" />
+      <Select Alias="c" Property="Directory_Subsidiary:InternalDisplayName" />
+      <Select Alias="et" Property="Directory_UserType:InternalDisplayName" />
+      <Select Property="Directory_UserRecord:ContractStartDate" />
+      <Select Property="Directory_UserRecord:ContractEndDate" />
+      <Join Property="Directory_UserRecord:User" JoinAlias="u" />
+      <Join Alias="u" Property="Directory_User:PresenceState" JoinAlias="s" />
+      <Join Property="Directory_UserRecord:Organization" JoinAlias="o" />
+      <Join Property="Directory_UserRecord:Subsidiary" JoinAlias="c" />
+      <Join Property="Directory_UserRecord:UserType" JoinAlias="et" />
+      <Where Operator="=" Value="&quot;P&quot;">
+        <Property1 Alias="s" Property="Directory_PresenceState:Identifier" />
+      </Where>
+    </XmlQuery>
+  </ReportQuery>
+
+  <ReportQuery Identifier="Workforce_Directory_InternalUsers" ReturnedEntityType="Directory_UserRecord" Query="join User u join u.PresenceState s join Organization o join Subsidiary c join UserType et join et.Category uc select EmployeeId, LastName, FirstName, o.FullName, c.InternalDisplayName, et.InternalDisplayName, ContractStartDate, ContractEndDate where (s.Identifier=&quot;P&quot; and uc.Identifier=&quot;Internal&quot;)" DisplayName_L1="Workforce/Directory/Internal Users">
+    <XmlQuery>
+      <Select Property="Directory_UserRecord:EmployeeId" />
+      <Select Property="Directory_UserRecord:LastName" />
+      <Select Property="Directory_UserRecord:FirstName" />
+      <Select Alias="o" Property="Directory_Organization:FullName" />
+      <Select Alias="c" Property="Directory_Subsidiary:InternalDisplayName" />
+      <Select Alias="et" Property="Directory_UserType:InternalDisplayName" />
+      <Select Property="Directory_UserRecord:ContractStartDate" />
+      <Select Property="Directory_UserRecord:ContractEndDate" />
+      <Join Property="Directory_UserRecord:User" JoinAlias="u" />
+      <Join Alias="u" Property="Directory_User:PresenceState" JoinAlias="s" />
+      <Join Property="Directory_UserRecord:Organization" JoinAlias="o" />
+      <Join Property="Directory_UserRecord:Subsidiary" JoinAlias="c" />
+      <Join Property="Directory_UserRecord:UserType" JoinAlias="et" />
+      <Join Alias="et" Property="Directory_UserType:Category" JoinAlias="uc" />
+      <Where Operator=" and ">
+        <Expression1 Operator="=" Value="&quot;P&quot;">
+          <Property1 Alias="s" Property="Directory_PresenceState:Identifier" />
+        </Expression1>
+        <Expression2 Operator="=" Value="&quot;Internal&quot;">
+          <Property1 Alias="uc" Property="Directory_UserCategory:Identifier" />
+        </Expression2>
+      </Where>
+    </XmlQuery>
+  </ReportQuery>
+
+  <ReportQuery Identifier="Workforce_Directory_ExternalUsers" ReturnedEntityType="Directory_UserRecord" DisplayName_L1="Workforce/Directory/External Users">
+    <XmlQuery>
+      <Select Property="Directory_UserRecord:EmployeeId" />
+      <Select Property="Directory_UserRecord:LastName" />
+      <Select Property="Directory_UserRecord:FirstName" />
+      <Select Alias="o" Property="Directory_Organization:FullName" />
+      <Select Alias="c" Property="Directory_Subsidiary:InternalDisplayName" />
+      <Select Alias="et" Property="Directory_UserType:InternalDisplayName" />
+      <Select Property="Directory_UserRecord:ContractStartDate" />
+      <Select Property="Directory_UserRecord:ContractEndDate" />
+      <Join Property="Directory_UserRecord:User" JoinAlias="u" />
+      <Join Alias="u" Property="Directory_User:PresenceState" JoinAlias="s" />
+      <Join Property="Directory_UserRecord:Organization" JoinAlias="o" />
+      <Join Property="Directory_UserRecord:Subsidiary" JoinAlias="c" />
+      <Join Property="Directory_UserRecord:UserType" JoinAlias="et" />
+      <Join Alias="et" Property="Directory_UserType:Category" JoinAlias="uc" />
+      <Where Operator=" and ">
+        <Expression1 Operator="=" Value="&quot;P&quot;">
+          <Property1 Alias="s" Property="Directory_PresenceState:Identifier" />
+        </Expression1>
+        <Expression2 Operator="=" Value="&quot;External&quot;">
+          <Property1 Alias="uc" Property="Directory_UserCategory:Identifier" />
+        </Expression2>
+      </Where>
+    </XmlQuery>
+  </ReportQuery>
+
+  <!--TODO dynamic filter for the end date to get the next 3 months-->
+  <ReportQuery Identifier="Workforce_Directory_PlannedUserExists" ReturnedEntityType="Directory_UserRecord" Query="join User u join u.PresenceState s join Organization o join Subsidiary c join UserType et join et.Category uc select EmployeeId, LastName, FirstName, o.FullName, c.InternalDisplayName, et.InternalDisplayName, ContractStartDate, ContractEndDate where ((s.Identifier=&quot;P&quot; and uc.Identifier=&quot;External&quot;) and ContractEndDate&gt;&quot;2022-05-31T00:00:00Z&quot;)" DisplayName_L1="Workforce/Directory/Planned User Exits">
+    <XmlQuery>
+      <Select Property="Directory_UserRecord:EmployeeId" />
+      <Select Property="Directory_UserRecord:LastName" />
+      <Select Property="Directory_UserRecord:FirstName" />
+      <Select Alias="o" Property="Directory_Organization:FullName" />
+      <Select Alias="c" Property="Directory_Subsidiary:InternalDisplayName" />
+      <Select Alias="et" Property="Directory_UserType:InternalDisplayName" />
+      <Select Property="Directory_UserRecord:ContractStartDate" />
+      <Select Property="Directory_UserRecord:ContractEndDate" />
+      <Join Property="Directory_UserRecord:User" JoinAlias="u" />
+      <Join Alias="u" Property="Directory_User:PresenceState" JoinAlias="s" />
+      <Join Property="Directory_UserRecord:Organization" JoinAlias="o" />
+      <Join Property="Directory_UserRecord:Subsidiary" JoinAlias="c" />
+      <Join Property="Directory_UserRecord:UserType" JoinAlias="et" />
+      <Join Alias="et" Property="Directory_UserType:Category" JoinAlias="uc" />
+      <Where Operator=" and ">
+        <Expression1 Operator="=" Value="&quot;P&quot;">
+          <Property1 Alias="s" Property="Directory_PresenceState:Identifier" />
+        </Expression1>
+        <Expression2 Operator=" and ">
+          <Expression1 Operator="=" Value="&quot;External&quot;">
+            <Property1 Alias="uc" Property="Directory_UserCategory:Identifier" />
+          </Expression1>
+          <Expression2 Operator="&gt;" Value="&quot;2022-05-31T00:00:00Z&quot;">
+            <Property1 Property="Directory_UserRecord:ContractEndDate" />
+          </Expression2>
+        </Expression2>
+      </Where>
+    </XmlQuery>
+  </ReportQuery>
+
+  <ReportQuery Identifier="Workforce_Directory_AssignedResourceTypes" ReturnedEntityType="AssignedResourceType" Query="join Role r join Owner of type Directory_User u join u.MainRecord ur join ur.Organization o join ur.Company c join ur.EmployeeType et select ur.EmployeeId, ur.LastName, ur.FirstName, o.Path, c.InternalDisplayName, et.InternalDisplayName, r.FullName, WorkflowState, StartDate, EndDate, IsDenied" DisplayName_L1="Workforce/Directory/Assigned Resources">
+    <XmlQuery>
+      <Select Alias="ur" Property="Directory_UserRecord:EmployeeId" />
+      <Select Alias="ur" Property="Directory_UserRecord:LastName" />
+      <Select Alias="ur" Property="Directory_UserRecord:FirstName" />
+      <Select Alias="o" Property="Directory_Organization:FullName" />
+      <Select Alias="c" Property="Directory_Subsidiary:InternalDisplayName" />
+      <Select Alias="et" Property="Directory_UserType:InternalDisplayName" />
+      <Select Alias="ur" Property="Directory_UserRecord:ContractStartDate" />
+      <Select Alias="ur" Property="Directory_UserRecord:ContractEndDate" />
+
+      <Select Alias="r" Property="ResourceType:FullName" />
+      <Select Alias="re" Property="Resource:InternalDisplayName" />
+      <Select Property="AssignedResourceType:WorkflowState" />
+      <Select Property="AssignedResourceType:ProvisioningState" />
+      <Select Property="AssignedResourceType:StartDate" />
+      <Select Property="AssignedResourceType:EndDate" />
+      <Select Property="AssignedResourceType:IsDenied" />
+
+      <Join Property="AssignedResourceType:Role" JoinAlias="r" />
+      <Join Property="AssignedResourceType:Owner" JoinAlias="u" OfType="Directory_User" />
+      <Join Property="AssignedResourceType:Resource" JoinAlias="re" />
+      <Join Alias="u" Property="Directory_User:MainRecord" JoinAlias="ur" />
+      <Join Alias="ur" Property="Directory_UserRecord:Organization" JoinAlias="o" />
+      <Join Alias="ur" Property="Directory_UserRecord:Subsidiary" JoinAlias="c" />
+      <Join Alias="ur" Property="Directory_UserRecord:UserType" JoinAlias="et" />
+      <Join Alias="u" Property="Directory_User:PresenceState" JoinAlias="s" />
+
+      <Where Operator="=" Value="&quot;P&quot;">
+        <Property1 Alias="s" Property="Directory_PresenceState:Identifier" />
+      </Where>
+    </XmlQuery>
+  </ReportQuery>
+
+  <ReportQuery Identifier="Workforce_Directory_AssignedSingleRoles" ReturnedEntityType="AssignedSingleRole" Query="join Role r join Owner of type Directory_User u join u.MainRecord ur join ur.Organization o join ur.Company c join ur.EmployeeType et select ur.EmployeeId, ur.LastName, ur.FirstName, o.Path, c.InternalDisplayName, et.InternalDisplayName, r.FullName, WorkflowState, StartDate, EndDate, IsDenied" DisplayName_L1="Workforce/Directory/Assigned Single Roles">
+    <XmlQuery>
+      <Select Alias="ur" Property="Directory_UserRecord:EmployeeId" />
+      <Select Alias="ur" Property="Directory_UserRecord:LastName" />
+      <Select Alias="ur" Property="Directory_UserRecord:FirstName" />
+      <Select Alias="o" Property="Directory_Organization:FullName" />
+      <Select Alias="c" Property="Directory_Subsidiary:InternalDisplayName" />
+      <Select Alias="et" Property="Directory_UserType:InternalDisplayName" />
+      <Select Alias="ur" Property="Directory_UserRecord:ContractStartDate" />
+      <Select Alias="ur" Property="Directory_UserRecord:ContractEndDate" />
+
+      <Select Alias="r" Property="SingleRole:FullName" />
+      <Select Property="AssignedSingleRole:WorkflowState" />
+      <Select Property="AssignedSingleRole:StartDate" />
+      <Select Property="AssignedSingleRole:EndDate" />
+      <Select Property="AssignedSingleRole:IsDenied" />
+
+      <Join Property="AssignedSingleRole:Role" JoinAlias="r" />
+      <Join Property="AssignedSingleRole:Owner" JoinAlias="u" OfType="Directory_User" />
+      <Join Alias="u" Property="Directory_User:MainRecord" JoinAlias="ur" />
+      <Join Alias="ur" Property="Directory_UserRecord:Organization" JoinAlias="o" />
+      <Join Alias="ur" Property="Directory_UserRecord:Subsidiary" JoinAlias="c" />
+      <Join Alias="ur" Property="Directory_UserRecord:UserType" JoinAlias="et" />
+      <Join Alias="u" Property="Directory_User:PresenceState" JoinAlias="s" />
+
+      <Where Operator="=" Value="&quot;P&quot;">
+        <Property1 Alias="s" Property="Directory_PresenceState:Identifier" />
+      </Where>
+    </XmlQuery>
+  </ReportQuery>
+
+  <ReportQuery Identifier="Workforce_Directory_AssignedCompositeRoles" ReturnedEntityType="AssignedCompositeRole" Query="join Role r join Owner of type Directory_User u join u.MainRecord ur join ur.Organization o join ur.Company c join ur.EmployeeType et select ur.EmployeeId, ur.LastName, ur.FirstName, o.Path, c.InternalDisplayName, et.InternalDisplayName, r.FullName, WorkflowState, StartDate, EndDate, IsDenied" DisplayName_L1="Workforce/Directory/Assigned Composite Roles">
+    <XmlQuery>
+      <Select Alias="ur" Property="Directory_UserRecord:EmployeeId" />
+      <Select Alias="ur" Property="Directory_UserRecord:LastName" />
+      <Select Alias="ur" Property="Directory_UserRecord:FirstName" />
+      <Select Alias="o" Property="Directory_Organization:FullName" />
+      <Select Alias="c" Property="Directory_Subsidiary:InternalDisplayName" />
+      <Select Alias="et" Property="Directory_UserType:InternalDisplayName" />
+      <Select Alias="ur" Property="Directory_UserRecord:ContractStartDate" />
+      <Select Alias="ur" Property="Directory_UserRecord:ContractEndDate" />
+
+      <Select Alias="r" Property="CompositeRole:FullName" />
+      <Select Property="AssignedCompositeRole:WorkflowState" />
+      <Select Property="AssignedCompositeRole:StartDate" />
+      <Select Property="AssignedCompositeRole:EndDate" />
+      <Select Property="AssignedCompositeRole:IsDenied" />
+
+      <Join Property="AssignedCompositeRole:Role" JoinAlias="r" />
+      <Join Property="AssignedCompositeRole:Owner" JoinAlias="u" OfType="Directory_User" />
+      <Join Alias="u" Property="Directory_User:MainRecord" JoinAlias="ur" />
+      <Join Alias="ur" Property="Directory_UserRecord:Organization" JoinAlias="o" />
+      <Join Alias="ur" Property="Directory_UserRecord:Subsidiary" JoinAlias="c" />
+      <Join Alias="ur" Property="Directory_UserRecord:UserType" JoinAlias="et" />
+      <Join Alias="u" Property="Directory_User:PresenceState" JoinAlias="s" />
+
+      <Where Operator="=" Value="&quot;P&quot;">
+        <Property1 Alias="s" Property="Directory_PresenceState:Identifier" />
+      </Where>
+    </XmlQuery>
+  </ReportQuery>
+
+  <MenuItem Identifier="Reports">
+    <MenuItem Identifier="Reports_Workforce_RoleModel_CompositeRoles" ReportQuery="Workforce_RoleModel_CompositeRoles" />
+    <MenuItem Identifier="Reports_Workforce_RoleModel_SingleRoles" ReportQuery="Workforce_RoleModel_SingleRoles" />
+    <MenuItem Identifier="Reports_Workforce_RoleModel_ResourceTypes" ReportQuery="Workforce_RoleModel_ResourceTypes" />
+    <MenuItem Identifier="Reports_Workforce_Directory_Users" ReportQuery="Workforce_Directory_Users" />
+    <MenuItem Identifier="Reports_Workforce_Directory_InternalUsers" ReportQuery="Workforce_Directory_InternalUsers" />
+    <MenuItem Identifier="Reports_Workforce_Directory_ExternalUsers" ReportQuery="Workforce_Directory_ExternalUsers" />
+    <MenuItem Identifier="Reports_Workforce_Directory_PlannedUserExists" ReportQuery="Workforce_Directory_PlannedUserExists" />
+    <MenuItem Identifier="Reports_Workforce_Directory_AssignedResourceTypes" ReportQuery="Workforce_Directory_AssignedResourceTypes" />
+    <MenuItem Identifier="Reports_Workforce_Directory_AssignedSingleRoles" ReportQuery="Workforce_Directory_AssignedSingleRoles" />
+    <MenuItem Identifier="Reports_Workforce_Directory_AssignedCompositeRoles" ReportQuery="Workforce_Directory_AssignedCompositeRoles" />
+  </MenuItem>
+
+  <AccessControlRule Profile="Administrator" EntityType="ReportQuery" Identifier="Administrator_Reports" DisplayName_L1="Administrator_Reports">
+    <Entry Permission="/Report/GenerateReportFileFromReportQuery/Query" CanExecute="true" />
+
+    <Entry Permission="/Custom/Reports/Workforce_RoleModel_CompositeRoles/View" CanExecute="true" />
+    <Entry Permission="/Custom/Reports/Workforce_RoleModel_SingleRoles/View" CanExecute="true" />
+    <Entry Permission="/Custom/Reports/Workforce_RoleModel_ResourceTypes/View" CanExecute="true" />
+    <Entry Permission="/Custom/Reports/Workforce_Directory_Users/View" CanExecute="true" />
+    <Entry Permission="/Custom/Reports/Workforce_Directory_InternalUsers/View" CanExecute="true" />
+    <Entry Permission="/Custom/Reports/Workforce_Directory_ExternalUsers/View" CanExecute="true" />
+    <Entry Permission="/Custom/Reports/Workforce_Directory_PlannedUserExists/View" CanExecute="true" />
+    <Entry Permission="/Custom/Reports/Workforce_Directory_AssignedResourceTypes/View" CanExecute="true" />
+    <Entry Permission="/Custom/Reports/Workforce_Directory_AssignedSingleRoles/View" CanExecute="true" />
+    <Entry Permission="/Custom/Reports/Workforce_Directory_AssignedCompositeRoles/View" CanExecute="true" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Administrator" EntityType="CompositeRole" Identifier="Administrator_Reports_CompositeRole" DisplayName_L1="Administrator_Reports">
+    <Entry Permission="/Custom/Reports/Workforce_RoleModel_CompositeRoles/View" CanExecute="true" />
+  </AccessControlRule>
+  <AccessControlRule Profile="Administrator" EntityType="SingleRole" Identifier="Administrator_Reports_SingleRole" DisplayName_L1="Administrator_Reports">
+    <Entry Permission="/Custom/Reports/Workforce_RoleModel_SingleRoles/View" CanExecute="true" />
+  </AccessControlRule>
+  <AccessControlRule Profile="Administrator" EntityType="ResourceType" Identifier="Administrator_Reports_ResourceType" DisplayName_L1="Administrator_Reports">
+    <Entry Permission="/Custom/Reports/Workforce_RoleModel_ResourceTypes/View" CanExecute="true" />
+  </AccessControlRule>
+  <AccessControlRule Profile="Administrator" EntityType="Directory_UserRecord" Identifier="Administrator_Reports_Directory_UserRecord" DisplayName_L1="Administrator_Reports">
+    <Entry Permission="/Custom/Reports/Workforce_Directory_Users/View" CanExecute="true" />
+    <Entry Permission="/Custom/Reports/Workforce_Directory_InternalUsers/View" CanExecute="true" />
+    <Entry Permission="/Custom/Reports/Workforce_Directory_ExternalUsers/View" CanExecute="true" />
+    <Entry Permission="/Custom/Reports/Workforce_Directory_PlannedUserExists/View" CanExecute="true" />
+  </AccessControlRule>
+  <AccessControlRule Profile="Administrator" EntityType="AssignedResourceType" Identifier="Administrator_Reports_Directory_AssignedResourceTypes" DisplayName_L1="Administrator_Reports">
+    <Entry Permission="/Custom/Reports/Workforce_Directory_AssignedResourceTypes/View" CanExecute="true" />
+  </AccessControlRule>
+  <AccessControlRule Profile="Administrator" EntityType="AssignedSingleRole" Identifier="Administrator_Reports_Directory_AssignedSingleRoles" DisplayName_L1="Administrator_Reports">
+    <Entry Permission="/Custom/Reports/Workforce_Directory_AssignedSingleRoles/View" CanExecute="true" />
+  </AccessControlRule>
+  <AccessControlRule Profile="Administrator" EntityType="AssignedCompositeRole" Identifier="Administrator_Reports_Directory_AssignedCompositeRoles" DisplayName_L1="Administrator_Reports">
+    <Entry Permission="/Custom/Reports/Workforce_Directory_AssignedCompositeRoles/View" CanExecute="true" />
+  </AccessControlRule>
+
+  <Profile Identifier="Workforce/Reports/RoleModel_CompositeRoles" DisplayName_L1="Workforce/Reports/Role Model/Composite Roles" IsComponent="true" />
+  <AccessControlRule Profile="Workforce/Reports/RoleModel_CompositeRoles" EntityType="ReportQuery" Identifier="Composite_Workforce_Reports_RoleModel_CompositeRoles*" DisplayName_L1="Composite_Workforce_Reports_RoleModel_CompositeRoles*">
+    <Entry Permission="/Report/GenerateReportFileFromReportQuery/Query" CanExecute="true" />
+    <Entry Permission="/Custom/Reports/Workforce_RoleModel_CompositeRoles/View" CanExecute="true" />
+  </AccessControlRule>
+  <AccessControlRule Profile="Workforce/Reports/RoleModel_CompositeRoles" EntityType="CompositeRole" Identifier="Composite_Workforce_Reports_RoleModel_CompositeRoles_View*" DisplayName_L1="Composite_Workforce_Reports_RoleModel_CompositeRoles_View*">
+    <Entry Permission="/Custom/Reports/Workforce_RoleModel_CompositeRoles/View" CanExecute="true" />
+  </AccessControlRule>
+
+  <Profile Identifier="Workforce/Reports/RoleModel_SingleRoles" DisplayName_L1="Workforce/Reports/Role Model/Single Roles" IsComponent="true" />
+  <AccessControlRule Profile="Workforce/Reports/RoleModel_SingleRoles" EntityType="ReportQuery" Identifier="Single_Workforce_Reports_RoleModel_SingleRoles*" DisplayName_L1="Single_Workforce_Reports_RoleModel_SingleRoles*">
+    <Entry Permission="/Report/GenerateReportFileFromReportQuery/Query" CanExecute="true" />
+    <Entry Permission="/Custom/Reports/Workforce_RoleModel_SingleRoles/View" CanExecute="true" />
+  </AccessControlRule>
+  <AccessControlRule Profile="Workforce/Reports/RoleModel_SingleRoles" EntityType="SingleRole" Identifier="Single_Workforce_Reports_RoleModel_SingleRoles_View*" DisplayName_L1="Single_Workforce_Reports_RoleModel_SingleRoles_View*">
+    <Entry Permission="/Custom/Reports/Workforce_RoleModel_SingleRoles/View" CanExecute="true" />
+  </AccessControlRule>
+
+  <Profile Identifier="Workforce/Reports/RoleModel_ResourceTypes" DisplayName_L1="Workforce/Reports/Role Model/Resource Types" IsComponent="true" />
+  <AccessControlRule Profile="Workforce/Reports/RoleModel_ResourceTypes" EntityType="ReportQuery" Identifier="ResourceType_Workforce_Reports_RoleModel_ResourceTypes*" DisplayName_L1="ResourceType_Workforce_Reports_RoleModel_ResourceTypes*">
+    <Entry Permission="/Report/GenerateReportFileFromReportQuery/Query" CanExecute="true" />
+    <Entry Permission="/Custom/Reports/Workforce_RoleModel_ResourceTypes/View" CanExecute="true" />
+  </AccessControlRule>
+  <AccessControlRule Profile="Workforce/Reports/RoleModel_ResourceTypes" EntityType="ResourceType" Identifier="ResourceType_Workforce_Reports_RoleModel_ResourceTypes_View*" DisplayName_L1="ResourceType_Workforce_Reports_RoleModel_ResourceTypes_View*">
+    <Entry Permission="/Custom/Reports/Workforce_RoleModel_ResourceTypes/View" CanExecute="true" />
+  </AccessControlRule>
+
+  <Profile Identifier="Workforce/Reports/Directory_Users" DisplayName_L1="Workforce/Reports/Directory/All Users" IsComponent="true" />
+  <AccessControlRule Profile="Workforce/Reports/Directory_Users" EntityType="ReportQuery" Identifier="ResourceType_Workforce_Reports_Directory_Users*" DisplayName_L1="ResourceType_Workforce_Reports_Directory_Users*">
+    <Entry Permission="/Report/GenerateReportFileFromReportQuery/Query" CanExecute="true" />
+    <Entry Permission="/Custom/Reports/Workforce_Directory_Users/View" CanExecute="true" />
+  </AccessControlRule>
+  <AccessControlRule Profile="Workforce/Reports/Directory_Users" EntityType="Directory_UserRecord" Identifier="ResourceType_Workforce_Reports_Directory_Users_View*" DisplayName_L1="ResourceType_Workforce_Reports_Directory_Users_View*">
+    <Entry Permission="/Custom/Reports/Workforce_Directory_Users/View" CanExecute="true" />
+  </AccessControlRule>
+
+  <Profile Identifier="Workforce/Reports/Directory_InternalUsers" DisplayName_L1="Workforce/Reports/Directory/Internal Users" IsComponent="true" />
+  <AccessControlRule Profile="Workforce/Reports/Directory_InternalUsers" EntityType="ReportQuery" Identifier="ResourceType_Workforce_Reports_Directory_InternalUsers*" DisplayName_L1="ResourceType_Workforce_Reports_Directory_InternalUsers*">
+    <Entry Permission="/Report/GenerateReportFileFromReportQuery/Query" CanExecute="true" />
+    <Entry Permission="/Custom/Reports/Workforce_Directory_InternalUsers/View" CanExecute="true" />
+  </AccessControlRule>
+  <AccessControlRule Profile="Workforce/Reports/Directory_InternalUsers" EntityType="Directory_UserRecord" Identifier="ResourceType_Workforce_Reports_Directory_InternalUsers_View*" DisplayName_L1="ResourceType_Workforce_Reports_Directory_InternalUsers_View*">
+    <Entry Permission="/Custom/Reports/Workforce_Directory_InternalUsers/View" CanExecute="true" />
+  </AccessControlRule>
+
+  <Profile Identifier="Workforce/Reports/Directory_ExternalUsers" DisplayName_L1="Workforce/Reports/Directory/External Users" IsComponent="true" />
+  <AccessControlRule Profile="Workforce/Reports/Directory_ExternalUsers" EntityType="ReportQuery" Identifier="ResourceType_Workforce_Reports_Directory_ExternalUsers*" DisplayName_L1="ResourceType_Workforce_Reports_Directory_ExternalUsers*">
+    <Entry Permission="/Report/GenerateReportFileFromReportQuery/Query" CanExecute="true" />
+    <Entry Permission="/Custom/Reports/Workforce_Directory_ExternalUsers/View" CanExecute="true" />
+  </AccessControlRule>
+  <AccessControlRule Profile="Workforce/Reports/Directory_ExternalUsers" EntityType="Directory_UserRecord" Identifier="ResourceType_Workforce_Reports_Directory_ExternalUsers_View*" DisplayName_L1="ResourceType_Workforce_Reports_Directory_ExternalUsers_View*">
+    <Entry Permission="/Custom/Reports/Workforce_Directory_ExternalUsers/View" CanExecute="true" />
+  </AccessControlRule>
+
+  <Profile Identifier="Workforce/Reports/Directory_PlannedUserExists" DisplayName_L1="Workforce/Reports/Directory/Planned User Exits" IsComponent="true" />
+  <AccessControlRule Profile="Workforce/Reports/Directory_PlannedUserExists" EntityType="ReportQuery" Identifier="ResourceType_Workforce_Reports_Directory_PlannedUserExists*" DisplayName_L1="ResourceType_Workforce_Reports_Directory_PlannedUserExists*">
+    <Entry Permission="/Report/GenerateReportFileFromReportQuery/Query" CanExecute="true" />
+    <Entry Permission="/Custom/Reports/Workforce_Directory_PlannedUserExists/View" CanExecute="true" />
+  </AccessControlRule>
+  <AccessControlRule Profile="Workforce/Reports/Directory_PlannedUserExists" EntityType="Directory_UserRecord" Identifier="ResourceType_Workforce_Reports_Directory_PlannedUserExists_View*" DisplayName_L1="ResourceType_Workforce_Reports_Directory_PlannedUserExists_View*">
+    <Entry Permission="/Custom/Reports/Workforce_Directory_PlannedUserExists/View" CanExecute="true" />
+  </AccessControlRule>
+
+  <Profile Identifier="Workforce/Reports/Directory_ResourceTypes" DisplayName_L1="Workforce/Reports/Directory/Assigned Resources" IsComponent="true" />
+  <AccessControlRule Profile="Workforce/Reports/Directory_ResourceTypes" EntityType="ReportQuery" Identifier="ResourceType_Workforce_Reports_Directory_ResourceTypes*" DisplayName_L1="ResourceType_Workforce_Reports_Directory_ResourceTypes*">
+    <Entry Permission="/Report/GenerateReportFileFromReportQuery/Query" CanExecute="true" />
+    <Entry Permission="/Custom/Reports/Workforce_Directory_AssignedResourceTypes/View" CanExecute="true" />
+  </AccessControlRule>
+  <AccessControlRule Profile="Workforce/Reports/Directory_ResourceTypes" EntityType="Directory_UserRecord" Identifier="ResourceType_Workforce_Reports_Directory_ResourceTypes_View*" DisplayName_L1="ResourceType_Workforce_Reports_Directory_ResourceTypes_View*">
+    <Entry Permission="/Custom/Reports/Workforce_Directory_AssignedResourceTypes/View" CanExecute="true" />
+  </AccessControlRule>
+
+  <Profile Identifier="Workforce/Reports/Directory_AssignedSingleRoles" DisplayName_L1="Workforce/Reports/Directory/Assigned Single Roles" IsComponent="true" />
+  <AccessControlRule Profile="Workforce/Reports/Directory_AssignedSingleRoles" EntityType="ReportQuery" Identifier="ResourceType_Workforce_Reports_Directory_AssignedSingleRoles*" DisplayName_L1="ResourceType_Workforce_Reports_Directory_AssignedSingleRoles*">
+    <Entry Permission="/Report/GenerateReportFileFromReportQuery/Query" CanExecute="true" />
+    <Entry Permission="/Custom/Reports/Workforce_Directory_AssignedSingleRoles/View" CanExecute="true" />
+  </AccessControlRule>
+  <AccessControlRule Profile="Workforce/Reports/Directory_AssignedSingleRoles" EntityType="Directory_UserRecord" Identifier="ResourceType_Workforce_Reports_Directory_AssignedSingleRoles_View*" DisplayName_L1="ResourceType_Workforce_Reports_Directory_AssignedSingleRoles_View*">
+    <Entry Permission="/Custom/Reports/Workforce_Directory_AssignedSingleRoles/View" CanExecute="true" />
+  </AccessControlRule>
+
+  <Profile Identifier="Workforce/Reports/Directory_AssignedCompositeRoles" DisplayName_L1="Workforce/Reports/Directory/Assigned Composite Roles" IsComponent="true" />
+  <AccessControlRule Profile="Workforce/Reports/Directory_AssignedCompositeRoles" EntityType="ReportQuery" Identifier="ResourceType_Workforce_Reports_Directory_AssignedCompositeRoles*" DisplayName_L1="ResourceType_Workforce_Reports_Directory_AssignedCompositeRoles*">
+    <Entry Permission="/Report/GenerateReportFileFromReportQuery/Query" CanExecute="true" />
+    <Entry Permission="/Custom/Reports/Workforce_Directory_AssignedCompositeRoles/View" CanExecute="true" />
+  </AccessControlRule>
+  <AccessControlRule Profile="Workforce/Reports/Directory_AssignedCompositeRoles" EntityType="Directory_UserRecord" Identifier="ResourceType_Workforce_Reports_Directory_AssignedCompositeRoles_View*" DisplayName_L1="ResourceType_Workforce_Reports_Directory_AssignedCompositeRoles_View*">
+    <Entry Permission="/Custom/Reports/Workforce_Directory_AssignedCompositeRoles/View" CanExecute="true" />
+  </AccessControlRule>
+</ConfigurationFile>

@@ -1,0 +1,10 @@
+<ConfigurationFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-usercube-com:configuration">
+ 
+
+<MenuItem Identifier="Nav_Connectors_SAB1" DisplayName_L1="SAB1" DisplayName_L2="SAB1"
+ParentMenuItem="Nav_Connectors">
+    <MenuItem Identifier="Nav_Connectors_SAB1_User" DisplayName_L1="SAB1 Users" DisplayName_L2="Comptes SAB1" EntityType="SAB1_User" />
+    <MenuItem Identifier="Nav_Connectors_SAB1_Group" DisplayName_L1="SAB1 Groups" DisplayName_L2="Groupes SAB1" EntityType="SAB1_Group" />
+</MenuItem>
+
+</ConfigurationFile>

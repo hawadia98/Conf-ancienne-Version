@@ -1,0 +1,33 @@
+<ConfigurationFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-usercube-com:configuration">
+    
+    <ExportTask Identifier="SAB1_Full_SAB1Users" Agent="Default" Connection="SAB1Users" OpenIdClient="Job"
+    DisplayName_L1="SAB1 Users - Extraction" IgnoreCookieFile="true" />
+    <ExportTask Identifier="SAB1_Full_SAB1Groups" Agent="Default" Connection="SAB1Groups" OpenIdClient="Job"
+    DisplayName_L1="SAB1 Groups - Extraction" IgnoreCookieFile="true" />
+    <ExportTask Identifier="SAB1_Full_SAB1UsersGroups" Agent="Default" Connection="SAB1UsersGroups"
+    OpenIdClient="Job" DisplayName_L1="SAB1 Users Groups - Extraction" IgnoreCookieFile="true"/>
+
+    <PrepareSynchronizationTask Identifier="SAB1_PrepareSynchro_Complete"
+    DisplayName_L1="SAB1 - Collecte de données" Connector="SAB1"
+    SynchronizationMode="Complete" Agent="Default" OpenIdClient="Job" />
+
+    <SynchronizeTask Identifier="SAB1_Synchro_Complete" DisplayName_L1="SAB1 -Synchonization" 
+    DisplayName_L2="SAB1 - Synchronisation" Connector="SAB1" />
+
+    <Job Identifier="SynchroCompleteSAB1" DisplayName_L1="SAB1 : Complete synchronization"
+    Agent="Default">
+    <Step Identifier="SAB1_Full_SAB1Users" />
+    <Step Identifier="SAB1_Full_SAB1Groups" />
+    <Step Identifier="SAB1_Full_SAB1UsersGroups" />
+    <Step Identifier="SAB1_PrepareSynchro_Complete" />
+    <Step Identifier="SAB1_Synchro_Complete" />
+    </Job>
+    <CreateConnectorSynchroComplete Connector="SAB1" DisplayName_L1="SAB1 - Synchro Complete Scaffolding" JobIdentifier="SAB1_Synchronize_Complete_Scaffolding">
+        <OpenIdIdentifier Identifier="Job" />
+        <NoProvisioning />
+    </CreateConnectorSynchroComplete>
+    <CreateConnectorSynchroIncremental Connector="SAB1" DisplayName_L1="SAB1 - Incremental Synchronization Scaffolding" JobIdentifier="SAB1_Synchronize_Incremental_Scaffolding">
+        <OpenIdIdentifier Identifier="Job" />
+        <NoProvisioning />
+    </CreateConnectorSynchroIncremental>
+</ConfigurationFile>

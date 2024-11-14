@@ -1,0 +1,7 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Profile Identifier="Workforce/Directory/Directory_OrganizationType/View" DisplayName_L1="Workforce/Directory/View Organization Types" IsComponent="true" />
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_OrganizationType/View" EntityType="Directory_OrganizationType" Identifier="Composite_Directory_Directory_OrganizationType_View_*" DisplayName_L1="Composite_Directory_Directory_OrganizationType_View_*" TemplateTransformation="AllowLinkedEntities;Directory_OrganizationType;/Custom/Resources/Directory_OrganizationType/View">
+    <Entry Permission="/Custom/Resources/Directory_OrganizationType/View" CanExecute="true" />
+  </AccessControlRule>
+</ConfigurationFile>

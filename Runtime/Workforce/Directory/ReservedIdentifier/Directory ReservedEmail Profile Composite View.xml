@@ -1,0 +1,7 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Profile Identifier="Workforce/Directory/Directory_ReservedEmail/View" DisplayName_L1="Workforce/Directory/View Reserved Emails" IsComponent="true" />
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_ReservedEmail/View" EntityType="Directory_ReservedEmail" Identifier="Composite_Directory_Directory_ReservedEmail_View_*" DisplayName_L1="Composite_Directory_Directory_ReservedEmail_View_*">
+    <Entry Permission="/Custom/Resources/Directory_ReservedEmail/View" CanExecute="true" />
+  </AccessControlRule>
+</ConfigurationFile>

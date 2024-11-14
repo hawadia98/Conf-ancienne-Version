@@ -1,0 +1,7 @@
+﻿IF COL_LENGTH('dbo.UT_Resources', 'ValidTo') IS NOT NULL
+BEGIN
+ALTER TABLE "UT_Resources"
+ALTER COLUMN ValidTo DATETIME2(2) NOT NULL;
+END
+GO
+

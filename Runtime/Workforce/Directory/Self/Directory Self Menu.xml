@@ -1,0 +1,6 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <MenuItem Identifier="UserMenu" ConsolidationMode="Merge">
+    <MenuItem Identifier="UserMenu_Directory_User" DisplayName_L1="View My Data" EntityType="Directory_User" IsSelfForm="true" />
+    <MenuItem Identifier="UserMenu_Directory_User_Self_ResourcesUpdate" DisplayName_L1="Change My Permissions" Workflow="Self_ResourcesUpdate" IsSelfForm="true" />
+  </MenuItem>
+</ConfigurationFile>

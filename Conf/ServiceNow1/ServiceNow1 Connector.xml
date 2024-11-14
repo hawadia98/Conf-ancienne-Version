@@ -1,0 +1,134 @@
+﻿<ConfigurationFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-usercube-com:configuration">
+  <EntityType Identifier="ServiceNow_User" DisplayName_L1="ServiceNow User">
+    <Property Identifier="active" DisplayName_L1="active" TargetColumnIndex="4" Type="String" />
+    <Property Identifier="avatar" DisplayName_L1="avatar" TargetColumnIndex="5" Type="String" />
+    <Property Identifier="building" DisplayName_L1="building" TargetColumnIndex="6" Type="String" />
+    <Property Identifier="calendar_integration" DisplayName_L1="calendar_integration" TargetColumnIndex="7" Type="String" />
+    <Property Identifier="city" DisplayName_L1="city" TargetColumnIndex="8" Type="String" />
+    <Property Identifier="company" DisplayName_L1="company" TargetColumnIndex="9" Type="String" />
+    <Property Identifier="cost_center" DisplayName_L1="cost_center" TargetColumnIndex="10" Type="String" />
+    <Property Identifier="country" DisplayName_L1="country" TargetColumnIndex="11" Type="String" />
+    <Property Identifier="date_format" DisplayName_L1="date_format" TargetColumnIndex="12" Type="String" />
+    <Property Identifier="default_perspective" DisplayName_L1="default_perspective" TargetColumnIndex="13" Type="String" />
+    <Property Identifier="department" DisplayName_L1="department" TargetColumnIndex="14" Type="String" />
+    <Property Identifier="edu_status" DisplayName_L1="edu_status" TargetColumnIndex="15" Type="String" />
+    <Property Identifier="email" DisplayName_L1="email" TargetColumnIndex="16" Type="String" />
+    <Property Identifier="employee_number" DisplayName_L1="employee_number" IsKey="true" TargetColumnIndex="17" Type="String" />
+    <Property Identifier="enable_multifactor_authn" DisplayName_L1="enable_multifactor_authn" TargetColumnIndex="18" Type="String" />
+    <Property Identifier="failed_attempts" DisplayName_L1="failed_attempts" TargetColumnIndex="19" Type="String" />
+    <Property Identifier="federated_id" DisplayName_L1="federated_id" TargetColumnIndex="20" Type="String" />
+    <Property Identifier="first_name" DisplayName_L1="first_name" TargetColumnIndex="21" Type="String" />
+    <Property Identifier="gender" DisplayName_L1="gender" TargetColumnIndex="22" Type="String" />
+    <Property Identifier="home_phone" DisplayName_L1="home_phone" TargetColumnIndex="23" Type="String" />
+    <Property Identifier="internal_integration_user" DisplayName_L1="internal_integration_user" TargetColumnIndex="24" Type="String" />
+    <Property Identifier="introduction" DisplayName_L1="introduction" TargetColumnIndex="25" Type="String" />
+    <Property Identifier="last_login" DisplayName_L1="last_login" TargetColumnIndex="26" Type="String" />
+    <Property Identifier="last_login_device" DisplayName_L1="last_login_device" TargetColumnIndex="27" Type="String" />
+    <Property Identifier="last_login_time" DisplayName_L1="last_login_time" TargetColumnIndex="28" Type="String" />
+    <Property Identifier="last_name" DisplayName_L1="last_name" TargetColumnIndex="29" Type="String" />
+    <Property Identifier="last_password" DisplayName_L1="last_password" TargetColumnIndex="30" Type="String" />
+    <Property Identifier="ldap_server" DisplayName_L1="ldap_server" TargetColumnIndex="31" Type="String" />
+    <Property Identifier="location" DisplayName_L1="location" TargetColumnIndex="32" Type="String" />
+    <Property Identifier="locked_out" DisplayName_L1="locked_out" TargetColumnIndex="33" Type="String" />
+    <Property Identifier="manager" DisplayName_L1="manager" TargetColumnIndex="34" Type="String" />
+    <Property Identifier="middle_name" DisplayName_L1="middle_name" TargetColumnIndex="35" Type="String" />
+    <Property Identifier="mobile_phone" DisplayName_L1="mobile_phone" TargetColumnIndex="36" Type="String" />
+    <Property Identifier="name" DisplayName_L1="name" TargetColumnIndex="37" Type="String" />
+    <Property Identifier="notification" DisplayName_L1="notification" TargetColumnIndex="38" Type="String" />
+    <Property Identifier="password_needs_reset" DisplayName_L1="password_needs_reset" TargetColumnIndex="39" Type="String" />
+    <Property Identifier="phone" DisplayName_L1="phone" TargetColumnIndex="40" Type="String" />
+    <Property Identifier="photo" DisplayName_L1="photo" TargetColumnIndex="41" Type="String" />
+    <Property Identifier="preferred_language" DisplayName_L1="preferred_language" TargetColumnIndex="42" Type="String" />
+    <Property Identifier="roles" DisplayName_L1="roles" TargetColumnIndex="43" Type="String" />
+    <Property Identifier="schedule" DisplayName_L1="schedule" TargetColumnIndex="44" Type="String" />
+    <Property Identifier="source" DisplayName_L1="source" TargetColumnIndex="45" Type="String" />
+    <Property Identifier="state" DisplayName_L1="state" TargetColumnIndex="46" Type="String" />
+    <Property Identifier="street" DisplayName_L1="street" TargetColumnIndex="47" Type="String" />
+    <Property Identifier="sys_class_name" DisplayName_L1="sys_class_name" TargetColumnIndex="48" Type="String" />
+    <Property Identifier="sys_created_by" DisplayName_L1="sys_created_by" TargetColumnIndex="49" Type="String" />
+    <Property Identifier="sys_created_on" DisplayName_L1="sys_created_on" TargetColumnIndex="50" Type="String" />
+    <Property Identifier="sys_domain" DisplayName_L1="sys_domain" TargetColumnIndex="51" Type="String" />
+    <Property Identifier="sys_domain_path" DisplayName_L1="sys_domain_path" TargetColumnIndex="52" Type="String" />
+    <Property Identifier="sys_id" DisplayName_L1="sys_id" TargetColumnIndex="53" Type="String" />
+    <Property Identifier="sys_mod_count" DisplayName_L1="sys_mod_count" TargetColumnIndex="54" Type="String" />
+    <Property Identifier="sys_tags" DisplayName_L1="sys_tags" TargetColumnIndex="55" Type="String" />
+    <Property Identifier="sys_updated_by" DisplayName_L1="sys_updated_by" TargetColumnIndex="56" Type="String" />
+    <Property Identifier="sys_updated_on" DisplayName_L1="sys_updated_on" TargetColumnIndex="57" Type="String" />
+    <Property Identifier="time_format" DisplayName_L1="time_format" TargetColumnIndex="58" Type="String" />
+    <Property Identifier="time_zone" DisplayName_L1="time_zone" TargetColumnIndex="59" Type="String" />
+    <Property Identifier="title" DisplayName_L1="title" TargetColumnIndex="60" Type="String" />
+    <Property Identifier="user_name" DisplayName_L1="user_name" TargetColumnIndex="61" Type="String" />
+    <Property Identifier="user_password" DisplayName_L1="user_password" TargetColumnIndex="62" Type="String" />
+    <Property Identifier="vip" DisplayName_L1="vip" TargetColumnIndex="63" Type="String" />
+    <Property Identifier="web_service_access_only" DisplayName_L1="web_service_access_only" TargetColumnIndex="64" Type="String" />
+    <Property Identifier="zip" DisplayName_L1="zip" TargetColumnIndex="65" Type="String" />
+  </EntityType>
+  <EntityPropertyExpression Identifier="ServiceNow_User_InternalDisplayName_L1" Binding="ServiceNow_User:first_name" EntityType="ServiceNow_User" Property="InternalDisplayName_L1" />
+  <Connector Identifier="ServiceNow1" DisplayName_L1="ServiceNow1" Agent="Default" IncrementalJob="NotUsed" />
+  <Connection Identifier="ServiceNow1Connection" DisplayName_L1="ServiceNow1 Connection" Connector="ServiceNow1" Package="Usercube.ServiceNow@0000001" />
+  <Connection Identifier="ServiceNowConnectionManual" DisplayName_L1="ServiceNow1 Connection Manual" Connector="ServiceNow1" Package="Usercube.SnowTicket@0000001" />
+  <EntityTypeMapping Identifier="ServiceNow_User" ConnectionTable="ServiceNow1Connection_sys_user" Connector="ServiceNow1">
+    <Property Identifier="active" ConnectionColumn="active" />
+    <Property Identifier="avatar" ConnectionColumn="avatar" />
+    <Property Identifier="building" ConnectionColumn="building" />
+    <Property Identifier="calendar_integration" ConnectionColumn="calendar_integration" />
+    <Property Identifier="city" ConnectionColumn="city" />
+    <Property Identifier="company" ConnectionColumn="company" />
+    <Property Identifier="cost_center" ConnectionColumn="cost_center" />
+    <Property Identifier="country" ConnectionColumn="country" />
+    <Property Identifier="date_format" ConnectionColumn="date_format" />
+    <Property Identifier="default_perspective" ConnectionColumn="default_perspective" />
+    <Property Identifier="department" ConnectionColumn="department" />
+    <Property Identifier="edu_status" ConnectionColumn="edu_status" />
+    <Property Identifier="email" ConnectionColumn="email" />
+    <Property Identifier="employee_number" ConnectionColumn="employee_number" IsPrimaryKey="true" IsUniqueKey="true" />
+    <Property Identifier="enable_multifactor_authn" ConnectionColumn="enable_multifactor_authn" />
+    <Property Identifier="failed_attempts" ConnectionColumn="failed_attempts" />
+    <Property Identifier="federated_id" ConnectionColumn="federated_id" />
+    <Property Identifier="first_name" ConnectionColumn="first_name" />
+    <Property Identifier="gender" ConnectionColumn="gender" />
+    <Property Identifier="home_phone" ConnectionColumn="home_phone" />
+    <Property Identifier="internal_integration_user" ConnectionColumn="internal_integration_user" />
+    <Property Identifier="introduction" ConnectionColumn="introduction" />
+    <Property Identifier="last_login" ConnectionColumn="last_login" />
+    <Property Identifier="last_login_device" ConnectionColumn="last_login_device" />
+    <Property Identifier="last_login_time" ConnectionColumn="last_login_time" />
+    <Property Identifier="last_name" ConnectionColumn="last_name" />
+    <Property Identifier="last_password" ConnectionColumn="last_password" />
+    <Property Identifier="ldap_server" ConnectionColumn="ldap_server" />
+    <Property Identifier="location" ConnectionColumn="location" />
+    <Property Identifier="locked_out" ConnectionColumn="locked_out" />
+    <Property Identifier="manager" ConnectionColumn="manager" />
+    <Property Identifier="middle_name" ConnectionColumn="middle_name" />
+    <Property Identifier="mobile_phone" ConnectionColumn="mobile_phone" />
+    <Property Identifier="name" ConnectionColumn="name" />
+    <Property Identifier="notification" ConnectionColumn="notification" />
+    <Property Identifier="password_needs_reset" ConnectionColumn="password_needs_reset" />
+    <Property Identifier="phone" ConnectionColumn="phone" />
+    <Property Identifier="photo" ConnectionColumn="photo" />
+    <Property Identifier="preferred_language" ConnectionColumn="preferred_language" />
+    <Property Identifier="roles" ConnectionColumn="roles" />
+    <Property Identifier="schedule" ConnectionColumn="schedule" />
+    <Property Identifier="source" ConnectionColumn="source" />
+    <Property Identifier="state" ConnectionColumn="state" />
+    <Property Identifier="street" ConnectionColumn="street" />
+    <Property Identifier="sys_class_name" ConnectionColumn="sys_class_name" />
+    <Property Identifier="sys_created_by" ConnectionColumn="sys_created_by" />
+    <Property Identifier="sys_created_on" ConnectionColumn="sys_created_on" />
+    <Property Identifier="sys_domain" ConnectionColumn="sys_domain" />
+    <Property Identifier="sys_domain_path" ConnectionColumn="sys_domain_path" />
+    <Property Identifier="sys_id" ConnectionColumn="sys_id" />
+    <Property Identifier="sys_mod_count" ConnectionColumn="sys_mod_count" />
+    <Property Identifier="sys_tags" ConnectionColumn="sys_tags" />
+    <Property Identifier="sys_updated_by" ConnectionColumn="sys_updated_by" />
+    <Property Identifier="sys_updated_on" ConnectionColumn="sys_updated_on" />
+    <Property Identifier="time_format" ConnectionColumn="time_format" />
+    <Property Identifier="time_zone" ConnectionColumn="time_zone" />
+    <Property Identifier="title" ConnectionColumn="title" />
+    <Property Identifier="user_name" ConnectionColumn="user_name" />
+    <Property Identifier="user_password" ConnectionColumn="user_password" />
+    <Property Identifier="vip" ConnectionColumn="vip" />
+    <Property Identifier="web_service_access_only" ConnectionColumn="web_service_access_only" />
+    <Property Identifier="zip" ConnectionColumn="zip" />
+  </EntityTypeMapping>
+</ConfigurationFile>

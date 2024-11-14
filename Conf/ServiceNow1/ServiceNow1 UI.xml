@@ -1,0 +1,70 @@
+﻿<ConfigurationFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-usercube-com:configuration">
+  <DisplayTable Identifier="ServiceNow_User" DisplayTableDesignElement="adaptable" EntityType="ServiceNow_User" IsEntityTypeDefault="true">
+    <Column CanBeFiltered="true" DisplayBinding="InternalDisplayName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" />
+    <Column CanBeFiltered="true" DisplayBinding="employee_number" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" />
+  </DisplayTable>
+  <DisplayEntityType Identifier="ServiceNow_User">
+    <Property Identifier="active" DisplayOrder="1" />
+    <Property Identifier="avatar" DisplayOrder="2" />
+    <Property Identifier="building" DisplayOrder="3" />
+    <Property Identifier="calendar_integration" DisplayOrder="4" />
+    <Property Identifier="city" DisplayOrder="5" />
+    <Property Identifier="company" DisplayOrder="6" />
+    <Property Identifier="cost_center" DisplayOrder="7" />
+    <Property Identifier="country" DisplayOrder="8" />
+    <Property Identifier="date_format" DisplayOrder="9" />
+    <Property Identifier="default_perspective" DisplayOrder="10" />
+    <Property Identifier="department" DisplayOrder="11" />
+    <Property Identifier="edu_status" DisplayOrder="12" />
+    <Property Identifier="email" DisplayOrder="13" />
+    <Property Identifier="employee_number" DisplayOrder="14" />
+    <Property Identifier="enable_multifactor_authn" DisplayOrder="15" />
+    <Property Identifier="failed_attempts" DisplayOrder="16" />
+    <Property Identifier="federated_id" DisplayOrder="17" />
+    <Property Identifier="first_name" DisplayOrder="18" />
+    <Property Identifier="gender" DisplayOrder="19" />
+    <Property Identifier="home_phone" DisplayOrder="20" />
+    <Property Identifier="internal_integration_user" DisplayOrder="21" />
+    <Property Identifier="introduction" DisplayOrder="22" />
+    <Property Identifier="last_login" DisplayOrder="23" />
+    <Property Identifier="last_login_device" DisplayOrder="24" />
+    <Property Identifier="last_login_time" DisplayOrder="25" />
+    <Property Identifier="last_name" DisplayOrder="26" />
+    <Property Identifier="last_password" DisplayOrder="27" />
+    <Property Identifier="ldap_server" DisplayOrder="28" />
+    <Property Identifier="location" DisplayOrder="29" />
+    <Property Identifier="locked_out" DisplayOrder="30" />
+    <Property Identifier="manager" DisplayOrder="31" />
+    <Property Identifier="middle_name" DisplayOrder="32" />
+    <Property Identifier="mobile_phone" DisplayOrder="33" />
+    <Property Identifier="name" DisplayOrder="34" />
+    <Property Identifier="notification" DisplayOrder="35" />
+    <Property Identifier="password_needs_reset" DisplayOrder="36" />
+    <Property Identifier="phone" DisplayOrder="37" />
+    <Property Identifier="photo" DisplayOrder="38" />
+    <Property Identifier="preferred_language" DisplayOrder="39" />
+    <Property Identifier="roles" DisplayOrder="40" />
+    <Property Identifier="schedule" DisplayOrder="41" />
+    <Property Identifier="source" DisplayOrder="42" />
+    <Property Identifier="state" DisplayOrder="43" />
+    <Property Identifier="street" DisplayOrder="44" />
+    <Property Identifier="sys_class_name" DisplayOrder="45" />
+    <Property Identifier="sys_created_by" DisplayOrder="46" />
+    <Property Identifier="sys_created_on" DisplayOrder="47" />
+    <Property Identifier="sys_domain" DisplayOrder="48" />
+    <Property Identifier="sys_domain_path" DisplayOrder="49" />
+    <Property Identifier="sys_id" DisplayOrder="50" />
+    <Property Identifier="sys_mod_count" DisplayOrder="51" />
+    <Property Identifier="sys_tags" DisplayOrder="52" />
+    <Property Identifier="sys_updated_by" DisplayOrder="53" />
+    <Property Identifier="sys_updated_on" DisplayOrder="54" />
+    <Property Identifier="time_format" DisplayOrder="55" />
+    <Property Identifier="time_zone" DisplayOrder="56" />
+    <Property Identifier="title" DisplayOrder="57" />
+    <Property Identifier="user_name" DisplayOrder="58" />
+    <Property Identifier="user_password" DisplayOrder="59" />
+    <Property Identifier="vip" DisplayOrder="60" />
+    <Property Identifier="web_service_access_only" DisplayOrder="61" />
+    <Property Identifier="zip" DisplayOrder="62" />
+  </DisplayEntityType>
+</ConfigurationFile>

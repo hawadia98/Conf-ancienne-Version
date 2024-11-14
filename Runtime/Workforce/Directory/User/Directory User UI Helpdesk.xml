@@ -1,0 +1,94 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Form Identifier="Workflow_Helpdesk_Directory_UserRecord_Unique" EntityType="Directory_UserRecord">
+    <Control Binding="Id" />
+  </Form>
+
+  <Form Identifier="Workflow_Helpdesk_Directory_User_Base" EntityType="Directory_User">
+    <Control Binding="Identifier" />
+    <Control Binding="IsDraft" />
+    <Control Binding="Photo" />
+    <Control Binding="ConsentPhotoUsage" />
+  </Form>
+
+  <Form Identifier="Workflow_Helpdesk_Directory_UserRecord_Base" EntityType="Directory_UserRecord">
+    <Control DisplayName_L1="Personal Data" OutputType="LayoutFieldset" Name="Personal Data">
+      <Control DisplayName_L1="Full Name" OutputType="LayoutRowset" Name="Full Name">
+        <Control Binding="LastName" />
+        <Control Binding="FirstName" />
+      </Control>
+      <Control Binding="BirthName" ColumnSize="4" />
+      <Control Binding="BirthDate" />
+      <Control Binding="Gender" ColumnSize="3" />
+      <Control Binding="PersonalTitle" ColumnSize="3" />
+      <Control Binding="Email" ColumnSize="6" />
+      <Control Binding="EmailAliases" ColumnSize="8" />
+      <Control DisplayName_L1="Phone Numbers" OutputType="LayoutRowset" Name="Phone Numbers">
+        <Control Binding="PhoneNumber" />
+        <Control Binding="MobileNumber" />
+      </Control>
+      <Control Binding="RecordIdentifier" ColumnSize="4" />
+      <Control Binding="UserIdentifier" ColumnSize="4" />
+      <Control Binding="Login" ColumnSize="4" />
+      <Control Binding="VIP" />
+      <Control Binding="StartDate" />
+      <Control Binding="EndDate" InputType="Date" />
+    </Control>
+
+    <Control DisplayName_L1="Contract" OutputType="LayoutFieldset" Name="Contract">
+      <Control Binding="EmployeeId" ColumnSize="4" />
+      <Control Binding="ContractIdentifier" ColumnSize="4" />
+      <Control Binding="UserType" />
+      <Control Binding="Subsidiary" />
+      <Control Binding="ExternalCompany" />
+      <Control Binding="Suspended" />
+      <Control Binding="ContractStartDate" />
+      <Control Binding="ContractEndDate" />
+      <Control Binding="AccessesExpirationDate" />
+    </Control>
+
+    <Control DisplayName_L1="Position" OutputType="LayoutFieldset" Name="Position">
+      <Control Binding="PositionIdentifier" ColumnSize="4" />
+      <Control Binding="JobTitle" />
+      <Control Binding="Title" />
+      <Control Binding="Manager" />
+      <Control Binding="IGAManager" />
+      <Control Binding="Organization" />
+      <Control Binding="Site" />
+      <Control Binding="Office" />
+      <Control Binding="OfficeNumber" ColumnSize="4" />
+      <Control Binding="PositionStartDate" />
+      <Control Binding="PositionEndDate" InputType="Date" />
+      <Control Binding="IsMainPosition" />
+    </Control>
+  </Form>
+
+  <DisplayTable Identifier="Directory_UserRecord_Helpdesk" EntityType="Directory_UserRecord" DisplayTableDesignElement="table">
+    <Column DisplayBinding="Title.InternalDisplayName" DisplayName_L1="Title" IsDisplayInSummaryView="true" ColumnSize="1" />
+    <Column DisplayBinding="Organization.InternalDisplayName" DisplayName_L1="Department" IsDisplayInSummaryView="true" ColumnSize="1" />
+    <Column DisplayBinding="Site.InternalDisplayName" DisplayName_L1="Site" IsDisplayInSummaryView="true" ColumnSize="1" />
+    <Column DisplayBinding="StartDate" DisplayName_L1="Start Date" IsDisplayInSummaryView="true" ColumnSize="1" />
+    <Column DisplayBinding="EndDate" DisplayName_L1="End Date" IsDisplayInSummaryView="true" ColumnSize="1" />
+  </DisplayTable>
+
+  <WorkflowCreateSeveralRecordsEntityForm Identifier="Workflow_Helpdesk_Directory_User_New" EntityType="Workflow_Directory_User" MainProperty="Workflow_Directory_User:Directory_User" RecordProperty="Directory_User:Records" RecordTable="Directory_UserRecord_Helpdesk" WorkflowRequestType="Helpdesk" Activity="Helpdesk_Directory_User_New:Request" FormTitle_L1="New User (helpdesk)" TableTitle_L1="Records" AddRowLabel_L1="Add Record" RemoveRowLabel_L1="Remove Record">
+    <MainControl OutputType="TransformImport" EmbeddedForm="Workflow_Helpdesk_Directory_User_Base" />
+    <RecordControl OutputType="LayoutContainer">
+      <Control OutputType="LayoutContainer" />
+    </RecordControl>
+    <RecordUniqueItemControl OutputType="TransformImport" EmbeddedForm="Workflow_Helpdesk_Directory_UserRecord_Base" />
+  </WorkflowCreateSeveralRecordsEntityForm>
+
+  <WorkflowUpdateSeveralRecordsEntityForm Identifier="Workflow_Helpdesk_Directory_User_FixRecord" EntityType="Workflow_Directory_User" MainProperty="Workflow_Directory_User:Directory_User" RecordProperty="Directory_User:Records" RecordTable="Directory_UserRecord_Helpdesk" WorkflowRequestType="Helpdesk" Activity="Helpdesk_Directory_User_FixRecord:Request" FormTitle_L1="Repair Data (helpdesk)" TableTitle_L1="Records" AddRowLabel_L1="Add Record" RemoveRowLabel_L1="Remove Record" RecordFilter="All">
+    <MainControl OutputType="TransformImport" EmbeddedForm="Workflow_Helpdesk_Directory_User_Base" />
+    <RecordControl OutputType="TransformImport" EmbeddedForm="Workflow_Helpdesk_Directory_UserRecord_Base" />
+    <RecordUniqueItemControl OutputType="TransformImport" EmbeddedForm="Workflow_Helpdesk_Directory_UserRecord_Unique" />
+    <RecordSlaveControl OutputType="TransformImport" EmbeddedForm="Workflow_Helpdesk_Directory_UserRecord_Base" />
+  </WorkflowUpdateSeveralRecordsEntityForm>
+
+  <WorkflowUpdateRecordEntityForm Identifier="Workflow_Helpdesk_Directory_User_Delete" EntityType="Workflow_Directory_User" MainProperty="Workflow_Directory_User:Directory_User" RecordProperty="Directory_User:Records" WorkflowRequestType="Helpdesk" Activity="Helpdesk_Directory_User_Delete:Request" HideRoles="true" IsDeleteForm="true" FormTitle_L1="Delete User">
+    <MainControl OutputType="TransformImport" IsReadOnly="true" EmbeddedForm="Workflow_Helpdesk_Directory_User_Base" />
+    <RecordControl OutputType="TransformImport" IsReadOnly="true" EmbeddedForm="Workflow_Helpdesk_Directory_UserRecord_Base" />
+    <RecordUniqueItemControl OutputType="TransformImport" IsReadOnly="true" EmbeddedForm="Workflow_Helpdesk_Directory_UserRecord_Unique" />
+  </WorkflowUpdateRecordEntityForm>
+
+</ConfigurationFile>

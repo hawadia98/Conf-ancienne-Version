@@ -1,0 +1,5 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+    <Language Code="fr-FR" IndicatorNumber="2" />
+    <Language Code="en-US" IndicatorNumber="1" />
+   
+</ConfigurationFile>

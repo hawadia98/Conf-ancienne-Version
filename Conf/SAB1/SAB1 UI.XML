@@ -1,0 +1,10 @@
+<ConfigurationFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-usercube-com:configuration">
+    <DisplayTable Identifier="SAB1_Group" DisplayTableDesignElement="adaptable" EntityType="SAB1_Group" IsEntityTypeDefault="true">
+      <Column CanBeFiltered="true" DisplayBinding="Name" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" />
+      <Column CanBeFiltered="true" DisplayBinding="Reference" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" />
+    </DisplayTable>
+    <DisplayTable Identifier="SAB1_User" DisplayTableDesignElement="adaptable" EntityType="SAB1_User" IsEntityTypeDefault="true">
+      <Column CanBeFiltered="true" DisplayBinding="InternalDisplayName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" />
+      <Column CanBeFiltered="true" DisplayBinding="Login" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" />
+    </DisplayTable>
+  </ConfigurationFile>

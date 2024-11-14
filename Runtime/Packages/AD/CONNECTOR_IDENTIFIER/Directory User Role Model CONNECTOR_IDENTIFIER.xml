@@ -1,0 +1,44 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <ResourceType Identifier="CONNECTOR_IDENTIFIER_Entry_NominativeUser" DisplayName_L1="CONNECTOR_DISPLAYNAMEL1 User (Standard)" Policy="Default" TargetEntityType="CONNECTOR_IDENTIFIER_Entry" SourceEntityType="Directory_User" ApprovalWorkflowType="ManualAssignmentNotAllowed" HideOnSimplifiedView="true" BlockProvisioning="false" TemplateTransformation="DependsOn;Directory_User">
+    <BinaryRule Property="thumbnailPhoto" Binding="User.Photo" TemplateTransformation="DependsOn;Directory_UserRecord:User;Directory_User:Photo" />
+    <ScalarRule Property="givenName" Binding="FirstName" TemplateTransformation="DependsOn;Directory_UserRecord:FirstName" />
+    <ScalarRule Property="sn" Binding="LastName" TemplateTransformation="DependsOn;Directory_UserRecord:LastName" />
+    <ScalarRule Property="telephoneNumber" Binding="PhoneNumber" TemplateTransformation="DependsOn;Directory_UserRecord:PhoneNumber" />
+    <ScalarRule Property="mobile" Binding="MobileNumber" TemplateTransformation="DependsOn;Directory_UserRecord:MobileNumber" />
+    <ScalarRule Property="sAMAccountName" Binding="Login" TemplateTransformation="DependsOn;Directory_UserRecord:Login" />
+    <ScalarRule Property="userPrincipalName" Binding="Email" TemplateTransformation="DependsOn;Directory_UserRecord:Email" />
+    <ScalarRule Property="accountExpires" Expression="C#:record:return !record.ContractEndDate.HasValue ? &quot;9223372036854775807&quot; : record.ContractEndDate.Value.AddHours(-5).ToSince1601DateString();" TemplateTransformation="DependsOn;Directory_UserRecord:ContractEndDate" />
+    <ScalarRule Property="department" Binding="Organization.DisplayName" TemplateTransformation="DependsOn;Directory_UserRecord:Organization;Directory_Organization:DisplayName" />
+    <ScalarRule Property="l" Binding="Site.DisplayName" TemplateTransformation="DependsOn;Directory_UserRecord:Site;Directory_Site:DisplayName" />
+    <ScalarRule Property="employeeID" Binding="EmployeeId" TemplateTransformation="DependsOn;Directory_UserRecord:EmployeeId" />
+    <ScalarRule Property="title" Binding="Title.DisplayName" TemplateTransformation="DependsOn;Directory_UserRecord:Title;Directory_Title:DisplayName" />
+    <ScalarRule Property="c" Binding="Site.Region.Country.ISOCode" TemplateTransformation="DependsOn;Directory_UserRecord:Site;Direcory_Site:Region;Directory_Region:Country;Directory_Country:ISOCode" />
+
+    <ScalarRule Property="mail" Binding="Email" TemplateTransformation="DependsOn;Directory_UserRecord:Email" />
+    <ScalarRule Property="displayName" Expression="C#:record:return record.FirstName + &quot; &quot; + record.LastName;" TemplateTransformation="DependsOn;Directory_UserRecord:FirstName;Directory_UserRecord:LastName" />
+    <ScalarRule Property="cn" Expression="C#:record:return record.FirstName + &quot; &quot; + record.LastName;" TemplateTransformation="DependsOn;Directory_UserRecord:FirstName;Directory_UserRecord:LastName" />
+
+    <ScalarRule Property="userAccountControl" Expression="Literal:514" TimeOffsetReference="Before" TimeOffsetBeforeReference="-10080" TimeOffsetAfterReference="0" />
+    <ScalarRule Property="userAccountControl" Expression="Literal:512" TimeOffsetReference="Around" TimeOffsetBeforeReference="0" TimeOffsetAfterReference="0" />
+    <ScalarRule Property="userAccountControl" Expression="Literal:514" TimeOffsetReference="After" TimeOffsetBeforeReference="0" TimeOffsetAfterReference="43200"/>
+  </ResourceType>
+
+  <LdapResourceTypeMapping Identifier="CONNECTOR_IDENTIFIER_Entry_NominativeUser" Connection="CONNECTION_IDENTIFIER" PasswordResetSetting="Directory_User_ToManager" DefaultObjectClass="user" RDNAttributeIdentifier="CN" UsePermissiveModify="true" UseTreeDelete="false" TemplateTransformation="DependsOn;Directory_User">
+    <Property Property="dn" IsDNProperty="true" />
+    <Property Property="parentdn" IsParentProperty="true" />
+    <Property Property="cn" IsRDNProperty="true" />
+    <Property Property="userAccountControl" IsUserAccountControlProperty="true" />
+    <Property Property="memberOf" DataSourceBacklinkColumnName="member" />
+  </LdapResourceTypeMapping>
+
+  <ResourceType Identifier="CONNECTOR_IDENTIFIER_Entry_AdministrationUser" DisplayName_L1="CONNECTOR_DISPLAYNAMEL1 User (Administration)"  Policy="Default" TargetEntityType="CONNECTOR_IDENTIFIER_Entry" SourceEntityType="Directory_User" ApprovalWorkflowType="ManualAssignmentNotAllowed" HideOnSimplifiedView="true" TemplateTransformation="DependsOn;Directory_User">
+    <ScalarRule Property="accountExpires" Expression="C#:record:return !record.ContractEndDate.HasValue ? null : record.ContractEndDate.Value.ToSince1601DateString();" TemplateTransformation="DependsOn;Directory_UserRecord:ContractEndDate" />
+  </ResourceType>
+
+  <LdapResourceTypeMapping Identifier="CONNECTOR_IDENTIFIER_Entry_AdministrationUser" Connection="CONNECTION_IDENTIFIERManual" PasswordResetSetting="Directory_User_ToSelf" TemplateTransformation="DependsOn;Directory_User" />
+
+  <!--  <ResourceCorrelationRule ResourceType="CONNECTOR_IDENTIFIER_Entry_NominativeUser" TargetBinding="mail" Policy="Default" SourceMatchedConfidenceLevel="100" SourceBinding="Email" TemplateTransformation="DependsOn;Directory_User" />-->
+
+  <!--  <ResourceCorrelationRule ResourceType="CONNECTOR_IDENTIFIER_Entry_NominativeUser" TargetBinding="displayName" TargetExpression="Simplify" Policy="Default" SourceMatchedConfidenceLevel="80" SourceExpression="C#:record:return (record.FirstName + record.LastName).Simplify();" TemplateTransformation="DependsOn;Directory_User" />-->
+
+</ConfigurationFile>

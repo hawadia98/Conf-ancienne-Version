@@ -1,0 +1,5 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Profile Identifier="Workforce/Workflows/Directory_Gender/Administration" DisplayName_L1="Workforce/Workflows/Administrate Genders" IsComponent="true" />
+
+  <CreateUpdateDeleteAccessControlRules EntityType="Directory_Gender" Profile="Workforce/Workflows/Directory_Gender/Administration" />
+</ConfigurationFile>

@@ -1,0 +1,9 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Workflow Identifier="Self_ResourcesUpdate" DisplayName_L1="Self Manager Permissions" VariablesType="Workflow_Directory_User">
+    <Activity Identifier="Request"  DisplayName_L1="Request" Template="Action" />
+    <Activity Identifier="Review"  DisplayName_L1="Review" Template="ReviewWithFeedback" />
+    <Activity Identifier="Persist"  DisplayName_L1="Commit" Template="Persist" />
+  </Workflow>
+
+</ConfigurationFile>

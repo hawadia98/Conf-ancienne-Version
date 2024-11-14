@@ -1,0 +1,3 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <MenuItem Identifier="Top_Directory_User" DisplayName_L1="Users" EntityType="Directory_User" ParentMenuItem="Top" />
+</ConfigurationFile>

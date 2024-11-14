@@ -1,0 +1,7 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Profile Identifier="Workforce/Directory/Directory_UserType/View" DisplayName_L1="Workforce/Directory/View User Types" IsComponent="true" />
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_UserType/View" EntityType="Directory_UserType" Identifier="Composite_Directory_Directory_UserType_View_*" DisplayName_L1="Composite_Directory_Directory_UserType_View_*" TemplateTransformation="AllowLinkedEntities;Directory_UserType;/Custom/Resources/Directory_UserType/View">
+    <Entry Permission="/Custom/Resources/Directory_UserType/View" CanExecute="true" />
+  </AccessControlRule>
+</ConfigurationFile>

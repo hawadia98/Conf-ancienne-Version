@@ -1,0 +1,2 @@
+import{n as a,bb as n}from"./vendor.pXw3tIE5.chunk.js";import{U as o}from"./index.5pqefWP2.chunk.js";var p=(r=>(r.User="User",r.UserOrGroup="UserOrGroup",r.Any="Any",r))(p||{});class i extends o{getUrlAndParams(e){const t="UserInterface/Persona?api-version=1.0",s={filter:e,personaType:this.props.type};return[t,s]}validateInput(e){return this.props.type!=="Any"?n.invalid:super.validateInput(e)}}const c=a(i);export{c as U,p as a};
+//# sourceMappingURL=UsercubeWorkflowActorPicker.gHMKQOYT.chunk.js.map

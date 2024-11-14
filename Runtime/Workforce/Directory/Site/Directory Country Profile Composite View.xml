@@ -1,0 +1,7 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Profile Identifier="Workforce/Directory/Directory_Country/View" DisplayName_L1="Workforce/Directory/View Countries" IsComponent="true" />
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_Country/View" EntityType="Directory_Country" Identifier="Composite_Directory_Directory_Country_View_*" DisplayName_L1="Composite_Directory_Directory_Country_View_*" TemplateTransformation="AllowLinkedEntities;Directory_Country;/Custom/Resources/Directory_Country/View">
+    <Entry Permission="/Custom/Resources/Directory_Country/View" CanExecute="true" />
+  </AccessControlRule>
+</ConfigurationFile>

@@ -1,0 +1,9 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Profile Identifier="Workforce/Directory/Directory_Site/View" DisplayName_L1="Workforce/Directory/View Sites" IsComponent="true" />
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_Site/View" EntityType="Directory_Site" Identifier="Composite_Directory_Directory_Site_View_*" DisplayName_L1="Composite_Directory_Directory_Site_View_*" TemplateTransformation="AllowLinkedEntities;Directory_Site;/Custom/Resources/Directory_Site/View">
+    <Entry Permission="/Custom/Resources/Directory_Site/View" CanExecute="true" />
+
+    <Entry Permission="/Custom/ResourceFiles/Directory_Site" CanExecute="true" />
+  </AccessControlRule>
+</ConfigurationFile>

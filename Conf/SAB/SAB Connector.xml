@@ -1,0 +1,38 @@
+﻿<ConfigurationFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-usercube-com:configuration">
+  <EntityType Identifier="SAB_Group" DisplayName_L1="SAB Group">
+    <Property Identifier="Name" DisplayName_L1="Name" TargetColumnIndex="4" Type="String" />
+    <Property Identifier="Reference" DisplayName_L1="Reference" IsKey="true" TargetColumnIndex="5" Type="String" />
+    <Property Identifier="User" DisplayName_L1="User" Type="ForeignKey" />
+  </EntityType>
+  <EntityType Identifier="SAB_User" DisplayName_L1="SAB User">
+    <Property Identifier="Creation_date" DisplayName_L1="Creation_date" TargetColumnIndex="4" Type="String" />
+    <Property Identifier="Disabled" DisplayName_L1="Disabled" TargetColumnIndex="5" Type="String" />
+    <Property Identifier="Group" DisplayName_L1="Group" Type="ForeignKey" />
+    <Property Identifier="Last_logon" DisplayName_L1="Last_logon" TargetColumnIndex="6" Type="String" />
+    <Property Identifier="Login" DisplayName_L1="Login" IsKey="true" TargetColumnIndex="7" Type="String" />
+    <Property Identifier="Name" DisplayName_L1="Name" TargetColumnIndex="8" Type="String" />
+    <Property Identifier="Update_date" DisplayName_L1="Update_date" TargetColumnIndex="9" Type="String" />
+  </EntityType>
+  <EntityAssociation Identifier="SAB_User_Group_SAB_Group_User" IsProperty1Collection="true" IsProperty2Collection="true" Property1="SAB_User:Group" Property2="SAB_Group:User" />
+  <EntityPropertyExpression Identifier="SAB_Group_InternalDisplayName_L1" Binding="SAB_Group:Name" EntityType="SAB_Group" Property="InternalDisplayName_L1" />
+  <EntityPropertyExpression Identifier="SAB_User_InternalDisplayName_L1" Binding="SAB_User:Name" EntityType="SAB_User" Property="InternalDisplayName_L1" />
+  <Connector Identifier="SAB" DisplayName_L1="SAB" Agent="Default" IncrementalJob="NotUsed" />
+  <Connection Identifier="SABGroup" DisplayName_L1="SAB Group" Connector="SAB" Package="Usercube.CSV@0000001" />
+  <Connection Identifier="SABGroupUser" DisplayName_L1="SAB Group User" Connector="SAB" Package="Usercube.CSV@0000001" />
+  <Connection Identifier="SABManuel" DisplayName_L1="SABManuel" Connector="SAB" Package="Usercube.Manual@0000001" />
+  <Connection Identifier="SABUser" DisplayName_L1="SABUser" Connector="SAB" Package="Usercube.CSV@0000001" />
+  <EntityTypeMapping Identifier="SAB_Group" ConnectionTable="SABGroup" Connector="SAB">
+    <Property Identifier="Name" ConnectionColumn="Name" />
+    <Property Identifier="Reference" ConnectionColumn="Reference" IsPrimaryKey="true" IsUniqueKey="true" />
+  </EntityTypeMapping>
+  <EntityTypeMapping Identifier="SAB_User" ConnectionTable="SABUser" Connector="SAB">
+    <Property Identifier="Creation_date" ConnectionColumn="Creation_date" />
+    <Property Identifier="Disabled" ConnectionColumn="Disabled" />
+    <Property Identifier="Last_logon" ConnectionColumn="Last_logon" />
+    <Property Identifier="Login" ConnectionColumn="Login" IsPrimaryKey="true" IsUniqueKey="true" />
+    <Property Identifier="Name" ConnectionColumn="Name" />
+    <Property Identifier="Update_date" ConnectionColumn="Update_date" />
+  </EntityTypeMapping>
+  <EntityAssociationMapping Identifier="SAB_User_Group_SAB_Group_User" Column1="User" Column2="Group" ConnectionTable="SABGroupUser" Connector="SAB" 
+  EntityPropertyMapping1="SAB_User:Login" EntityPropertyMapping2="SAB_Group:Reference" />
+</ConfigurationFile>

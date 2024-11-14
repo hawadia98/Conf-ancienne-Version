@@ -1,0 +1,11 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Profile Identifier="Workforce/Workflows/Directory_User_UpdateResources/Request" DisplayName_L1="Workforce/Workflows/Update Permissions"  IsComponent="true" />
+
+  <BasketRulesControlRules Profile="Workforce/Workflows/Directory_User_UpdateResources/Request"/>
+
+  <AccessControlRule Profile="Workforce/Workflows/Directory_User_UpdateResources/Request" EntityType="Workflow_Directory_User" Identifier="Composite_Workflows_Directory_User_UpdateResources_Request*" DisplayName_L1="Composite_Workflows_Directory_User_UpdateResources_Request*" TemplateTransformation="AllowLinkedEntities;Directory_User;/Custom/Workflows/Directory_User_UpdateResources/Request">
+    <Entry Permission="/Custom/Workflows/Directory_User_UpdateResources/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_UpdateResources/Request/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_UpdateResources/Request/Purged" CanExecute="true" />
+  </AccessControlRule>
+</ConfigurationFile>

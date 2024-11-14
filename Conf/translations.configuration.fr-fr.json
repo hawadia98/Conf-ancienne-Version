@@ -1,0 +1,9 @@
+﻿{
+  "Policy.Default.Mining": "Politique Minage",
+  "Policy.Default.NamingConvention": "Politique Conventions de nommage",
+  "Profile.ApplicationOwner.DisplayName": "Propriétaire d'application",
+  "Profile.Manager.DisplayName": "Responsable",
+  "Profile.HR.DisplayName": "RH",
+  "Profile.Helpdesk.DisplayName": "Support",
+  "Profile.User.DisplayName": "Utilisateur"
+}

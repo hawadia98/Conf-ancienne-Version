@@ -1,0 +1,62 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <EntityType Identifier="Directory_Site" DisplayName_L1="Site">
+    <Property Identifier="Identifier" DisplayName_L1="Code" Type="String" IsKey="true" TargetColumnIndex="4" />
+    <Property Identifier="DisplayName" DisplayName_L1="Display Name" Type="String" TargetColumnIndex="5" TemplateTransformation="OnePerLanguage" />
+    <Property Identifier="FullName" DisplayName_L1="Full Name" Type="String" TargetColumnIndex="0" />
+
+    <!-- S42 normalized address -->
+    <Property Identifier="Name" DisplayName_L1="Name" Type="String" TargetColumnIndex="6" />
+    <Property Identifier="StreetNumber" DisplayName_L1="Street Number" Type="String" TargetColumnIndex="7" />
+    <Property Identifier="StreetName" DisplayName_L1="Street Name" Type="String" TargetColumnIndex="8" />
+    <Property Identifier="StreetType" DisplayName_L1="Street Type" Type="String" TargetColumnIndex="9" />
+    <Property Identifier="Floor" DisplayName_L1="Floor" Type="String" TargetColumnIndex="10" />
+    <Property Identifier="City" DisplayName_L1="City" Type="String" TargetColumnIndex="11" />
+    <Property Identifier="PostalCode" DisplayName_L1="Postal Code" Type="String" TargetColumnIndex="12" />
+
+    <!-- Map / Photo -->
+    <Property Identifier="PhotoTag" DisplayName_L1="Photo Tag" Type="Int64" TargetColumnIndex="13" />
+    <Property Identifier="Photo" DisplayName_L1="Map" Type="Binary" />
+    <Property Identifier="Longitude" DisplayName_L1="Longitude" Type="Double" TargetColumnIndex="14" />
+    <Property Identifier="Latitude" DisplayName_L1="Latitude" Type="Double" TargetColumnIndex="15" />
+    <Property Identifier="Url" DisplayName_L1="Url" Type="String" TargetColumnIndex="16" />
+
+    <!-- Localization -->
+    <Property Identifier="PreferredLanguage" DisplayName_L1="Preferred Language" Type="String" TargetColumnIndex="17" />
+    <Property Identifier="TimeZone" DisplayName_L1="Time Zone" Type="String" TargetColumnIndex="18" />
+
+    <Property Identifier="Region" DisplayName_L1="Region" Type="ForeignKey" TargetColumnIndex="128" />
+    <Property Identifier="UserRecords" DisplayName_L1="Users" Type="ForeignKey" />
+    <Property Identifier="Offices" DisplayName_L1="Offices" Type="ForeignKey" />
+  </EntityType>
+
+  <DisplayEntityType PluralDisplayName_L1="Sites" IconCode="MapPin" Identifier="Directory_Site" AutocompleteBinding="Directory_Site:DisplayName" Color="#95c18b">
+    <Property DisplayOrder="-1" IsRequired="true" Identifier="Identifier" />
+    <Property IsRequired="true" Identifier="DisplayName" />
+    <Property OutputType="BasicCollection" InputType="Picker" IsReadOnly="true" Identifier="UserRecords" NavigationBinding="Directory_UserRecord:User" />
+    <Property OutputType="BasicCollection" Identifier="Offices" />
+    <Property IsReadOnly="true" IsHidden="true" Identifier="PhotoTag" />
+  </DisplayEntityType>
+
+  <EntityAssociation Identifier="Directory_Site_Region" IsProperty2Collection="true" Property1="Directory_Site:Region" Property2="Directory_Region:Sites" />
+
+  <EntityPropertyExpression Identifier="Directory_Site_PhotoTag" Binding="Photo.Id" EntityType="Directory_Site" Property="PhotoTag" />
+
+  <EntityPropertyExpression Identifier="Directory_Site_FullName" Expression="C#:site:
+var path = string.Empty;
+if (site.Region != null)
+{
+  if (site.Region.Country != null)
+  {
+    path = site.Region.Country.DisplayName + &quot; / &quot;;
+  }
+
+  path += site.Region.DisplayName + &quot; / &quot;;
+}
+
+path += site.DisplayName;
+return path;"  EntityType="Directory_Site" Property="FullName" />
+  <EntityPropertyExpression Identifier="Directory_Site_InternalDisplayName_L1" Binding="FullName" EntityType="Directory_Site" Property="InternalDisplayName" Priority="1" />
+
+  <CreateUpdateDeleteTemplate EntityType="Directory_Site" Profile="Administrator" />
+  <ConnectorMappings Connector="Directory" EntityType="Directory_Site" IsIncremental="1" Package="Usercube.Excel@0000001" />
+</ConfigurationFile>

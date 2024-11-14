@@ -1,0 +1,39 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+ 
+  <Tile Identifier="Directory_UserRecord_Tile1" DisplayName_L1="User: first/last name" EntityType="Directory_UserRecord" TileDesignElement="picture-text">
+    <Item Binding="FirstName" LineDisplayOrderIndicator="1" LineNumber="2" />
+    <Item Binding="LastName" LineDisplayOrderIndicator="2" LineNumber="2" />
+    <Item Binding="Title.DisplayName" LineNumber="3" />
+    <Item Binding="User.Id" LineNumber="5" />
+    <Item Binding="User.PhotoTag" LineNumber="6" />
+  </Tile>
+
+  <Tile Identifier="Directory_UserRecord_Tile2" DisplayName_L1="User: dep/loc" EntityType="Directory_UserRecord" TileDesignElement="inline data-icon">
+    <Item Binding="Organization.DisplayName" LineNumber="1" />
+    <Item Binding="Site.DisplayName" LineNumber="2" />
+  </Tile>
+
+  <Tile Identifier="Directory_UserRecord_Tile3" DisplayName_L1="User: contact" EntityType="Directory_UserRecord" TileDesignElement="inline data-icon">
+    <Item Binding="PhoneNumber" LineNumber="1" />
+    <Item Binding="MobileNumber" LineNumber="2" />
+  </Tile>
+
+  <DisplayTable Identifier="Directory_UserRecord" EntityType="Directory_UserRecord" DisplayTableDesignElement="list" IsEntityTypeDefault="true">
+    <Column DefaultSortPriority="1" ColumnSize="6" IsDisplayInSummaryView="true" SortBinding="LastName" Tile="Directory_UserRecord_Tile1" />
+    <Column ColumnSize="3" IsDisplayInSummaryView="true" Tile="Directory_UserRecord_Tile2" SortBinding="FirstName" />
+    <Column ColumnSize="3" Tile="Directory_UserRecord_Tile3" />
+  </DisplayTable>
+
+  <!--<OptimizeDisplayTable DisplayTableIdentifier="Directory_User" />-->
+
+  <SearchBar EntityType="Directory_UserRecord" SearchBarDesignElement="Inline">
+    <Criterion Binding1="User.Identifier" PlaceHolderText_L1="Identifier" InputType="Auto" ColumnSize="2" />
+    <Criterion Binding1="User.PhoneticFirstLastName" Binding2="User.PhoneticLastFirstName" Binding3="LastName" Operator="FlexibleStartWith" PlaceHolderText_L1="Name" InputType="Auto" ColumnSize="2" />
+    <Criterion Binding1="Organization" PlaceHolderText_L1="Department" InputType="Auto" ColumnSize="2" />
+    <Criterion Binding1="User.PresenceState" InputType="ComboboxMultiSelection" ColumnSize="2" DefaultValue="-101;-102" Operator="Equal" />
+    <Criterion Binding1="Site" PlaceHolderText_L1="Site" InputType="Auto" ColumnSize="2" IsVisibleInAdvancedView="true" />
+    <Criterion Binding1="Subsidiary" PlaceHolderText_L1="Subsidiary" InputType="Auto" ColumnSize="2" IsVisibleInAdvancedView="true" />
+    <Criterion Binding1="Title" PlaceHolderText_L1="Title" InputType="Auto" ColumnSize="2" IsVisibleInAdvancedView="true" />
+    <Criterion Binding1="UserType" PlaceHolderText_L1="User Type" InputType="Auto" ColumnSize="2" IsVisibleInAdvancedView="true" />
+  </SearchBar>
+</ConfigurationFile>

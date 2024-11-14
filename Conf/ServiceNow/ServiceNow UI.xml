@@ -1,0 +1,50 @@
+<ConfigurationFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-usercube-com:configuration">
+   <DisplayTable Identifier="sys_group" DisplayTableDesignElement="adaptable" EntityType="sys_group" IsEntityTypeDefault="true">
+        <Column CanBeFiltered="true" DisplayBinding="name" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" />
+        <Column CanBeFiltered="true" DisplayBinding="sys_id" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" />
+        <Column CanBeFiltered="true" DisplayBinding="description" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" />
+    </DisplayTable>
+    <DisplayTable Identifier="sys_user" DisplayTableDesignElement="adaptable" EntityType="sys_user" IsEntityTypeDefault="true">
+        <Column CanBeFiltered="true" DisplayBinding="name" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" />
+        <Column CanBeFiltered="true" DisplayBinding="sys_id" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" />
+    </DisplayTable>
+    <!-- Groupe d'affichage de propriété-->
+    <DisplayPropertyGroup Identifier="sNow_Group" DisplayName_L1="Mes Groupes" />
+    <DisplayPropertyGroup Identifier="sNow_Personal_Data" DisplayName_L1="Personal Data" />
+   <!--  <DisplayEntityType Identifier="sys_user" PluralDisplayName_L1="comptes sNow" IconCode="MapPin" Color="#95c18b"
+        Priority="1" >
+        <Property Identifier="email" Group="sNow_Personal_Data" />
+        <Property Identifier="name" Group="sNow_Personal_Data" />
+        <Property Identifier="sys_id" Group="sNow_Personal_Data" />
+        <Property Identifier="user_name" Group="sNow_Personal_Data" />
+        <Property Identifier="group" Group="sNow_Group" />
+    </DisplayEntityType >-->
+
+    <DisplayEntityType Identifier="sys_group" PluralDisplayName_L1="group sNow" Priority="2"/>
+   <!-- -->
+    <Form Identifier="sNow user" EntityType="sys_user" IsDefaultViewForm="true">
+        <Control DisplayName_L1="user Data" OutputType="LayoutFieldset" Name="User Data">
+          <Control Binding="email" />
+          <Control Binding="sys_id" />
+          <Control Binding="user_name" />
+          <Control Binding="name" />
+        </Control>
+    
+        <Control DisplayName_L1="Additional Data" OutputType="LayoutFieldset" Name="Additional Data">
+          <Control Binding="group" />
+        </Control>
+    </Form>
+    <Form Identifier="sNow group" EntityType="sys_group" IsDefaultViewForm="true">
+        <Control DisplayName_L1="Group Data" OutputType="LayoutFieldset" Name="Group Data">
+          <Control Binding="description" />
+          <Control Binding="sys_id" />
+          <Control Binding="name" />
+        </Control>
+    
+        <Control DisplayName_L1="Additional Data" OutputType="LayoutFieldset" Name="Additional Data">
+          <Control Binding="user" />
+        </Control>
+    </Form>
+   
+   
+</ConfigurationFile>

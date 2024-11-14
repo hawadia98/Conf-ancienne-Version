@@ -1,0 +1,35 @@
+﻿<ConfigurationFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-usercube-com:configuration">
+  <EntityType Identifier="RH_User" DisplayName_L1="RH User">
+    <Property Identifier="ContractEndDate" DisplayName_L1="ContractEndDate" TargetColumnIndex="4" Type="String" />
+    <Property Identifier="ContractIdentifier" DisplayName_L1="ContractIdentifier" TargetColumnIndex="5" Type="String" />
+    <Property Identifier="ContractStartDate" DisplayName_L1="ContractStartDate" TargetColumnIndex="6" Type="String" />
+    <Property Identifier="EmployeeId" DisplayName_L1="EmployeeId" IsKey="true" TargetColumnIndex="7" Type="String" />
+    <Property Identifier="FirstName" DisplayName_L1="FirstName" TargetColumnIndex="8" Type="String" />
+    <Property Identifier="LastName" DisplayName_L1="LastName" TargetColumnIndex="9" Type="String" />
+    <Property Identifier="Organization" DisplayName_L1="Organization" TargetColumnIndex="10" Type="String" />
+    <Property Identifier="PersonalTitle" DisplayName_L1="PersonalTitle" TargetColumnIndex="11" Type="String" />
+    <Property Identifier="Site" DisplayName_L1="Site" TargetColumnIndex="12" Type="String" />
+    <Property Identifier="Subsidiary" DisplayName_L1="Subsidiary" TargetColumnIndex="13" Type="String" />
+    <Property Identifier="Title" DisplayName_L1="Title" TargetColumnIndex="14" Type="String" />
+    <Property Identifier="UserType" DisplayName_L1="UserType" TargetColumnIndex="15" Type="String" />
+    <Property Identifier="VIP" DisplayName_L1="VIP" TargetColumnIndex="16" Type="String" />
+  </EntityType>
+  <Connector Identifier="ConnectorRH" DisplayName_L1="Connector RH" Agent="Default" IncrementalJob="NotUsed" />
+  <Connection Identifier="connectionRH" DisplayName_L1="connectionRH" Connector="ConnectorRH" Package="Usercube.CSV@0000001" />
+  <EntityTypeMapping Identifier="RH_User" ConnectionTable="connectionRH" Connector="ConnectorRH">
+    <Property Identifier="ContractEndDate" ConnectionColumn="ContractEndDate" />
+    <Property Identifier="ContractIdentifier" ConnectionColumn="ContractIdentifier" />
+    <Property Identifier="ContractStartDate" ConnectionColumn="ContractStartDate" />
+    <Property Identifier="EmployeeId" ConnectionColumn="EmployeeId" IsPrimaryKey="true" IsUniqueKey="true" />
+    <Property Identifier="FirstName" ConnectionColumn="FirstName" />
+    <Property Identifier="LastName" ConnectionColumn="LastName" />
+    <Property Identifier="Organization" ConnectionColumn="Organization" />
+    <Property Identifier="PersonalTitle" ConnectionColumn="PersonalTitle" />
+    <Property Identifier="Site" ConnectionColumn="Site" />
+    <Property Identifier="Subsidiary" ConnectionColumn="Subsidiary" />
+    <Property Identifier="Title" ConnectionColumn="Title" />
+    <Property Identifier="UserType" ConnectionColumn="UserType" />
+    <Property Identifier="VIP" ConnectionColumn="VIP" />
+  </EntityTypeMapping>
+  <ViewTemplateAdaptable EntityType="RH_User" Profile="Administrator" />
+</ConfigurationFile>

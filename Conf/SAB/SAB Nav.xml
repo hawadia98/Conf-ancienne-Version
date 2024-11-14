@@ -1,0 +1,6 @@
+﻿<ConfigurationFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-usercube-com:configuration">
+  <MenuItem Identifier="Nav_Connectors_SAB" DisplayName_L1="SAB" ParentMenuItem="Nav_Connectors">
+    <MenuItem Identifier="Nav_Connectors_SAB_SAB_Group" DisplayName_L1="SAB Group" EntityType="SAB_Group" />
+    <MenuItem Identifier="Nav_Connectors_SAB_SAB_User" DisplayName_L1="SAB User" EntityType="SAB_User" />
+  </MenuItem>
+</ConfigurationFile>

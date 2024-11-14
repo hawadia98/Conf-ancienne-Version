@@ -1,0 +1,24 @@
+<ConfigurationFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-usercube-com:configuration">
+  
+  <!-- Role naming-->
+    <RoleMapping Identifier="sNow-group-ATF" ApprovalWorkflowType="One" CategoryDisplayNameExpression="Literal:sNow"
+        CategoryIdentifierExpression="Literal:sNow" DisplayNameBinding="sys_group:name" 
+        DisplayNameExpression="ToUpper" IdentifierBinding="sys_group:sys_id" Policy="Default" 
+        Property="sys_user:group" ResourceType="Directory_User_To_sNow_user_Fulfill_Automatic">
+        <Rule>
+            <Item Operator="StartWith" Property="sys_group:name" Value="ATF" />
+        </Rule>
+    </RoleMapping> 
+    <RoleMapping Identifier="sNow-group-All" ApprovalWorkflowType="One" CategoryDisplayNameExpression="Literal:sNow"
+        CategoryIdentifierExpression="Literal:sNow" DisplayNameBinding="sys_group:name" 
+        DisplayNameExpression="ToUpper" IdentifierBinding="sys_group:sys_id" Policy="Default" 
+        Property="sys_user:group" ResourceType="Directory_User_To_sNow_user_Fulfill_Automatic">
+      <!--  <Rule>
+            <Item Operator="StartWith" Property="sys_group:name" Value="App" />
+        </Rule>--> 
+    </RoleMapping> 
+
+    <Job Identifier="sNow_ApplyRoleMappings" DisplayName_L1="sNow- Generate Roles/Rules">
+        <BuildRoleModelTask Identifier="sNow_ApplyRoleMappings" Connector="ServiceNow" DisplayName_L1="sNow - Generate Roles/Rules" />
+    </Job>
+</ConfigurationFile>

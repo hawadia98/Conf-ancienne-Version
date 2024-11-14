@@ -1,0 +1,5 @@
+﻿<ConfigurationFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-usercube-com:configuration">
+  <MenuItem Identifier="Nav_Connectors_ConnectorRH" DisplayName_L1="Connector RH" ParentMenuItem="Nav_Connectors">
+    <MenuItem Identifier="Nav_Connectors_ConnectorRH_RH_User" DisplayName_L1="RH User" EntityType="RH_User" />
+  </MenuItem>
+</ConfigurationFile>

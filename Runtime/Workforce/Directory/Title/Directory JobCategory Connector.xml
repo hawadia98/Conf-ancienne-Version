@@ -1,0 +1,16 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <EntityType Identifier="Directory_JobCategory" DisplayName_L1="Business Category">
+    <Property Identifier="Identifier" DisplayName_L1="Code" Type="String" IsKey="true" TargetColumnIndex="4" />
+    <Property Identifier="DisplayName" DisplayName_L1="Name" Type="String" TargetColumnIndex="5" TemplateTransformation="OnePerLanguage" />
+    <Property Identifier="Titles" DisplayName_L1="Titles" Type="ForeignKey" />
+  </EntityType>
+
+  <DisplayEntityType PluralDisplayName_L1="Business Categories" IconCode="Suitcase" Identifier="Directory_JobCategory" Color="#95c18b" HideRoles="true">
+    <Property DisplayOrder="-1" IsRequired="true" Identifier="Identifier" />
+    <Property IsRequired="true" Identifier="DisplayName" />
+    <Property OutputType="BasicCollection" Identifier="Titles" />
+  </DisplayEntityType>
+
+  <CreateUpdateDeleteTemplate EntityType="Directory_JobCategory" Profile="Administrator" />
+  <ConnectorMappings Connector="Directory" EntityType="Directory_JobCategory" IsIncremental="1" Package="Usercube.Excel@0000001" />
+</ConfigurationFile>
