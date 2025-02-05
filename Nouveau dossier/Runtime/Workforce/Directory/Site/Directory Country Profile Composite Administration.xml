@@ -1,0 +1,5 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Profile Identifier="Workforce/Workflows/Directory_Country/Administration" DisplayName_L1="Workforce/Workflows/Administrate Countries" IsComponent="true" />
+
+  <CreateUpdateDeleteAccessControlRules EntityType="Directory_Country" Profile="Workforce/Workflows/Directory_Country/Administration" />
+</ConfigurationFile>

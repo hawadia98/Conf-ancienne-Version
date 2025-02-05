@@ -1,0 +1,5 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Profile Identifier="Workforce/Workflows/Directory_ReservedEmail/Administration" DisplayName_L1="Workforce/Workflows/Administrate Reserved Emails" IsComponent="true" />
+
+  <CreateUpdateDeleteAccessControlRules EntityType="Directory_ReservedEmail" Profile="Workforce/Workflows/Directory_ReservedEmail/Administration" />
+</ConfigurationFile>

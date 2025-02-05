@@ -1,0 +1,33 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Form Identifier="Workflow_Directory_UserRecord_Contract_Unique" EntityType="Directory_UserRecord">
+    <Control Binding="ContractIdentifier" />
+  </Form>
+  
+  <Form Identifier="Workflow_Directory_UserRecord_Contract_Base" EntityType="Directory_UserRecord">
+    <Control Binding="EmployeeId" ColumnSize="4" />
+    <Control Binding="ContractIdentifier" ColumnSize="4" />
+    <Control Binding="UserType" />
+    <Control Binding="Subsidiary" />
+    <Control Binding="ExternalCompany" />
+    <Control Binding="Suspended" />
+    <Control Binding="ContractStartDate" />
+    <Control Binding="ContractEndDate" />
+    <Control Binding="AccessesExpirationDate" />
+  </Form>
+
+  <DisplayTable Identifier="Directory_UserRecord_ManageContracts" EntityType="Directory_UserRecord" DisplayTableDesignElement="table">
+    <Column DisplayBinding="EmployeeId" IsDisplayInSummaryView="true" ColumnSize="1" />
+    <Column DisplayBinding="UserType.InternalDisplayName" DisplayName_L1="User Type" IsDisplayInSummaryView="true" ColumnSize="1" />
+    <Column DisplayBinding="Subsidiary.InternalDisplayName" DisplayName_L1="Subsidiary" IsDisplayInSummaryView="true" ColumnSize="1" />
+    <Column DisplayBinding="ContractStartDate" DisplayName_L1="Start Date" IsDisplayInSummaryView="true" ColumnSize="1" />
+    <Column DisplayBinding="ContractEndDate" DisplayName_L1="End Date" IsDisplayInSummaryView="true" ColumnSize="1" />
+  </DisplayTable>
+
+  <WorkflowUpdateSeveralRecordsEntityForm Identifier="Workflow_Directory_User_ManageContracts" EntityType="Workflow_Directory_User" MainProperty="Workflow_Directory_User:Directory_User" RecordProperty="Directory_User:Records" RecordTable="Directory_UserRecord_ManageContracts" WorkflowRequestType="Self" Activity="Directory_User_ManageContracts:Request" FormTitle_L1="Manage Contracts" TableTitle_L1="Contracts" AddRowLabel_L1="Add Contract" RemoveRowLabel_L1="Remove Contract" RecordStartProperty="Directory_UserRecord:ContractStartDate" RecordEndProperty="Directory_UserRecord:ContractEndDate">
+    <RecordControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_Contract_Base" />
+    <RecordUniqueItemControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_Contract_Unique" />
+    <RecordSlaveControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_Contract_Base" />
+  </WorkflowUpdateSeveralRecordsEntityForm>
+
+</ConfigurationFile>

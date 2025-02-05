@@ -1,0 +1,19 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <CreateUpdateDeleteTemplate EntityType="Catalog_Application_Account" Profile="Administrator" />
+
+	<DisplayEntityType PluralDisplayName_L1="Catalogue - Comptes" IconCode="List" Identifier="Catalog_Application_Account">
+		<Property DisplayOrder="-1" IsRequired="true" Identifier="Identifier" />
+		<Property IsRequired="true" Identifier="Login" />
+	</DisplayEntityType>
+
+    <WorkflowCreateEntityForm Identifier="Workflow_Catalog_Application_Account_Create" EntityType="Workflow_Catalog_Application_Account" MainProperty="Workflow_Catalog_Application_Account:Catalog_Application_Account" WorkflowRequestType="Self" FormTitle_L1="Catalogue - Compte - Création" Activity="Catalog_Application_Account_Create:Request">
+        <MainControl OutputType="LayoutContainer" EntityType="Catalog_Application_Account">
+            <Control Binding="Identifier" />
+            <Control Binding="Login" />
+            <Control Binding="Application" />
+            <Control Binding="Profiles" InputType="Picker" OutputType="BasicCollection" />
+        </MainControl>
+    </WorkflowCreateEntityForm>
+
+</ConfigurationFile>

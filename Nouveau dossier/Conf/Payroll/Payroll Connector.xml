@@ -1,0 +1,318 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- Payroll Connector -->
+    <Connector Identifier="Payroll" DisplayName_L1="Paie" Agent="CAA" />
+
+    <!-- Payroll CompanyType -->
+    <Connection Identifier="PayrollCompanyType" DisplayName_L1="Export Company Type" Connector="Payroll" Package="Usercube.CSV@0000001" />
+
+    <ViewTemplate EntityType="Payroll_CompanyType" Profile="Administrator" />
+
+    <EntityType Identifier="Payroll_CompanyType" DisplayName_L1="Paie - Type de société">
+        <Property Identifier="Code" DisplayName_L1="Code" Type="String" TargetColumnIndex="4" IsKey="true" />
+        <Property Identifier="Name" DisplayName_L1="Libellé" Type="String" TargetColumnIndex="5" />
+    </EntityType>
+
+    <EntityTypeMapping Identifier="Payroll_CompanyType" Connector="Payroll" ConnectionTable="PayrollCompanyType">
+        <Property Identifier="Code" ConnectionColumn="CODE" IsPrimaryKey="true" />
+        <Property Identifier="Name" ConnectionColumn="TYPE" />
+    </EntityTypeMapping>
+
+    <EntityPropertyExpression Identifier="Payroll_CompanyType_InternalDisplayName" Binding="Name" EntityType="Payroll_CompanyType" Property="InternalDisplayName" />
+
+    <!-- Payroll Company -->
+    <Connection Identifier="PayrollCompany" DisplayName_L1="Export Company" Connector="Payroll" Package="Usercube.CSV@0000001" />
+
+    <ViewTemplate EntityType="Payroll_Company" Profile="Administrator" />
+
+    <EntityType Identifier="Payroll_Company" DisplayName_L1="Paie - Société">
+        <Property Identifier="Code" DisplayName_L1="Code" Type="String" TargetColumnIndex="4" IsKey="true" />
+        <Property Identifier="Name" DisplayName_L1="Libellé" Type="String" TargetColumnIndex="5" />
+        <Property Identifier="Type" DisplayName_L1="Type" Type="String" TargetColumnIndex="6" />
+    </EntityType>
+
+    <EntityTypeMapping Identifier="Payroll_Company" Connector="Payroll" ConnectionTable="PayrollCompany">
+        <Property Identifier="Code" ConnectionColumn="CODE" IsPrimaryKey="true" />
+        <Property Identifier="Name" ConnectionColumn="SOCIETE" />
+        <Property Identifier="Type" ConnectionColumn="TYPE" />
+    </EntityTypeMapping>
+
+    <EntityPropertyExpression Identifier="Payroll_Company_InternalDisplayName" Binding="Name" EntityType="Payroll_Company" Property="InternalDisplayName" />
+
+    <!-- Payroll ContractType -->
+    <Connection Identifier="PayrollContractType" DisplayName_L1="Export Contract Type" Connector="Payroll" Package="Usercube.CSV@0000001" />
+
+    <ViewTemplate EntityType="Payroll_ContractType" Profile="Administrator" />
+
+    <EntityType Identifier="Payroll_ContractType" DisplayName_L1="Paie - Contrat">
+        <Property Identifier="Code" DisplayName_L1="Code" Type="String" TargetColumnIndex="4" IsKey="true" />
+        <Property Identifier="Name" DisplayName_L1="Libellé" Type="String" TargetColumnIndex="5" />
+        <Property Identifier="UserType" DisplayName_L1="Type d'utilisateur" Type="String" TargetColumnIndex="6" />
+    </EntityType>
+
+    <EntityTypeMapping Identifier="Payroll_ContractType" Connector="Payroll" ConnectionTable="PayrollContractType">
+        <Property Identifier="Code" ConnectionColumn="CODE" IsPrimaryKey="true" />
+        <Property Identifier="Name" ConnectionColumn="CONTRAT" />
+        <Property Identifier="UserType" ConnectionColumn="TYPE D'UTILISATEUR" />
+    </EntityTypeMapping>
+
+    <EntityPropertyExpression Identifier="Payroll_ContractType_InternalDisplayName" Binding="Name" EntityType="Payroll_ContractType" Property="InternalDisplayName" />
+
+    <!-- Payroll UserType -->
+    <Connection Identifier="PayrollUserType" DisplayName_L1="Export User Type" Connector="Payroll" Package="Usercube.CSV@0000001" />
+
+    <ViewTemplate EntityType="Payroll_UserType" Profile="Administrator" />
+
+    <EntityType Identifier="Payroll_UserType" DisplayName_L1="Paie - Type d'utilisateur">
+        <Property Identifier="Code" DisplayName_L1="Code" Type="String" TargetColumnIndex="4" IsKey="true" />
+        <Property Identifier="Name" DisplayName_L1="Libellé" Type="String" TargetColumnIndex="5" />
+    </EntityType>
+
+    <EntityTypeMapping Identifier="Payroll_UserType" Connector="Payroll" ConnectionTable="PayrollUserType">
+        <Property Identifier="Code" ConnectionColumn="CODE" IsPrimaryKey="true" />
+        <Property Identifier="Name" ConnectionColumn="TYPE D'UTILISATEUR" />
+    </EntityTypeMapping>
+
+    <EntityPropertyExpression Identifier="Payroll_UserType_InternalDisplayName" Binding="Name" EntityType="Payroll_UserType" Property="InternalDisplayName" />
+
+    <!-- Payroll Function -->
+    <Connection Identifier="PayrollFunction" DisplayName_L1="Export Function" Connector="Payroll" Package="Usercube.CSV@0000001" />
+
+    <ViewTemplate EntityType="Payroll_Function" Profile="Administrator" />
+
+    <EntityType Identifier="Payroll_Function" DisplayName_L1="Paie - Fonction">
+        <Property Identifier="Code" DisplayName_L1="Code" Type="String" TargetColumnIndex="4" IsKey="true" />
+        <Property Identifier="Name" DisplayName_L1="Libellé" Type="String" TargetColumnIndex="5" />
+		<Property Identifier="PacificaCode" DisplayName_L1="Code Pacifica" Type="String" TargetColumnIndex="6" />
+    </EntityType>
+
+    <EntityTypeMapping Identifier="Payroll_Function" Connector="Payroll" ConnectionTable="PayrollFunction">
+        <Property Identifier="Code" ConnectionColumn="FONCTION" IsPrimaryKey="true" />
+        <Property Identifier="Name" ConnectionColumn="FONCTION" />
+		<Property Identifier="PacificaCode" ConnectionColumn="CODE PACIFICA" />
+    </EntityTypeMapping>
+
+    <EntityPropertyExpression Identifier="Payroll_Function_InternalDisplayName" Binding="Name" EntityType="Payroll_Function" Property="InternalDisplayName" />
+
+    <!-- Payroll Site -->
+    <Connection Identifier="PayrollSite" DisplayName_L1="Export Site" Connector="Payroll" Package="Usercube.CSV@0000001" />
+
+    <ViewTemplate EntityType="Payroll_Site" Profile="Administrator" />
+
+    <EntityType Identifier="Payroll_Site" DisplayName_L1="Paie - Lieu de travail">
+        <Property Identifier="Code" DisplayName_L1="Code" Type="String" TargetColumnIndex="4" IsKey="true" />
+        <Property Identifier="Name" DisplayName_L1="Libellé" Type="String" TargetColumnIndex="5" />
+        <Property Identifier="Company" DisplayName_L1="Société" Type="String" TargetColumnIndex="6" />
+    </EntityType>
+
+    <EntityTypeMapping Identifier="Payroll_Site" Connector="Payroll" ConnectionTable="PayrollSite">
+        <Property Identifier="Code" ConnectionColumn="CODE" IsPrimaryKey="true" />
+        <Property Identifier="Name" ConnectionColumn="LIEU DE TRAVAIL" />
+        <Property Identifier="Company" ConnectionColumn="SOCIETE" />
+    </EntityTypeMapping>
+
+    <EntityPropertyExpression Identifier="Payroll_Site_InternalDisplayName" Binding="Name" EntityType="Payroll_Site" Property="InternalDisplayName" />
+
+    <!-- Payroll Organization -->
+    <Connection Identifier="PayrollOrganization" DisplayName_L1="Export Organization" Connector="Payroll" Package="Usercube.CSV@0000001" />
+
+    <ViewTemplate EntityType="Payroll_Organization" Profile="Administrator" />
+
+    <EntityType Identifier="Payroll_Organization" DisplayName_L1="Paie - Direction">
+        <Property Identifier="Code" DisplayName_L1="Code" Type="String" TargetColumnIndex="4" IsKey="true" />
+        <Property Identifier="Name" DisplayName_L1="Libellé" Type="String" TargetColumnIndex="5" />
+        <Property Identifier="Parent" DisplayName_L1="Parent" Type="String" TargetColumnIndex="6" />
+        <Property Identifier="Level" DisplayName_L1="Niveau" Type="String" TargetColumnIndex="7" />
+        <Property Identifier="ManagerName" DisplayName_L1="Nom Responsable" Type="String" TargetColumnIndex="8" />
+        <Property Identifier="ManagerIdentifier" DisplayName_L1="Matricule Responsable" Type="String" TargetColumnIndex="9" />
+        <Property Identifier="ADAName" DisplayName_L1="Libellé ADA" Type="String" TargetColumnIndex="10" />
+    </EntityType>
+
+    <EntityTypeMapping Identifier="Payroll_Organization" Connector="Payroll" ConnectionTable="PayrollOrganization">
+        <Property Identifier="Code" ConnectionColumn="Mitem" IsPrimaryKey="true" />
+        <Property Identifier="Name" ConnectionColumn="Libellé" />
+        <Property Identifier="Parent" ConnectionColumn="Parent" />
+        <Property Identifier="Level" ConnectionColumn="Niveau" />
+        <Property Identifier="ManagerName" ConnectionColumn="Nom Resp." />
+        <Property Identifier="ManagerIdentifier" ConnectionColumn="Mat. Resp." />
+        <Property Identifier="ADAName" ConnectionColumn="Libellé ADA" />
+    </EntityTypeMapping>
+
+    <EntityPropertyExpression Identifier="Payroll_Organization_InternalDisplayName" Binding="Name" EntityType="Payroll_Organization" Property="InternalDisplayName" />
+
+    <!-- Payroll Transco Site -->
+    <Connection Identifier="PayrollTranscoSite" DisplayName_L1="Export Transco Site" Connector="Payroll" Package="Usercube.CSV@0000001" />
+
+    <ViewTemplate EntityType="Payroll_TranscoSite" Profile="Administrator" />
+
+    <EntityType Identifier="Payroll_TranscoSite" DisplayName_L1="Paie - Transco Lieu de travail">
+        <Property Identifier="Code" DisplayName_L1="Code" Type="String" TargetColumnIndex="4" IsKey="true" />
+        <Property Identifier="Name" DisplayName_L1="Libellé" Type="String" TargetColumnIndex="5" />
+        <Property Identifier="Company" DisplayName_L1="Société" Type="String" TargetColumnIndex="6" />
+		<Property Identifier="City" DisplayName_L1="Ville" Type="String" TargetColumnIndex="7" />
+		<Property Identifier="State" DisplayName_L1="Lieu de travail" Type="String" TargetColumnIndex="8" />
+		<Property Identifier="OUPacifica" DisplayName_L1="OU Pacifica" Type="String" TargetColumnIndex="9" />
+    </EntityType>
+
+    <EntityTypeMapping Identifier="Payroll_TranscoSite" Connector="Payroll" ConnectionTable="PayrollTranscoSite">
+        <Property Identifier="Code" ConnectionColumn="Code" IsPrimaryKey="true" />
+        <Property Identifier="Name" ConnectionColumn="Name" />
+        <Property Identifier="Company" ConnectionColumn="Company" />
+		<Property Identifier="City" ConnectionColumn="City" />
+		<Property Identifier="State" ConnectionColumn="State / Province" />
+		<Property Identifier="OUPacifica" ConnectionColumn="Ou" />
+    </EntityTypeMapping>
+
+    <EntityPropertyExpression Identifier="Payroll_TranscoSite_InternalDisplayName" Binding="Name" EntityType="Payroll_TranscoSite" Property="InternalDisplayName" />
+
+    <!-- Payroll Transco Organization -->
+    <Connection Identifier="PayrollTranscoOrganization" DisplayName_L1="Export Transco Organization" Connector="Payroll" Package="Usercube.CSV@0000001" />
+
+    <ViewTemplate EntityType="Payroll_TranscoOrganization" Profile="Administrator" />
+
+    <EntityType Identifier="Payroll_TranscoOrganization" DisplayName_L1="Paie - Transco Direction">
+        <Property Identifier="Code" DisplayName_L1="Code" Type="String" TargetColumnIndex="4" IsKey="true" />
+        <Property Identifier="Name" DisplayName_L1="Libellé" Type="String" TargetColumnIndex="5" />
+        <Property Identifier="Parent" DisplayName_L1="Parent" Type="String" TargetColumnIndex="6" />
+        <Property Identifier="Description" DisplayName_L1="Description" Type="String" TargetColumnIndex="7" />
+        <Property Identifier="DepartmentHead" DisplayName_L1="Responsable département" Type="String" TargetColumnIndex="8" />
+        <Property Identifier="CSM" DisplayName_L1="CSM" Type="String" TargetColumnIndex="9" />
+        <Property Identifier="Company" DisplayName_L1="Société" Type="String" TargetColumnIndex="10" />
+		<Property Identifier="Managers" DisplayName_L1="Responsables" Type="String" TargetColumnIndex="11" />
+    </EntityType>
+
+    <EntityTypeMapping Identifier="Payroll_TranscoOrganization" Connector="Payroll" ConnectionTable="PayrollTranscoOrganization">
+        <Property Identifier="Code" ConnectionColumn="Name" IsPrimaryKey="true" />
+        <Property Identifier="Name" ConnectionColumn="Name" />
+        <Property Identifier="Parent" ConnectionColumn="Parent" />
+        <Property Identifier="Description" ConnectionColumn="Description" />
+        <Property Identifier="DepartmentHead" ConnectionColumn="Department head" />
+        <Property Identifier="CSM" ConnectionColumn="CSM" />
+        <Property Identifier="Company" ConnectionColumn="Company" />
+		<Property Identifier="Managers" ConnectionColumn="Managers" />
+    </EntityTypeMapping>
+
+    <EntityPropertyExpression Identifier="Payroll_TranscoOrganization_InternalDisplayName" Binding="Name" EntityType="Payroll_TranscoOrganization" Property="InternalDisplayName" />
+
+    <!-- Payroll User -->
+    <Connection Identifier="PayrollUser" DisplayName_L1="Export User" Connector="Payroll" Package="Usercube.CSV@0000001" />
+
+    <ViewTemplate EntityType="Payroll_User" Profile="Administrator" />
+    <UpdateResourcesTemplate EntityType="Payroll_User" Profile="Administrator" />
+
+    <EntityType Identifier="Payroll_User" DisplayName_L1="Paie - Collaborateur">
+        <Property Identifier="EmployeeId" DisplayName_L1="IUG" TargetColumnIndex="4" Type="String" IsKey="true"/>
+        <Property Identifier="TeamsIdentifier" DisplayName_L1="Matricule" TargetColumnIndex="5" Type="String" IsKey="true"/>
+
+        <Property Identifier="Records" DisplayName_L1="Fiches de collaborateurs" Type="ForeignKey" />
+    </EntityType>
+
+    <EntityTypeMapping Identifier="Payroll_User" Connector="Payroll" ConnectionTable="PayrollUser">
+        <Property Identifier="EmployeeId" ConnectionColumn="IUG" IsPrimaryKey="true" />
+        <Property Identifier="TeamsIdentifier" ConnectionColumn="Matricule Teams" />
+    </EntityTypeMapping>
+
+    <EntityPropertyExpression Identifier="Payroll_User_InternalDisplayName" Binding="EmployeeId" EntityType="Payroll_User" Property="InternalDisplayName" />
+
+    <!-- Payroll User Record -->
+    <Connection Identifier="PayrollUserRecord" DisplayName_L1="Export User Record" Connector="Payroll" Package="Usercube.CSV@0000001" />
+
+    <ViewTemplate EntityType="Payroll_UserRecord" Profile="Administrator" />
+    <UpdateResourcesTemplate EntityType="Payroll_UserRecord" Profile="Administrator" />
+
+    <EntityType Identifier="Payroll_UserRecord" DisplayName_L1="Paie - Fiche de collaborateur">
+        <Property Identifier="PositionIdentifier" DisplayName_L1="Identifiant Poste" TargetColumnIndex="4" Type="String" IsKey="true"/>
+        <Property Identifier="EmployeeId" DisplayName_L1="IUG" TargetColumnIndex="5" Type="String" />
+        <Property Identifier="TeamsIdentifier" DisplayName_L1="Matricule" TargetColumnIndex="6" Type="String" />
+        <Property Identifier="FirstName" DisplayName_L1="Prénom" Type="String" TargetColumnIndex="7" />
+        <Property Identifier="LastName" DisplayName_L1="Nom" Type="String" TargetColumnIndex="8" />
+        <Property Identifier="MaidenName" DisplayName_L1="Nom Jeune Fille" Type="String" TargetColumnIndex="9" />
+
+        <Property Identifier="Company" DisplayName_L1="Société juridique" Type="String" TargetColumnIndex="10" />
+        <Property Identifier="BeneficiaryCompany" DisplayName_L1="Société bénéficiaire" Type="String" TargetColumnIndex="11" />
+
+        <Property Identifier="OrganizationLevel1" DisplayName_L1="Niveau 1" TargetColumnIndex="12" Type="String" />
+        <Property Identifier="OrganizationNameLevel1" DisplayName_L1="Libellé niveau 1" TargetColumnIndex="13" Type="String" />
+        <Property Identifier="OrganizationLevel2" DisplayName_L1="Niveau 2" TargetColumnIndex="14" Type="String" />
+        <Property Identifier="OrganizationNameLevel2" DisplayName_L1="Libellé niveau 2" TargetColumnIndex="15" Type="String" />
+        <Property Identifier="OrganizationLevel3" DisplayName_L1="Niveau 3" TargetColumnIndex="16" Type="String" />
+        <Property Identifier="OrganizationNameLevel3" DisplayName_L1="Libellé niveau 3" TargetColumnIndex="17" Type="String" />
+        <Property Identifier="OrganizationLevel4" DisplayName_L1="Niveau 4" TargetColumnIndex="18" Type="String" />
+        <Property Identifier="OrganizationNameLevel4" DisplayName_L1="Libellé niveau 4" TargetColumnIndex="19" Type="String" />
+        <Property Identifier="OrganizationLevel5" DisplayName_L1="Niveau 5" TargetColumnIndex="20" Type="String" />
+        <Property Identifier="OrganizationNameLevel5" DisplayName_L1="Libellé niveau 5" TargetColumnIndex="21" Type="String" />
+        <Property Identifier="OrganizationLevel6" DisplayName_L1="Niveau 6" TargetColumnIndex="22" Type="String" />
+        <Property Identifier="OrganizationNameLevel6" DisplayName_L1="Libellé niveau 6" TargetColumnIndex="23" Type="String" />
+        <Property Identifier="OrganizationLevel7" DisplayName_L1="Niveau 7" TargetColumnIndex="24" Type="String" />
+        <Property Identifier="OrganizationNameLevel7" DisplayName_L1="Libellé niveau 7" TargetColumnIndex="25" Type="String" />
+        <Property Identifier="OrganizationLevel8" DisplayName_L1="Niveau 8" TargetColumnIndex="26" Type="String" />
+        <Property Identifier="OrganizationNameLevel8" DisplayName_L1="Libellé niveau 8" TargetColumnIndex="27" Type="String" />
+
+        <Property Identifier="ContractStartDate" DisplayName_L1="Date Début Contrat" Type="String" TargetColumnIndex="28" />
+        <Property Identifier="ContractEndDate" DisplayName_L1="Date Fin Contrat" Type="String" TargetColumnIndex="29" />
+        <Property Identifier="ContractType" DisplayName_L1="Type Contrat" Type="String" TargetColumnIndex="30" />
+
+        <Property Identifier="ALDStartDate" DisplayName_L1="Date Début ALD" Type="String" TargetColumnIndex="31" />
+        <Property Identifier="ALDEndDate" DisplayName_L1="Date Fin ALD" Type="String" TargetColumnIndex="32" />
+        <Property Identifier="SuspensionStartDate" DisplayName_L1="Date Début Suspension" Type="String" TargetColumnIndex="33" />
+        <Property Identifier="SuspensionEndDate" DisplayName_L1="Date Fin Suspension" Type="String" TargetColumnIndex="34" />
+
+        <Property Identifier="Site" DisplayName_L1="Lieu de travail" Type="String" TargetColumnIndex="35" />
+        <Property Identifier="ManagerFirstName" DisplayName_L1="Prénom Responsable Hiérarchique principale" Type="String" TargetColumnIndex="36" />
+        <Property Identifier="ManagerLastName" DisplayName_L1="Nom Responsable Hiérarchique principale" Type="String" TargetColumnIndex="37" />
+        <Property Identifier="ManagerIUG" DisplayName_L1="IUG Responsable" Type="String" TargetColumnIndex="38" />
+        <Property Identifier="FileName" DisplayName_L1="Nom de fichier" Type="String" TargetColumnIndex="39" />
+		<Property Identifier="Function" DisplayName_L1="Fonction" Type="String" TargetColumnIndex="40" />
+
+        <Property Identifier="User" DisplayName_L1="Collaborateur" TargetColumnIndex="128" Type="ForeignKey" />
+    </EntityType>
+
+    <EntityTypeMapping Identifier="Payroll_UserRecord" Connector="Payroll" ConnectionTable="PayrollUserRecord">
+        <Property Identifier="PositionIdentifier" ConnectionColumn="IUG" IsPrimaryKey="true" />
+        <Property Identifier="EmployeeId" ConnectionColumn="IUG" IsUniqueKey="true" />
+        <Property Identifier="TeamsIdentifier" ConnectionColumn="Matricule Teams" />
+        <Property Identifier="FirstName" ConnectionColumn="Prénom" />
+        <Property Identifier="LastName" ConnectionColumn="Nom" />
+        <Property Identifier="MaidenName" ConnectionColumn="Nom Jeune Fille" />
+
+        <Property Identifier="Company" ConnectionColumn="Société juridique" />
+        <Property Identifier="BeneficiaryCompany" ConnectionColumn="Société Bénéficiaire" />
+
+        <Property Identifier="OrganizationLevel1" ConnectionColumn="Niveau 1" />
+        <Property Identifier="OrganizationNameLevel1" ConnectionColumn="Libellé niveau 1" />
+        <Property Identifier="OrganizationLevel2" ConnectionColumn="Niveau 2" />
+        <Property Identifier="OrganizationNameLevel2" ConnectionColumn="Libellé niveau 2" />
+        <Property Identifier="OrganizationLevel3" ConnectionColumn="Niveau 3" />
+        <Property Identifier="OrganizationNameLevel3" ConnectionColumn="Libellé niveau 3" />
+        <Property Identifier="OrganizationLevel4" ConnectionColumn="Niveau 4" />
+        <Property Identifier="OrganizationNameLevel4" ConnectionColumn="Libellé niveau 4" />
+        <Property Identifier="OrganizationLevel5" ConnectionColumn="Niveau 5" />
+        <Property Identifier="OrganizationNameLevel5" ConnectionColumn="Libellé niveau 5" />
+        <Property Identifier="OrganizationLevel6" ConnectionColumn="Niveau 6" />
+        <Property Identifier="OrganizationNameLevel6" ConnectionColumn="Libellé niveau 6" />
+        <Property Identifier="OrganizationLevel7" ConnectionColumn="Niveau 7" />
+        <Property Identifier="OrganizationNameLevel7" ConnectionColumn="Libellé niveau 7" />
+        <Property Identifier="OrganizationLevel8" ConnectionColumn="Niveau 8" />
+        <Property Identifier="OrganizationNameLevel8" ConnectionColumn="Libellé niveau 8" />
+
+        <Property Identifier="ALDStartDate" ConnectionColumn="Date Début ALD" />
+        <Property Identifier="ALDEndDate" ConnectionColumn="Date Fin ALD" />
+        <Property Identifier="SuspensionStartDate" ConnectionColumn="Date Début Suspension" />
+        <Property Identifier="SuspensionEndDate" ConnectionColumn="Date Fin Suspension" />
+
+        <Property Identifier="Site" ConnectionColumn="Lieu de travail" />
+        <Property Identifier="ManagerLastName" ConnectionColumn="Nom Resp Hiérarchique principale" />
+        <Property Identifier="ManagerFirstName" ConnectionColumn="Prenom Resp Hiérarchique principale" />
+        <Property Identifier="ManagerIUG" ConnectionColumn="IUG Resp Hiérarchique principale" />
+        <Property Identifier="ContractType" ConnectionColumn="Type de contrat" />
+        <Property Identifier="ContractStartDate" ConnectionColumn="Date Début Type Contrat" />
+		<Property Identifier="Function" ConnectionColumn="Fonction / Emploi" />
+        <Property Identifier="FileName" ConnectionColumn="FileName" />
+    </EntityTypeMapping>
+
+    <EntityAssociation Identifier="Payroll_UserRecord_User" IsProperty2Collection="true" Property1="Payroll_UserRecord:User" Property2="Payroll_User:Records" />
+    <EntityAssociationMapping Identifier="Payroll_UserRecord_User" Column1="IUG" Column2="IUG" ConnectionTable="PayrollUserRecord" EntityPropertyMapping1="Payroll_UserRecord:EmployeeId" EntityPropertyMapping2="Payroll_User:EmployeeId" Connector="Payroll" />
+
+    <EntityPropertyExpression Identifier="Payroll_UserRecord_InternalDisplayName" Binding="PositionIdentifier" EntityType="Payroll_UserRecord" Property="InternalDisplayName" />
+
+</ConfigurationFile>

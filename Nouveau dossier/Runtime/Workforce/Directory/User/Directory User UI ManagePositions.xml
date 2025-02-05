@@ -1,0 +1,22 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Form Identifier="Workflow_Directory_UserRecord_Position_Unique" EntityType="Directory_UserRecord">
+    <Control Binding="PositionIdentifier" />
+  </Form>
+  
+  <DisplayTable Identifier="Directory_UserRecord_ManagePositions" EntityType="Directory_UserRecord" DisplayTableDesignElement="table">
+    <Column DisplayBinding="PositionIdentifier" IsDisplayInSummaryView="true" ColumnSize="1" />
+    <Column DisplayBinding="Title.InternalDisplayName" DisplayName_L1="Title" IsDisplayInSummaryView="true" ColumnSize="1" />
+    <Column DisplayBinding="Organization.InternalDisplayName" DisplayName_L1="Department" IsDisplayInSummaryView="true" ColumnSize="1" />
+    <Column DisplayBinding="Site.InternalDisplayName" DisplayName_L1="Site" IsDisplayInSummaryView="true" ColumnSize="1" />
+    <Column DisplayBinding="PositionStartDate" DisplayName_L1="Start Date" IsDisplayInSummaryView="true" ColumnSize="1" />
+    <Column DisplayBinding="PositionEndDate" DisplayName_L1="End Date" IsDisplayInSummaryView="true" ColumnSize="1" />
+  </DisplayTable>
+
+  <WorkflowUpdateSeveralRecordsEntityForm Identifier="Workflow_Directory_User_ManagePositions" EntityType="Workflow_Directory_User" MainProperty="Workflow_Directory_User:Directory_User" RecordProperty="Directory_User:Records" RecordTable="Directory_UserRecord_ManagePositions" WorkflowRequestType="Self" Activity="Directory_User_ManagePositions:Request" FormTitle_L1="Manage Positions" TableTitle_L1="Positions" AddRowLabel_L1="Add Position" RemoveRowLabel_L1="Remove Position" RecordStartProperty="Directory_UserRecord:PositionStartDate" RecordEndProperty="Directory_UserRecord:PositionEndDate">
+    <RecordControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_Position_Base" />
+    <RecordUniqueItemControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_Position_Unique" />
+    <RecordSlaveControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_Position_Base" />
+  </WorkflowUpdateSeveralRecordsEntityForm>
+
+</ConfigurationFile>

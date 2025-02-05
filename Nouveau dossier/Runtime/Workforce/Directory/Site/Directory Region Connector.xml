@@ -1,0 +1,24 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <EntityType Identifier="Directory_Region" DisplayName_L1="Region">
+    <Property Identifier="Identifier" DisplayName_L1="Code" Type="String" TargetColumnIndex="4" IsKey="true" />
+    <Property Identifier="DisplayName" DisplayName_L1="Name" Type="String" TargetColumnIndex="5" TemplateTransformation="OnePerLanguage" />
+    <Property Identifier="FullName" DisplayName_L1="Full Name" Type="String" TargetColumnIndex="0" />
+
+    <Property Identifier="Country" DisplayName_L1="Country" Type="ForeignKey" TargetColumnIndex="128" />
+    <Property Identifier="Sites" DisplayName_L1="Sites" Type="ForeignKey" />
+  </EntityType>
+
+  <DisplayEntityType PluralDisplayName_L1="Regions" IconCode="MapPin" Identifier="Directory_Region" Color="#95c18b" HideRoles="true">
+    <Property DisplayOrder="-1" IsRequired="true" Identifier="Identifier" />
+    <Property IsRequired="true" Identifier="DisplayName" />
+    <Property OutputType="BasicCollection" Identifier="Sites" />
+  </DisplayEntityType>
+
+  <EntityAssociation Identifier="Directory_Region_Country" IsProperty2Collection="true" Property1="Directory_Region:Country" Property2="Directory_Country:Regions" />
+
+  <EntityPropertyExpression Identifier="Directory_Region_FullName" Expression="C#:region:return region.Country == null ? region.DisplayName : (region.Country.DisplayName + &quot; / &quot; + region.DisplayName);"  EntityType="Directory_Region" Property="FullName" />
+  <EntityPropertyExpression Identifier="Directory_Region_InternalDisplayName_L1" Binding="FullName" EntityType="Directory_Region" Property="InternalDisplayName" Priority="1" />
+
+  <CreateUpdateDeleteTemplate EntityType="Directory_Region" Profile="Administrator" />
+  <ConnectorMappings Connector="Directory" EntityType="Directory_Region" IsIncremental="1" Package="Usercube.Excel@0000001" />
+</ConfigurationFile>

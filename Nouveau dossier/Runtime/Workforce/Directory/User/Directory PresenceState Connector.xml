@@ -1,0 +1,20 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <EntityType Identifier="Directory_PresenceState" DisplayName_L1="User Status" DisplayName_L2="État de présence">
+    <Property Identifier="Identifier" DisplayName_L1="Code" TargetColumnIndex="4" Type="String" IsKey="true" />
+    <Property Identifier="DisplayName" DisplayName_L1="Name" TargetColumnIndex="5" Type="String" TemplateTransformation="OnePerLanguage" />
+
+    <Property Identifier="Users" DisplayName_L1="Users" Type="ForeignKey" />
+  </EntityType>
+
+  <EntityTypeMapping Identifier="Directory_PresenceState" Connector="Directory" />
+
+  <DisplayEntityType PluralDisplayName_L1="User Status" Identifier="Directory_PresenceState" PluralDisplayName_L2="Présences des collaborateurs" />
+
+  <Resource Id="-100" DisplayName_L1="Archived" DisplayName_L2="Archivé" C4="A" C5="Archived" Type="Directory_PresenceState" />
+  <Resource Id="-101" DisplayName_L1="Active" DisplayName_L2="Actif" C4="P" C5="Active" Type="Directory_PresenceState" />
+  <Resource Id="-102" DisplayName_L1="Arriving" DisplayName_L2="En cours d'arrivée" C4="F" C5="Arriving" Type="Directory_PresenceState" />
+  <Resource Id="-103" DisplayName_L1="Pending Approval" DisplayName_L2="En attente de validation" C4="D" C5="Pending Approval" Type="Directory_PresenceState" />
+
+  <ViewTemplate EntityType="Directory_PresenceState" Profile="Administrator" />
+
+</ConfigurationFile>

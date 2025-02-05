@@ -1,0 +1,16 @@
+﻿{
+  "EntityProperty.Directory_UserRecord.EmployeeId.DisplayName": "IUG",
+  "EntityProperty.Directory_UserRecord.Manager.DisplayName": "Responsable hiérarchique",
+  "EntityProperty.Directory_UserRecord.IGAManager.DisplayName": "Responsable organisationnel",
+  "EntityProperty.Directory_UserRecord.EffectiveIGAManager.DisplayName": "Responsable effectif",
+  "EntityProperty.Directory_UserRecord.Email.DisplayName": "Email CAA",
+  "SearchBarCriteria.Directory_User[Directory_User:MainRecord.Organization].PlaceHolderText": "Direction",
+  "SearchBarCriteria.Workflow_Directory_User[Workflow_Directory_User:Directory_User.MainRecord.Organization].PlaceHolderText": "Direction",
+  "Policy.Default.Mining": "Politique Minage",
+  "Policy.Default.NamingConvention": "Politique Conventions de nommage",
+  "Profile.ApplicationOwner.DisplayName": "Propriétaire d'application",
+  "Profile.Manager.DisplayName": "Responsable",
+  "Profile.HR.DisplayName": "RH",
+  "Profile.Helpdesk.DisplayName": "Support",
+  "Profile.User.DisplayName": "Utilisateur"
+}

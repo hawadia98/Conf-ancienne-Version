@@ -1,0 +1,7 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Profile Identifier="Workforce/Directory/Directory_Gender/View" DisplayName_L1="Workforce/Directory/View Genders" IsComponent="true" />
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_Gender/View" EntityType="Directory_Gender" Identifier="Composite_Directory_Directory_Gender_View_*" DisplayName_L1="Composite_Directory_Directory_Gender_View_*" TemplateTransformation="AllowLinkedEntities;Directory_Gender;/Custom/Resources/Directory_Gender/View">
+    <Entry Permission="/Custom/Resources/Directory_Gender/View" CanExecute="true" />
+  </AccessControlRule>
+</ConfigurationFile>

@@ -1,0 +1,21 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Profile Identifier="Workforce/Workflows/Directory_User_SuspendReactivate/Request" DisplayName_L1="Workforce/Workflows/Suspend, Reactivate" IsComponent="true" />
+
+  <BasketRulesControlRules Profile="Workforce/Workflows/Directory_User_SuspendReactivate/Request"/>
+
+  <AccessControlRule Profile="Workforce/Workflows/Directory_User_SuspendReactivate/Request" EntityType="Workflow_Directory_User" Identifier="Composite_Workflows_Directory_User_Suspend_Request*" DisplayName_L1="Composite_Workflows_Directory_User_Suspend_Request*" TemplateTransformation="AllowLinkedEntities;Directory_User;/Custom/Workflows/Directory_User_Suspend/Request">
+    <!-- The filter enabled this workflow only of active users -->
+    <Filter Binding="Directory_User.Records.Suspended" Value="0" />
+    <Entry Permission="/Custom/Workflows/Directory_User_Suspend/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_Suspend/Request/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_Suspend/Request/Purged" CanExecute="true" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Workflows/Directory_User_SuspendReactivate/Request" EntityType="Workflow_Directory_User" Identifier="Composite_Workflows_Directory_User_Reactivate_Request*" DisplayName_L1="Composite_Workflows_Directory_User_Reactivate_Request*" TemplateTransformation="AllowLinkedEntities;Directory_User;/Custom/Workflows/Directory_User_Reactivate/Request">
+    <!-- The filter enabled this workflow only of suspended users -->
+    <Filter Binding="Directory_User.Records.Suspended" Value="1" />
+    <Entry Permission="/Custom/Workflows/Directory_User_Reactivate/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_Reactivate/Request/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_Reactivate/Request/Purged" CanExecute="true" />
+  </AccessControlRule>
+</ConfigurationFile>

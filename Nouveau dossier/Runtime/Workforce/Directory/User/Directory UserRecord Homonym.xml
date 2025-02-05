@@ -1,0 +1,26 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <HomonymEntityLink FormEntityType="Directory_UserRecord" Identifier="Directory_UserRecord">
+    <Filter
+      Property1="FirstName"
+      Property2="LastName"
+    />
+    <Filter
+      Property1="FirstName" ComparisonProperty1="LastName"
+      Property2="LastName" ComparisonProperty2="FirstName"
+    />
+    <Filter
+      Property1="FirstName"
+      Property2="LastName" ComparisonProperty2="BirthName"
+    />
+  </HomonymEntityLink>
+
+  <DisplayTable Identifier="Directory_UserRecord_Homonym" EntityType="Directory_UserRecord" DisplayTableDesignElement="table" HomonymEntityLink="Directory_UserRecord">
+    <Column DefaultSortPriority="1" DisplayBinding="LastName" IsDisplayInSummaryView="true" IsResizable="true" ColumnSize="2" />
+    <Column DisplayBinding="FirstName" IsDisplayInSummaryView="true" IsResizable="true" ColumnSize="2" />
+    <Column DisplayBinding="BirthName" IsDisplayInSummaryView="true" IsResizable="true" ColumnSize="2" />
+    <Column DisplayBinding="BirthDate" IsDisplayInSummaryView="true" IsResizable="true" ColumnSize="1" />
+    <Column DisplayBinding="UserType.InternalDisplayName" DisplayName_L1="UserType" IsDisplayInSummaryView="true" IsResizable="true" ColumnSize="2" />
+    <Column DisplayBinding="ExternalCompany.InternalDisplayName" DisplayName_L1="External Company" IsDisplayInSummaryView="true" IsResizable="true" ColumnSize="1" />
+  </DisplayTable>
+
+</ConfigurationFile>

@@ -1,0 +1,17 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <AccessControlRule Profile="Administrator" EntityType="ResourceType" Identifier="Administrator_ResourceTypeSelector_resourceType_LDAP" DisplayName_L1="Administrator_ResourceTypeSelector_resourceType_LDAP">
+    <Entry Permission="/Custom/Resources/AHMA_LDAP_Entry/View" CanExecute="true" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Administrator" EntityType="Category" Identifier="Administrator_ResourceTypeSelector_category_LDAP" DisplayName_L1="Administrator_ResourceTypeSelector_category_LDAP">
+    <Entry Permission="/Custom/Resources/AHMA_LDAP_Entry/View" CanExecute="true" />
+  </AccessControlRule>
+
+ <AccessControlRule Profile="Administrator" EntityType="AHMA_LDAP_Entry" Identifier="Administrator_PWR_AHMA_LDAP_Entry" DisplayName_L1="Administrator_PWR_AHMA_LDAP_Entry">
+    <Entry Permission="/Custom/Resources/AHMA_LDAP_Entry/View" CanExecute="true" />
+    <Entry Permission="/Custom/Resources/AHMA_LDAP_Entry/ResetPassword" CanExecute="true" />
+    <Entry Permission="/Custom/Resources/AHMA_LDAP_Entry/IndirectResetPassword" CanExecute="true" />
+    <Entry Permission="/Custom/Resources/AHMA_LDAP_Entry/ChangePassword" CanExecute="true" />
+  </AccessControlRule>
+
+</ConfigurationFile>

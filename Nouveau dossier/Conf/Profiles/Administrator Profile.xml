@@ -1,0 +1,55 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- Administrator Profile -->
+    <AccessControlRule Profile="Administrator" EntityType="Workflow_Directory_User" Identifier="Administrator_Workflows_Directory_User_New_External*" DisplayName_L1="Administrator_Workflows_Directory_User_New_External*">
+        <Filter Binding="Directory_User.Records.ContractType.UserType.DisplayName" Value="EXTERNE OU PARTENAIRE" />
+        <Filter Binding="Directory_User.Records.Company.Type.DisplayName" Value="ALIMENTATION AUTOMATIQUE" />
+
+        <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/ActionPending" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/Aborted" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/Purged" CanExecute="true" />
+    </AccessControlRule>
+
+    <AccessControlRule Profile="Administrator" EntityType="Workflow_Directory_User" Identifier="Administrator_Workflows_Directory_User_New_External_Manual" DisplayName_L1="Administrator_Workflows_Directory_User_New_External_Manual">
+        <Filter Binding="Directory_User.Records.ContractType.UserType.DisplayName" Value="EXTERNE OU PARTENAIRE" />
+        <Filter Binding="Directory_User.Records.Company.Type.DisplayName" Value="ALIMENTATION MANUELLE" />
+
+        <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/ActionPending" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/Aborted" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/Purged" CanExecute="true" />
+    </AccessControlRule>
+
+    <AccessControlRule Profile="Administrator" EntityType="Workflow_Directory_User" Identifier="Administrator_Workflows_Directory_User_New_External_Cds" DisplayName_L1="Administrator_Workflows_Directory_User_New_External_Cds">
+        <Filter Binding="Directory_User.Records.ContractType.UserType.DisplayName" Value="EXTERNE OU PARTENAIRE" />
+        <Filter Binding="Directory_User.Records.Company.Type.DisplayName" Value="CDS" />
+
+        <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/ActionPending" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/Aborted" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/Purged" CanExecute="true" />
+    </AccessControlRule>
+
+    <AccessControlRule Profile="Administrator" EntityType="Workflow_Directory_User" Identifier="Administrator_Workflows_Directory_User_CreateFromHR_Interne" DisplayName_L1="Administrator_Workflows_Directory_User_CreateFromHR_Interne">
+        <Filter Binding="Directory_User.Records.ContractType.UserType.DisplayName" Value="INTERNE" />
+
+        <Entry Permission="/Custom/Workflows/Directory_User_CreateFromHR/Review/ReviewPending" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_CreateFromHR/Review/RefinePending" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_CreateFromHR/Review/Aborted" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_CreateFromHR/Review/Purged" CanExecute="true" />
+    </AccessControlRule>
+
+	<AccessControlPropertyGroup Identifier="Directory_User_Administration" DisplayName_L1="User - Administration Properties" />
+	<AccessControlEntityType Identifier="Directory_User">
+		<Property VisibilityGroup="Directory_User_Administration" Identifier="IamLogin" />
+	</AccessControlEntityType>
+
+    <AccessControlPropertyGroup Identifier="Directory_UserRecord_HR" DisplayName_L1="User Record - HR Properties" />
+    <AccessControlPropertyGroup Identifier="Directory_UserRecord_Administration" DisplayName_L1="User Record - Administration Properties" />
+    <AccessControlEntityType Identifier="Directory_UserRecord">
+        <Property VisibilityGroup="Directory_UserRecord_HR" Identifier="Manager" />
+        <Property VisibilityGroup="Directory_UserRecord_HR" Identifier="IGAManager" />
+
+        <Property VisibilityGroup="Directory_UserRecord_Administration" Identifier="VIP" />
+        <Property VisibilityGroup="Directory_UserRecord_Administration" Identifier="Suspended" />
+    </AccessControlEntityType>
+
+</ConfigurationFile>

@@ -1,0 +1,7 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Profile Identifier="Workforce/Directory/Directory_Subsidiary/View" DisplayName_L1="Workforce/Directory/View Subsidiaries" IsComponent="true" />
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_Subsidiary/View" EntityType="Directory_Subsidiary" Identifier="Composite_Directory_Directory_Subsidiary_View_*" DisplayName_L1="Composite_Directory_Directory_Subsidiary_View_*" TemplateTransformation="AllowLinkedEntities;Directory_Subsidiary;/Custom/Resources/Directory_Subsidiary/View">
+    <Entry Permission="/Custom/Resources/Directory_Subsidiary/View" CanExecute="true" />
+  </AccessControlRule>
+</ConfigurationFile>

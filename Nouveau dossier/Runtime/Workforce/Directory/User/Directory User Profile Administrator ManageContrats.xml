@@ -1,0 +1,7 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <AccessControlRule Profile="Administrator" EntityType="Workflow_Directory_User" Identifier="Administrator_Workflows_Directory_User_ManageContracts_*" DisplayName_L1="Administrator_Workflows_Directory_User_ManageContracts_*">
+    <Entry Permission="/Custom/Workflows/Directory_User_ManageContracts/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_ManageContracts/Request/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_ManageContracts/Request/Purged" CanExecute="true" />
+  </AccessControlRule>
+</ConfigurationFile>

@@ -1,0 +1,28 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Profile Identifier="Workforce/Workflows/Helpdesk_Directory_User_New/Request" DisplayName_L1="Workforce/Workflows/New User (helpdesk)" IsComponent="true" />
+  <Profile Identifier="Workforce/Workflows/Helpdesk_Directory_User_FixRecord/Request" DisplayName_L1="Workforce/Workflows/Fix User Data (helpdesk)" IsComponent="true" />
+  <Profile Identifier="Workforce/Workflows/Helpdesk_Directory_User_Delete/Request" DisplayName_L1="Workforce/Workflows/Delete User (helpdesk)" IsComponent="true" />
+
+  <BasketRulesControlRules Profile="Workforce/Workflows/Helpdesk_Directory_User_New/Request"/>
+  <BasketRulesControlRules Profile="Workforce/Workflows/Helpdesk_Directory_User_FixRecord/Request"/>
+  <BasketRulesControlRules Profile="Workforce/Workflows/Helpdesk_Directory_User_Delete/Request"/>
+
+  <AccessControlRule Profile="Workforce/Workflows/Helpdesk_Directory_User_New/Request" EntityType="Workflow_Directory_User" Identifier="Composite_Workflows_Helpdesk_Directory_User_New_Request*" DisplayName_L1="Composite_Workflows_Helpdesk_Directory_User_New_Request*" TemplateTransformation="AllowLinkedEntities;Directory_User;/Custom/Workflows/Helpdesk_Directory_User_New/Request">
+    <Entry Permission="/Custom/Workflows/Helpdesk_Directory_User_New/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Helpdesk_Directory_User_New/Request/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Helpdesk_Directory_User_New/Request/Purged" CanExecute="true" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Workflows/Helpdesk_Directory_User_FixRecord/Request" EntityType="Workflow_Directory_User" Identifier="Composite_Workflows_Helpdesk_Directory_User_New_FixRecord*" DisplayName_L1="Composite_Workflows_Helpdesk_Directory_User_New_FixRecord*" TemplateTransformation="AllowLinkedEntities;Directory_User;/Custom/Workflows/Helpdesk_Directory_User_FixRecord/Request">
+    <Entry Permission="/Custom/Workflows/Helpdesk_Directory_User_FixRecord/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Helpdesk_Directory_User_FixRecord/Request/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Helpdesk_Directory_User_FixRecord/Request/Purged" CanExecute="true" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Workflows/Helpdesk_Directory_User_New/Request" EntityType="Workflow_Directory_User" Identifier="Composite_Workflows_Helpdesk_Directory_User_New_Delete*" DisplayName_L1="Composite_Workflows_Helpdesk_Directory_User_New_Delete*" TemplateTransformation="AllowLinkedEntities;Directory_User;/Custom/Workflows/Helpdesk_Directory_User_Delete/Request">
+    <Entry Permission="/Custom/Workflows/Helpdesk_Directory_User_Delete/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Helpdesk_Directory_User_Delete/Request/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Helpdesk_Directory_User_Delete/Request/Purged" CanExecute="true" />
+  </AccessControlRule>
+
+</ConfigurationFile>

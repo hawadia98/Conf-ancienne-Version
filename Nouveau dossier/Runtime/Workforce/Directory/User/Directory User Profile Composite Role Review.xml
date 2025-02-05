@@ -1,0 +1,27 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <!--
+  There is a composite profile per action in the access review section.
+  -->
+
+  <Profile Identifier="Workforce/RoleReview/Directory_User_ReviewRoles" DisplayName_L1="Workforce/Role Review/Review Roles" IsComponent="true" />
+  <AccessControlRule Identifier="Composite_RoleReview_Directory_User_ReviewRoles_SingleRole"
+                     DisplayName_L1="Composite_AccessReview_Directory_User_ReviewRoles"
+                     EntityType="AssignedSingleRole"
+                     Profile="Workforce/RoleReview/Directory_User_ReviewRoles">
+    <Filter Binding="Role.Category.Id" Category="true" />
+    <Filter Binding="WorkflowState" Value="8" />
+    <Filter Binding="WorkflowState" Value="9" />
+    <Filter Binding="WorkflowState" Value="11" />
+    <Entry CanExecute="true" Permission="/Custom/ProvisioningPolicy/ReviewRoles/Directory_User" />
+  </AccessControlRule>
+  <AccessControlRule Identifier="Composite_RoleReview_Directory_User_ReviewRoles_CompositeRole"
+                     DisplayName_L1="Composite_AccessReview_Directory_User_ReviewRoles"
+                     EntityType="AssignedCompositeRole"
+                     Profile="Workforce/RoleReview/Directory_User_ReviewRoles">
+    <Filter Binding="Role.Category.Id" Category="true" />
+    <Filter Binding="WorkflowState" Value="8" />
+    <Filter Binding="WorkflowState" Value="9" />
+    <Filter Binding="WorkflowState" Value="11" />
+    <Entry CanExecute="true" Permission="/Custom/ProvisioningPolicy/ReviewRoles/Directory_User" />
+  </AccessControlRule>
+</ConfigurationFile>

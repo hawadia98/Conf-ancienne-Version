@@ -1,0 +1,10 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <!--
+  This is the default agent provided with the product.
+  In SaaS, it can only provide "credential less" connections.
+  -->
+  <!--TODO: flag to restrict SaaS/Credentials -->
+  <Agent Identifier="Default" DisplayName_L1="Embedded Agent" />
+
+</ConfigurationFile>

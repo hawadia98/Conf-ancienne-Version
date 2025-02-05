@@ -1,0 +1,3 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <MenuItem Identifier="Nav_Connectors_CONNECTOR_IDENTIFIER_Entry" DisplayName_L1="CONNECTOR_DISPLAYNAMEL1 Entries" EntityType="CONNECTOR_IDENTIFIER_Entry" ParentMenuItem="Nav_Connectors" />
+</ConfigurationFile>

@@ -1,0 +1,7 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Profile Identifier="Workforce/Directory/Directory_ExternalCompany/View" DisplayName_L1="Workforce/Directory/View External Companies" IsComponent="true" />
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_ExternalCompany/View" EntityType="Directory_ExternalCompany" Identifier="Composite_Directory_Directory_ExternalCompany_View_*" DisplayName_L1="Composite_Directory_Directory_ExternalCompany_View_*" TemplateTransformation="AllowLinkedEntities;Directory_ExternalCompany;/Custom/Resources/Directory_ExternalCompany/View">
+    <Entry Permission="/Custom/Resources/Directory_ExternalCompany/View" CanExecute="true" />
+  </AccessControlRule>
+</ConfigurationFile>

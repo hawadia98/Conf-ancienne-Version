@@ -1,0 +1,22 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Job Identifier="CreateDatabaseViewsJob" DisplayName_L1="ZZ Administration/Vues" Agent="CAA">
+    <CreateDatabaseViewsTask Identifier="CreateDatabaseViewsJob_CreateDatabaseViews" DisplayName_L1="Créer les vues SQL" Agent="CAA" OpenIdClient="Job" />
+  </Job>
+
+  <Job Identifier="Administration_UpdateProfiles_CAA" DisplayName_L1="ZZ Administration/Mise à jour des profils" Agent="CAA">
+    <SetInternalUserProfilesTask Identifier="Administration_UpdateProfiles_CAA_SetInternalUserProfiles" DisplayName_L1="Profils - Assignation des profils automatiques">
+      <TaskEntityType EntityType="Directory_User" />
+    </SetInternalUserProfilesTask>
+	<ActivityInstanceActorTask Identifier="Administration_UpdateProfiles_CAA_ActivityInstanceActor" DisplayName_L1="Workflows - Mise à jour des acteurs" Agent="CAA" OpenIdClient="Job" />
+  </Job>
+
+  <Job Identifier="Administration_UpdateEntityPropertyExpressions_CAA" DisplayName_L1="ZZ Administration/Mise à jour des propriétés" Agent="CAA">
+    <UpdateEntityPropertyExpressionsTask Identifier="Administration_UpdateEntityPropertyExpressions_CAA" DisplayName_L1="Calculer toutes les propriétés" AllEntityType="true" />
+  </Job>
+
+  <Job Identifier="Administration_ComputeCorrelationKeys_CAA" DisplayName_L1="ZZ Administration/Mise à jour des clés de corrélation" Agent="CAA">
+    <ComputeCorrelationKeysTask Identifier="Administration_ComputeCorrelationKeys_CAA" DisplayName_L1="Calculer les clés de corrélation" AllEntityType="true" />
+  </Job>
+
+</ConfigurationFile>

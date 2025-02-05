@@ -1,0 +1,51 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <!--
+  There is a composite profile per action in the administration section.
+  -->
+
+  <!--TODO: approval 1/2/3-->
+  <Profile Identifier="Workforce/Administration/Directory_User_ReviewRoles" DisplayName_L1="Workforce/Administration/Review Roles" IsComponent="true" />
+  <ReviewRolesAccessControlRules EntityType="Directory_User" Profile="Workforce/Administration/Directory_User_ReviewRoles" />
+
+  <Profile Identifier="Workforce/Administration/Directory_User_ReviewProvisioning" DisplayName_L1="Workforce/Administration/Review Provisioning" IsComponent="true" />
+  <ReviewProvisioningAccessControlRules EntityType="Directory_User" Profile="Workforce/Administration/Directory_User_ReviewProvisioning" />
+
+  <Profile Identifier="Workforce/Administration/Directory_User_ReconciliateRoles" DisplayName_L1="Workforce/Administration/Reconciliate Roles" IsComponent="true" />
+  <ReconciliateRolesAccessControlRules EntityType="Directory_User" Profile="Workforce/Administration/Directory_User_ReconciliateRoles" />
+
+  <Profile Identifier="Workforce/Administration/Directory_User_ReconciliateResources" DisplayName_L1="Workforce/Administration/Reconciliate Resources" IsComponent="true" />
+  <ReconciliateResourcesAccessControlRules EntityType="Directory_User" Profile="Workforce/Administration/Directory_User_ReconciliateResources" />
+
+  <Profile Identifier="Workforce/Administration/Directory_User_ManageAccounts" DisplayName_L1="Workforce/Administration/Manage Accounts" IsComponent="true" />
+  <ManageAccounts EntityType="Directory_User" Profile="Workforce/Administration/Directory_User_ManageAccounts" />
+
+  <Profile Identifier="Workforce/Administration/Directory_User_ViewWorkflowOverview" DisplayName_L1="Workforce/Administration/View Requests" IsComponent="true" />
+  <WorkflowOverviewControlRules EntityType="Directory_User" Profile="Workforce/Administration/Directory_User_ViewWorkflowOverview" />
+
+  <Profile Identifier="Workforce/Administration/Directory_User_ProcessTickets" DisplayName_L1="Workforce/Administration/Process Tickets" IsComponent="true" />
+  <PerformManualProvisioningAccessControlRules EntityType="Directory_User" Profile="Workforce/Administration/Directory_User_ProcessTickets" />
+
+  <!-- History for the main Directory entity types -->
+  <Profile Identifier="Workforce/Administration/Directory_ViewAllHistory" DisplayName_L1="Workforce/Administration/View All History" IsComponent="true" />
+  <AccessControlRule Profile="Workforce/Administration/Directory_ViewAllHistory" EntityType="Directory_User" Identifier="Composite_Directory_Directory_User_ViewAllHistory_*" DisplayName_L1="Composite_Directory_Directory_User_ViewAllHistory_*">
+    <Entry Permission="/Custom/Resources/Directory_User/ViewHistory" CanExecute="true" />
+  </AccessControlRule>
+  <AccessControlRule Profile="Workforce/Administration/Directory_ViewAllHistory" EntityType="Directory_Organization" Identifier="Composite_Directory_Directory_Organization_ViewAllHistory_*" DisplayName_L1="Composite_Directory_Directory_Organization_ViewAllHistory_*">
+    <Entry Permission="/Custom/Resources/Directory_Organization/ViewHistory" CanExecute="true" />
+  </AccessControlRule>
+  <AccessControlRule Profile="Workforce/Administration/Directory_ViewAllHistory" EntityType="Directory_Site" Identifier="Composite_Directory_Directory_Site_ViewAllHistory_*" DisplayName_L1="Composite_Directory_Directory_Site_ViewAllHistory_*">
+    <Entry Permission="/Custom/Resources/Directory_Site/ViewHistory" CanExecute="true" />
+  </AccessControlRule>
+  <AccessControlRule Profile="Workforce/Administration/Directory_ViewAllHistory" EntityType="Directory_ExternalCompany" Identifier="Composite_Directory_Directory_ExternalCompany_ViewAllHistory_*" DisplayName_L1="Composite_Directory_Directory_ExternalCompany_ViewAllHistory_*">
+    <Entry Permission="/Custom/Resources/Directory_ExternalCompany/ViewHistory" CanExecute="true" />
+  </AccessControlRule>
+  <AccessControlRule Profile="Workforce/Administration/Directory_ViewAllHistory" EntityType="Directory_Subsidiary" Identifier="Composite_Directory_Directory_Subsidiary_ViewAllHistory_*" DisplayName_L1="Composite_Directory_Directory_Subsidiary_ViewAllHistory_*">
+    <Entry Permission="/Custom/Resources/Directory_Subsidiary/ViewHistory" CanExecute="true" />
+  </AccessControlRule>
+  <AccessControlRule Profile="Workforce/Administration/Directory_ViewAllHistory" EntityType="Directory_Title" Identifier="Composite_Directory_Directory_Title_ViewAllHistory_*" DisplayName_L1="Composite_Directory_Directory_Title_ViewAllHistory_*">
+    <Entry Permission="/Custom/Resources/Directory_Title/ViewHistory" CanExecute="true" />
+  </AccessControlRule>
+  <AccessControlRule Profile="Workforce/Administration/Directory_ViewAllHistory" EntityType="Directory_UserType" Identifier="Composite_Directory_Directory_UserType_ViewAllHistory_*" DisplayName_L1="Composite_Directory_Directory_UserType_ViewAllHistory_*">
+    <Entry Permission="/Custom/Resources/Directory_UserType/ViewHistory" CanExecute="true" />
+  </AccessControlRule>
+</ConfigurationFile>

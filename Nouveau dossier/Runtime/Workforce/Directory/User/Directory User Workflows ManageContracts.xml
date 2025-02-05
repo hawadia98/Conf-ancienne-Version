@@ -1,0 +1,7 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Workflow Identifier="Directory_User_ManageContracts" DisplayName_L1="User - Manage Contracts" VariablesType="Workflow_Directory_User">
+    <Activity Identifier="Request"  DisplayName_L1="Request" Template="ActionWithRefine" />
+    <Activity Identifier="Persist"  DisplayName_L1="Commit" Template="Persist" />
+  </Workflow>
+</ConfigurationFile>

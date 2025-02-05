@@ -1,0 +1,139 @@
+﻿<div>
+  <div style="font-family:'Segoe UI','-apple-system','BlinkMacSystemFont','Roboto','Arial',sans-serif; color:#212121; font-size:14px; background:#f8f8f8">
+    <table border="0" cellpadding="0" cellspacing="0" width="100%">
+      <tbody>
+        <tr>
+          <td class="x_mobile-hide" style="background-color:white; border-bottom:solid #eaeaea 1px">
+          </td>
+          <td class="x_content" width="640" style="padding:0px; max-width:640px; background-color:white; border-bottom:solid #eaeaea 1px">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+              <tbody>
+                <tr>
+                  <td style="padding:20px 24px 25px 24px; background:white">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="x_responsive-table">
+                      <tbody>
+                        <tr>
+                          <td>
+                            <table border="0" cellpadding="0" cellspacing="0" class="x_logo" width="100%">
+                              <tbody>
+                                <tr>
+                                  <td valign="middle" style="vertical-align:middle">
+                                    <img data-imagetype="External" src="@(new System.Uri(Html.Context.ApplicationUri, "logo.png").AbsoluteUri)" height="34" width="60">
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="x_hero" style="padding:0px 24px">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="x_responsive-table" style="max-width:592px">
+                      <tbody>
+                        <tr>
+                          <td>
+                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                              <tbody>
+                                <tr>
+                                  <td>
+                                    <!-- HEADER START -->
+                                    <table>
+                                      <tbody>
+                                        <tr>
+                                          <td class="x_title" style="padding:0 0 24px 0; color:#212121; font-size:28px; font-weight:bold; letter-spacing:-0.04em; line-height:40px; word-break:break-word">
+                                            @(Html.Context.MessageSubject ?? "Request summary")
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td class="x_message" style="padding:0 0 24px 0">
+                                            <div>
+                                              <p>Bonjour,</p>
+                                              <p>Une action de mise à jour nécessite votre attention. Veuillez consulter les informations de profil de la personne ci-dessous et informer immédiatement votre contact des ressources humaines si quelque chose ne va pas ou manque.</p>
+                                            </div>
+                                          </td>
+                                        </tr>
+                                        <tr>
+                                          <td style="padding:0 0 24px 0">
+                                            <table width="100%" border="0" cellspacing="0" cellpadding="0">
+                                              <tbody>
+                                                <tr>
+                                                  <td>
+                                                    <table border="0" cellspacing="0" cellpadding="0">
+                                                      <tbody>
+                                                        <tr>
+                                                          <td align="center" bgcolor="#007acc" style="padding:8px 12px; border-radius:2px">
+                                                            <a href="@(Html.Context.ApplicationUri.AbsoluteUri)" target="_blank" rel="noopener noreferrer" data-auth="NotApplicable" class="x_mobile-button x_btn-primary" style="font-weight:500; font-size:14px; text-decoration:none; padding:0px; display:inline-block; color:#ffffff">
+                                                              Je me connecte à RHEIA
+                                                            </a>
+                                                          </td>
+                                                        </tr>
+                                                      </tbody>
+                                                    </table>
+                                                  </td>
+                                                </tr>
+                                              </tbody>
+                                            </table>
+                                          </td>
+                                        </tr>
+                                      </tbody>
+                                    </table>
+                                    <!-- HEADER END -->
+                                  </td>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td class="x_mobile-hide" style="background-color:white; border-bottom:solid #eaeaea 1px">
+          </td>
+        </tr>
+        <tr>
+          <td class="x_mobile-hide" style="background:#f8f8f8"></td>
+          <td class="x_content" width="640" style="padding:0px; max-width:640px; background:#f8f8f8">
+            <table border="0" cellpadding="0" cellspacing="0" width="100%">
+              <tbody>
+                <tr>
+                  <td style="padding:24px 24px 8px 24px; max-width:592px">
+                    <table border="0" width="100%" cellpadding="0" cellspacing="0" class="x_responsive-table" style="vertical-align:middle; background-color:white">
+                      <tbody>
+                        <tr>
+                          <td style="padding:16px 24px 24px 24px">
+                            @Html.WorkflowSummaryFR(string.Empty, Model.InternalDisplayName)
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:24px 24px 24px 24px">
+                    <table border="0" cellpadding="0" cellspacing="0" width="100%" class="x_responsive-table">
+                      <tbody>
+                        <tr>
+                          <td style="color:#666666; font-size:12px; line-height:18px">
+                            This email is automatically generated by RHEIA. Please do not reply.
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+          <td class="x_mobile-hide" style="background:#f8f8f8"></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

@@ -1,0 +1,55 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- Procurement Connector -->
+    <Connector Identifier="Procurement" DisplayName_L1="Achat" Agent="CAA" />
+
+    <!-- Procurement EB -->
+    <Connection Identifier="ProcurementEB" DisplayName_L1="Export EB" Connector="Procurement" Package="Usercube.CSV@0000001" />
+
+    <ViewTemplate EntityType="Procurement_EB" Profile="Administrator" />
+
+    <EntityType Identifier="Procurement_EB" DisplayName_L1="Achat - E.B">
+        <Property Identifier="Code" DisplayName_L1="Code" Type="String" TargetColumnIndex="4" IsKey="true" />
+        <Property Identifier="Name" DisplayName_L1="Libellé" Type="String" TargetColumnIndex="5" />
+        <Property Identifier="Organization" DisplayName_L1="Organisation" Type="String" TargetColumnIndex="6" />
+        <Property Identifier="Requester" DisplayName_L1="Demandeur E.B." Type="String" TargetColumnIndex="7" />
+        <Property Identifier="Status" DisplayName_L1="Statut" Type="String" TargetColumnIndex="8" />
+        <Property Identifier="CreationDate" DisplayName_L1="Date de création" Type="String" TargetColumnIndex="9" />
+        <Property Identifier="OrderCode" DisplayName_L1="Code Commande" Type="String" TargetColumnIndex="10" />
+        <Property Identifier="Supplier" DisplayName_L1="Fournisseur" Type="String" TargetColumnIndex="11" />
+        <Property Identifier="ConsultationProcedure" DisplayName_L1="Procédure de consultation" Type="String" TargetColumnIndex="12" />
+        <Property Identifier="RealizationMethod" DisplayName_L1="Mode de réalisation" Type="String" TargetColumnIndex="13" />
+        <Property Identifier="PurchasingChannel" DisplayName_L1="Circuit d'achat" Type="String" TargetColumnIndex="14" />
+        <Property Identifier="CostCenter" DisplayName_L1="Centre de coût" Type="String" TargetColumnIndex="15" />
+        <Property Identifier="StartDate" DisplayName_L1="Date de Début" Type="String" TargetColumnIndex="16" />
+        <Property Identifier="EndDate" DisplayName_L1="Date de Fin" Type="String" TargetColumnIndex="17" />
+        <Property Identifier="NewMission" DisplayName_L1="Nouvelle mission" Type="String" TargetColumnIndex="18" />
+        <Property Identifier="DeliveryDate" DisplayName_L1="Date de livraison" Type="String" TargetColumnIndex="19" />
+        <Property Identifier="Entity" DisplayName_L1="Entité" Type="String" TargetColumnIndex="20" />
+        <Property Identifier="CA2" DisplayName_L1="CA2" Type="String" TargetColumnIndex="21" />
+    </EntityType>
+
+    <EntityTypeMapping Identifier="Procurement_EB" Connector="Procurement" ConnectionTable="ProcurementEB">
+        <Property Identifier="Code" ConnectionColumn="Code E.B." IsPrimaryKey="true" />
+        <Property Identifier="Name" ConnectionColumn="Libellé" />
+        <Property Identifier="Organization" ConnectionColumn="Organisation" />
+        <Property Identifier="Requester" ConnectionColumn="Demandeur E.B." />
+        <Property Identifier="Status" ConnectionColumn="Statut" />
+        <Property Identifier="CreationDate" ConnectionColumn="Date de création" />
+        <Property Identifier="OrderCode" ConnectionColumn="Code Commande" />
+        <Property Identifier="Supplier" ConnectionColumn="Fournisseur" />
+        <Property Identifier="ConsultationProcedure" ConnectionColumn="Procédure de consultation" />
+        <Property Identifier="RealizationMethod" ConnectionColumn="Mode de réalisation" />
+        <Property Identifier="PurchasingChannel" ConnectionColumn="Circuit d'achat" />
+        <Property Identifier="CostCenter" ConnectionColumn="Centre de coût" />
+        <Property Identifier="StartDate" ConnectionColumn="Date de Début" />
+        <Property Identifier="EndDate" ConnectionColumn="Date de Fin" />
+        <Property Identifier="NewMission" ConnectionColumn="Nouvelle mission" />
+        <Property Identifier="DeliveryDate" ConnectionColumn="Date de livraison" />
+        <Property Identifier="Entity" ConnectionColumn="Entité" />
+        <Property Identifier="CA2" ConnectionColumn="CA2" />
+    </EntityTypeMapping>
+
+    <EntityPropertyExpression Identifier="Procurement_EB_InternalDisplayName" Binding="Name" EntityType="Procurement_EB" Property="InternalDisplayName" />
+
+</ConfigurationFile>

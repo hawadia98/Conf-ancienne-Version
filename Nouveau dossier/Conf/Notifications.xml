@@ -1,0 +1,44 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- Notifications -->
+	 <NotificationAspect Identifier="Directory_User_CreateFromHR" ExpressionBinding="Workflow_Directory_User:Directory_User" SubjectExpression_L1="C#:user:return &quot;Nouveau collaborateur interne - &quot; + user.Records?.FirstOrDefault()?.EmployeeId + &quot; - &quot; +  Usercube.Expressions.Functions.UtilExpressions.ToFirstName(user.Records?.FirstOrDefault()?.FirstName, System.Globalization.CultureInfo.InvariantCulture) + &quot; &quot;+ user.Records?.FirstOrDefault()?.LastName?.ToUpper();" RazorFile_L1="Templates/Directory_User_CreateFromHR.cshtml" CssFile="Templates/Notification.css">
+		<PointCut Activity="Directory_User_CreateFromHR:Request" ActivityState="Action-Executed" Mode="After" />
+
+		<Recipient Type="Binding" Binding="Directory_User:Records.Manager.MainRecord.Email" />
+		<Recipient Type="Binding" Binding="Directory_User:Records.IGAManager.MainRecord.Email" />
+	  </NotificationAspect>
+
+	<NotificationAspect Identifier="Directory_User_NewExternal" ExpressionBinding="Workflow_Directory_User:Directory_User" SubjectExpression_L1="C#:user:return &quot;Nouveau collaborateur externe - &quot; + user.Records?.FirstOrDefault()?.EmployeeId + &quot; - &quot; +  Usercube.Expressions.Functions.UtilExpressions.ToFirstName(user.Records?.FirstOrDefault()?.FirstName, System.Globalization.CultureInfo.InvariantCulture) + &quot; &quot;+ user.Records?.FirstOrDefault()?.LastName?.ToUpper();" RazorFile_L1="Templates/Directory_User_NewExternal.cshtml" CssFile="Templates/Notification.css">
+		<PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+		
+		<Recipient Type="Performer" Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" />
+  	</NotificationAspect>
+
+	<NotificationAspect Identifier="Directory_User_UpdateFromHR" ExpressionBinding="Workflow_Directory_User:Directory_User" SubjectExpression_L1="C#:user:return &quot;Mise à jour RH - &quot; + user.Records?.FirstOrDefault()?.EmployeeId + &quot; - &quot; +  Usercube.Expressions.Functions.UtilExpressions.ToFirstName(user.Records?.FirstOrDefault()?.FirstName, System.Globalization.CultureInfo.InvariantCulture) + &quot; &quot;+ user.Records?.FirstOrDefault()?.LastName?.ToUpper();" RazorFile_L1="Templates/Directory_User_UpdateFromHR.cshtml" CssFile="Templates/Notification.css">
+		<PointCut Activity="Directory_User_UpdateFromHR:Request" ActivityState="Action-Executed" Mode="After" />
+		<PointCut Activity="Directory_User_MobilityFromHR:Request" ActivityState="Action-Executed" Mode="After" />
+
+		<Recipient Type="Binding" Binding="Directory_User:Records.Manager.MainRecord.Email" />
+		<Recipient Type="Binding" Binding="Directory_User:Records.IGAManager.MainRecord.Email" />
+  	</NotificationAspect>
+
+	<NotificationAspect Identifier="Directory_User_DeleteFromHR" ExpressionBinding="Workflow_Directory_User:Directory_User" SubjectExpression_L1="C#:user:return &quot;Départ RH - &quot; + user.Records?.FirstOrDefault()?.EmployeeId + &quot; - &quot; +  Usercube.Expressions.Functions.UtilExpressions.ToFirstName(user.Records?.FirstOrDefault()?.FirstName, System.Globalization.CultureInfo.InvariantCulture) + &quot; &quot;+ user.Records?.FirstOrDefault()?.LastName?.ToUpper();" RazorFile_L1="Templates/Directory_User_DeleteFromHR.cshtml" CssFile="Templates/Notification.css">
+		<PointCut Activity="Directory_User_DeleteFromHR:Request" ActivityState="Action-Executed" Mode="After" />
+		
+		<Recipient Type="Binding" Binding="Directory_User:Records.Manager.MainRecord.Email" />
+		<Recipient Type="Binding" Binding="Directory_User:Records.IGAManager.MainRecord.Email" />
+  	</NotificationAspect>
+
+	<NotificationAspect Identifier="Directory_User_DeleteFromHR_SIRCA" ExpressionBinding="Workflow_Directory_User:Directory_User" SubjectExpression_L1="C#:user:return &quot;Départ RH - &quot; + user.Records?.FirstOrDefault()?.EmployeeId + &quot; - &quot; +  Usercube.Expressions.Functions.UtilExpressions.ToFirstName(user.Records?.FirstOrDefault()?.FirstName, System.Globalization.CultureInfo.InvariantCulture) + &quot; &quot;+ user.Records?.FirstOrDefault()?.LastName?.ToUpper();" IfExpression="C#:user:return user.MainRecord?.Company?.Identifier == &quot;Sirca&quot;;" RazorFile_L1="Templates/Directory_User_DeleteFromHR.cshtml" CssFile="Templates/Notification.css">
+		<PointCut Activity="Directory_User_DeleteFromHR:Request" ActivityState="Action-Executed" Mode="After" />
+		
+		<Recipient Type="Hardcoded" EmailAddresses="SINEF@ca-assurances.fr" />
+  	</NotificationAspect>
+
+	<NotificationAspect Identifier="Directory_User_DeleteFromHR_EB" ExpressionBinding="Workflow_Directory_User:Directory_User" SubjectExpression_L1="C#:user:return &quot;Départ RH - &quot; + user.Records?.FirstOrDefault()?.EmployeeId + &quot; - &quot; +  Usercube.Expressions.Functions.UtilExpressions.ToFirstName(user.Records?.FirstOrDefault()?.FirstName, System.Globalization.CultureInfo.InvariantCulture) + &quot; &quot;+ user.Records?.FirstOrDefault()?.LastName?.ToUpper();" IfExpression="C#:user:return user.MainRecord?.EB != null &amp;&amp; user.MainRecord?.ContractType?.UserType?.DisplayName == &quot;EXTERNE OU PARTENAIRE&quot;;" RazorFile_L1="Templates/Directory_User_DeleteFromHR.cshtml" CssFile="Templates/Notification.css">
+		<PointCut Activity="Directory_User_DeleteFromHR:Request" ActivityState="Action-Executed" Mode="After" />
+		
+		<Recipient Type="Hardcoded" EmailAddresses="ACHATS@ca-assurances.fr" />
+  	</NotificationAspect>
+
+</ConfigurationFile>

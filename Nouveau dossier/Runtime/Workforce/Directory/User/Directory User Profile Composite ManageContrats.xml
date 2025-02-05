@@ -1,0 +1,11 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Profile Identifier="Workforce/Workflows/Directory_User_ManageContracts/Request" DisplayName_L1="Workforce/Workflows/Manage Contracts" IsComponent="true" />
+
+  <BasketRulesControlRules Profile="Workforce/Workflows/Directory_User_ManageContracts/Request"/>
+
+  <AccessControlRule Profile="Workforce/Workflows/Directory_User_ManageContracts/Request" EntityType="Workflow_Directory_User" Identifier="Composite_Workflows_Directory_User_ManageContracts_*" DisplayName_L1="Composite_Workflows_Directory_User_ManageContracts_*" TemplateTransformation="AllowLinkedEntities;Directory_User;/Custom/Workflows/Directory_User_ManageContracts/Request">
+    <Entry Permission="/Custom/Workflows/Directory_User_ManageContracts/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_ManageContracts/Request/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_ManageContracts/Request/Purged" CanExecute="true" />
+  </AccessControlRule>
+</ConfigurationFile>

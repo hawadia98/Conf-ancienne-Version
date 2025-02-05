@@ -1,0 +1,7 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <WorkflowUpdateRecordEntityForm Identifier="Workflow_Directory_User_UpdatePersonalData" EntityType="Workflow_Directory_User" MainProperty="Workflow_Directory_User:Directory_User" RecordProperty="Directory_User:Records" WorkflowRequestType="Self" Activity="Directory_User_UpdatePersonalData:Request" HideRoles="true" FormTitle_L1="Update Personal Data">
+    <MainControl OutputType="TransformImport"  EmbeddedForm="Workflow_Directory_User_Photo"/>
+    <RecordControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_PersonalData_Base_WithoutPhoto" />
+    <RecordUniqueItemControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_PersonalData_Base_WithoutPhoto" />
+  </WorkflowUpdateRecordEntityForm>
+</ConfigurationFile>

@@ -1,0 +1,11 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <MenuItem Identifier="Dashboard_Directory" DisplayName_L1="Directory" ParentMenuItem="Dashboard">
+    <MenuItem Identifier="Dashboard_Directory_User" DisplayName_L1="Users" EntityType="Directory_User" />
+    <MenuItem Identifier="Dashboard_Directory_Organization" DisplayName_L1="Departments" EntityType="Directory_Organization" />
+    <MenuItem Identifier="Dashboard_Directory_Site" DisplayName_L1="Sites" EntityType="Directory_Site" />
+    <MenuItem Identifier="Dashboard_Directory_Subsidiary" DisplayName_L1="Subsidiaries" EntityType="Directory_Subsidiary" />
+    <!--<MenuItem Identifier="Dashboard_Directory_MassUdate" DisplayName_L1="Multiple updates" Workflow="Directory_User_MassUpdate" IconCode="AddGroup" />-->
+    <MenuItem Identifier="Dashboard_Directory_NewInternal" DisplayName_L1="New Employee" Workflow="Directory_User_NewInternal" IconCode="AddFriend" />
+  </MenuItem>
+
+</ConfigurationFile>

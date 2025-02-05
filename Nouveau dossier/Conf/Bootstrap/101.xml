@@ -1,0 +1,159 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Policy Identifier="Mining" DisplayName_L1="Mining Policy" IsProvisioningEnabled="true" IsSimulationEnabled="true" GracePeriod="20160" />
+  <Policy Identifier="NamingConvention" DisplayName_L1="Naming Conventions Policy" IsProvisioningEnabled="true" IsSimulationEnabled="true" />
+
+  <BootstrapModule />
+
+  <WorkforceModule>
+    <ModelUsage Binding="Directory_Subsidiary" Count="0" />
+    <ModelUsage Binding="Directory_Office" Count="0" />
+    <ModelUsage Binding="Directory_PersonalTitle" Count="0" />
+    <ModelUsage Binding="Directory_Gender" Count="0" />
+    <ModelUsage Binding="Directory_ExternalCompany" Count="0" />
+    <ModelUsage Binding="Directory_JobCategory" Count="0" />
+    <ModelUsage Binding="Directory_ReservedIdentifier" Count="0" />
+    <ModelUsage Binding="Directory_ReservedEmail" Count="0" />
+    <ModelUsage Binding="Directory_ReservedLogin" Count="0" />
+    <ModelUsage Binding="Directory_UserRecord:IsMainPosition" Count="0" />
+    <ModelUsage Binding="Directory_UserRecord:AccessesExpirationDate" Count="0" />
+
+    <CompositeProfile TargetProfile="Workforce/Administration/Directory_User_ManageAccounts"
+                      ProfileIdentifier="SUPN1" />
+    <CompositeProfile TargetProfile="Workforce/Administration/Directory_User_ReconciliateResources"
+                      ProfileIdentifier="SUPN1" />
+    <CompositeProfile TargetProfile="Workforce/Administration/Directory_User_ReconciliateRoles"
+                      ProfileIdentifier="SUPN1" />
+    <CompositeProfile TargetProfile="Workforce/Administration/Directory_User_ReviewProvisioning"
+                      ProfileIdentifier="SUPN1" />
+    <CompositeProfile TargetProfile="Workforce/Administration/Directory_User_ReviewRoles"
+                      ProfileIdentifier="SUPN1" />
+    <CompositeProfile TargetProfile="Workforce/Administration/Directory_User_ViewWorkflowOverview"
+                      ProfileIdentifier="SUPN1" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_Company/View"
+                      ProfileIdentifier="SUPN1" />
+	  <CompositeProfile TargetProfile="Workforce/Directory/Directory_CompanyType/View"
+                      ProfileIdentifier="SUPN1" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_Organization/View"
+                      ProfileIdentifier="SUPN1" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_ReservedEmail/View"
+                      ProfileIdentifier="SUPN1" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_ReservedIdentifier/View"
+                      ProfileIdentifier="SUPN1" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_ReservedLogin/View"
+                      ProfileIdentifier="SUPN1" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_Site/View"
+                      ProfileIdentifier="SUPN1" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_ContractType/View"
+                      ProfileIdentifier="SUPN1" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_Title/View"
+                      ProfileIdentifier="SUPN1" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_User/View"
+                      ProfileIdentifier="SUPN1" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_User/ViewAdministration"
+                      ProfileIdentifier="SUPN1" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_User/ViewHR"
+                      ProfileIdentifier="SUPN1" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_User/ViewPhoto"
+                      ProfileIdentifier="SUPN1" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_User/ViewResources"
+                      ProfileIdentifier="SUPN1" />
+    <CompositeProfile TargetProfile="Workforce/Notifications/Directory_User_New"
+                      ProfileIdentifier="SUPN1" />
+    <CompositeProfile TargetProfile="Workforce/Workflows/Helpdesk_Directory_User_Delete/Request"
+                      ProfileIdentifier="SUPN1" />
+    <CompositeProfile TargetProfile="Workforce/Workflows/Helpdesk_Directory_User_FixRecord/Request"
+                      ProfileIdentifier="SUPN1" />
+    <CompositeProfile TargetProfile="Workforce/Workflows/Helpdesk_Directory_User_New/Request"
+                      ProfileIdentifier="SUPN1" />
+
+
+    <CompositeProfile TargetProfile="Workforce/Administration/Directory_User_ManageAccounts"
+                      ProfileIdentifier="SUPN2" />
+    <CompositeProfile TargetProfile="Workforce/Administration/Directory_User_ReconciliateResources"
+                      ProfileIdentifier="SUPN2" />
+    <CompositeProfile TargetProfile="Workforce/Administration/Directory_User_ReconciliateRoles"
+                      ProfileIdentifier="SUPN2" />
+    <CompositeProfile TargetProfile="Workforce/Administration/Directory_User_ReviewProvisioning"
+                      ProfileIdentifier="SUPN2" />
+    <CompositeProfile TargetProfile="Workforce/Administration/Directory_User_ReviewRoles"
+                      ProfileIdentifier="SUPN2" />
+    <CompositeProfile TargetProfile="Workforce/Administration/Directory_User_ViewWorkflowOverview"
+                      ProfileIdentifier="SUPN2" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_Company/View"
+                      ProfileIdentifier="SUPN2" />
+	  <CompositeProfile TargetProfile="Workforce/Directory/Directory_CompanyType/View"
+                      ProfileIdentifier="SUPN2" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_Organization/View"
+                      ProfileIdentifier="SUPN2" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_ReservedEmail/View"
+                      ProfileIdentifier="SUPN2" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_ReservedIdentifier/View"
+                      ProfileIdentifier="SUPN2" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_ReservedLogin/View"
+                      ProfileIdentifier="SUPN2" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_Site/View"
+                      ProfileIdentifier="SUPN2" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_ContractType/View"
+                      ProfileIdentifier="SUPN2" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_Title/View"
+                      ProfileIdentifier="SUPN2" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_User/View"
+                      ProfileIdentifier="SUPN2" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_User/ViewAdministration"
+                      ProfileIdentifier="SUPN2" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_User/ViewHR"
+                      ProfileIdentifier="SUPN2" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_User/ViewPhoto"
+                      ProfileIdentifier="SUPN2" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_User/ViewResources"
+                      ProfileIdentifier="SUPN2" />
+    <CompositeProfile TargetProfile="Workforce/Notifications/Directory_User_New"
+                      ProfileIdentifier="SUPN2" />
+    <CompositeProfile TargetProfile="Workforce/Workflows/Helpdesk_Directory_User_Delete/Request"
+                      ProfileIdentifier="SUPN2" />
+    <CompositeProfile TargetProfile="Workforce/Workflows/Helpdesk_Directory_User_FixRecord/Request"
+                      ProfileIdentifier="SUPN2" />
+    <CompositeProfile TargetProfile="Workforce/Workflows/Helpdesk_Directory_User_New/Request"
+                      ProfileIdentifier="SUPN2" />
+    
+
+    <CompositeProfile TargetProfile="Workforce/Administration/Directory_User_ViewWorkflowOverview"
+                      ProfileIdentifier="APA" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_Company/View"
+                      ProfileIdentifier="APA" />
+	  <CompositeProfile TargetProfile="Workforce/Directory/Directory_CompanyType/View"
+                      ProfileIdentifier="APA" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_Organization/View"
+                      ProfileIdentifier="APA" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_ReservedEmail/View"
+                      ProfileIdentifier="APA" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_ReservedIdentifier/View"
+                      ProfileIdentifier="APA" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_ReservedLogin/View"
+                      ProfileIdentifier="APA" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_Site/View" ProfileIdentifier="APA" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_ContractType/View"
+                      ProfileIdentifier="APA" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_Title/View"
+                      ProfileIdentifier="APA" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_User/View" ProfileIdentifier="APA" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_User/ViewAdministration"
+                      ProfileIdentifier="APA" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_User/ViewHR"
+                      ProfileIdentifier="APA" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_User/ViewPhoto"
+                      ProfileIdentifier="APA" />
+    <CompositeProfile TargetProfile="Workforce/Directory/Directory_User/ViewResources"
+                      ProfileIdentifier="APA" />
+    <CompositeProfile TargetProfile="Workforce/Notifications/Directory_User_New"
+                      ProfileIdentifier="APA" />
+    <CompositeProfile TargetProfile="Workforce/AccessReview/Directory_User_ReviewRolesAsApplicationOwner"
+                      ProfileIdentifier="APA" />
+    <CompositeProfile TargetProfile="Workforce/AccessReview/Directory_User_ReviewDelegatedRolesAsApplicationOwner"
+                      ProfileIdentifier="APA" />
+    <CompositeProfile TargetProfile="Workforce/RoleReview/Directory_User_ReviewRoles"
+                      ProfileIdentifier="APA" />
+  </WorkforceModule>
+
+</ConfigurationFile>

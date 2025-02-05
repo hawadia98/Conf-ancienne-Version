@@ -1,0 +1,5 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Profile Identifier="Workforce/Workflows/Directory_ReservedIdentifier/Administration" DisplayName_L1="Workforce/Workflows/Administrate Reserved Identifiers" IsComponent="true" />
+
+  <CreateUpdateDeleteAccessControlRules EntityType="Directory_ReservedIdentifier" Profile="Workforce/Workflows/Directory_ReservedIdentifier/Administration" />
+</ConfigurationFile>

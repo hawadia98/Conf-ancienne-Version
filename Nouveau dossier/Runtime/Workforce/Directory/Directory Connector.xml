@@ -1,0 +1,11 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Connector Identifier="Directory" DisplayName_L1="Directory" Agent="Default" CompleteJob="NotUsed" IncrementalJob="NotUsed" />
+
+  <Connection Identifier="Directory" DisplayName_L1="Directory" Connector="Directory" Package="Usercube.Excel@0000001">
+    <!-- In HR data, the end date are usualy the last day included. Our dates start at 00:00 => we want to add a day to all the end dates -->
+    <Transformation Type="TransformDate" Table="Directory_UserRecord" Column="ContractEndDate" AddedDays="1" MinYear="1900" MaxYear="2100" />
+    <Transformation Type="TransformDate" Table="Directory_UserRecord" Column="PositionEndDate" AddedDays="1" MinYear="1900" MaxYear="2100" />
+    <Transformation Type="TransformDate" Table="Directory_UserRecord" Column="EndDate" AddedDays="1" MinYear="1900" MaxYear="2100" />
+  </Connection>
+
+</ConfigurationFile>

@@ -1,0 +1,25 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <!-- External Company is for contractors -->
+  <EntityType Identifier="Directory_ExternalCompany" DisplayName_L1="External Company">
+    <Property Identifier="Identifier" DisplayName_L1="Code" Type="String" TargetColumnIndex="4" IsKey="true" />
+    <Property Identifier="DisplayName" DisplayName_L1="Name" Type="String" TargetColumnIndex="5" />
+
+    <Property Identifier="PhotoTag" DisplayName_L1="Photo Tag" Type="Int64" TargetColumnIndex="6" />
+    <Property Identifier="Photo" DisplayName_L1="Map" Type="Binary" />
+
+    <Property Identifier="UserRecords" DisplayName_L1="Users" Type="ForeignKey" />
+  </EntityType>
+
+  <DisplayEntityType PluralDisplayName_L1="Companies" IconCode="Suitcase" Identifier="Directory_ExternalCompany" Color="#95c18b" HideRoles="true">
+    <Property DisplayOrder="-1" IsRequired="true" Identifier="Identifier" />
+    <Property IsRequired="true" Identifier="DisplayName" />
+    <Property IsReadOnly="true" IsHidden="true" Identifier="PhotoTag" />
+
+    <Property OutputType="BasicCollection" Identifier="UserRecords" NavigationBinding="Directory_UserRecord:User" />
+  </DisplayEntityType>
+
+  <EntityPropertyExpression Identifier="Directory_ExternalCompany_PhotoTag" Binding="Photo.Id" EntityType="Directory_ExternalCompany" Property="PhotoTag" />
+
+  <CreateUpdateDeleteTemplate EntityType="Directory_ExternalCompany" Profile="Administrator" />
+  <ConnectorMappings Connector="Directory" EntityType="Directory_ExternalCompany" IsIncremental="1" Package="Usercube.Excel@0000001" />
+</ConfigurationFile>

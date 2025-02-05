@@ -1,0 +1,22 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <DisplayTable Identifier="HR_User" EntityType="HR_User" DisplayTableDesignElement="resourcetable" IsEntityTypeDefault="true">
+    <Column DefaultSortPriority="1" DisplayBinding="Identifier" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" />
+    <Column DisplayBinding="EmployeeId" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" />
+    <Column DisplayBinding="FirstName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" />
+    <Column DisplayBinding="LastName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" />
+    <Column DisplayBinding="FileName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" />
+  </DisplayTable>
+
+  <DisplayTable Identifier="HR_UserUpdate" EntityType="HR_UserUpdate" DisplayTableDesignElement="resourcetable" IsEntityTypeDefault="true">
+    <Column DefaultSortPriority="1" DisplayBinding="EmployeeId" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" />
+    <Column DisplayBinding="FirstName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" />
+    <Column DisplayBinding="LastName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" />
+    <Column DisplayBinding="FileName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" />
+  </DisplayTable>
+
+  <DisplayEntityType Identifier="HR_User" PluralDisplayName_L1="RH - Entrées Collaborateurs" />
+  <DisplayEntityType Identifier="HR_LoadIUG" PluralDisplayName_L1="RH - Chargements IUG" />
+  <DisplayEntityType Identifier="HR_UserUpdate" PluralDisplayName_L1="RH - Sorties/Mobilitées Collaborateurs" />
+
+</ConfigurationFile>

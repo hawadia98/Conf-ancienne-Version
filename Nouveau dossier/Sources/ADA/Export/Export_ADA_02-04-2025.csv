@@ -1,0 +1,11 @@
+﻿Nom;Prenom;Date de debut;Date de fin;Adresse email;Site;Societe;Service;Role(s);Description;sys_id
+AASQUI;Najat;;;najat.aasqui@ca-assurances.fr;;CREDIT AGRICOLE ASSURANCES SOLUTIONS;INTERNE;@CIRM-Externes | P_Administration Infrastructures_Backup-Admins | Auditeur | Alpaga_Chargé_Prévention; ;A0002513189
+AARAB;Safa;;;safa.aarab@ca-assurances.fr;;CREDIT AGRICOLE ASSURANCES SOLUTIONS;INTERNE;P_Administration Infrastructures_Backup-Admins | P_Administration Infrastructures_Stockage-Admins; ;BK009153967
+ABBOU;Leslie;;;leslie.abbou@ca-assurances.fr;SIRCA PARIS;SIRCA;INTERNE;P_Administration Infrastructures_Backup-Admins; ;LL000000630
+ABBES;Amela;;;amela.abbes@ca-assurances.fr;;CREDIT AGRICOLE ASSURANCES SOLUTIONS;INTERNE;P_Administration Infrastructures_Backup-Admins | P_Administration Infrastructures_Stockage-Admins | P_Administration locale Poste de travail_Droit admin local | Administrateur VSE | Auditeur | Demandeur; ;LM009116438
+ABELE;Jennifer;;;jennifer.abele@ca-assurances.fr;SIRCA AIX EN PROVENCE IARD;SIRCA;INTERNE;Administrateur VSE; ;OS0000S1687
+ACHDINI;Amélie;;;amelie.achdini@ca-assurances.fr;;SIRCA;INTERNE;P_Annuaire intranet_Administrateur; ;OS009122947
+SUPER;Man;;2025-10-07;man.super@ca-assurances.fr;CAAS PARIS VAUGIRARD 36-44;CREDIT AGRICOLE ASSURANCES SOLUTIONS;INTERNE;P_Administration Infrastructures_Backup-Admins; ;
+BXXXX;Nicolas;;2025-11-29;nicolas.bxxxx3@ca-assurances.fr;;APL;EXTERNE OU PARTENAIRE;P_Administration Infrastructures_Backup-Admins | P_Administration Infrastructures_Stockage-Admins | Administrateur VSE; ;
+RIRI;Test;;2028-06-30;test.riri@ca-assurances.fr;CAAS VAISON LA ROMAINE;PACIFICA;INTERNE;test role; ;ZZ009200999
+TOTO;Tati;;;tati.toto@ca-assurances.fr;CAAS LILLE VILLENEUVE D’ASCQ;CREDIT AGRICOLE ASSURANCES SOLUTIONS;INTERNE;P_Administration Infrastructures_Stockage-Admins | Alpaga_Administrateur_Systéme; ;1234

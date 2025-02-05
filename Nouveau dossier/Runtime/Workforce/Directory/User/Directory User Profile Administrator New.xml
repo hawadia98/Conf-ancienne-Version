@@ -1,0 +1,27 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <AccessControlRule Profile="Administrator" EntityType="Workflow_Directory_User" Identifier="Administrator_Workflows_Directory_User_New_External*" DisplayName_L1="Administrator_Workflows_Directory_User_New_External*">
+    <Filter Binding="Directory_User.Records.UserType.IsExternal" Value="1" />
+
+    <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/Purged" CanExecute="true" />
+
+    <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Review/ReviewPending" CanExecute="true" TemplateTransformation="NewExternalWorkflowIsReviewRequired" />
+    <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Review/RefinePending" CanExecute="true" TemplateTransformation="NewExternalWorkflowIsReviewRequired" />
+    <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Review/Aborted" CanExecute="true" TemplateTransformation="NewExternalWorkflowIsReviewRequired" />
+    <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Review/Purged" CanExecute="true" TemplateTransformation="NewExternalWorkflowIsReviewRequired" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Administrator" EntityType="Workflow_Directory_User" Identifier="Administrator_Workflows_Directory_User_New_Internal*" DisplayName_L1="Administrator_Workflows_Directory_User_New_Internal*">
+    <Filter Binding="Directory_User.Records.UserType.IsExternal" Value="0" TemplateTransformation="KeepRule"/>
+
+    <Entry Permission="/Custom/Workflows/Directory_User_NewInternal/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_NewInternal/Request/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_NewInternal/Request/Purged" CanExecute="true" />
+
+    <Entry Permission="/Custom/Workflows/Directory_User_NewInternal/Review/ReviewPending" CanExecute="true" TemplateTransformation="NewInternalWorkflowIsReviewRequired" />
+    <Entry Permission="/Custom/Workflows/Directory_User_NewInternal/Review/RefinePending" CanExecute="true" TemplateTransformation="NewInternalWorkflowIsReviewRequired" />
+    <Entry Permission="/Custom/Workflows/Directory_User_NewInternal/Review/Aborted" CanExecute="true" TemplateTransformation="NewInternalWorkflowIsReviewRequired" />
+    <Entry Permission="/Custom/Workflows/Directory_User_NewInternal/Review/Purged" CanExecute="true" TemplateTransformation="NewInternalWorkflowIsReviewRequired" />
+  </AccessControlRule>
+</ConfigurationFile>

@@ -1,0 +1,20 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <DisplayTable Identifier="AHMA_LDAP_Entry" EntityType="AHMA_LDAP_Entry" DisplayTableDesignElement="resourcetable" IsEntityTypeDefault="true">
+    <Column DefaultSortPriority="1" DisplayBinding="dn" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="4" />
+    <Column DisplayBinding="rdn" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="2" />
+    <Column DisplayBinding="displayName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="2" />
+    <Column DisplayBinding="objectClass" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="2" />
+	<Column DisplayBinding="msDS_UserAccountDisabled" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="2" />
+	<Column DisplayBinding="groupAHMA" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="2" />
+ 
+ </DisplayTable>
+
+  <DisplayEntityType Identifier="AHMA_LDAP_Entry">
+    <Property OutputType="BasicCollection" Identifier="member" />
+    <Property OutputType="BasicCollection" Identifier="memberOf" />
+	<!-- <Property OutputType="BasicCollection" Identifier="directReports" /> -->
+	<Property OutputType="BasicCollection" Identifier="assistant" />
+  </DisplayEntityType>
+
+  <EntityPropertyExpression Identifier="AHMA_LDAP_Entry_InternalDisplayName" Expression="C#:resource:return Usercube.Expressions.Functions.UtilExpressions.ToFormatedDN(resource.dn);" EntityType="AHMA_LDAP_Entry" Property="InternalDisplayName" />
+</ConfigurationFile>

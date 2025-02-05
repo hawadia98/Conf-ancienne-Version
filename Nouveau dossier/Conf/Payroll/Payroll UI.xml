@@ -1,0 +1,13 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <DisplayTable Identifier="Payroll_UserRecord" EntityType="Payroll_UserRecord" DisplayTableDesignElement="resourcetable" IsEntityTypeDefault="true">
+    <Column DisplayBinding="PositionIdentifier" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" />
+    <Column DefaultSortPriority="1" DisplayBinding="EmployeeId" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" />
+    <Column DisplayBinding="FirstName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" />
+    <Column DisplayBinding="LastName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" />
+  </DisplayTable>
+
+  <DisplayEntityType Identifier="Payroll_User" PluralDisplayName_L1="Paie - Collaborateurs" />
+  <DisplayEntityType Identifier="Payroll_UserRecord" PluralDisplayName_L1="Paie - Fiches de collaborateurs" />
+
+</ConfigurationFile>

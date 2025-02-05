@@ -1,0 +1,49 @@
+﻿{
+  "ProvisioningOrdersList": [
+    {
+      "AssignedResourceTypeId": "1150001",
+      "ChangeType": "Added",
+      "WorkflowInstanceId": "41",
+      "Owner": {
+        "Id": "19114",
+        "InternalDisplayName": "BK009153967 - AARAB Safa",
+        "Identifier": "BK009153967",
+        "LastFirstName": "AARAB Safa",
+        "PhoneticFirstLastName": "SAFA ARAB",
+        "PhoneticLastFirstName": "ARAB SAFA",
+        "TeamsIdentifier": "9153967",
+        "Op_MainRecord_Company_DisplayName": "CREDIT AGRICOLE ASSURANCES SOLUTIONS",
+        "Op_MainRecord_ContractType_DisplayName": "Contrat \u00E0 dur\u00E9e d\u00E9termin\u00E9e",
+        "Op_MainRecord_EmployeeId": "BK009153967",
+        "Op_MainRecord_FirstName": "Safa",
+        "Op_MainRecord_LastName": "AARAB",
+        "Op_MainRecord_Organization_DisplayName": "AGP"
+      },
+      "ResourceType": {
+        "Id": "13001",
+        "SourceEntityType": { "Id": "8", "Identifier": "Directory_User" },
+        "TargetEntityType": { "Id": "11001", "Identifier": "RITM" },
+        "Identifier": "RITM_Nominatif"
+      },
+      "Changes": {
+        "arrival_date": "01/10/2024",
+        "u_adresse_mail_caas": null,
+        "u_arrival_type": null,
+        "u_company": "CREDIT AGRICOLE ASSURANCES SOLUTIONS",
+        "u_department": null,
+        "u_departure_date": null,
+        "u_extern_type": "Contrat \u00E0 dur\u00E9e d\u00E9termin\u00E9e",
+        "u_first_name": "Safa",
+        "u_function": "GESTIONNAIRE",
+        "u_last_name": "AARAB",
+        "u_phone_number": null,
+        "u_rattachement_hierarchique": "BK009152917",
+        "u_role_metier": null,
+        "u_site": null,
+        "u_telephony": null,
+        "u_title": "GESTIONNAIRE",
+        "u_type_de_contrat": "Contrat \u00E0 dur\u00E9e d\u00E9termin\u00E9e"
+      }
+    }
+  ]
+}

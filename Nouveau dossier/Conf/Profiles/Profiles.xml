@@ -1,0 +1,12 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- Profiles -->
+    <Profile Identifier="GDI" DisplayName_L1="Gestionnaire des identités" />
+    <Profile Identifier="ARO" DisplayName_L1="Assistant Responsable Organisation" />
+    <Profile Identifier="RO" DisplayName_L1="Responsable Organisation" />
+    <Profile Identifier="SUPN1" DisplayName_L1="Support Niveau 1" />
+    <Profile Identifier="SUPN2" DisplayName_L1="Support Niveau 2" />
+    <Profile Identifier="US" DisplayName_L1="Utilisateur Standard" />
+    <Profile Identifier="APA" DisplayName_L1="Approbateur de Profils Applicatifs" />
+
+</ConfigurationFile>

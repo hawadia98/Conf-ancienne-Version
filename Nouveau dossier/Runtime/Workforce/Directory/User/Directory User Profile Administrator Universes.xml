@@ -1,0 +1,74 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <AccessControlRule Profile="Administrator" EntityType="Universe" Identifier="Administrator_Universe" DisplayName_L1="Administrator_Universe">
+    <Entry Permission="/Universes/UniverseData/Query" CanExecute="true" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Administrator" EntityType="Directory_User" Identifier="Administrator_Universe_Directory_User" DisplayName_L1="Administrator_Universe">
+    <Entry Permission="/Universes/UniverseData/Query" CanExecute="true" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Administrator" EntityType="Directory_UserRecord" Identifier="Administrator_Universe_Directory_UserRecord" DisplayName_L1="Administrator_Universe">
+    <Entry Permission="/Universes/UniverseData/Query" CanExecute="true" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Administrator" EntityType="Risk" Identifier="Administrator_Universe_Risk" DisplayName_L1="Administrator_Risk">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Administrator" EntityType="IdentifiedRisk" Identifier="Administrator_Universe_IdentifiedRisk" DisplayName_L1="Administrator_IdentifiedRisk">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Administrator" EntityType="Connector" Identifier="Administrator_Universe_Connector" DisplayName_L1="Administrator_Connector">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Administrator" EntityType="CompositeRole" Identifier="Administrator_Universe_CompositeRole" DisplayName_L1="Administrator_CompositeRole">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Administrator" EntityType="SingleRole" Identifier="Administrator_Universe_SingleRole" DisplayName_L1="Administrator_SingleRole">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Administrator" EntityType="ResourceType" Identifier="Administrator_Universe_ResourceType" DisplayName_L1="Administrator_ResourceType">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Administrator" EntityType="Category" Identifier="Administrator_Universe_Category" DisplayName_L1="Administrator_Category">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Administrator" EntityType="Policy" Identifier="Administrator_Universe_Policy" DisplayName_L1="Administrator_Policy">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Administrator" EntityType="Workflow" Identifier="Administrator_Universe_Workflow" DisplayName_L1="Administrator_Workflow">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Administrator" EntityType="Workflow_Directory_User" Identifier="Administrator_Universe_Workflow_Directory_User" DisplayName_L1="Administrator_Workflow">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Administrator" EntityType="AssignedCompositeRole" Identifier="Administrator_Universe_AssignedCompositeRole" DisplayName_L1="Administrator_AssignedCompositeRole">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Administrator" EntityType="AssignedSingleRole" Identifier="Administrator_Universe_AssignedSingleRole" DisplayName_L1="Administrator_AssignedSingleRole">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Administrator" EntityType="AssignedResourceType" Identifier="Administrator_Universe_AssignedResourceType" DisplayName_L1="Administrator_AssignedResourceType">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Administrator" EntityType="AssignedResourceNavigation" Identifier="Administrator_Universe_AssignedResourceNavigation" DisplayName_L1="Administrator_AssignedResourceNavigation">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Administrator" EntityType="AssignedResourceScalar" Identifier="Administrator_Universe_AssignedResourceScalar" DisplayName_L1="Administrator_AssignedResourceScalar">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+</ConfigurationFile>

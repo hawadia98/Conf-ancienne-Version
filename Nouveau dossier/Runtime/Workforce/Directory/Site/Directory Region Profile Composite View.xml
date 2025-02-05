@@ -1,0 +1,7 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Profile Identifier="Workforce/Directory/Directory_Region/View" DisplayName_L1="Workforce/Directory/View Regions" IsComponent="true" />
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_Region/View" EntityType="Directory_Region" Identifier="Composite_Directory_Directory_Region_View_*" DisplayName_L1="Composite_Directory_Directory_Region_View_*" TemplateTransformation="AllowLinkedEntities;Directory_Region;/Custom/Resources/Directory_Region/View">
+    <Entry Permission="/Custom/Resources/Directory_Region/View" CanExecute="true" />
+  </AccessControlRule>
+</ConfigurationFile>

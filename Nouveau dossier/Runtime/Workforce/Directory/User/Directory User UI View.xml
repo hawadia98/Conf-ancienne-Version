@@ -1,0 +1,70 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Form Identifier="Directory_UserRecord_View" EntityType="Directory_UserRecord">
+    <Control DisplayName_L1="Personal Data" OutputType="LayoutFieldset" Name="Personal Data">
+      <Control DisplayName_L1="Full Name" OutputType="LayoutRowset" Name="Full Name">
+        <Control Binding="LastName" />
+        <Control Binding="FirstName" />
+      </Control>
+      <Control Binding="BirthName" ColumnSize="4" />
+      <Control Binding="BirthDate" />
+      <Control Binding="Gender" ColumnSize="3" />
+      <Control Binding="PersonalTitle" ColumnSize="3" />
+
+      <Control Binding="Email" ColumnSize="6" />
+      <Control DisplayName_L1="Phone Numbers" OutputType="LayoutRowset" Name="Phone Numbers">
+        <Control Binding="PhoneNumber" />
+        <Control Binding="MobileNumber" />
+      </Control>
+      <Control Binding="User.Photo" OutputType="Image" />
+
+      <Control Binding="UserIdentifier" ColumnSize="4" />
+      <Control Binding="Login" ColumnSize="4" />
+      <Control Binding="VIP" />
+    </Control>
+
+    <Control DisplayName_L1="Contract" OutputType="LayoutFieldset" Name="Contract">
+      <Control Binding="EmployeeId" ColumnSize="4" />
+      <Control Binding="UserType" />
+      <Control Binding="Subsidiary" />
+      <Control Binding="ExternalCompany" />
+      <Control Binding="Suspended" />
+      <Control Binding="ContractStartDate" />
+      <Control Binding="ContractEndDate" />
+      <Control Binding="AccessesExpirationDate" />
+    </Control>
+
+    <Control DisplayName_L1="Risk" OutputType="LayoutFieldset" Name="Risk">
+      <Control Binding="User.ResourceRiskScore.Score" DisplayName_L1="Score" />
+      <Control Binding="User.ResourceRiskScore.Rating" DisplayName_L1="Rating" />
+    </Control>
+  </Form>
+
+  <Form Identifier="Directory_UserRecord_ViewPosition" EntityType="Directory_UserRecord" >
+    <Control DisplayName_L1="Position" OutputType="LayoutFieldset" Name="Position">
+      <Control Binding="PositionIdentifier" ColumnSize="4" />
+      <Control Binding="JobTitle" />
+      <Control Binding="Title" />
+      <Control Binding="Organization" />
+
+      <Control Binding="Manager" />
+      <Control Binding="IGAManager" />
+      <Control Binding="EffectiveIGAManager" />
+
+      <Control Binding="Site" />
+      <Control Binding="Office" />
+      <Control Binding="OfficeNumber" ColumnSize="4" />
+      <Control Binding="PositionStartDate" />
+      <Control Binding="PositionEndDate" />
+      <Control Binding="IsMainPosition" />
+    </Control>
+  </Form>
+
+  <ResourceViewRecordEntityForm Identifier="View_Directory_User" EntityType="Directory_User" Menu="View_Directory_User" RecordProperty="Directory_User:Records" RecordStartProperty="Directory_UserRecord:StartDate" RecordEndProperty="Directory_UserRecord:EndDate" RecordFilter="All" IsDefaultViewForm="true">
+    <MainControl OutputType="LayoutContainer"></MainControl>
+    <RecordControl OutputType="TransformImport" EmbeddedForm="Directory_UserRecord_View" />
+    <RecordItemControl OutputType="TransformImport" EmbeddedForm="Directory_UserRecord_ViewPosition" />
+    <RecordUniqueItemControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_Position_Unique" />
+  </ResourceViewRecordEntityForm>
+
+</ConfigurationFile>

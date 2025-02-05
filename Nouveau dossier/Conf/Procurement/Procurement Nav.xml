@@ -1,0 +1,7 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  
+  <MenuItem Identifier="Nav_Connectors_Procurement" DisplayName_L1="Achat" ParentMenuItem="Nav_Connectors">
+    <MenuItem Identifier="Nav_Connectors_Procurement_EB" DisplayName_L1="Achat - E.B" EntityType="Procurement_EB" IconCode="List" />
+  </MenuItem>
+
+</ConfigurationFile>

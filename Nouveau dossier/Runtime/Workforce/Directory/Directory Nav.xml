@@ -1,0 +1,32 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <MenuItem Identifier="Nav_Directory" DisplayName_L1="Directory" ParentMenuItem="Nav">
+    <MenuItem Identifier="Nav_Directory_User" DisplayName_L1="Users" EntityType="Directory_User" />
+
+    <MenuItem Identifier="Nav_Directory_Title" DisplayName_L1="Titles" EntityType="Directory_Title" />
+    <MenuItem Identifier="Nav_Directory_JobCategory" DisplayName_L1="Job Categories" EntityType="Directory_JobCategory" />
+
+    <MenuItem Identifier="Nav_Directory_UserType" DisplayName_L1="User Types" EntityType="Directory_UserType" />
+    <MenuItem Identifier="Nav_Directory_UserCategory" DisplayName_L1="User Categories" EntityType="Directory_UserCategory" />
+
+    <MenuItem Identifier="Nav_Directory_Subsidiary" DisplayName_L1="Subsidiaries" EntityType="Directory_Subsidiary" />
+    <MenuItem Identifier="Nav_Directory_Organization" DisplayName_L1="Departments" EntityType="Directory_Organization" />
+    <MenuItem Identifier="Nav_Directory_OrganizationType" DisplayName_L1="Department Types" EntityType="Directory_OrganizationType" />
+
+    <MenuItem Identifier="Nav_Directory_ExternalCompany" DisplayName_L1="External Companies" EntityType="Directory_ExternalCompany" />
+
+    <MenuItem Identifier="Nav_Directory_Country" DisplayName_L1="Countries" EntityType="Directory_Country" />
+    <MenuItem Identifier="Nav_Directory_Region" DisplayName_L1="Regions" EntityType="Directory_Region" />
+    <MenuItem Identifier="Nav_Directory_Site" DisplayName_L1="Sites" EntityType="Directory_Site" />
+    <MenuItem Identifier="Nav_Directory_Office" DisplayName_L1="Offices" EntityType="Directory_Office" />
+
+    <MenuItem Identifier="Nav_Directory_PersonalTitle" DisplayName_L1="Personal Titles" EntityType="Directory_PersonalTitle" />
+    <MenuItem Identifier="Nav_Directory_Gender" DisplayName_L1="Genders" EntityType="Directory_Gender" />
+
+    <MenuItem Identifier="Nav_Directory_UserRecord" DisplayName_L1="User Records" EntityType="Directory_UserRecord" />
+    <MenuItem Identifier="Nav_Directory_PresenceState" DisplayName_L1="Presence States" DisplayName_L2="États de présence" EntityType="Directory_PresenceState" />
+
+    <MenuItem Identifier="Nav_Directory_ReservedIdentifier" DisplayName_L1="Reserved Identifiers" EntityType="Directory_ReservedIdentifier" />
+    <MenuItem Identifier="Nav_Directory_ReservedEmail" DisplayName_L1="Reserved Emails" EntityType="Directory_ReservedEmail" />
+    <MenuItem Identifier="Nav_Directory_ReservedLogin" DisplayName_L1="Reserved Logins" EntityType="Directory_ReservedLogin" />
+  </MenuItem>
+</ConfigurationFile>

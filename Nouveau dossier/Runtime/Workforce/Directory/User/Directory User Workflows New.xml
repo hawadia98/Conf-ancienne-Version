@@ -1,0 +1,125 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Workflow Identifier="Directory_User_NewInternal" DisplayName_L1="User - New Employee" VariablesType="Workflow_Directory_User">
+    <Activity Identifier="Request" DisplayName_L1="Request" Template="ActionWithRefine" />
+    <Activity Identifier="PersistDraft" DisplayName_L1="Draft Creation" Template="PersistOnlyResources" WorkflowOverviewDisable="1" TemplateTransformation="NewInternalWorkflowIsReviewRequired" />
+    <Activity Identifier="Review" DisplayName_L1="Review" Template="ReviewWithFeedback" TemplateTransformation="NewInternalWorkflowIsReviewRequired" />
+    <!--TODO: why WorkflowOverviewDisable is not systematically applied???? -->
+    <Activity Identifier="Persist" DisplayName_L1="Commit" Template="Persist" WorkflowOverviewDisable="1"/>
+  </Workflow>
+
+  <AddChangeAspect Identifier="Directory_UserRecord_AddChange_IsDraft" Binding="Workflow_Directory_User:Directory_User.IsDraft" ExpressionBinding="Workflow_Directory_User:Directory_User" Expression="C#:record:return true;">
+    <PointCut Activity="Directory_User_NewInternal:PersistDraft" ActivityState="PersistOnlyResources-Invoked" Mode="Before" TemplateTransformation="NewInternalWorkflowIsReviewRequired" />
+    <PointCut Activity="Directory_User_NewExternal:PersistDraft" ActivityState="PersistOnlyResources-Invoked" Mode="Before" TemplateTransformation="NewExternalWorkflowIsReviewRequired" />
+  </AddChangeAspect>
+
+  <AddChangeAspect Identifier="Directory_UserRecord_AddChange_IsNotDraft" Binding="Workflow_Directory_User:Directory_User.IsDraft" ExpressionBinding="Workflow_Directory_User:Directory_User" Expression="C#:record:return false;">
+    <PointCut Activity="Directory_User_NewInternal:Persist" ActivityState="Persist-Invoked" Mode="Before" TemplateTransformation="NewInternalWorkflowIsReviewRequired" />
+    <PointCut Activity="Directory_User_NewExternal:Persist" ActivityState="Persist-Invoked" Mode="Before" TemplateTransformation="NewExternalWorkflowIsReviewRequired" />
+  </AddChangeAspect>
+
+  <Workflow Identifier="Directory_User_NewExternal" DisplayName_L1="User - New Contractor" VariablesType="Workflow_Directory_User">
+    <Activity Identifier="Request" DisplayName_L1="Request" Template="ActionWithRefine" />
+    <Activity Identifier="PersistDraft" DisplayName_L1="Draft Creation" Template="PersistOnlyResources" WorkflowOverviewDisable="1" TemplateTransformation="NewExternalWorkflowIsReviewRequired" />
+    <Activity Identifier="Review" DisplayName_L1="Review" Template="ReviewWithFeedback" TemplateTransformation="NewExternalWorkflowIsReviewRequired" />
+    <Activity Identifier="Persist" DisplayName_L1="Commit" Template="Persist" />
+  </Workflow>
+
+  <!--TODO: also for the other pairs of dates: start/end and positionstart/positioned-->
+  <!--<AssertValueAspect Identifier="Directory_User_NewInternal_CheckDates"
+                     Binding="Workflow_Directory_User:Directory_User.Records.ContractEndDate"
+                     ExpressionBinding="Workflow_Directory_User:Directory_User.Records"
+                     Expression="C#:record: return ( ((Nullable&lt;DateTime&gt;) record.ContractStartDate).HasValue &amp;&amp; ((Nullable&lt;DateTime&gt;) record.ContractEndDate).HasValue) ?  record.ContractStartDate &lt; record.ContractEndDate : true;"
+                     Message_L1="Contract's end date must be after contract's start date.">
+    <PointCut Activity="Directory_User_NewInternal:Request" ActivityState="ActionWithRefine-Executed" Mode="Before" />
+    <PointCut Activity="Directory_User_NewInternal:Review" ActivityState="ReviewWithFeedback-Approved" Mode="Before" />
+  </AssertValueAspect>-->
+
+  <BuildUniqueValueAspect Identifier="Directory_UserRecord_UniqueValue_UserIdentifier" Binding="Workflow_Directory_User:Directory_User.Records.UserIdentifier" ExpressionBinding="Workflow_Directory_User:Directory_User.Records" Expression="C#:record:return record.FirstName.Simplify()?.ToLowerInvariant() + '.' + record.LastName.Simplify()?.ToLowerInvariant() + (iteration == 0 ? &quot;&quot; : iteration.ToString());" IterationsCount="10" Priority="90">
+    <!--TODO: do we generate on Persist.Before instead? why both on request AND review?-->
+    <!--TODO: how do we handle firstname/lastname changes between Request and Review? -->
+    <PointCut Activity="Directory_User_NewInternal:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_NewInternal:Review" ActivityState="ReviewWithFeedback-Approved" Mode="After" TemplateTransformation="NewInternalWorkflowIsReviewRequired" />
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_NewExternal:Review" ActivityState="ReviewWithFeedback-Approved" Mode="After" TemplateTransformation="NewExternalWorkflowIsReviewRequired" />
+    <PointCut Activity="Directory_User_ManageContracts:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_ManagePositions:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_UpdatePersonalData:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <UnicityCheck TargetEntityType="Directory_UserRecord" TargetBinding="UserIdentifier"/>
+    <UnicityCheck TargetEntityType="Directory_ReservedIdentifier" TargetBinding="Value"/>
+  </BuildUniqueValueAspect>
+
+  <!-- Propagates the user's identifier from the records to the user himself -->
+  <AddChangeAspect Identifier="Directory_User_AddChange_Identifier" Binding="Workflow_Directory_User:Directory_User.Identifier" ExpressionBinding="Workflow_Directory_User:Directory_User" Expression="C#:record:return record.Records != null &amp;&amp; record.Records.Count &gt; 0 ? record.Records[0].UserIdentifier : null;" Priority="89">
+    <PointCut Activity="Directory_User_NewInternal:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+  </AddChangeAspect>
+
+  <!-- Create a unique identifier for each record to export/import all the records if needed, as the RecordIdentifier is the key property of Directory_UserRecord -->
+  <AddChangeAspect Identifier="Directory_UserRecord_AddChange_RecordIdentifier" Binding="Workflow_Directory_User:Directory_User.Records.RecordIdentifier" ExpressionBinding="Workflow_Directory_User:Directory_User.Records" Expression="C#:record:return record.UserIdentifier + '_' + Guid.NewGuid().ToString(&quot;N&quot;);" IfExpression="C#:record:return string.IsNullOrEmpty(record.RecordIdentifier) || record.Id &lt; 0L;" Priority="89">
+    <PointCut Activity="Directory_User_NewInternal:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_ManageContracts:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_ManagePositions:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+  </AddChangeAspect>
+
+  <BuildUniqueValueAspect Identifier="Directory_UserRecord_UniqueValue_Login" Binding="Workflow_Directory_User:Directory_User.Records.Login" ExpressionBinding="Workflow_Directory_User:Directory_User.Records" Expression="C#:record:return (record.UserType?.LoginPrefix ?? &quot;U&quot;) + record.UserIdentifier;" IterationsCount="10" Priority="70" >
+    <!--TODO: do we generate on Persist.Before instead? why both on request AND review?-->
+    <PointCut Activity="Directory_User_NewInternal:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_NewInternal:Review" ActivityState="ReviewWithFeedback-Approved" Mode="After" TemplateTransformation="NewInternalWorkflowIsReviewRequired" />
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_NewExternal:Review" ActivityState="ReviewWithFeedback-Approved" Mode="After" TemplateTransformation="NewExternalWorkflowIsReviewRequired" />
+    <PointCut Activity="Directory_User_ManageContracts:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_ManagePositions:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_UpdatePersonalData:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <UnicityCheck TargetEntityType="Directory_UserRecord" TargetBinding="Login" />
+    <UnicityCheck TargetEntityType="Directory_ReservedLogin" TargetBinding="Value" />
+  </BuildUniqueValueAspect>
+
+  <BuildUniqueValueAspect Identifier="Directory_UserRecord_UniqueValue_Email" Binding="Workflow_Directory_User:Directory_User.Records.Email" ExpressionBinding="Workflow_Directory_User:Directory_User.Records" Expression="C#:record:return record.UserIdentifier + (record.UserType?.EmailSuffix ?? string.Empty) + '@' + (record.Subsidiary?.EmailDomain ?? &quot;acme.com&quot;);" IterationsCount="10" Priority="80" HistorizeBinding="Workflow_Directory_User:Directory_User.Records.EmailAliases">
+    <!--TODO: do we generate on Persist.Before instead? why both on request AND review?-->
+    <PointCut Activity="Directory_User_NewInternal:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_NewInternal:Review" ActivityState="ReviewWithFeedback-Approved" Mode="After" TemplateTransformation="NewInternalWorkflowIsReviewRequired" />
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_NewExternal:Review" ActivityState="ReviewWithFeedback-Approved" Mode="After" TemplateTransformation="NewExternalWorkflowIsReviewRequired" />
+    <PointCut Activity="Directory_User_ManageContracts:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_ManagePositions:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_UpdatePersonalData:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <UnicityCheck TargetEntityType="Directory_UserRecord" />
+    <UnicityCheck TargetEntityType="Directory_ReservedEmail" />
+  </BuildUniqueValueAspect>
+
+  <!--TODO: can we get rid of the message as we know this is a Request aspect??-->
+  <AssertValueRequiredAspect Identifier="Directory_UserRecord_ValueRequired_FirstName" Binding="Workflow_Directory_User:Directory_User.Records.FirstName" Message_L1="The first name is required">
+    <PointCut Activity="Directory_User_NewInternal:Request" ActivityState="ActionWithRefine-Executed" />
+    <PointCut Activity="Directory_User_NewInternal:Review" ActivityState="ReviewWithFeedback-Approved" TemplateTransformation="NewInternalWorkflowIsReviewRequired" />
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" />
+    <PointCut Activity="Directory_User_NewExternal:Review" ActivityState="ReviewWithFeedback-Approved" TemplateTransformation="NewExternalWorkflowIsReviewRequired" />
+  </AssertValueRequiredAspect>
+
+  <AssertValueRequiredAspect Identifier="Directory_UserRecord_ValueRequired_LastName" Binding="Workflow_Directory_User:Directory_User.Records.LastName" Message_L1="The last name is required">
+    <PointCut Activity="Directory_User_NewInternal:Request" ActivityState="ActionWithRefine-Executed" />
+    <PointCut Activity="Directory_User_NewInternal:Review" ActivityState="ReviewWithFeedback-Approved" TemplateTransformation="NewInternalWorkflowIsReviewRequired" />
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" />
+    <PointCut Activity="Directory_User_NewExternal:Review" ActivityState="ReviewWithFeedback-Approved" TemplateTransformation="NewExternalWorkflowIsReviewRequired" />
+  </AssertValueRequiredAspect>
+
+  <AssertValueRequiredAspect Identifier="Directory_UserRecord_ValueRequired_UserType" Binding="Workflow_Directory_User:Directory_User.Records.UserType" Message_L1="The user type is required">
+    <PointCut Activity="Directory_User_NewInternal:Request" ActivityState="ActionWithRefine-Executed" />
+    <PointCut Activity="Directory_User_NewInternal:Review" ActivityState="ReviewWithFeedback-Approved" TemplateTransformation="NewInternalWorkflowIsReviewRequired" />
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" />
+    <PointCut Activity="Directory_User_NewExternal:Review" ActivityState="ReviewWithFeedback-Approved" TemplateTransformation="NewExternalWorkflowIsReviewRequired" />
+  </AssertValueRequiredAspect>
+
+  <AssertValueRequiredAspect Identifier="Directory_UserRecord_ValueRequired_ContractStartDate" Binding="Workflow_Directory_User:Directory_User.Records.ContractStartDate" Message_L1="The contract start date is required">
+    <PointCut Activity="Directory_User_NewInternal:Request" ActivityState="ActionWithRefine-Executed" />
+    <PointCut Activity="Directory_User_NewInternal:Review" ActivityState="ReviewWithFeedback-Approved" TemplateTransformation="NewInternalWorkflowIsReviewRequired" />
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" />
+    <PointCut Activity="Directory_User_NewExternal:Review" ActivityState="ReviewWithFeedback-Approved" TemplateTransformation="NewExternalWorkflowIsReviewRequired" />
+  </AssertValueRequiredAspect>
+
+  <AssertValueRequiredAspect Identifier="Directory_UserRecord_ValueRequired_ContractEndDate" Binding="Workflow_Directory_User:Directory_User.Records.ContractEndDate" Message_L1="The contract end date is required">
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" />
+    <PointCut Activity="Directory_User_NewExternal:Review" ActivityState="ReviewWithFeedback-Approved" TemplateTransformation="NewExternalWorkflowIsReviewRequired" />
+  </AssertValueRequiredAspect>
+</ConfigurationFile>

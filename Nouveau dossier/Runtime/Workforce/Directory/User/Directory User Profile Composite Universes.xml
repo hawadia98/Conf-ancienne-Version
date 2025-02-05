@@ -1,0 +1,71 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Profile Identifier="Workforce/Reports/Universes/Directory_User_SourcesAndTargets" DisplayName_L1="Workforce/Reports/Universes/Query Users" IsComponent="true" />
+
+  <AccessControlRule Profile="Workforce/Reports/Universes/Directory_User_SourcesAndTargets" EntityType="Universe" Identifier="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe" DisplayName_L1="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe">
+    <Entry Permission="/Universes/UniverseData/Query" CanExecute="true" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Reports/Universes/Directory_User_SourcesAndTargets" EntityType="Directory_User" Identifier="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_Directory_User" DisplayName_L1="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_Directory_User">
+    <Entry Permission="/Universes/UniverseData/Query" CanExecute="true" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Reports/Universes/Directory_User_SourcesAndTargets" EntityType="Directory_UserRecord" Identifier="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_Directory_UserRecord" DisplayName_L1="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_Directory_UserRecord">
+    <Entry Permission="/Universes/UniverseData/Query" CanExecute="true" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Reports/Universes/Directory_User_SourcesAndTargets" EntityType="Risk" Identifier="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_Risk" DisplayName_L1="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_Risk">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Reports/Universes/Directory_User_SourcesAndTargets" EntityType="IdentifiedRisk" Identifier="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_IdentifiedRisk" DisplayName_L1="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_IdentifiedRisk">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Reports/Universes/Directory_User_SourcesAndTargets" EntityType="Connector" Identifier="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_Connector" DisplayName_L1="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_Connector">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Reports/Universes/Directory_User_SourcesAndTargets" EntityType="CompositeRole" Identifier="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_CompositeRole" DisplayName_L1="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_CompositeRole">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Reports/Universes/Directory_User_SourcesAndTargets" EntityType="SingleRole" Identifier="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_SingleRole" DisplayName_L1="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_SingleRole">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Reports/Universes/Directory_User_SourcesAndTargets" EntityType="ResourceType" Identifier="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_ResourceType" DisplayName_L1="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_ResourceType">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Reports/Universes/Directory_User_SourcesAndTargets" EntityType="Category" Identifier="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_Category" DisplayName_L1="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_Category">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Reports/Universes/Directory_User_SourcesAndTargets" EntityType="Policy" Identifier="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_Policy" DisplayName_L1="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_Policy">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Reports/Universes/Directory_User_SourcesAndTargets" EntityType="Workflow" Identifier="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_Workflow" DisplayName_L1="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_Workflow">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Reports/Universes/Directory_User_SourcesAndTargets" EntityType="AssignedCompositeRole" Identifier="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_AssignedCompositeRole" DisplayName_L1="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_AssignedCompositeRole">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Reports/Universes/Directory_User_SourcesAndTargets" EntityType="AssignedSingleRole" Identifier="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_AssignedSingleRole" DisplayName_L1="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_AssignedSingleRole">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Reports/Universes/Directory_User_SourcesAndTargets" EntityType="AssignedResourceType" Identifier="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_AssignedResourceType" DisplayName_L1="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_AssignedResourceType">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Reports/Universes/Directory_User_SourcesAndTargets" EntityType="AssignedResourceNavigation" Identifier="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_AssignedResourceNavigation" DisplayName_L1="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_AssignedResourceNavigation">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Reports/Universes/Directory_User_SourcesAndTargets" EntityType="AssignedResourceScalar" Identifier="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_AssignedResourceScalar" DisplayName_L1="Composite_Workforce_Reports_Universes_Directory_User_SourcesAndTargets_Universe_AssignedResourceScalar">
+    <Entry Permission="/Universes/UniverseData/Query" />
+  </AccessControlRule>
+</ConfigurationFile>

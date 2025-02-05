@@ -1,0 +1,5 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+	<MenuItem Identifier="Nav_Connectors_LDAP" DisplayName_L1="LDAP" ParentMenuItem="Nav_Connectors">
+		<MenuItem Identifier="Nav_Connectors_AHMA_LDAP_Entry" DisplayName_L1="AHMA LDAP" EntityType="AHMA_LDAP_Entry" IconCode="List" />
+	</MenuItem>
+</ConfigurationFile>

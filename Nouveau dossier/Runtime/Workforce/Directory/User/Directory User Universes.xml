@@ -1,0 +1,41 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Universe Identifier="Directory_User_SourcesAndTargets" DisplayName_L1="Users - Data">
+    <!-- Single Roles Category -->
+    <EntityInstance Identifier="Directory_User_OwnedAssignedSingleRoles_Role_Category" EntityType="Category" DisplayName_L1="Single Role Category" />
+    <AssociationInstance Association="SingleRole.Category" Instance1="Directory_User_OwnedAssignedSingleRoles_Role" Instance2="Directory_User_OwnedAssignedSingleRoles_Role_Category" Direction="From1To2" />
+    <!-- Composite Roles Category -->
+    <EntityInstance Identifier="Directory_User_OwnedAssignedCompositeRoles_Role_Category" EntityType="Category" DisplayName_L1="Composite Role Category" />
+    <AssociationInstance Association="CompositeRole.Category" Instance1="Directory_User_OwnedAssignedCompositeRoles_Role" Instance2="Directory_User_OwnedAssignedCompositeRoles_Role_Category" Direction="From1To2" />
+  </Universe>
+  <UniverseDataModel Universe="Directory_User_SourcesAndTargets" EntityType="Directory_User">
+    <ExcludedProperty Property="MainRecord"/>
+    <ExcludedProperty Property="DirectReports"/>
+    <ExcludedProperty Property="EffectiveIGADirectReports"/>
+    <ExcludedProperty Property="IGADirectReports"/>
+    <ExcludedProperty Property="ManagedOrganizations"/>
+  </UniverseDataModel>
+  <UniverseDataModel Universe="Directory_User_SourcesAndTargets" EntityType="Directory_UserRecord">
+    <RootInstance Instance="Directory_User_Records"/>
+    <ExcludedProperty Property="MainUser"/>
+    <ExcludedProperty Property="User"/>
+    <ExcludedProperty Property="AssistantOf"/>
+    <ExcludedProperty Property="IGAManager"/>
+  </UniverseDataModel>
+  <UniverseDataModel Universe="Directory_User_SourcesAndTargets" EntityType="Directory_User">
+    <RootInstance Instance="Directory_User"/>
+    <UniverseTemplate Template="OwnedCompositeRoles"/>
+  </UniverseDataModel>
+  <UniverseDataModel Universe="Directory_User_SourcesAndTargets" EntityType="Directory_User">
+    <RootInstance Instance="Directory_User"/>
+    <UniverseTemplate Template="OwnedSingleRoles"/>
+  </UniverseDataModel>
+  <UniverseDataModel Universe="Directory_User_SourcesAndTargets" EntityType="Directory_User">
+    <RootInstance Instance="Directory_User"/>
+    <UniverseTemplate Template="OwnedResourceTypes"/>
+  </UniverseDataModel>
+  <UniverseDataModel Universe="Directory_User_SourcesAndTargets" EntityType="Directory_User">
+    <RootInstance Instance="Directory_User"/>
+    <UniverseTemplate Template="ResourceResourceTypes"/>
+  </UniverseDataModel>
+</ConfigurationFile>

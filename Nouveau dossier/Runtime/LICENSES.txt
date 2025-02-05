@@ -1,0 +1,85 @@
+
+License                                                                   PackageId                                          PackageVersion   PackageProjectUrl
+-------                                                                   ---------                                          --------------   -----------------
+MIT                                                                       Asp.Versioning.Mvc                                 8.0.0            https://github.com/dotnet/aspnet-api-versioning/wiki
+MIT                                                                       Asp.Versioning.Mvc.ApiExplorer                     8.0.0            https://github.com/dotnet/aspnet-api-versioning/wiki
+Apache-2.0                                                                AsyncFixer                                         1.6.0            http://www.asyncfixer.com/
+MIT                                                                       Autofac                                            7.1.0            https://autofac.org/
+MIT                                                                       Autofac.AspNetCore.Multitenant                     7.0.0            https://autofac.org/
+MIT                                                                       Autofac.Extensions.DependencyInjection             8.0.0            https://autofac.org/
+MIT                                                                       Autofac.Multitenant                                7.0.1            https://autofac.org/
+MIT                                                                       Azure.Extensions.AspNetCore.Configuration.Secrets  1.3.0            https://github.com/Azure/azure-sdk-for-net/blob/Azure.Extensions.AspNetCo…
+MIT                                                                       Azure.Identity                                     1.10.4           https://github.com/Azure/azure-sdk-for-net/blob/Azure.Identity_1.10.4/sdk…
+MIT                                                                       Azure.Security.KeyVault.Certificates               4.5.1            https://github.com/Azure/azure-sdk-for-net/blob/Azure.Security.KeyVault.C…
+MIT                                                                       ClosedXML                                          0.104.0-preview2 https://github.com/ClosedXML/ClosedXML
+MIT                                                                       DocumentFormat.OpenXml                             3.0.0            https://github.com/dotnet/Open-XML-SDK
+Apache-2.0                                                                Google.Apis.Admin.Directory.directory_v1           1.64.0.3253      https://github.com/google/google-api-dotnet-client
+                                                                          Handlebars.Net                                     2.1.4            https://github.com/Handlebars-Net
+Apache-2.0                                                                IdentityModel                                      6.2.0            https://github.com/IdentityModel/IdentityModel
+MIT                                                                       JsonSchema.Net                                     5.4.2            https://github.com/gregsdennis/json-everything
+                                                                          NCrontab                                           3.3.3            https://github.com/atifaziz/NCrontab
+MIT                                                                       Newtonsoft.Json                                    13.0.3           https://www.newtonsoft.com/json
+Apache-2.0                                                                NodaTime                                           3.1.9            https://nodatime.org/
+MIT                                                                       Novell.Directory.Ldap.NETStandard                  3.6.0            https://github.com/dsbenghe/Novell.Directory.Ldap.NETStandard
+PostgreSQL                                                                Npgsql                                             8.0.1            https://github.com/npgsql/npgsql
+Apache-2.0                                                                OpenIddict.AspNetCore                              4.10.1           https://github.com/openiddict/openiddict-core
+                                                                          RazorLight                                         2.3.1            
+MIT                                                                       SapNwRfc                                           1.4.0            https://github.com/huysentruitw/SapNwRfc
+Apache-2.0                                                                Serilog                                            3.1.1            https://serilog.net/
+Apache-2.0                                                                Serilog.AspNetCore                                 8.0.0            https://github.com/serilog/serilog-aspnetcore
+Apache-2.0                                                                Serilog.Extensions.Logging                         8.0.0            https://github.com/serilog/serilog-extensions-logging
+Apache-2.0                                                                Serilog.Formatting.Compact                         2.0.0            https://github.com/serilog/serilog-formatting-compact
+Apache-2.0                                                                Serilog.Settings.Configuration                     8.0.0            https://github.com/serilog/serilog-settings-configuration
+Apache-2.0                                                                Serilog.Sinks.ApplicationInsights                  4.0.0            https://github.com/serilog-contrib/serilog-sinks-applicationinsights
+Apache-2.0                                                                Serilog.Sinks.Async                                1.5.0            https://serilog.net/
+Apache-2.0                                                                Serilog.Sinks.Console                              5.0.1            https://github.com/serilog/serilog-sinks-console
+https://github.com/DataDog/serilog-sinks-datadog-logs/blob/master/LICENSE Serilog.Sinks.Datadog.Logs                         0.5.2            https://github.com/DataDog/serilog-sinks-datadog-logs/
+Apache-2.0                                                                Serilog.Sinks.File                                 5.0.0            https://serilog.net/
+Apache-2.0                                                                Serilog.Sinks.Map                                  1.0.2            https://github.com/serilog/serilog-sinks-map
+                                                                          Serilog.Sinks.Network                              2.0.2.68         
+Apache-2.0                                                                Serilog.Sinks.Splunk.Durable                       1.1.0            https://github.com/alirezavafi/serilog-sinks-splunk-durable
+Apache-2.0                                                                Serilog.Sinks.SyslogMessages                       3.0.1            https://github.com/IonxSolutions/serilog-sinks-syslog
+                                                                          SixLabors.ImageSharp                               3.1.1            https://github.com/SixLabors/ImageSharp
+MIT                                                                       StyleCop.Analyzers                                 1.2.0-beta.507   https://github.com/DotNetAnalyzers/StyleCopAnalyzers
+MIT                                                                       Sustainsys.Saml2.AspNetCore2                       2.9.2            https://github.com/Sustainsys/Saml2
+MIT                                                                       Swashbuckle.AspNetCore                             6.5.0            https://github.com/domaindrivendev/Swashbuckle.AspNetCore
+MIT                                                                       Swashbuckle.AspNetCore.Newtonsoft                  6.5.0            https://github.com/domaindrivendev/Swashbuckle.AspNetCore
+                                                                          TTCUE.NetCore.SharepointOnline.CSOM.16.1.8029.1200 16.1.8029.1200   
+
+
+
+
+
+
+licenseType  name                                    installedVersion link
+-----------  ----                                    ---------------- ----
+MIT          @fluentui/react                         8.110.4          git+https://github.com/microsoft/fluentui.git
+MIT          @fluentui/react-hooks                   8.6.28           git+https://github.com/microsoft/fluentui.git
+MIT          @microsoft/applicationinsights-react-js 17.0.2           git+https://github.com/microsoft/applicationinsights-react-js.git
+MIT          @microsoft/applicationinsights-web      3.0.6            git+https://github.com/microsoft/ApplicationInsights-JS.git
+MIT          @monaco-editor/react                    4.6.0            git+https://github.com/suren-atoyan/monaco-react.git
+MIT          axios                                   0.27.2           git+https://github.com/axios/axios.git
+MIT          classnames                              2.3.2            git+https://github.com/JedWatson/classnames.git
+MIT          date-fns                                2.30.0           git+https://github.com/date-fns/date-fns.git
+MIT          fast-json-stable-stringify              2.1.0            git://github.com/epoberezkin/fast-json-stable-stringify.git
+MIT          framer-motion                           10.16.16         git+https://github.com/framer/motion.git
+MIT          history                                 5.3.0            git+https://github.com/remix-run/history.git
+MIT          lodash                                  4.17.21          git+https://github.com/lodash/lodash.git
+MIT          memoize-one                             6.0.0            git+https://github.com/alexreardon/memoize-one.git
+MIT          moment                                  2.29.4           git+https://github.com/moment/moment.git
+MIT          monaco-editor                           0.45.0           git+https://github.com/microsoft/monaco-editor.git
+MIT          react                                   18.2.0           git+https://github.com/facebook/react.git
+MIT          react-dom                               18.2.0           git+https://github.com/facebook/react.git
+MIT          react-feature-flags                     1.0.0            git+https://github.com/romaindso/react-feature-flags.git
+BSD-3-Clause react-intl                              6.4.4            git+ssh://git@github.com/formatjs/formatjs.git
+MIT          react-intl-translations-manager         5.0.3            git+https://github.com/GertjanReynaert/react-intl-translations-manager.git
+MIT          react-redux                             8.1.0            git+https://github.com/reduxjs/react-redux.git
+MIT          react-router-dom                        6.13.0           git+https://github.com/remix-run/react-router.git
+BSD-3-Clause react-transition-group                  4.4.5            git+https://github.com/reactjs/react-transition-group.git
+MIT          react-webcam                            7.2.0            git+https://github.com/mozmorris/react-webcam.git
+MIT          redux                                   4.2.1            git+https://github.com/reduxjs/redux.git
+MIT          redux-react-hook                        4.0.3            https://github.com/facebookincubator/redux-react-hook.git
+MIT          redux-thunk                             2.4.2            git+https://github.com/reduxjs/redux-thunk.git
+MIT          resolve                                 1.22.8           git://github.com/browserify/resolve.git
+ISC          semver                                  7.5.4            git+https://github.com/npm/node-semver.git
+
