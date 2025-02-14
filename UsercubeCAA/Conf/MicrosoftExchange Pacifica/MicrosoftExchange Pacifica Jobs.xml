@@ -1,0 +1,11 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <CreateConnectorSynchroIncremental Connector="MicrosoftExchangePacifica" DisplayName_L1="Microsoft Exchange Pacifica - Synchronization Incremental (scaffolding)" JobIdentifier="MicrosoftExchangePacifica_Synchronize_Incremental_Scaffolding" Agent="CAA">
+    <OpenIdIdentifier Identifier="Job"/>
+  </CreateConnectorSynchroIncremental>
+
+  <CreateConnectorSynchroComplete Connector="MicrosoftExchangePacifica" DisplayName_L1="Microsoft Exchange Pacifica - Synchronization Complete (scaffolding)" JobIdentifier="MicrosoftExchangePacifica_Synchronize_Complete_Scaffolding" Agent="CAA">
+    <OpenIdIdentifier Identifier="Job"/>
+  </CreateConnectorSynchroComplete>
+
+</ConfigurationFile>

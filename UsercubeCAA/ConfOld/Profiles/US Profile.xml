@@ -1,0 +1,82 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- US Profile Rules -->
+    <ProfileRuleContext IsAppliedToRoot="true" EntityType="Directory_User">
+      <ProfileRule Profile="US" RootExpression="C#:person:return person.PresenceState?.Id == -101L;" />
+    </ProfileRuleContext>
+
+    <!-- Access Control Rules -->
+    <BasketRulesControlRules Profile="US" />
+    <WorkflowAccessControlRules Profile="US" EntityType="Workflow_Directory_User" />
+    <AccessControlRule Profile="US" EntityType="Workflow" Identifier="US_Workflow_Query" DisplayName_L1="US_Workflow_Query">
+      <Entry Permission="/Workflows/Workflow/Query" CanExecute="true" />
+    </AccessControlRule>
+
+    <AccessControlRule Identifier="US_Composite_Directory_Directory_User_View_*" DisplayName_L1="Composite_Directory_Directory_User_View_*" EntityType="Directory_User" Profile="US">
+      <Filter Binding="Id" CurrentUser="true" />
+
+      <Entry CanExecute="true" Permission="/Custom/Resources/Directory_User/View" />
+    </AccessControlRule>
+
+    <AccessControlRule Identifier="US_Composite_Directory_Directory_User_View_*_Directory_UserRecord" DisplayName_L1="Composite_Directory_Directory_User_View_* - Directory_UserRecord" EntityType="Directory_UserRecord" Profile="US">
+      <Filter Binding="User.Id" CurrentUser="true" />
+
+      <Entry Permission="/Custom/Resources/Directory_User/View" />
+    </AccessControlRule>
+
+    <AccessControlRule Identifier="US_Composite_Directory_Self_ViewResources_*" DisplayName_L1="Composite_Directory_Self_ViewResources_*" EntityType="Directory_User" Profile="US">
+      <Filter Binding="Id" CurrentUser="true" />
+
+      <Entry CanExecute="true" Permission="/Custom/Resources/Directory_User/SelfOwnedResources" />
+      <Entry CanExecute="true" Permission="/Custom/Resources/Directory_User/SelfTargetResources" />
+    </AccessControlRule>
+
+    <AccessControlRule Identifier="US_Composite_Directory_Self_View_*" DisplayName_L1="Composite_Directory_Self_View_*" EntityType="Directory_User" Profile="US">
+      <Filter Binding="Id" CurrentUser="true" />
+
+      <Entry CanExecute="true" Permission="/Custom/Resources/Directory_User/Self" />
+    </AccessControlRule>
+    <AccessControlRule Identifier="US_Composite_Directory_Self_View_*_Directory_Organization" DisplayName_L1="Composite_Directory_Self_View_* - Directory_Organization" EntityType="Directory_Organization" Profile="US">
+      <Entry Permission="/Custom/Resources/Directory_User/Self" />
+    </AccessControlRule>
+    <AccessControlRule Identifier="US_Composite_Directory_Self_View_*_Directory_PresenceState" DisplayName_L1="Composite_Directory_Self_View_* - Directory_PresenceState" EntityType="Directory_PresenceState" Profile="US">
+      <Entry Permission="/Custom/Resources/Directory_User/Self" />
+    </AccessControlRule>
+    <AccessControlRule Identifier="US_Composite_Directory_Self_View_*_Directory_Site" DisplayName_L1="Composite_Directory_Self_View_* - Directory_Site" EntityType="Directory_Site" Profile="US">
+      <Entry Permission="/Custom/Resources/Directory_User/Self" />
+    </AccessControlRule>
+    <AccessControlRule Identifier="US_Composite_Directory_Self_View_*_Directory_UserType" DisplayName_L1="Composite_Directory_Self_View_* - Directory_UserType" EntityType="Directory_UserType" Profile="US">
+      <Entry Permission="/Custom/Resources/Directory_User/Self" />
+    </AccessControlRule>
+    <AccessControlRule Identifier="US_Composite_Directory_Self_View_*_Directory_ContractType" DisplayName_L1="Composite_Directory_Self_View_* - Directory_ContractType" EntityType="Directory_ContractType" Profile="US">
+      <Entry Permission="/Custom/Resources/Directory_User/Self" />
+    </AccessControlRule>
+    <AccessControlRule Identifier="US_Composite_Directory_Self_View_*_Directory_Title" DisplayName_L1="Composite_Directory_Self_View_* - Directory_Title" EntityType="Directory_Title" Profile="US">
+      <Entry Permission="/Custom/Resources/Directory_User/Self" />
+    </AccessControlRule>
+    <AccessControlRule Identifier="US_Composite_Directory_Self_View_*_Directory_Company" DisplayName_L1="Composite_Directory_Self_View_* - Directory_Company" EntityType="Directory_Company" Profile="US">
+      <Entry Permission="/Custom/Resources/Directory_User/Self" />
+    </AccessControlRule>
+
+    <AccessControlRule Identifier="US_Composite_Policy_Directory_Self_ViewResources_*" DisplayName_L1="Composite_Policy_Directory_Self_ViewResources_*" EntityType="Policy" Profile="US">
+      <Entry Permission="/Custom/Resources/Directory_User/SelfOwnedResources" />
+      <Entry Permission="/Custom/Resources/Directory_User/SelfTargetResources" />
+      <Entry Permission="/Custom/Resources/Directory_User/Self" />
+    </AccessControlRule>
+    <AccessControlRule Identifier="US_Composite_ResourceType_Directory_Self_ViewResources_*" DisplayName_L1="Composite_ResourceType_Directory_Self_ViewResources_*" EntityType="ResourceType" Profile="US">
+      <Entry Permission="/Custom/Resources/Directory_User/SelfOwnedResources" />
+      <Entry Permission="/Custom/Resources/Directory_User/SelfTargetResources" />
+      <Entry Permission="/Custom/Resources/Directory_User/Self" />
+    </AccessControlRule>
+    <AccessControlRule Identifier="US_Composite_SingleRole_Directory_Self_ViewResources_*" DisplayName_L1="Composite_SingleRole_Directory_Self_ViewResources_*" EntityType="SingleRole" Profile="US">
+      <Entry Permission="/Custom/Resources/Directory_User/SelfOwnedResources" />
+      <Entry Permission="/Custom/Resources/Directory_User/SelfTargetResources" />
+      <Entry Permission="/Custom/Resources/Directory_User/Self" />
+    </AccessControlRule>
+    <AccessControlRule Identifier="US_Composite_CompositeRole_Directory_Self_ViewResources_*" DisplayName_L1="Composite_CompositeRole_Directory_Self_ViewResources_*" EntityType="CompositeRole" Profile="US">
+      <Entry Permission="/Custom/Resources/Directory_User/SelfOwnedResources" />
+      <Entry Permission="/Custom/Resources/Directory_User/SelfTargetResources" />
+      <Entry Permission="/Custom/Resources/Directory_User/Self" />
+    </AccessControlRule>
+
+</ConfigurationFile>

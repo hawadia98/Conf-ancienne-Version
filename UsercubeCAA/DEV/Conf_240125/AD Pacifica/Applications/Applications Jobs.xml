@@ -1,0 +1,10 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <CreateConnectorSynchroIncremental Connector="Application" Agent="CAA" JobIdentifier="Applications_Synchronize_Incremental_Scaffolding" DisplayName_L1="Applications - Synchronization Incremental (scaffolding)">
+        <OpenIdIdentifier Identifier="Job"/>
+        <AddTask Task="Reset_Files_Applications" Before="true" TaskToCompareWith="ComputeRoleModel_WithDirty" />
+      </CreateConnectorSynchroIncremental>
+    
+      <InvokeExpressionTask Identifier="Reset_Files_Applications" DisplayName_L1="Reset Application PowerShell Files" InputPath="D:/UsercubeCAA/Scripts/Applications/Applications_Reset_Files.ps1" Agent="CAA" OpenIdClient="Job" />
+  
+</ConfigurationFile>

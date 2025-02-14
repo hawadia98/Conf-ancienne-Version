@@ -1,0 +1,30 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <Category Policy="Default" Identifier="Application_Accounts" DisplayName_L1="Application Accounts" />
+
+    <ResourceType Identifier="Application_Accounts_Nominatif" DisplayName_L1="Compte Applicatif" Policy="Default" Category="Application_Accounts" TargetEntityType="Application_Account" SourceEntityType="Directory_User" MaximumInsertPercent="100" MaximumUpdatePercent="100" MaximumDeletePercent="100" ApprovalWorkflowType="One" BlockProvisioning="false">        
+        <ScalarRule Property="Identifier" Binding="EmployeeId" IsMapped="false" />
+        <ScalarRule Property="FirstName" Binding="FirstName" IsMapped="false" />
+        <ScalarRule Property="LastName" Binding="LastName" IsMapped="false" />
+        <ScalarRule Property="Email" Binding="Email" IsMapped="false" />
+        <ScalarRule Property="ContractStartDate" Expression="C#:record:return record.ContractStartDate.HasValue ? record.ContractStartDate.Value.ToString(&quot;dd/MM/yyyy&quot;) : null;" IsMapped="false" />
+        <ScalarRule Property="ContractEndDate" Expression="C#:record:return record.ContractEndDate.HasValue ? record.ContractEndDate.Value.ToString(&quot;dd/MM/yyyy&quot;) : null;" IsMapped="false" />
+        <ScalarRule Property="Company" Binding="Company.DisplayName" IsMapped="false" />
+        <ScalarRule Property="Site" Binding="Site.DisplayName" IsMapped="false" />
+
+        <NavigationRule Property="Permissions" Resource="Permission_A" SingleRole="Permission_A" />
+        <NavigationRule Property="Permissions" Resource="Permission_B" SingleRole="Permission_B" />
+        <NavigationRule Property="Permissions" Resource="Permission_C" SingleRole="Permission_C" />
+        
+    </ResourceType>
+    
+    <ResourceTypeMapping Identifier="Application_Accounts_Nominatif" Connection="ApplicationsFulfillment" />
+
+    <ResourceCorrelationRule ResourceType="Application_Accounts_Nominatif" TargetBinding="Identifier" Policy="Default" SourceMatchedConfidenceLevel="100" SourceBinding="EmployeeId" />
+    <ResourceCorrelationRule ResourceType="Application_Accounts_Nominatif" TargetBinding="Email" Policy="Default" SourceMatchedConfidenceLevel="100" SourceBinding="Email" />
+
+    <SingleRole Identifier="Permission_A" DisplayName_L1="Permission (A)" ApprovalWorkflowType="None" Category="Application_Accounts" EntityType="Directory_User" Policy="Default" />
+    <SingleRole Identifier="Permission_B" DisplayName_L1="Permission (B)" ApprovalWorkflowType="None" Category="Application_Accounts" EntityType="Directory_User" Policy="Default" />
+    <SingleRole Identifier="Permission_C" DisplayName_L1="Permission (C)" ApprovalWorkflowType="None" Category="Application_Accounts" EntityType="Directory_User" Policy="Default" />
+
+</ConfigurationFile>

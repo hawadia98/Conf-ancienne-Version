@@ -1,0 +1,8 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <MenuItem Identifier="Nav_Connectors_ADA" DisplayName_L1="ADA" ParentMenuItem="Nav_Connectors">
+    <MenuItem Identifier="Nav_Connectors_ADA_Account" DisplayName_L1="ADA - Comptes" EntityType="ADA_Account" />
+    <MenuItem Identifier="Nav_Connectors_ADAProfile" DisplayName_L1="ADA - Profils" EntityType="ADA_Profile" />
+  </MenuItem>
+
+</ConfigurationFile>

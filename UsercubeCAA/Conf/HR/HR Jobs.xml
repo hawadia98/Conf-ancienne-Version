@@ -1,0 +1,78 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Job Identifier="HR_Synchro_Incremental_Scaffolding" DisplayName_L1="RH - Synchronisation incrémentale" Agent="CAA">
+    <InvokeExpressionTask Identifier="HR_Synchro_Incremental_Scaffolding_PreCollect" DisplayName_L1="RH - Pré-collecte des données" InputPath="D:\UsercubeCAA\Scripts\HR\HR_PreCollect.ps1" Agent="CAA" OpenIdClient="Job" />
+
+    <ExportTask Identifier="HR_Synchro_Incremental_Scaffolding_Export_HR_User" DisplayName_L1="RH - Extraction des modifications" Agent="CAA" Connector="HR" OpenIdClient="Job" Connection="HRUser" />
+    <ExportTask Identifier="HR_Synchro_Incremental_Scaffolding_Export_HR_UserUpdate" DisplayName_L1="RH - Extraction des modifications" Agent="CAA" Connector="HR" OpenIdClient="Job" Connection="HRUserUpdate" />
+    <ExportTask Identifier="HR_Synchro_Incremental_Scaffolding_Export_HR_LoadIUG" DisplayName_L1="RH - Extraction des modifications" Agent="CAA" Connector="HR" OpenIdClient="Job" Connection="HRLoadIUG" />
+
+    <PrepareSynchronizationTask Identifier="HR_Synchro_Incremental_Scaffolding_PrepareSynchronization_HR" DisplayName_L1="RH - Synchronisation (côté agent)" Agent="CAA" Connector="HR" OpenIdClient="Job" SynchronizationMode="Incremental" Type="Changes">
+      <TaskDependsOnTask ParentTask="HR_Synchro_Incremental_Scaffolding_Export_HR_User" />
+      <TaskDependsOnTask ParentTask="HR_Synchro_Incremental_Scaffolding_Export_HR_UserUpdate" />
+      <TaskDependsOnTask ParentTask="HR_Synchro_Incremental_Scaffolding_Export_HR_LoadIUG" />
+    </PrepareSynchronizationTask>
+
+    <SynchronizeTask Identifier="HR_Synchro_Incremental_Scaffolding_Synchronize_HR_DoNotDeleteChange" DisplayName_L1="RH - Synchronisation (côté serveur)" Connector="HR" Type="Changes" DoNotDeleteChanges="true" ForceSynchronization="true">
+      <TaskDependsOnTask ParentTask="HR_Synchro_Incremental_Scaffolding_PrepareSynchronization_HR" />
+    </SynchronizeTask>
+
+    <UpdateEntityPropertyExpressionsTask Identifier="HR_Synchro_Incremental_Scaffolding_ComputeProperties_1" DisplayName_L1="RH - Calculer toutes les propriétés" AllEntityType="true" />
+    <ComputeCorrelationKeysTask Identifier="HR_Synchro_Incremental_Scaffolding_ComputeCorrelationKeysy_Users" DisplayName_L1="RH - Calculer toutes les clés de corrélation" AllEntityType="true" />
+
+    <ComputeRoleModelTask Identifier="HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_Users" DisplayName_L1="RH - Modèle de rôle (Entrées collaborateurs)" BlockProvisioning="false">
+      <TaskEntityType EntityType="HR_User" />
+    </ComputeRoleModelTask>
+    <GenerateProvisioningOrdersTask Identifier="HR_Synchro_Incremental_Scaffolding_Provisioning_Users" DisplayName_L1="RH - Générer des ordres de Provisioning (Entrées collaborateurs)" ForceProvisioning="true">
+      <TaskResourceType ResourceType="HR_User" />
+      <TaskResourceType ResourceType="HR_UserRecord" />
+    </GenerateProvisioningOrdersTask>
+    <FulfillTask Identifier="HR_Synchro_Incremental_Scaffolding_Provisioner_Workflow" Connection="HRWorkflows" Agent="CAA" DisplayName_L1="RH - Lancement des Workflows (Entrées collaborateurs)" OpenIdClient="Job">
+      <TaskResourceType ResourceType="HR_User" />
+      <TaskResourceType ResourceType="HR_UserRecord" />
+      <TaskDependsOnTask ParentTask="HR_Synchro_Incremental_Scaffolding_Provisioning_Users" />
+    </FulfillTask>
+
+    <ComputeCorrelationKeysTask Identifier="HR_Synchro_Incremental_Scaffolding_ComputeCorrelationKeysy_LoadUIG" DisplayName_L1="RH - Calculer toutes les clés de corrélation" AllEntityType="true" />
+    <ComputeRoleModelTask Identifier="HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_LoadUIG_1" DisplayName_L1="RH - Modèle de rôle (chargement IUG) 1/2" BlockProvisioning="false">
+      <TaskEntityType EntityType="HR_LoadIUG" />
+    </ComputeRoleModelTask>
+
+    <InvokeExpressionTask Identifier="HR_Synchro_Incremental_Scaffolding_HR_LoadIUG_BulkResourceReconciliation" DisplayName_L1="RH - Reconcilier en masse (chargement IUG)" InputPath="D:\UsercubeCAA\Scripts\HR\HR_LoadIUG_BulkResourceReconciliation.ps1" Agent="CAA" OpenIdClient="Job" />
+    <ComputeRoleModelTask Identifier="HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_LoadUIG_2" DisplayName_L1="RH - Modèle de rôle (chargement IUG) 2/2" BlockProvisioning="false">
+      <TaskEntityType EntityType="HR_LoadIUG" />
+    </ComputeRoleModelTask>
+
+    <GenerateProvisioningOrdersTask Identifier="HR_Synchro_Incremental_Scaffolding_Provisioning_LoadUIG" DisplayName_L1="RH - Générer des ordres de Provisioning (chargement IUG)" ForceProvisioning="true">
+      <TaskResourceType ResourceType="HR_User_LoadUIG" />
+      <TaskResourceType ResourceType="HR_UserRecord_LoadUIG" />
+    </GenerateProvisioningOrdersTask>
+    <FulfillTask Identifier="HR_Synchro_Incremental_Scaffolding_Provisioner_LoadUIG" Agent="CAA" DisplayName_L1="RH - Chargement IUG" OpenIdClient="Job">
+      <TaskResourceType ResourceType="HR_User_LoadUIG" />
+      <TaskResourceType ResourceType="HR_UserRecord_LoadUIG" />
+      <TaskDependsOnTask ParentTask="HR_Synchro_Incremental_Scaffolding_Provisioning_LoadUIG" />
+    </FulfillTask>
+
+    <ComputeRoleModelTask Identifier="HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_UserUpdate_1" DisplayName_L1="RH - Modèle de rôle (Sortie/Mobilitée collaborateurs) 1/2" BlockProvisioning="false">
+      <TaskEntityType EntityType="HR_UserUpdate" />
+    </ComputeRoleModelTask>
+	<InvokeExpressionTask Identifier="HR_Synchro_Incremental_Scaffolding_HR_UserUpdate_BulkResourceReconciliation" DisplayName_L1="RH - Reconcilier en masse (Sortie/Mobilitée collaborateurs)" InputPath="D:\UsercubeCAA\Scripts\HR\HR_UserUpdate_BulkResourceReconciliation.ps1" Agent="CAA" OpenIdClient="Job" />
+    <ComputeRoleModelTask Identifier="HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_UserUpdate_2" DisplayName_L1="RH - Modèle de rôle (Sortie/Mobilitée collaborateurs) 2/2" BlockProvisioning="false">
+      <TaskEntityType EntityType="HR_UserUpdate" />
+    </ComputeRoleModelTask>
+    <GenerateProvisioningOrdersTask Identifier="HR_Synchro_Incremental_Scaffolding_Provisioning_UserUpdate" DisplayName_L1="RH - Générer des ordres de Provisioning (Sortie/Mobilitée collaborateurs)" ForceProvisioning="true">
+      <TaskResourceType ResourceType="HR_UserUpdate" />
+    </GenerateProvisioningOrdersTask>
+    <FulfillTask Identifier="HR_Synchro_Incremental_Scaffolding_Provisioner_Workflow_UserUpdate" Connection="HRWorkflows" Agent="CAA" DisplayName_L1="RH - Lancement des Workflows (Sortie/Mobilitée collaborateurs)" OpenIdClient="Job">
+      <TaskResourceType ResourceType="HR_UserUpdate" />
+      <TaskDependsOnTask ParentTask="HR_Synchro_Incremental_Scaffolding_Provisioning_UserUpdate" />
+    </FulfillTask>
+
+    <UpdateEntityPropertyExpressionsTask Identifier="HR_Synchro_Incremental_Scaffolding_ComputeProperties_2" DisplayName_L1="RH - Calculer toutes les propriétés" AllEntityType="true" />
+    <InvokeExpressionTask Identifier="HR_Synchro_Incremental_Scaffolding_Reset_HR_Files" DisplayName_L1="RH - Réinitialiser les fichiers" InputPath="D:\UsercubeCAA\Scripts\HR\HR_Reset_Files.ps1" Agent="CAA" OpenIdClient="Job" />
+	<SetInternalUserProfilesTask Identifier="HR_Synchro_Incremental_Scaffolding_SetInternalUserProfiles" DisplayName_L1="RH - Assignation des profils automatiques">
+		<TaskEntityType EntityType="Directory_User" />
+	</SetInternalUserProfilesTask>
+  </Job>
+
+</ConfigurationFile>

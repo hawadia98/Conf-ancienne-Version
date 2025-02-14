@@ -1,0 +1,19 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <AccessControlRule Profile="Administrator" EntityType="Workflow_Directory_User" Identifier="Administrator_Workflows_Directory_User_New_External*" DisplayName_L1="Administrator_Workflows_Directory_User_New_External*">
+    <Filter Binding="Directory_User.Records.ContractType.UserType.DisplayName" Value="EXTERNE OU PARTENAIRE" />
+
+    <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/Purged" CanExecute="true" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Manager" EntityType="Workflow_Directory_User" Identifier="Manager_Workflows_Directory_User_External*" DisplayName_L1="Manager_Workflows_Directory_User_External*">
+    <!-- <Filter Binding="Directory_User.Records.Manager.Id" Dimension="Manager0" /> -->
+    <Filter Binding="Directory_User.Records.ContractType.UserType.DisplayName" Value="EXTERNE OU PARTENAIRE" />
+
+    <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/RefinePending" CanExecute="true" />
+  </AccessControlRule>
+
+</ConfigurationFile>

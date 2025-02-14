@@ -1,0 +1,10 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- ITSM Jobs -->
+    <CreateConnectorSynchroIncremental Connector="ITSM" Agent="CAA" JobIdentifier="ITSM_Création_RITM_Scaffolding" DisplayName_L1="ITSM - Création RITM (scaffolding)">
+      <OpenIdIdentifier Identifier="Job"/>
+    
+    </CreateConnectorSynchroIncremental>
+  
+   
+</ConfigurationFile>

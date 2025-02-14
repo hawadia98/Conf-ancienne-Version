@@ -1,0 +1,22 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <CreateConnectorSynchroComplete JobIdentifier="ADPacifica_Synchro_Complete_Scaffolding" DisplayName_L1="AD Pacifica - Synchronisation complète" Connector="ADPacifica">
+    <OpenIdIdentifier Identifier="Job" />
+	<AddTask Task="ADPacifica_ComputeRoleModel_CAA" After="true" TaskToCompareWith="MaintainIndexes" />
+	<AddTask Task="ADPacifica_GenerateProvisioningOrders_CAA" After="true" TaskToCompareWith="ADPacifica_ComputeRoleModel_CAA" />
+	<AddTask Task="ADPacifica_Fulfill_CAA" After="true" TaskToCompareWith="ADPacifica_GenerateProvisioningOrders_CAA" />
+  </CreateConnectorSynchroComplete>
+
+  <ComputeRoleModelTask Identifier="ADPacifica_ComputeRoleModel_CAA" DisplayName_L1="Evaluation du modèle de rôles (AD Pacifica vers Collaborateur)" BlockProvisioning="false">
+	<TaskEntityType EntityType="ADPacifica_Entry" />
+  </ComputeRoleModelTask>
+  
+  <GenerateProvisioningOrdersTask Identifier="ADPacifica_GenerateProvisioningOrders_CAA" DisplayName_L1="Génération des ordres de provisioning (AD Pacifica vers Collaborateur)" ForceProvisioning="true">
+	<TaskResourceType ResourceType="ADPacifica_To_Directory_UserRecord" />
+  </GenerateProvisioningOrdersTask>
+  
+  <FulfillTask Identifier="ADPacifica_Fulfill_CAA" DisplayName_L1="Fulfill (source AD Pacifica)" Agent="CAA" OpenIdClient="Job" ContinueOnError="true">
+	<TaskResourceType ResourceType="ADPacifica_To_Directory_UserRecord" />
+  </FulfillTask>
+ 
+</ConfigurationFile>

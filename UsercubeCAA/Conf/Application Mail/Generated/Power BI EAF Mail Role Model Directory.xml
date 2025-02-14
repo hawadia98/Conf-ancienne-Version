@@ -1,0 +1,44 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- Resource Types -->
+    <ResourceType Identifier="Power BI EAF" DisplayName_L1="Power BI EAF" Category="Accounts" Policy="Default" SourceEntityType="Directory_User" TargetEntityType="Application_Account_Mail" BlockProvisioning="true" ApprovalWorkflowType="One">
+        <ScalarRule Property="Identifier" Expression="C#:record:return &quot;Power BI EAF_&quot; + record.EmployeeId;" />
+        <ScalarRule Property="Login" Binding="EmployeeId" />
+        <ScalarRule Property="FirstName" Binding="FirstName" />
+        <ScalarRule Property="LastName" Binding="LastName" />
+        <ScalarRule Property="Email" Binding="Email" />
+        <ScalarRule Property="ContractStartDate" Expression="C#:record:return record.ContractStartDate.HasValue ? record.ContractStartDate.Value.ToString(&quot;dd/MM/yyyy&quot;) : null;" />
+        <ScalarRule Property="ContractEndDate" Expression="C#:record:return record.ContractEndDate.HasValue ? record.ContractEndDate.Value.ToString(&quot;dd/MM/yyyy&quot;) : null;" />
+        <ScalarRule Property="Company" Binding="Company.DisplayName" />
+        <ScalarRule Property="Site" Binding="Site.DisplayName" />
+
+        <ScalarRule Property="StartDate" Expression="C#:record:return assignment.StartDate.ToString(&quot;dd/MM/yyyy&quot;);" />
+        <ScalarRule Property="EndDate" Expression="C#:record:
+        var endDate = assignment.EndDate;
+        return endDate != new DateTime(2079, 6, 6, 0, 0, 0, DateTimeKind.Utc) ? endDate.ToString(&quot;dd/MM/yyyy&quot;) : null;" />
+
+		<ScalarRule Property="IsSuspended" Expression="C#:record:return record.Suspended.GetValueOrDefault() ? &quot;OUI&quot; : &quot;NON&quot;;" />
+
+        <QueryRule Property="Application" TargetBinding="Identifier" SourceExpression="Literal:Power BI EAF" TargetMatchedConfidenceLevel="100" />
+    </ResourceType>
+
+    <!-- Resource Type Mappings -->
+    <ResourceTypeMapping Identifier="Power BI EAF" Connection="AccountMailFulfill" />
+
+    <!-- Correlations -->
+    <ResourceCorrelationRule ResourceType="Power BI EAF" SourceExpression="C#:record:return &quot;Power BI EAF_&quot; + record.EmployeeId;" TargetBinding="Identifier" Policy="Default" SourceMatchedConfidenceLevel="100" />
+
+    <!-- Role Mappings -->
+    <RoleMapping Identifier="Power BI EAF" Policy="Default" Category="Applications"
+        ParentCategoryIdentifierExpression="C#:resource:return &quot;Applications&quot;;"
+        CategoryIdentifierExpression="C#:resource:return resource.Application?.Identifier;"
+        CategoryDisplayNameExpression="C#:resource:return resource.Application?.DisplayName;"
+        IdentifierBinding="Directory_Profile:Identifier"
+        DisplayNameBinding="Directory_Profile:DisplayName"
+        ResourceType="Power BI EAF" Property="Application_Account_Mail:Profiles" ApprovalWorkflowType="One" ApprovalRequired="0">
+        <Rule>
+            <Item Property="Directory_Profile:ApplicationIdentifier" Operator="Equal" Value="Power BI EAF" />
+        </Rule>
+    </RoleMapping>
+
+</ConfigurationFile>

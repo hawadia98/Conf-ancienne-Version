@@ -1,0 +1,30 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <Category Policy="Default" Identifier="Generique_Accounts" DisplayName_L1="Generique Accounts" />
+
+    <ResourceType Identifier="Generique_Accounts_Nominatif" DisplayName_L1="Compte Generique" Policy="Default" Category="Generique_Accounts" TargetEntityType="Generique_Account" SourceEntityType="Directory_User" MaximumInsertPercent="100" MaximumUpdatePercent="100" MaximumDeletePercent="100" ApprovalWorkflowType="One" BlockProvisioning="false">        
+        <ScalarRule Property="Eruid" Binding="EmployeeId" IsMapped="false" />
+        <ScalarRule Property="GivenName" Binding="FirstName" IsMapped="false" />
+        <ScalarRule Property="Sn" Binding="LastName" IsMapped="false" />
+        <ScalarRule Property="Cn" Expression="C#:record:return record.FirstName+&quot;-&quot;+ record.LastName;" IsMapped="false" />
+        <ScalarRule Property="AdaStartDate" Expression="C#:record:return record.ContractStartDate.HasValue ? record.ContractStartDate.Value.ToString(&quot;dd/MM/yyyy&quot;) : null;" IsMapped="false" />
+        <ScalarRule Property="AdaEndDate" Expression="C#:record:return record.ContractEndDate.HasValue ? record.ContractEndDate.Value.ToString(&quot;dd/MM/yyyy&quot;) : null;" IsMapped="false" />
+        <ScalarRule Property="ErLastAccessDate" Expression="C#:record:return record.ContractStartDate.HasValue ? record.ContractStartDate.Value.ToString(&quot;dd/MM/yyyy&quot;) : null;" IsMapped="false" />
+        <ScalarRule Property="AdaProfil" Binding="EmployeeId" IsMapped="false" />
+
+        <NavigationRule Property="AdaGroups" Resource="Group_A" SingleRole="Group_A" />
+        <NavigationRule Property="AdaGroups" Resource="Group_B" SingleRole="Group_B" />
+        <NavigationRule Property="AdaGroups" Resource="Group_C" SingleRole="Group_C" />
+        
+    </ResourceType>
+    
+    <ResourceTypeMapping Identifier="Generique_Accounts_Nominatif" Connection="GeneriqueManualFulfillment" />
+
+    <ResourceCorrelationRule ResourceType="Generique_Accounts_Nominatif" TargetBinding="Eruid" Policy="Default" SourceMatchedConfidenceLevel="100" SourceBinding="EmployeeId" />
+    
+
+    <SingleRole Identifier="Group_A" DisplayName_L1="Group (A)" ApprovalWorkflowType="None" Category="Generique_Accounts" EntityType="Directory_User" Policy="Default" />
+    <SingleRole Identifier="Group_B" DisplayName_L1="Group (B)" ApprovalWorkflowType="None" Category="Generique_Accounts" EntityType="Directory_User" Policy="Default" />
+    <SingleRole Identifier="Group_C" DisplayName_L1="Group (C)" ApprovalWorkflowType="None" Category="Generique_Accounts" EntityType="Directory_User" Policy="Default" />
+
+</ConfigurationFile>

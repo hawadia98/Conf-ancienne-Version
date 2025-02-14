@@ -1,0 +1,9 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  
+  <MenuItem Identifier="Nav_Connectors_HR" DisplayName_L1="RH" ParentMenuItem="Nav_Connectors">
+    <MenuItem Identifier="Nav_Connectors_HR_User" DisplayName_L1="Entrées RH" EntityType="HR_User" IconCode="People" />
+    <MenuItem Identifier="Nav_Connectors_HR_LoadIUG" DisplayName_L1="Chargements IUG" EntityType="HR_LoadIUG" IconCode="List" />
+    <MenuItem Identifier="Nav_Connectors_HR_UserUpdate" DisplayName_L1="Sorties/Mobilitées RH" EntityType="HR_UserUpdate" IconCode="People" />
+  </MenuItem>
+
+</ConfigurationFile>

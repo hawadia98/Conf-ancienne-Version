@@ -1,0 +1,106 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+<Connector Identifier="Generique" DisplayName_L1="Generique" Agent="CAA" MaximumInsertedLines="500" MaximumUpdatedLines="500" MaximumDeletedLines="100" MaxPercentageInsertedLines="0" MaxPercentageUpdatedLines="0" MaxPercentageDeletedLines="0" />
+    <Connection Connector="Generique" Identifier="GeneriqueManualFulfillment" DisplayName_L1 ="Generique Manual Fulfill" Package="Usercube.Manual@0000001" />
+    <!-- <Connection Connector="Generique" Identifier="GeneriqueFulfillment" DisplayName_L1 ="Generique Fulfill" Package="Usercube.Powershell@0000001" /> -->
+    <Connection Connector="Generique" Identifier="GeneriqueAccountExport" DisplayName_L1="Generique Accounts Export" Package="Usercube.CSV@0000001" />
+    <Connection Connector="Generique" Identifier="GeneriqueGroupsExport" DisplayName_L1="Generique Groups Export" Package="Usercube.CSV@0000001" />
+    <Connection Connector="Generique" Identifier="GeneriqueApplicationGroupsExport" DisplayName_L1="Generique Application Groups Export" Package="Usercube.CSV@0000001" />
+   
+    <EntityType Identifier="Generique_Account" DisplayName_L1="Generique Account">
+        <Property Identifier="Eruid" DisplayName_L1="ID utilisateur" IsKey="true" TargetColumnIndex="4" Type="String" />
+        <Property Identifier="GivenName" DisplayName_L1="Prénom" TargetColumnIndex="5" Type="String" />
+        <Property Identifier="Sn" DisplayName_L1="Nom" TargetColumnIndex="6" Type="String" />
+        <Property Identifier="Cn" DisplayName_L1="Nom complet" TargetColumnIndex="7" Type="String"/>       
+        <Property Identifier="AdaStartDate" DisplayName_L1="Date de début" TargetColumnIndex="8" Type="String" />
+        <Property Identifier="AdaEndDate" DisplayName_L1="Date de fin" TargetColumnIndex="9" Type="String" />
+        <Property Identifier="ErLastAccessDate" DisplayName_L1="Date du dernier accès" TargetColumnIndex="10" Type="String" />
+        <Property Identifier="AdaProfil" DisplayName_L1="Profil"  TargetColumnIndex="11" Type="String" />
+        
+        <Property Identifier="AdaGroups" DisplayName_L1="Groupes" Type="ForeignKey" />
+
+    </EntityType>
+
+    <EntityTypeMapping Identifier="Generique_Account" Connector="Generique" ConnectionTable="GeneriqueAccountExport">
+        <Property Identifier="Eruid" ConnectionColumn="eruid" IsPrimaryKey="true" />
+        <Property Identifier="GivenName" ConnectionColumn="givenname" />
+        <Property Identifier="Sn" ConnectionColumn="sn" />
+        <Property Identifier="Cn" ConnectionColumn="cn" />       
+        <Property Identifier="AdaStartDate" ConnectionColumn="adastartdate" />
+        <Property Identifier="AdaEndDate" ConnectionColumn="adaenddate" />
+        <Property Identifier="ErLastAccessDate" ConnectionColumn="erlastaccessdate" />
+        <Property Identifier="AdaProfil" ConnectionColumn="adaprofil" />       
+    </EntityTypeMapping>
+
+    <EntityType Identifier="Generique_Groups" DisplayName_L1="Generique Groupes">
+        <Property Identifier="Identifier" DisplayName_L1="Id technique" TargetColumnIndex="4" Type="String" IsKey="true" />
+        <Property Identifier="DisplayName" DisplayName_L1="DisplayName" TargetColumnIndex="5" Type="String" />
+        <Property Identifier="IdADA" DisplayName_L1="Id ADA"  TargetColumnIndex="6" Type="String" />
+        <Property Identifier="Status" DisplayName_L1="Statut" TargetColumnIndex="7" Type="String" />
+        <Property Identifier="Approver" DisplayName_L1="Approbateur" TargetColumnIndex="8" Type="String" />
+        <Property Identifier="Sensible" DisplayName_L1="Sensible" TargetColumnIndex="9" Type="String" />
+        <Property Identifier="Location" DisplayName_L1="Location" TargetColumnIndex="10" Type="String" />
+        <Property Identifier="Description" DisplayName_L1="Description" TargetColumnIndex="11" Type="String" />
+        <Property Identifier="ApplicationName" DisplayName_L1="Nom application" TargetColumnIndex="12" Type="String" />
+        <Property Identifier="AddressMailPartner" DisplayName_L1="Adresse Mail Partner" TargetColumnIndex="13" Type="String" />
+        
+        <Property Identifier="Accounts" DisplayName_L1="Accounts" Type="ForeignKey" />
+        <Property Identifier="Application" DisplayName_L1="Application" TargetColumnIndex="128" Type="ForeignKey" />
+
+    </EntityType> 
+
+    <EntityPropertyExpression Identifier="Generique_Groups_ApplicationName" Binding="Application.ApplicationName"
+    EntityType="Generique_Groups" Property="ApplicationName" />
+    
+    <EntityPropertyExpression Identifier="Generique_Groups_AddressMailPartner" Binding="Application.AddressMailPartner"
+    EntityType="Generique_Groups" Property="AddressMailPartner" />
+
+    <EntityType Identifier="Applications" DisplayName_L1="Applications">
+        <Property Identifier="Identifier" DisplayName_L1="Identifiant" TargetColumnIndex="4" Type="String" IsKey="true" />
+        <Property Identifier="ApplicationName" DisplayName_L1="Nom application" TargetColumnIndex="5" Type="String" />
+        <Property Identifier="IdApplicationParent" DisplayName_L1="Identifiant de l'application mère"  TargetColumnIndex="6" Type="String" />
+        <Property Identifier="Description" DisplayName_L1="Description" TargetColumnIndex="7" Type="String" />
+        <Property Identifier="URL" DisplayName_L1="URL" TargetColumnIndex="8" Type="String" />
+        <Property Identifier="Login" DisplayName_L1="Login" TargetColumnIndex="9" Type="String" />
+        <Property Identifier="Password" DisplayName_L1="Password" TargetColumnIndex="10" Type="String" />
+        <Property Identifier="ALDDisable" DisplayName_L1="Désactivation en cas ALD" TargetColumnIndex="11" Type="String" />
+        <Property Identifier="PRDisable" DisplayName_L1="Désactivation en cas pré-retraite" TargetColumnIndex="12" Type="String" />
+        <Property Identifier="PIDisable" DisplayName_L1="Désactivation en cas de période d'inactivité" TargetColumnIndex="13" Type="String" />
+        <Property Identifier="MultiProfiles" DisplayName_L1="Multi Profils" TargetColumnIndex="14" Type="String" />
+        <Property Identifier="AdditionalData" DisplayName_L1="Données complémentaires" TargetColumnIndex="15" Type="String" />
+        <Property Identifier="AdditionalDataType" DisplayName_L1="Type de Données complémentaires" TargetColumnIndex="16" Type="String" />
+        <Property Identifier="Owner" DisplayName_L1="Propriétaire" TargetColumnIndex="17" Type="String" />
+        <Property Identifier="TechnicalResponsible" DisplayName_L1="URL" TargetColumnIndex="18" Type="String" />
+        <Property Identifier="AddressMailPartner" DisplayName_L1="Adresse Mail Partner" TargetColumnIndex="19" Type="String" />
+        <Property Identifier="FunctionalApprover" DisplayName_L1="Approbateur fonctionnel" TargetColumnIndex="20" Type="String" />
+        <Property Identifier="ConnectorType" DisplayName_L1="Type Connecteur" TargetColumnIndex="21" Type="String" />
+        <Property Identifier="Criticity" DisplayName_L1="Criticité" TargetColumnIndex="22" Type="String" />
+        <Property Identifier="BrainWaveIntegration" DisplayName_L1="BrainWave Intégration" TargetColumnIndex="23" Type="String" />
+        <Property Identifier="AuthentificationMethod" DisplayName_L1="Méthode Authentification" TargetColumnIndex="24" Type="String" />
+        <Property Identifier="Environment" DisplayName_L1="Environnement" TargetColumnIndex="25" Type="String" />
+        <Property Identifier="Status" DisplayName_L1="Statut" TargetColumnIndex="26" Type="String" />
+        <Property Identifier="AssociateConnector" DisplayName_L1="Connecteur Associé" TargetColumnIndex="27" Type="String" />
+
+        <Property Identifier="AdaGroups" DisplayName_L1="Groupes" Type="ForeignKey" />
+
+    </EntityType>
+
+    <EntityAssociation Identifier="Generique_Account_AdaGroup" IsProperty1Collection="true" IsProperty2Collection="true" Property1="Generique_Account:AdaGroups" Property2="Generique_Groups:Accounts" />
+    <EntityAssociationMapping Identifier="Generique_Account_AdaGroup" Column1="Eruid" Column2="AdaGroups" ConnectionTable="GeneriqueGroupsExport" EntityPropertyMapping1="Generique_Account:Eruid" EntityPropertyMapping2="Generique_Groups:Identifier" Connector="Generique" />
+
+    <EntityAssociation Identifier="Applications_AdaGroup" IsProperty1Collection="true"  Property1="Applications:AdaGroups" Property2="Generique_Groups:Application" />
+    <EntityAssociationMapping Identifier="Applications_AdaGroup" Column1="Identifier" Column2="AdaGroups" ConnectionTable="GeneriqueApplicationGroupsExport" EntityPropertyMapping1="Applications:Identifier" EntityPropertyMapping2="Generique_Groups:Identifier" Connector="Generique" />
+
+    <CreateUpdateDeleteTemplate EntityType="Generique_Account" Profile="Administrator" />
+    <CreateUpdateDeleteTemplate EntityType="Generique_Groups" Profile="Administrator" />
+    <CreateUpdateDeleteTemplate EntityType="Applications" Profile="Administrator" />
+
+    <Resource Id="-7004" Type="Generique_Groups" C4="Group_A" C5="Group (A)" C6="Group (A)" C7="Group (A)" C8="Group (A)" C9="Group (A)" CA="Group (A)" CB="Group (A)" I40="-8002" DisplayName_L1="Group (A)" />
+    <Resource Id="-7005" Type="Generique_Groups" C4="Group_B" C5="Group (B)" C6="Group (B)" C7="Group (B)" C8="Group (B)" C9="Group (B)" CA="Group (B)" CB="Group (B)" I40="-8002" DisplayName_L1="Group (B)" />
+    <Resource Id="-7006" Type="Generique_Groups" C4="Group_C" C5="Group (C)" C6="Group (C)" C7="Group (C)" C8="Group (C)" C9="Group (C)" CA="Group (C)" CB="Group (C)" I40="-8002" DisplayName_L1="Group (C)" />
+
+    <Resource Id="-8002" Type="Applications" C4="Application_A" C5="Application (A)" C6="Parent_Application (A)" C7="Description Application (A)" C8="URL Application A" C9="Login Application A" CA="Password Application A" CB="False" CC="False" CD="False" CE="False" CF="False" CG="Empty" CH="toto toto" CI="toto toto" CJ="toto@localhost" CK="tata tata" CL="Generique" CM="Low" CN="False" CO="None" CP="DEV" CQ="Active" CR="None" DisplayName_L1="Application (A)" />
+
+
+    <PerformManualProvisioningAccessControlRules EntityType="Directory_User" Profile="Administrator"/>
+</ConfigurationFile>

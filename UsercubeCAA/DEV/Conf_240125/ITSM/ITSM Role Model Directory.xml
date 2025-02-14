@@ -1,0 +1,31 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <Category Policy="Default" Identifier="ITSM" DisplayName_L1="ITSM" />
+
+    <!-- ITSM ResourceType -->
+    <ResourceType Identifier="RITM_Nominatif" DisplayName_L1="Création RITM" Policy="Default" Category="ITSM" TargetEntityType="RITM" SourceEntityType="Directory_User" BlockProvisioning="true">        
+        <TypeRule Policy="Default" />
+		
+		<ScalarRule Property="u_email" Binding="Email"/>
+		<ScalarRule Property="u_phone_number" Binding="PhoneNumber"/>
+		<ScalarRule Property="u_desk_location" Expression="C#:record:return &quot;A fournir &quot;;"/>
+		<ScalarRule Property="u_commentaires" Expression="C#:record:return &quot; Demande de PC &quot;;"/>
+		
+        <NavigationRule Policy="Default" Property="u_type_de_pc" Resource="portable" SingleRole="SingleRole_ITSM" DC="portable"/>
+        <NavigationRule Policy="Default" Property="u_type_de_pc" Resource="fixe" SingleRole="SingleRole_ITSM" DC="fixe"/>
+		<NavigationRule Policy="Default" Property="u_type_de_pc" Resource="sans_pc" SingleRole="SingleRole_ITSM" DC="sans_pc"/>
+		<NavigationRule Policy="Default" Property="u_master" Resource="master_standard" SingleRole="SingleRole_ITSM" DB="master_standard"/>
+		<NavigationRule Policy="Default" Property="u_master" Resource="Poste_dev_dotnet" SingleRole="SingleRole_ITSM" DB="Poste_dev_dotnet"/>
+		<NavigationRule Policy="Default" Property="u_telephone_fixe" Resource="present" SingleRole="SingleRole_ITSM" D7="present"/>
+		<NavigationRule Policy="Default" Property="u_telephone_fixe" Resource="a_fournir" SingleRole="SingleRole_ITSM" D7="a_fournir"/>
+		<NavigationRule Policy="Default" Property="u_telephone_fixe" Resource="no" SingleRole="SingleRole_ITSM" D7="no"/>
+		
+    </ResourceType>
+
+    <ResourceTypeMapping Identifier="RITM_Nominatif" Connection="ITSMFulfillment" />
+	
+    <ResourceCorrelationRule ResourceType="RITM_Nominatif" TargetBinding="u_email" Policy="Default" SourceMatchedConfidenceLevel="100" SourceBinding="Email" />
+   
+    <SingleRole Identifier="SingleRole_ITSM" DisplayName_L1="SingleRole ITSM" ApprovalWorkflowType="None" Category="ITSM" EntityType="Directory_User" Policy="Default" RB="1" RC="1"/>
+   
+</ConfigurationFile>

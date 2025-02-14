@@ -1,0 +1,5 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <CreateUpdateDeleteTemplate EntityType="Directory_Check" Profile="Administrator" />
+ 
+</ConfigurationFile>

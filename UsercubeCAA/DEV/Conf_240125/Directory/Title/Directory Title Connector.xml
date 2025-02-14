@@ -1,0 +1,7 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <EntityType Identifier="Directory_Title" ConsolidationMode="Merge">
+    <Property Identifier="PacificaCode" DisplayName_L1="Code Pacifica" Type="String" TargetColumnIndex="6" />
+  </EntityType>
+
+</ConfigurationFile>

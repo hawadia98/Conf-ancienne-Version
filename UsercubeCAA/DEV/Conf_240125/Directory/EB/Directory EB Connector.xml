@@ -1,0 +1,40 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <!-- Directory_EB -->
+  <EntityType Identifier="Directory_EB" DisplayName_L1="E.B">
+    <Property Identifier="Identifier" DisplayName_L1="Identifiant" Type="String" TargetColumnIndex="4" IsKey="true" />
+    <Property Identifier="DisplayName" DisplayName_L1="Libellé" Type="String" TargetColumnIndex="5" />
+    <Property Identifier="OrganizationName" DisplayName_L1="Libellé d'organisation" Type="String" TargetColumnIndex="6" />
+    <Property Identifier="Requester" DisplayName_L1="Demandeur E.B." Type="String" TargetColumnIndex="7" />
+    <Property Identifier="Status" DisplayName_L1="Statut" Type="String" TargetColumnIndex="8" />
+    <Property Identifier="CreationDate" DisplayName_L1="Date de création" Type="String" TargetColumnIndex="9" />
+    <Property Identifier="OrderCode" DisplayName_L1="Code Commande" Type="String" TargetColumnIndex="10" />
+    <Property Identifier="Supplier" DisplayName_L1="Fournisseur" Type="String" TargetColumnIndex="11" />
+    <Property Identifier="ConsultationProcedure" DisplayName_L1="Procédure de consultation" Type="String" TargetColumnIndex="12" />
+    <Property Identifier="RealizationMethod" DisplayName_L1="Mode de réalisation" Type="String" TargetColumnIndex="13" />
+    <Property Identifier="PurchasingChannel" DisplayName_L1="Circuit d'achat" Type="String" TargetColumnIndex="14" />
+    <Property Identifier="CostCenter" DisplayName_L1="Centre de coût" Type="String" TargetColumnIndex="15" />
+    <Property Identifier="StartDate" DisplayName_L1="Date de Début" Type="DateTime" TargetColumnIndex="16" />
+    <Property Identifier="EndDate" DisplayName_L1="Date de Fin" Type="DateTime" TargetColumnIndex="17" />
+    <Property Identifier="NewMission" DisplayName_L1="Nouvelle mission" Type="String" TargetColumnIndex="18" />
+    <Property Identifier="DeliveryDate" DisplayName_L1="Date de livraison" Type="String" TargetColumnIndex="19" />
+    <Property Identifier="Entity" DisplayName_L1="Entité" Type="String" TargetColumnIndex="20" />
+    <Property Identifier="CA2" DisplayName_L1="CA2" Type="String" TargetColumnIndex="21" />
+	<Property Identifier="Valid" DisplayName_L1="Valide" Type="Bool" TargetColumnIndex="22" />
+
+    <Property Identifier="UserRecords" DisplayName_L1="Collaborateurs" Type="ForeignKey" />
+	<Property Identifier="Organization" DisplayName_L1="Organisation" Type="ForeignKey" TargetColumnIndex="128" />
+  </EntityType>
+
+  <EntityPropertyExpression Identifier="Directory_EB_Valid" Expression="C#:resource:return resource.StartDate.HasValue &amp;&amp; resource.EndDate.HasValue;" EntityType="Directory_EB" Property="Valid" />
+
+  <DisplayEntityType PluralDisplayName_L1="E.B" IconCode="List" Color="#95c18b" Identifier="Directory_EB" AutocompleteBinding="Directory_EB:Identifier">
+    <Property DisplayOrder="-1" IsRequired="true" Identifier="Identifier" />
+    <Property IsRequired="true" Identifier="DisplayName" />
+  </DisplayEntityType>
+
+  <ConnectorMappings Connector="Directory" EntityType="Directory_EB" IsIncremental="1" Package="Usercube.Excel@0000001" />
+
+  <ViewTemplate EntityType="Directory_EB" Profile="Administrator" />
+
+</ConfigurationFile>

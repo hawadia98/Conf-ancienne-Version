@@ -1,0 +1,8 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Resource Id="-100" DisplayName_L1="Parti" C4="A" C5="Parti" Type="Directory_PresenceState" />
+  <Resource Id="-101" DisplayName_L1="Actif" C4="P" C5="Présent" Type="Directory_PresenceState" />
+  <Resource Id="-102" DisplayName_L1="A venir" C4="F" C5="A venir" Type="Directory_PresenceState" />
+  <Resource Id="-103" DisplayName_L1="A valider" C4="D" C5="A valider" Type="Directory_PresenceState" />
+
+</ConfigurationFile>

@@ -1,0 +1,40 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <!--<Category Policy="Default" Identifier="LDAP" DisplayName_L1="LDAP" DisplayName_L2="LDAP" />-->
+
+  <ResourceType Identifier="OUD_LDAP_Entry_NominativeUser" DisplayName_L1="OUD_LDAP User (Standard)" DisplayName_L2="Compte LDAP (Standard)" Policy="Default" TargetEntityType="OUD_LDAP_Entry" Category="Accounts" SourceEntityType="Directory_User" BlockProvisioning="true">
+	<TypeRule Policy="Default" TimeOffsetReference="Around" TimeOffsetBeforeReference="-10080" TimeOffsetAfterReference="43200" />
+
+	<ScalarRule Property="givenname" Binding="FirstName" />
+	<ScalarRule Property="cn" Expression="C#:record:return record.FirstName?.Simplify()?.ToLowerInvariant() + &quot;.&quot; + record.LastName?.Simplify()?.ToLowerInvariant();" />
+	<ScalarRule Property="sn" Binding="LastName" />
+	<ScalarRule Property="mail" Binding="Email" />
+	<ScalarRule Property="eruid" Expression="C#:person:return person.LastName?.Simplify()?.ToLowerInvariant();" />
+	<ScalarRule Property="dn" Expression="C#:record:return record.FirstName?.Simplify()?.ToLowerInvariant() + &quot;.&quot; + record.LastName?.Simplify()?.ToLowerInvariant()+ &quot;,ou=Nominatifs,ou=caas,ou=People,o=unixauthcaashp&quot;;" />
+	
+	<!--
+   <QueryRule Property="parentdn" Policy="Default" TargetBinding="OUD_LDAP_Entry:dn" TargetMatchedConfidenceLevel="100" TimeOffsetReference="Around" TimeOffsetBeforeReference="-10080" TimeOffsetAfterReference="43200"
+	SourceExpression="C#:record:return &quot;ou=Nominatifs,ou=caas,ou=People,o=unixauthcaashp&quot;;" />
+  -->
+  </ResourceType>
+  
+  <PasswordResetSettings Identifier="ToManager" BeneficiaryEmailBinding="AssignedResourceType:Owner.Directory_User:MainRecord.Email"
+		BeneficiaryFullNameBinding="AssignedResourceType:Owner.Directory_User:MainRecord.InternalDisplayName"
+		NotifiedEmailBinding="AssignedResourceType:Owner.Directory_User:MainRecord.Manager.MainRecord.Email"
+		NotifiedFullNameBinding="AssignedResourceType:Owner.Directory_User:MainRecord.Manager.MainRecord.InternalDisplayName"
+		Mode="1" DefaultPassword="Usercube@2025" StrengthCheck="^.*" MustChange="true"
+		AutoGenerate="false" DisableNotifications="false" />
+
+  <LdapResourceTypeMapping Identifier="OUD_LDAP_Entry_NominativeUser" Connection="OUDLDAPExportFulfillment" PasswordResetSetting="ToManager" DefaultObjectClass="user" RDNAttributeIdentifier="cn" UsePermissiveModify="false" >
+    <Property Property="dn" IsDNProperty="true" />
+   	<!-- <Property Property="parentdn" IsParentProperty="true" />   -->
+    <Property Property="cn" IsRDNProperty="true" />
+    <Property Property="memberOf" DataSourceBacklinkColumnName="member" />
+  </LdapResourceTypeMapping>
+
+ 
+  <ResourceCorrelationRule ResourceType="OUD_LDAP_Entry_NominativeUser" TargetBinding="mail" Policy="Default" SourceMatchedConfidenceLevel="90" SourceBinding="Email" />
+
+ 
+  <ResourceClassificationRule ResourceType="OUD_LDAP_Entry_NominativeUser" Policy="Default" ResourceTypeIdentificationConfidenceLevel="100" TargetExpression="C#:resource:return resource.dn != null &amp;&amp; (resource.dn.Contains(&quot;OU=Users,&quot;) || resource.dn.Contains(&quot; Users&quot;)) &amp;&amp; resource.dn.StartsWith(&quot;cn=U&quot;);" />
+
+</ConfigurationFile>

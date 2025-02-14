@@ -1,0 +1,7 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  
+  <MenuItem Identifier="Nav_Connectors_Applications_Mail" DisplayName_L1="Comptes applications Mail" ParentMenuItem="Nav_Connectors">
+    <MenuItem Identifier="Nav_Connectors_Applications_Account_Mail" DisplayName_L1="Comptes Mail" EntityType="Application_Account_Mail" IconCode="List" />
+  </MenuItem>
+
+</ConfigurationFile>

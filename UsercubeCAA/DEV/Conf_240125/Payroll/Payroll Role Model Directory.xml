@@ -1,0 +1,194 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- CompanyType -->
+    <ResourceType Identifier="Payroll_CompanyType" DisplayName_L1="Type de société (source Paie)" Category="Sources" Policy="Default" SourceEntityType="Payroll_CompanyType" TargetEntityType="Directory_CompanyType" BlockProvisioning="false" RemoveOrphans="true">
+        <TypeRule Policy="Default" />
+
+        <ScalarRule Property="Identifier" Binding="Code" />
+        <ScalarRule Property="DisplayName" Binding="Name" />
+    </ResourceType>
+
+    <!-- Company -->
+    <ResourceType Identifier="Payroll_Company" DisplayName_L1="Société (source Paie)" Category="Sources" Policy="Default" SourceEntityType="Payroll_Company" TargetEntityType="Directory_Company" BlockProvisioning="false" RemoveOrphans="true">
+        <TypeRule Policy="Default" />
+
+        <ScalarRule Property="Identifier" Binding="Code" />
+        <ScalarRule Property="DisplayName" Binding="Name" />
+
+        <QueryRule Property="Type" TargetBinding="Identifier" SourceBinding="Type" TargetMatchedConfidenceLevel="100" />
+    </ResourceType>
+  
+    <!-- ContractType -->
+    <ResourceType Identifier="Payroll_ContractType" DisplayName_L1="Contrat (source Paie)" Category="Sources" Policy="Default" SourceEntityType="Payroll_ContractType" TargetEntityType="Directory_ContractType" BlockProvisioning="false" RemoveOrphans="true">
+        <TypeRule Policy="Default" />
+
+        <ScalarRule Property="Identifier" Binding="Code" />
+        <ScalarRule Property="DisplayName" Binding="Name" />
+
+        <QueryRule Property="UserType" TargetBinding="Identifier" SourceBinding="UserType" TargetMatchedConfidenceLevel="100" />
+    </ResourceType>
+  
+    <!-- UserType -->
+    <ResourceType Identifier="Payroll_UserType" DisplayName_L1="Type d'utilisateur (source Paie)" Category="Sources" Policy="Default" SourceEntityType="Payroll_UserType" TargetEntityType="Directory_UserType" BlockProvisioning="false" RemoveOrphans="true">
+        <TypeRule Policy="Default" />
+
+        <ScalarRule Property="Identifier" Binding="Code" />
+        <ScalarRule Property="DisplayName" Binding="Name" />
+    </ResourceType>
+
+    <!-- Function -->
+    <ResourceType Identifier="Payroll_Function" DisplayName_L1="Fonction (source Paie)" Category="Sources" Policy="Default" SourceEntityType="Payroll_Function" TargetEntityType="Directory_Title" BlockProvisioning="false" RemoveOrphans="true">
+        <TypeRule Policy="Default" />
+
+        <ScalarRule Property="Identifier" Binding="Code" />
+        <ScalarRule Property="DisplayName" Binding="Name" />
+		<ScalarRule Property="PacificaCode" Binding="PacificaCode" />
+    </ResourceType>
+
+    <!-- Site -->
+    <ResourceType Identifier="Payroll_Site" DisplayName_L1="Lieu de travail (source Paie)" Category="Sources" Policy="Default" SourceEntityType="Payroll_Site" TargetEntityType="Directory_Site" BlockProvisioning="false" RemoveOrphans="true">
+        <TypeRule Policy="Default" />
+
+        <ScalarRule Property="Identifier" Binding="Code" />
+        <ScalarRule Property="DisplayName" Binding="Name" />
+
+        <QueryRule Property="Company" TargetBinding="Identifier" SourceBinding="Company" TargetMatchedConfidenceLevel="100" />
+    </ResourceType>
+
+    <!-- Transco Site -->
+    <ResourceType Identifier="Payroll_TranscoSite" DisplayName_L1="Transco Lieu de travail (source Paie)" Category="Sources" Policy="Default" SourceEntityType="Payroll_TranscoSite" TargetEntityType="Directory_Site" BlockProvisioning="false" AllowAdd="false" AllowRemove="false" RemoveOrphans="true">
+        <TypeRule Policy="Default" />
+
+        <ScalarRule Property="TranscoCode" Binding="Code" />
+        <ScalarRule Property="TranscoName" Binding="Name" />
+		<ScalarRule Property="OUPacifica" Binding="OUPacifica" />
+    </ResourceType>
+
+    <!-- Organization -->
+    <ResourceType Identifier="Payroll_Organization" DisplayName_L1="Direction (source Paie)" Category="Sources" Policy="Default" SourceEntityType="Payroll_Organization" TargetEntityType="Directory_Organization" BlockProvisioning="false" RemoveOrphans="true">
+        <TypeRule Policy="Default" />
+
+        <ScalarRule Property="Identifier" Binding="Code" />
+        <ScalarRule Property="DisplayName" Binding="Name" />
+        <ScalarRule Property="Level" Binding="Level" />
+        <ScalarRule Property="ADAName" Binding="ADAName" />
+
+        <QueryRule Property="Parent" TargetBinding="Identifier" SourceBinding="Parent" TargetMatchedConfidenceLevel="100" />
+        <QueryRule Property="Company" TargetBinding="Identifier" SourceExpression="C#:resource:if (resource.Code?.StartsWith(&quot;CAS&quot;) == true) { return &quot;CAAS&quot;; } else if (resource.Code?.StartsWith(&quot;PCKV&quot;) == true) { return &quot;Viaren&quot;; } else if (resource.Code?.StartsWith(&quot;PCKS&quot;) == true) { return &quot;Sirca&quot;; } else { return &quot;Pacifica&quot;; };" TargetMatchedConfidenceLevel="100" />
+        <QueryRule Property="Manager" TargetBinding="TeamsIdentifier" SourceBinding="ManagerIdentifier" TargetMatchedConfidenceLevel="100" />
+    </ResourceType>
+
+    <!-- Transco Organization -->
+    <ResourceType Identifier="Payroll_TranscoOrganization" DisplayName_L1="Transco Direction (source Paie)" Category="Sources" Policy="Default" SourceEntityType="Payroll_TranscoOrganization" TargetEntityType="Directory_Organization" BlockProvisioning="false" AllowAdd="false" AllowRemove="false" RemoveOrphans="true">
+        <TypeRule Policy="Default" />
+
+        <ScalarRule Property="TranscoCode" Binding="Code" />
+        <ScalarRule Property="TranscoDescription" Binding="Description" />
+    </ResourceType>
+
+    <!-- User -->
+    <ResourceType Identifier="Payroll_User" DisplayName_L1="Collaborateur (source Paie)" Category="Sources" Policy="Default" SourceEntityType="Payroll_User" TargetEntityType="Directory_User" BlockProvisioning="false" DiscardManualAssignments="true">
+        <TypeRule Policy="Default" />
+
+        <ScalarRule Property="Identifier" Binding="EmployeeId" />
+        <ScalarRule Property="TeamsIdentifier" Binding="TeamsIdentifier" />
+    </ResourceType>
+
+    <!-- UserRecord -->
+    <ResourceType Identifier="Payroll_UserRecord" DisplayName_L1="Fiche collaborateur (source Paie)" Category="Sources" Policy="Default" SourceEntityType="Payroll_UserRecord" TargetEntityType="Directory_UserRecord" CorrelateMultipleResources="true" BlockProvisioning="false" DiscardManualAssignments="true">
+        <TypeRule Policy="Default" />
+
+        <ScalarRule Property="PositionIdentifier" Binding="PositionIdentifier" />
+        <ScalarRule Property="UserIdentifier" Binding="EmployeeId" />
+        <ScalarRule Property="EmployeeId" Binding="EmployeeId" />
+        <ScalarRule Property="TeamsIdentifier" Binding="TeamsIdentifier" />
+
+        <ScalarRule Property="ContractStartDate" Binding="ContractStartDate" Expression="ParseUniversalDate:dd/MM/yyyy hh:mm:ss" />
+        <ScalarRule Property="ContractEndDate" Binding="ContractEndDate" Expression="ParseUniversalDateThenAddMinutes:dd/MM/yyyy hh:mm:ss|1440" />
+
+        <ScalarRule Property="PositionStartDate" Binding="ContractStartDate" Expression="ParseUniversalDate:dd/MM/yyyy hh:mm:ss" />
+        <ScalarRule Property="PositionEndDate" Binding="ContractEndDate" Expression="ParseUniversalDateThenAddMinutes:dd/MM/yyyy hh:mm:ss|1440" />
+
+        <ScalarRule Property="ALDStartDate" Binding="ALDStartDate" Expression="ParseUniversalDate:dd/MM/yyyy hh:mm:ss" />
+        <ScalarRule Property="ALDEndDate" Binding="ALDEndDate" Expression="ParseUniversalDateThenAddMinutes:dd/MM/yyyy hh:mm:ss|1440" />
+
+        <ScalarRule Property="SuspensionStartDate" Binding="SuspensionStartDate" Expression="ParseUniversalDate:dd/MM/yyyy hh:mm:ss" />
+        <ScalarRule Property="SuspensionEndDate" Binding="SuspensionEndDate" Expression="ParseUniversalDateThenAddMinutes:dd/MM/yyyy hh:mm:ss|1440" />
+
+		<ScalarRule Property="FirstName" Binding="FirstName" Expression="ToFirstName" />
+		<ScalarRule Property="LastName" Binding="LastName" Expression="ToUpper" />
+        <ScalarRule Property="MaidenName" Binding="MaidenName" Expression="ToUpper" />
+
+        <QueryRule Property="Company" TargetBinding="DisplayName" SourceBinding="Company" TargetMatchedConfidenceLevel="100" />
+        <QueryRule Property="Site" TargetBinding="DisplayName" SourceBinding="Site" TargetMatchedConfidenceLevel="100" />
+        <QueryRule Property="Organization" TargetBinding="Identifier" TargetMatchedConfidenceLevel="100" SourceExpression="C#:resource:
+            var organizationLevel = string.Empty;
+            var companyIdentifier = resource.Company == &quot;CREDIT AGRICOLE ASSURANCES SOLUTIONS&quot; ? &quot;CAS&quot; : &quot;PCK&quot;;
+            if (!string.IsNullOrEmpty(resource.OrganizationLevel8)) {
+                organizationLevel = resource.OrganizationLevel8;
+            }
+            else if (!string.IsNullOrEmpty(resource.OrganizationLevel7)) {
+                organizationLevel = resource.OrganizationLevel7;
+            }
+            else if (!string.IsNullOrEmpty(resource.OrganizationLevel6)) {
+                organizationLevel = resource.OrganizationLevel6;
+            }
+            else if (!string.IsNullOrEmpty(resource.OrganizationLevel5)) {
+                organizationLevel = resource.OrganizationLevel5;
+            }
+            else if (!string.IsNullOrEmpty(resource.OrganizationLevel4)) {
+                organizationLevel = resource.OrganizationLevel4;
+            }
+            else if (!string.IsNullOrEmpty(resource.OrganizationLevel3)) {
+                organizationLevel = resource.OrganizationLevel3;
+            }
+            else if (!string.IsNullOrEmpty(resource.OrganizationLevel2)) {
+                organizationLevel = resource.OrganizationLevel2;
+            }
+            else if (!string.IsNullOrEmpty(resource.OrganizationLevel1)) {
+                organizationLevel = resource.OrganizationLevel1;
+            }
+
+			if (organizationLevel.StartsWith(companyIdentifier)) {
+				return organizationLevel;
+			}
+            return companyIdentifier + organizationLevel;" />
+        <QueryRule Property="ContractType" TargetBinding="Identifier" SourceBinding="ContractType" TargetMatchedConfidenceLevel="100" />
+		<QueryRule Property="Title" TargetBinding="DisplayName" TargetExpression="Simplify" SourceBinding="Function" SourceExpression="Simplify" TargetMatchedConfidenceLevel="100" />
+        <QueryRule Property="Manager" TargetBinding="Identifier" SourceBinding="ManagerIUG" TargetMatchedConfidenceLevel="100" />
+        <QueryRule Property="User" TargetBinding="Identifier" SourceBinding="EmployeeId" TargetMatchedConfidenceLevel="100" />
+    </ResourceType>
+
+    <!-- Resource Type Mappings -->
+    <ResourceTypeMapping Identifier="Payroll_CompanyType" Connection="HRDatabase" />
+    <ResourceTypeMapping Identifier="Payroll_Company" Connection="HRDatabase" />
+    <ResourceTypeMapping Identifier="Payroll_ContractType" Connection="HRDatabase" />
+    <ResourceTypeMapping Identifier="Payroll_UserType" Connection="HRDatabase" />
+	<ResourceTypeMapping Identifier="Payroll_Function" Connection="HRDatabase" />
+    <ResourceTypeMapping Identifier="Payroll_Site" Connection="HRDatabase" />
+	<ResourceTypeMapping Identifier="Payroll_TranscoSite" Connection="HRDatabase" />
+    <ResourceTypeMapping Identifier="Payroll_Organization" Connection="HRDatabase" />
+	<ResourceTypeMapping Identifier="Payroll_TranscoOrganization" Connection="HRDatabase" />
+    <ResourceTypeMapping Identifier="Payroll_User" Connection="HRDatabase" />
+    <ResourceTypeMapping Identifier="Payroll_UserRecord" Connection="HRDatabase" />
+
+    <!-- Correlations -->
+    <ResourceCorrelationRule ResourceType="Payroll_CompanyType" SourceBinding="Code" TargetBinding="Identifier" Policy="Default" SourceMatchedConfidenceLevel="100" />
+    <ResourceCorrelationRule ResourceType="Payroll_Company" SourceBinding="Code" TargetBinding="Identifier" Policy="Default" SourceMatchedConfidenceLevel="100" />
+    <ResourceCorrelationRule ResourceType="Payroll_ContractType" SourceBinding="Code" TargetBinding="Identifier" Policy="Default" SourceMatchedConfidenceLevel="100" />
+    <ResourceCorrelationRule ResourceType="Payroll_UserType" SourceBinding="Code" TargetBinding="Identifier" Policy="Default" SourceMatchedConfidenceLevel="100" />
+    <ResourceCorrelationRule ResourceType="Payroll_Function" SourceBinding="Code" TargetBinding="Identifier" Policy="Default" SourceMatchedConfidenceLevel="100" />
+	<ResourceCorrelationRule ResourceType="Payroll_Site" SourceBinding="Code" TargetBinding="Identifier" Policy="Default" SourceMatchedConfidenceLevel="100" />
+    <ResourceCorrelationRule ResourceType="Payroll_TranscoSite" SourceBinding="State" SourceExpression="Simplify" TargetBinding="DisplayName" TargetExpression="Simplify" Policy="Default" SourceMatchedConfidenceLevel="100" />
+	<ResourceCorrelationRule ResourceType="Payroll_Organization" SourceBinding="Code" TargetBinding="Identifier" Policy="Default" SourceMatchedConfidenceLevel="100" />
+	<ResourceCorrelationRule ResourceType="Payroll_TranscoOrganization" SourceBinding="Description" SourceExpression="Simplify" TargetBinding="DisplayName" TargetExpression="Simplify" Policy="Default" SourceMatchedConfidenceLevel="100" />
+
+    <ResourceCorrelationRule ResourceType="Payroll_User" SourceBinding="EmployeeId" TargetBinding="Identifier" Policy="Default" SourceMatchedConfidenceLevel="120" />
+    <ResourceCorrelationRule ResourceType="Payroll_User" SourceBinding="TeamsIdentifier" TargetBinding="TeamsIdentifier" Policy="Default" SourceMatchedConfidenceLevel="100" />
+    <ResourceCorrelationRule ResourceType="Payroll_User" SourceExpression="C#:resource:return ((resource.Records == null) || (resource.Records.Count == 0)) ? null : (resource.Records[0].FirstName?.ToUpper() + resource.Records[0].LastName?.ToUpper() + resource.Records[0].Company?.ToUpper());" TargetExpression="C#:user:return ((user.Records == null) || (user.Records.Count == 0)) ? null : (user.Records[0].FirstName?.ToUpper() + user.Records[0].LastName?.ToUpper() + user.Records[0].Company?.DisplayName?.ToUpper());" Policy="Default" SourceMatchedConfidenceLevel="80" />
+
+    <ResourceCorrelationRule ResourceType="Payroll_UserRecord" SourceBinding="PositionIdentifier" TargetBinding="PositionIdentifier" Policy="Default" SourceMatchedConfidenceLevel="120" />
+    <ResourceCorrelationRule ResourceType="Payroll_UserRecord" SourceBinding="TeamsIdentifier" TargetBinding="TeamsIdentifier" Policy="Default" SourceMatchedConfidenceLevel="100" />
+    <ResourceCorrelationRule ResourceType="Payroll_UserRecord" SourceExpression="C#:resource:return resource.FirstName?.ToUpper() + resource.LastName?.ToUpper() + resource.Company?.ToUpper();" TargetExpression="C#:record:return record.FirstName?.ToUpper() + record.LastName?.ToUpper() + record.Company?.DisplayName?.ToUpper();" Policy="Default" SourceMatchedConfidenceLevel="80" />
+
+</ConfigurationFile>

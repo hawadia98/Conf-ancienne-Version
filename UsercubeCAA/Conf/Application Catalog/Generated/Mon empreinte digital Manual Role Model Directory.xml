@@ -1,0 +1,30 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- Resource Types -->
+    <ResourceType Identifier="Mon empreinte digital" DisplayName_L1="Mon empreinte digital" Category="Accounts" Policy="Default" SourceEntityType="Directory_User" TargetEntityType="Catalog_Application_Account" BlockProvisioning="true" ApprovalWorkflowType="One">
+        <ScalarRule Property="Identifier" Expression="C#:record:return &quot;Mon empreinte digital_&quot; + record.EmployeeId;" />
+        <ScalarRule Property="Login" Binding="EmployeeId" />
+
+        <QueryRule Property="Application" TargetBinding="Identifier" SourceExpression="Literal:Mon empreinte digital" TargetMatchedConfidenceLevel="100" />
+    </ResourceType>
+
+    <!-- Resource Type Mappings -->
+    <ManualProvisioningResourceTypeMapping Identifier="Mon empreinte digital" Connection="AccountCatalogFulfill" TicketSynchroIsNotAvailable="true" />
+
+    <!-- Correlations -->
+    <ResourceCorrelationRule ResourceType="Mon empreinte digital" SourceExpression="C#:record:return &quot;Mon empreinte digital_&quot; + record.EmployeeId;" TargetBinding="Identifier" Policy="Default" SourceMatchedConfidenceLevel="100" />
+
+    <!-- Role Mappings -->
+    <RoleMapping Identifier="Mon empreinte digital" Policy="Default" Category="Applications"
+        ParentCategoryIdentifierExpression="C#:resource:return &quot;Applications&quot;;"
+        CategoryIdentifierExpression="C#:resource:return resource.Application?.Identifier;"
+        CategoryDisplayNameExpression="C#:resource:return resource.Application?.DisplayName;"
+        IdentifierBinding="Directory_Profile:Identifier"
+        DisplayNameBinding="Directory_Profile:DisplayName"
+        ResourceType="Mon empreinte digital" Property="Catalog_Application_Account:Profiles" ApprovalWorkflowType="One" ApprovalRequired="0">
+        <Rule>
+            <Item Property="Directory_Profile:ApplicationIdentifier" Operator="Equal" Value="Mon empreinte digital" />
+        </Rule>
+    </RoleMapping>
+
+</ConfigurationFile>

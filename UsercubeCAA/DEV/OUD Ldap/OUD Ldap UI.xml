@@ -1,0 +1,17 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+	<DisplayTable Identifier="OUD_LDAP_Entry" EntityType="OUD_LDAP_Entry" DisplayTableDesignElement="resourcetable" IsEntityTypeDefault="true">
+		<Column DefaultSortPriority="1" DisplayBinding="dn" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="4" />
+		<Column DisplayBinding="uid" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="2" />
+		<Column DisplayBinding="objectClass" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="2" />
+		<Column DisplayBinding="EntryUUID" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="2" />
+	
+	</DisplayTable>
+
+	<!-- <DisplayEntityType Identifier="OUD_LDAP_Entry"> -->
+		<!-- <Property OutputType="BasicCollection" Identifier="member" /> -->
+		<!-- <Property OutputType="BasicCollection" Identifier="memberOf" /> -->
+	<!-- </DisplayEntityType> -->
+
+	<EntityPropertyExpression Identifier="OUD_LDAP_Entry_InternalDisplayName" Expression="C#:resource:return Usercube.Expressions.Functions.UtilExpressions.ToFormatedDN(resource.dn);" EntityType="OUD_LDAP_Entry" Property="InternalDisplayName" />
+
+</ConfigurationFile>

@@ -1,0 +1,9 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <CreateConnectorSynchroIncremental Connector="MicrosoftExchange" DisplayName_L1="01: Microsoft Exchange - Synchronization Incremental (scaffolding)" JobIdentifier="MicrosoftExchange_Synchronize_Incremental_Scaffolding">
+    <OpenIdIdentifier Identifier="Job"/>
+  </CreateConnectorSynchroIncremental>
+
+  <CreateConnectorSynchroComplete Connector="MicrosoftExchange" DisplayName_L1="01: Microsoft Exchange - Synchronization Complete (scaffolding)" JobIdentifier="MicrosoftExchange_Synchronize_Complete_Scaffolding">
+    <OpenIdIdentifier Identifier="Job"/>
+  </CreateConnectorSynchroComplete>
+</ConfigurationFile>

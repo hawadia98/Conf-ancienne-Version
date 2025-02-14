@@ -1,0 +1,13 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <!--Scaffolding to create the Synchronize complete mode for the Connector ADMicrosoftExchange-->
+  <CreateConnectorSynchroComplete Connector="ADMicrosoftExchange" JobIdentifier="ADMicrosoftExchange_Synchronize_Complete_Scaffolding" DisplayName_L1="01: AD Microsoft Exchange - Synchronization Complete (scaffolding)">
+    <OpenIdIdentifier Identifier="Job"/>
+  </CreateConnectorSynchroComplete>
+
+  <!--Scaffolding to create the Synchronize incremental mode for the Connector ADMicrosoftExchange-->
+  <CreateConnectorSynchroIncremental Connector="ADMicrosoftExchange" JobIdentifier="ADMicrosoftExchange_Synchronize_Incremental_Scaffolding" DisplayName_L1="01: AD Microsoft Exchange - Synchronization Incremental (scaffolding)">
+    <OpenIdIdentifier Identifier="Job"/>
+  </CreateConnectorSynchroIncremental>
+
+</ConfigurationFile>

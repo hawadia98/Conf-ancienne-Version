@@ -1,0 +1,7 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <MenuItem Identifier="Nav_Connectors_ITSM" DisplayName_L1="ITSM" ParentMenuItem="Nav_Connectors">
+    <MenuItem Identifier="Nav_Connectors_RITM" DisplayName_L1="RITM" EntityType="RITM" />
+  </MenuItem>
+
+</ConfigurationFile>

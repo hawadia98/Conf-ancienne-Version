@@ -1,0 +1,8 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <MenuItem Identifier="Nav_Connectors_MicrosoftExchangePacifica" DisplayName_L1="Microsoft Exchange Pacifica" ParentMenuItem="Nav_Connectors">
+	<MenuItem Identifier="Nav_Connectors_MicrosoftExchangePacifica_Database" DisplayName_L1="Bases de données" EntityType="MicrosoftExchangePacifica_Database" />
+    <MenuItem Identifier="Nav_Connectors_MicrosoftExchangePacifica_Mailbox" DisplayName_L1="Boites mails" EntityType="MicrosoftExchangePacifica_Mailbox" />
+  </MenuItem>
+
+</ConfigurationFile>

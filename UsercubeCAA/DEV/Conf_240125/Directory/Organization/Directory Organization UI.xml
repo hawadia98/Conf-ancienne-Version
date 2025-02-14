@@ -1,0 +1,31 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <DisplayTable Identifier="Directory_Organization" EntityType="Directory_Organization" DisplayTableDesignElement="table" IsEntityTypeDefault="true" ParentProperty="Parent">
+    <Column DefaultSortPriority="1" DisplayBinding="DisplayName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="6" />
+    <Column DisplayBinding="Identifier" DisplayName_L1="Identifiant" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="4" />
+    <Column DisplayBinding="Manager.InternalDisplayName" DisplayName_L1="Manager" IsDisplayInSummaryView="true" IsResizable="true" ColumnSize="4" />
+  </DisplayTable>
+
+  <Form Identifier="Base_Directory_Organization" EntityType="Directory_Organization">
+    <Control DisplayName_L1="Organizational Data" OutputType="LayoutFieldset" Name="Organizational Data">
+      <Control Binding="Type" />
+      <Control Binding="Identifier" />
+      <Control Binding="DisplayName" />
+      <Control Binding="FullName" IsReadOnly="true" />
+      <Control Binding="Level" />
+      <Control Binding="ADAName" />
+	  <Control Binding="TranscoCode" />
+	  <Control Binding="TranscoDescription" />
+      <Control Binding="Manager" />
+      <Control Binding="Assistant" />
+    </Control>
+
+    <Control DisplayName_L1="Additional Data" OutputType="LayoutFieldset" Name="Additional Data">
+      <Control Binding="Parent" />
+      <Control Binding="Children" IsReadOnly="true" />
+      <Control Binding="Company" IsReadOnly="true" />
+      <Control Binding="UserRecords" IsReadOnly="true" />
+    </Control>
+  </Form>
+
+</ConfigurationFile>

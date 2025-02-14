@@ -1,0 +1,10 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <CreateConnectorSynchroIncremental Connector="ApplicationMail" Agent="CAA" JobIdentifier="Applications_Mail_Synchronize_Incremental_Scaffolding" DisplayName_L1="Applications Mail - Synchronization Incremental (scaffolding)">
+        <OpenIdIdentifier Identifier="Job"/>
+        <AddTask Task="Reset_Files_Applications_Mail" Before="true" TaskToCompareWith="ComputeRoleModel_WithDirty" />
+      </CreateConnectorSynchroIncremental>
+    
+      <InvokeExpressionTask Identifier="Reset_Files_Applications_Mail" DisplayName_L1="Reset Application Mail PowerShell Files" InputPath="D:/UsercubeCAA/Scripts/Applications/Applications_Reset_Files.ps1" Agent="CAA" OpenIdClient="Job" />
+  
+</ConfigurationFile>

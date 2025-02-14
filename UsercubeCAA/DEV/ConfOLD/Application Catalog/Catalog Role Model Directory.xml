@@ -1,0 +1,37 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- Resource Types -->
+    <ResourceType Identifier="Catalog_Application" DisplayName_L1="Application (source Catalogue)" Category="Sources" Policy="Default" SourceEntityType="Catalog_Application" TargetEntityType="Directory_Application" BlockProvisioning="false" RemoveOrphans="true">
+        <TypeRule Policy="Default" />
+
+        <ScalarRule Property="Identifier" Binding="Identifier" />
+        <ScalarRule Property="DisplayName" Binding="Name" />
+        <ScalarRule Property="Description" Binding="Description" />
+        <ScalarRule Property="IsActive" Binding="IsActive" />
+        <ScalarRule Property="FunctionalApprover" Binding="FunctionalApprover" />
+        <ScalarRule Property="TechnicalAdmin" Binding="TechnicalAdmin" />
+
+        <QueryRule Property="ProvisioningType" TargetBinding="Identifier" SourceBinding="ProvisioningType" TargetMatchedConfidenceLevel="100" />
+    </ResourceType>
+
+    <ResourceType Identifier="Catalog_Profile" DisplayName_L1="Profil (source Catalogue)" Category="Sources" Policy="Default" SourceEntityType="Catalog_Profile" TargetEntityType="Directory_Profile" BlockProvisioning="false" RemoveOrphans="true">
+        <TypeRule Policy="Default" />
+
+        <ScalarRule Property="Identifier" Binding="Identifier" />
+        <ScalarRule Property="DisplayName" Binding="Name" />
+        <ScalarRule Property="Description" Binding="Description" />
+        <ScalarRule Property="FunctionalApprover" Binding="FunctionalApprover" />
+        <ScalarRule Property="TechnicalAdmin" Binding="TechnicalAdmin" />
+
+        <QueryRule Property="Application" TargetBinding="Identifier" SourceBinding="Application.Identifier" TargetMatchedConfidenceLevel="100" />
+    </ResourceType>
+
+    <!-- Resource Type Mappings -->
+    <ResourceTypeMapping Identifier="Catalog_Application" Connection="HRDatabase" />
+    <ResourceTypeMapping Identifier="Catalog_Profile" Connection="HRDatabase" />
+
+    <!-- Correlations -->
+    <ResourceCorrelationRule ResourceType="Catalog_Application" SourceBinding="Identifier" TargetBinding="Identifier" Policy="Default" SourceMatchedConfidenceLevel="100" />
+    <ResourceCorrelationRule ResourceType="Catalog_Profile" SourceBinding="Identifier" TargetBinding="Identifier" Policy="Default" SourceMatchedConfidenceLevel="100" />
+
+</ConfigurationFile>

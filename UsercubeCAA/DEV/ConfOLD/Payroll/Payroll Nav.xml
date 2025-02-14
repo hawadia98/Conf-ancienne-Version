@@ -1,0 +1,17 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <MenuItem Identifier="Nav_Connectors_Payroll" DisplayName_L1="Paie" ParentMenuItem="Nav_Connectors">
+    <MenuItem Identifier="Nav_Connectors_Payroll_CompanyType" DisplayName_L1="Paie - Types de sociétés" EntityType="Payroll_CompanyType" IconCode="Suitcase" />
+    <MenuItem Identifier="Nav_Connectors_Payroll_Company" DisplayName_L1="Paie - Sociétés" EntityType="Payroll_Company" IconCode="Suitcase" />
+    <MenuItem Identifier="Nav_Connectors_Payroll_ContractType" DisplayName_L1="Paie - Contrats" EntityType="Payroll_ContractType" IconCode="List" />
+    <MenuItem Identifier="Nav_Connectors_Payroll_UserType" DisplayName_L1="Paie - Types d'utilisateurs" EntityType="Payroll_UserType" IconCode="List" />
+    <MenuItem Identifier="Nav_Connectors_Payroll_Function" DisplayName_L1="Paie - Fonctions" EntityType="Payroll_Function" IconCode="List" />
+	<MenuItem Identifier="Nav_Connectors_Payroll_Site" DisplayName_L1="Paie - Lieux de travail" EntityType="Payroll_Site" IconCode="MapPin" />
+	<MenuItem Identifier="Nav_Connectors_Payroll_TranscoSite" DisplayName_L1="Paie - Transco Lieux de travail" EntityType="Payroll_TranscoSite" IconCode="List" />
+    <MenuItem Identifier="Nav_Connectors_Payroll_Organization" DisplayName_L1="Paie - Directions" EntityType="Payroll_Organization" IconCode="Suitcase" />
+	<MenuItem Identifier="Nav_Connectors_Payroll_TranscoOrganization" DisplayName_L1="Paie - Transco Directions" EntityType="Payroll_TranscoOrganization" IconCode="List" />
+    <MenuItem Identifier="Nav_Connectors_Payroll_UserRecord" DisplayName_L1="Paie - Fiches de collaborateurs" EntityType="Payroll_UserRecord" IconCode="People" />
+    <MenuItem Identifier="Nav_Connectors_Payroll_User" DisplayName_L1="Paie - Collaborateurs" EntityType="Payroll_User" IconCode="People" />
+  </MenuItem>
+
+</ConfigurationFile>

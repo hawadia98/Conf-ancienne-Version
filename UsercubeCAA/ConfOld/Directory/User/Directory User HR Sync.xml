@@ -1,0 +1,358 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <!-- HR Workflows -->
+  <Workflow Identifier="Directory_User_CreateFromHR" DisplayName_L1="Collaborateur - Entrée RH (Synchronisation)" VariablesType="Workflow_Directory_User">
+    <Activity Identifier="Request" DisplayName_L1="Demande" Template="Action" />
+    <Activity Identifier="PersistDraft" DisplayName_L1="Création du brouillon" Template="PersistOnlyResources" />
+    <Activity Identifier="Review" DisplayName_L1="Validation" Template="ReviewWithFeedback" />
+    <Activity Identifier="Persist" DisplayName_L1="Prise en compte" Template="Persist" />
+  </Workflow>
+
+  <Workflow Identifier="Directory_User_UpdateFromHR" DisplayName_L1="Collaborateur - Mise à jour RH (Synchronisation)" VariablesType="Workflow_Directory_User">
+    <Activity Identifier="Request" DisplayName_L1="Demande" Template="Action" />
+    <Activity Identifier="Persist" DisplayName_L1="Prise en compte" Template="Persist" />
+  </Workflow>
+
+  <Workflow Identifier="Directory_User_MobilityFromHR" DisplayName_L1="Collaborateur - Mobilité RH (Synchronisation)" VariablesType="Workflow_Directory_User">
+    <Activity Identifier="Request" DisplayName_L1="Demande" Template="Action" />
+    <Activity Identifier="Persist" DisplayName_L1="Prise en compte" Template="Persist" />
+  </Workflow>
+
+  <Workflow Identifier="Directory_User_DeleteFromHR" DisplayName_L1="Collaborateur - Départ RH (Synchronisation)" VariablesType="Workflow_Directory_User">
+    <Activity Identifier="Request" DisplayName_L1="Demande" Template="Action" />
+    <Activity Identifier="Persist" DisplayName_L1="Prise en compte" Template="Persist" />
+  </Workflow>
+
+  <!-- HR Workflows Forms -->
+  <Form Identifier="Workflow_Directory_User_HR_Base" EntityType="Directory_User">
+    <Control Binding="Identifier" />
+  </Form>
+
+  <Form Identifier="Workflow_Directory_UserRecord_HR_Base" EntityType="Directory_UserRecord">
+    <Control Binding="PositionIdentifier" />
+    <Control Binding="UserIdentifier" />
+    <Control Binding="EmployeeId" />
+
+    <Control Binding="FirstName" />
+    <Control Binding="LastName" />
+
+    <Control Binding="ContractStartDate" />
+    <Control Binding="ContractEndDate" />
+
+    <Control Binding="Company" />
+    <Control Binding="Site" DisplayName_L1="Lieu de travail" />
+    <Control Binding="ContractType" />
+	<Control Binding="Title" DisplayName_L1="Fonction" />
+    <Control Binding="Manager" DisplayName_L1="Responsable hiérarchique" />
+    <Control Binding="Organization" DisplayName_L1="Direction" />
+    <Control Binding="User" />
+    <Control Binding="PositionStartDate" />
+    <Control Binding="PositionEndDate" />
+  </Form>
+
+  <Form Identifier="Workflow_Directory_UserRecord_HR_Review_Base" EntityType="Directory_UserRecord">
+    <Control DisplayName_L1="Informations personnelles" OutputType="LayoutFieldset" Name="Informations personnelles">
+      <Control OutputType="LayoutContainer" HomonymEntityLink="Directory_UserRecord">
+        <Control DisplayName_L1="Nom complet" OutputType="LayoutRowset" Name="Nom complet">
+          <Control Binding="LastName" IsReadOnly="true" IsRequired="true" />
+          <Control Binding="FirstName" IsReadOnly="true" IsRequired="true" />
+        </Control>
+      </Control>
+      <Control Binding="MaidenName" ColumnSize="4" />
+
+      <Control DisplayName_L1="Numéros de téléphone" OutputType="LayoutRowset" Name="Numéros de téléphone">
+        <Control Binding="PhoneNumber" />
+        <Control Binding="MobileNumber" />
+      </Control>
+      <Control DisplayName_L1="Photo" OutputType="LayoutRowset" Name="Photo">
+        <Control Binding="User.Photo" InputType="Image" />
+      </Control>
+    </Control>
+
+    <Control DisplayName_L1="Contrat" OutputType="LayoutFieldset" Name="Contrat">
+      <Control Binding="Company.Type" IsReadOnly="true" />
+      <Control Binding="Company" DisplayName_L1="Société" IsReadOnly="true" IsRequired="true" />
+      <Control Binding="Site" DisplayName_L1="Lieu de travail" IsRequired="true" />
+      <Control Binding="ContractType" InputType="Combobox" IsReadOnly="true" IsRequired="true" />
+      <Control Binding="ContractStartDate" IsRequired="true" />
+      <Control Binding="ContractEndDate" />
+	  <Control Binding="Title" DisplayName_L1="Fonction" />
+    </Control>
+
+    <Control DisplayName_L1="Poste" OutputType="LayoutFieldset" Name="Poste">
+      <Control Binding="Manager" DisplayName_L1="Responsable hiérarchique" IsRequired="true" />
+      <Control Binding="Organization" DisplayName_L1="Direction" IsRequired="true" />
+      <Control Binding="PositionStartDate" />
+      <Control Binding="PositionEndDate" />
+    </Control>
+
+    <Control DisplayName_L1="Attributs supplémentaires" OutputType="LayoutFieldset" Name="Attributs supplémentaires">
+      <Control Binding="BadgeOnly" />
+      <Control Binding="BeneficiaryCompany" />
+    </Control>
+  </Form>
+
+  <Form Identifier="Workflow_Directory_UserRecord_HR_Update_Base" EntityType="Directory_UserRecord">
+    <Control Binding="PositionIdentifier" />
+    <Control Binding="UserIdentifier" />
+    <Control Binding="EmployeeId" />
+
+    <Control Binding="FirstName" />
+    <Control Binding="LastName" />
+
+    <Control Binding="ContractStartDate" />
+    <Control Binding="ContractEndDate" />
+
+    <Control Binding="Company" />
+    <Control Binding="Site" DisplayName_L1="Lieu de travail" />
+    <Control Binding="ContractType" />
+	  <Control Binding="Title" DisplayName_L1="Fonction" />
+    <Control Binding="Manager" DisplayName_L1="Responsable hiérarchique" />
+    <Control Binding="Organization" DisplayName_L1="Direction" />
+    <Control Binding="User" />
+    <Control Binding="PositionStartDate" />
+    <Control Binding="PositionEndDate" />
+
+    <Control Binding="ReasonForDeparture" />
+    <Control Binding="ExitDate" />
+    <Control Binding="ArrivalDateFutureUnit" />
+
+    <Control Binding="FutureCompany" />
+    <Control Binding="FutureOrganization" />
+    <Control Binding="FutureManager" />
+  </Form>
+
+  <WorkflowCreateSeveralRecordsEntityForm Identifier="Workflow_Directory_User_CreateFromHR" EntityType="Workflow_Directory_User" MainProperty="Workflow_Directory_User:Directory_User" RecordProperty="Directory_User:Records" WorkflowRequestType="Self" Activity="Directory_User_CreateFromHR:Request" FormTitle_L1="Collaborateur - Entrée RH (Synchronisation)">
+    <MainControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_User_HR_Base" />
+    <RecordControl OutputType="LayoutContainer">
+      <Control OutputType="LayoutContainer" />
+    </RecordControl>
+    <RecordUniqueItemControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_HR_Base" />
+  </WorkflowCreateSeveralRecordsEntityForm>
+
+  <WorkflowCreateSeveralRecordsEntityForm Identifier="Workflow_Directory_User_CreateFromHR_Review" EntityType="Workflow_Directory_User" MainProperty="Workflow_Directory_User:Directory_User" RecordProperty="Directory_User:Records" WorkflowRequestType="Self" Activity="Directory_User_CreateFromHR:Review" FormTitle_L1="Collaborateur - Entrée RH (Synchronisation)">
+    <MainControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_User_HR_Base" />
+    <RecordControl OutputType="LayoutContainer">
+      <Control OutputType="LayoutContainer" />
+    </RecordControl>
+    <RecordUniqueItemControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_HR_Review_Base" />
+  </WorkflowCreateSeveralRecordsEntityForm>
+
+  <WorkflowUpdateSeveralRecordsEntityForm Identifier="Workflow_Directory_User_UpdateFromHR" EntityType="Workflow_Directory_User" MainProperty="Workflow_Directory_User:Directory_User" RecordProperty="Directory_User:Records" WorkflowRequestType="Self" Activity="Directory_User_UpdateFromHR:Request" FormTitle_L1="Collaborateur - Mise à jour RH (Synchronisation)">
+    <MainControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_User_HR_Base" />
+    <RecordControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_HR_Update_Base" />
+    <RecordUniqueItemControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_HR_Update_Base" />
+    <RecordSlaveControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_HR_Update_Base" />
+  </WorkflowUpdateSeveralRecordsEntityForm>
+
+  <WorkflowUpdateSeveralRecordsEntityForm Identifier="Workflow_Directory_User_MobilityFromHR" EntityType="Workflow_Directory_User" MainProperty="Workflow_Directory_User:Directory_User" RecordProperty="Directory_User:Records" WorkflowRequestType="Self" Activity="Directory_User_MobilityFromHR:Request" FormTitle_L1="Collaborateur - Mobilité RH (Synchronisation)">
+    <MainControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_User_HR_Base" />
+    <RecordControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_HR_Update_Base" />
+    <RecordUniqueItemControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_HR_Update_Base" />
+    <RecordSlaveControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_HR_Update_Base" />
+  </WorkflowUpdateSeveralRecordsEntityForm>
+
+  <WorkflowUpdateSeveralRecordsEntityForm Identifier="Workflow_Directory_User_DeleteFromHR" EntityType="Workflow_Directory_User" MainProperty="Workflow_Directory_User:Directory_User" RecordProperty="Directory_User:Records" WorkflowRequestType="Self" Activity="Directory_User_DeleteFromHR:Request" HideRoles="true" FormTitle_L1="Collaborateur - Départ RH (Synchronisation)">
+    <MainControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_User_HR_Base" />
+    <RecordControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_HR_Update_Base" />
+    <RecordUniqueItemControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_HR_Update_Base" />
+    <RecordSlaveControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_HR_Update_Base" />
+  </WorkflowUpdateSeveralRecordsEntityForm>
+
+  <!-- HR Workflows ACEs -->
+  <AccessControlRule Profile="Administrator" EntityType="Workflow_Directory_User" Identifier="Administrator_Workflows_Directory_User_*" DisplayName_L1="Administrator_Workflows_Directory_User_*">
+    <Entry Permission="/Custom/Workflows/Directory_User_CreateFromHR/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_CreateFromHR/Request/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_CreateFromHR/Request/Purged" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_UpdateFromHR/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_UpdateFromHR/Request/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_UpdateFromHR/Request/Purged" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_MobilityFromHR/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_MobilityFromHR/Request/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_MobilityFromHR/Request/Purged" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_DeleteFromHR/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_DeleteFromHR/Request/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_DeleteFromHR/Request/Purged" CanExecute="true" />
+  </AccessControlRule>
+
+  <AddChangeAspect Identifier="Directory_User_AddChange_IdentifierHR" Binding="Workflow_Directory_User:Directory_User.Identifier" ExpressionBinding="Workflow_Directory_User:Directory_User" Expression="C#:user:return user.Records != null &amp;&amp; user.Records.Count &gt; 0 ? user.Records[0].UserIdentifier : null;">
+    <PointCut Activity="Directory_User_CreateFromHR:Request" ActivityState="Action-Executed" Mode="After" />
+  </AddChangeAspect>
+
+  <ReviewProvisioningAccessControlRules EntityType="HR_User" Profile="Administrator" />
+  <ReconciliateResourcesAccessControlRules EntityType="HR_User" Profile="Administrator" />
+  <ReviewProvisioningAccessControlRules EntityType="HR_UserUpdate" Profile="Administrator" />
+  <ReconciliateResourcesAccessControlRules EntityType="HR_UserUpdate" Profile="Administrator" />
+  <ReviewProvisioningAccessControlRules EntityType="HR_LoadIUG" Profile="Administrator" />
+  <ReconciliateResourcesAccessControlRules EntityType="HR_LoadIUG" Profile="Administrator" />
+
+  <BuildUniqueValueAspect Identifier="Directory_UserRecord_UniqueValue_Email" Binding="Workflow_Directory_User:Directory_User.Records.Email"
+      ExpressionBinding="Workflow_Directory_User:Directory_User.Records"
+      IfExpression="C#:record:if (string.IsNullOrEmpty(record.Email)) { return true; } var newValue = record.FirstName?.Simplify()?.ToLowerInvariant() + &quot;.&quot; + record.LastName?.Simplify()?.ToLowerInvariant() + (record.ContractType?.UserType?.DisplayName == &quot;EXTERNE OU PARTENAIRE&quot; ? &quot;-ext&quot; : string.Empty) + &quot;@ca-assurances.fr&quot;; return newValue != record.Email;"
+      Expression="C#:record:if (string.IsNullOrEmpty(record.FirstName) || string.IsNullOrEmpty(record.LastName)) { return null; } return record.FirstName?.Simplify()?.ToLowerInvariant() + &quot;.&quot; + record.LastName?.Simplify()?.ToLowerInvariant() + (iteration == 0 ? &quot;&quot; : iteration.ToString()) + (record.ContractType?.UserType?.DisplayName == &quot;EXTERNE OU PARTENAIRE&quot; ? &quot;-ext&quot; : string.Empty) + &quot;@ca-assurances.fr&quot;;"
+      SqlCheckExpression="SELECT TOP 1 email FROM zz_directory_userrecord WHERE email=@VALUE"
+      IterationsCount="10">
+    <PointCut Activity="Directory_User_CreateFromHR:Request" ActivityState="Action-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_CreateFromHR:Review" ActivityState="ReviewWithFeedback-Approved" Mode="After" />
+    <PointCut Activity="Directory_User_NewInternal:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_NewInternal:Review" ActivityState="ReviewWithFeedback-Approved" Mode="After" />
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_ManageContracts:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_ManagePositions:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_UpdatePersonalData:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+  </BuildUniqueValueAspect>
+
+  <BuildUniqueValueAspect Identifier="Directory_UserRecord_UniqueValue_PacificaEmail" Binding="Workflow_Directory_User:Directory_User.Records.PacificaEmail"
+      ExpressionBinding="Workflow_Directory_User:Directory_User.Records"
+      IfExpression="C#:record:if (string.IsNullOrEmpty(record.PacificaEmail)) { return true; } var newValue = record.FirstName?.Simplify()?.ToLowerInvariant() + &quot;.&quot; + record.LastName?.Simplify()?.ToLowerInvariant() + (record.ContractType?.UserType?.DisplayName == &quot;EXTERNE OU PARTENAIRE&quot; ? &quot;-ext&quot; : string.Empty) + (record.Company?.Identifier == &quot;Viaren&quot; ? &quot;@viaren.fr&quot; : &quot;@ca-pacifica.fr&quot;); return newValue != record.Email;"
+      Expression="C#:record:if (string.IsNullOrEmpty(record.FirstName) || string.IsNullOrEmpty(record.LastName)) { return null; } return record.FirstName?.Simplify()?.ToLowerInvariant() + &quot;.&quot; + record.LastName?.Simplify()?.ToLowerInvariant() + (iteration == 0 ? &quot;&quot; : iteration.ToString()) + (record.ContractType?.UserType?.DisplayName == &quot;EXTERNE OU PARTENAIRE&quot; ? &quot;-ext&quot; : string.Empty) + (record.Company?.Identifier == &quot;Viaren&quot; ? &quot;@viaren.fr&quot; : &quot;@ca-pacifica.fr&quot;);"
+      SqlCheckExpression="SELECT TOP 1 id FROM zz_adpacifica_entry WHERE mail=@VALUE OR userPrincipalName=@VALUE"
+      IterationsCount="10">
+    <PointCut Activity="Directory_User_CreateFromHR:Request" ActivityState="Action-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_CreateFromHR:Review" ActivityState="ReviewWithFeedback-Approved" Mode="After" />
+    <PointCut Activity="Directory_User_NewInternal:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_NewInternal:Review" ActivityState="ReviewWithFeedback-Approved" Mode="After" />
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_ManageContracts:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_ManagePositions:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_UpdatePersonalData:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+  </BuildUniqueValueAspect>
+
+  <BuildUniqueValueAspect Identifier="Directory_UserRecord_UniqueValue_IamLogin" Binding="Workflow_Directory_User:Directory_User.IamLogin" ExpressionBinding="Workflow_Directory_User:Directory_User"
+      Expression="C#:user:
+		const string listAlphaNum = &quot;0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ&quot;;
+		const string listNum = &quot;0123456789&quot;;
+		System.Random r = new System.Random();
+		return &quot;U&quot; + listAlphaNum[r.Next(35)] + listAlphaNum[r.Next(35)] + listAlphaNum[r.Next(35)] + listAlphaNum[r.Next(35)] + listNum[r.Next(9)];"
+      SqlCheckExpression="SELECT TOP 1 IamLogin FROM zz_directory_user WHERE IamLogin=@VALUE"
+      IterationsCount="10">
+    <PointCut Activity="Directory_User_CreateFromHR:Request" ActivityState="Action-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_NewInternal:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+  </BuildUniqueValueAspect>
+
+  <BuildUniqueValueAspect Identifier="Directory_UserRecord_UniqueValue_UserIdentifier" Binding="Workflow_Directory_User:Directory_User.Records.UserIdentifier" ExpressionBinding="Workflow_Directory_User:Directory_User.Records" Expression="C#:record:return record.FirstName.Simplify()?.ToLowerInvariant() + '.' + record.LastName.Simplify()?.ToLowerInvariant() + (iteration == 0 ? &quot;&quot; : iteration.ToString());" IterationsCount="10" Priority="90">
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+	<PointCut Activity="Directory_User_UpdatePersonalData:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+    <UnicityCheck TargetEntityType="Directory_UserRecord" TargetBinding="UserIdentifier" />
+  </BuildUniqueValueAspect>
+
+  <AddChangeAspect Identifier="Directory_UserRecord_AddChange_AddChange_IsDraft" Binding="Workflow_Directory_User:Directory_User.IsDraft" ExpressionBinding="Workflow_Directory_User:Directory_User" Expression="C#:record:return true;">
+    <PointCut Activity="Directory_User_CreateFromHR:PersistDraft" ActivityState="PersistOnlyResources-Invoked" Mode="Before" />
+  </AddChangeAspect>
+
+  <AddChangeAspect Identifier="Directory_UserRecord_AddChange_AddChange_IsNotDraft" Binding="Workflow_Directory_User:Directory_User.IsDraft" ExpressionBinding="Workflow_Directory_User:Directory_User" Expression="C#:record:return false;">
+    <PointCut Activity="Directory_User_CreateFromHR:Persist" ActivityState="Persist-Invoked" Mode="Before" />
+  </AddChangeAspect>
+
+  <AddChangeAspect Identifier="Directory_UserRecord_AddChange_ContractStartDate_EB" Binding="Workflow_Directory_User:Directory_User.Records.ContractStartDate" ExpressionBinding="Workflow_Directory_User:Directory_User.Records" Expression="C#:record:return (record.EB?.Identifier != null) &amp;&amp; (!record.ContractStartDate.HasValue) ? record.EB?.StartDate : null;">
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+  </AddChangeAspect>
+
+  <AddChangeAspect Identifier="Directory_UserRecord_AddChange_ContractEndDate_EB" Binding="Workflow_Directory_User:Directory_User.Records.ContractEndDate" ExpressionBinding="Workflow_Directory_User:Directory_User.Records" Expression="C#:record:return (record.EB?.Identifier != null) &amp;&amp; (!record.ContractEndDate.HasValue) ? record.EB?.EndDate : null;">
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+  </AddChangeAspect>
+
+  <AssertValueRequiredAspect Identifier="Directory_UserRecord_ValueRequired_UserType" ConsolidationMode="Delete" />
+  <AssertValueRequiredAspect Identifier="Directory_UserRecord_ValueRequired_ContractStartDate" ConsolidationMode="Delete" />
+  <AssertValueRequiredAspect Identifier="Directory_UserRecord_ValueRequired_ContractEndDate" ConsolidationMode="Delete" />
+
+  <AssertValueRequiredAspect Identifier="Directory_UserRecord_ValueRequired_FirstName" ConsolidationMode="Merge" Message_L1="Le prénom est obligatoire" />
+  <AssertValueRequiredAspect Identifier="Directory_UserRecord_ValueRequired_LastName" ConsolidationMode="Merge" Message_L1="Le nom est obligatoire" />
+
+  <AssertValueRequiredAspect Identifier="Directory_User_CreateFromHR_ValueRequired_FirstName" Binding="Workflow_Directory_User:Directory_User.Records.FirstName" Message_L1="Le prénom est obligatoire">
+    <PointCut Activity="Directory_User_CreateFromHR:Review" ActivityState="ReviewWithFeedback-Approved" />
+    <PointCut Activity="Directory_User_UpdatePersonalData:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+  </AssertValueRequiredAspect>
+
+  <AssertValueRequiredAspect Identifier="Directory_User_CreateFromHR_ValueRequired_LastName" Binding="Workflow_Directory_User:Directory_User.Records.LastName" Message_L1="Le nom est obligatoire">
+    <PointCut Activity="Directory_User_CreateFromHR:Review" ActivityState="ReviewWithFeedback-Approved" />
+    <PointCut Activity="Directory_User_UpdatePersonalData:Request" ActivityState="ActionWithRefine-Executed" Mode="After" />
+  </AssertValueRequiredAspect>
+
+  <AssertValueRequiredAspect Identifier="Directory_User_CreateFromHR_ValueRequired_Site" Binding="Workflow_Directory_User:Directory_User.Records.Site" Message_L1="Le lieu de travail est obligatoire">
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" />
+    <PointCut Activity="Directory_User_CreateFromHR:Review" ActivityState="ReviewWithFeedback-Approved" />
+    <PointCut Activity="Directory_User_ManagePositions:Request" ActivityState="ActionWithRefine-Executed" />
+  </AssertValueRequiredAspect>
+
+  <AssertValueRequiredAspect Identifier="Directory_User_CreateFromHR_ValueRequired_Title" Binding="Workflow_Directory_User:Directory_User.Records.Title" Message_L1="La fonction est obligatoire">
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" />
+  </AssertValueRequiredAspect>
+
+  <AssertValueRequiredAspect Identifier="Directory_User_CreateFromHR_ValueRequired_Manager" Binding="Workflow_Directory_User:Directory_User.Records.Manager" Message_L1="Le responsable hiérarchique est obligatoire">
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" />
+    <PointCut Activity="Directory_User_CreateFromHR:Review" ActivityState="ReviewWithFeedback-Approved" />
+    <PointCut Activity="Directory_User_ManagePositions:Request" ActivityState="ActionWithRefine-Executed" />
+  </AssertValueRequiredAspect>
+
+  <AssertValueRequiredAspect Identifier="Directory_User_CreateFromHR_ValueRequired_IGAManager" Binding="Workflow_Directory_User:Directory_User.Records.IGAManager" Message_L1="Le responsable organisationnel est obligatoire">
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" />
+    <PointCut Activity="Directory_User_ManagePositions:Request" ActivityState="ActionWithRefine-Executed" />
+  </AssertValueRequiredAspect>
+
+  <AssertValueRequiredAspect Identifier="Directory_User_CreateFromHR_ValueRequired_Organization" Binding="Workflow_Directory_User:Directory_User.Records.Organization" Message_L1="La direction est obligatoire">
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" />
+    <PointCut Activity="Directory_User_CreateFromHR:Review" ActivityState="ReviewWithFeedback-Approved" />
+  </AssertValueRequiredAspect>
+
+  <AssertValueRequiredAspect Identifier="Directory_UserRecord_ValueRequired_Company" Binding="Workflow_Directory_User:Directory_User.Records.Company" Message_L1="La société est obligatoire">
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" />
+	  <PointCut Activity="Directory_User_CreateFromHR:Review" ActivityState="ReviewWithFeedback-Approved" />
+    <PointCut Activity="Directory_User_ManageContracts:Request" ActivityState="ActionWithRefine-Executed" />
+  </AssertValueRequiredAspect>
+
+  <AssertValueRequiredAspect Identifier="Directory_UserRecord_ValueRequired_ContractType" Binding="Workflow_Directory_User:Directory_User.Records.ContractType" Message_L1="Le contrat est obligatoire">
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" />
+    <PointCut Activity="Directory_User_CreateFromHR:Review" ActivityState="ReviewWithFeedback-Approved" />
+    <PointCut Activity="Directory_User_ManageContracts:Request" ActivityState="ActionWithRefine-Executed" />
+  </AssertValueRequiredAspect>
+
+  <AssertValueAspect Identifier="Directory_UserRecord_Value_EB_Required" Binding="Workflow_Directory_User:Directory_User.Records.EB" ExpressionBinding="Workflow_Directory_User:Directory_User.Records" Expression="C#:record:return (record.Company?.Type?.DisplayName == &quot;ALIMENTATION AUTOMATIQUE&quot;) &amp;&amp; (record.EB == null) ? false : true;" Message_L1="L'EB est obligatoire pour les sociétés : CAAS, PACIFICA, VIAREN, SIRCA et VIAVITA">
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" />
+  </AssertValueAspect>
+
+  <AssertValueAspect Identifier="Directory_UserRecord_Value_EB_Deny" Binding="Workflow_Directory_User:Directory_User.Records.EB" ExpressionBinding="Workflow_Directory_User:Directory_User.Records" Expression="C#:record:return (record.EB?.Identifier != null) &amp;&amp; (record.ContractType?.DisplayName == &quot;Externe international&quot; || record.ContractType?.DisplayName == &quot;Partenaire Pack-Solutions&quot; || record.ContractType?.DisplayName == &quot;Partenaire TMA&quot;) ? false : true;" Message_L1="L'EB est interdite pour ce type de contrat">
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" />
+  </AssertValueAspect>
+
+  <AssertValueAspect Identifier="Directory_UserRecord_Value_EB_Valid" Binding="Workflow_Directory_User:Directory_User.Records.EB" ExpressionBinding="Workflow_Directory_User:Directory_User.Records" Expression="C#:record:return record.EB == null ? true : record.EB?.Valid;" Message_L1="L'EB est invalide">
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" />
+    <PointCut Activity="Directory_User_ManageContracts:Request" ActivityState="ActionWithRefine-Executed" />
+  </AssertValueAspect>
+
+  <AssertValueAspect Identifier="Directory_UserRecord_Value_ContractStartDate_Required" Binding="Workflow_Directory_User:Directory_User.Records.ContractStartDate" ExpressionBinding="Workflow_Directory_User:Directory_User.Records" Expression="C#:record:return record.EB == null ? record.ContractStartDate.HasValue : true;" Message_L1="La date de début de contrat est obligatoire">
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" />
+    <PointCut Activity="Directory_User_CreateFromHR:Review" ActivityState="ReviewWithFeedback-Approved" />
+    <PointCut Activity="Directory_User_ManageContracts:Request" ActivityState="ActionWithRefine-Executed" />
+  </AssertValueAspect>
+
+  <AssertValueAspect Identifier="Directory_UserRecord_Value_ContractEndDate_Required" Binding="Workflow_Directory_User:Directory_User.Records.ContractEndDate" ExpressionBinding="Workflow_Directory_User:Directory_User.Records" Expression="C#:record:return record.EB == null ? record.ContractEndDate.HasValue : true;" Message_L1="La date de fin de contrat est obligatoire">
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" />
+  </AssertValueAspect>
+
+  <AssertValueAspect Identifier="Directory_UserRecord_Value_ContractStartDate_Check" Binding="Workflow_Directory_User:Directory_User.Records.ContractStartDate" ExpressionBinding="Workflow_Directory_User:Directory_User.Records" Expression="C#:record:var ebDate = record.EB?.StartDate; return ebDate.HasValue &amp;&amp; record.ContractStartDate.HasValue ? (record.ContractStartDate.Value &gt; ebDate.Value || (record.ContractStartDate.Value.AddDays(1).Day == ebDate.Value.Day &amp;&amp; record.ContractStartDate.Value.Month == ebDate.Value.Month &amp;&amp; record.ContractStartDate.Value.Year == ebDate.Value.Year)) : true;" Message_L1="La date de début de contrat doit être supérieure ou égale à celle de l'EB sélectionnée">
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" />
+    <PointCut Activity="Directory_User_ManageContracts:Request" ActivityState="ActionWithRefine-Executed" />
+  </AssertValueAspect>
+
+  <AssertValueAspect Identifier="Directory_UserRecord_Value_ContractEndDate_Check" Binding="Workflow_Directory_User:Directory_User.Records.ContractEndDate" ExpressionBinding="Workflow_Directory_User:Directory_User.Records" Expression="C#:record:var ebDate = record.EB?.EndDate; return ebDate.HasValue &amp;&amp; record.ContractEndDate.HasValue ? (record.ContractEndDate.Value &lt; ebDate.Value  || (record.ContractEndDate.Value.Day == ebDate.Value.Day &amp;&amp; record.ContractEndDate.Value.Month == ebDate.Value.Month &amp;&amp; record.ContractEndDate.Value.Year == ebDate.Value.Year)) : true;" Message_L1="La date de fin de contrat doit être inférieure ou égale à celle de l'EB sélectionnée">
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" />
+    <PointCut Activity="Directory_User_ManageContracts:Request" ActivityState="ActionWithRefine-Executed" />
+  </AssertValueAspect>
+
+  <AssertValueAspect Identifier="Directory_UserRecord_CheckContractDates" Binding="Workflow_Directory_User:Directory_User.Records.ContractEndDate" ExpressionBinding="Workflow_Directory_User:Directory_User.Records" Expression="C#:record: return ( ((Nullable&lt;DateTime&gt;) record.ContractStartDate).HasValue &amp;&amp; ((Nullable&lt;DateTime&gt;) record.ContractEndDate).HasValue) ?  record.ContractStartDate &lt; record.ContractEndDate : true;" Message_L1="La date de fin de contrat doit être postérieure à la date de début de contrat">
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" />
+	  <PointCut Activity="Directory_User_NewInternal:Review" ActivityState="ReviewWithFeedback-Approved" Mode="After" />
+	  <PointCut Activity="Directory_User_CreateFromHR:Review" ActivityState="ReviewWithFeedback-Approved" />
+    <PointCut Activity="Directory_User_ManageContracts:Request" ActivityState="ActionWithRefine-Executed" />
+  </AssertValueAspect>
+
+  <AssertValueAspect Identifier="Directory_UserRecord_CheckPositionEndDates" Binding="Workflow_Directory_User:Directory_User.Records.PositionEndDate" ExpressionBinding="Workflow_Directory_User:Directory_User.Records" Expression="C#:record: return ( ((Nullable&lt;DateTime&gt;) record.PositionStartDate).HasValue &amp;&amp; ((Nullable&lt;DateTime&gt;) record.PositionEndDate).HasValue) ?  record.PositionStartDate &lt; record.PositionEndDate : true;" Message_L1="La date de fin de poste doit être postérieure à la date de début de poste">
+    <PointCut Activity="Directory_User_NewExternal:Request" ActivityState="ActionWithRefine-Executed" />
+	  <PointCut Activity="Directory_User_NewInternal:Review" ActivityState="ReviewWithFeedback-Approved" Mode="After" />
+	  <PointCut Activity="Directory_User_CreateFromHR:Review" ActivityState="ReviewWithFeedback-Approved" />
+    <PointCut Activity="Directory_User_ManagePositions:Request" ActivityState="ActionWithRefine-Executed" />
+  </AssertValueAspect>
+
+</ConfigurationFile>

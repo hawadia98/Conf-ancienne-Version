@@ -1,0 +1,7 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <MenuItem Identifier="Nav_Connectors_AD" DisplayName_L1="AD" ParentMenuItem="Nav_Connectors">
+    <MenuItem Identifier="Nav_Connectors_ADPacifica_Entry" DisplayName_L1="AD Pacifica" EntityType="ADPacifica_Entry" IconCode="List" />
+  </MenuItem>
+
+</ConfigurationFile>

@@ -1,0 +1,16 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <CreateConnectorSynchroIncremental Connector="Generique" Agent="CAA" JobIdentifier="Generiques_Synchronize_Incremental_Scaffolding" DisplayName_L1="Generiques - Synchronization Incremental (scaffolding)">
+        <OpenIdIdentifier Identifier="Job"/>
+        <!-- <AddTask Task="Reset_Files_Generiques" Before="true" TaskToCompareWith="ComputeRoleModel_WithDirty"/> -->
+        <!-- <AddTask Task="Generique_fulfill_csv" After="true" TaskToCompareWith="Fulfill"/> -->
+    </CreateConnectorSynchroIncremental>
+
+      <CreateConnectorSynchroComplete Connector="Generique" Agent="CAA" JobIdentifier="Generiques_Synchronize_Complete_Scaffolding" DisplayName_L1="Generiques - Synchronization Complete(scaffolding)">
+        <OpenIdIdentifier Identifier="Job"/>
+        <!-- <AddTask Task="Reset_Files_Generiques" Before="true" TaskToCompareWith="ComputeRoleModel_WithDirty"/> -->
+        <!-- <AddTask Task="Generique_fulfill_csv" After="true" TaskToCompareWith="Fulfill"/> -->
+      </CreateConnectorSynchroComplete>
+        
+          
+</ConfigurationFile>

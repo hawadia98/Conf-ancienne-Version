@@ -1,0 +1,20 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <!-- Directory_CompanyType -->
+  <EntityType Identifier="Directory_CompanyType" DisplayName_L1="Type de société">
+    <Property Identifier="Identifier" DisplayName_L1="Identifiant" Type="String" TargetColumnIndex="4" IsKey="true" />
+    <Property Identifier="DisplayName" DisplayName_L1="Libellé" Type="String" TargetColumnIndex="5" />
+
+    <Property Identifier="Campanies" DisplayName_L1="Sociétés" Type="ForeignKey" />
+  </EntityType>
+
+  <DisplayEntityType PluralDisplayName_L1="Types de sociétés" IconCode="List" Color="#95c18b" Identifier="Directory_CompanyType">
+    <Property DisplayOrder="-1" IsRequired="true" Identifier="Identifier" />
+    <Property IsRequired="true" Identifier="DisplayName" />
+  </DisplayEntityType>
+
+  <ConnectorMappings Connector="Directory" EntityType="Directory_CompanyType" IsIncremental="1" Package="Usercube.Excel@0000001" />
+
+  <ViewTemplate EntityType="Directory_CompanyType" Profile="Administrator" />
+
+</ConfigurationFile>

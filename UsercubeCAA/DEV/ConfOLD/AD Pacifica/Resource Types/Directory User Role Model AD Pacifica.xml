@@ -1,0 +1,58 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+	<!-- Category -->
+	<Category Policy="Default" Identifier="Accounts" DisplayName_L1="Comptes" />
+
+    <!-- Resource Type -->
+    <ResourceType Identifier="ADPacifica_NominativeUser" DisplayName_L1="Compte AD Pacifica (nominatif)" Category="Accounts" Policy="Default" SourceEntityType="Directory_User" TargetEntityType="ADPacifica_Entry" BlockProvisioning="true">
+        <TypeRule Policy="Default" DA="Pacifica" TimeOffsetReference="Around" TimeOffsetBeforeReference="-10080" TimeOffsetAfterReference="43200" />
+        <TypeRule Policy="Default" DA="Sirca" TimeOffsetReference="Around" TimeOffsetBeforeReference="-10080" TimeOffsetAfterReference="43200" />
+        <TypeRule Policy="Default" DA="Viavita" TimeOffsetReference="Around" TimeOffsetBeforeReference="-10080" TimeOffsetAfterReference="43200" />
+
+        <ScalarRule Property="givenName" Binding="FirstName" />
+        <ScalarRule Property="sn" Binding="LastName" />
+		<ScalarRule Property="cn" Expression="C#:record:return record.FirstName?.Simplify()?.ToLowerInvariant() + &quot;.&quot; + record.LastName?.Simplify()?.ToLowerInvariant();" />
+		<ScalarRule Property="telephoneNumber" Binding="PhoneNumber" />
+        <ScalarRule Property="mobile" Binding="MobileNumber" />
+        <ScalarRule Property="sAMAccountName" Expression="C#:record:return record.FirstName?.Simplify()?.ToLowerInvariant() + &quot;.&quot; + record.LastName?.Simplify()?.ToLowerInvariant();" />
+        <ScalarRule Property="userPrincipalName" Binding="PacificaEmail" />
+        <ScalarRule Property="accountExpires" Expression="C#:record:return !record.ContractEndDate.HasValue ? &quot;9223372036854775807&quot; : record.ContractEndDate.Value.AddHours(-5).ToSince1601DateString();" />
+		<ScalarRule Property="employeeNumber" Binding="TeamsIdentifier" />
+
+		<ScalarRule Property="mail" Binding="PacificaEmail" />
+		<ScalarRule Property="displayName" Expression="C#:record:return record.LastName + &quot; &quot; + record.FirstName;" />
+
+		<ScalarRule Property="company" Binding="Company.DisplayName" />
+		<ScalarRule Property="department" Expression="C#:record:return record.Organization?.TranscoCode?.Split('/')?[0];" />
+		<ScalarRule Property="title" Binding="Title.PacificaCode" />
+		<ScalarRule Property="pacugs" Binding="Site.TranscoCode" />
+
+		<ScalarRule Property="userAccountControl" Expression="Literal:514" TimeOffsetReference="Before" TimeOffsetBeforeReference="-10080" TimeOffsetAfterReference="0" />
+		<ScalarRule Property="userAccountControl" Expression="C#:record:return record.Suspended.GetValueOrDefault() ? &quot;514&quot; : &quot;512&quot;;" TimeOffsetReference="Around" TimeOffsetBeforeReference="0" TimeOffsetAfterReference="0" />
+		<ScalarRule Property="userAccountControl" Expression="Literal:512" TimeOffsetReference="After" TimeOffsetBeforeReference="0" TimeOffsetAfterReference="43200" />
+
+		<QueryRule Property="manager" Policy="Default" TargetMatchedConfidenceLevel="100" TargetBinding="ADPacifica_Entry:sAMAccountName" SourceExpression="C#:record:return record.Manager?.MainRecord?.FirstName?.Simplify()?.ToLowerInvariant() + &quot;.&quot; + record.Manager?.MainRecord?.LastName?.Simplify()?.ToLowerInvariant();" />
+		<QueryRule Property="parentdn" Policy="Default" TargetMatchedConfidenceLevel="100" TimeOffsetReference="Around" TimeOffsetBeforeReference="-10080" TimeOffsetAfterReference="43200"
+			TargetBinding="ADPacifica_Entry:dn" SourceExpression="C#:record:if (!string.IsNullOrEmpty(record.Site?.OUPacifica)) { return (record.Site?.OUPacifica + &quot;,OU=Utilisateurs,DC=ca-pacificadev,DC=fr&quot;); } return &quot;OU=Pacifica,OU=Utilisateurs,DC=ca-pacificadev,DC=fr&quot;;" />
+	</ResourceType>
+
+	<PasswordResetSettings Identifier="ToManager" BeneficiaryEmailBinding="AssignedResourceType:Owner.Directory_User:MainRecord.PacificaEmail"
+		BeneficiaryFullNameBinding="AssignedResourceType:Owner.Directory_User:MainRecord.InternalDisplayName"
+		NotifiedEmailBinding="AssignedResourceType:Owner.Directory_User:MainRecord.Manager.MainRecord.Email"
+		NotifiedFullNameBinding="AssignedResourceType:Owner.Directory_User:MainRecord.Manager.MainRecord.InternalDisplayName"
+		Mode="1" DefaultPassword="Usercube@2025" StrengthCheck="^.*" MustChange="true"
+		AutoGenerate="false" DisableNotifications="false" />
+
+    <!-- Resource Type Mappings -->
+    <LdapResourceTypeMapping Identifier="ADPacifica_NominativeUser" Connection="ADPacificaExportFulfillment" PasswordResetSetting="ToManager" DefaultObjectClass="user" RDNAttributeIdentifier="CN" UsePermissiveModify="true" UseTreeDelete="false">
+		<Property Property="dn" IsDNProperty="true" />
+		<Property Property="parentdn" IsParentProperty="true" />
+		<Property Property="cn" IsRDNProperty="true" />
+		<Property Property="userAccountControl" IsUserAccountControlProperty="true" />
+		<Property Property="memberOf" DataSourceBacklinkColumnName="member" />
+	</LdapResourceTypeMapping>
+
+    <!-- Correlations -->
+    <ResourceCorrelationRule ResourceType="ADPacifica_NominativeUser" SourceExpression="C#:record:return record.FirstName?.Simplify()?.ToLowerInvariant() + &quot;.&quot; + record.LastName?.Simplify()?.ToLowerInvariant();" TargetBinding="sAMAccountName" Policy="Default" SourceMatchedConfidenceLevel="100" />
+
+</ConfigurationFile>

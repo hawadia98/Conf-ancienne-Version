@@ -1,0 +1,9 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <MenuItem Identifier="Nav_Connectors_Generiques" DisplayName_L1="Generiques" ParentMenuItem="Nav_Connectors">
+        <MenuItem Identifier="Nav_Connectors_Generique_Account" DisplayName_L1="Generiques - Comptes" EntityType="Generique_Account" />
+        <MenuItem Identifier="Nav_Connectors_Generique_Group" DisplayName_L1="Generiques - Groupes" EntityType="Generique_Groups" />
+        <MenuItem Identifier="Nav_Connectors_Application" DisplayName_L1="Applications" EntityType="Applications" />
+    </MenuItem>
+    
+</ConfigurationFile>

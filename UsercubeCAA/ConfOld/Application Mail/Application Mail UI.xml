@@ -1,0 +1,10 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <CreateUpdateDeleteTemplate EntityType="Catalog_Application_Account" Profile="Administrator" />
+	
+    <DisplayEntityType PluralDisplayName_L1="Applications Mail - Comptes" IconCode="List" Identifier="Application_Account_Mail">
+		<Property DisplayOrder="-1" IsRequired="true" Identifier="Identifier" />
+		<Property IsRequired="true" Identifier="Login" />
+	</DisplayEntityType>
+
+</ConfigurationFile>

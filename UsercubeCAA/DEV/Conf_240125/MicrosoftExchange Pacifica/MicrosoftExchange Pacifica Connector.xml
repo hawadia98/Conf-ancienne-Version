@@ -1,0 +1,131 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Connector Identifier="MicrosoftExchangePacifica" DisplayName_L1="Microsoft Exchange Pacifica" Agent="CAA" />
+  <Connection Connector="MicrosoftExchangePacifica" DisplayName_L1="Connection Microsoft Exchange Pacifica - Export" Identifier="MicrosoftExchangePacificaExport" Package="Usercube.MicrosoftExchange@0000001" />
+  <Connection Connector="MicrosoftExchangePacifica" DisplayName_L1="Connection Microsoft Exchange Pacifica - Fulfillment" Identifier="MicrosoftExchangePacificaFulfillment" Package="Usercube.Powershell@0000001" />
+
+  <EntityType Identifier="MicrosoftExchangePacifica_Database" DisplayName_L1="Microsoft Exchange Pacifica - Database">
+    <Property Identifier="Name" DisplayName_L1="Name" TargetColumnIndex="4" Type="String" />
+    <Property Identifier="Server" DisplayName_L1="Server" TargetColumnIndex="5" Type="String" />
+    <Property Identifier="Mounted" DisplayName_L1="Mounted" TargetColumnIndex="7" Type="String" />
+    <Property Identifier="ObjectCategory" DisplayName_L1="ObjectCategory" TargetColumnIndex="1" Type="String" />
+    <Property Identifier="Guid" DisplayName_L1="Guid" IsKey="true" TargetColumnIndex="0" Type="String" />
+    <Property Identifier="WhenChangedUTC" DisplayName_L1="WhenChangedUTC" TargetColumnIndex="2" Type="String" />
+    <Property Identifier="WhenCreatedUTC" DisplayName_L1="WhenCreatedUTC" TargetColumnIndex="3" Type="String" />
+    <Property Identifier="ObjectState" DisplayName_L1="ObjectState" TargetColumnIndex="6" Type="String" />
+    <Property Identifier="Mailboxes" DisplayName_L1="Mailboxes" Type="ForeignKey" />
+  </EntityType>
+
+  <EntityType Identifier="MicrosoftExchangePacifica_Mailbox" DisplayName_L1="Microsoft Exchange Pacifica - Mailbox">
+    <Property Identifier="EmailAddresses" DisplayName_L1="EmailAddresses" TargetColumnIndex="8" Type="String" />
+    <Property Identifier="UseDatabaseRetentionDefaults" DisplayName_L1="UseDatabaseRetentionDefaults" TargetColumnIndex="34" Type="String" />
+    <Property Identifier="RetainDeletedItemsUntilBackup" DisplayName_L1="RetainDeletedItemsUntilBackup" TargetColumnIndex="27" Type="String" />
+    <Property Identifier="DeliverToMailboxAndForward" DisplayName_L1="DeliverToMailboxAndForward" TargetColumnIndex="28" Type="String" />
+    <Property Identifier="ExchangeGuid" DisplayName_L1="ExchangeGuid" TargetColumnIndex="5" Type="String" />
+    <Property Identifier="ExchangeUserAccountControl" DisplayName_L1="ExchangeUserAccountControl" TargetColumnIndex="35" Type="String" />
+    <Property Identifier="ForwardingAddress" DisplayName_L1="ForwardingAddress" TargetColumnIndex="40" Type="String" />
+    <Property Identifier="ForwardingSmtpAddress" DisplayName_L1="ForwardingSmtpAddress" TargetColumnIndex="41" Type="String" />
+    <Property Identifier="IsMailboxEnabled" DisplayName_L1="IsMailboxEnabled" TargetColumnIndex="36" Type="String" />
+    <Property Identifier="ProhibitSendQuota" DisplayName_L1="ProhibitSendQuota" TargetColumnIndex="19" Type="String" />
+    <Property Identifier="ProhibitSendReceiveQuota" DisplayName_L1="ProhibitSendReceiveQuota" TargetColumnIndex="20" Type="String" />
+    <Property Identifier="RecoverableItemsQuota" DisplayName_L1="RecoverableItemsQuota" TargetColumnIndex="9" Type="String" />
+    <Property Identifier="RecoverableItemsWarningQuota" DisplayName_L1="RecoverableItemsWarningQuota" TargetColumnIndex="10" Type="String" />
+    <Property Identifier="CalendarLoggingQuota" DisplayName_L1="CalendarLoggingQuota" TargetColumnIndex="11" Type="String" />
+    <Property Identifier="IsResource" DisplayName_L1="IsResource" TargetColumnIndex="29" Type="String" />
+    <Property Identifier="IsLinked" DisplayName_L1="IsLinked" TargetColumnIndex="30" Type="String" />
+    <Property Identifier="IsShared" DisplayName_L1="IsShared" TargetColumnIndex="31" Type="String" />
+    <Property Identifier="SamAccountName" DisplayName_L1="SamAccountName" TargetColumnIndex="21" Type="String" />
+    <Property Identifier="AntispamBypassEnabled" DisplayName_L1="AntispamBypassEnabled" TargetColumnIndex="32" Type="String" />
+    <Property Identifier="ServerName" DisplayName_L1="ServerName" TargetColumnIndex="26" Type="String" />
+    <Property Identifier="UseDatabaseQuotaDefaults" DisplayName_L1="UseDatabaseQuotaDefaults" TargetColumnIndex="37" Type="String" />
+    <Property Identifier="UserPrincipalName" DisplayName_L1="UserPrincipalName" TargetColumnIndex="7" Type="String" />
+    <Property Identifier="WhenMailboxCreated" DisplayName_L1="WhenMailboxCreated" TargetColumnIndex="14" Type="String" />
+    <Property Identifier="IsInactiveMailbox" DisplayName_L1="IsInactiveMailbox" TargetColumnIndex="33" Type="String" />
+    <Property Identifier="AccountDisabledIsDirSynced" DisplayName_L1="AccountDisabledIsDirSynced" TargetColumnIndex="42" Type="String" />
+    <Property Identifier="Alias" DisplayName_L1="Alias" TargetColumnIndex="22" Type="String" />
+    <Property Identifier="OrganizationalUnit" DisplayName_L1="OrganizationalUnit" TargetColumnIndex="3" Type="String" />
+    <Property Identifier="DisplayName" DisplayName_L1="DisplayName" TargetColumnIndex="12" Type="String" />
+    <Property Identifier="MaxSendSize" DisplayName_L1="MaxSendSize" TargetColumnIndex="23" Type="String" />
+    <Property Identifier="MaxReceiveSize" DisplayName_L1="MaxReceiveSize" TargetColumnIndex="24" Type="String" />
+    <Property Identifier="PrimarySmtpAddress" DisplayName_L1="PrimarySmtpAddress" TargetColumnIndex="6" Type="String" />
+    <Property Identifier="RecipientType" DisplayName_L1="RecipientType" TargetColumnIndex="17" Type="String" />
+    <Property Identifier="RecipientTypeDetails" DisplayName_L1="RecipientTypeDetails" TargetColumnIndex="18" Type="String" />
+    <Property Identifier="Identity" DisplayName_L1="Identity" TargetColumnIndex="2" Type="String" />
+    <Property Identifier="IsValid" DisplayName_L1="IsValid" TargetColumnIndex="38" Type="String" />
+    <Property Identifier="Name" DisplayName_L1="Name" TargetColumnIndex="13" Type="String" />
+    <Property Identifier="DistinguishedName" DisplayName_L1="DistinguishedName" TargetColumnIndex="1" Type="String" />
+    <Property Identifier="Guid" DisplayName_L1="Guid" IsKey="true" TargetColumnIndex="0" Type="String" />
+    <Property Identifier="ObjectCategory" DisplayName_L1="ObjectCategory" TargetColumnIndex="4" Type="String" />
+    <Property Identifier="WhenChangedUTC" DisplayName_L1="WhenChangedUTC" TargetColumnIndex="15" Type="String" />
+    <Property Identifier="WhenCreatedUTC" DisplayName_L1="WhenCreatedUTC" TargetColumnIndex="16" Type="String" />
+    <Property Identifier="ObjectState" DisplayName_L1="ObjectState" TargetColumnIndex="25" Type="String" />
+    <Property Identifier="Database" DisplayName_L1="Database" Type="ForeignKey" TargetColumnIndex="128" />
+  </EntityType>
+
+  <EntityTypeMapping Identifier="MicrosoftExchangePacifica_Database" Connector="MicrosoftExchangePacifica" ConnectionTable="MicrosoftExchangePacificaExport_databases">
+    <Property Identifier="Name" ConnectionColumn="Name" IsUniqueKey="true" />
+    <Property Identifier="Server" ConnectionColumn="Server" />
+    <Property Identifier="Mounted" ConnectionColumn="Mounted" />
+    <Property Identifier="ObjectCategory" ConnectionColumn="ObjectCategory" />
+    <Property Identifier="Guid" ConnectionColumn="Guid" IsPrimaryKey="true" />
+    <Property Identifier="WhenChangedUTC" ConnectionColumn="WhenChangedUTC" />
+    <Property Identifier="WhenCreatedUTC" ConnectionColumn="WhenCreatedUTC" />
+    <Property Identifier="ObjectState" ConnectionColumn="ObjectState" />
+  </EntityTypeMapping>
+
+  <EntityTypeMapping Identifier="MicrosoftExchangePacifica_Mailbox" Connector="MicrosoftExchangePacifica" ConnectionTable="MicrosoftExchangePacificaExport_mailboxes">
+    <Property Identifier="EmailAddresses" ConnectionColumn="EmailAddresses" />
+    <Property Identifier="UseDatabaseRetentionDefaults" ConnectionColumn="UseDatabaseRetentionDefaults" />
+    <Property Identifier="RetainDeletedItemsUntilBackup" ConnectionColumn="RetainDeletedItemsUntilBackup" />
+    <Property Identifier="DeliverToMailboxAndForward" ConnectionColumn="DeliverToMailboxAndForward" />
+    <Property Identifier="ExchangeGuid" ConnectionColumn="ExchangeGuid" />
+    <Property Identifier="ExchangeUserAccountControl" ConnectionColumn="ExchangeUserAccountControl" />
+    <Property Identifier="ForwardingAddress" ConnectionColumn="ForwardingAddress" />
+    <Property Identifier="ForwardingSmtpAddress" ConnectionColumn="ForwardingSmtpAddress" />
+    <Property Identifier="IsMailboxEnabled" ConnectionColumn="IsMailboxEnabled" />
+    <Property Identifier="ProhibitSendQuota" ConnectionColumn="ProhibitSendQuota" />
+    <Property Identifier="ProhibitSendReceiveQuota" ConnectionColumn="ProhibitSendReceiveQuota" />
+    <Property Identifier="RecoverableItemsQuota" ConnectionColumn="RecoverableItemsQuota" />
+    <Property Identifier="RecoverableItemsWarningQuota" ConnectionColumn="RecoverableItemsWarningQuota" />
+    <Property Identifier="CalendarLoggingQuota" ConnectionColumn="CalendarLoggingQuota" />
+    <Property Identifier="IsResource" ConnectionColumn="IsResource" />
+    <Property Identifier="IsLinked" ConnectionColumn="IsLinked" />
+    <Property Identifier="IsShared" ConnectionColumn="IsShared" />
+    <Property Identifier="SamAccountName" ConnectionColumn="SamAccountName" />
+    <Property Identifier="AntispamBypassEnabled" ConnectionColumn="AntispamBypassEnabled" />
+    <Property Identifier="ServerName" ConnectionColumn="ServerName" />
+    <Property Identifier="UseDatabaseQuotaDefaults" ConnectionColumn="UseDatabaseQuotaDefaults" />
+    <Property Identifier="UserPrincipalName" ConnectionColumn="UserPrincipalName" />
+    <Property Identifier="WhenMailboxCreated" ConnectionColumn="WhenMailboxCreated" />
+    <Property Identifier="IsInactiveMailbox" ConnectionColumn="IsInactiveMailbox" />
+    <Property Identifier="AccountDisabledIsDirSynced" ConnectionColumn="AccountDisabledIsDirSynced" />
+    <Property Identifier="Alias" ConnectionColumn="Alias" />
+    <Property Identifier="OrganizationalUnit" ConnectionColumn="OrganizationalUnit" />
+    <Property Identifier="DisplayName" ConnectionColumn="DisplayName" />
+    <Property Identifier="MaxSendSize" ConnectionColumn="MaxSendSize" />
+    <Property Identifier="MaxReceiveSize" ConnectionColumn="MaxReceiveSize" />
+    <Property Identifier="PrimarySmtpAddress" ConnectionColumn="PrimarySmtpAddress" />
+    <Property Identifier="RecipientType" ConnectionColumn="RecipientType" />
+    <Property Identifier="RecipientTypeDetails" ConnectionColumn="RecipientTypeDetails" />
+    <Property Identifier="Identity" ConnectionColumn="Identity" />
+    <Property Identifier="IsValid" ConnectionColumn="IsValid" />
+    <Property Identifier="Name" ConnectionColumn="Name" />
+    <Property Identifier="DistinguishedName" ConnectionColumn="DistinguishedName" />
+    <Property Identifier="Guid" ConnectionColumn="Guid" IsPrimaryKey="true" />
+    <Property Identifier="ObjectCategory" ConnectionColumn="ObjectCategory" />
+    <Property Identifier="WhenChangedUTC" ConnectionColumn="WhenChangedUTC" />
+    <Property Identifier="WhenCreatedUTC" ConnectionColumn="WhenCreatedUTC" />
+    <Property Identifier="ObjectState" ConnectionColumn="ObjectState" />
+  </EntityTypeMapping>
+
+  <EntityAssociation Identifier="MicrosoftExchangePacifica_Mailbox_Database" DisplayName_L1="Database" IsProperty1Collection="true" Property1="MicrosoftExchangePacifica_Database:Mailboxes" Property2="MicrosoftExchangePacifica_Mailbox:Database" />
+  <EntityAssociationMapping Identifier="MicrosoftExchangePacifica_Mailbox_Database" Column1="Database" Column2="Guid" Connector="MicrosoftExchangePacifica" ConnectionTable="MicrosoftExchangePacificaExport_mailboxes" EntityPropertyMapping1="MicrosoftExchangePacifica_Database:Name" EntityPropertyMapping2="MicrosoftExchangePacifica_Mailbox:Guid" />
+
+  <EntityPropertyExpression Identifier="MicrosoftExchangePacifica_Mailbox_InternalDisplayName" Expression="C#:item:return item.Name;" EntityType="MicrosoftExchangePacifica_Mailbox" Property="InternalDisplayName" />
+  <EntityPropertyExpression Identifier="MicrosoftExchangePacifica_Database_InternalDisplayName" Expression="C#:item:return item.Name;" EntityType="MicrosoftExchangePacifica_Database" Property="InternalDisplayName" />
+
+  <ViewTemplate EntityType="MicrosoftExchangePacifica_Database" Profile="Administrator" />
+  <ViewTemplate EntityType="MicrosoftExchangePacifica_Mailbox" Profile="Administrator" />
+  <ViewTargetResourceTemplate EntityType="MicrosoftExchangePacifica_Mailbox" Profile="Administrator" />
+
+</ConfigurationFile>

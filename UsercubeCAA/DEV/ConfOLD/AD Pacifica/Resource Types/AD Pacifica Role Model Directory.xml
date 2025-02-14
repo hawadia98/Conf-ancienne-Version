@@ -1,0 +1,18 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- Resource Type -->
+    <ResourceType Identifier="ADPacifica_To_Directory_UserRecord" DisplayName_L1="Fiche collaborateur (source AD Pacifica)" Category="Sources" Policy="Default" SourceEntityType="ADPacifica_Entry" TargetEntityType="Directory_UserRecord" BlockProvisioning="false" AllowAdd="false" AllowRemove="false" CorrelateMultipleResources="true">
+        <TypeRule Policy="Default" />
+
+        <ScalarRule Property="PhoneNumber" Binding="telephoneNumber" />
+        <ScalarRule Property="MobileNumber" Binding="mobile" />
+        <ScalarRule Property="PacificaEmail" Binding="userPrincipalName" />
+    </ResourceType>
+
+    <!-- Resource Type Mappings -->
+    <ResourceTypeMapping Identifier="ADPacifica_To_Directory_UserRecord" Connection="HRDatabase" />
+
+    <!-- Correlations -->
+    <ResourceCorrelationRule ResourceType="ADPacifica_To_Directory_UserRecord" SourceBinding="sAMAccountName" TargetExpression="C#:resource:return resource.FirstName?.Simplify()?.ToLowerInvariant() + &quot;.&quot; + resource.LastName?.Simplify()?.ToLowerInvariant();" Policy="Default" SourceMatchedConfidenceLevel="100" />
+
+</ConfigurationFile>

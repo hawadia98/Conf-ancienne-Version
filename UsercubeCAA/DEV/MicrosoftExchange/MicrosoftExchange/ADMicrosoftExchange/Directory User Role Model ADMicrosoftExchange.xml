@@ -1,0 +1,49 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <ResourceType Identifier="ADMicrosoftExchange_Entry_NominativeUser" DisplayName_L1="AD Microsoft Exchange User (nominative)" DisplayName_L2="Compte AD Microsoft Exchange (nominatif)" Policy="Default" TargetEntityType="ADMicrosoftExchange_Entry" Category="MicrosoftExchange" SourceEntityType="Directory_User" ApprovalWorkflowType="One">
+    <TypeRule TimeOffsetReference="Around" TimeOffsetBeforeReference="-10080" TimeOffsetAfterReference="43200" Policy="Default" />
+    <ScalarRule Property="givenName" Binding="FirstName" />
+    <ScalarRule Property="cn" Binding="Login" />
+    <ScalarRule Property="sn" Binding="LastName" />
+    <ScalarRule Property="telephoneNumber" Binding="PhoneNumber" />
+    <ScalarRule Property="mobile" Binding="MobileNumber" />
+    <ScalarRule Property="sAMAccountName" Binding="Login" />
+    <ScalarRule Property="userPrincipalName" Binding="Mail" />
+    <ScalarRule Property="accountExpires" Expression="C#:person:return !person.EndDate.HasValue ? &quot;9223372036854775807&quot; : person.EndDate.Value.AddHours(-5).ToSince1601DateString();" />
+    <ScalarRule Property="department" Binding="Organization.DisplayName" />
+    <ScalarRule Property="l" Binding="Location.DisplayName" />
+    <ScalarRule Property="employeeID" Binding="EmployeeId" />
+    <ScalarRule Property="title" Binding="Title.DisplayName" />
+    <ScalarRule Property="c" Binding="Location.State.Country.ISOCode" />
+
+    <ScalarRule Property="mail" Binding="Mail" />
+    <ScalarRule Property="displayName" Expression="C#:person:return person.LastName + &quot; &quot; + person.FirstName;" />
+
+    <ScalarRule Property="userAccountControl" Expression="C#:person:return &quot;514&quot;;" TimeOffsetReference="Before" TimeOffsetBeforeReference="-10080" TimeOffsetAfterReference="0" />
+    <ScalarRule Property="userAccountControl" Expression="C#:person:return (person.Leave.GetValueOrDefault() || (person.HasUnusedAccess.GetValueOrDefault() &amp;&amp; (!person.GracePeriod.HasValue || (DateTime.UtcNow&gt;person.GracePeriod.Value)) )) ? &quot;514&quot; : &quot;512&quot;;" TimeOffsetReference="Around" TimeOffsetBeforeReference="0" TimeOffsetAfterReference="0" />
+    <ScalarRule Property="userAccountControl" Expression="C#:person:return &quot;514&quot;;" TimeOffsetReference="After" TimeOffsetBeforeReference="0" TimeOffsetAfterReference="43200" />
+
+    <QueryRule Property="parentdn" Policy="Default" TargetBinding="ADMicrosoftExchange_Entry:dn" SourceExpression="C#:person: return &quot;CN=Users,DC=pixelabs,DC=lan&quot;;" TargetMatchedConfidenceLevel="100" />
+  </ResourceType>
+
+  <PasswordResetSettings Identifier="passwordResetAdMsExchange" BeneficiaryEmailBinding="AssignedResourceType:Owner.Directory_User:MainRecord.Mail" BeneficiaryFullNameBinding="AssignedResourceType:Owner.Directory_User:MainRecord.InternalDisplayName" NotifiedEmailBinding="AssignedResourceType:Owner.Directory_User:MainRecord.Organization.Manager.MainRecord.Mail" NotifiedFullNameBinding="AssignedResourceType:Owner.Directory_User:MainRecord.Organization.Manager.MainRecord.InternalDisplayName" Mode="1" DefaultPassword="Usercube@2021" StrengthCheck="^.*" MustChange="true" AutoGenerate="false" DisableNotifications="false" GeneratedLength="12" />
+
+  <LdapResourceTypeMapping Identifier="ADMicrosoftExchange_Entry_NominativeUser" Connection="ADMicrosoftExchangeExportFulfillment" DefaultObjectClass="user" RDNAttributeIdentifier="CN" PasswordResetSetting="passwordResetAdMsExchange" UsePermissiveModify="true" UseTreeDelete="false">
+    <Property Property="dn" IsDNProperty="true" />
+    <Property Property="parentdn" IsParentProperty="true" />
+    <Property Property="cn" IsRDNProperty="true" />
+    <Property Property="userAccountControl" IsUserAccountControlProperty="true" />
+    <Property Property="memberOf" DataSourceBacklinkColumnName="member" />
+  </LdapResourceTypeMapping>
+
+  <ResourceCorrelationRule ResourceType="ADMicrosoftExchange_Entry_NominativeUser" TargetExpression="C#:resource:return resource.sAMAccountName + resource.displayName.Simplify();" Policy="Default" SourceMatchedConfidenceLevel="100" SourceExpression="C#:person:return person.Login + (person.LastName + person.FirstName).Simplify();" />
+
+  <ResourceCorrelationRule ResourceType="ADMicrosoftExchange_Entry_NominativeUser" TargetBinding="mail" Policy="Default" SourceMatchedConfidenceLevel="90" SourceBinding="Mail" />
+
+  <ResourceCorrelationRule ResourceType="ADMicrosoftExchange_Entry_NominativeUser" TargetBinding="displayName" TargetExpression="Simplify" Policy="Default" SourceMatchedConfidenceLevel="80" SourceExpression="C#:person:return (person.LastName + person.FirstName).Simplify();" />
+
+  <ResourceCorrelationRule ResourceType="ADMicrosoftExchange_Entry_NominativeUser" TargetExpression="C#:resource:return resource.dn != null &amp;&amp; resource.dn.Contains(&quot;OU=Locations,&quot;) ? (resource.givenName + resource.sn).Simplify() : null;" Policy="Default" SourceMatchedConfidenceLevel="80" SourceExpression="C#:person:return (person.FirstName + person.LastName).Simplify();" />
+
+  <ResourceClassificationRule ResourceType="ADMicrosoftExchange_Entry_NominativeUser" Policy="Default" ResourceTypeIdentificationConfidenceLevel="100" TargetExpression="C#:resource:return resource.dn != null &amp;&amp; resource.dn.Contains(&quot;OU=Users,&quot;) &amp;&amp; resource.dn.Contains(&quot;OU=Locations,&quot;) &amp;&amp; resource.dn.StartsWith(&quot;CN=U&quot;);" />
+
+</ConfigurationFile>

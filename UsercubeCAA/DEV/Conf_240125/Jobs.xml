@@ -1,0 +1,17 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Job Identifier="CreateDatabaseViewsJob" DisplayName_L1="ZZ Administration/Vues" Agent="CAA">
+    <CreateDatabaseViewsTask Identifier="CreateDatabaseViewsJob_CreateDatabaseViews" DisplayName_L1="Créer les vues SQL" Agent="CAA" OpenIdClient="Job" />
+  </Job>
+  
+  
+  <!-- Exchange export -->
+  <!--
+  <InvokeExpressionTask Identifier="Exchange_Export" DisplayName_L1="Export Exchange" InputPath="D:\UsercubeCAA\Scripts\MicrosoftExchangePacifica\Export-Exchange.ps1" Agent="CAA" OpenIdClient="Job" />
+  
+  <Job Identifier="ExchangeExport" DisplayName_L1="Exchange Export" Agent="CAA">
+	<Step Identifier="Exchange_Export" />
+  </Job>
+  -->
+
+</ConfigurationFile>

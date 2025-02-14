@@ -1,0 +1,23 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <!-- Directory_Check -->
+  <EntityType Identifier="Directory_Check" DisplayName_L1="Vérification">
+    <Property Identifier="Identifier" DisplayName_L1="Identifiant" Type="String" TargetColumnIndex="4" IsKey="true" />
+    <Property Identifier="DisplayName" DisplayName_L1="Libellé" Type="String" TargetColumnIndex="5" />
+
+    <Property Identifier="HRUsers" DisplayName_L1="Collaborateurs RH" Type="ForeignKey" />
+  </EntityType>
+
+  <DisplayEntityType PluralDisplayName_L1="Vérifications" IconCode="List" Color="#95c18b" Identifier="Directory_Check">
+    <Property DisplayOrder="-1" IsRequired="true" Identifier="Identifier" />
+    <Property IsRequired="true" Identifier="DisplayName" />
+  </DisplayEntityType>
+
+  <ConnectorMappings Connector="Directory" EntityType="Directory_Check" IsIncremental="1" Package="Usercube.Excel@0000001" />
+  <ViewTemplate EntityType="Directory_Check" Profile="Administrator" />
+
+  <Resource Id="-6001" DisplayName_L1="ADD" C4="ADD" C5="ADD" Type="Directory_Check" />
+  <Resource Id="-6002" DisplayName_L1="UPDATE" C4="UPDATE" C5="UPDATE" Type="Directory_Check" />
+  <Resource Id="-6003" DisplayName_L1="KO" C4="KO" C5="KO" Type="Directory_Check" />
+
+</ConfigurationFile>

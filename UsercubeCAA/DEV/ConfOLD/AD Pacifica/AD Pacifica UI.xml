@@ -1,0 +1,30 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <DisplayTable Identifier="ADPacifica_Entry" EntityType="ADPacifica_Entry" DisplayTableDesignElement="resourcetable" IsEntityTypeDefault="true" ParentProperty="parentdn">
+    <Column DefaultSortPriority="1" DisplayBinding="dn" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="5" />
+    <Column DisplayBinding="displayName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="2" />
+    <Column DisplayBinding="userPrincipalName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="4" />
+    <Column DisplayBinding="objectCategory" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="1" />
+  </DisplayTable>
+
+  <DisplayEntityType Identifier="ADPacifica_Entry">
+    <Property Identifier="userAccountControl" Format="ToStringUserAccountControl" />
+    <Property Identifier="accountExpires" Format="ParseSince1601Date" />
+    <Property Identifier="lastLogonTimestamp" Format="ParseSince1601Date" />
+    <Property OutputType="BasicCollection" Identifier="assistant" />
+
+    <Property OutputType="BasicCollection" Identifier="member" />
+    <Property OutputType="BasicCollection" Identifier="memberOf" />
+    <Property OutputType="BasicCollection" Identifier="directReports" />
+  </DisplayEntityType>
+
+  <EntityPropertyExpression Identifier="ADPacifica_Entry_InternalDisplayName_L1" Expression="C#:resource:return resource.userPrincipalName ?? Usercube.Expressions.Functions.UtilExpressions.ToFormatedDN(resource.dn);" EntityType="ADPacifica_Entry" Property="InternalDisplayName" />
+
+  <Indicator EntityType="ADPacifica_Entry" Binding="userAccountControl" ComparisonOperator="Equal" Order="0">
+    <Item Value="514" Color="#161114" DisplayName_L1="Disabled Account" DisplayName_L2="Compte désactivé" />
+  </Indicator>
+  <Indicator EntityType="ADPacifica_Entry" Binding="isUnused" ComparisonOperator="Equal" Order="0">
+    <Item Value="1" Color="#717D7E" DisplayName_L1="Unused Account" DisplayName_L2="Compte inutilisé" />
+  </Indicator>
+
+</ConfigurationFile>

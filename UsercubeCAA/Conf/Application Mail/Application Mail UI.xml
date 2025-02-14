@@ -1,0 +1,17 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <CreateUpdateDeleteTemplate EntityType="Application_Account_Mail" Profile="Administrator" />
+
+    <DisplayEntityType PluralDisplayName_L1="Provisioning Mail - Comptes" IconCode="List" Identifier="Application_Account_Mail">
+		<Property DisplayOrder="-1" IsRequired="true" Identifier="Identifier" />
+		<Property IsRequired="true" Identifier="FirstName" />
+		<Property IsRequired="true" Identifier="LastName" />
+	</DisplayEntityType>
+
+    <DisplayTable Identifier="Application_Account_Mail" EntityType="Application_Account_Mail" DisplayTableDesignElement="table" IsEntityTypeDefault="true">
+        <Column DefaultSortPriority="1" DisplayBinding="Identifier" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="6" />
+        <Column DisplayBinding="FirstName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="4" />
+		<Column DisplayBinding="LastName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="4" />
+    </DisplayTable>
+
+</ConfigurationFile>

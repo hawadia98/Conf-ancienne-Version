@@ -1,0 +1,18 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Job Identifier="Catalog_Accounts_Provisioning_Scaffolding" DisplayName_L1="Catalogue - Provisioning des comptes" Agent="CAA">
+    <UpdateEntityPropertyExpressionsTask Identifier="Catalog_Accounts_Provisioning_Scaffolding_ComputeProperties" DisplayName_L1="Catalogue - Calculer toutes les propriétés" AllEntityType="true" />
+    <ComputeCorrelationKeysTask Identifier="Catalog_Accounts_Provisioning_Scaffolding_ComputeCorrelationKeys" DisplayName_L1="Catalogue - Calculer toutes les clés de corrélation" AllEntityType="true" />
+
+    <ComputeRoleModelTask Identifier="Catalog_Accounts_Provisioning_Scaffolding_ComputeProvisioningPolicy" DisplayName_L1="Catalogue - Modèle de rôle sur les collaborateurs">
+      <TaskEntityType EntityType="Directory_User" />
+    </ComputeRoleModelTask>
+    <GenerateProvisioningOrdersTask Identifier="Catalog_Accounts_Provisioning_Scaffolding_GenerateProvisioningOrders" DisplayName_L1="Catalogue - Générer des ordres de Provisioning des comptes" ForceProvisioning="true">
+<!-- #Task_ResourceType# -->
+    </GenerateProvisioningOrdersTask>
+    <FulfillTask Identifier="Catalog_Accounts_Provisioning_Scaffolding_Fulfill" Agent="CAA" DisplayName_L1="Catalogue - Mise à jour des comptes" OpenIdClient="Job">
+<!-- #Task_ResourceType# -->
+    </FulfillTask>
+  </Job>
+
+</ConfigurationFile>

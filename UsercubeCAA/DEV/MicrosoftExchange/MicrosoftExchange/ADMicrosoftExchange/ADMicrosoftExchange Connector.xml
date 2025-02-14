@@ -1,0 +1,185 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConfigurationFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+  xmlns="urn:schemas-usercube-com:configuration">
+  <EntityType Identifier="ADMicrosoftExchange_Entry" DisplayName_L1="AD Microsoft Exchange - Entry">
+    <Property Identifier="accountExpires" DisplayName_L1="accountExpires" TargetColumnIndex="23" Type="String" />
+    <Property Identifier="businessCategory" DisplayName_L1="businessCategory" TargetColumnIndex="55" Type="String" />
+    <Property Identifier="c" DisplayName_L1="c" TargetColumnIndex="45" Type="String" />
+    <Property Identifier="cn" DisplayName_L1="cn" TargetColumnIndex="10" Type="String" />
+    <Property Identifier="comment" DisplayName_L1="comment" TargetColumnIndex="24" Type="String" />
+    <Property Identifier="company" DisplayName_L1="company" TargetColumnIndex="25" Type="String" />
+    <Property Identifier="department" DisplayName_L1="department" TargetColumnIndex="16" Type="String" />
+    <Property Identifier="description" DisplayName_L1="description" TargetColumnIndex="1" Type="String" />
+    <Property Identifier="displayName" DisplayName_L1="displayName" TargetColumnIndex="14" Type="String" />
+    <Property Identifier="division" DisplayName_L1="division" TargetColumnIndex="28" Type="String" />
+    <Property Identifier="dn" DisplayName_L1="dn" IsKey="true" TargetColumnIndex="0" Type="String" />
+    <Property Identifier="employeeID" DisplayName_L1="employeeID" TargetColumnIndex="29" Type="String" />
+    <Property Identifier="employeeNumber" DisplayName_L1="employeeNumber" TargetColumnIndex="30" Type="String" />
+    <Property Identifier="employeeType" DisplayName_L1="employeeType" TargetColumnIndex="31" Type="String" />
+    <Property Identifier="extensionAttribute10" DisplayName_L1="extensionAttribute10" TargetColumnIndex="40" Type="String" />
+    <Property Identifier="extensionAttribute11" DisplayName_L1="extensionAttribute11" TargetColumnIndex="44" Type="String" />
+    <Property Identifier="givenName" DisplayName_L1="givenName" TargetColumnIndex="21" Type="String" />
+    <Property Identifier="groupType" DisplayName_L1="groupType" TargetColumnIndex="39" Type="String" />
+    <Property Identifier="homeDirectory" DisplayName_L1="homeDirectory" TargetColumnIndex="41" Type="String" />
+    <Property Identifier="homeDrive" DisplayName_L1="homeDrive" TargetColumnIndex="42" Type="String" />
+    <Property Identifier="initials" DisplayName_L1="initials" TargetColumnIndex="33" Type="String" />
+    <Property Identifier="l" DisplayName_L1="l" TargetColumnIndex="22" Type="String" />
+    <Property Identifier="lastLogonTimestamp" DisplayName_L1="lastLogonTimestamp" TargetColumnIndex="34" Type="String" />
+    <Property Identifier="mail" DisplayName_L1="mail" TargetColumnIndex="17" Type="String" />
+    <Property Identifier="mobile" DisplayName_L1="mobile" TargetColumnIndex="18" Type="String" />
+    <Property Identifier="objectCategory" DisplayName_L1="objectCategory" TargetColumnIndex="4" Type="String" />
+    <Property Identifier="objectGuid" DisplayName_L1="objectGuid" TargetColumnIndex="3" Type="String" IsKey="true" />
+    <Property Identifier="objectSid" DisplayName_L1="objectSid" TargetColumnIndex="9" Type="String" />
+    <Property Identifier="ou" DisplayName_L1="ou" TargetColumnIndex="8" Type="String" />
+    <Property Identifier="pwdLastSet" DisplayName_L1="pwdLastSet" TargetColumnIndex="13" Type="String" />
+    <Property Identifier="rdn" DisplayName_L1="rdn" TargetColumnIndex="2" Type="String" />
+    <Property Identifier="sAMAccountName" DisplayName_L1="sAMAccountName" TargetColumnIndex="11" Type="String" />
+    <Property Identifier="scriptPath" DisplayName_L1="scriptPath" TargetColumnIndex="43" Type="String" />
+    <Property Identifier="sn" DisplayName_L1="sn" TargetColumnIndex="20" Type="String" />
+    <Property Identifier="st" DisplayName_L1="st" TargetColumnIndex="35" Type="String" />
+    <Property Identifier="thumbnailPhoto" DisplayName_L1="thumbnailPhoto" Type="Binary" />
+    <Property Identifier="thumbnailPhotoTag" DisplayName_L1="thumbnailPhoto Tag" Type="Int32" TargetColumnIndex="7" />
+    <Property Identifier="telephoneNumber" DisplayName_L1="telephoneNumber" TargetColumnIndex="19" Type="String" />
+    <Property Identifier="title" DisplayName_L1="title" TargetColumnIndex="36" Type="String" />
+    <Property Identifier="uid" DisplayName_L1="uid" TargetColumnIndex="37" Type="String" />
+    <Property Identifier="userAccountControl" DisplayName_L1="userAccountControl" TargetColumnIndex="15" Type="String" />
+    <Property Identifier="userPrincipalName" DisplayName_L1="userPrincipalName" TargetColumnIndex="12" Type="String" />
+    <Property Identifier="whenChanged" DisplayName_L1="whenChanged" TargetColumnIndex="38" Type="String" />
+    <Property Identifier="whenCreated" DisplayName_L1="whenCreated" TargetColumnIndex="5" Type="String" />
+
+    <!--Additional Properties available in Microsoft Exchange-->
+
+    <!--<Property Identifier="msExchAddressBookFlags" DisplayName_L1="msExchAddressBookFlags" TargetColumnIndex="61" Type="String" />
+    <Property Identifier="msExchArchiveQuota" DisplayName_L1="msExchArchiveQuota" TargetColumnIndex="62" Type="String" />
+    <Property Identifier="msExchArchiveWarnQuota" DisplayName_L1="msExchArchiveWarnQuota" TargetColumnIndex="63" Type="String" />
+    <Property Identifier="msExchBypassAudit" DisplayName_L1="msExchBypassAudit" TargetColumnIndex="64" Type="String" />
+    <Property Identifier="msExchCalendarLoggingQuota" DisplayName_L1="msExchCalendarLoggingQuota" TargetColumnIndex="65" Type="String" />
+    <Property Identifier="msExchDumpsterQuota" DisplayName_L1="msExchDumpsterQuota" TargetColumnIndex="66" Type="String" />
+    <Property Identifier="msExchDumpsterWarningQuota" DisplayName_L1="msExchDumpsterWarningQuota" TargetColumnIndex="67" Type="String" />
+    <Property Identifier="msExchELCMailboxFlags" DisplayName_L1="msExchELCMailboxFlags" TargetColumnIndex="68" Type="String" />
+    <Property Identifier="msExchGroupSecurityFlags" DisplayName_L1="msExchGroupSecurityFlags" TargetColumnIndex="69" Type="String" />
+    <Property Identifier="msExchHomeServerName" DisplayName_L1="msExchHomeServerName" TargetColumnIndex="70" Type="String" />
+    <Property Identifier="msExchMailboxAuditEnable" DisplayName_L1="msExchMailboxAuditEnable" TargetColumnIndex="71" Type="String" />
+    <Property Identifier="msExchMailboxAuditLogAgeLimit" DisplayName_L1="msExchMailboxAuditLogAgeLimit" TargetColumnIndex="72" Type="String" />
+    <Property Identifier="msExchMailboxFolderSet" DisplayName_L1="msExchMailboxFolderSet" TargetColumnIndex="73" Type="String" />
+    <Property Identifier="msExchMailboxGuid" DisplayName_L1="msExchMailboxGuid" TargetColumnIndex="74" Type="String" />
+    <Property Identifier="msExchMailboxSecurityDescriptor" DisplayName_L1="msExchMailboxSecurityDescriptor" TargetColumnIndex="75" Type="String" />
+    <Property Identifier="msExchMDBRulesQuota" DisplayName_L1="msExchMDBRulesQuota" TargetColumnIndex="76" Type="String" />
+    <Property Identifier="msExchModerationFlags" DisplayName_L1="msExchModerationFlags" TargetColumnIndex="77" Type="String" />
+    <Property Identifier="msExchPoliciesIncluded" DisplayName_L1="msExchPoliciesIncluded" TargetColumnIndex="78" Type="String" />
+    <Property Identifier="msExchProvisioningFlags" DisplayName_L1="msExchProvisioningFlags" TargetColumnIndex="79" Type="String" />
+    <Property Identifier="msExchRBACPolicyLink" DisplayName_L1="msExchRBACPolicyLink" TargetColumnIndex="80" Type="String" />
+    <Property Identifier="msExchRecipientDisplayType" DisplayName_L1="msExchRecipientDisplayType" TargetColumnIndex="81" Type="String" />
+    <Property Identifier="msExchRecipientSoftDeletedStatus" DisplayName_L1="msExchRecipientSoftDeletedStatus" TargetColumnIndex="82" Type="String" />
+    <Property Identifier="msExchRecipientTypeDetails" DisplayName_L1="msExchRecipientTypeDetails" TargetColumnIndex="83" Type="String" />
+    <Property Identifier="msExchTransportRecipientSettingsFlags" DisplayName_L1="msExchTransportRecipientSettingsFlags" TargetColumnIndex="84" Type="String" />
+    <Property Identifier="msExchUMDtmfMap" DisplayName_L1="msExchUMDtmfMap" TargetColumnIndex="85" Type="String" />
+    <Property Identifier="msExchUMEnabledFlags2" DisplayName_L1="msExchUMEnabledFlags2" TargetColumnIndex="86" Type="String" />
+    <Property Identifier="msExchUserAccountControl" DisplayName_L1="msExchUserAccountControl" TargetColumnIndex="87" Type="String" />
+    <Property Identifier="msExchVersion" DisplayName_L1="msExchVersion" TargetColumnIndex="88" Type="String" />
+    <Property Identifier="msExchWhenMailboxCreated" DisplayName_L1="msExchWhenMailboxCreated" TargetColumnIndex="89" Type="String" />-->
+
+    <Property Identifier="isUnused" DisplayName_L1="isUnused" TargetColumnIndex="50" Type="Bool" />
+
+    <Property Identifier="parentdn" DisplayName_L1="parentdn" Type="ForeignKey" TargetColumnIndex="128" />
+    <Property Identifier="children" DisplayName_L1="children" Type="ForeignKey" />
+    <Property Identifier="member" DisplayName_L1="member" Type="ForeignKey" />
+    <Property Identifier="memberOf" DisplayName_L1="memberOf" Type="ForeignKey" />
+    <Property Identifier="manager" DisplayName_L1="manager" Type="ForeignKey" TargetColumnIndex="129" />
+    <Property Identifier="directReports" DisplayName_L1="directReports" Type="ForeignKey" />
+  </EntityType>
+
+  <EntityAssociation Identifier="ADMicrosoftExchange_Entry_parentdn" DisplayName_L1="parentdn" IsProperty1Collection="true" Property2="ADMicrosoftExchange_Entry:parentdn" Property1="ADMicrosoftExchange_Entry:children" />
+  <EntityAssociation Identifier="ADMicrosoftExchange_Entry_member" DisplayName_L1="member" IsProperty1Collection="true" IsProperty2Collection="true" Property1="ADMicrosoftExchange_Entry:member" Property2="ADMicrosoftExchange_Entry:memberOf" />
+  <EntityAssociation Identifier="ADMicrosoftExchange_Entry_manager" DisplayName_L1="manager" IsProperty1Collection="true" Property2="ADMicrosoftExchange_Entry:manager" Property1="ADMicrosoftExchange_Entry:directReports" />
+
+  <Connector Identifier="ADMicrosoftExchange" DisplayName_L1="AD Microsoft Exchange" Agent="Local" />
+  <Connection Connector="ADMicrosoftExchange" DisplayName_L1="Connection AD Microsoft Exchange" Identifier="ADMicrosoftExchangeExportFulfillment" Package="Usercube.AD@0000001"/>
+
+  <EntityTypeMapping Identifier="ADMicrosoftExchange_Entry" Connector="ADMicrosoftExchange" ConnectionTable="ADMicrosoftExchangeExportFulfillment_entries">
+    <Property Identifier="accountExpires" ConnectionColumn="accountExpires" />
+    <Property Identifier="c" ConnectionColumn="c" />
+    <Property Identifier="cn" ConnectionColumn="cn" />
+    <Property Identifier="comment" ConnectionColumn="comment" />
+    <Property Identifier="company" ConnectionColumn="company" />
+    <Property Identifier="department" ConnectionColumn="department" />
+    <Property Identifier="description" ConnectionColumn="description" />
+    <Property Identifier="displayName" ConnectionColumn="displayName" />
+    <Property Identifier="division" ConnectionColumn="division" />
+    <Property Identifier="dn" ConnectionColumn="dn" IsUniqueKey="true" />
+    <Property Identifier="employeeID" ConnectionColumn="employeeID" />
+    <Property Identifier="employeeNumber" ConnectionColumn="employeeNumber" />
+    <Property Identifier="employeeType" ConnectionColumn="employeeType" />
+    <Property Identifier="extensionAttribute10" ConnectionColumn="extensionAttribute10" />
+    <Property Identifier="extensionAttribute11" ConnectionColumn="extensionAttribute11" />
+    <Property Identifier="givenName" ConnectionColumn="givenName" />
+    <Property Identifier="groupType" ConnectionColumn="groupType" />
+    <Property Identifier="homeDirectory" ConnectionColumn="homeDirectory" />
+    <Property Identifier="homeDrive" ConnectionColumn="homeDrive" />
+    <Property Identifier="initials" ConnectionColumn="initials" />
+    <Property Identifier="l" ConnectionColumn="l" />
+    <Property Identifier="lastLogonTimestamp" ConnectionColumn="lastLogonTimestamp" />
+    <Property Identifier="mail" ConnectionColumn="mail" />
+    <Property Identifier="mobile" ConnectionColumn="mobile" />
+    <Property Identifier="objectCategory" ConnectionColumn="objectCategory" Format="rdn" />
+    <Property Identifier="objectGuid" ConnectionColumn="objectGUID" IsPrimaryKey="true" Format="guid" />
+    <Property Identifier="objectSid" ConnectionColumn="objectSid" IsUniqueKey="true" Format="sid"/>
+    <Property Identifier="ou" ConnectionColumn="ou" />
+    <Property Identifier="pwdLastSet" ConnectionColumn="pwdLastSet" Format="1601date" />
+    <Property Identifier="rdn" ConnectionColumn="name" />
+    <Property Identifier="sAMAccountName" ConnectionColumn="sAMAccountName" />
+    <Property Identifier="scriptPath" ConnectionColumn="scriptPath" />
+    <Property Identifier="sn" ConnectionColumn="sn" />
+    <Property Identifier="st" ConnectionColumn="st" />
+    <Property Identifier="telephoneNumber" ConnectionColumn="telephoneNumber" />
+    <Property Identifier="thumbnailPhoto" ConnectionColumn="thumbnailPhoto" Format="binary" />
+    <Property Identifier="title" ConnectionColumn="title" />
+    <Property Identifier="uid" ConnectionColumn="uid" />
+    <Property Identifier="userAccountControl" ConnectionColumn="userAccountControl" />
+    <Property Identifier="userPrincipalName" ConnectionColumn="userPrincipalName" />
+    <Property Identifier="whenChanged" ConnectionColumn="whenChanged" />
+    <Property Identifier="whenCreated" ConnectionColumn="whenCreated" />
+
+    <!--Additional Properties available in Microsoft Exchange-->
+
+    <!--<Property Identifier="msExchAddressBookFlags" ConnectionColumn="msExchAddressBookFlags" />
+    <Property Identifier="msExchArchiveQuota" ConnectionColumn="msExchArchiveQuota" />
+    <Property Identifier="msExchArchiveWarnQuota" ConnectionColumn="msExchArchiveWarnQuota" />
+    <Property Identifier="msExchBypassAudit" ConnectionColumn="msExchBypassAudit" />
+    <Property Identifier="msExchCalendarLoggingQuota" ConnectionColumn="msExchCalendarLoggingQuota" />
+    <Property Identifier="msExchDumpsterQuota" ConnectionColumn="msExchDumpsterQuota" />
+    <Property Identifier="msExchDumpsterWarningQuota" ConnectionColumn="msExchDumpsterWarningQuota" />
+    <Property Identifier="msExchELCMailboxFlags" ConnectionColumn="msExchELCMailboxFlags" />
+    <Property Identifier="msExchGroupSecurityFlags" ConnectionColumn="msExchGroupSecurityFlags" />
+    <Property Identifier="msExchHomeServerName" ConnectionColumn="msExchHomeServerName" />
+    <Property Identifier="msExchMailboxAuditEnable" ConnectionColumn="msExchMailboxAuditEnable" />
+    <Property Identifier="msExchMailboxAuditLogAgeLimit" ConnectionColumn="msExchMailboxAuditLogAgeLimit" />
+    <Property Identifier="msExchMailboxFolderSet" ConnectionColumn="msExchMailboxFolderSet" />
+    <Property Identifier="msExchMailboxGuid" ConnectionColumn="msExchMailboxGuid" />
+    <Property Identifier="msExchMailboxSecurityDescriptor" ConnectionColumn="msExchMailboxSecurityDescriptor" />
+    <Property Identifier="msExchMDBRulesQuota" ConnectionColumn="msExchMDBRulesQuota" />
+    <Property Identifier="msExchModerationFlags" ConnectionColumn="msExchModerationFlags" />
+    <Property Identifier="msExchPoliciesIncluded" ConnectionColumn="msExchPoliciesIncluded" />
+    <Property Identifier="msExchProvisioningFlags" ConnectionColumn="msExchProvisioningFlags" />
+    <Property Identifier="msExchRBACPolicyLink" ConnectionColumn="msExchRBACPolicyLink" />
+    <Property Identifier="msExchRecipientDisplayType" ConnectionColumn="msExchRecipientDisplayType" />
+    <Property Identifier="msExchRecipientSoftDeletedStatus" ConnectionColumn="msExchRecipientSoftDeletedStatus" />
+    <Property Identifier="msExchRecipientTypeDetails" ConnectionColumn="msExchRecipientTypeDetails" />
+    <Property Identifier="msExchTransportRecipientSettingsFlags" ConnectionColumn="msExchTransportRecipientSettingsFlags" />
+    <Property Identifier="msExchUMDtmfMap" ConnectionColumn="msExchUMDtmfMap" />
+    <Property Identifier="msExchUMEnabledFlags2" ConnectionColumn="msExchUMEnabledFlags2" />
+    <Property Identifier="msExchUserAccountControl" ConnectionColumn="msExchUserAccountControl" />
+    <Property Identifier="msExchVersion" ConnectionColumn="msExchVersion" />
+    <Property Identifier="msExchWhenMailboxCreated" ConnectionColumn="msExchWhenMailboxCreated" />-->
+
+    <Property Identifier="parentdn" />
+    <Property Identifier="member" Format="link" />
+    <Property Identifier="manager" Format="link" />
+  </EntityTypeMapping>
+
+  <EntityAssociationMapping Identifier="ADMicrosoftExchange_Entry_parentdn" Column2="dn" Column1="parentdn" ConnectionTable="ADMicrosoftExchangeExportFulfillment_entries" EntityPropertyMapping1="ADMicrosoftExchange_Entry:dn" EntityPropertyMapping2="ADMicrosoftExchange_Entry:dn" Connector="ADMicrosoftExchange" />
+  <EntityAssociationMapping Identifier="ADMicrosoftExchange_Entry_member" Column1="dn" Column2="member" ConnectionTable="ADMicrosoftExchangeExportFulfillment_member" EntityPropertyMapping1="ADMicrosoftExchange_Entry:dn" EntityPropertyMapping2="ADMicrosoftExchange_Entry:dn" Connector="ADMicrosoftExchange" />
+  <EntityAssociationMapping Identifier="ADMicrosoftExchange_Entry_manager" Column2="dn" Column1="manager" ConnectionTable="ADMicrosoftExchangeExportFulfillment_manager" EntityPropertyMapping1="ADMicrosoftExchange_Entry:dn" EntityPropertyMapping2="ADMicrosoftExchange_Entry:dn" Connector="ADMicrosoftExchange" />
+
+</ConfigurationFile>

@@ -1,0 +1,48 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <EntityType Identifier="Directory_User" ConsolidationMode="Merge">
+        <Property Identifier="TeamsIdentifier" DisplayName_L1="Matricule" Type="String" TargetColumnIndex="12" />
+		<Property Identifier="IamLogin" DisplayName_L1="IAM Login" Type="String" TargetColumnIndex="13" />
+
+        <Property Identifier="FutureDirectReports" DisplayName_L1="Future reponsable de" Type="ForeignKey" />
+    </EntityType>
+
+    <EntityType Identifier="Directory_UserRecord" ConsolidationMode="Merge">
+        <Property Identifier="TeamsIdentifier" DisplayName_L1="Matricule" Type="String" TargetColumnIndex="50" />
+        <Property Identifier="ALDStartDate" DisplayName_L1="Date Début ALD" Type="DateTime" TargetColumnIndex="51" />
+        <Property Identifier="ALDEndDate" DisplayName_L1="Date Fin ALD" Type="DateTime" TargetColumnIndex="52" />
+        <Property Identifier="SuspensionStartDate" DisplayName_L1="Date Début Suspension" Type="DateTime" TargetColumnIndex="53" />
+        <Property Identifier="SuspensionEndDate" DisplayName_L1="Date Fin Suspension" Type="DateTime" TargetColumnIndex="54" />
+        <Property Identifier="MaidenName" DisplayName_L1="Nom Jeune Fille" Type="String" TargetColumnIndex="55" />
+
+        <Property Identifier="ReasonForDeparture" DisplayName_L1="Motif de sortie" Type="String" TargetColumnIndex="56" />
+        <Property Identifier="ExitDate" DisplayName_L1="Date de sortie" Type="DateTime" TargetColumnIndex="57" />
+        <Property Identifier="ArrivalDateFutureUnit" DisplayName_L1="Date arrivée entité future" Type="DateTime" TargetColumnIndex="58" />
+
+		<Property Identifier="PacificaEmail" DisplayName_L1="Email Pacifica" Type="String" TargetColumnIndex="59" />
+
+        <Property Identifier="ContractType" DisplayName_L1="Contrat" Type="ForeignKey" TargetColumnIndex="141" />
+        <Property Identifier="Company" DisplayName_L1="Société" Type="ForeignKey" TargetColumnIndex="142" />
+        <Property Identifier="EB" DisplayName_L1="E.B" Type="ForeignKey" TargetColumnIndex="143" />
+        <Property Identifier="AdditionalAttribute" DisplayName_L1="Attributs additionnels" Type="ForeignKey" TargetColumnIndex="144" />
+
+        <Property Identifier="FutureCompany" DisplayName_L1="Société d'accueil future" Type="ForeignKey" TargetColumnIndex="145" />
+        <Property Identifier="FutureOrganization" DisplayName_L1="Organisation future" Type="ForeignKey" TargetColumnIndex="146" />
+        <Property Identifier="FutureManager" DisplayName_L1="Responsable futur" Type="ForeignKey" TargetColumnIndex="147" />
+    </EntityType>
+
+    <EntityAssociation Identifier="Directory_UserRecord_ContractType" IsProperty2Collection="true" Property1="Directory_UserRecord:ContractType" Property2="Directory_ContractType:UserRecords" />
+    <EntityAssociation Identifier="Directory_UserRecord_Company" IsProperty2Collection="true" Property1="Directory_UserRecord:Company" Property2="Directory_Company:UserRecords" />
+    <EntityAssociation Identifier="Directory_UserRecord_EB" IsProperty2Collection="true" Property1="Directory_UserRecord:EB" Property2="Directory_EB:UserRecords" />
+    <EntityAssociation Identifier="Directory_UserRecord_AdditionalAttribute" IsProperty2Collection="true" Property1="Directory_UserRecord:AdditionalAttribute" Property2="Directory_AdditionalAttribute:UserRecords" />
+
+    <EntityAssociation Identifier="Directory_UserRecord_FutureCompany" IsProperty2Collection="true" Property1="Directory_UserRecord:FutureCompany" Property2="Directory_Company:FutureUserRecords" />
+    <EntityAssociation Identifier="Directory_UserRecord_FutureOrganization" IsProperty2Collection="true" Property1="Directory_UserRecord:FutureOrganization" Property2="Directory_Organization:FutureUserRecords" />
+    <EntityAssociation Identifier="Directory_UserRecord_FutureManager" IsProperty2Collection="true" Property1="Directory_UserRecord:FutureManager" Property2="Directory_User:FutureDirectReports" />
+
+	<AccessControlPropertyGroup Identifier="Directory_User_Administration" DisplayName_L1="User - Administration Properties" />
+	<AccessControlEntityType Identifier="Directory_User">
+		<Property VisibilityGroup="Directory_User_Administration" Identifier="IamLogin" />
+	</AccessControlEntityType>
+
+</ConfigurationFile>

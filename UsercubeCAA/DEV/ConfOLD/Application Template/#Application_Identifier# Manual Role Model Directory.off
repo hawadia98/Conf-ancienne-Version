@@ -1,0 +1,30 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- Resource Types -->
+    <ResourceType Identifier="#Application_Identifier#" DisplayName_L1="#Application_Name#" Category="Accounts" Policy="Default" SourceEntityType="Directory_User" TargetEntityType="Catalog_Application_Account" BlockProvisioning="true" ApprovalWorkflowType="One">
+        <ScalarRule Property="Identifier" Expression="C#:record:return &quot;#Application_Identifier#_&quot; + record.EmployeeId;" />
+        <ScalarRule Property="Login" Binding="EmployeeId" />
+
+        <QueryRule Property="Application" TargetBinding="Identifier" SourceExpression="Literal:#Application_Identifier#" TargetMatchedConfidenceLevel="100" />
+    </ResourceType>
+
+    <!-- Resource Type Mappings -->
+    <ManualProvisioningResourceTypeMapping Identifier="#Application_Identifier#" Connection="AccountCatalogFulfill" TicketSynchroIsNotAvailable="true" />
+
+    <!-- Correlations -->
+    <ResourceCorrelationRule ResourceType="#Application_Identifier#" SourceExpression="C#:record:return &quot;#Application_Identifier#_&quot; + record.EmployeeId;" TargetBinding="Identifier" Policy="Default" SourceMatchedConfidenceLevel="100" />
+
+    <!-- Role Mappings -->
+    <RoleMapping Identifier="#Application_Identifier#" Policy="Default" Category="Applications"
+        ParentCategoryIdentifierExpression="C#:resource:return &quot;Applications&quot;;"
+        CategoryIdentifierExpression="C#:resource:return resource.Application?.Identifier;"
+        CategoryDisplayNameExpression="C#:resource:return resource.Application?.DisplayName;"
+        IdentifierBinding="Directory_Profile:Identifier"
+        DisplayNameBinding="Directory_Profile:DisplayName"
+        ResourceType="#Application_Identifier#" Property="Catalog_Application_Account:Profiles" ApprovalWorkflowType="One" ApprovalRequired="0">
+        <Rule>
+            <Item Property="Directory_Profile:ApplicationIdentifier" Operator="Equal" Value="#Application_Identifier#" />
+        </Rule>
+    </RoleMapping>
+
+</ConfigurationFile>

@@ -1,0 +1,36 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <Category Policy="Default" Identifier="ITSM" DisplayName_L1="ITSM" />
+
+    <!-- ITSM ResourceType -->
+    <ResourceType Identifier="RITM_Nominatif" DisplayName_L1="Création RITM" Policy="Default" Category="ITSM" TargetEntityType="RITM" SourceEntityType="Directory_User" BlockProvisioning="true">        
+        <TypeRule Policy="Default" />
+        <ScalarRule Property="u_arrival_type" Binding="ContractType.UserType.DisplayName" />
+		<ScalarRule Property="u_function" Binding="Title.DisplayName" />
+        <ScalarRule Property="u_last_name" Binding="LastName"/>       
+        <ScalarRule Property="u_first_name" Binding="FirstName" /> 
+        <ScalarRule Property="arrival_date" Expression="C#:record:return record.ContractStartDate.HasValue ? record.ContractStartDate.Value.ToString(&quot;dd/MM/yyyy&quot;) : null;" IsMapped="false" />
+        <ScalarRule Property="u_company" Binding="Company.DisplayName" />
+        <ScalarRule Property="u_department" Binding="Organization.DisplayName"/>
+        <ScalarRule Property="u_site" Binding="Site.DisplayName"/>
+        <ScalarRule Property="u_telephony" Binding="MobileNumber"/>
+		<ScalarRule Property="u_departure_date" Expression="C#:record:return record.ContractEndDate.HasValue ? record.ContractEndDate.Value.ToString(&quot;dd/MM/yyyy&quot;) : null;" IsMapped="false" />
+		<ScalarRule Property="u_type_de_contrat" Binding="ContractType.DisplayName"/>
+        <ScalarRule Property="u_extern_type" Expression="C#:record:return (record.ContractType.UserType.DisplayName == &quot;INTERNE&quot;) ? null : record.ContractType.DisplayName;"/>
+        <ScalarRule Property="u_phone_number" Binding="PhoneNumber"/>
+		<ScalarRule Property="u_rattachement_hierarchique" Expression="C#:record:return record.Manager?.MainRecord?.LastName?.Simplify()?.ToUpperInvariant() + &quot; &quot; + record.Manager?.MainRecord?.FirstName?.Simplify()?.ToLowerInvariant();"/>
+		<ScalarRule Property="u_role_metier" Binding="JobTitle"/>
+		<ScalarRule Property="u_adresse_mail_caas" Binding="Email"/>
+		<ScalarRule Property="u_email" Binding="PacificaEmail"/>
+		<!-- <ScalarRule Property="u_profiles" Binding="Profile.DisplayName"/> -->
+		<ScalarRule Property="u_type_de_pc" Expression="C#:record:return &quot; Portable &quot;;"/>
+		<ScalarRule Property="u_master" Expression="C#:record:return &quot; poste_standard &quot;;"/>
+
+		
+    </ResourceType>
+
+    <ResourceTypeMapping Identifier="RITM_Nominatif" Connection="ITSMFulfillment" />
+	
+    <ResourceCorrelationRule ResourceType="RITM_Nominatif" TargetBinding="u_adresse_mail_caas" Policy="Default" SourceMatchedConfidenceLevel="100" SourceBinding="Email" />
+    <ResourceCorrelationRule ResourceType="RITM_Nominatif" SourceExpression="C#:resource:return resource.FirstName?.Simplify()?.ToLowerInvariant() + &quot;.&quot; + resource.LastName?.Simplify()?.ToLowerInvariant();" TargetExpression="C#:resource:return resource.u_first_name?.Simplify()?.ToLowerInvariant() + &quot;.&quot; + resource.u_first_name?.Simplify()?.ToLowerInvariant();" Policy="Default" SourceMatchedConfidenceLevel="100" />
+</ConfigurationFile>

@@ -1,0 +1,22 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <!-- Directory_ContractType -->
+  <EntityType Identifier="Directory_ContractType" DisplayName_L1="Contrat">
+    <Property Identifier="Identifier" DisplayName_L1="Identifiant" Type="String" TargetColumnIndex="4" IsKey="true" />
+    <Property Identifier="DisplayName" DisplayName_L1="Libellé" Type="String" TargetColumnIndex="5" />
+
+    <Property Identifier="UserType" DisplayName_L1="Type d'utilisateur" Type="ForeignKey" TargetColumnIndex="128" />
+    <Property Identifier="UserRecords" DisplayName_L1="Collaborateurs" Type="ForeignKey" />
+  </EntityType>
+
+  <EntityAssociation Identifier="Directory_ContractType_UserType" IsProperty2Collection="true" Property1="Directory_ContractType:UserType" Property2="Directory_UserType:ContractTypes" />
+
+  <DisplayEntityType PluralDisplayName_L1="Types de contrats" IconCode="List" Color="#95c18b" Identifier="Directory_ContractType">
+    <Property DisplayOrder="-1" IsRequired="true" Identifier="Identifier" />
+    <Property IsRequired="true" Identifier="DisplayName" />
+  </DisplayEntityType>
+
+  <ConnectorMappings Connector="Directory" EntityType="Directory_ContractType" IsIncremental="1" Package="Usercube.Excel@0000001" />
+
+  <ViewTemplate EntityType="Directory_ContractType" Profile="Administrator" />
+</ConfigurationFile>

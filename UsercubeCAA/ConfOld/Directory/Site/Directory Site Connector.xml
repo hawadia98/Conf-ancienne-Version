@@ -1,0 +1,13 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <EntityType Identifier="Directory_Site" ConsolidationMode="Merge">
+		<Property Identifier="TranscoCode" DisplayName_L1="Transco Code" Type="String" TargetColumnIndex="19" />
+		<Property Identifier="TranscoName" DisplayName_L1="Transco Libellé" Type="String" TargetColumnIndex="20" />
+		<Property Identifier="OUPacifica" DisplayName_L1="OU Pacifica" Type="String" TargetColumnIndex="21" />
+
+        <Property Identifier="Company" DisplayName_L1="Société" Type="ForeignKey" TargetColumnIndex="129" />
+    </EntityType>
+
+    <EntityAssociation Identifier="Directory_Site_Company" IsProperty2Collection="true" Property1="Directory_Site:Company" Property2="Directory_Company:Sites" />
+
+</ConfigurationFile>

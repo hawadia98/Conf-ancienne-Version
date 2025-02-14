@@ -1,0 +1,9 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Dimension Identifier="Check0" DisplayName_L1="Check" EntityType="Directory_Check" ColumnMapping="9" />
+
+  <ContextRule Identifier="HR_User" DisplayName_L1="HR_User" Policy="Default" SourceEntityType="HR_User"
+    B9="HR_User:Check"
+    />
+
+</ConfigurationFile>

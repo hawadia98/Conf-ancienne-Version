@@ -1,0 +1,9 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  
+  <MenuItem Identifier="Nav_Connectors_Catalog" DisplayName_L1="Catalogue des applications" ParentMenuItem="Nav_Connectors">
+    <MenuItem Identifier="Nav_Connectors_Catalog_Application" DisplayName_L1="Applications" EntityType="Catalog_Application" IconCode="List" />
+    <MenuItem Identifier="Nav_Connectors_Catalog_Profile" DisplayName_L1="Profils" EntityType="Catalog_Profile" IconCode="List" />
+    <MenuItem Identifier="Nav_Connectors_Catalog_Application_Account" DisplayName_L1="Comptes" EntityType="Catalog_Application_Account" IconCode="List" />
+  </MenuItem>
+
+</ConfigurationFile>

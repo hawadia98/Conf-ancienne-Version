@@ -1,0 +1,136 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- ARO Profile -->
+    <AccessControlRule Profile="ARO" EntityType="Directory_EB" Identifier="ARO_Directory_EB_Views" DisplayName_L1="ARO_Directory_EB_Views">
+        <Entry Permission="/Custom/Resources/Directory_EB/View" CanExecute="true" />
+    </AccessControlRule>
+    <AccessControlRule Profile="ARO" EntityType="Directory_ContractType" Identifier="ARO_Directory_ContractType_Views" DisplayName_L1="ARO_Directory_ContractType_Views">
+        <Entry Permission="/Custom/Resources/Directory_ContractType/View" CanExecute="true" />
+    </AccessControlRule>
+    <AccessControlRule Profile="ARO" EntityType="Directory_UserType" Identifier="ARO_Directory_UserType_Views" DisplayName_L1="ARO_Directory_UserType_Views">
+        <Entry Permission="/Custom/Resources/Directory_UserType/View" CanExecute="true" />
+    </AccessControlRule>
+    <AccessControlRule Profile="ARO" EntityType="Directory_Company" Identifier="ARO_Directory_Company_Views" DisplayName_L1="ARO_Directory_Company_Views">
+        <Entry Permission="/Custom/Resources/Directory_Company/View" CanExecute="true" />
+    </AccessControlRule>
+    <AccessControlRule Profile="ARO" EntityType="Directory_Title" Identifier="ARO_Directory_Title_Views" DisplayName_L1="ARO_Directory_Title_Views">
+        <Entry Permission="/Custom/Resources/Directory_Title/View" CanExecute="true" />
+    </AccessControlRule>
+    <AccessControlRule Profile="ARO" EntityType="Directory_PresenceState" Identifier="ARO_Directory_PresenceState_Views" DisplayName_L1="ARO_Directory_PresenceState_Views">
+        <Entry Permission="/Custom/Resources/Directory_PresenceState/View" CanExecute="true" />
+        <Entry Permission="/" />
+    </AccessControlRule>
+    <AccessControlRule Profile="ARO" EntityType="Directory_Organization" Identifier="ARO_Directory_Organization_Views" DisplayName_L1="ARO_Directory_Organization_Views">
+        <Entry Permission="/Custom/Resources/Directory_Organization/View" CanExecute="true" />
+    </AccessControlRule>
+    <AccessControlRule Profile="ARO" EntityType="Directory_Organization" Identifier="ARO_Directory_Organization_Workflows" DisplayName_L1="ARO_Directory_Organization_Workflows">
+        <Filter Binding="Id" Dimension="Organization0" />
+
+        <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/ActionPending" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/RefinePending" CanExecute="true" />
+    </AccessControlRule>
+
+    <AccessControlRule Profile="ARO" EntityType="Directory_User" Identifier="ARO_Composite_Directory_Directory_User_View_*" DisplayName_L1="ARO_Composite_Directory_Directory_User_View_*">
+      <Filter Binding="Records.Organization.Id" Dimension="Organization0" />
+
+      <Entry Permission="/Custom/Resources/Directory_User/View" CanExecute="true" />
+      <Entry Permission="/Custom/Resources/Directory_User/ViewTargetResources" CanExecute="true" />
+      <Entry Permission="/Custom/Resources/Directory_User/ViewOwnedResources" CanExecute="true" />
+    </AccessControlRule>
+
+    <AccessControlRule Profile="ARO" EntityType="Directory_UserRecord" Identifier="ARO_Composite_Directory_Directory_User_View_*_Directory_UserRecord" DisplayName_L1="ARO_Composite_Directory_Directory_User_View_*_Directory_UserRecord">
+      <Filter Binding="Organization.Id" Dimension="Organization0" />
+
+      <Entry Permission="/Custom/Resources/Directory_User/View" CanExecute="true" />
+    </AccessControlRule>
+
+    <AccessControlRule Profile="ARO" EntityType="Workflow_Directory_User" Identifier="ARO_Workflows_Directory_User_New_External*" DisplayName_L1="ARO_Workflows_Directory_User_New_External*">
+        <Filter Binding="Directory_User.Records.Manager.Records.Organization.Id" Dimension="Organization0" />
+        <Filter Binding="Directory_User.Records.IGAManager.Records.Organization.Id" Dimension="Organization0" />
+        <Filter Binding="Directory_User.Records.Organization.Id" Dimension="Organization0" />
+        <Filter Binding="Directory_User.Records.ContractType.UserType.DisplayName" Value="EXTERNE OU PARTENAIRE" />
+        <Filter Binding="Directory_User.Records.Company.Type.DisplayName" Value="ALIMENTATION AUTOMATIQUE" />
+
+        <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/ActionPending" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/RefinePending" CanExecute="true" />
+    </AccessControlRule>
+
+    <AccessControlRule Profile="ARO" EntityType="Workflow_Directory_User" Identifier="ARO_Workflows_Directory_User_External_Manual" DisplayName_L1="ARO_Workflows_Directory_User_External_Manual">
+        <Filter Binding="Directory_User.Records.Manager.Records.Organization.Id" Dimension="Organization0" />
+        <Filter Binding="Directory_User.Records.IGAManager.Records.Organization.Id" Dimension="Organization0" />
+        <Filter Binding="Directory_User.Records.Organization.Id" Dimension="Organization0" />
+        <Filter Binding="Directory_User.Records.ContractType.UserType.DisplayName" Value="EXTERNE OU PARTENAIRE" />
+        <Filter Binding="Directory_User.Records.Company.Type.DisplayName" Value="ALIMENTATION MANUELLE" />
+
+        <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/ActionPending" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/RefinePending" CanExecute="true" />
+    </AccessControlRule>
+
+    <AccessControlRule Profile="ARO" EntityType="Workflow_Directory_User" Identifier="ARO_Workflows_Directory_User_External_Cds" DisplayName_L1="ARO_Workflows_Directory_User_External_Cds">
+        <Filter Binding="Directory_User.Records.Manager.Records.Organization.Id" Dimension="Organization0" />
+        <Filter Binding="Directory_User.Records.IGAManager.Records.Organization.Id" Dimension="Organization0" />
+
+        <Filter Binding="Directory_User.Records.Organization.Id" Dimension="Organization0" />
+        <Filter Binding="Directory_User.Records.ContractType.UserType.DisplayName" Value="EXTERNE OU PARTENAIRE" />
+        <Filter Binding="Directory_User.Records.Company.Type.DisplayName" Value="CDS" />
+
+        <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/ActionPending" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/RefinePending" CanExecute="true" />
+    </AccessControlRule>
+
+    <AccessControlRule Profile="ARO" EntityType="Workflow_Directory_User" Identifier="ARO_Workflows_Directory_User_CreateFromHR_Interne" DisplayName_L1="ARO_Workflows_Directory_User_CreateFromHR_Interne">
+        <Filter Binding="Directory_User.Records.Manager.Records.Organization.Id" Dimension="Organization0" />
+        <Filter Binding="Directory_User.Records.IGAManager.Records.Organization.Id" Dimension="Organization0" />
+        <Filter Binding="Directory_User.Records.Organization.Id" Dimension="Organization0" />
+        <Filter Binding="Directory_User.Records.ContractType.UserType.DisplayName" Value="INTERNE" />
+
+        <Entry Permission="/Custom/Workflows/Directory_User_CreateFromHR/Review/ReviewPending" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_CreateFromHR/Review/RefinePending" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_CreateFromHR/Review/Aborted" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_CreateFromHR/Review/Purged" CanExecute="true" />
+    </AccessControlRule>
+
+    <AccessControlRule Profile="ARO" EntityType="Workflow_Directory_User" Identifier="ARO_Workflows_Directory_User_UI" DisplayName_L1="ARO_Workflows_Directory_User_UI">
+        <Filter Binding="Directory_User.Records.Organization.Id" Dimension="Organization0" />
+        <Filter Binding="Directory_User.Records.Company.Type.DisplayName" Value="ALIMENTATION AUTOMATIQUE" Operator="NotEquals" />
+        <Filter Binding="Directory_User.Records.ContractType.UserType.DisplayName" Value="INTERNE" />
+
+        <Entry Permission="/Custom/Workflows/Directory_User_UpdatePersonalData/Request/ActionPending" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_UpdatePersonalData/Request/RefinePending" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_ManageContracts/Request/ActionPending" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_ManageContracts/Request/RefinePending" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_ManagePositions/Request/ActionPending" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_ManagePositions/Request/RefinePending" CanExecute="true" />
+    </AccessControlRule>
+
+    <AccessControlRule Profile="ARO" EntityType="Workflow_Directory_User" Identifier="ARO_Workflows_Directory_User_UI" DisplayName_L1="ARO_Workflows_Directory_User_UI">
+        <Filter Binding="Directory_User.Records.Organization.Id" Dimension="Organization0" />
+        <Filter Binding="Directory_User.Records.Company.Type.DisplayName" Value="ALIMENTATION AUTOMATIQUE" Operator="NotEquals" />
+        <Filter Binding="Directory_User.Records.ContractType.UserType.DisplayName" Value="INTERNE" Operator="NotEquals" />
+
+        <Entry Permission="/Custom/Workflows/Directory_User_UpdatePersonalData/Request/ActionPending" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_UpdatePersonalData/Request/Aborted" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_UpdatePersonalData/Request/Purged" CanExecute="true" />
+
+        <Entry Permission="/Custom/Workflows/Directory_User_ManageContracts/Request/ActionPending" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_ManageContracts/Request/Aborted" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_ManageContracts/Request/Purged" CanExecute="true" />
+
+        <Entry Permission="/Custom/Workflows/Directory_User_ManagePositions/Request/ActionPending" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_ManagePositions/Request/Aborted" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_ManagePositions/Request/Purged" CanExecute="true" />
+
+        <Entry Permission="/Custom/Workflows/Directory_User_UpdateResources/Request/ActionPending" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_UpdateResources/Request/Aborted" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_UpdateResources/Request/Purged" CanExecute="true" />
+    </AccessControlRule>
+
+    <AccessControlRule Profile="ARO" EntityType="Workflow_Directory_User" Identifier="ARO_Workflows_Directory_User_UpdateResources_UI" DisplayName_L1="ARO_Workflows_Directory_User_UpdateResources_UI">
+        <Filter Binding="Directory_User.Records.Organization.Id" Dimension="Organization0" />
+
+        <Entry Permission="/Custom/Workflows/Directory_User_UpdateResources/Request/ActionPending" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_UpdateResources/Request/Aborted" CanExecute="true" />
+        <Entry Permission="/Custom/Workflows/Directory_User_UpdateResources/Request/Purged" CanExecute="true" />
+    </AccessControlRule>
+
+</ConfigurationFile>

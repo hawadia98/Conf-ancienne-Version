@@ -1,0 +1,29 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+	<DisplayTable Identifier="RITM" EntityType="RITM" DisplayTableDesignElement="resourcetable" IsEntityTypeDefault="true">
+		<Column DefaultSortPriority="1" DisplayBinding="u_arrival_type" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" />
+		<Column DisplayBinding="u_email" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" />
+		<!-- <Column DisplayBinding="u_type_de_pc" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" /> -->
+	</DisplayTable>
+	<DisplayTable Identifier="u_type_de_pc" EntityType="u_type_de_pc" DisplayTableDesignElement="resourcetable" IsEntityTypeDefault="true">
+		<Column DefaultSortPriority="1" DisplayBinding="Identifier" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" />
+		<Column DisplayBinding="DisplayName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" />
+	</DisplayTable>
+	<DisplayTable Identifier="u_master" EntityType="u_master" DisplayTableDesignElement="resourcetable" IsEntityTypeDefault="true">
+		<Column DefaultSortPriority="1" DisplayBinding="Identifier" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" />
+		<Column DisplayBinding="DisplayName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" />
+	</DisplayTable>
+	<DisplayTable Identifier="u_telephone_fixe" EntityType="u_telephone_fixe" DisplayTableDesignElement="resourcetable" IsEntityTypeDefault="true">
+		<Column DefaultSortPriority="1" DisplayBinding="Identifier" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" />
+		<Column DisplayBinding="DisplayName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" />
+	</DisplayTable>
+
+
+
+	<DisplayEntityType Identifier="RITM" PluralDisplayName_L1="ITSM - RITM" />
+	<DisplayEntityType Identifier="u_type_de_pc" PluralDisplayName_L1="ITSM - u_type_de_pc" />
+	<DisplayEntityType Identifier="u_master" PluralDisplayName_L1="ITSM - u_master" />
+	<DisplayEntityType Identifier="u_telephone_fixe" PluralDisplayName_L1="ITSM - u_telephone_fixe" />
+  
+
+</ConfigurationFile>

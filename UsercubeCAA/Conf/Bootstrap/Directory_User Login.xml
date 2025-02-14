@@ -1,0 +1,24 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Resource Id="-1" Type="Directory_User" C4="administrator" CA="administrator" CB="administrator" CD="administrator" DisplayName_L1="administrator" />
+  <Resource Id="-2" Type="Directory_UserRecord" C3="administrator" C4="administrator" C8="Usercube" C9="Admin" CB="administrator" I40="-1" DisplayName_L1="administrator" />
+  <AssignedProfile Id="-1" Profile="Administrator" UserId="-1" ContextId="-1" AccessState="Approved" />
+  <Resource Id="-50" Type="Directory_User" C4="pierre-hippolyte.fouejio-nguetsop_innov-and-co@ca-assurances.fr" CA="pierre-hippolyte.fouejio-nguetsop_innov-and-co@ca-assurances.fr" CB="pierre-hippolyte.fouejio-nguetsop_innov-and-co@ca-assurances.fr" CD="UDBK79" DisplayName_L1="pierre-hippolyte.fouejio-nguetsop_innov-and-co@ca-assurances.fr" />
+  <Resource Id="-51" Type="Directory_UserRecord" C3="pierre-hippolyte.fouejio-nguetsop_innov-and-co@ca-assurances.fr" C4="pierre-hippolyte.fouejio-nguetsop_innov-and-co@ca-assurances.fr" C8="HIPPOLYTE" C9="Pierre" CB="pierre-hippolyte.fouejio-nguetsop_innov-and-co@ca-assurances.fr" I40="-50" DisplayName_L1="pierre-hippolyte.fouejio-nguetsop_innov-and-co@ca-assurances.fr" />
+  <AssignedProfile Id="-2" Profile="Administrator" UserId="-50" ContextId="-1" AccessState="Approved" />
+
+  <Resource Id="-52" Type="Directory_User" C4="alex.kalas_malt@ca-assurances.fr" CA="alex.kalas_malt@ca-assurances.fr" CB="alex.kalas_malt@ca-assurances.fr" CD="UA26NF" DisplayName_L1="alex.kalas_malt@ca-assurances.fr" />
+  <Resource Id="-53" Type="Directory_UserRecord" C3="alex.kalas_malt@ca-assurances.fr" C4="alex.kalas_malt@ca-assurances.fr" C8="KALAS" C9="Alex" CB="alex.kalas_malt@ca-assurances.fr" I40="-52" DisplayName_L1="alex.kalas_malt@ca-assurances.fr" />
+  <AssignedProfile Id="-3" Profile="Administrator" UserId="-52" ContextId="-1" AccessState="Approved" />
+
+  <Resource Id="-54" Type="Directory_User" C4="arlette-audrey.santanna_serma-nes@ca-assurances.fr" CA="arlette-audrey.santanna_serma-nes@ca-assurances.fr" CB="arlette-audrey.santanna_serma-nes@ca-assurances.fr" CD="UBLQLS" DisplayName_L1="arlette-audrey.santanna_serma-nes@ca-assurances.fr" />
+  <Resource Id="-55" Type="Directory_UserRecord" C3="arlette-audrey.santanna_serma-nes@ca-assurances.fr" C4="arlette-audrey.santanna_serma-nes@ca-assurances.fr" C8="SANTANNA" C9="Arlette audrey" CB="arlette-audrey.santanna_serma-nes@ca-assurances.fr" I40="-54" DisplayName_L1="arlette-audrey.santanna_serma-nes@ca-assurances.fr" />
+  <AssignedProfile Id="-4" Profile="Administrator" UserId="-54" ContextId="-1" AccessState="Approved" />
+
+  <Connector Identifier="Directory" ConsolidationMode="Merge" MaximumDeletedLines="0" MaximumInsertedLines="0" MaximumLinkDeletedLines="0" MaximumLinkInsertedLines="0" MaximumUpdatedLines="0" MaxLinkPercentageDeletedLines="0" MaxLinkPercentageInsertedLines="0" MaxPercentageDeletedLines="0" MaxPercentageInsertedLines="0" MaxPercentageUpdatedLines="0" />
+
+  <SelectPersonasByFilterQueryHandlerSetting ResourceDisplayNameProperty="Directory_User:IamLogin" MailProperty="Directory_User:Email" PersonTypeFilterProperty="Directory_User:PresenceState" PersonTypeFilter="-101" />
+  <SelectUserByIdentityQueryHandlerSetting ResourceIdentityProperty="Directory_User:IamLogin" ResourceDisplayNameProperty="Directory_User:IamLogin" />
+  <MailSetting MailProperty="Directory_User:Email"/>
+
+</ConfigurationFile>

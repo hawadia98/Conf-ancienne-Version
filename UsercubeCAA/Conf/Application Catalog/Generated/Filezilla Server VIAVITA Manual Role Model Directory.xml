@@ -1,0 +1,30 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- Resource Types -->
+    <ResourceType Identifier="Filezilla Server VIAVITA" DisplayName_L1="Filezilla Server VIAVITA" Category="Accounts" Policy="Default" SourceEntityType="Directory_User" TargetEntityType="Catalog_Application_Account" BlockProvisioning="true" ApprovalWorkflowType="One">
+        <ScalarRule Property="Identifier" Expression="C#:record:return &quot;Filezilla Server VIAVITA_&quot; + record.EmployeeId;" />
+        <ScalarRule Property="Login" Binding="EmployeeId" />
+
+        <QueryRule Property="Application" TargetBinding="Identifier" SourceExpression="Literal:Filezilla Server VIAVITA" TargetMatchedConfidenceLevel="100" />
+    </ResourceType>
+
+    <!-- Resource Type Mappings -->
+    <ManualProvisioningResourceTypeMapping Identifier="Filezilla Server VIAVITA" Connection="AccountCatalogFulfill" TicketSynchroIsNotAvailable="true" />
+
+    <!-- Correlations -->
+    <ResourceCorrelationRule ResourceType="Filezilla Server VIAVITA" SourceExpression="C#:record:return &quot;Filezilla Server VIAVITA_&quot; + record.EmployeeId;" TargetBinding="Identifier" Policy="Default" SourceMatchedConfidenceLevel="100" />
+
+    <!-- Role Mappings -->
+    <RoleMapping Identifier="Filezilla Server VIAVITA" Policy="Default" Category="Applications"
+        ParentCategoryIdentifierExpression="C#:resource:return &quot;Applications&quot;;"
+        CategoryIdentifierExpression="C#:resource:return resource.Application?.Identifier;"
+        CategoryDisplayNameExpression="C#:resource:return resource.Application?.DisplayName;"
+        IdentifierBinding="Directory_Profile:Identifier"
+        DisplayNameBinding="Directory_Profile:DisplayName"
+        ResourceType="Filezilla Server VIAVITA" Property="Catalog_Application_Account:Profiles" ApprovalWorkflowType="One" ApprovalRequired="0">
+        <Rule>
+            <Item Property="Directory_Profile:ApplicationIdentifier" Operator="Equal" Value="Filezilla Server VIAVITA" />
+        </Rule>
+    </RoleMapping>
+
+</ConfigurationFile>

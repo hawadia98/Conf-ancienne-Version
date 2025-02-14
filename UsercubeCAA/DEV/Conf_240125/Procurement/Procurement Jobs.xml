@@ -1,0 +1,28 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Job Identifier="Procurement_Synchro_Complete_Scaffolding" DisplayName_L1="Achat - Synchronisation complète" Agent="CAA">
+    <ExportTask Identifier="Procurement_Synchro_Complete_Scaffolding_Export_Procurement_EB" DisplayName_L1="Achat - Extraction des modifications" Agent="CAA" Connector="Procurement" OpenIdClient="Job" Connection="ProcurementEB" IgnoreCookieFile="true" />
+
+    <PrepareSynchronizationTask Identifier="Procurement_Synchro_Complete_Scaffolding_PrepareSynchronization_Procurement" DisplayName_L1="Achat - Synchronisation (côté agent)" Agent="CAA" Connector="Procurement" OpenIdClient="Job" SynchronizationMode="Complete">
+      <TaskDependsOnTask ParentTask="Procurement_Synchro_Complete_Scaffolding_Export_Procurement_EB" />
+    </PrepareSynchronizationTask>
+
+    <SynchronizeTask Identifier="Procurement_Synchro_Complete_Scaffolding_Synchronize_Procurement" DisplayName_L1="Achat - Synchronisation (côté serveur)" Connector="Procurement">
+      <TaskDependsOnTask ParentTask="Procurement_Synchro_Complete_Scaffolding_PrepareSynchronization_Procurement" />
+    </SynchronizeTask>
+
+    <UpdateEntityPropertyExpressionsTask Identifier="Procurement_Synchro_Complete_Scaffolding_ComputeProperties" DisplayName_L1="Achat - Calculer toutes les propriétés" AllEntityType="true" />
+    <ComputeCorrelationKeysTask Identifier="Procurement_Synchro_Complete_Scaffolding_ComputeCorrelationKeys" DisplayName_L1="Achat - Calculer toutes les clés de corrélation" AllEntityType="true" />
+
+    <ComputeRoleModelTask Identifier="Procurement_Synchro_Complete_Scaffolding_ComputeProvisioningPolicy" DisplayName_L1="Achat - Modèle de rôle" BlockProvisioning="false">
+      <TaskEntityType EntityType="Procurement_EB" />
+    </ComputeRoleModelTask>
+    <GenerateProvisioningOrdersTask Identifier="Procurement_Synchro_Complete_Scaffolding_Provisioning" DisplayName_L1="Achat - Générer des ordres de Provisioning" ForceProvisioning="true">
+      <TaskResourceType ResourceType="Procurement_EB" />
+    </GenerateProvisioningOrdersTask>
+    <FulfillTask Identifier="Procurement_Synchro_Complete_Scaffolding_Provisioner_Database" Agent="CAA" DisplayName_L1="Achat - Mise à jour" OpenIdClient="Job">
+      <TaskResourceType ResourceType="Procurement_EB" />
+    </FulfillTask>
+  </Job>
+
+</ConfigurationFile>

@@ -1,0 +1,17 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Dimension Identifier="Company0" DisplayName_L1="Company" EntityType="Directory_Company" ColumnMapping="10" />
+
+  <ContextRule Identifier="Directory_User" DisplayName_L1="Directory_User" Policy="Default" ResourcesBinding="Records" ResourcesStartExpression="C#:record:return record.StartDate ?? record.PositionStartDate ?? record.ContractStartDate;" ResourcesEndExpression="C#:record:return record.EndDate ?? record.PositionEndDate ?? record.ContractEndDate;" SourceEntityType="Directory_User" ExcludeExpression="C#:record:return record.IsDraft.GetValueOrDefault();" RiskFactorType="Max"
+    B0="Directory_UserRecord:Organization"
+    B1="Directory_UserRecord:Title"
+    B2="Directory_UserRecord:Site"
+    B3="Directory_UserRecord:Site.Region.Country"
+    B4="Directory_UserRecord:UserType.Category"
+    B5="Directory_UserRecord:Organization.Type"
+	BA="Directory_UserRecord:Company"
+    ResourceCertificationComparisonBinding="Directory_UserRecord:IsActivePosition"
+    ResourceCertificationComparisonOperator="Equal"
+    ResourceCertificationComparisonValue="1" />
+
+</ConfigurationFile>

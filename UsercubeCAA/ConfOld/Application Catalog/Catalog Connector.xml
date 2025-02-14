@@ -1,0 +1,98 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- Catalog Connector -->
+    <Connector Identifier="Catalog" DisplayName_L1="Catalogue des applications" Agent="CAA" />
+
+    <!-- Catalog connections -->
+    <Connection Identifier="ApplicationCatalogExport" DisplayName_L1="Export Catalogue des applications" Connector="Catalog" Package="Usercube.CSV@0000001" />
+    <Connection Identifier="ProfileCatalogExport" DisplayName_L1="Export Catalogue des profils" Connector="Catalog" Package="Usercube.CSV@0000001" />
+    <Connection Identifier="AccountCatalogFulfill" DisplayName_L1="Fulfill manuel des comptes" Connector="Catalog" Package="Usercube.UpdateManualProvisioningTicket@0000001" />
+
+    <!-- Application -->
+    <EntityType Identifier="Catalog_Application" DisplayName_L1="Catalogue - Application">
+        <Property Identifier="Identifier" DisplayName_L1="Identifiant" Type="String" TargetColumnIndex="4" IsKey="true" />
+        <Property Identifier="Name" DisplayName_L1="Libellé" Type="String" TargetColumnIndex="5" />
+        <Property Identifier="Description" DisplayName_L1="Description" Type="String" TargetColumnIndex="6" />
+        <Property Identifier="IsActive" DisplayName_L1="Est active" Type="Bool" TargetColumnIndex="7" />
+        <Property Identifier="FunctionalApprover" DisplayName_L1="Approbateur fonctionnel" Type="String" TargetColumnIndex="8" />
+        <Property Identifier="TechnicalAdmin" DisplayName_L1="Administrateur technique" Type="String" TargetColumnIndex="9" />
+        <Property Identifier="ProvisioningType" DisplayName_L1="Type de provisioning" Type="String" TargetColumnIndex="10" />
+
+        <Property Identifier="Profiles" DisplayName_L1="Profils" Type="ForeignKey" />
+    </EntityType>
+
+    <EntityTypeMapping Identifier="Catalog_Application" Connector="Catalog" ConnectionTable="ApplicationCatalogExport">
+        <Property Identifier="Identifier" ConnectionColumn="Identifier" IsPrimaryKey="true" />
+        <Property Identifier="Name" ConnectionColumn="Name" />
+        <Property Identifier="Description" ConnectionColumn="Description" />
+        <Property Identifier="IsActive" ConnectionColumn="IsActive" />
+        <Property Identifier="FunctionalApprover" ConnectionColumn="FunctionalApprover" />
+        <Property Identifier="TechnicalAdmin" ConnectionColumn="TechnicalAdmin" />
+        <Property Identifier="ProvisioningType" ConnectionColumn="ProvisioningType" />
+    </EntityTypeMapping>
+
+    <ViewTemplate EntityType="Catalog_Application" Profile="Administrator" />
+    <EntityPropertyExpression Identifier="Catalog_Application_InternalDisplayName" Binding="Name" EntityType="Catalog_Application" Property="InternalDisplayName" />
+
+    <!-- Profile -->
+    <EntityType Identifier="Catalog_Profile" DisplayName_L1="Catalogue - Profil">
+        <Property Identifier="Identifier" DisplayName_L1="Identifiant" Type="String" TargetColumnIndex="4" IsKey="true" />
+        <Property Identifier="Name" DisplayName_L1="Libellé" Type="String" TargetColumnIndex="5" />
+        <Property Identifier="Description" DisplayName_L1="Description" Type="String" TargetColumnIndex="6" />
+        <Property Identifier="FunctionalApprover" DisplayName_L1="Approbateur fonctionnel" Type="String" TargetColumnIndex="7" />
+        <Property Identifier="TechnicalAdmin" DisplayName_L1="Administrateur technique" Type="String" TargetColumnIndex="8" />
+
+        <Property Identifier="Application" DisplayName_L1="Application" Type="ForeignKey" TargetColumnIndex="128" />
+    </EntityType>
+
+    <EntityTypeMapping Identifier="Catalog_Profile" Connector="Catalog" ConnectionTable="ProfileCatalogExport">
+        <Property Identifier="Identifier" ConnectionColumn="Identifier" IsPrimaryKey="true" />
+        <Property Identifier="Name" ConnectionColumn="Name" />
+        <Property Identifier="Description" ConnectionColumn="Description" />
+        <Property Identifier="FunctionalApprover" ConnectionColumn="FunctionalApprover" />
+        <Property Identifier="TechnicalAdmin" ConnectionColumn="TechnicalAdmin" />
+    </EntityTypeMapping>
+
+    <EntityAssociation Identifier="Catalog_Profile_Application" IsProperty2Collection="true" Property1="Catalog_Profile:Application" Property2="Catalog_Application:Profiles" />
+    <EntityAssociationMapping Identifier="Catalog_Profile_Application" Column1="Identifier" Column2="ApplicationIdentifier" ConnectionTable="ProfileCatalogExport" EntityPropertyMapping1="Catalog_Profile:Identifier" EntityPropertyMapping2="Catalog_Application:Identifier" Connector="Catalog" />
+
+    <ViewTemplate EntityType="Catalog_Profile" Profile="Administrator" />
+    <EntityPropertyExpression Identifier="Catalog_Profile_InternalDisplayName" Binding="Name" EntityType="Catalog_Profile" Property="InternalDisplayName" />
+
+    <!-- Account -->
+    <EntityType Identifier="Catalog_Application_Account" DisplayName_L1="Catalogue - Compte">
+        <Property Identifier="Identifier" DisplayName_L1="Identifiant" Type="String" TargetColumnIndex="4" IsKey="true" />
+        <Property Identifier="Login" DisplayName_L1="Login" Type="String" TargetColumnIndex="5" />
+		<Property Identifier="GivenName" DisplayName_L1="Prénom" TargetColumnIndex="6" Type="String" />
+        <Property Identifier="Sn" DisplayName_L1="Nom" TargetColumnIndex="7" Type="String" />
+        <Property Identifier="Cn" DisplayName_L1="Nom complet" TargetColumnIndex="8" Type="String"/>       
+        <Property Identifier="AdaStartDate" DisplayName_L1="Date de début" TargetColumnIndex="9" Type="String" />
+        <Property Identifier="AdaEndDate" DisplayName_L1="Date de fin" TargetColumnIndex="10" Type="String" />
+		<Property Identifier="ErLastAccessDate" DisplayName_L1="Date du dernier accès" TargetColumnIndex="11" Type="String" />
+
+
+        <Property Identifier="Application" DisplayName_L1="Application" Type="ForeignKey" TargetColumnIndex="128" />
+        <Property Identifier="Profiles" DisplayName_L1="Profils" Type="ForeignKey" />
+    </EntityType>
+
+    <EntityTypeMapping Identifier="Catalog_Application_Account" Connector="Catalog" />
+
+    <EntityAssociation Identifier="Catalog_Application_Account_Application" IsProperty2Collection="true" Property1="Catalog_Application_Account:Application" Property2="Directory_Application:Accounts" />
+    <EntityAssociation Identifier="Catalog_Application_Account_Profiles" IsProperty1Collection="true" IsProperty2Collection="true" Property1="Catalog_Application_Account:Profiles" Property2="Directory_Profile:Accounts" />
+
+    <ViewTemplate EntityType="Catalog_Application_Account" Profile="Administrator" />
+    <EntityPropertyExpression Identifier="Catalog_Application_Account_InternalDisplayName" Expression="C#:resource:return resource.Application?.DisplayName + &quot; - &quot; + resource.Login;" EntityType="Catalog_Application_Account" Property="InternalDisplayName" />
+
+    <AccessControlRule Profile="Administrator" EntityType="Catalog_Application_Account" Identifier="Administrator_Catalog_Application_Account_CAA" DisplayName_L1="Administrator_Catalog_Application_Account_CAA">
+        <Entry Permission="/Custom/Resources/Catalog_Application_Account/Create" CanExecute="true" />
+        <Entry Permission="/Custom/Resources/Catalog_Application_Account/Update" CanExecute="true" />
+        <Entry Permission="/Custom/Resources/Catalog_Application_Account/Delete" CanExecute="true" />
+    </AccessControlRule>
+
+    <AccessControlRule Profile="Administrator" EntityType="Resource" Identifier="Administrator_Resource_CAA" DisplayName_L1="Administrator_Resource_CAA">
+        <Entry Permission="/Custom/Resources/Catalog_Application_Account/Create" CanExecute="true" />
+        <Entry Permission="/Custom/Resources/Catalog_Application_Account/Update" CanExecute="true" />
+        <Entry Permission="/Custom/Resources/Catalog_Application_Account/Delete" CanExecute="true" />
+    </AccessControlRule>
+
+</ConfigurationFile>

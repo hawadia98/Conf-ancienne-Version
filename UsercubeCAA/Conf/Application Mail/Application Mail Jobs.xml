@@ -1,0 +1,37 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Job Identifier="Applications_Mail_Synchronize_Incremental" DisplayName_L1="Provisioning Mail - Synchronisation incrémentale" Agent="CAA" IsIncremental="true">
+    <ExportTask Identifier="Applications_Mail_Synchronize_Incremental_Export_ApplicationMail_Incremental_AccountMailExport" DisplayName_L1="Applications mail - Extraction des modifications" Agent="CAA" Connector="ApplicationMail" Level="0" OpenIdClient="Job" Connection="AccountMailExport" ContinueOnError="true" />
+    <ExportTask Identifier="Applications_Mail_Synchronize_Incremental_Export_ApplicationMail_Incremental_AccountProfilesMailExport" DisplayName_L1="Applications mail - Extraction des modifications" Agent="CAA" Connector="ApplicationMail" Level="0" OpenIdClient="Job" Connection="AccountProfilesMailExport" ContinueOnError="true" />
+    <PrepareSynchronizationTask Identifier="Applications_Mail_Synchronize_Incremental_PrepareSynchronizationChanges_ApplicationMail_Incremental" DisplayName_L1="Applications mail - Synchronisation incrémentale (côté agent)" Agent="CAA" Connector="ApplicationMail" Level="1" OpenIdClient="Job" SynchronizationMode="Incremental" Type="Changes">
+      <TaskDependsOnTask ParentTask="Applications_Mail_Synchronize_Incremental_Export_ApplicationMail_Incremental_AccountMailExport" />
+      <TaskDependsOnTask ParentTask="Applications_Mail_Synchronize_Incremental_Export_ApplicationMail_Incremental_AccountProfilesMailExport" />
+    </PrepareSynchronizationTask>
+    <SynchronizeTask Identifier="Applications_Mail_Synchronize_Incremental_SynchronizeChanges_ApplicationMail" DisplayName_L1="Applications mail - Synchronisation (changements côté serveur)" Connector="ApplicationMail" Level="2" Type="Changes" ForceSynchronization="true">
+      <TaskDependsOnTask ParentTask="Applications_Mail_Synchronize_Incremental_PrepareSynchronizationChanges_ApplicationMail_Incremental" />
+    </SynchronizeTask>
+
+    <Step Identifier="Reset_Files_Applications_Mail" Level="3" />
+
+    <UpdateEntityPropertyExpressionsTask Identifier="Applications_Mail_Synchronize_Incremental_UpdateEntityPropertyExpressions" DisplayName_L1="Mise à jour des propriétés calculées" Level="4">
+      <TaskEntityType EntityType="Application_Account_Mail" />
+      <TaskEntityType EntityType="Directory_Application" />
+      <TaskEntityType EntityType="Directory_User" />
+    </UpdateEntityPropertyExpressionsTask>
+    <ComputeCorrelationKeysTask Identifier="Applications_Mail_Synchronize_Incremental_ComputeCorrelationKeys1_AllEntities" DisplayName_L1="Calcul des corrélations" Level="5">
+      <TaskEntityType EntityType="Application_Account_Mail" />
+      <TaskEntityType EntityType="Directory_Application" />
+      <TaskEntityType EntityType="Directory_User" />
+    </ComputeCorrelationKeysTask>
+   
+    <ComputeRoleModelTask Identifier="Applications_Mail_Synchronize_Incremental_ComputeRoleModel" DisplayName_L1="Evaluation du modèle de rôles" Level="6">
+      <TaskEntityType EntityType="Directory_User" />
+    </ComputeRoleModelTask>
+
+    <GenerateProvisioningOrdersTask Identifier="Applications_Mail_Synchronize_Incremental_GenerateProvisioningOrders" DisplayName_L1="Génération des ordres de provisioning - Applications mail" Connector="ApplicationMail" ForceProvisioning="true" Level="7" />
+    <FulfillTask Identifier="Applications_Mail_Synchronize_Incremental_Fulfill" DisplayName_L1="Alimentation - Applications mail" Connector="ApplicationMail" Agent="CAA" Level="8" OpenIdClient="Job" ContinueOnError="true" />
+  </Job>
+
+  <InvokeExpressionTask Identifier="Reset_Files_Applications_Mail" DisplayName_L1="Reset Application Mail PowerShell Files" InputPath="D:/UsercubeCAA/Scripts/ApplicationMail/Applications_Reset_Files.ps1" Agent="CAA" OpenIdClient="Job" />
+
+</ConfigurationFile>

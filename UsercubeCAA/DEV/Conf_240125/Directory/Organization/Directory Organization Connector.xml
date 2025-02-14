@@ -1,0 +1,17 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <EntityType Identifier="Directory_Organization" ConsolidationMode="Merge">
+        <Property Identifier="Level" DisplayName_L1="Niveau" Type="String" TargetColumnIndex="7" />
+        <Property Identifier="ADAName" DisplayName_L1="Libellé ADA" Type="String" TargetColumnIndex="8" />
+		<Property Identifier="TranscoCode" DisplayName_L1="Transco Code" Type="String" TargetColumnIndex="9" />
+		<Property Identifier="TranscoDescription" DisplayName_L1="Transco Description" Type="String" TargetColumnIndex="10" />
+
+        <Property Identifier="Company" DisplayName_L1="Société" Type="ForeignKey" TargetColumnIndex="132" />
+        <Property Identifier="FutureUserRecords" DisplayName_L1="Collaborateurs en mobilités" Type="ForeignKey" />
+		<Property Identifier="EBs" DisplayName_L1="Liste des E.B" Type="ForeignKey" />
+    </EntityType>
+
+    <EntityAssociation Identifier="Directory_Organization_Company" IsProperty2Collection="true" Property1="Directory_Organization:Company" Property2="Directory_Company:Organizations" />
+    <EntityAssociation Identifier="Directory_Organization_EBs" IsProperty1Collection="true" Property1="Directory_Organization:EBs" Property2="Directory_EB:Organization" />
+
+</ConfigurationFile>

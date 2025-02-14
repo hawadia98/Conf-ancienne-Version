@@ -1,0 +1,96 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <Connector Identifier="OUD_LDAP" DisplayName_L1=" OUD LDAP" Agent="CAA" MaximumInsertedLines="500" MaximumUpdatedLines="500" MaximumDeletedLines="100" MaxPercentageInsertedLines="0" MaxPercentageUpdatedLines="0" MaxPercentageDeletedLines="0" />
+	<Connection Connector="OUD_LDAP" Identifier="OUDLDAPExportFulfillment" DisplayName_L1="OUD LDAP Connection " Package="Usercube.LDAP.Oracle@0000001" />
+
+	<EntityType Identifier="OUD_LDAP_Entry" DisplayName_L1="LDAP - Entry">
+		<Property Identifier="dn" DisplayName_L1="EntryDN" IsKey="true" TargetColumnIndex="127" Type="String" />
+		<Property Identifier="objectClass" DisplayName_L1="objectClass" TargetColumnIndex="1" Type="String"/>
+		<Property Identifier="cn" DisplayName_L1="cn" TargetColumnIndex="2" Type="String" />
+		<Property Identifier="gidNumber" DisplayName_L1="GID Number" TargetColumnIndex="3" Type="String" />
+		<Property Identifier="homeDirectory" DisplayName_L1="Homedir Unix du compte" TargetColumnIndex="4" Type="String" />
+		<Property Identifier="sn" DisplayName_L1="Nom" TargetColumnIndex="5" Type="String" />
+		<Property Identifier="uid" DisplayName_L1="Id utilisateur" IsKey="true" TargetColumnIndex="6" Type="String" />
+		<Property Identifier="uidNumber" DisplayName_L1="UID Number" TargetColumnIndex="7" Type="String" />
+		<Property Identifier="gecos" DisplayName_L1="gecos" TargetColumnIndex="8" Type="String"  />
+		<Property Identifier="givenName" DisplayName_L1="Prénom" TargetColumnIndex="9" Type="String" />
+		<Property Identifier="loginShell" DisplayName_L1="LoginShell" TargetColumnIndex="10" Type="String" />
+		<Property Identifier="mail" DisplayName_L1="Adresse électronique" TargetColumnIndex="11" Type="String" />
+		<Property Identifier="userPassword" DisplayName_L1="Mot de passe" TargetColumnIndex="12" Type="String" />
+		<Property Identifier="changelog" DisplayName_L1="changelog" TargetColumnIndex="13" Type="String" />
+		<Property Identifier="ds_pwp_account_disabled" DisplayName_L1="ds-pwp-account-disabled" TargetColumnIndex="14" Type="String" />
+		<Property Identifier="ds_sync_hist" DisplayName_L1="ds-sync-hist" TargetColumnIndex="15" Type="String" />
+		<Property Identifier="EntryUUID" DisplayName_L1="EntryUUID" TargetColumnIndex="16" Type="String" />
+		<Property Identifier="hasSubordinates" DisplayName_L1="hasSubordinates" TargetColumnIndex="17" Type="String" />
+		<Property Identifier="modifiersName" DisplayName_L1="modifiersName" TargetColumnIndex="18" Type="String" />
+		<Property Identifier="modifyTimestamp" DisplayName_L1="modifyTimestamp" TargetColumnIndex="19" Type="String" />
+		<Property Identifier="nsUniqueId" DisplayName_L1="nsUniqueId" TargetColumnIndex="20" Type="String" />
+		<Property Identifier="numSubordinates" DisplayName_L1="numSubordinates" TargetColumnIndex="21" Type="String" />
+		<Property Identifier="orclGUID" DisplayName_L1="orclGUID" TargetColumnIndex="22" Type="String" />
+		<Property Identifier="passwordExpirationTime" DisplayName_L1="passwordExpirationTime" TargetColumnIndex="23" Type="String" />
+		<Property Identifier="pawdChangedTime" DisplayName_L1="pawdChangedTime" TargetColumnIndex="24" Type="String" />
+		<Property Identifier="pwdHistory" DisplayName_L1="pwdHistory" TargetColumnIndex="25" Type="String" />
+		<Property Identifier="pwdLastAuthTime" DisplayName_L1="pwdLastAuthTime" TargetColumnIndex="26" Type="String" />
+		<Property Identifier="pwdPolicySubenty" DisplayName_L1="pwdPolicySubenty" TargetColumnIndex="27" Type="String" />
+		<Property Identifier="pwdReset" DisplayName_L1="pwdReset" TargetColumnIndex="28" Type="String" />
+	
+		
+	
+		
+		
+		<Property Identifier="Parent" DisplayName_L1="parentdn" Type="ForeignKey" TargetColumnIndex="128" />
+		<Property Identifier="children" DisplayName_L1="children" Type="ForeignKey" />
+
+		<Property Identifier="member" DisplayName_L1="member" Type="ForeignKey" />
+		<Property Identifier="memberOf" DisplayName_L1="memberOf" Type="ForeignKey" />
+  </EntityType>
+	<EntityAssociation Identifier="OUD_LDAP_Entry_parentdn" DisplayName_L1="parentdn" IsProperty1Collection="true" Property2="OUD_LDAP_Entry:Parent" Property1="OUD_LDAP_Entry:children" />
+  
+  <EntityAssociation Identifier="OUD_LDAP_Entry_member" DisplayName_L1="member" IsProperty1Collection="true" IsProperty2Collection="true" Property1="OUD_LDAP_Entry:member" Property2="OUD_LDAP_Entry:memberOf" />
+
+  
+
+  <EntityTypeMapping Identifier="OUD_LDAP_Entry" Connector="OUD_LDAP" ConnectionTable="OUDLDAPExportFulfillment_entries">
+
+    <Property Identifier="dn" ConnectionColumn="entryDN" IsUniqueKey="true" />
+	<Property Identifier="cn" ConnectionColumn="cn" />
+	<Property Identifier="objectClass" ConnectionColumn="objectClass" Format="multivaluedtext"/>
+	<Property Identifier="gidNumber" ConnectionColumn="gidNumber" />
+	<Property Identifier="homeDirectory" ConnectionColumn="homeDirectory" />
+	<Property Identifier="sn" ConnectionColumn="sn" />
+	<Property Identifier="uid" ConnectionColumn="uid" />
+	<Property Identifier="uidNumber" ConnectionColumn="uidNumber" />
+	<Property Identifier="gecos" ConnectionColumn="gecos"  />
+	<Property Identifier="givenName" ConnectionColumn="givenName" />
+	<Property Identifier="loginShell" ConnectionColumn="loginShell" />
+	<Property Identifier="mail" ConnectionColumn="mail" />
+    <Property Identifier="userPassword" ConnectionColumn="userPassword" />
+	<Property Identifier="changelog" ConnectionColumn="changelog" />
+	<Property Identifier="ds_pwp_account_disabled" ConnectionColumn="ds-pwp-account-disabled" />
+	<Property Identifier="ds_sync_hist" ConnectionColumn="ds-sync-hist" />
+    <Property Identifier="EntryUUID" ConnectionColumn="EntryUUID" IsPrimaryKey="true"/>
+	<Property Identifier="hasSubordinates" ConnectionColumn="hasSubordinates" />
+	<Property Identifier="modifiersName" ConnectionColumn="modifiersName" />
+	<Property Identifier="modifyTimestamp" ConnectionColumn="modifyTimestamp" />
+	<Property Identifier="nsUniqueId" ConnectionColumn="nsUniqueId" />
+	<Property Identifier="numSubordinates" ConnectionColumn="numSubordinates" />
+	<Property Identifier="orclGUID" ConnectionColumn="orclGUID" />
+	<Property Identifier="passwordExpirationTime" ConnectionColumn="passwordExpirationTime" />
+	<Property Identifier="pawdChangedTime" ConnectionColumn="pawdChangedTime" />
+	<Property Identifier="pwdHistory" ConnectionColumn="pwdHistory" />
+	<Property Identifier="pwdLastAuthTime" ConnectionColumn="pwdLastAuthTime" />
+	<Property Identifier="pwdPolicySubenty" ConnectionColumn="pwdPolicySubenty" />
+	<Property Identifier="pwdReset" ConnectionColumn="pwdReset" />
+	  
+ </EntityTypeMapping>
+  <EntityAssociationMapping Identifier="OUD_LDAP_Entry_parentdn" Column2="dn" Column1="Parent" ConnectionTable="OUDLDAPExportFulfillment_entries" EntityPropertyMapping1="OUD_LDAP_Entry:dn" EntityPropertyMapping2="OUD_LDAP_Entry:dn" Connector="OUD_LDAP" />
+  
+ <EntityAssociationMapping Identifier="OUD_LDAP_Entry_member" Column1="dn" Column2="member" ConnectionTable="OUDLDAPExportFulfillment_member" EntityPropertyMapping1="OUD_LDAP_Entry:dn" EntityPropertyMapping2="OUD_LDAP_Entry:dn" Connector="OUD_LDAP" />
+
+ <ViewTargetResourceTemplate EntityType="OUD_LDAP_Entry" Profile="Administrator" />
+ <TargetResourceReport EntityType="OUD_LDAP_Entry" />
+ <TargetResourceReportAccessControlRules EntityType="OUD_LDAP_Entry" Profile="Administrator" />
+ <TargetResourceReportMenus EntityType="OUD_LDAP_Entry" />
+    
+
+</ConfigurationFile>

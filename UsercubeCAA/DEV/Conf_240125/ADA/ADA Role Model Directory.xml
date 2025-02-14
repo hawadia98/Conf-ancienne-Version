@@ -1,0 +1,30 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <Category Policy="Default" Identifier="ADA_Accounts" DisplayName_L1="ADA Accounts" />
+
+    <!-- ADA ResourceType -->
+    <ResourceType Identifier="ADA_Accounts_Nominatif" DisplayName_L1="Compte ADA" Policy="Default" Category="ADA_Accounts" TargetEntityType="ADA_Account" SourceEntityType="Directory_User" MaximumInsertPercent="100" MaximumUpdatePercent="100" MaximumDeletePercent="100" ApprovalWorkflowType="One" BlockProvisioning="false">        
+        <ScalarRule Property="Identifier" Binding="EmployeeId" IsMapped="false" />
+        <ScalarRule Property="FirstName" Binding="FirstName" IsMapped="false" />
+        <ScalarRule Property="LastName" Binding="LastName" IsMapped="false" />
+        <ScalarRule Property="Email" Binding="Email" IsMapped="false" />
+        <ScalarRule Property="ContractStartDate" Expression="C#:record:return record.ContractStartDate.HasValue ? record.ContractStartDate.Value.ToString(&quot;dd/MM/yyyy&quot;) : null;" IsMapped="false" />
+        <ScalarRule Property="ContractEndDate" Expression="C#:record:return record.ContractEndDate.HasValue ? record.ContractEndDate.Value.ToString(&quot;dd/MM/yyyy&quot;) : null;" IsMapped="false" />
+        <ScalarRule Property="Company" Binding="Company.DisplayName" IsMapped="false" />
+        <ScalarRule Property="Site" Binding="Site.DisplayName" IsMapped="false" />
+
+        <NavigationRule Property="Profiles" Resource="Profile_A" SingleRole="Profile_A" />
+        <NavigationRule Property="Profiles" Resource="Profile_B" SingleRole="Profile_B" />
+        <NavigationRule Property="Profiles" Resource="Profile_C" SingleRole="Profile_C" />
+    </ResourceType>
+
+    <ResourceTypeMapping Identifier="ADA_Accounts_Nominatif" Connection="ADAFulfillment" />
+
+    <ResourceCorrelationRule ResourceType="ADA_Accounts_Nominatif" TargetBinding="Identifier" Policy="Default" SourceMatchedConfidenceLevel="100" SourceBinding="EmployeeId" />
+    <ResourceCorrelationRule ResourceType="ADA_Accounts_Nominatif" TargetBinding="Email" Policy="Default" SourceMatchedConfidenceLevel="100" SourceBinding="Email" />
+
+    <SingleRole Identifier="Profile_A" DisplayName_L1="Profile (A)" ApprovalWorkflowType="None" Category="ADA_Accounts" EntityType="Directory_User" Policy="Default" />
+    <SingleRole Identifier="Profile_B" DisplayName_L1="Profile (B)" ApprovalWorkflowType="None" Category="ADA_Accounts" EntityType="Directory_User" Policy="Default" />
+    <SingleRole Identifier="Profile_C" DisplayName_L1="Profile (C)" ApprovalWorkflowType="None" Category="ADA_Accounts" EntityType="Directory_User" Policy="Default" />
+
+</ConfigurationFile>

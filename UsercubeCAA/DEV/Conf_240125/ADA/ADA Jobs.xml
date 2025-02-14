@@ -1,0 +1,11 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- ADA Applications Jobs -->
+    <CreateConnectorSynchroIncremental Connector="ADA" Agent="CAA" JobIdentifier="ADA_Synchronize_Incremental_Scaffolding" DisplayName_L1="ADA - Synchronization Incremental (scaffolding)">
+      <OpenIdIdentifier Identifier="Job"/>
+      <AddTask Task="Reset_Files_ADA" Before="true" TaskToCompareWith="ComputeRoleModel_WithDirty" />
+    </CreateConnectorSynchroIncremental>
+  
+    <InvokeExpressionTask Identifier="Reset_Files_ADA" DisplayName_L1="Reset ADA PowerShell Files" InputPath="D:/UsercubeCAA/Scripts/ADA/ADA_Reset_Files.ps1" Agent="CAA" OpenIdClient="Job" />
+
+</ConfigurationFile>

@@ -1,0 +1,139 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Job Identifier="Payroll_Synchro_Complete_Scaffolding" DisplayName_L1="Paie - Synchronisation complète" Agent="CAA">
+    <InvokeExpressionTask Identifier="Payroll_Synchro_Complete_Scaffolding_PreCollect" DisplayName_L1="Paie - Pré-collecte des données" InputPath="D:\UsercubeCAA\Scripts\Payroll\Payroll_PreCollect.ps1" Agent="CAA" OpenIdClient="Job" />
+
+    <ExportTask Identifier="Payroll_Synchro_Complete_Scaffolding_Export_Payroll_CompanyType" DisplayName_L1="Paie - Extraction des modifications" Agent="CAA" Connector="Payroll" OpenIdClient="Job" Connection="PayrollCompanyType" IgnoreCookieFile="true" />
+    <ExportTask Identifier="Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Company" DisplayName_L1="Paie - Extraction des modifications" Agent="CAA" Connector="Payroll" OpenIdClient="Job" Connection="PayrollCompany" IgnoreCookieFile="true" />
+    <ExportTask Identifier="Payroll_Synchro_Complete_Scaffolding_Export_Payroll_ContractType" DisplayName_L1="Paie - Extraction des modifications" Agent="CAA" Connector="Payroll" OpenIdClient="Job" Connection="PayrollContractType" IgnoreCookieFile="true" />
+    <ExportTask Identifier="Payroll_Synchro_Complete_Scaffolding_Export_Payroll_UserType" DisplayName_L1="Paie - Extraction des modifications" Agent="CAA" Connector="Payroll" OpenIdClient="Job" Connection="PayrollUserType" IgnoreCookieFile="true" />
+    <ExportTask Identifier="Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Function" DisplayName_L1="Paie - Extraction des modifications" Agent="CAA" Connector="Payroll" OpenIdClient="Job" Connection="PayrollFunction" IgnoreCookieFile="true" />
+	<ExportTask Identifier="Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Site" DisplayName_L1="Paie - Extraction des modifications" Agent="CAA" Connector="Payroll" OpenIdClient="Job" Connection="PayrollSite" IgnoreCookieFile="true" />
+    <ExportTask Identifier="Payroll_Synchro_Complete_Scaffolding_Export_Payroll_TranscoSite" DisplayName_L1="Paie - Extraction des modifications" Agent="CAA" Connector="Payroll" OpenIdClient="Job" Connection="PayrollTranscoSite" IgnoreCookieFile="true" />
+	<ExportTask Identifier="Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Organization" DisplayName_L1="Paie - Extraction des modifications" Agent="CAA" Connector="Payroll" OpenIdClient="Job" Connection="PayrollOrganization" IgnoreCookieFile="true" />
+    <ExportTask Identifier="Payroll_Synchro_Complete_Scaffolding_Export_Payroll_TranscoOrganization" DisplayName_L1="Paie - Extraction des modifications" Agent="CAA" Connector="Payroll" OpenIdClient="Job" Connection="PayrollTranscoOrganization" IgnoreCookieFile="true" />
+	<ExportTask Identifier="Payroll_Synchro_Complete_Scaffolding_Export_Payroll_User" DisplayName_L1="Paie - Extraction des modifications" Agent="CAA" Connector="Payroll" OpenIdClient="Job" Connection="PayrollUser" IgnoreCookieFile="true" />
+    <ExportTask Identifier="Payroll_Synchro_Complete_Scaffolding_Export_Payroll_UserRecord" DisplayName_L1="Paie - Extraction des modifications" Agent="CAA" Connector="Payroll" OpenIdClient="Job" Connection="PayrollUserRecord" IgnoreCookieFile="true" />
+
+    <PrepareSynchronizationTask Identifier="Payroll_Synchro_Complete_Scaffolding_PrepareSynchronization_Payroll" DisplayName_L1="Paie - Synchronisation (côté agent)" Agent="CAA" Connector="Payroll" OpenIdClient="Job" SynchronizationMode="Complete">
+      <TaskDependsOnTask ParentTask="Payroll_Synchro_Complete_Scaffolding_Export_Payroll_CompanyType" />
+      <TaskDependsOnTask ParentTask="Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Company" />
+      <TaskDependsOnTask ParentTask="Payroll_Synchro_Complete_Scaffolding_Export_Payroll_ContractType" />
+      <TaskDependsOnTask ParentTask="Payroll_Synchro_Complete_Scaffolding_Export_Payroll_UserType" />
+	  <TaskDependsOnTask ParentTask="Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Function" />
+      <TaskDependsOnTask ParentTask="Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Site" />
+	  <TaskDependsOnTask ParentTask="Payroll_Synchro_Complete_Scaffolding_Export_Payroll_TranscoSite" />
+      <TaskDependsOnTask ParentTask="Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Organization" />
+	  <TaskDependsOnTask ParentTask="Payroll_Synchro_Complete_Scaffolding_Export_Payroll_TranscoOrganization" />
+      <TaskDependsOnTask ParentTask="Payroll_Synchro_Complete_Scaffolding_Export_Payroll_User" />
+      <TaskDependsOnTask ParentTask="Payroll_Synchro_Complete_Scaffolding_Export_Payroll_UserRecord" />
+    </PrepareSynchronizationTask>
+
+    <SynchronizeTask Identifier="Payroll_Synchro_Complete_Scaffolding_Synchronize_Payroll" DisplayName_L1="Paie - Synchronisation (côté serveur)" Connector="Payroll">
+      <TaskDependsOnTask ParentTask="Payroll_Synchro_Complete_Scaffolding_PrepareSynchronization_Payroll" />
+    </SynchronizeTask>
+
+    <UpdateEntityPropertyExpressionsTask Identifier="Payroll_Synchro_Complete_Scaffolding_ComputeProperties_1" DisplayName_L1="Paie - Calculer toutes les propriétés (1)" AllEntityType="true" />
+    <ComputeCorrelationKeysTask Identifier="Payroll_Synchro_Complete_Scaffolding_ComputeCorrelationKeys_1" DisplayName_L1="Paie - Calculer toutes les clés de corrélation (1)" AllEntityType="true" />
+
+    <ComputeRoleModelTask Identifier="Payroll_Synchro_Complete_Scaffolding_ComputeProvisioningPolicy_1" DisplayName_L1="Paie - Modèle de rôle (1)" BlockProvisioning="false">
+      <TaskEntityType EntityType="Payroll_CompanyType" />
+      <TaskEntityType EntityType="Payroll_Company" />
+      <TaskEntityType EntityType="Payroll_ContractType" />
+      <TaskEntityType EntityType="Payroll_UserType" />
+	  <TaskEntityType EntityType="Payroll_Function" />
+      <TaskEntityType EntityType="Payroll_Site" />
+	  <TaskEntityType EntityType="Payroll_TranscoSite" />
+      <TaskEntityType EntityType="Payroll_Organization" />
+	  <TaskEntityType EntityType="Payroll_TranscoOrganization" />
+      <TaskEntityType EntityType="Payroll_User" />
+      <TaskEntityType EntityType="Payroll_UserRecord" />
+    </ComputeRoleModelTask>
+    <GenerateProvisioningOrdersTask Identifier="Payroll_Synchro_Complete_Scaffolding_Provisioning_1" DisplayName_L1="Paie - Générer des ordres de Provisioning (1)" ForceProvisioning="true">
+      <TaskResourceType ResourceType="Payroll_CompanyType" />
+      <TaskResourceType ResourceType="Payroll_Company" />
+      <TaskResourceType ResourceType="Payroll_ContractType" />
+      <TaskResourceType ResourceType="Payroll_UserType" />
+	  <TaskResourceType ResourceType="Payroll_Function" />
+      <TaskResourceType ResourceType="Payroll_Site" />
+	  <TaskResourceType ResourceType="Payroll_TranscoSite" />
+      <TaskResourceType ResourceType="Payroll_Organization" />
+	  <TaskResourceType ResourceType="Payroll_TranscoOrganization" />
+      <TaskResourceType ResourceType="Payroll_User" />
+      <TaskResourceType ResourceType="Payroll_UserRecord" />
+    </GenerateProvisioningOrdersTask>
+    <FulfillTask Identifier="Payroll_Synchro_Complete_Scaffolding_Provisioner_Database_1" Agent="CAA" DisplayName_L1="Paie - Mise à jour (1)" OpenIdClient="Job">
+      <TaskResourceType ResourceType="Payroll_CompanyType" />
+      <TaskResourceType ResourceType="Payroll_Company" />
+      <TaskResourceType ResourceType="Payroll_ContractType" />
+      <TaskResourceType ResourceType="Payroll_UserType" />
+	  <TaskResourceType ResourceType="Payroll_Function" />
+      <TaskResourceType ResourceType="Payroll_Site" />
+	  <TaskResourceType ResourceType="Payroll_TranscoSite" />
+      <TaskResourceType ResourceType="Payroll_Organization" />
+	  <TaskResourceType ResourceType="Payroll_TranscoOrganization" />
+      <TaskResourceType ResourceType="Payroll_User" />
+      <TaskResourceType ResourceType="Payroll_UserRecord" />
+      <TaskDependsOnTask ParentTask="Payroll_Synchro_Complete_Scaffolding_Provisioning_1" />
+    </FulfillTask>
+
+    <UpdateEntityPropertyExpressionsTask Identifier="Payroll_Synchro_Complete_Scaffolding_ComputeProperties_2" DisplayName_L1="Paie - Calculer toutes les propriétés (2)" AllEntityType="true" />
+    <ComputeCorrelationKeysTask Identifier="Payroll_Synchro_Complete_Scaffolding_ComputeCorrelationKeys_2" DisplayName_L1="Paie - Calculer toutes les clés de corrélation (2)" AllEntityType="true" />
+
+    <ComputeRoleModelTask Identifier="Payroll_Synchro_Complete_Scaffolding_ComputeProvisioningPolicy_2" DisplayName_L1="Paie - Modèle de rôle (2)" BlockProvisioning="false">
+      <TaskEntityType EntityType="Payroll_CompanyType" />
+      <TaskEntityType EntityType="Payroll_Company" />
+      <TaskEntityType EntityType="Payroll_ContractType" />
+      <TaskEntityType EntityType="Payroll_UserType" />
+	  <TaskEntityType EntityType="Payroll_Function" />
+      <TaskEntityType EntityType="Payroll_Site" />
+	  <TaskEntityType EntityType="Payroll_TranscoSite" />
+      <TaskEntityType EntityType="Payroll_Organization" />
+	  <TaskEntityType EntityType="Payroll_TranscoOrganization" />
+      <TaskEntityType EntityType="Payroll_User" />
+      <TaskEntityType EntityType="Payroll_UserRecord" />
+    </ComputeRoleModelTask>
+    <GenerateProvisioningOrdersTask Identifier="Payroll_Synchro_Complete_Scaffolding_Provisioning_2" DisplayName_L1="Paie - Générer des ordres de Provisioning (2)" ForceProvisioning="true">
+      <TaskResourceType ResourceType="Payroll_CompanyType" />
+      <TaskResourceType ResourceType="Payroll_Company" />
+      <TaskResourceType ResourceType="Payroll_ContractType" />
+      <TaskResourceType ResourceType="Payroll_UserType" />
+	  <TaskResourceType ResourceType="Payroll_Function" />
+      <TaskResourceType ResourceType="Payroll_Site" />
+	  <TaskResourceType ResourceType="Payroll_TranscoSite" />
+      <TaskResourceType ResourceType="Payroll_Organization" />
+	  <TaskResourceType ResourceType="Payroll_TranscoOrganization" />
+      <TaskResourceType ResourceType="Payroll_User" />
+      <TaskResourceType ResourceType="Payroll_UserRecord" />
+    </GenerateProvisioningOrdersTask>
+    <FulfillTask Identifier="Payroll_Synchro_Complete_Scaffolding_Provisioner_Database_2" Agent="CAA" DisplayName_L1="Paie - Mise à jour (2)" OpenIdClient="Job">
+      <TaskResourceType ResourceType="Payroll_CompanyType" />
+      <TaskResourceType ResourceType="Payroll_Company" />
+      <TaskResourceType ResourceType="Payroll_ContractType" />
+      <TaskResourceType ResourceType="Payroll_UserType" />
+	  <TaskResourceType ResourceType="Payroll_Function" />
+      <TaskResourceType ResourceType="Payroll_Site" />
+	  <TaskResourceType ResourceType="Payroll_TranscoSite" />
+      <TaskResourceType ResourceType="Payroll_Organization" />
+	  <TaskResourceType ResourceType="Payroll_TranscoOrganization" />
+      <TaskResourceType ResourceType="Payroll_User" />
+      <TaskResourceType ResourceType="Payroll_UserRecord" />
+      <TaskDependsOnTask ParentTask="Payroll_Synchro_Complete_Scaffolding_Provisioning_2" />
+    </FulfillTask>
+	<InvokeSqlCommandTask Identifier="Payroll_Synchro_Complete_Scaffolding_Generate_IamLogin" DisplayName_L1="Paie - Générer les Logins IAM" IsNotAQuery="1"
+		SQLCommand="
+MERGE INTO zz_Directory_User a
+USING (SELECT Id, CONCAT('U', SUBSTRING(CONVERT(NVARCHAR(255), NEWID()), 0, 6)) as computed FROM zz_Directory_User WHERE IamLogin IS NULL) b
+ON a.Id=b.Id AND b.computed NOT IN (SELECT IamLogin FROM zz_Directory_User WHERE IamLogin IS NOT NULL) WHEN MATCHED THEN UPDATE SET IamLogin=b.computed;
+
+UPDATE a SET a.IamLogin=NULL FROM zz_Directory_User a where a.IamLogin IN (select b.IamLogin FROM zz_Directory_User b where b.IamLogin IS NOT NULL and a.Id&lt;&gt;b.Id);
+
+MERGE INTO zz_Directory_User a
+USING (SELECT Id, CONCAT('U', SUBSTRING(CONVERT(NVARCHAR(255), NEWID()), 0, 6)) as computed FROM zz_Directory_User WHERE IamLogin IS NULL) b
+ON a.Id=b.Id AND b.computed NOT IN (SELECT IamLogin FROM zz_Directory_User WHERE IamLogin IS NOT NULL) WHEN MATCHED THEN UPDATE SET IamLogin=b.computed;" />
+	<SetInternalUserProfilesTask Identifier="Payroll_Synchro_Complete_Scaffolding_SetInternalUserProfiles" DisplayName_L1="Paie - Assignation des profils automatiques">
+		<TaskEntityType EntityType="Directory_User" />
+	</SetInternalUserProfilesTask>
+  </Job>
+
+</ConfigurationFile>

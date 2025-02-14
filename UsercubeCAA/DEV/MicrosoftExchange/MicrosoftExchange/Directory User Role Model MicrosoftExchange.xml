@@ -1,0 +1,21 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <ResourceType Identifier="MicrosoftExchange_Mailbox_NominativeUser" DisplayName_L1="Microsoft Exchange Mailbox (nominative)" DisplayName_L2="Boîte Microsoft Exchange (nominative)" Policy="Default" TargetEntityType="MicrosoftExchange_Mailbox" Category="MicrosoftExchange" SourceEntityType="Directory_User" ApprovalWorkflowType="One" MaximumUpdatePercent="100" MaximumInsertPercent="100" DependsOn="ADMicrosoftExchange_Entry_NominativeUser">
+    <TypeRule TimeOffsetReference="Around" TimeOffsetBeforeReference="-10080" TimeOffsetAfterReference="43200" Policy="Default" />
+
+    <ScalarRule Property="SamAccountName" Binding="Login" />
+    <ScalarRule Property="PrimarySmtpAddress" Binding="Mail" />
+    <ScalarRule Property="EmailAddresses" Expression="C#:person:return String.IsNullOrEmpty(person.ProxyAddress) ? &quot;SMTP:&quot; + person.Mail : &quot;SMTP:&quot; + person.Mail + &quot; smtp:&quot; + person.ProxyAddress;" />
+
+    <!--The Resource attribute must be replaced by the id of your corresponding Microsoft Exchange Database-->
+    <NavigationRule Property="Database" Resource="24679385-b2dd-461d-aebf-42a77e0c620e" SingleRole="Mailbox Database 1882404652" />
+    <NavigationRule Property="Database" Resource="9c512155-d912-4fcb-9448-0755fbaf1b96" SingleRole="BDD1" />
+    <NavigationRule Property="Database" Resource="d1d81888-3ad3-4256-a621-2273aba7c48f" SingleRole="BDD2" />
+  </ResourceType>
+
+  <ResourceTypeMapping Identifier="MicrosoftExchange_Mailbox_NominativeUser" Connection="MicrosoftExchangeExportFulfillment" />
+  <ResourceCorrelationRule ResourceType="MicrosoftExchange_Mailbox_NominativeUser" TargetBinding="SamAccountName" Policy="Default" SourceMatchedConfidenceLevel="100" SourceBinding="Login" />
+
+  <SingleRole Identifier="Mailbox Database 1882404652" DisplayName_L1="Mailbox Database 1882404652" DisplayName_L2="Base de donnée pour boîte mail 1882404652" Category="MicrosoftExchange" ApprovalWorkflowType="One" EntityType="Directory_User" Policy="Default" />
+  <SingleRole Identifier="BDD1" DisplayName_L1="BDD1" DisplayName_L2="BDD1" Category="MicrosoftExchange" ApprovalWorkflowType="One" EntityType="Directory_User" Policy="Default" />
+  <SingleRole Identifier="BDD2" DisplayName_L1="BDD2" DisplayName_L2="BDD2" Category="MicrosoftExchange" ApprovalWorkflowType="One" EntityType="Directory_User" Policy="Default" />
+</ConfigurationFile>

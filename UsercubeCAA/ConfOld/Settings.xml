@@ -1,0 +1,12 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <Agent Identifier="CAA" DisplayName_L1="CAA" URI="https://wd204app10032.caa01.local" />
+
+    <!-- TODO: execute "dotnet Usercube-New-OpenIDSecret.dll" to generate a random secret + its hash -->
+    <OpenIdClient Identifier="Job" HashedSecret="K7gNU3sdo+OL0wNhqoVWhr3g6s1xYv72ol/pe/Unols=" ConsolidationMode="Merge" />
+
+    <Language Code="fr-FR" IndicatorNumber="1" />
+
+    <AppDisplaySetting ApplicationName="RHEIA" PrimaryColor="#00553F" SecondaryColor="#00553F" BannerColor="#ebebeb" BannerTextColor="#00553F" BannerGradientColor="#ebebeb" ConsolidationMode="Merge" />
+
+</ConfigurationFile>

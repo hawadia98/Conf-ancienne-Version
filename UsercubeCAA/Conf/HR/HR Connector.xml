@@ -1,0 +1,147 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- HR Connector -->
+    <Connector Identifier="HR" DisplayName_L1="RH" Agent="CAA" />
+
+    <!-- HR User -->
+    <Connection Identifier="HRUser" DisplayName_L1="Export RH Entrée Collaborateur" Connector="HR" Package="Usercube.CSV@0000001" />
+
+    <ViewTemplate EntityType="HR_User" Profile="Administrator" />
+    <UpdateResourcesTemplate EntityType="HR_User" Profile="Administrator" />
+
+    <EntityType Identifier="HR_User" DisplayName_L1="Entrée RH">
+        <Property Identifier="Identifier" DisplayName_L1="Identifiant" TargetColumnIndex="4" Type="String" IsKey="true" />
+        <Property Identifier="EmployeeId" DisplayName_L1="IUG" TargetColumnIndex="5" Type="String" />
+        <Property Identifier="FirstName" DisplayName_L1="Prénom" Type="String" TargetColumnIndex="6" />
+        <Property Identifier="LastName" DisplayName_L1="Nom" Type="String" TargetColumnIndex="7" />
+        <Property Identifier="ContractStartDate" DisplayName_L1="Date Début Contrat" Type="String" TargetColumnIndex="8" />
+        <Property Identifier="ContractEndDate" DisplayName_L1="Date Fin Contrat" Type="String" TargetColumnIndex="9" />
+        <Property Identifier="Company" DisplayName_L1="Société" Type="String" TargetColumnIndex="10" />
+        <Property Identifier="Site" DisplayName_L1="Site" Type="String" TargetColumnIndex="11" />
+        <Property Identifier="ContractType" DisplayName_L1="Type Contrat" Type="String" TargetColumnIndex="12" />
+        <Property Identifier="RenewalEndDate" DisplayName_L1="Date Fin Renouvellement" Type="String" TargetColumnIndex="13" />
+        <Property Identifier="Manager" DisplayName_L1="Responsable Hiérarchique" Type="String" TargetColumnIndex="14" />
+        <Property Identifier="Direction" DisplayName_L1="Direction" Type="String" TargetColumnIndex="15" />
+        <Property Identifier="FileName" DisplayName_L1="Nom Fichier" Type="String" TargetColumnIndex="16" />
+        <Property Identifier="Function" DisplayName_L1="Fonction" Type="String" TargetColumnIndex="17" />
+
+        <Property Identifier="Check" DisplayName_L1="Vérification" Type="ForeignKey" TargetColumnIndex="128" />
+    </EntityType>
+
+    <EntityAssociation Identifier="HR_User_Check" IsProperty2Collection="true" Property1="HR_User:Check" Property2="Directory_Check:HRUsers" />
+
+    <EntityTypeMapping Identifier="HR_User" Connector="HR" ConnectionTable="HRUser">
+        <Property Identifier="Identifier" ConnectionColumn="UC_Identifier" IsPrimaryKey="true" />
+        <Property Identifier="EmployeeId" ConnectionColumn="IUG" IsUniqueKey="true" />
+        <Property Identifier="FirstName" ConnectionColumn="PRENOM" />
+        <Property Identifier="LastName" ConnectionColumn="NOM" />
+        <Property Identifier="ContractStartDate" ConnectionColumn="DATE DEBUT CONTRAT" />
+        <Property Identifier="ContractEndDate" ConnectionColumn="DATE FIN CONTRAT" />
+        <Property Identifier="Company" ConnectionColumn="SOCIETE" />
+        <Property Identifier="Site" ConnectionColumn="LIEU DE TRAVAIL" />
+        <Property Identifier="ContractType" ConnectionColumn="TYPE DE CONTRAT" />
+        <Property Identifier="RenewalEndDate" ConnectionColumn="DATE FIN RENOUVELLEMENT" />
+        <Property Identifier="Manager" ConnectionColumn="RESPONSABLE HIERARCHIQUE" />
+		<Property Identifier="Function" ConnectionColumn="FONCTION" />
+        <Property Identifier="Direction" ConnectionColumn="DIRECTION" />
+        <Property Identifier="FileName" ConnectionColumn="FileName" />
+    </EntityTypeMapping>
+
+    <EntityPropertyExpression Identifier="HR_User_InternalDisplayName" Expression="C#:resource:return resource.EmployeeId ?? resource.Identifier;" EntityType="HR_User" Property="InternalDisplayName" />
+    <EntityPropertyExpression Identifier="HR_User_Check" EntityType="HR_User" Property="Check" Expression="C#:resource:
+if (!string.IsNullOrEmpty(resource.Check?.Identifier)) {
+    return resource.Check.Id;
+}
+
+var squery = &quot;select Id where ((EmployeeId=\&quot;&quot; + resource.EmployeeId + &quot;\&quot;) or (FirstName=\&quot;&quot; + resource.FirstName + &quot;\&quot; and LastName=\&quot;&quot; + resource.LastName + &quot;\&quot;))&quot;;
+var resources = queryHandler.Select&lt;Directory_UserRecord&gt;(squery);    
+if (resources == null || resources.Count == 0) {
+    return -6001L;
+}
+else if (!string.IsNullOrEmpty(resource.Identifier)) {
+    return -6002L;
+}
+
+return -6003L;" />
+
+    <!-- HR User Update -->
+    <Connection Identifier="HRUserUpdate" DisplayName_L1="Export RH Sorties/Mobilitées Collaborateur" Connector="HR" Package="Usercube.CSV@0000001" />
+
+    <ViewTemplate EntityType="HR_UserUpdate" Profile="Administrator" />
+    <UpdateResourcesTemplate EntityType="HR_UserUpdate" Profile="Administrator" />
+    <BulkResourceReconciliationAccessControlRules EntityType="HR_UserUpdate" Profile="Administrator" />
+
+    <EntityType Identifier="HR_UserUpdate" DisplayName_L1="Sortie/Mobilitée RH">
+        <Property Identifier="EmployeeId" DisplayName_L1="IUG" TargetColumnIndex="4" Type="String" IsKey="true"/>
+        <Property Identifier="FirstName" DisplayName_L1="Nom" TargetColumnIndex="5" Type="String" />
+        <Property Identifier="LastName" DisplayName_L1="Prénom" TargetColumnIndex="6" Type="String" />
+        <Property Identifier="ReasonForDeparture" DisplayName_L1="Motif de sortie" TargetColumnIndex="7" Type="String" />
+        <Property Identifier="Company" DisplayName_L1="Société" TargetColumnIndex="8" Type="String" />
+        <Property Identifier="CurrentEstablishment" DisplayName_L1="Etablissement actuel" TargetColumnIndex="9" Type="String" />
+        <Property Identifier="CurrentOrganization" DisplayName_L1="Organisation actuelle" TargetColumnIndex="10" Type="String" />
+        <Property Identifier="CurrentFineOrganization" DisplayName_L1="Organisation fine actuelle" TargetColumnIndex="11" Type="String" />
+        <Property Identifier="FutureCompany" DisplayName_L1="Société d'accueil future" TargetColumnIndex="12" Type="String" />
+        <Property Identifier="FutureAttachmentEntity" DisplayName_L1="Entité de rattachement future" TargetColumnIndex="13" Type="String" />
+        <Property Identifier="FutureOrganization" DisplayName_L1="Organisation future" TargetColumnIndex="14" Type="String" />
+        <Property Identifier="FutureFineOrganization" DisplayName_L1="Organisation fine future" TargetColumnIndex="15" Type="String" />
+        <Property Identifier="FutureEstablishment" DisplayName_L1="Etablissement futur" TargetColumnIndex="16" Type="String" />
+        <Property Identifier="FutureManager" DisplayName_L1="Responsable futur" TargetColumnIndex="17" Type="String" />
+        <Property Identifier="StartDateConversionPeriod" DisplayName_L1="Date début période aménagement" TargetColumnIndex="18" Type="String" />
+        <Property Identifier="ExitDate" DisplayName_L1="Date de sortie" TargetColumnIndex="19" Type="String" />
+        <Property Identifier="ArrivalDateFutureUnit" DisplayName_L1="Date arrivée entité future" TargetColumnIndex="20" Type="String" />
+        <Property Identifier="CreationDate" DisplayName_L1="Création date et heure" TargetColumnIndex="21" Type="String" />
+        <Property Identifier="ContractType" DisplayName_L1="Type de contrat" TargetColumnIndex="22" Type="String" />
+        <Property Identifier="SpecificContract" DisplayName_L1="Contrat particulier" TargetColumnIndex="23" Type="String" />
+        <Property Identifier="CurrentManager" DisplayName_L1="Responsable actuel" TargetColumnIndex="24" Type="String" />
+        <Property Identifier="FileName" DisplayName_L1="Nom Fichier" TargetColumnIndex="25" Type="String" />
+    </EntityType>
+
+    <EntityTypeMapping Identifier="HR_UserUpdate" Connector="HR" ConnectionTable="HRUserUpdate">
+        <Property Identifier="EmployeeId" ConnectionColumn="IUG" IsPrimaryKey="true" />
+        <Property Identifier="FirstName" ConnectionColumn="NOM" />
+        <Property Identifier="LastName" ConnectionColumn="PRENOM" />
+        <Property Identifier="ReasonForDeparture" ConnectionColumn="MOTIF DE SORTIE" />
+        <Property Identifier="Company" ConnectionColumn="SOCIETE" />
+        <Property Identifier="CurrentEstablishment" ConnectionColumn="ETABLISSEMENT ACTUEL" />
+        <Property Identifier="CurrentOrganization" ConnectionColumn="ORGANISATION ACTUELLE" />
+        <Property Identifier="CurrentFineOrganization" ConnectionColumn="ORGANISATION FINE ACTUELLE" />
+        <Property Identifier="FutureCompany" ConnectionColumn="SOCIETE D ACCUEIL" />
+        <Property Identifier="FutureAttachmentEntity" ConnectionColumn="ENTITE DE RATTACHEMENT FUTURE" />
+        <Property Identifier="FutureOrganization" ConnectionColumn="ORGANISATION FUTURE" />
+        <Property Identifier="FutureFineOrganization" ConnectionColumn="ORGANISATION FINE FUTURE" />
+        <Property Identifier="FutureEstablishment" ConnectionColumn="ETABLISSEMENT FUTUR" />
+        <Property Identifier="FutureManager" ConnectionColumn="RESPONSABLE FUTUR" />
+        <Property Identifier="StartDateConversionPeriod" ConnectionColumn="DATE DEBUT PERIODE AMENAGEMENT" />
+        <Property Identifier="ExitDate" ConnectionColumn="DATE DE SORTIE" />
+        <Property Identifier="ArrivalDateFutureUnit" ConnectionColumn="DATE ARRIVEE ENTITE FUTURE" />
+        <Property Identifier="CreationDate" ConnectionColumn="CREATION DATE ET HEURE" />
+        <Property Identifier="ContractType" ConnectionColumn="TYPE DE CONTRAT" />
+        <Property Identifier="SpecificContract" ConnectionColumn="CONTRAT PARTICULIER" />
+        <Property Identifier="CurrentManager" ConnectionColumn="RESPONSABLE ACTUEL" />
+        <Property Identifier="FileName" ConnectionColumn="FileName" />
+    </EntityTypeMapping>
+
+    <!-- Load IUG -->
+    <Connection Identifier="HRLoadIUG" DisplayName_L1="Export Load IUG" Connector="HR" Package="Usercube.CSV@0000001" />
+
+    <ViewTemplate EntityType="HR_LoadIUG" Profile="Administrator" />
+    <UpdateResourcesTemplate EntityType="HR_LoadIUG" Profile="Administrator" />
+    <BulkResourceReconciliationAccessControlRules EntityType="HR_LoadIUG" Profile="Administrator" />
+
+    <EntityType Identifier="HR_LoadIUG" DisplayName_L1="Chargement IUG">
+        <Property Identifier="EmployeeId" DisplayName_L1="IUG" TargetColumnIndex="4" Type="String" IsKey="true"/>
+        <Property Identifier="TeamsIdentifier" DisplayName_L1="Matricule" TargetColumnIndex="5" Type="String" IsKey="true"/>
+        <Property Identifier="FirstName" DisplayName_L1="Prénom" TargetColumnIndex="6" Type="String" />
+        <Property Identifier="LastName" DisplayName_L1="Nom" TargetColumnIndex="7" Type="String" />
+    </EntityType>
+
+    <EntityTypeMapping Identifier="HR_LoadIUG" Connector="HR" ConnectionTable="HRLoadIUG">
+        <Property Identifier="EmployeeId" ConnectionColumn="IUG" IsPrimaryKey="true" />
+        <Property Identifier="TeamsIdentifier" ConnectionColumn="Matricule" />
+        <Property Identifier="FirstName" ConnectionColumn="Prénom" />
+        <Property Identifier="LastName" ConnectionColumn="Nom" />
+    </EntityTypeMapping>
+
+    <EntityPropertyExpression Identifier="HR_LoadIUG_InternalDisplayName" Expression="C#:resource:return resource.EmployeeId ?? resource.TeamsIdentifier;" EntityType="HR_LoadIUG" Property="InternalDisplayName" />
+
+</ConfigurationFile>

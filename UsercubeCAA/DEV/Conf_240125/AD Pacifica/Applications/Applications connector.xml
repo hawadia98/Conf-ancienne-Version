@@ -1,0 +1,103 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+<Connector Identifier="Application" DisplayName_L1="Application" Agent="CAA" MaximumInsertedLines="500" MaximumUpdatedLines="500" MaximumDeletedLines="100" MaxPercentageInsertedLines="0" MaxPercentageUpdatedLines="0" MaxPercentageDeletedLines="0" />
+    <Connection Connector="Application" Identifier="ApplicationsFulfillment" DisplayName_L1 ="Application Fulfill" Package="Usercube.Powershell@0000001" />
+    <Connection Connector="Application" Identifier="ApplicationsAccountExport" DisplayName_L1="Application Accounts Export" Package="Usercube.CSV@0000001" />
+    <Connection Connector="Application" Identifier="ApplicationsPermissionExport" DisplayName_L1="Application Permissions Export" Package="Usercube.CSV@0000001" />
+    <!-- <Connection Connector="Application" Identifier="ApplicationsExport" DisplayName_L1="Application Export" Package="Usercube.CSV@0000001" /> -->
+
+    <EntityType Identifier="Application_Account" DisplayName_L1="Application Account">
+        <Property Identifier="Identifier" DisplayName_L1="Identifier" IsKey="true" TargetColumnIndex="4" Type="String" />
+        <Property Identifier="FirstName" DisplayName_L1="Prénom" TargetColumnIndex="5" Type="String" />
+        <Property Identifier="LastName" DisplayName_L1="Nom" TargetColumnIndex="6" Type="String" />
+        <Property Identifier="Email" DisplayName_L1="Adresse email" TargetColumnIndex="7" Type="String"/>       
+        <Property Identifier="ContractStartDate" DisplayName_L1="Date de début" TargetColumnIndex="8" Type="String" />
+        <Property Identifier="ContractEndDate" DisplayName_L1="Date de fin" TargetColumnIndex="9" Type="String" />
+        <Property Identifier="Site" DisplayName_L1="Site" TargetColumnIndex="10" Type="String" />
+        <Property Identifier="Company" DisplayName_L1="Société" TargetColumnIndex="11" Type="String" />
+
+        <Property Identifier="Permissions" DisplayName_L1="Applications Permissions" Type="ForeignKey" />
+
+    </EntityType>
+
+    <EntityTypeMapping Identifier="Application_Account" Connector="Application" ConnectionTable="ApplicationsAccountExport">
+        <Property Identifier="Identifier" ConnectionColumn="Identifier" IsPrimaryKey="true" />
+        <Property Identifier="FirstName" ConnectionColumn="FirstName" />
+        <Property Identifier="LastName" ConnectionColumn="LastName" />
+        <Property Identifier="Email" ConnectionColumn="Email" />       
+        <Property Identifier="ContractStartDate" ConnectionColumn="ContractStartDate" />
+        <Property Identifier="ContractEndDate" ConnectionColumn="ContractEndDate" />
+        <Property Identifier="Site" ConnectionColumn="Site" />
+        <Property Identifier="Company" ConnectionColumn="Company" />       
+    </EntityTypeMapping>
+
+    <EntityType Identifier="Application_Permission" DisplayName_L1="Application Permission">
+        <Property Identifier="Identifier" DisplayName_L1="Id technique" TargetColumnIndex="4" Type="String" IsKey="true" />
+        <Property Identifier="DisplayName" DisplayName_L1="DisplayName" TargetColumnIndex="5" Type="String" />
+        <Property Identifier="IdADA" DisplayName_L1="Id ADA"  TargetColumnIndex="6" Type="String" />
+        <Property Identifier="Status" DisplayName_L1="Statut" TargetColumnIndex="7" Type="String" />
+        <Property Identifier="Approver" DisplayName_L1="Approbateur" TargetColumnIndex="8" Type="String" />
+        <Property Identifier="Sensible" DisplayName_L1="Sensible" TargetColumnIndex="9" Type="String" />
+        <Property Identifier="Location" DisplayName_L1="Location" TargetColumnIndex="10" Type="String" />
+        <Property Identifier="Description" DisplayName_L1="Description" TargetColumnIndex="11" Type="String" />
+        <Property Identifier="ApplicationName" DisplayName_L1="Nom application" TargetColumnIndex="12" Type="String" />
+        <Property Identifier="AddressMailPartner" DisplayName_L1="Adresse Mail Partner" TargetColumnIndex="13" Type="String" />
+        
+        <Property Identifier="Accounts" DisplayName_L1="Accounts" Type="ForeignKey" />
+        <Property Identifier="Application" DisplayName_L1="Application" TargetColumnIndex="128" Type="ForeignKey" />
+
+    </EntityType> 
+
+    <EntityPropertyExpression Identifier="Application_Permission_ApplicationName" Binding="Application.ApplicationName"
+    EntityType="Application_Permission" Property="ApplicationName" />
+    
+    <EntityPropertyExpression Identifier="Application_Permission_AddressMailPartner" Binding="Application.AddressMailPartner"
+    EntityType="Application_Permission" Property="AddressMailPartner" />
+
+    <EntityType Identifier="Applications" DisplayName_L1="Applications">
+        <Property Identifier="Identifier" DisplayName_L1="Identifiant" TargetColumnIndex="4" Type="String" IsKey="true" />
+        <Property Identifier="ApplicationName" DisplayName_L1="Nom application" TargetColumnIndex="5" Type="String" />
+        <Property Identifier="IdApplicationParent" DisplayName_L1="Identifiant de l'application mère"  TargetColumnIndex="6" Type="String" />
+        <Property Identifier="Description" DisplayName_L1="Description" TargetColumnIndex="7" Type="String" />
+        <Property Identifier="URL" DisplayName_L1="URL" TargetColumnIndex="8" Type="String" />
+        <Property Identifier="Login" DisplayName_L1="Login" TargetColumnIndex="9" Type="String" />
+        <Property Identifier="Password" DisplayName_L1="Password" TargetColumnIndex="10" Type="String" />
+        <Property Identifier="ALDDisable" DisplayName_L1="Désactivation en cas ALD" TargetColumnIndex="11" Type="String" />
+        <Property Identifier="PRDisable" DisplayName_L1="Désactivation en cas pré-retraite" TargetColumnIndex="12" Type="String" />
+        <Property Identifier="PIDisable" DisplayName_L1="Désactivation en cas de période d'inactivité" TargetColumnIndex="13" Type="String" />
+        <Property Identifier="MultiProfiles" DisplayName_L1="Multi Profils" TargetColumnIndex="14" Type="String" />
+        <Property Identifier="AdditionalData" DisplayName_L1="Données complémentaires" TargetColumnIndex="15" Type="String" />
+        <Property Identifier="AdditionalDataType" DisplayName_L1="Type de Données complémentaires" TargetColumnIndex="16" Type="String" />
+        <Property Identifier="Owner" DisplayName_L1="Propriétaire" TargetColumnIndex="17" Type="String" />
+        <Property Identifier="TechnicalResponsible" DisplayName_L1="URL" TargetColumnIndex="18" Type="String" />
+        <Property Identifier="AddressMailPartner" DisplayName_L1="Adresse Mail Partner" TargetColumnIndex="19" Type="String" />
+        <Property Identifier="FunctionalApprover" DisplayName_L1="Approbateur fonctionnel" TargetColumnIndex="20" Type="String" />
+        <Property Identifier="ConnectorType" DisplayName_L1="Type Connecteur" TargetColumnIndex="21" Type="String" />
+        <Property Identifier="Criticity" DisplayName_L1="Criticité" TargetColumnIndex="22" Type="String" />
+        <Property Identifier="BrainWaveIntegration" DisplayName_L1="BrainWave Intégration" TargetColumnIndex="23" Type="String" />
+        <Property Identifier="AuthentificationMethod" DisplayName_L1="Méthode Authentification" TargetColumnIndex="24" Type="String" />
+        <Property Identifier="Environment" DisplayName_L1="Environnement" TargetColumnIndex="25" Type="String" />
+        <Property Identifier="Status" DisplayName_L1="Statut" TargetColumnIndex="26" Type="String" />
+        <Property Identifier="AssociateConnector" DisplayName_L1="Connecteur Associé" TargetColumnIndex="27" Type="String" />
+
+        <Property Identifier="Permissions" DisplayName_L1="Applications Permissions" Type="ForeignKey" />
+
+    </EntityType>
+
+    <EntityAssociation Identifier="Application_Account_Permission" IsProperty1Collection="true" IsProperty2Collection="true" Property1="Application_Account:Permissions" Property2="Application_Permission:Accounts" />
+    <EntityAssociationMapping Identifier="Application_Account_Permission" Column1="Identifier" Column2="Permissions" ConnectionTable="ApplicationsPermissionExport" EntityPropertyMapping1="Application_Account:Identifier" EntityPropertyMapping2="Application_Permission:Identifier" Connector="Application" />
+
+    <EntityAssociation Identifier="Applications_Permission" IsProperty1Collection="true"  Property1="Applications:Permissions" Property2="Application_Permission:Application" />
+    <EntityAssociationMapping Identifier="Applications_Permission" Column1="Identifier" Column2="Permissions" ConnectionTable="ApplicationsPermissionExport" EntityPropertyMapping1="Applications:Identifier" EntityPropertyMapping2="Application_Permission:Identifier" Connector="Application" />
+
+    <CreateUpdateDeleteTemplate EntityType="Application_Account" Profile="Administrator" />
+    <CreateUpdateDeleteTemplate EntityType="Application_Permission" Profile="Administrator" />
+    <CreateUpdateDeleteTemplate EntityType="Applications" Profile="Administrator" />
+
+    <Resource Id="-7001" Type="Application_Permission" C4="Permission_A" C5="Permission (A)" C6="Permission (A)" C7="Permission (A)" C8="Permission (A)" C9="Permission (A)" CA="Permission (A)" CB="Permission (A)" I40="-8001" DisplayName_L1="Permission (A)" />
+    <Resource Id="-7002" Type="Application_Permission" C4="Permission_B" C5="Permission (B)" C6="Permission (B)" C7="Permission (B)" C8="Permission (B)" C9="Permission (B)" CA="Permission (B)" CB="Permission (B)" I40="-8001" DisplayName_L1="Permission (B)" />
+    <Resource Id="-7003" Type="Application_Permission" C4="Permission_C" C5="Permission (C)" C6="Permission (C)" C7="Permission (C)" C8="Permission (C)" C9="Permission (C)" CA="Permission (C)" CB="Permission (C)" I40="-8001" DisplayName_L1="Permission (C)" />
+
+    <Resource Id="-8001" Type="Applications" C4="Application_A" C5="Application (A)" C6="Parent_Application (A)" C7="Description Application (A)" C8="URL Application A" C9="Login Application A" CA="Password Application A" CB="False" CC="False" CD="False" CE="False" CF="False" CG="Empty" CH="toto toto" CI="toto toto" CJ="toto@localhost" CK="tata tata" CL="Mail" CM="Low" CN="False" CO="None" CP="DEV" CQ="Active" CR="None" DisplayName_L1="Application (A)" />
+
+</ConfigurationFile>

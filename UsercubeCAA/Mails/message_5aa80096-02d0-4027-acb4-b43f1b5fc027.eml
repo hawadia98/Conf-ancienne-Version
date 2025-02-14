@@ -1,0 +1,25 @@
+﻿From: test@usercube.com
+To: testt1@usercube.com
+Subject: Export RCI personnes et organisation
+Content-Type: multipart/mixed; boundary="Boundary123"
+
+--Boundary123
+Content-Type: text/plain; charset=UTF-8
+
+Export RCI personnes et organisation
+
+--Boundary123
+Content-Type: text/csv; name="Export_RCI_Person.csv"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="Export_RCI_Person.csv"
+
+
+
+--Boundary123
+Content-Type: text/csv; name="Export_RCI_Orga.csv"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename="Export_RCI_Orga.csv"
+
+
+
+--Boundary123--

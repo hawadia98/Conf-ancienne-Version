@@ -1,0 +1,7 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <EntityType Identifier="Directory_UserType" ConsolidationMode="Merge" DisplayName_L1="Type d'utilisateur">
+        <Property Identifier="ContractTypes" DisplayName_L1="Contrats" Type="ForeignKey" />
+    </EntityType>
+
+</ConfigurationFile>

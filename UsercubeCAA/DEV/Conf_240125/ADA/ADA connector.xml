@@ -1,0 +1,53 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <Connector Identifier="ADA" DisplayName_L1="ADA" Agent="CAA" MaximumInsertedLines="500" MaximumUpdatedLines="500" MaximumDeletedLines="100" MaxPercentageInsertedLines="0" MaxPercentageUpdatedLines="0" MaxPercentageDeletedLines="0" />
+    <Connection Connector="ADA" Identifier="ADAFulfillment" DisplayName_L1 ="ADA Fulfill" Package="Usercube.Powershell@0000001" />
+    <Connection Connector="ADA" Identifier="ADAAccountsExport" DisplayName_L1="ADA Accounts Export" Package="Usercube.CSV@0000001" />
+    <Connection Connector="ADA" Identifier="ADAProfilesExport" DisplayName_L1="ADA Profiles Export" Package="Usercube.CSV@0000001" />
+
+    <EntityType Identifier="ADA_Account" DisplayName_L1="ADA Account">
+        <Property Identifier="Identifier" DisplayName_L1="Identifier" IsKey="true" TargetColumnIndex="4" Type="String" />
+        <Property Identifier="FirstName" DisplayName_L1="Prénom" TargetColumnIndex="5" Type="String" />
+        <Property Identifier="LastName" DisplayName_L1="Nom" TargetColumnIndex="6" Type="String" />
+        <Property Identifier="Email" DisplayName_L1="Adresse email" TargetColumnIndex="7" Type="String"/>       
+        <Property Identifier="ContractStartDate" DisplayName_L1="Date de début" TargetColumnIndex="8" Type="String" />
+        <Property Identifier="ContractEndDate" DisplayName_L1="Date de fin" TargetColumnIndex="9" Type="String" />
+        <Property Identifier="Site" DisplayName_L1="Site" TargetColumnIndex="10" Type="String" />
+        <Property Identifier="Company" DisplayName_L1="Société" TargetColumnIndex="11" Type="String" />
+
+        <Property Identifier="Profiles" DisplayName_L1="ADA Profiles" Type="ForeignKey" />
+    </EntityType>
+
+    <EntityTypeMapping Identifier="ADA_Account" Connector="ADA" ConnectionTable="ADAAccountsExport">
+        <Property Identifier="Identifier" ConnectionColumn="Identifier" IsPrimaryKey="true" />
+        <Property Identifier="FirstName" ConnectionColumn="FirstName" />
+        <Property Identifier="LastName" ConnectionColumn="LastName" />
+        <Property Identifier="Email" ConnectionColumn="Email" />       
+        <Property Identifier="ContractStartDate" ConnectionColumn="ContractStartDate" />
+        <Property Identifier="ContractEndDate" ConnectionColumn="ContractEndDate" />
+        <Property Identifier="Site" ConnectionColumn="Site" />
+        <Property Identifier="Company" ConnectionColumn="Company" />       
+    </EntityTypeMapping>
+
+    <EntityType Identifier="ADA_Profile" DisplayName_L1="ADA Profile">
+        <Property Identifier="IamId" DisplayName_L1="Iam Id" TargetColumnIndex="4" Type="String" IsKey="true" />
+        <Property Identifier="IamIdADA" DisplayName_L1="Iam Id ADA" TargetColumnIndex="5" Type="String" />
+        <Property Identifier="Name" DisplayName_L1="Nom"  TargetColumnIndex="6" Type="String" />
+        <Property Identifier="ShortDescription" DisplayName_L1="Courte Description" TargetColumnIndex="7" Type="String" />
+        <Property Identifier="Application" DisplayName_L1="Application" TargetColumnIndex="8" Type="String" />
+
+        <Property Identifier="Accounts" DisplayName_L1="Accounts" Type="ForeignKey" />
+    </EntityType>
+
+    <EntityAssociation Identifier="ADA_Account_Profile" IsProperty1Collection="true" IsProperty2Collection="true" Property1="ADA_Account:Profiles" Property2="ADA_Profile:Accounts" />
+    <EntityAssociationMapping Identifier="ADA_Account_Profile" Column1="Identifier" Column2="Profiles" ConnectionTable="ADAProfilesExport" EntityPropertyMapping1="ADA_Account:Identifier" EntityPropertyMapping2="ADA_Profile:IamId" Connector="ADA" />
+
+    <CreateUpdateDeleteTemplate EntityType="ADA_Account" Profile="Administrator" />
+    <CreateUpdateDeleteTemplate EntityType="ADA_Profile" Profile="Administrator" />
+
+    <!-- TODO: Hardcoded catalogue -->
+    <Resource Id="-6000" Type="ADA_Profile" C4="Profile_A" C5="Profile (A)" C6="Profile (A)" C7="Profile (A)" C8="Application X" DisplayName_L1="Profile (A)" />
+    <Resource Id="-6001" Type="ADA_Profile" C4="Profile_B" C5="Profile (B)" C6="Profile (B)" C7="Profile (B)" C8="Application X" DisplayName_L1="Profile (B)" />
+    <Resource Id="-6002" Type="ADA_Profile" C4="Profile_C" C5="Profile (C)" C6="Profile (C)" C7="Profile (C)" C8="Application X" DisplayName_L1="Profile (C)" />
+
+</ConfigurationFile>

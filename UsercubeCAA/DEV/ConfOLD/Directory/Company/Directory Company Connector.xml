@@ -1,0 +1,34 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <!-- Directory_Company -->
+  <EntityType Identifier="Directory_Company" DisplayName_L1="Société">
+    <Property Identifier="Identifier" DisplayName_L1="Identifiant" Type="String" TargetColumnIndex="4" IsKey="true" />
+    <Property Identifier="DisplayName" DisplayName_L1="Libellé" Type="String" TargetColumnIndex="5" />
+
+    <Property Identifier="Type" DisplayName_L1="Type de société" Type="ForeignKey" TargetColumnIndex="128" />
+    <Property Identifier="UserRecords" DisplayName_L1="Collaborateurs - Société" Type="ForeignKey" />
+    <Property Identifier="UserRecordsBeneficiaryCompany" DisplayName_L1="Collaborateurs - Société bénéficiaire" Type="ForeignKey" />
+    <Property Identifier="Sites" DisplayName_L1="Lieux de travail" Type="ForeignKey" />
+    <Property Identifier="Organizations" DisplayName_L1="Directions" Type="ForeignKey" />
+    <Property Identifier="FutureUserRecords" DisplayName_L1="Collaborateurs en mobilités" Type="ForeignKey" />
+  </EntityType>
+
+  <EntityAssociation Identifier="Directory_Company_Type" IsProperty2Collection="true" Property1="Directory_Company:Type" Property2="Directory_CompanyType:Campanies" />
+
+  <DisplayEntityType PluralDisplayName_L1="Sociétés" IconCode="List" Color="#95c18b" Identifier="Directory_Company">
+    <Property DisplayOrder="-1" IsRequired="true" Identifier="Identifier" />
+    <Property IsRequired="true" Identifier="DisplayName" />
+  </DisplayEntityType>
+
+  <ConnectorMappings Connector="Directory" EntityType="Directory_Company" IsIncremental="1" Package="Usercube.Excel@0000001" />
+
+  <ViewTemplate EntityType="Directory_Company" Profile="Administrator" />
+
+  <AccessControlRule Profile="Administrator" EntityType="Directory_Company" Identifier="Administrator_Directory_Company_ReviewRoles" DisplayName_L1="Administrator_Directory_Company_ReviewRoles">
+    <Entry Permission="/Custom/ProvisioningPolicy/ReviewRoles/Directory_User" CanExecute="true" />
+    <Entry Permission="/Custom/ProvisioningPolicy/ReviewProvisioning/Directory_User" CanExecute="true" />
+    <Entry Permission="/Custom/ProvisioningPolicy/ReconciliateResources/Directory_User" CanExecute="true" />
+    <Entry Permission="/Custom/ProvisioningPolicy/ReconciliateRoles/Directory_User" CanExecute="true" />
+  </AccessControlRule>
+
+</ConfigurationFile>

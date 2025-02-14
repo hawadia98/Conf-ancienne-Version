@@ -1,0 +1,7 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- Ldap  Jobs -->
+    <CreateConnectorSynchroComplete Connector="AHMA_LDAP" Agent="CAA" JobIdentifier="AHMA_LDAP_Synchronize_Complete_Scaffolding" DisplayName_L1="AHMA LDAP - Synchronization Complete (scaffolding)">
+		<OpenIdIdentifier Identifier="Job"/>
+	</CreateConnectorSynchroComplete>
+</ConfigurationFile>

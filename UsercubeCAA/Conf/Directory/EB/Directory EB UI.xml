@@ -1,0 +1,15 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <CreateUpdateDeleteTemplate EntityType="Directory_EB" Profile="Administrator" />
+
+    <DisplayTable Identifier="Directory_EB" EntityType="Directory_EB" DisplayTableDesignElement="table" IsEntityTypeDefault="true">
+        <Column DisplayBinding="Identifier" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="2" SearchOperator="Contain" />
+        <Column DefaultSortPriority="1" DisplayBinding="DisplayName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="4" SearchOperator="Contain" />
+        <Column DisplayBinding="StartDate" IsDisplayInSummaryView="true" IsResizable="true" ColumnSize="2" />
+        <Column DisplayBinding="EndDate" IsDisplayInSummaryView="true" IsResizable="true" ColumnSize="2" />
+        <Column DisplayBinding="OrganizationName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="4" SearchOperator="Contain" />
+        <Column DisplayBinding="Supplier" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="4" SearchOperator="Contain" />
+        <Column DisplayBinding="Requester" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="4" SearchOperator="Contain" />
+    </DisplayTable>
+
+</ConfigurationFile>

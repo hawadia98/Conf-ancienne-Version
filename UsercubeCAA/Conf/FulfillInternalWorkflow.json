@@ -1,0 +1,144 @@
+﻿{
+  "SourceEntityIdentifier": "Directory_UserRecord",
+  "NavigationToTargetEntity": "User",
+  "NavigationTargetToSource": "Records",
+  "TargetEntityTypeIdentifier": "Directory_User",
+  "SourceOwnerPropertyIdentifier": "Identifier",
+  "TargetOwnerPropertyIdentifier": "Identifier",
+  "FulfillInternalWorkflowConfigurations": [
+    {
+      "ChangeType": "Added",
+      "Model": {
+        "WorkflowIdentifier": "Directory_User_CreateFromHR",
+        "TansitionIdentifier": "Action-ActionPending-Execute",
+        "Message": "Collaborateur - Entrée RH (Synchronisation) : $Changes:LastName$ - $Changes:FirstName$",
+        "Body": "Arrivé de $Changes:LastName$ - $Changes:FirstName$"
+      },
+      "ScalarProperties": [
+        "PositionIdentifier",
+        "UserIdentifier",
+        "EmployeeId",
+        "ContractStartDate",
+        "ContractEndDate",
+        "FirstName",
+        "LastName",
+        "PositionStartDate",
+        "PositionEndDate"
+      ],
+      "NavigationProperties": [
+        "User",
+        "ContractType",
+		"Title",
+        "Manager",
+        "Company",
+        "Site",
+        "Organization"
+      ]
+    },
+    {
+      "ChangeType": "Modified",
+      "Model": {
+        "WorkflowIdentifier": "Directory_User_UpdateFromHR",
+        "TansitionIdentifier": "Action-ActionPending-Execute",
+        "Message": "Collaborateur - Mise à jour RH (Synchronisation) : $Resource:LastName$ - $Resource:FirstName$",
+        "Body": "Mise à jour de $Resource:LastName$ - $Resource:FirstName$"
+      },
+      "ScalarProperties": [
+        "PositionIdentifier",
+        "UserIdentifier",
+        "EmployeeId",
+        "ContractStartDate",
+        "ContractEndDate",
+        "FirstName",
+        "LastName",
+        "PositionStartDate",
+        "PositionEndDate",
+        "ReasonForDeparture",
+        "ExitDate",
+        "ArrivalDateFutureUnit"
+      ],
+      "NavigationProperties": [
+        "User",
+        "ContractType",
+		"Title",
+        "Manager",
+        "Company",
+        "Site",
+        "Organization",
+        "FutureCompany",
+        "FutureOrganization",
+        "FutureManager"
+      ]
+    },
+    {
+      "ChangeType": "Modified",
+      "Model": {
+        "WorkflowIdentifier": "Directory_User_MobilityFromHR",
+        "TansitionIdentifier": "Action-ActionPending-Execute",
+        "Message": "Collaborateur - Mobilité RH (Synchronisation) : $Resource:LastName$ - $Resource:FirstName$",
+        "Body": "Mobilité de $Resource:LastName$ - $Resource:FirstName$"
+      },
+      "ScalarProperties": [
+        "PositionIdentifier",
+        "UserIdentifier",
+        "EmployeeId",
+        "ContractStartDate",
+        "ContractEndDate",
+        "FirstName",
+        "LastName",
+        "PositionStartDate",
+        "PositionEndDate",
+        "ReasonForDeparture",
+        "ExitDate",
+        "ArrivalDateFutureUnit"
+      ],
+      "NavigationProperties": [
+        "User",
+        "ContractType",
+		"Title",
+        "Manager",
+        "Company",
+        "Site",
+        "Organization",
+        "FutureCompany",
+        "FutureOrganization",
+        "FutureManager"
+      ]
+    },
+    {
+      "ChangeType": "Modified",
+      "Model": {
+        "WorkflowIdentifier": "Directory_User_DeleteFromHR",
+        "TansitionIdentifier": "Action-ActionPending-Execute",
+        "Message": "Collaborateur - Départ RH (Synchronisation) : $Resource:LastName$ - $Resource:FirstName$",
+        "Body": "Départ de $Resource:LastName$ - $Resource:FirstName$"
+      },
+      "ScalarProperties": [
+        "PositionIdentifier",
+        "UserIdentifier",
+        "EmployeeId",
+        "ContractStartDate",
+        "ContractEndDate",
+        "FirstName",
+        "LastName",
+        "PositionStartDate",
+        "PositionEndDate",
+        "ReasonForDeparture",
+        "ExitDate",
+        "ArrivalDateFutureUnit"
+      ],
+      "NavigationProperties": [
+        "User",
+        "ContractType",
+		"Title",
+        "Manager",
+        "Company",
+        "Site",
+        "Organization",
+        "FutureCompany",
+        "FutureOrganization",
+        "FutureManager"
+      ]
+    }
+  ]
+}

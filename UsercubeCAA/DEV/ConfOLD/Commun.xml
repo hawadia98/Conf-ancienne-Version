@@ -1,0 +1,12 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- Sources Category -->
+    <Category Identifier="Sources" DisplayName_L1="Sources" Policy="Default" />
+    <Category Identifier="Accounts" DisplayName_L1="Comptes" Policy="Default" />
+    <Category Identifier="Applications" DisplayName_L1="Applications" Policy="Default" />
+
+    <!-- Sources Connections -->
+    <Connection Identifier="HRDatabase" DisplayName_L1="RH (Database)" Connector="Directory" Package="Usercube.FulfillDatabase@0000001" />
+    <Connection Identifier="HRWorkflows" DisplayName_L1="RH (Workflows)" Connector="Directory" Package="Usercube.FulfillWorkflow@0000001" />
+
+</ConfigurationFile>

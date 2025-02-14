@@ -1,0 +1,48 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <MenuItem Identifier="Nav_Directory" ConsolidationMode="Merge">
+    <MenuItem Identifier="Nav_Directory_User" DisplayName_L1="Collaborateurs" EntityType="Directory_User" />
+    <MenuItem Identifier="Nav_Directory_UserRecord" DisplayName_L1="Fiches de collaborateurs" EntityType="Directory_UserRecord" IconCode="People" />
+
+    <MenuItem Identifier="Nav_Directory_CompanyType" DisplayName_L1="Types de sociétés" EntityType="Directory_CompanyType" IconCode="Suitcase" />
+    <MenuItem Identifier="Nav_Directory_Company" DisplayName_L1="Sociétés" EntityType="Directory_Company" IconCode="Suitcase" />
+    <MenuItem Identifier="Nav_Directory_UserType_Custom" DisplayName_L1="Types d'utilisateur" EntityType="Directory_UserType" IconCode="List" />
+    <MenuItem Identifier="Nav_Directory_ContractType" DisplayName_L1="Contrats" EntityType="Directory_ContractType" />
+
+    <MenuItem Identifier="Nav_Directory_Organization_Custom" DisplayName_L1="Directions" EntityType="Directory_Organization" />
+
+    <MenuItem Identifier="Nav_Directory_Country" DisplayName_L1="Pays" EntityType="Directory_Country" />
+    <MenuItem Identifier="Nav_Directory_Region" DisplayName_L1="Régions" EntityType="Directory_Region" />
+    <MenuItem Identifier="Nav_Directory_Site_Custom" DisplayName_L1="Lieux de travail" EntityType="Directory_Site" />
+
+    <MenuItem Identifier="Nav_Directory_PresenceState" DisplayName_L1="Etats de présence" EntityType="Directory_PresenceState" IconCode="List" />
+
+    <MenuItem Identifier="Nav_Directory_EB" DisplayName_L1="E.B" EntityType="Directory_EB" IconCode="List" />
+    <MenuItem Identifier="Nav_Directory_AdditionalAttribute" DisplayName_L1="Attributs additionnels" EntityType="Directory_AdditionalAttribute" IconCode="List" />
+
+    <MenuItem Identifier="Nav_Directory_Application" DisplayName_L1="Applications" EntityType="Directory_Application" IconCode="List" />
+    <MenuItem Identifier="Nav_Directory_Profile" DisplayName_L1="Profils" EntityType="Directory_Profile" IconCode="List" />
+
+    <MenuItem Identifier="Nav_Directory_UserCategory" ConsolidationMode="Delete" />
+    <MenuItem Identifier="Nav_Directory_UserType" ConsolidationMode="Delete" />
+    <MenuItem Identifier="Nav_Directory_Organization" ConsolidationMode="Delete" />
+    <MenuItem Identifier="Nav_Directory_OrganizationType" ConsolidationMode="Delete" />
+    <MenuItem Identifier="Nav_Directory_Site" ConsolidationMode="Delete" />
+  </MenuItem>
+
+  <SearchBar EntityType="Directory_User" Menu="Search_Directory_User" SearchBarDesignElement="Inline">
+    <Criterion Binding1="Identifier" PlaceHolderText_L1="Identifiant" InputType="Auto" ColumnSize="2" />
+    <Criterion Binding1="PhoneticFirstLastName" Binding2="PhoneticLastFirstName" Binding3="MainRecord.LastName" Operator="FlexibleStartWith" PlaceHolderText_L1="Nom complet" InputType="Auto" ColumnSize="2" />
+    <Criterion Binding1="MainRecord.Company" PlaceHolderText_L1="Société" InputType="Auto" ColumnSize="2" />
+    <Criterion Binding1="MainRecord.Organization" PlaceHolderText_L1="Direction" InputType="Auto" ColumnSize="2" />
+    <Criterion Binding1="PresenceState" InputType="ComboboxMultiSelection" ColumnSize="2" DefaultValue="-101;-102" Operator="Equal" />
+    <Criterion Binding1="MainRecord.Site" PlaceHolderText_L1="Lieu de travail" InputType="Auto" ColumnSize="2" IsVisibleInAdvancedView="true" />
+    <Criterion Binding1="MainRecord.ContractType" PlaceHolderText_L1="Contrat" InputType="Auto" ColumnSize="2" IsVisibleInAdvancedView="true" />
+  </SearchBar>
+
+  <MenuItem Identifier="Search_Directory_User" DisplayName_L1="Menu">
+    <MenuItem Identifier="Search_Directory_User_NewInternal" ConsolidationMode="Delete" />
+    <MenuItem Identifier="Search_Directory_User_Helpdesk_Start" ConsolidationMode="Delete" />
+  </MenuItem>
+
+</ConfigurationFile>

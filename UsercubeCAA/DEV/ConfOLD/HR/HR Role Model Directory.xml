@@ -1,0 +1,146 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <!-- User -->
+  <ResourceType Identifier="HR_User" DisplayName_L1="Collaborateur (source RH)" Category="Sources" Policy="Default" SourceEntityType="HR_User" TargetEntityType="Directory_User" BlockProvisioning="false" AllowAdd="true" AllowRemove="false">
+    <TypeRule Policy="Default" D9="ADD" />
+
+    <ScalarRule Property="Identifier" Expression="C#:resource:return resource.EmployeeId ?? resource.Identifier;" IsMapped="false" />
+  </ResourceType>
+
+  <ResourceType Identifier="HR_User_LoadUIG" DisplayName_L1="Collaborateur (source chargement IUG)" Category="Sources" Policy="Default" SourceEntityType="HR_LoadIUG" TargetEntityType="Directory_User" BlockProvisioning="false" AllowAdd="false" AllowRemove="false" DiscardManualAssignments="true">
+    <TypeRule Policy="Default" />
+
+    <ScalarRule Property="Identifier" Binding="EmployeeId" />
+    <ScalarRule Property="TeamsIdentifier" Binding="TeamsIdentifier" />
+  </ResourceType>
+
+  <!-- UserRecord -->
+  <ResourceType Identifier="HR_UserRecord" DisplayName_L1="Fiche collaborateur (source RH)" Category="Sources" Policy="Default" SourceEntityType="HR_User" TargetEntityType="Directory_UserRecord" CorrelateMultipleResources="true" BlockProvisioning="false" AllowAdd="true" AllowRemove="false" DiscardManualAssignments="true" ArgumentsExpression="C#:resource:
+if ((provisioningOrder == null) || (provisioningOrder.ChangeType.IsNone()))
+{
+  return null;
+}
+
+var arguments = new System.Collections.Generic.Dictionary&lt;string, string&gt;();
+var workflowIdentifier = &quot;Directory_User_UpdateFromHR&quot;;
+
+if ((provisioningOrder.ChangeType.IsAdded()) || (provisioningOrder.HasChanged(&quot;EmployeeId&quot;))) {
+  workflowIdentifier = &quot;Directory_User_CreateFromHR&quot;;
+}
+
+arguments.Add(&quot;WorkflowIdentifier&quot;, workflowIdentifier);
+return arguments;">
+    <TypeRule Policy="Default" D9="ADD" />
+    <TypeRule Policy="Default" D9="UPDATE" />
+
+    <ScalarRule Property="PositionIdentifier" Expression="C#:resource:return resource.EmployeeId ?? resource.Identifier;" IsMapped="false" />
+    <ScalarRule Property="UserIdentifier" Expression="C#:resource:return resource.EmployeeId ?? resource.Identifier;" IsMapped="false" />
+    <ScalarRule Property="EmployeeId" Binding="EmployeeId" IsMapped="false" />
+
+    <ScalarRule Property="ContractStartDate" Binding="ContractStartDate" Expression="ParseUniversalDate:yyyy-MM-dd" />
+    <ScalarRule Property="ContractEndDate" Binding="ContractEndDate" Expression="ParseUniversalDateThenAddMinutes:yyyy-MM-dd|1440" />
+
+    <ScalarRule Property="PositionStartDate" Binding="ContractStartDate" Expression="ParseUniversalDate:yyyy-MM-dd" />
+    <ScalarRule Property="PositionEndDate" Binding="ContractEndDate" Expression="ParseUniversalDateThenAddMinutes:yyyy-MM-dd|1440" />
+
+    <ScalarRule Property="FirstName" Binding="FirstName" Expression="ToFirstName" />
+    <ScalarRule Property="LastName" Binding="LastName" Expression="ToUpper" />
+
+    <QueryRule Property="Company" TargetBinding="Identifier" SourceBinding="Company" TargetMatchedConfidenceLevel="100" />
+    <QueryRule Property="Site" TargetBinding="DisplayName" SourceBinding="Site" TargetMatchedConfidenceLevel="100" />
+    <QueryRule Property="ContractType" TargetBinding="Identifier" SourceBinding="ContractType" TargetMatchedConfidenceLevel="100" />
+	<QueryRule Property="Title" TargetBinding="DisplayName" TargetExpression="Simplify" SourceBinding="Function" SourceExpression="Simplify" TargetMatchedConfidenceLevel="100" />
+    <QueryRule Property="Organization" TargetBinding="DisplayName" SourceBinding="Direction" TargetMatchedConfidenceLevel="100" />
+    <QueryRule Property="Manager" TargetExpression="C#:user:return user.MainRecord?.LastName?.ToUpper() + &quot; &quot; + user.MainRecord?.FirstName?.ToUpper();" SourceBinding="Manager" SourceExpression="ToUpper" TargetMatchedConfidenceLevel="100" />
+    <QueryRule Property="User" TargetBinding="Identifier" SourceExpression="C#:resource:return resource.EmployeeId ?? resource.Identifier;" TargetMatchedConfidenceLevel="120" />
+    <QueryRule Property="User" TargetExpression="C#:user:return ((user.Records == null) || (user.Records.Count == 0)) ? null : (user.Records[0].FirstName?.ToUpper() + user.Records[0].LastName?.ToUpper());" SourceExpression="C#:resource:return resource.FirstName?.ToUpper() + resource.LastName?.ToUpper();" TargetMatchedConfidenceLevel="100" />
+  </ResourceType>
+
+  <ResourceType Identifier="HR_UserRecord_LoadUIG" DisplayName_L1="Fiche collaborateur (source chargement IUG)" Category="Sources" Policy="Default" SourceEntityType="HR_LoadIUG" TargetEntityType="Directory_UserRecord" BlockProvisioning="false" CorrelateMultipleResources="true" AllowAdd="false" AllowRemove="false" DiscardManualAssignments="true">
+    <TypeRule Policy="Default" />
+
+    <ScalarRule Property="PositionIdentifier" Binding="EmployeeId" />
+    <ScalarRule Property="UserIdentifier" Binding="EmployeeId" />
+    <ScalarRule Property="EmployeeId" Binding="EmployeeId" />
+    <ScalarRule Property="TeamsIdentifier" Binding="TeamsIdentifier" />
+  </ResourceType>
+
+  <ResourceType Identifier="HR_UserUpdate" DisplayName_L1="Fiche collaborateur (source Sortie/Mobilitée RH)" Category="Sources" Policy="Default" SourceEntityType="HR_UserUpdate" TargetEntityType="Directory_UserRecord" BlockProvisioning="false" CorrelateMultipleResources="true" AllowAdd="false" AllowRemove="false" DiscardManualAssignments="true" ArgumentsExpression="C#:resource:
+if ((provisioningOrder == null) || (provisioningOrder.ChangeType.IsNone()))
+{
+  return null;
+}
+
+var arguments = new System.Collections.Generic.Dictionary&lt;string, string&gt;();
+var workflowIdentifier = &quot;Directory_User_UpdateFromHR&quot;;
+
+if (provisioningOrder.TryGetScalar(&quot;ReasonForDeparture&quot;, out var reason) &amp;&amp; (reason != null)) {
+  var reasonForDeparture = reason.ToString();
+  if (reasonForDeparture == &quot;Sortie externe&quot; || reasonForDeparture == &quot;Depart a la retraite&quot;) {
+    workflowIdentifier = &quot;Directory_User_DeleteFromHR&quot;;
+  }
+  else if ((reasonForDeparture == &quot;Mobilite groupe&quot;) || (reasonForDeparture == &quot;Mobilite intra entite&quot;) || (reasonForDeparture == &quot;Mobilite intra groupe&quot;)) {
+    workflowIdentifier = &quot;Directory_User_MobilityFromHR&quot;;
+  }
+}
+
+arguments.Add(&quot;WorkflowIdentifier&quot;, workflowIdentifier);
+return arguments;">
+    <TypeRule Policy="Default" />
+
+    <ScalarRule Property="ReasonForDeparture" Binding="ReasonForDeparture" />
+    <ScalarRule Property="ArrivalDateFutureUnit" Binding="ArrivalDateFutureUnit" Expression="ParseUniversalDate:yyyy-MM-dd" />
+    <ScalarRule Property="ExitDate" Binding="ExitDate" Expression="ParseUniversalDateThenAddMinutes:yyyy-MM-dd|1440" />
+    <ScalarRule Property="PositionEndDate" Expression="C#:resource:
+if (resource.ReasonForDeparture == &quot;Sortie externe&quot; || resource.ReasonForDeparture == &quot;Mobilite groupe&quot; || resource.ReasonForDeparture == &quot;Depart a la retraite&quot;) {
+  if (string.IsNullOrEmpty(resource.ExitDate))
+  {
+    return null;
+  }
+
+  var positionEndDate = Usercube.Expressions.Functions.UtilExpressions.ParseLocalDate(resource.ExitDate, null, &quot;yyyy-MM-dd&quot;);
+  return positionEndDate.ToUniversalTime().AddMinutes(1440);
+}
+
+return null;" />
+    <ScalarRule Property="ContractEndDate" Expression="C#:resource:
+if (resource.ReasonForDeparture == &quot;Sortie externe&quot; || resource.ReasonForDeparture == &quot;Mobilite groupe&quot; || resource.ReasonForDeparture == &quot;Depart a la retraite&quot;) {
+  if (string.IsNullOrEmpty(resource.ExitDate))
+  {
+    return null;
+  }
+
+  var contractEndDate = Usercube.Expressions.Functions.UtilExpressions.ParseLocalDate(resource.ExitDate, null, &quot;yyyy-MM-dd&quot;);
+  return contractEndDate.ToUniversalTime().AddMinutes(1440);
+}
+
+return null;" />
+
+    <QueryRule Property="FutureCompany" TargetBinding="Identifier" SourceBinding="FutureCompany" TargetMatchedConfidenceLevel="100" />
+    <QueryRule Property="FutureManager" TargetExpression="C#:user:return user.MainRecord?.LastName?.ToUpper() + &quot; &quot; + user.MainRecord?.FirstName?.ToUpper();" SourceBinding="FutureManager" SourceExpression="ToUpper" TargetMatchedConfidenceLevel="100" />
+    <QueryRule Property="FutureOrganization" TargetBinding="DisplayName" SourceExpression="C#:resource:
+if (string.IsNullOrEmpty(resource.FutureEstablishment)) {
+  return null;
+}
+
+var establishments = resource.FutureEstablishment.Split('/');
+return establishments?.LastOrDefault()?.Trim();" TargetMatchedConfidenceLevel="100" />
+  </ResourceType>
+
+  <!-- Resource Type Mappings -->
+  <ResourceTypeMapping Identifier="HR_User" Connection="HRWorkflows" />
+  <ResourceTypeMapping Identifier="HR_UserRecord" Connection="HRWorkflows" />
+  <ResourceTypeMapping Identifier="HR_UserUpdate" Connection="HRWorkflows" />
+
+  <ResourceTypeMapping Identifier="HR_User_LoadUIG" Connection="HRDatabase" />
+  <ResourceTypeMapping Identifier="HR_UserRecord_LoadUIG" Connection="HRDatabase" />
+
+  <!-- Correlations -->
+  <ResourceCorrelationRule ResourceType="HR_User" SourceExpression="C#:resource:if (resource.Check?.Identifier == &quot;KO&quot;) { return null; } return resource.EmployeeId ?? resource.Identifier;" TargetBinding="Identifier" Policy="Default" SourceMatchedConfidenceLevel="120" />
+  <ResourceCorrelationRule ResourceType="HR_UserRecord" SourceExpression="C#:resource:if (resource.Check?.Identifier == &quot;KO&quot;) { return null; } return resource.EmployeeId ?? resource.Identifier;" TargetBinding="PositionIdentifier" Policy="Default" SourceMatchedConfidenceLevel="120" />
+  <ResourceCorrelationRule ResourceType="HR_UserUpdate" SourceBinding="EmployeeId" TargetBinding="EmployeeId" Policy="Default" SourceMatchedConfidenceLevel="100" />
+
+  <ResourceCorrelationRule ResourceType="HR_User_LoadUIG" SourceExpression="C#:resource:return resource.FirstName?.ToUpper() + resource.LastName?.ToUpper();" TargetExpression="C#:user:return ((user.Records == null) || (user.Records.Count == 0)) ? null : (user.Records[0].FirstName?.ToUpper() + user.Records[0].LastName?.ToUpper());" Policy="Default" SourceMatchedConfidenceLevel="100" />
+  <ResourceCorrelationRule ResourceType="HR_UserRecord_LoadUIG" SourceExpression="C#:resource:return resource.FirstName?.ToUpper() + resource.LastName?.ToUpper();" TargetExpression="C#:record:return record.FirstName?.ToUpper() + record.LastName?.ToUpper();" Policy="Default" SourceMatchedConfidenceLevel="100" />
+
+</ConfigurationFile>

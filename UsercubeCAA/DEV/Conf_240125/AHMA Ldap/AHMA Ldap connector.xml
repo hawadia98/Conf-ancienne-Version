@@ -1,0 +1,127 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <Connector Identifier="AHMA_LDAP" DisplayName_L1="AHMA LDAP" Agent="CAA" MaximumInsertedLines="500" MaximumUpdatedLines="500" MaximumDeletedLines="100" MaxPercentageInsertedLines="0" MaxPercentageUpdatedLines="0" MaxPercentageDeletedLines="0" />
+	<Connection Connector="AHMA_LDAP" Identifier="AhmaLDAPExportFulfillment" DisplayName_L1="Connexion Ahma LDAP" Package="Usercube.LDAP@0000001" />
+	
+	<EntityType Identifier="AHMA_LDAP_Entry" DisplayName_L1="AHMA LDAP - Entry">
+		<Property Identifier="cn" DisplayName_L1="cn" TargetColumnIndex="10" Type="String"/>
+		<Property Identifier="description" DisplayName_L1="description" TargetColumnIndex="27" Type="String"/>
+		<Property Identifier="displayName" DisplayName_L1="displayName" TargetColumnIndex="14" Type="String"/>
+		<Property Identifier="dn" DisplayName_L1="dn" IsKey="true" TargetColumnIndex="0" Type="String"/>
+		<Property Identifier="employeeNumber" DisplayName_L1="employeeNumber" TargetColumnIndex="30" Type="String"/>
+		<Property Identifier="objectGuid" DisplayName_L1="objectGuid" TargetColumnIndex="3" Type="String" IsKey="true" />
+		<Property Identifier="givenName" DisplayName_L1="givenName" TargetColumnIndex="21" Type="String"/>
+		<Property Identifier="mail" DisplayName_L1="mail" TargetColumnIndex="17" Type="String"/>
+		<Property Identifier="objectClass" DisplayName_L1="objectClass" TargetColumnIndex="4" Type="String"/>
+		<Property Identifier="ou" DisplayName_L1="ou" TargetColumnIndex="8" Type="String"/>
+		<Property Identifier="rdn" DisplayName_L1="rdn" TargetColumnIndex="2" Type="String"/>
+		<Property Identifier="sn" DisplayName_L1="sn" TargetColumnIndex="20" Type="String"/>
+		<Property Identifier="userPassword" DisplayName_L1="mot de passe utilisateur" TargetColumnIndex="22" Type="String"/>
+		<Property Identifier="msDS_UserAccountDisabled" DisplayName_L1="msDS_UserAccountDisabled" TargetColumnIndex="23" Type="String"/> 
+		<Property Identifier="AnswerAttrId" DisplayName_L1="AnswerAttrId" TargetColumnIndex="24" Type="String"/>
+		<Property Identifier="attraiasecurityprofile" DisplayName_L1="Profil de Sécurité AIA V4 Caci" TargetColumnIndex="25" Type="String"/>
+		<Property Identifier="attricaciprofile" DisplayName_L1="Profil iCACI " TargetColumnIndex="26" Type="String"/>
+		<Property Identifier="attricacisprofile" DisplayName_L1="Profil iCACI Secours" TargetColumnIndex="28" Type="String"/>
+		<Property Identifier="attrRecAIASecurityProfile" DisplayName_L1="Profil de Sécurité AIA V4 CACI Recette" TargetColumnIndex="29" Type="String"/>
+		<Property Identifier="attrRecICACIProfile" DisplayName_L1="Profil iCACI Recette" TargetColumnIndex="38" Type="String"/>
+		<Property Identifier="attrRecICACISProfile" DisplayName_L1="Profil iCACI Secours Recette" TargetColumnIndex="31" Type="String"/>
+		<Property Identifier="departmentnumber" DisplayName_L1="Numero de service" TargetColumnIndex="32" Type="String"/>
+		<Property Identifier="groupAHMA" DisplayName_L1="groupAHMA" TargetColumnIndex="33" Type="String"/>
+		<Property Identifier="RefUcAttrProfile" DisplayName_L1="Profil RefUC" TargetColumnIndex="34" Type="String"/>
+		<Property Identifier="tamattrid" DisplayName_L1="Identifiant TAM" TargetColumnIndex="35" Type="String"/>
+		<Property Identifier="tessiattrform" DisplayName_L1="Code Formulaire" TargetColumnIndex="36" Type="String"/>
+		<Property Identifier="tessiattrform1" DisplayName_L1="Code Formulaire 1" TargetColumnIndex="37" Type="String"/>
+		<Property Identifier="tessiattrform2" DisplayName_L1="Code Formulaire 2" TargetColumnIndex="39" Type="String"/>
+		<Property Identifier="tessiattrform3" DisplayName_L1="Code Formulaire 3" TargetColumnIndex="40" Type="String"/>
+		<Property Identifier="tessiattrform4" DisplayName_L1="Code Formulaire 4" TargetColumnIndex="41" Type="String"/>
+		<Property Identifier="tessiattrform5" DisplayName_L1="Code Formulaire 5" TargetColumnIndex="42" Type="String"/>
+		<Property Identifier="tessiattrform6" DisplayName_L1="Code Formulaire 6" TargetColumnIndex="43" Type="String"/>
+		<Property Identifier="tessiattrform7" DisplayName_L1="Code Formulaire 7" TargetColumnIndex="44" Type="String"/>
+		<Property Identifier="tessiattrform8" DisplayName_L1="Code Formulaire 8" TargetColumnIndex="45" Type="String"/>
+		<Property Identifier="tessiattrprevissvc" DisplayName_L1="Service Previs" TargetColumnIndex="46" Type="String"/>
+		<Property Identifier="accountExpires" DisplayName_L1="accountExpires" TargetColumnIndex="47" Type="String" />
+		<Property Identifier="objectCategory" DisplayName_L1="objectCategory" TargetColumnIndex="48" Type="String" />
+		<Property Identifier="objectSid" DisplayName_L1="objectSid" TargetColumnIndex="49" Type="String" />
+		<Property Identifier="pwdLastSet" DisplayName_L1="pwdLastSet" TargetColumnIndex="50" Type="String" />
+		<Property Identifier="whenChanged" DisplayName_L1="whenChanged" TargetColumnIndex="51" Type="String" />
+		<Property Identifier="whenCreated" DisplayName_L1="whenCreated" TargetColumnIndex="52" Type="String" />
+		<Property Identifier="msDS_User_Account_Control_Computed" DisplayName_L1="msDS_User_Account_Control_Computed" TargetColumnIndex="53" Type="String" />
+		<Property Identifier="uSNChanged" DisplayName_L1="uSNChanged" TargetColumnIndex="54" Type="String" />
+		<Property Identifier="uSNCreated" DisplayName_L1="uSNCreated" TargetColumnIndex="55" Type="String" />
+		
+		
+		<Property Identifier="parentdn" DisplayName_L1="parentdn" Type="ForeignKey" TargetColumnIndex="128"/>
+		<Property Identifier="children" DisplayName_L1="children" Type="ForeignKey"/>
+		<Property Identifier="member" DisplayName_L1="member" Type="ForeignKey"/>
+		<Property Identifier="memberOf" DisplayName_L1="memberOf" Type="ForeignKey"/>
+		<Property Identifier="manager" DisplayName_L1="manager" Type="ForeignKey" TargetColumnIndex="129" />
+		<Property Identifier="directReports" DisplayName_L1="directReports" Type="ForeignKey" />
+		<Property Identifier="assistant" DisplayName_L1="assistant" TargetColumnIndex="130" Type="ForeignKey" />
+		<Property Identifier="assistantOf" DisplayName_L1="assistantOf" Type="ForeignKey" />
+	</EntityType>
+	<EntityAssociation Identifier="AHMA_LDAP_Entry_parentdn" DisplayName_L1="parentdn" IsProperty1Collection="true" Property2="AHMA_LDAP_Entry:parentdn" Property1="AHMA_LDAP_Entry:children"/>
+	<EntityAssociation Identifier="AHMA_LDAP_Entry_member" DisplayName_L1="member" IsProperty1Collection="true" IsProperty2Collection="true" Property1="AHMA_LDAP_Entry:member" Property2="AHMA_LDAP_Entry:memberOf"/>
+	<EntityAssociation Identifier="AHMA_LDAP_Entry_manager" DisplayName_L1="manager" IsProperty1Collection="true" Property2="AHMA_LDAP_Entry:manager" Property1="AHMA_LDAP_Entry:directReports" />
+	<EntityAssociation Identifier="AHMA_LDAP_Entry_assistant" DisplayName_L1="assistant" IsProperty1Collection="true" Property2="AHMA_LDAP_Entry:assistant" Property1="AHMA_LDAP_Entry:assistantOf" />
+
+  
+
+	<EntityTypeMapping Identifier="AHMA_LDAP_Entry" Connector="AHMA_LDAP" ConnectionTable="AhmaLDAPExportFulfillment_entries">
+		<Property Identifier="cn" ConnectionColumn="cn"/>
+		<Property Identifier="description" ConnectionColumn="description"/>
+		<Property Identifier="displayName" ConnectionColumn="displayName"/>
+		<Property Identifier="dn" ConnectionColumn="dn" IsUniqueKey="true"/>
+		<Property Identifier="employeeNumber" ConnectionColumn="employeeNumber"/>
+		<Property Identifier="givenName" ConnectionColumn="givenName"/>
+		<Property Identifier="mail" ConnectionColumn="mail"/>
+		<Property Identifier="objectClass" ConnectionColumn="objectClass" Format="multivaluedtext"/>
+		<Property Identifier="ou" ConnectionColumn="ou"/>
+		<Property Identifier="rdn" ConnectionColumn="rdn"/>
+		<Property Identifier="sn" ConnectionColumn="sn"/>
+		<Property Identifier="userPassword" ConnectionColumn="userPassword"/>
+		<Property Identifier="msDS_UserAccountDisabled" ConnectionColumn="msDS-UserAccountDisabled"/> 
+		<Property Identifier="AnswerAttrId" ConnectionColumn="AnswerAttrId"/>
+		<Property Identifier="attraiasecurityprofile" ConnectionColumn="attrAIASecurityProfile"/>
+		<Property Identifier="attricaciprofile" ConnectionColumn="attrICACIProfile"/>
+		<Property Identifier="attricacisprofile" ConnectionColumn="attrICACISProfile" />
+		<Property Identifier="attrRecAIASecurityProfile" ConnectionColumn="attrRecAIASecurityProfile"/>
+		<Property Identifier="attrRecICACIProfile" ConnectionColumn="attrRecICACIProfile"/>
+		<Property Identifier="attrRecICACISProfile" ConnectionColumn="attrRecICACISProfile"/>
+		<Property Identifier="departmentnumber" ConnectionColumn="departmentNumber"/>
+		<Property Identifier="groupAHMA" ConnectionColumn="groupType"/>
+		<Property Identifier="RefUcAttrProfile" ConnectionColumn="RefUcAttrProfile"/>
+		<Property Identifier="tamattrid" ConnectionColumn="tamattrid"/>
+		<Property Identifier="tessiattrform" ConnectionColumn="tessiattrform"/>
+		<Property Identifier="tessiattrform1" ConnectionColumn="tessiattrform1"/>
+		<Property Identifier="tessiattrform2" ConnectionColumn="tessiattrform2"/>
+		<Property Identifier="tessiattrform3" ConnectionColumn="tessiattrform3"/>
+		<Property Identifier="tessiattrform4" ConnectionColumn="tessiattrform4"/>
+		<Property Identifier="tessiattrform5" ConnectionColumn="tessiattrform5"/>
+		<Property Identifier="tessiattrform6" ConnectionColumn="tessiattrform6"/>
+		<Property Identifier="tessiattrform7" ConnectionColumn="tessiattrform7"/>
+		<Property Identifier="tessiattrform8" ConnectionColumn="tessiattrform8"/>
+		<Property Identifier="tessiattrprevissvc" ConnectionColumn="tessiattrprevissvc"/>
+		<Property Identifier="accountExpires" ConnectionColumn="accountExpires" />
+		<Property Identifier="objectCategory" ConnectionColumn="objectCategory" />
+		<Property Identifier="objectGuid" ConnectionColumn="objectGUID" IsPrimaryKey="true" Format="guid" />
+		<Property Identifier="objectSid" ConnectionColumn="objectSid" IsUniqueKey="true" Format="sid"/>
+		<Property Identifier="whenChanged" ConnectionColumn="whenChanged" />
+		<Property Identifier="whenCreated" ConnectionColumn="whenCreated" />
+		<Property Identifier="pwdLastSet" ConnectionColumn="pwdLastSet" Format="1601date"/>
+		<Property Identifier="msDS_User_Account_Control_Computed" ConnectionColumn="msDS-User-Account-Control-Computed" />
+		<Property Identifier="uSNChanged" ConnectionColumn="uSNChanged" />
+		<Property Identifier="uSNCreated" ConnectionColumn="uSNCreated" />
+		
+	</EntityTypeMapping>
+	<EntityAssociationMapping Identifier="AHMA_LDAP_Entry_parentdn" Column2="dn" Column1="parentdn" ConnectionTable="AhmaLDAPExportFulfillment_entries" EntityPropertyMapping1="AHMA_LDAP_Entry:dn" EntityPropertyMapping2="AHMA_LDAP_Entry:dn" Connector="AHMA_LDAP"/>
+	<EntityAssociationMapping Identifier="AHMA_LDAP_Entry_member" Column1="dn" Column2="member" ConnectionTable="AhmaLDAPExportFulfillment_member" EntityPropertyMapping1="AHMA_LDAP_Entry:dn" EntityPropertyMapping2="AHMA_LDAP_Entry:dn" Connector="AHMA_LDAP"/>
+	<EntityAssociationMapping Identifier="AHMA_LDAP_Entry_manager" Column2="dn" Column1="manager" ConnectionTable="AhmaLDAPExportFulfillment_manager" EntityPropertyMapping1="AHMA_LDAP_Entry:dn" EntityPropertyMapping2="AHMA_LDAP_Entry:dn" Connector="AHMA_LDAP" />
+	<EntityAssociationMapping Identifier="AHMA_LDAP_Entry_assistant" Connector="AHMA_LDAP" ConnectionTable="AhmaLDAPExportFulfillment_entries" Column2="objectGUID" Column1="assistant"  EntityPropertyMapping1="AHMA_LDAP_Entry:dn" EntityPropertyMapping2="AHMA_LDAP_Entry:objectGuid" />
+
+	<ViewTargetResourceTemplate EntityType="AHMA_LDAP_Entry" Profile="Administrator" />
+	<TargetResourceReport EntityType="AHMA_LDAP_Entry" />
+	<TargetResourceReportAccessControlRules EntityType="AHMA_LDAP_Entry" Profile="Administrator" />
+	<TargetResourceReportMenus EntityType="AHMA_LDAP_Entry" />
+    
+   
+</ConfigurationFile>

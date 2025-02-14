@@ -1,0 +1,35 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Job Identifier="Catalog_Synchro_Complete_Scaffolding" DisplayName_L1="Catalogue - Synchronisation complète" Agent="CAA">
+    <ExportTask Identifier="Catalog_Synchro_Complete_Scaffolding_Export_ApplicationCatalogExport" DisplayName_L1="Catalogue - Extraction des modifications" Agent="CAA" Connector="Catalog" OpenIdClient="Job" Connection="ApplicationCatalogExport" IgnoreCookieFile="true" />
+    <ExportTask Identifier="Catalog_Synchro_Complete_Scaffolding_Export_ProfileCatalogExport" DisplayName_L1="Catalogue - Extraction des modifications" Agent="CAA" Connector="Catalog" OpenIdClient="Job" Connection="ProfileCatalogExport" IgnoreCookieFile="true" />
+
+    <PrepareSynchronizationTask Identifier="Catalog_Synchro_Complete_Scaffolding_PrepareSynchronization_Catalog" DisplayName_L1="Catalogue - Synchronisation (côté agent)" Agent="CAA" Connector="Catalog" OpenIdClient="Job" SynchronizationMode="Complete">
+      <TaskDependsOnTask ParentTask="Catalog_Synchro_Complete_Scaffolding_Export_ApplicationCatalogExport" />
+      <TaskDependsOnTask ParentTask="Catalog_Synchro_Complete_Scaffolding_Export_ProfileCatalogExport" />
+    </PrepareSynchronizationTask>
+
+    <SynchronizeTask Identifier="Catalog_Synchro_Complete_Scaffolding_Synchronize_Catalog" DisplayName_L1="Catalogue - Synchronisation (côté serveur)" Connector="Catalog">
+      <TaskDependsOnTask ParentTask="Catalog_Synchro_Complete_Scaffolding_PrepareSynchronization_Catalog" />
+    </SynchronizeTask>
+
+    <UpdateEntityPropertyExpressionsTask Identifier="Catalog_Synchro_Complete_Scaffolding_ComputeProperties" DisplayName_L1="Catalogue - Calculer toutes les propriétés" AllEntityType="true" />
+    <ComputeCorrelationKeysTask Identifier="Catalog_Synchro_Complete_Scaffolding_ComputeCorrelationKeys" DisplayName_L1="Catalogue - Calculer toutes les clés de corrélation" AllEntityType="true" />
+
+    <ComputeRoleModelTask Identifier="Catalog_Synchro_Complete_Scaffolding_ComputeProvisioningPolicy" DisplayName_L1="Catalogue - Modèle de rôle" BlockProvisioning="false">
+      <TaskEntityType EntityType="Catalog_Application" />
+      <TaskEntityType EntityType="Catalog_Profile" />
+    </ComputeRoleModelTask>
+    <GenerateProvisioningOrdersTask Identifier="Catalog_Synchro_Complete_Scaffolding_Provisioning" DisplayName_L1="Catalogue - Générer des ordres de Provisioning" ForceProvisioning="true">
+      <TaskResourceType ResourceType="Catalog_Application" />
+      <TaskResourceType ResourceType="Catalog_Profile" />
+    </GenerateProvisioningOrdersTask>
+    <FulfillTask Identifier="Catalog_Synchro_Complete_Scaffolding_Provisioner_Database" Agent="CAA" DisplayName_L1="Catalogue - Mise à jour" OpenIdClient="Job">
+      <TaskResourceType ResourceType="Catalog_Application" />
+      <TaskResourceType ResourceType="Catalog_Profile" />
+    </FulfillTask>
+
+    <BuildRoleModelTask Identifier="Catalog_Synchro_Complete_Scaffolding_ApplyRoleMappings" Connector="Catalog" DisplayName_L1="Catalogue - Génération des rôles" />
+  </Job>
+
+</ConfigurationFile>

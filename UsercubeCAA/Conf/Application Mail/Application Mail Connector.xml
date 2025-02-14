@@ -1,0 +1,55 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- Mail Connector -->
+    <Connector Identifier="ApplicationMail" DisplayName_L1="Applications mail" Agent="CAA" />
+
+    <!-- Mail connections -->
+    <Connection Identifier="AccountMailFulfill" DisplayName_L1="Fulfill des comptes mail" Connector="ApplicationMail" Package="Usercube.Powershell@0000001" />
+    <Connection Identifier="AccountMailExport" DisplayName_L1="Export des comptes mail" Connector="ApplicationMail" Package="Usercube.CSV@0000001" />
+    <Connection Identifier="AccountProfilesMailExport" DisplayName_L1="Export des liens comptes mail et profils" Connector="ApplicationMail" Package="Usercube.CSV@0000001" />
+
+    <EntityType Identifier="Application_Account_Mail" DisplayName_L1="Application - Compte Mail">
+        <Property Identifier="Identifier" DisplayName_L1="Identifiant" Type="String" TargetColumnIndex="4" IsKey="true" />
+        <Property Identifier="Login" DisplayName_L1="Login" Type="String" TargetColumnIndex="5" />
+        <Property Identifier="FirstName" DisplayName_L1="Prénom" TargetColumnIndex="6" Type="String" />
+        <Property Identifier="LastName" DisplayName_L1="Nom" TargetColumnIndex="7" Type="String" />
+        <Property Identifier="Email" DisplayName_L1="Adresse email" TargetColumnIndex="8" Type="String"/>       
+        <Property Identifier="ContractStartDate" DisplayName_L1="Date de début contrat" TargetColumnIndex="9" Type="String" />
+        <Property Identifier="ContractEndDate" DisplayName_L1="Date de fin contrat" TargetColumnIndex="10" Type="String" />
+        <Property Identifier="Site" DisplayName_L1="Site" TargetColumnIndex="11" Type="String" />
+        <Property Identifier="Company" DisplayName_L1="Société" TargetColumnIndex="12" Type="String" />
+        <Property Identifier="IsSuspended" DisplayName_L1="Compte suspendu" TargetColumnIndex="13" Type="String" />
+        <Property Identifier="StartDate" DisplayName_L1="Date de début compte" TargetColumnIndex="14" Type="String" />
+        <Property Identifier="EndDate" DisplayName_L1="Date de fin compte" TargetColumnIndex="15" Type="String" />
+        <Property Identifier="AddressMailPartner" DisplayName_L1="Adresse E-mail Partenaire" Type="String" TargetColumnIndex="16" />
+
+        <Property Identifier="Application" DisplayName_L1="Application" Type="ForeignKey" TargetColumnIndex="128" />
+        <Property Identifier="Profiles" DisplayName_L1="Profils" Type="ForeignKey" />
+    </EntityType>
+
+    <EntityTypeMapping Identifier="Application_Account_Mail" Connector="ApplicationMail" ConnectionTable="AccountMailExport">
+        <Property Identifier="Identifier" ConnectionColumn="Identifier" IsPrimaryKey="true" />
+        <Property Identifier="Login" ConnectionColumn="Login" />
+        <Property Identifier="FirstName" ConnectionColumn="FirstName" />
+        <Property Identifier="LastName" ConnectionColumn="LastName" />
+        <Property Identifier="Email" ConnectionColumn="Email" />       
+        <Property Identifier="ContractStartDate" ConnectionColumn="ContractStartDate" />
+        <Property Identifier="ContractEndDate" ConnectionColumn="ContractEndDate" />
+        <Property Identifier="Site" ConnectionColumn="Site" />
+        <Property Identifier="Company" ConnectionColumn="Company" />
+        <Property Identifier="IsSuspended" ConnectionColumn="IsSuspended" />
+        <Property Identifier="StartDate" ConnectionColumn="StartDate" />
+        <Property Identifier="EndDate" ConnectionColumn="EndDate" />
+    </EntityTypeMapping>
+
+    <EntityAssociation Identifier="Application_Account_Mail_Application" IsProperty2Collection="true" Property1="Application_Account_Mail:Application" Property2="Directory_Application:AccountsMail" />
+    <EntityAssociation Identifier="Application_Account_Mail_Profiles" IsProperty1Collection="true" IsProperty2Collection="true" Property1="Application_Account_Mail:Profiles" Property2="Directory_Profile:AccountsMail" />
+   
+    <EntityAssociationMapping Identifier="Application_Account_Mail_Application" Column1="Identifier" Column2="Application" ConnectionTable="AccountMailExport" EntityPropertyMapping1="Application_Account_Mail:Identifier" EntityPropertyMapping2="Directory_Application:Identifier" Connector="ApplicationMail" />
+    <EntityAssociationMapping Identifier="Application_Account_Mail_Profiles" Column1="Identifier" Column2="Profiles" ConnectionTable="AccountProfilesMailExport" EntityPropertyMapping1="Application_Account_Mail:Identifier" EntityPropertyMapping2="Directory_Profile:Identifier" Connector="ApplicationMail" />
+    
+    <ViewTemplate EntityType="Application_Account_Mail" Profile="Administrator" />
+    <EntityPropertyExpression Identifier="Application_Account_Mail_InternalDisplayName" Expression="C#:resource:return resource.Application?.DisplayName + &quot; - &quot; + resource.Login;" EntityType="Application_Account_Mail" Property="InternalDisplayName" />
+    <EntityPropertyExpression Identifier="Application_Account_Mail_AddressMailPartner" Binding="Application.AddressMailPartner" EntityType="Application_Account_Mail" Property="AddressMailPartner" />
+
+</ConfigurationFile>

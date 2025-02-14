@@ -1,0 +1,9 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <ViewAccessControlRules EntityType="ADMicrosoftExchange_Entry" Profile="RoleOfficer" />
+  <ViewAccessControlRules EntityType="ADMicrosoftExchange_Entry" Profile="RoleOfficer2" />
+  <ViewAccessControlRules EntityType="ADMicrosoftExchange_Entry" Profile="RoleOfficer3" />
+  <ViewAccessControlRules EntityType="ADMicrosoftExchange_Entry" Profile="RoleOfficerByCategory" />
+  <ViewAccessControlRules EntityType="ADMicrosoftExchange_Entry" Profile="RoleOfficerByRole" />
+  
+</ConfigurationFile>

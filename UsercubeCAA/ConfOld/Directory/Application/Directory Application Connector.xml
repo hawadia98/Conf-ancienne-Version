@@ -1,0 +1,80 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <!-- Directory_ProvisioningType -->
+  <EntityType Identifier="Directory_ProvisioningType" DisplayName_L1="Type de provisioning">
+    <Property Identifier="Identifier" DisplayName_L1="Identifiant" Type="String" TargetColumnIndex="4" IsKey="true" />
+    <Property Identifier="DisplayName" DisplayName_L1="Libellé" Type="String" TargetColumnIndex="5" />
+
+    <Property Identifier="Applications" DisplayName_L1="Applications" Type="ForeignKey" />
+  </EntityType>
+
+  <DisplayEntityType PluralDisplayName_L1="Types de provisioning" IconCode="List" Color="#95c18b" Identifier="Directory_ProvisioningType">
+    <Property DisplayOrder="-1" IsRequired="true" Identifier="Identifier" />
+    <Property IsRequired="true" Identifier="DisplayName" />
+  </DisplayEntityType>
+
+  <ConnectorMappings Connector="Directory" EntityType="Directory_ProvisioningType" IsIncremental="1" Package="Usercube.Excel@0000001" />
+
+  <ViewTemplate EntityType="Directory_ProvisioningType" Profile="Administrator" />
+
+  <Resource Id="-7001" DisplayName_L1="AD" C4="AD" C5="AD" Type="Directory_ProvisioningType" />
+  <Resource Id="-7002" DisplayName_L1="Mail" C4="Mail" C5="Mail" Type="Directory_ProvisioningType" />
+  <Resource Id="-7003" DisplayName_L1="Tâche" C4="Tâche" C5="Tâche" Type="Directory_ProvisioningType" />
+  <Resource Id="-7004" DisplayName_L1="Fichier" C4="Fichier" C5="Fichier" Type="Directory_ProvisioningType" />
+
+  <!-- Directory_Application -->
+  <EntityType Identifier="Directory_Application" DisplayName_L1="Référentiel - Application">
+    <Property Identifier="Identifier" DisplayName_L1="Identifiant" Type="String" TargetColumnIndex="4" IsKey="true" />
+    <Property Identifier="DisplayName" DisplayName_L1="Libellé" Type="String" TargetColumnIndex="5" />
+    <Property Identifier="Description" DisplayName_L1="Description" Type="String" TargetColumnIndex="6" />
+    <Property Identifier="IsActive" DisplayName_L1="Est active" Type="Bool" TargetColumnIndex="7" />
+    <Property Identifier="FunctionalApprover" DisplayName_L1="Approbateur fonctionnel" Type="String" TargetColumnIndex="8" />
+    <Property Identifier="TechnicalAdmin" DisplayName_L1="Administrateur technique" Type="String" TargetColumnIndex="9" />
+
+    <Property Identifier="ProvisioningType" DisplayName_L1="Type de provisioning" Type="ForeignKey" TargetColumnIndex="128" />
+    <Property Identifier="Profiles" DisplayName_L1="Profils" Type="ForeignKey" />
+    <Property Identifier="Accounts" DisplayName_L1="Comptes" Type="ForeignKey" />
+	<Property Identifier="AccountsMail" DisplayName_L1="Comptes" Type="ForeignKey" />
+
+  </EntityType>
+
+  <EntityAssociation Identifier="Directory_Application_ProvisioningType" IsProperty2Collection="true" Property1="Directory_Application:ProvisioningType" Property2="Directory_ProvisioningType:Applications" />
+
+  <DisplayEntityType PluralDisplayName_L1="Applications" IconCode="List" Color="#95c18b" Identifier="Directory_Application">
+    <Property DisplayOrder="-1" IsRequired="true" Identifier="Identifier" />
+    <Property IsRequired="true" Identifier="DisplayName" />
+  </DisplayEntityType>
+
+  <ConnectorMappings Connector="Directory" EntityType="Directory_Application" IsIncremental="1" Package="Usercube.Excel@0000001" />
+
+  <ViewTemplate EntityType="Directory_Application" Profile="Administrator" />
+
+  <!-- Directory_Profile -->
+  <EntityType Identifier="Directory_Profile" DisplayName_L1="Référentiel - Profil">
+    <Property Identifier="Identifier" DisplayName_L1="Identifiant" Type="String" TargetColumnIndex="4" IsKey="true" />
+    <Property Identifier="DisplayName" DisplayName_L1="Libellé" Type="String" TargetColumnIndex="5" />
+    <Property Identifier="Description" DisplayName_L1="Description" Type="String" TargetColumnIndex="6" />
+    <Property Identifier="FunctionalApprover" DisplayName_L1="Approbateur fonctionnel" Type="String" TargetColumnIndex="7" />
+    <Property Identifier="TechnicalAdmin" DisplayName_L1="Administrateur technique" Type="String" TargetColumnIndex="8" />
+    <Property Identifier="ApplicationIdentifier" DisplayName_L1="Identifiant de l'application" Type="String" TargetColumnIndex="9" />
+
+    <Property Identifier="Application" DisplayName_L1="Application" Type="ForeignKey" TargetColumnIndex="128" />
+    <Property Identifier="Accounts" DisplayName_L1="Comptes" Type="ForeignKey" />
+	<Property Identifier="AccountsMail" DisplayName_L1="Comptes" Type="ForeignKey" />
+
+  </EntityType>
+
+  <EntityAssociation Identifier="Directory_Profile_Application" IsProperty2Collection="true" Property1="Directory_Profile:Application" Property2="Directory_Application:Profiles" />
+
+  <DisplayEntityType PluralDisplayName_L1="Profils" IconCode="List" Color="#95c18b" Identifier="Directory_Profile">
+    <Property DisplayOrder="-1" IsRequired="true" Identifier="Identifier" />
+    <Property IsRequired="true" Identifier="DisplayName" />
+  </DisplayEntityType>
+
+  <ConnectorMappings Connector="Directory" EntityType="Directory_Profile" IsIncremental="1" Package="Usercube.Excel@0000001" />
+
+  <ViewTemplate EntityType="Directory_Profile" Profile="Administrator" />
+
+  <EntityPropertyExpression Identifier="Directory_Profile_ApplicationIdentifier" Binding="Application.Identifier" EntityType="Directory_Profile" Property="ApplicationIdentifier" />
+
+</ConfigurationFile>

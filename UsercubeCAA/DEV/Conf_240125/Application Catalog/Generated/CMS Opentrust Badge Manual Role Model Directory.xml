@@ -1,0 +1,30 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- Resource Types -->
+    <ResourceType Identifier="CMS Opentrust Badge" DisplayName_L1="CMS Opentrust Badge" Category="Accounts" Policy="Default" SourceEntityType="Directory_User" TargetEntityType="Catalog_Application_Account" BlockProvisioning="true" ApprovalWorkflowType="One">
+        <ScalarRule Property="Identifier" Expression="C#:record:return &quot;CMS Opentrust Badge_&quot; + record.EmployeeId;" />
+        <ScalarRule Property="Login" Binding="EmployeeId" />
+
+        <QueryRule Property="Application" TargetBinding="Identifier" SourceExpression="Literal:CMS Opentrust Badge" TargetMatchedConfidenceLevel="100" />
+    </ResourceType>
+
+    <!-- Resource Type Mappings -->
+    <ManualProvisioningResourceTypeMapping Identifier="CMS Opentrust Badge" Connection="AccountCatalogFulfill" TicketSynchroIsNotAvailable="true" />
+
+    <!-- Correlations -->
+    <ResourceCorrelationRule ResourceType="CMS Opentrust Badge" SourceExpression="C#:record:return &quot;CMS Opentrust Badge_&quot; + record.EmployeeId;" TargetBinding="Identifier" Policy="Default" SourceMatchedConfidenceLevel="100" />
+
+    <!-- Role Mappings -->
+    <RoleMapping Identifier="CMS Opentrust Badge" Policy="Default" Category="Applications"
+        ParentCategoryIdentifierExpression="C#:resource:return &quot;Applications&quot;;"
+        CategoryIdentifierExpression="C#:resource:return resource.Application?.Identifier;"
+        CategoryDisplayNameExpression="C#:resource:return resource.Application?.DisplayName;"
+        IdentifierBinding="Directory_Profile:Identifier"
+        DisplayNameBinding="Directory_Profile:DisplayName"
+        ResourceType="CMS Opentrust Badge" Property="Catalog_Application_Account:Profiles" ApprovalWorkflowType="One" ApprovalRequired="0">
+        <Rule>
+            <Item Property="Directory_Profile:ApplicationIdentifier" Operator="Equal" Value="CMS Opentrust Badge" />
+        </Rule>
+    </RoleMapping>
+
+</ConfigurationFile>

@@ -1,0 +1,21 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <MenuItem Identifier="Dashboard_Directory" DisplayName_L1="Référentiel" ParentMenuItem="Dashboard">
+    <MenuItem Identifier="Dashboard_Directory_User" DisplayName_L1="Collaborateurs" EntityType="Directory_User" />
+    <MenuItem Identifier="Dashboard_Directory_Company" DisplayName_L1="Sociétés" EntityType="Directory_Company" IconCode="Suitcase" />
+    <MenuItem Identifier="Dashboard_Directory_Organization_Custom" DisplayName_L1="Directions" EntityType="Directory_Organization" />
+    <MenuItem Identifier="Dashboard_Directory_Site_Custom" DisplayName_L1="Lieux de travail" EntityType="Directory_Site" />
+    <MenuItem Identifier="Dashboard_Directory_ContractType" DisplayName_L1="Contrats" EntityType="Directory_ContractType" />
+    <MenuItem Identifier="Dashboard_Directory_EB" DisplayName_L1="E.B" EntityType="Directory_EB" />
+    <MenuItem Identifier="Dashboard_Directory_NewExternal" DisplayName_L1="Entrée d'un externe" Workflow="Directory_User_NewExternal" IconCode="AddFriend" />
+    <MenuItem Identifier="Dashboard_Directory_NewInternal" ConsolidationMode="Delete" />
+    <MenuItem Identifier="Dashboard_Directory_Organization" ConsolidationMode="Delete" />
+    <MenuItem Identifier="Dashboard_Directory_Site" ConsolidationMode="Delete" />
+  </MenuItem>
+
+  <MenuItem Identifier="Dashboard_Catalog" DisplayName_L1="Catalogue des applications" ParentMenuItem="Dashboard">
+    <MenuItem Identifier="Dashboard_Directory_Application" DisplayName_L1="Applications" EntityType="Directory_Application" IconCode="List" />
+    <MenuItem Identifier="Dashboard_Directory_Profile" DisplayName_L1="Profils" EntityType="Directory_Profile" IconCode="List" />
+  </MenuItem>
+
+</ConfigurationFile>

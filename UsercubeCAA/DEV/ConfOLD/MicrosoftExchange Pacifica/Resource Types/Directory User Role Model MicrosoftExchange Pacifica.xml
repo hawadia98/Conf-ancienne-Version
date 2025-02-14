@@ -1,0 +1,15 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+	<ResourceType Identifier="MicrosoftExchangePacifica_Mailbox_NominativeUser" DisplayName_L1="Boîte Microsoft Exchange Pacifica (nominative)" Policy="Default" TargetEntityType="MicrosoftExchangePacifica_Mailbox" Category="Accounts" SourceEntityType="Directory_User" ApprovalWorkflowType="One" DependsOn="ADPacifica_NominativeUser" BlockProvisioning="true">
+        <TypeRule Policy="Default" DA="Pacifica" TimeOffsetReference="Around" TimeOffsetBeforeReference="-10080" TimeOffsetAfterReference="43200" />
+        <TypeRule Policy="Default" DA="Sirca" TimeOffsetReference="Around" TimeOffsetBeforeReference="-10080" TimeOffsetAfterReference="43200" />
+        <TypeRule Policy="Default" DA="Viavita" TimeOffsetReference="Around" TimeOffsetBeforeReference="-10080" TimeOffsetAfterReference="43200" />
+
+		<ScalarRule Property="SamAccountName" Expression="C#:record:return record.FirstName?.Simplify()?.ToLowerInvariant() + &quot;.&quot; + record.LastName?.Simplify()?.ToLowerInvariant();" />
+		<ScalarRule Property="PrimarySmtpAddress" Binding="PacificaEmail" />
+	</ResourceType>
+
+	<ResourceTypeMapping Identifier="MicrosoftExchangePacifica_Mailbox_NominativeUser" Connection="MicrosoftExchangePacificaFulfillment" />
+    <ResourceCorrelationRule ResourceType="MicrosoftExchangePacifica_Mailbox_NominativeUser" SourceExpression="C#:record:return record.FirstName?.Simplify()?.ToLowerInvariant() + &quot;.&quot; + record.LastName?.Simplify()?.ToLowerInvariant();" TargetBinding="SamAccountName" Policy="Default" SourceMatchedConfidenceLevel="100" />
+
+</ConfigurationFile>

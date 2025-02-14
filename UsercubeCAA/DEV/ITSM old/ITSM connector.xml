@@ -1,0 +1,46 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <Connector Identifier="ITSM" DisplayName_L1="ITSM" Agent="CAA" MaximumInsertedLines="500" MaximumUpdatedLines="500" MaximumDeletedLines="100" MaxPercentageInsertedLines="0" MaxPercentageUpdatedLines="0" MaxPercentageDeletedLines="0" />
+    <Connection Connector="ITSM" Identifier="ITSMFulfillment" DisplayName_L1 ="ITSM Fulfill" Package="Usercube.Powershell@0000001" />
+   
+
+    <EntityType Identifier="RITM" DisplayName_L1="RITM">
+        <Property Identifier="u_arrival_type" DisplayName_L1="Type d'utilisateur" TargetColumnIndex="4" Type="String" />
+        <Property Identifier="u_title" DisplayName_L1="Titre" TargetColumnIndex="5" Type="String" />
+        <Property Identifier="u_function" DisplayName_L1="Fonction" TargetColumnIndex="6" Type="String" />
+        <Property Identifier="u_last_name" DisplayName_L1="Nom" TargetColumnIndex="7" Type="String"/>       
+        <Property Identifier="u_first_name" DisplayName_L1="Prénom" TargetColumnIndex="8" Type="String" />
+        <Property Identifier="arrival_date" DisplayName_L1="Date de début " TargetColumnIndex="9" Type="String" />
+        <Property Identifier="u_company" DisplayName_L1="Société" TargetColumnIndex="10" Type="String" />
+        <Property Identifier="u_department" DisplayName_L1="Département" TargetColumnIndex="11" Type="String" />
+        <Property Identifier="u_site" DisplayName_L1="Site" TargetColumnIndex="30" Type="String" />
+        <Property Identifier="u_telephony" DisplayName_L1="Téléphone" TargetColumnIndex="12" Type="String" />
+        <Property Identifier="u_role_metier" DisplayName_L1="role métier" TargetColumnIndex="13" Type="String" />
+        <Property Identifier="u_ajout_profil_omplementaires" DisplayName_L1="Ajout profils complémentaires" TargetColumnIndex="14" Type="String" />
+        <Property Identifier="u_access_profiles" DisplayName_L1="Profils d'accès" TargetColumnIndex="15" Type="String" />
+        <Property Identifier="u_profiles" DisplayName_L1="Profils" TargetColumnIndex="16" Type="String" />
+        <Property Identifier="u_departure_date" DisplayName_L1="Date de départ" TargetColumnIndex="17" Type="String" />
+        <Property Identifier="u_adresse_mail_caas" DisplayName_L1="Adresse email CAAS" TargetColumnIndex="18" Type="String" />
+        <Property Identifier="u_type_de_contrat" DisplayName_L1="Type de contrat" TargetColumnIndex="19" Type="String" />
+        <Property Identifier="u_rattachement_hierarchique" DisplayName_L1="Responsable Hiérarchique" TargetColumnIndex="20" Type="String" />
+        <Property Identifier="u_extern_type" DisplayName_L1="Type d'externe" TargetColumnIndex="21" Type="String" />
+        <Property Identifier="u_emploi_lmsi" DisplayName_L1="Emploi" TargetColumnIndex="22" Type="String" />
+        <Property Identifier="u_triskell_profil" DisplayName_L1="Profils triskell" TargetColumnIndex="23" Type="String" />
+        <Property Identifier="u_service_nature" DisplayName_L1="Nature de service" TargetColumnIndex="24" Type="String" />
+        <Property Identifier="u_company_affiliation" DisplayName_L1="Société d'affiliation" TargetColumnIndex="25" Type="String" />
+        <Property Identifier="u_other_company" DisplayName_L1="Autre Société " TargetColumnIndex="26" Type="String" />
+        <Property Identifier="u_phone_number" DisplayName_L1="Téléphone " TargetColumnIndex="27" Type="String" />
+        <Property Identifier="u_desk_location" DisplayName_L1="Location" TargetColumnIndex="28" Type="String" />
+        <Property Identifier="u_trigram" DisplayName_L1="Trigram" TargetColumnIndex="29" Type="String" />
+		<Property Identifier="u_email" DisplayName_L1="Email Pacifica" IsKey="true" TargetColumnIndex="33" Type="String" />
+		<Property Identifier="u_type_de_pc" DisplayName_L1="Type de PC" TargetColumnIndex="31" Type="String" />
+		<Property Identifier="u_master" DisplayName_L1="Master" TargetColumnIndex="32" Type="String" />
+		<Property Identifier="u_telephone_fixe" DisplayName_L1="Téléphone Fixe" TargetColumnIndex="34" Type="String" />
+		<Property Identifier="u_commentaires" DisplayName_L1="Commentaires" TargetColumnIndex="35" Type="String" />
+    </EntityType>
+	<EntityTypeMapping Identifier="RITM" Connector="ITSM" ConnectionTable="ITSM" />
+
+  
+    <CreateUpdateDeleteTemplate EntityType="RITM" Profile="Administrator" />
+   
+</ConfigurationFile>

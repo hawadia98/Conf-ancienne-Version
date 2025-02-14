@@ -1,0 +1,30 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- Resource Types -->
+    <ResourceType Identifier="DAS2" DisplayName_L1="DAS2" Category="Accounts" Policy="Default" SourceEntityType="Directory_User" TargetEntityType="Catalog_Application_Account" BlockProvisioning="true" ApprovalWorkflowType="One">
+        <ScalarRule Property="Identifier" Expression="C#:record:return &quot;DAS2_&quot; + record.EmployeeId;" />
+        <ScalarRule Property="Login" Binding="EmployeeId" />
+
+        <QueryRule Property="Application" TargetBinding="Identifier" SourceExpression="Literal:DAS2" TargetMatchedConfidenceLevel="100" />
+    </ResourceType>
+
+    <!-- Resource Type Mappings -->
+    <ManualProvisioningResourceTypeMapping Identifier="DAS2" Connection="AccountCatalogFulfill" TicketSynchroIsNotAvailable="true" />
+
+    <!-- Correlations -->
+    <ResourceCorrelationRule ResourceType="DAS2" SourceExpression="C#:record:return &quot;DAS2_&quot; + record.EmployeeId;" TargetBinding="Identifier" Policy="Default" SourceMatchedConfidenceLevel="100" />
+
+    <!-- Role Mappings -->
+    <RoleMapping Identifier="DAS2" Policy="Default" Category="Applications"
+        ParentCategoryIdentifierExpression="C#:resource:return &quot;Applications&quot;;"
+        CategoryIdentifierExpression="C#:resource:return resource.Application?.Identifier;"
+        CategoryDisplayNameExpression="C#:resource:return resource.Application?.DisplayName;"
+        IdentifierBinding="Directory_Profile:Identifier"
+        DisplayNameBinding="Directory_Profile:DisplayName"
+        ResourceType="DAS2" Property="Catalog_Application_Account:Profiles" ApprovalWorkflowType="One" ApprovalRequired="0">
+        <Rule>
+            <Item Property="Directory_Profile:ApplicationIdentifier" Operator="Equal" Value="DAS2" />
+        </Rule>
+    </RoleMapping>
+
+</ConfigurationFile>

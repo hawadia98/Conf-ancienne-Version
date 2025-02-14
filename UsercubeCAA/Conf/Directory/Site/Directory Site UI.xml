@@ -1,0 +1,38 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <DisplayTable Identifier="Directory_Site" EntityType="Directory_Site" DisplayTableDesignElement="table" IsEntityTypeDefault="true">
+        <Column DefaultSortPriority="1" DisplayBinding="DisplayName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="6" />
+        <Column DisplayBinding="Company.InternalDisplayName" DisplayName_L1="Société" IsDisplayInSummaryView="true" IsResizable="true" ColumnSize="4" />
+    </DisplayTable>
+
+    <Form Identifier="Base_Directory_Site" EntityType="Directory_Site">
+        <Control DisplayName_L1="Address" OutputType="LayoutFieldset" Name="Address">
+        <Control Binding="Name" />
+        <Control Binding="StreetNumber" />
+        <Control Binding="StreetName" />
+        <Control Binding="StreetType" />
+        <Control Binding="Floor" />
+        <Control Binding="PostalCode" />
+        <Control Binding="City" />
+        <Control Binding="Region" />
+        <Control Binding="Region.Country" IsReadOnly="true" />
+        <Control Binding="Photo" OutputType="Image" />
+        </Control>
+
+        <Control DisplayName_L1="Additional Data" OutputType="LayoutFieldset" Name="Additional Data">
+        <Control Binding="Identifier" />
+        <Control Binding="DisplayName" />
+        <Control Binding="Company" />
+		<Control Binding="TranscoCode" />
+		<Control Binding="TranscoName" />
+		<Control Binding="OUPacifica" />
+        <Control Binding="UserRecords" />
+        <Control Binding="Longitude" />
+        <Control Binding="Latitude" />
+        <Control Binding="Url" />
+        <Control Binding="PreferredLanguage" />
+        <Control Binding="TimeZone" />
+        </Control>
+    </Form>
+
+</ConfigurationFile>

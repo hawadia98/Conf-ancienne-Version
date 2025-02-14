@@ -1,0 +1,36 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- EB -->
+    <ResourceType Identifier="Procurement_EB" DisplayName_L1="E.B (source Achat)" Category="Sources" Policy="Default" SourceEntityType="Procurement_EB" TargetEntityType="Directory_EB" BlockProvisioning="false" RemoveOrphans="true">
+        <TypeRule Policy="Default" />
+
+        <ScalarRule Property="Identifier" Binding="Code" />
+        <ScalarRule Property="DisplayName" Binding="Name" />
+        <ScalarRule Property="OrganizationName" Binding="Organization" />
+        <ScalarRule Property="Requester" Binding="Requester" />
+        <ScalarRule Property="Status" Binding="Status" />
+        <ScalarRule Property="CreationDate" Binding="CreationDate" />
+        <ScalarRule Property="OrderCode" Binding="OrderCode" />
+        <ScalarRule Property="Supplier" Binding="Supplier" />
+        <ScalarRule Property="ConsultationProcedure" Binding="ConsultationProcedure" />
+        <ScalarRule Property="RealizationMethod" Binding="RealizationMethod" />
+        <ScalarRule Property="PurchasingChannel" Binding="PurchasingChannel" />
+        <ScalarRule Property="CostCenter" Binding="CostCenter" />
+        <ScalarRule Property="StartDate" Binding="StartDate" Expression="ParseUniversalDate:dd/MM/yyyy" />
+        <ScalarRule Property="EndDate" Binding="EndDate" Expression="ParseUniversalDateThenAddMinutes:dd/MM/yyyy|1440" />
+        <ScalarRule Property="NewMission" Binding="NewMission" />
+        <ScalarRule Property="DeliveryDate" Binding="DeliveryDate" />
+        <ScalarRule Property="Entity" Binding="Entity" />
+        <ScalarRule Property="CA2" Binding="CA2" />
+
+		<QueryRule Property="Organization" TargetExpression="C#:resource:return resource.DisplayName?.Simplify()?.ToUpperInvariant();" TargetMatchedConfidenceLevel="100" SourceExpression="C#:resource:
+			return resource.Organization?.Split('/')?.LastOrDefault()?.Simplify()?.ToUpperInvariant();" />
+    </ResourceType>
+
+    <!-- Resource Type Mappings -->
+    <ResourceTypeMapping Identifier="Procurement_EB" Connection="HRDatabase" />
+
+    <!-- Correlations -->
+    <ResourceCorrelationRule ResourceType="Procurement_EB" SourceBinding="Code" TargetBinding="Identifier" Policy="Default" SourceMatchedConfidenceLevel="100" />
+
+</ConfigurationFile>

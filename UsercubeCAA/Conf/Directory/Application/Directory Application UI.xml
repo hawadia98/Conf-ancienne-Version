@@ -1,0 +1,12 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <CreateUpdateDeleteTemplate EntityType="Directory_Application" Profile="Administrator" />
+
+    <CreateUpdateDeleteTemplate EntityType="Directory_Profile" Profile="Administrator" />
+
+    <DisplayTable Identifier="Directory_Application" EntityType="Directory_Application" DisplayTableDesignElement="table" IsEntityTypeDefault="true">
+        <Column DefaultSortPriority="1" DisplayBinding="DisplayName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="6" />
+        <Column DisplayBinding="ProvisioningType.DisplayName" DisplayName_L1="Type de provisioning" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="4" />
+    </DisplayTable>
+
+</ConfigurationFile>

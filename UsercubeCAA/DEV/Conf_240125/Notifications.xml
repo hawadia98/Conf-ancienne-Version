@@ -1,0 +1,7 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- Notifications -->
+	<WorkflowActorsNotification Workflow="Directory_User_CreateFromHR" />
+	<WorkflowPerformerNotification Workflow="Directory_User_NewExternal" />
+
+</ConfigurationFile>

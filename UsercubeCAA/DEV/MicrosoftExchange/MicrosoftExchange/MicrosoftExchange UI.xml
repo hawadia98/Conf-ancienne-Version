@@ -1,0 +1,25 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <ViewTargetResourceTemplate EntityType="MicrosoftExchange_Database" Profile="Administrator" />
+  <ViewTargetResourceTemplate EntityType="MicrosoftExchange_Mailbox" Profile="Administrator" />
+
+  <!--EntityTypesDisplayName-->
+  <EntityPropertyExpression Identifier="MicrosoftExchange_Mailbox_InternalDisplayName" Expression="C#:item:return item.Name;" EntityType="MicrosoftExchange_Mailbox" Property="InternalDisplayName" />
+  <EntityPropertyExpression Identifier="MicrosoftExchange_Database_InternalDisplayName" Expression="C#:item:return item.Name;" EntityType="MicrosoftExchange_Database" Property="InternalDisplayName" />
+
+  <DisplayTable Identifier="MicrosoftExchange_Database" EntityType="MicrosoftExchange_Database" DisplayTableDesignElement="table" IsEntityTypeDefault="true">
+    <Column DefaultSortPriority="1" DisplayBinding="Guid" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="1" />
+    <Column DisplayBinding="Name" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="2" />
+    <Column DisplayBinding="Server" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="2" />
+  </DisplayTable>
+
+  <DisplayTable Identifier="MicrosoftExchange_Mailbox" EntityType="MicrosoftExchange_Mailbox" DisplayTableDesignElement="resourcetable" IsEntityTypeDefault="true">
+    <Column DefaultSortPriority="1" DisplayBinding="Guid" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="1" />
+    <Column DisplayBinding="ServerName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="2" />
+    <Column DisplayBinding="UserPrincipalName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="2" />
+  </DisplayTable>
+
+  <DisplayEntityType Identifier="MicrosoftExchange_Database">
+    <Property OutputType="BasicCollection" Identifier="Mailboxes" />
+  </DisplayEntityType>
+
+</ConfigurationFile>

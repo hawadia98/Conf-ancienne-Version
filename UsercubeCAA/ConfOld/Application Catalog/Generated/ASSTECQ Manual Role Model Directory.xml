@@ -1,0 +1,36 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <!-- Resource Types -->
+    <ResourceType Identifier="ASSTECQ" DisplayName_L1="ASSTECQ" Category="Accounts" Policy="Default" SourceEntityType="Directory_User" TargetEntityType="Catalog_Application_Account" BlockProvisioning="true" ApprovalWorkflowType="One">
+        <ScalarRule Property="Identifier" Expression="C#:record:return &quot;ASSTECQ_&quot; + record.EmployeeId;" />
+        <ScalarRule Property="Login" Binding="EmployeeId" />
+		<ScalarRule Property="GivenName" Binding= "FirstName"/>
+        <ScalarRule Property="Sn" Binding="LastName"/>
+        <ScalarRule Property="Cn" Expression="C#:person:return person.LastName?.Simplify()?.ToLowerInvariant() + &quot; &quot; + person.FirstName?.Simplify()?.ToLowerInvariant();"  />     
+        <ScalarRule Property="AdaStartDate" Expression="C#:record:return record.ContractStartDate.HasValue ? record.ContractStartDate.Value.ToString(&quot;dd/MM/yyyy&quot;) : null;"  />
+        <ScalarRule Property="AdaEndDate" Expression="C#:record:return record.ContractEndDate.HasValue ? record.ContractEndDate.Value.ToString(&quot;dd/MM/yyyy&quot;) : null;"/>
+		
+
+        <QueryRule Property="Application" TargetBinding="Identifier" SourceExpression="Literal:ASSTECQ" TargetMatchedConfidenceLevel="100" />
+    </ResourceType>
+
+    <!-- Resource Type Mappings -->
+    <ManualProvisioningResourceTypeMapping Identifier="ASSTECQ" Connection="AccountCatalogFulfill" TicketSynchroIsNotAvailable="true" />
+
+    <!-- Correlations -->
+    <ResourceCorrelationRule ResourceType="ASSTECQ" SourceExpression="C#:record:return &quot;ASSTECQ_&quot; + record.EmployeeId;" TargetBinding="Identifier" Policy="Default" SourceMatchedConfidenceLevel="100" />
+
+    <!-- Role Mappings -->
+    <RoleMapping Identifier="ASSTECQ" Policy="Default" Category="Applications"
+        ParentCategoryIdentifierExpression="C#:resource:return &quot;Applications&quot;;"
+        CategoryIdentifierExpression="C#:resource:return resource.Application?.Identifier;"
+        CategoryDisplayNameExpression="C#:resource:return resource.Application?.DisplayName;"
+        IdentifierBinding="Directory_Profile:Identifier"
+        DisplayNameBinding="Directory_Profile:DisplayName"
+        ResourceType="ASSTECQ" Property="Catalog_Application_Account:Profiles" ApprovalWorkflowType="One" ApprovalRequired="0">
+        <Rule>
+            <Item Property="Directory_Profile:ApplicationIdentifier" Operator="Equal" Value="ASSTECQ" />
+        </Rule>
+    </RoleMapping>
+
+</ConfigurationFile>

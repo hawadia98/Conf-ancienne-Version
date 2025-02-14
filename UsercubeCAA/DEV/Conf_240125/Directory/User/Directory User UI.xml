@@ -1,0 +1,193 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Form Identifier="Directory_UserRecord_View" EntityType="Directory_UserRecord">
+    <Control DisplayName_L1="Informations personnelles" OutputType="LayoutFieldset" Name="Informations personnelles">
+      <Control DisplayName_L1="Nom complet" OutputType="LayoutRowset" Name="Nom complet">
+        <Control Binding="LastName" />
+        <Control Binding="FirstName" />
+      </Control>
+      <Control Binding="MaidenName" ColumnSize="4" />
+      <Control Binding="BirthName" ColumnSize="4" />
+      <Control Binding="BirthDate" />
+
+      <Control Binding="Email" ColumnSize="6" />
+	  <Control Binding="PacificaEmail" ColumnSize="6" />
+
+      <Control DisplayName_L1="Numéros de téléphone" OutputType="LayoutRowset" Name="Numéros de téléphone">
+        <Control Binding="PhoneNumber" />
+        <Control Binding="MobileNumber" />
+      </Control>
+      <Control Binding="User.Photo" OutputType="Image" />
+
+      <Control Binding="UserIdentifier" ColumnSize="4" />
+      <Control Binding="TeamsIdentifier" ColumnSize="4" />
+      <Control Binding="Login" ColumnSize="4" />
+	  <Control Binding="User.IamLogin" ColumnSize="4" />
+      <Control Binding="VIP" />
+    </Control>
+
+    <Control DisplayName_L1="Contrat" OutputType="LayoutFieldset" Name="Contrat">
+      <Control Binding="EmployeeId" ColumnSize="4" />
+      <Control Binding="Company.Type" />
+      <Control Binding="Company" />
+      <Control Binding="ContractType.UserType" />
+      <Control Binding="ContractType" />
+
+      <Control Binding="Suspended" />
+      <Control Binding="ContractStartDate" />
+      <Control Binding="ContractEndDate" />
+	  <Control Binding="Title" />
+      <Control Binding="AdditionalAttribute" InputType="Combobox" />
+    </Control>
+
+    <Control DisplayName_L1="Risk" OutputType="LayoutFieldset" Name="Risk">
+      <Control Binding="User.ResourceRiskScore.Score" DisplayName_L1="Score" />
+      <Control Binding="User.ResourceRiskScore.Rating" DisplayName_L1="Rating" />
+    </Control>
+  </Form>
+
+  <Form Identifier="Directory_UserRecord_ViewPosition" EntityType="Directory_UserRecord" >
+    <Control DisplayName_L1="Sortie/Mobilité" OutputType="LayoutFieldset" Name="Sortie/Mobilité">
+      <Control Binding="ReasonForDeparture" />
+      <Control Binding="ExitDate" />
+      <Control Binding="ArrivalDateFutureUnit" />
+
+      <Control Binding="FutureCompany" />
+      <Control Binding="FutureOrganization" />
+      <Control Binding="FutureManager" />
+    </Control>
+    <Control DisplayName_L1="Poste" OutputType="LayoutFieldset" Name="Poste">
+      <Control Binding="PositionIdentifier" ColumnSize="4" />
+      <Control Binding="Organization" DisplayName_L1="Direction" />
+
+      <Control Binding="EB" />
+
+      <Control Binding="Manager" />
+      <Control Binding="IGAManager" />
+      <Control Binding="EffectiveIGAManager" />
+
+      <Control Binding="Site" DisplayName_L1="Lieu de travail" />
+      <Control Binding="OfficeNumber" ColumnSize="4" />
+      <Control Binding="PositionStartDate" />
+      <Control Binding="PositionEndDate" />
+      <Control Binding="ALDStartDate" />
+      <Control Binding="ALDEndDate" />
+      <Control Binding="SuspensionStartDate" />
+      <Control Binding="SuspensionEndDate" />
+    </Control>
+  </Form>
+
+  <Form Identifier="Workflow_Directory_UserRecord_PersonalData_Base" EntityType="Directory_UserRecord">
+    <Control DisplayName_L1="Informations personnelles" OutputType="LayoutFieldset" Name="Informations personnelles">
+      <Control OutputType="LayoutContainer" HomonymEntityLink="Directory_UserRecord">
+        <Control DisplayName_L1="Nom complet" OutputType="LayoutRowset" Name="Nom complet">
+          <Control Binding="LastName" />
+          <Control Binding="FirstName" />
+        </Control>
+      </Control>
+      <Control Binding="MaidenName" ColumnSize="4" />
+      <Control DisplayName_L1="Numéros de téléphone" OutputType="LayoutRowset" Name="Numéros de téléphone">
+        <Control Binding="PhoneNumber" />
+        <Control Binding="MobileNumber" />
+      </Control>
+      <Control DisplayName_L1="Photo" OutputType="LayoutRowset" Name="Photo">
+        <Control Binding="User.Photo" InputType="Image" />
+      </Control>
+    </Control>
+  </Form>
+
+  <Form Identifier="Workflow_Directory_UserRecord_Position_Base" EntityType="Directory_UserRecord">
+    <Control DisplayName_L1="Poste" OutputType="LayoutFieldset" Name="Poste">
+      <Control Binding="PositionIdentifier" ColumnSize="4" />
+      <Control Binding="Organization" DisplayName_L1="Direction" />
+      <Control Binding="EB" />
+
+      <Control Binding="Manager" />
+      <Control Binding="IGAManager" />
+
+      <Control Binding="Site" DisplayName_L1="Lieu de travail" />
+      <Control Binding="PositionStartDate" />
+      <Control Binding="PositionEndDate" />
+    </Control>
+  </Form>
+
+  <Form Identifier="Workflow_Directory_UserRecord_NewExternal_Position_Base" EntityType="Directory_UserRecord">
+    <Control DisplayName_L1="Poste" OutputType="LayoutFieldset" Name="Poste">
+      <Control Binding="Organization" DisplayName_L1="Direction" />
+
+      <Control Binding="Manager" />
+      <Control Binding="IGAManager" />
+
+      <Control Binding="Site" DisplayName_L1="Lieu de travail" />
+      <Control Binding="PositionStartDate" />
+      <Control Binding="PositionEndDate" />
+    </Control>
+  </Form>
+
+  <Form Identifier="Workflow_Directory_User_NewInternal_Base" EntityType="Directory_UserRecord">
+    <Control OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_PersonalData_Base" />
+
+    <Control DisplayName_L1="Contrat" OutputType="LayoutFieldset" Name="Contrat">
+      <Control Binding="EmployeeId" ColumnSize="4" />
+      <Control Binding="Company" />
+      <Control Binding="ContractType" InputType="Combobox" />
+      <Control Binding="ContractStartDate" />
+      <Control Binding="ContractEndDate" />
+	  <Control Binding="Title" />
+      <Control Binding="AdditionalAttribute" InputType="Combobox" />
+    </Control>
+
+    <Control OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_Position_Base" />
+  </Form>
+
+  <Form Identifier="Workflow_Directory_User_NewExternal_Base" EntityType="Directory_UserRecord">
+    <Control OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_PersonalData_Base" />
+
+    <Control DisplayName_L1="Contrat" OutputType="LayoutFieldset" Name="Contrat">
+      <Control Binding="Company" IsRequired="true" />
+      <Control Binding="ContractType" InputType="Combobox" IsRequired="true" />
+	  <Control Binding="EB" />
+      <Control Binding="ContractStartDate" IsRequired="true" />
+      <Control Binding="ContractEndDate" IsRequired="true" />
+	  <Control Binding="Title" />
+      <Control Binding="AdditionalAttribute" InputType="Combobox" />
+    </Control>
+
+    <Control OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_NewExternal_Position_Base" />
+  </Form>
+
+  <Form Identifier="Workflow_Directory_UserRecord_Contract_Base" EntityType="Directory_UserRecord">
+    <Control Binding="EmployeeId" ColumnSize="4" />
+    <Control Binding="ContractIdentifier" ColumnSize="4" />
+    <Control Binding="Company" />
+    <Control Binding="ContractType" InputType="Combobox" />
+    <Control Binding="Suspended" />
+    <Control Binding="ContractStartDate" />
+    <Control Binding="ContractEndDate" />
+	<Control Binding="Title" />
+    <Control Binding="AdditionalAttribute" InputType="Combobox" />
+  </Form>
+
+  <Tile Identifier="Directory_User_Tile1" DisplayName_L1="User: first/last name" EntityType="Directory_User" TileDesignElement="picture-text">
+    <Item Binding="MainRecord.FirstName" LineDisplayOrderIndicator="1" LineNumber="2" />
+    <Item Binding="MainRecord.LastName" LineDisplayOrderIndicator="2" LineNumber="2" />
+    <Item Binding="MainRecord.EmployeeId" LineNumber="3" />
+    <Item Binding="Id" LineNumber="5" />
+    <Item Binding="PhotoTag" LineNumber="6" />
+  </Tile>
+
+  <Tile Identifier="Directory_User_Tile2" DisplayName_L1="User: dep/loc" EntityType="Directory_User" TileDesignElement="inline data-icon">
+    <Item Binding="MainRecord.Company.DisplayName" LineNumber="1" />
+    <Item Binding="MainRecord.ContractType.DisplayName" LineNumber="2" />
+  </Tile>
+
+  <Tile Identifier="Directory_User_Tile3" DisplayName_L1="User: contact" EntityType="Directory_User" TileDesignElement="inline data-icon">
+    <Item Binding="MainRecord.Organization.DisplayName" LineNumber="1" />
+    <Item Binding="MainRecord.Site.DisplayName" LineNumber="2" />
+  </Tile>
+
+  <DisplayEntityType Identifier="Directory_UserRecord" ConsolidationMode="Merge">
+    <Property Identifier="ExitDate" AddedMinutes="1440" />
+  </DisplayEntityType>
+
+</ConfigurationFile>

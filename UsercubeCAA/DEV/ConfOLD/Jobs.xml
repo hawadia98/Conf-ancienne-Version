@@ -1,0 +1,13 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Job Identifier="CreateDatabaseViewsJob" DisplayName_L1="ZZ Administration/Vues" Agent="CAA">
+    <CreateDatabaseViewsTask Identifier="CreateDatabaseViewsJob_CreateDatabaseViews" DisplayName_L1="Créer les vues SQL" Agent="CAA" OpenIdClient="Job" />
+  </Job>
+
+  <Job Identifier="SetInternalUserProfiles_CAA" DisplayName_L1="Assignation des profils automatiques" Agent="CAA">
+    <SetInternalUserProfilesTask Identifier="SetInternalUserProfiles_CAA" DisplayName_L1="Assignation des profils automatiques">
+      <TaskEntityType EntityType="Directory_User" />
+    </SetInternalUserProfilesTask>
+  </Job>
+
+</ConfigurationFile>

@@ -1,0 +1,31 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <ViewTargetResourceTemplate EntityType="ADMicrosoftExchange_Entry" Profile="Administrator" />
+
+  <EntityPropertyExpression Identifier="ADMicrosoftExchange_Entry_InternalDisplayName" Expression="C#:resource:return resource.userPrincipalName ?? Usercube.Expressions.Functions.UtilExpressions.ToFormatedDN(resource.dn);" EntityType="ADMicrosoftExchange_Entry" Property="InternalDisplayName" />
+
+  <EntityPropertyExpression Identifier="ADMicrosoftExchange_Entry_isUnused" Expression="C#:resource:return (resource.userAccountControl == &quot;512&quot;) &amp;&amp; ((resource.lastLogonTimestamp == null) || (Usercube.Expressions.Functions.UtilExpressions.ParseSince1601Date(resource.lastLogonTimestamp) &lt; DateTime.UtcNow.AddMonths(-6)));" EntityType="ADMicrosoftExchange_Entry" Property="isUnused" />
+
+  <DisplayTable Identifier="ADMicrosoftExchange_Entry" EntityType="ADMicrosoftExchange_Entry" DisplayTableDesignElement="resourcetable" IsEntityTypeDefault="true">
+    <Column DefaultSortPriority="1" DisplayBinding="dn" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="4" />
+    <Column DisplayBinding="userPrincipalName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="2" />
+    <Column DisplayBinding="userAccountControl" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="2" />
+    <Column DisplayBinding="rdn" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="1" />
+    <Column DisplayBinding="displayName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="2" />
+    <Column DisplayBinding="objectCategory" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="1" />
+  </DisplayTable>
+
+  <DisplayEntityType Identifier="ADMicrosoftExchange_Entry">
+    <Property Identifier="userAccountControl" Format="ToStringUserAccountControl" />
+    <Property Identifier="accountExpires" Format="ParseSince1601Date" />
+    <Property Identifier="lastLogonTimestamp" Format="ParseSince1601Date" />
+
+    <Property OutputType="BasicCollection" Identifier="member" />
+    <Property OutputType="BasicCollection" Identifier="memberOf" />
+    <Property OutputType="BasicCollection" Identifier="directReports" />
+  </DisplayEntityType>
+
+  <Indicator EntityType="ADMicrosoftExchange_Entry" Binding="userAccountControl" ComparisonOperator="Equal" Order="0">
+    <Item Value="514" Color="#161114" DisplayName_L1="Account disable" DisplayName_L2="Compte désactivé" />
+  </Indicator>
+</ConfigurationFile>

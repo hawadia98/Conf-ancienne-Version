@@ -1,0 +1,8 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <DisplayTable Identifier="Directory_Title" EntityType="Directory_Title" DisplayTableDesignElement="table" IsEntityTypeDefault="true">
+    <Column DefaultSortPriority="1" DisplayBinding="Identifier" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="8" />
+    <Column DisplayBinding="DisplayName" IsDisplayInSummaryView="true" IsResizable="true" CanBeFiltered="true" ColumnSize="4" />
+  </DisplayTable>
+
+</ConfigurationFile>

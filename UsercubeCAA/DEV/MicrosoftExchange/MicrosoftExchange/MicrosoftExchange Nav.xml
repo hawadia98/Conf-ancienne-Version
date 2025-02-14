@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConfigurationFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-usercube-com:configuration">
+  <MenuItem Identifier="Nav_Connectors_MicrosoftExchange" DisplayName_L1="Microsoft Exchange" DisplayName_L2="Microsoft Exchange" ParentMenuItem="Nav_Connectors">
+    <MenuItem Identifier="Nav_Connectors_ADMicrosoftExchange_Entry" DisplayName_L1="AD Entries" DisplayName_L2="Entrées AD" EntityType="ADMicrosoftExchange_Entry" />
+    <MenuItem Identifier="Nav_Connectors_MicrosoftExchange_Database" DisplayName_L1="Databases" DisplayName_L2="Bases de données" EntityType="MicrosoftExchange_Database" />
+    <MenuItem Identifier="Nav_Connectors_MicrosoftExchange_Mailbox" DisplayName_L1="Mailboxes" DisplayName_L2="Boites mails" EntityType="MicrosoftExchange_Mailbox" />
+  </MenuItem>
+</ConfigurationFile>

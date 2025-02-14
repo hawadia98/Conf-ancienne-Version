@@ -1,0 +1,9 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <MenuItem Identifier="Nav_Connectors_Applications" DisplayName_L1="Applications" ParentMenuItem="Nav_Connectors">
+        <MenuItem Identifier="Nav_Connectors_Application_Account" DisplayName_L1="Applications - Comptes" EntityType="Application_Account" />
+        <MenuItem Identifier="Nav_Connectors_Application_Permission" DisplayName_L1="Applications - Permission" EntityType="Application_Permission" />
+        <MenuItem Identifier="Nav_Connectors_Application" DisplayName_L1="Applications" EntityType="Applications" />
+    </MenuItem>
+    
+</ConfigurationFile>
