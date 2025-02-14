@@ -1,0 +1,657 @@
+[17:02:29 DBG] MailSettings loaded:
+Enabled: True
+Host: 
+PickupDirectory: D:\UsercubeCAA\Mails
+Port: 0
+Username: 
+FromAddress: no-reply@caa.fr
+CatchAllAddress: 
+CatchAllCCAddress: 
+UseDefaultCredentials: False
+EnableSsl: False
+SecureSocketOption: 
+UseSpecifiedPickupDirectory: True
+EnableMailTesting: False
+AllowedDomains: none
+[11:17:57 VRB] HandleCommand RunJobCommand
+[11:17:57 VRB] HandleQuery GetCheckUserCommand
+[11:17:57 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[11:17:57 VRB] Refreshed token: token expiration date=01/31/2025 11:14:56
+[11:17:57 VRB] HandleCommand GetJobInstanceIdCommand
+[11:17:57 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[11:17:57 VRB] Refreshed token: token expiration date=01/31/2025 11:14:56
+[11:17:57 VRB] HandleEvent RunJobEvent
+[11:17:57 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[11:17:57 VRB] Refreshed token: token expiration date=01/31/2025 11:14:56
+[11:17:57 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 911 --job-identifier 4 --operation-parent-id "00-5de63e6d789a054b5fc8a7873095a973-f91f4eeb88de78fa-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[11:17:58 INF] Start process=True PID=2224 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 911 --job-identifier 4 --operation-parent-id "00-5de63e6d789a054b5fc8a7873095a973-f91f4eeb88de78fa-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[11:17:58 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/911?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:18:00 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/911?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:18:00 INF] The job 4 is successfully launched.
+[11:19:10 VRB] HandleCommand GetLogJobInstanceCommand
+[11:19:10 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+[11:19:10 VRB] Refreshed token: token expiration date=01/31/2025 11:16:10
+[11:19:28 VRB] HandleCommand GetLogJobInstanceCommand
+[11:19:28 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+[11:22:26 VRB] HandleCommand GetLogJobInstanceCommand
+[11:22:26 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+[11:22:50 VRB] HandleCommand RunJobCommand
+[11:22:50 VRB] HandleQuery GetCheckUserCommand
+[11:22:50 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[11:22:50 VRB] HandleCommand GetJobInstanceIdCommand
+[11:22:50 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[11:22:50 VRB] HandleEvent RunJobEvent
+[11:22:50 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[11:22:50 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 914 --job-identifier 4 --operation-parent-id "00-4bd17ce2e5846732aa3e3032f4cfa33d-ece96e80f62d3d38-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[11:22:50 INF] Start process=True PID=8632 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 914 --job-identifier 4 --operation-parent-id "00-4bd17ce2e5846732aa3e3032f4cfa33d-ece96e80f62d3d38-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[11:22:52 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/914?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:22:52 INF] The job 4 is successfully launched.
+[11:25:59 VRB] HandleCommand RunJobCommand
+[11:25:59 VRB] HandleQuery GetCheckUserCommand
+[11:25:59 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[11:25:59 VRB] HandleCommand GetJobInstanceIdCommand
+[11:25:59 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[11:25:59 VRB] HandleEvent RunJobEvent
+[11:25:59 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[11:25:59 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 917 --job-identifier 4 --operation-parent-id "00-62243c9c28bb3ae4761697251c8e487b-be01ad58bd74cc45-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[11:25:59 INF] Start process=True PID=12372 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 917 --job-identifier 4 --operation-parent-id "00-62243c9c28bb3ae4761697251c8e487b-be01ad58bd74cc45-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[11:26:01 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/917?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:26:01 INF] The job 4 is successfully launched.
+[11:35:39 VRB] HandleCommand RunJobCommand
+[11:35:39 VRB] HandleQuery GetCheckUserCommand
+[11:35:39 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[11:35:39 VRB] HandleCommand GetJobInstanceIdCommand
+[11:35:39 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[11:35:39 VRB] HandleEvent RunJobEvent
+[11:35:39 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[11:35:39 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 920 --job-identifier 4 --operation-parent-id "00-491b20c859a1fd8ab3989ba6a8149276-0776319b151893de-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[11:35:39 INF] Start process=True PID=7744 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 920 --job-identifier 4 --operation-parent-id "00-491b20c859a1fd8ab3989ba6a8149276-0776319b151893de-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[11:35:40 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/920?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:35:41 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/920?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:35:41 INF] The job 4 is successfully launched.
+[11:37:39 VRB] HandleCommand GetLogJobInstanceCommand
+[11:37:39 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+[11:40:00 VRB] HandleCommand GetLogJobInstanceCommand
+[11:40:00 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+[11:40:14 VRB] HandleCommand GetLogJobInstanceCommand
+[11:40:14 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+[11:45:58 VRB] HandleCommand RunJobCommand
+[11:45:58 VRB] HandleQuery GetCheckUserCommand
+[11:45:58 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[11:45:58 VRB] HandleCommand GetJobInstanceIdCommand
+[11:45:58 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[11:45:58 VRB] HandleEvent RunJobEvent
+[11:45:58 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[11:45:58 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 923 --job-identifier 4 --operation-parent-id "00-830574215a1362c3f936910170e798fb-e0e4d1e12d6ce738-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[11:45:58 INF] Start process=True PID=1972 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 923 --job-identifier 4 --operation-parent-id "00-830574215a1362c3f936910170e798fb-e0e4d1e12d6ce738-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[11:45:59 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/923?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:45:59 INF] The job 4 is successfully launched.
+[11:53:08 VRB] HandleCommand RunJobCommand
+[11:53:08 VRB] HandleQuery GetCheckUserCommand
+[11:53:08 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[11:53:08 VRB] HandleCommand GetJobInstanceIdCommand
+[11:53:08 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[11:53:08 VRB] HandleEvent RunJobEvent
+[11:53:08 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[11:53:08 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 926 --job-identifier 4 --operation-parent-id "00-adf032e283cef3ea4c36c125fdf401eb-ecef1a3ba89d4a0d-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[11:53:08 INF] Start process=True PID=13432 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 926 --job-identifier 4 --operation-parent-id "00-adf032e283cef3ea4c36c125fdf401eb-ecef1a3ba89d4a0d-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[11:53:10 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/926?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:53:10 INF] The job 4 is successfully launched.
+[12:45:16 VRB] HandleCommand RunJobCommand
+[12:45:16 VRB] HandleQuery GetCheckUserCommand
+[12:45:16 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[12:45:16 VRB] Refreshing token: old token expiration date=01/31/2025 11:14:56
+[12:45:16 VRB] Refreshed token: token expiration date=01/31/2025 12:42:15
+[12:45:16 VRB] HandleCommand GetJobInstanceIdCommand
+[12:45:16 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[12:45:16 VRB] Refreshing token: old token expiration date=01/31/2025 11:14:56
+[12:45:16 VRB] Refreshed token: token expiration date=01/31/2025 12:42:15
+[12:45:16 VRB] HandleEvent RunJobEvent
+[12:45:16 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[12:45:16 VRB] Refreshing token: old token expiration date=01/31/2025 11:14:56
+[12:45:16 VRB] Refreshed token: token expiration date=01/31/2025 12:42:15
+[12:45:16 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 929 --job-identifier 4 --operation-parent-id "00-92cbfe616d06bb7247b9c201019993f4-cad20326fd027cf0-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[12:45:16 INF] Start process=True PID=12540 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 929 --job-identifier 4 --operation-parent-id "00-92cbfe616d06bb7247b9c201019993f4-cad20326fd027cf0-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[12:45:17 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/929?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:45:18 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/929?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:45:18 INF] The job 4 is successfully launched.
+[12:51:29 VRB] HandleCommand RunJobCommand
+[12:51:29 VRB] HandleQuery GetCheckUserCommand
+[12:51:29 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[12:51:29 VRB] HandleCommand GetJobInstanceIdCommand
+[12:51:29 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[12:51:29 VRB] HandleEvent RunJobEvent
+[12:51:29 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[12:51:29 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 932 --job-identifier 4 --operation-parent-id "00-38a1dd7434d9d1bcc92518fdaba22bd9-bba9b6bf91160398-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[12:51:29 INF] Start process=True PID=4232 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 932 --job-identifier 4 --operation-parent-id "00-38a1dd7434d9d1bcc92518fdaba22bd9-bba9b6bf91160398-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[12:51:31 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/932?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:51:31 INF] The job 4 is successfully launched.
+[12:55:45 VRB] HandleCommand RunJobCommand
+[12:55:45 VRB] HandleQuery GetCheckUserCommand
+[12:55:45 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[12:55:45 VRB] HandleCommand GetJobInstanceIdCommand
+[12:55:45 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[12:55:45 VRB] HandleEvent RunJobEvent
+[12:55:45 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[12:55:45 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 935 --job-identifier 4 --operation-parent-id "00-6a5aa1c73b16220e94982416a231568a-fe73affef2ad42a3-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[12:55:45 INF] Start process=True PID=8500 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 935 --job-identifier 4 --operation-parent-id "00-6a5aa1c73b16220e94982416a231568a-fe73affef2ad42a3-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[12:55:47 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/935?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:55:47 INF] The job 4 is successfully launched.
+[18:01:32 VRB] HandleCommand GetLogJobInstanceCommand
+[18:01:32 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+[18:01:32 VRB] Refreshing token: old token expiration date=01/31/2025 11:16:10
+[18:01:33 VRB] Refreshed token: token expiration date=02/01/2025 17:58:33
+[18:01:54 VRB] HandleCommand GetLogJobInstanceCommand
+[18:01:54 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+[18:02:02 VRB] HandleCommand GetLogJobInstanceCommand
+[18:02:02 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+[18:02:20 VRB] HandleCommand GetLogJobInstanceCommand
+[18:02:20 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+[18:34:13 VRB] HandleCommand GetLogJobInstanceCommand
+[18:34:13 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+[18:34:22 VRB] HandleCommand GetLogJobInstanceCommand
+[18:34:22 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+[18:34:29 VRB] HandleCommand GetLogJobInstanceCommand
+[18:34:29 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+[18:34:36 VRB] HandleCommand GetLogJobInstanceCommand
+[18:34:36 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+[18:34:42 VRB] HandleCommand GetLogJobInstanceCommand
+[18:34:42 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+[18:34:48 VRB] HandleCommand GetLogJobInstanceCommand
+[18:34:48 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+[18:36:07 VRB] HandleCommand GetLogJobInstanceCommand
+[18:36:07 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+[11:37:46 VRB] HandleCommand RunJobCommand
+[11:37:46 VRB] HandleQuery GetCheckUserCommand
+[11:37:46 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[11:37:46 VRB] Refreshing token: old token expiration date=01/31/2025 12:42:15
+[11:37:46 VRB] Refreshed token: token expiration date=02/03/2025 11:34:45
+[11:37:46 VRB] HandleCommand GetJobInstanceIdCommand
+[11:37:46 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[11:37:46 VRB] Refreshing token: old token expiration date=01/31/2025 12:42:15
+[11:37:46 VRB] Refreshed token: token expiration date=02/03/2025 11:34:45
+[11:37:46 VRB] HandleEvent RunJobEvent
+[11:37:46 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[11:37:46 VRB] Refreshing token: old token expiration date=01/31/2025 12:42:15
+[11:37:46 VRB] Refreshed token: token expiration date=02/03/2025 11:34:45
+[11:37:46 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 941 --job-identifier 1 --operation-parent-id "00-1f4a05c206376b71da3fa46620098cea-9add239e24320429-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[11:37:47 INF] Start process=True PID=15116 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 941 --job-identifier 1 --operation-parent-id "00-1f4a05c206376b71da3fa46620098cea-9add239e24320429-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[11:37:47 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/941?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:37:49 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/941?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:37:49 INF] The job 1 is successfully launched.
+[11:40:15 VRB] HandleCommand RunJobCommand
+[11:40:15 VRB] HandleQuery GetCheckUserCommand
+[11:40:15 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[11:40:15 VRB] HandleCommand GetJobInstanceIdCommand
+[11:40:15 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[11:40:15 VRB] HandleEvent RunJobEvent
+[11:40:15 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[11:40:15 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 942 --job-identifier 2 --operation-parent-id "00-5a1631dc91d82693a8c120bec28852a0-91f555e13e61aeb6-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[11:40:15 INF] Start process=True PID=16088 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 942 --job-identifier 2 --operation-parent-id "00-5a1631dc91d82693a8c120bec28852a0-91f555e13e61aeb6-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[11:40:16 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/942?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:40:17 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/942?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:40:17 INF] The job 2 is successfully launched.
+[11:45:12 VRB] HandleCommand RunJobCommand
+[11:45:12 VRB] HandleQuery GetCheckUserCommand
+[11:45:12 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[11:45:12 VRB] HandleCommand GetJobInstanceIdCommand
+[11:45:12 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[11:45:12 VRB] HandleEvent RunJobEvent
+[11:45:12 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[11:45:12 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 943 --job-identifier 2 --operation-parent-id "00-5fd176d672aebe47eb30b4126300621f-b76b2bd6fd5ee206-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[11:45:12 INF] Start process=True PID=2972 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 943 --job-identifier 2 --operation-parent-id "00-5fd176d672aebe47eb30b4126300621f-b76b2bd6fd5ee206-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[11:45:14 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/943?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:45:14 INF] The job 2 is successfully launched.
+[17:07:01 VRB] HandleCommand RunJobCommand
+[17:07:01 VRB] HandleQuery GetCheckUserCommand
+[17:07:01 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[17:07:01 VRB] Refreshing token: old token expiration date=02/03/2025 11:34:45
+[17:07:01 VRB] Refreshed token: token expiration date=02/03/2025 17:04:00
+[17:07:01 VRB] HandleCommand GetJobInstanceIdCommand
+[17:07:01 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[17:07:01 VRB] Refreshing token: old token expiration date=02/03/2025 11:34:45
+[17:07:01 VRB] Refreshed token: token expiration date=02/03/2025 17:04:00
+[17:07:01 VRB] HandleEvent RunJobEvent
+[17:07:01 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[17:07:01 VRB] Refreshing token: old token expiration date=02/03/2025 11:34:45
+[17:07:01 VRB] Refreshed token: token expiration date=02/03/2025 17:04:00
+[17:07:01 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 944 --job-identifier 1 --operation-parent-id "00-43fc5b7579a99e190436d8884a239708-cc855d72c4e95e98-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[17:07:02 INF] Start process=True PID=4672 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 944 --job-identifier 1 --operation-parent-id "00-43fc5b7579a99e190436d8884a239708-cc855d72c4e95e98-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[17:07:02 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/944?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:07:03 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/944?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:07:05 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/944?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:07:05 INF] The job 1 is successfully launched.
+[17:16:38 VRB] HandleCommand RunJobCommand
+[17:16:38 VRB] HandleQuery GetCheckUserCommand
+[17:16:38 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[17:16:38 VRB] HandleCommand GetJobInstanceIdCommand
+[17:16:38 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[17:16:38 VRB] HandleEvent RunJobEvent
+[17:16:38 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[17:16:38 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 945 --job-identifier 1 --operation-parent-id "00-5fa3671400515ed1ac7fc8ce549643cc-e705652389453e0d-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[17:16:38 INF] Start process=True PID=12908 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 945 --job-identifier 1 --operation-parent-id "00-5fa3671400515ed1ac7fc8ce549643cc-e705652389453e0d-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[17:16:38 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/945?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:16:39 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/945?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:16:39 INF] The job 1 is successfully launched.
+[17:26:12 VRB] HandleCommand RunJobCommand
+[17:26:12 VRB] HandleQuery GetCheckUserCommand
+[17:26:12 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[17:26:12 VRB] HandleCommand GetJobInstanceIdCommand
+[17:26:12 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[17:26:12 VRB] HandleEvent RunJobEvent
+[17:26:12 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[17:26:13 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 946 --job-identifier 40002 --operation-parent-id "00-6981bd65f3fb3bca7f37fe43eb5e84d9-714a9fddfc4a561b-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[17:26:13 INF] Start process=True PID=9632 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 946 --job-identifier 40002 --operation-parent-id "00-6981bd65f3fb3bca7f37fe43eb5e84d9-714a9fddfc4a561b-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[17:26:14 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/946?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:26:14 INF] The job 40002 is successfully launched.
+[17:35:15 VRB] HandleCommand RunJobCommand
+[17:35:15 VRB] HandleQuery GetCheckUserCommand
+[17:35:15 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[17:35:15 VRB] HandleCommand GetJobInstanceIdCommand
+[17:35:15 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[17:35:15 VRB] HandleEvent RunJobEvent
+[17:35:15 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[17:35:15 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 947 --job-identifier 2 --operation-parent-id "00-c3d5e0d1f9ccfc6b75baf320d6b3a25f-6b6c9c2da48860f7-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[17:35:15 INF] Start process=True PID=13804 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 947 --job-identifier 2 --operation-parent-id "00-c3d5e0d1f9ccfc6b75baf320d6b3a25f-6b6c9c2da48860f7-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[17:35:15 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/947?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:35:16 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/947?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:35:16 INF] The job 2 is successfully launched.
+[17:42:17 VRB] HandleCommand RunJobCommand
+[17:42:17 VRB] HandleQuery GetCheckUserCommand
+[17:42:17 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[17:42:17 VRB] HandleCommand GetJobInstanceIdCommand
+[17:42:17 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[17:42:17 VRB] HandleEvent RunJobEvent
+[17:42:17 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[17:42:17 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 948 --job-identifier 2 --operation-parent-id "00-6ac8aabca22f2d520ad8c9d9feeaa39b-fe144635792636dc-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[17:42:17 INF] Start process=True PID=10088 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 948 --job-identifier 2 --operation-parent-id "00-6ac8aabca22f2d520ad8c9d9feeaa39b-fe144635792636dc-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[17:42:17 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/948?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:42:18 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/948?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:42:18 INF] The job 2 is successfully launched.
+[17:46:12 VRB] HandleCommand RunJobCommand
+[17:46:12 VRB] HandleQuery GetCheckUserCommand
+[17:46:12 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[17:46:12 VRB] HandleCommand GetJobInstanceIdCommand
+[17:46:12 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[17:46:12 VRB] HandleEvent RunJobEvent
+[17:46:12 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[17:46:12 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 949 --job-identifier 1 --operation-parent-id "00-23ac258674765bc50bf649ab9ac66785-f8d5e6d2a222e171-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[17:46:12 INF] Start process=True PID=7888 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 949 --job-identifier 1 --operation-parent-id "00-23ac258674765bc50bf649ab9ac66785-f8d5e6d2a222e171-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[17:46:13 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/949?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:46:13 INF] The job 1 is successfully launched.
+[18:49:37 VRB] HandleCommand RunJobCommand
+[18:49:37 VRB] HandleQuery GetCheckUserCommand
+[18:49:37 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[18:49:37 VRB] Refreshing token: old token expiration date=02/03/2025 17:04:00
+[18:49:37 VRB] Refreshed token: token expiration date=02/03/2025 18:46:37
+[18:49:37 VRB] HandleCommand GetJobInstanceIdCommand
+[18:49:37 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[18:49:37 VRB] Refreshing token: old token expiration date=02/03/2025 17:04:00
+[18:49:37 VRB] Refreshed token: token expiration date=02/03/2025 18:46:37
+[18:49:37 VRB] HandleEvent RunJobEvent
+[18:49:37 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[18:49:37 VRB] Refreshing token: old token expiration date=02/03/2025 17:04:00
+[18:49:37 VRB] Refreshed token: token expiration date=02/03/2025 18:46:37
+[18:49:37 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 950 --job-identifier 38001 --operation-parent-id "00-73408f991c7db41f04b6f2eff2c2aefd-0674fe04946a07bf-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[18:49:37 INF] Start process=True PID=9596 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 950 --job-identifier 38001 --operation-parent-id "00-73408f991c7db41f04b6f2eff2c2aefd-0674fe04946a07bf-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[18:49:38 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/950?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[18:49:39 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/950?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[18:49:40 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/950?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[18:49:40 INF] The job 38001 is successfully launched.
+[18:51:06 VRB] HandleCommand GetLogJobInstanceCommand
+[18:51:06 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+[18:51:06 VRB] Refreshing token: old token expiration date=02/01/2025 17:58:33
+[18:51:06 VRB] Refreshed token: token expiration date=02/03/2025 18:48:05
+[18:58:00 VRB] HandleCommand RunJobCommand
+[18:58:00 VRB] HandleQuery GetCheckUserCommand
+[18:58:00 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[18:58:00 VRB] HandleCommand GetJobInstanceIdCommand
+[18:58:00 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[18:58:01 VRB] HandleEvent RunJobEvent
+[18:58:01 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[18:58:01 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 951 --job-identifier 38001 --operation-parent-id "00-e6f192016407fc446855d6d93c74285e-d830a4eb85701dcc-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[18:58:01 INF] Start process=True PID=5888 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 951 --job-identifier 38001 --operation-parent-id "00-e6f192016407fc446855d6d93c74285e-d830a4eb85701dcc-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[18:58:01 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/951?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[18:58:02 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/951?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[18:58:04 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/951?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[18:58:04 INF] The job 38001 is successfully launched.
+[18:58:20 VRB] HandleCommand GetLogJobInstanceCommand
+[18:58:20 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+[19:00:07 VRB] HandleCommand RunJobCommand
+[19:00:07 VRB] HandleQuery GetCheckUserCommand
+[19:00:07 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[19:00:07 VRB] HandleCommand GetJobInstanceIdCommand
+[19:00:07 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[19:00:07 VRB] HandleEvent RunJobEvent
+[19:00:07 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[19:00:07 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 952 --job-identifier 38002 --operation-parent-id "00-bcc4d426fc0015bd4511c795afa2b5a5-03958f405bf8ca54-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[19:00:07 INF] Start process=True PID=7700 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 952 --job-identifier 38002 --operation-parent-id "00-bcc4d426fc0015bd4511c795afa2b5a5-03958f405bf8ca54-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[19:00:07 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/952?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[19:00:09 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/952?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[19:00:09 INF] The job 38002 is successfully launched.
+[19:00:21 VRB] HandleCommand GetLogJobInstanceCommand
+[19:00:21 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+[19:00:25 VRB] HandleCommand GetLogJobInstanceCommand
+[19:00:25 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+[19:00:37 VRB] HandleCommand GetLogJobInstanceCommand
+[19:00:37 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+[10:44:28 VRB] HandleCommand RunJobCommand
+[10:44:28 VRB] HandleQuery GetCheckUserCommand
+[10:44:28 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[10:44:28 VRB] Refreshing token: old token expiration date=02/03/2025 18:46:37
+[10:44:28 VRB] Refreshed token: token expiration date=02/04/2025 10:41:27
+[10:44:28 VRB] HandleCommand GetJobInstanceIdCommand
+[10:44:28 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[10:44:28 VRB] Refreshing token: old token expiration date=02/03/2025 18:46:37
+[10:44:28 VRB] Refreshed token: token expiration date=02/04/2025 10:41:27
+[10:44:28 VRB] HandleEvent RunJobEvent
+[10:44:28 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[10:44:28 VRB] Refreshing token: old token expiration date=02/03/2025 18:46:37
+[10:44:28 VRB] Refreshed token: token expiration date=02/04/2025 10:41:27
+[10:44:28 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 953 --job-identifier 1 --operation-parent-id "00-dd0ab8aaf15de01794f02509ccc6a829-1bb35da44d340d1c-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[10:44:29 INF] Start process=True PID=8900 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 953 --job-identifier 1 --operation-parent-id "00-dd0ab8aaf15de01794f02509ccc6a829-1bb35da44d340d1c-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[10:44:29 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/953?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[10:44:30 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/953?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[10:44:32 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/953?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[10:44:32 INF] The job 1 is successfully launched.
+[11:17:24 VRB] HandleCommand RunJobCommand
+[11:17:24 VRB] HandleQuery GetCheckUserCommand
+[11:17:24 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[11:17:24 VRB] HandleCommand GetJobInstanceIdCommand
+[11:17:24 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[11:17:24 VRB] HandleEvent RunJobEvent
+[11:17:24 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[11:17:24 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 954 --job-identifier 1 --operation-parent-id "00-acd92ebff6dbf821c61bcd368fe7531a-13381edf4b56d1b3-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[11:17:24 INF] Start process=True PID=10372 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 954 --job-identifier 1 --operation-parent-id "00-acd92ebff6dbf821c61bcd368fe7531a-13381edf4b56d1b3-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[11:17:25 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/954?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:17:26 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/954?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:17:27 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/954?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:17:27 INF] The job 1 is successfully launched.
+[11:25:11 VRB] HandleCommand RunJobCommand
+[11:25:11 VRB] HandleQuery GetCheckUserCommand
+[11:25:11 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[11:25:11 VRB] HandleCommand GetJobInstanceIdCommand
+[11:25:11 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[11:25:11 VRB] HandleEvent RunJobEvent
+[11:25:11 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[11:25:11 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 955 --job-identifier 1 --operation-parent-id "00-c6ddd28369451ff994d667690f96412b-0aa1ac99472bc29f-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[11:25:11 INF] Start process=True PID=12656 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 955 --job-identifier 1 --operation-parent-id "00-c6ddd28369451ff994d667690f96412b-0aa1ac99472bc29f-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[11:25:12 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/955?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:25:13 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/955?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:25:13 INF] The job 1 is successfully launched.
+[11:30:04 VRB] HandleCommand RunJobCommand
+[11:30:04 VRB] HandleQuery GetCheckUserCommand
+[11:30:04 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[11:30:04 VRB] HandleCommand GetJobInstanceIdCommand
+[11:30:04 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[11:30:04 VRB] HandleEvent RunJobEvent
+[11:30:04 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[11:30:04 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 956 --job-identifier 2 --operation-parent-id "00-b72f0ca15ce37d05992b1b91071577db-77c65f372fe6639e-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[11:30:04 INF] Start process=True PID=12304 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 956 --job-identifier 2 --operation-parent-id "00-b72f0ca15ce37d05992b1b91071577db-77c65f372fe6639e-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[11:30:05 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/956?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:30:06 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/956?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:30:06 INF] The job 2 is successfully launched.
+[11:40:03 VRB] HandleCommand RunJobCommand
+[11:40:03 VRB] HandleQuery GetCheckUserCommand
+[11:40:03 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[11:40:03 VRB] HandleCommand GetJobInstanceIdCommand
+[11:40:03 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[11:40:03 VRB] HandleEvent RunJobEvent
+[11:40:03 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[11:40:03 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 957 --job-identifier 2 --operation-parent-id "00-97b7943b2cb689b9e82c3bfbb34a1ba8-c19b64f5dd3b7da1-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[11:40:03 INF] Start process=True PID=1060 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 957 --job-identifier 2 --operation-parent-id "00-97b7943b2cb689b9e82c3bfbb34a1ba8-c19b64f5dd3b7da1-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[11:40:04 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/957?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:40:05 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/957?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:40:05 INF] The job 2 is successfully launched.
+[11:41:01 VRB] HandleCommand RunJobCommand
+[11:41:01 VRB] HandleQuery GetCheckUserCommand
+[11:41:01 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[11:41:01 VRB] HandleCommand GetJobInstanceIdCommand
+[11:41:01 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[11:41:01 VRB] HandleEvent RunJobEvent
+[11:41:01 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[11:41:01 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 958 --job-identifier 38001 --operation-parent-id "00-246780098a3f6ed5e8351400c3fdeb66-04250f0588c43190-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[11:41:01 INF] Start process=True PID=5996 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 958 --job-identifier 38001 --operation-parent-id "00-246780098a3f6ed5e8351400c3fdeb66-04250f0588c43190-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[11:41:02 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/958?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:41:02 INF] The job 38001 is successfully launched.
+[11:42:23 VRB] HandleCommand RunJobCommand
+[11:42:23 VRB] HandleQuery GetCheckUserCommand
+[11:42:23 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[11:42:23 VRB] Refreshing token: old token expiration date=02/04/2025 10:41:27
+[11:42:23 VRB] Refreshed token: token expiration date=02/04/2025 11:39:23
+[11:42:23 VRB] HandleCommand GetJobInstanceIdCommand
+[11:42:23 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[11:42:23 VRB] Refreshing token: old token expiration date=02/04/2025 10:41:27
+[11:42:23 VRB] Refreshed token: token expiration date=02/04/2025 11:39:23
+[11:42:23 VRB] HandleEvent RunJobEvent
+[11:42:23 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[11:42:23 VRB] Refreshing token: old token expiration date=02/04/2025 10:41:27
+[11:42:23 VRB] Refreshed token: token expiration date=02/04/2025 11:39:23
+[11:42:23 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 959 --job-identifier 38001 --operation-parent-id "00-a91ef38460c7a1abdd2b9dce2e0e9353-9ff4940ab12e2c8d-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[11:42:23 INF] Start process=True PID=9364 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 959 --job-identifier 38001 --operation-parent-id "00-a91ef38460c7a1abdd2b9dce2e0e9353-9ff4940ab12e2c8d-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[11:42:23 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/959?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:42:24 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/959?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:42:24 INF] The job 38001 is successfully launched.
+[11:55:37 VRB] HandleCommand RunJobCommand
+[11:55:37 VRB] HandleQuery GetCheckUserCommand
+[11:55:37 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[11:55:37 VRB] HandleCommand GetJobInstanceIdCommand
+[11:55:37 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[11:55:37 VRB] HandleEvent RunJobEvent
+[11:55:37 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[11:55:37 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 960 --job-identifier 2 --operation-parent-id "00-2082e0cefc6a226527335d97cd65e8f3-17030f5d833d89e8-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[11:55:37 INF] Start process=True PID=7376 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 960 --job-identifier 2 --operation-parent-id "00-2082e0cefc6a226527335d97cd65e8f3-17030f5d833d89e8-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[11:55:38 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/960?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:55:39 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/960?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:55:39 INF] The job 2 is successfully launched.
+[12:30:31 VRB] HandleCommand RunJobCommand
+[12:30:31 VRB] HandleQuery GetCheckUserCommand
+[12:30:31 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[12:30:31 VRB] HandleCommand GetJobInstanceIdCommand
+[12:30:31 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[12:30:31 VRB] HandleEvent RunJobEvent
+[12:30:31 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[12:30:31 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 961 --job-identifier 1 --operation-parent-id "00-e7efb8006afda2acc0e2d2547848175b-efdca1d7ecb565f7-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[12:30:31 INF] Start process=True PID=2588 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 961 --job-identifier 1 --operation-parent-id "00-e7efb8006afda2acc0e2d2547848175b-efdca1d7ecb565f7-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[12:30:32 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/961?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:30:33 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/961?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:30:34 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/961?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:30:34 INF] The job 1 is successfully launched.
+[12:32:26 VRB] HandleCommand RunJobCommand
+[12:32:26 VRB] HandleQuery GetCheckUserCommand
+[12:32:26 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[12:32:26 VRB] HandleCommand GetJobInstanceIdCommand
+[12:32:26 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[12:32:26 VRB] HandleEvent RunJobEvent
+[12:32:26 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[12:32:26 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 962 --job-identifier 1 --operation-parent-id "00-214e7b05dcfee50098aaeaf572806856-e3ff7319f77e3c41-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[12:32:26 INF] Start process=True PID=16184 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 962 --job-identifier 1 --operation-parent-id "00-214e7b05dcfee50098aaeaf572806856-e3ff7319f77e3c41-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[12:32:26 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/962?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:32:27 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/962?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:32:27 INF] The job 1 is successfully launched.
+[12:34:34 VRB] HandleCommand RunJobCommand
+[12:34:34 VRB] HandleQuery GetCheckUserCommand
+[12:34:34 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[12:34:34 VRB] HandleCommand GetJobInstanceIdCommand
+[12:34:34 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[12:34:34 VRB] HandleEvent RunJobEvent
+[12:34:34 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[12:34:34 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 963 --job-identifier 2 --operation-parent-id "00-dd61694ed9cf9004bd9e66bfd90a9bdb-f9ad232c33c3be11-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[12:34:34 INF] Start process=True PID=14012 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 963 --job-identifier 2 --operation-parent-id "00-dd61694ed9cf9004bd9e66bfd90a9bdb-f9ad232c33c3be11-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[12:34:34 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/963?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:34:35 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/963?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:34:35 INF] The job 2 is successfully launched.
+[13:07:51 VRB] HandleCommand RunJobCommand
+[13:07:51 VRB] HandleQuery GetCheckUserCommand
+[13:07:51 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[13:07:51 VRB] Refreshing token: old token expiration date=02/04/2025 11:39:23
+[13:07:51 VRB] Refreshed token: token expiration date=02/04/2025 13:04:50
+[13:07:51 VRB] HandleCommand GetJobInstanceIdCommand
+[13:07:51 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[13:07:51 VRB] Refreshing token: old token expiration date=02/04/2025 11:39:23
+[13:07:51 VRB] Refreshed token: token expiration date=02/04/2025 13:04:50
+[13:07:51 VRB] HandleEvent RunJobEvent
+[13:07:51 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[13:07:51 VRB] Refreshing token: old token expiration date=02/04/2025 11:39:23
+[13:07:51 VRB] Refreshed token: token expiration date=02/04/2025 13:04:50
+[13:07:51 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 964 --job-identifier 1 --operation-parent-id "00-c75a3b7b7eaa1fe12cb2dd1eb54d0f8e-4250ded63ac12b4f-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[13:07:51 INF] Start process=True PID=16532 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 964 --job-identifier 1 --operation-parent-id "00-c75a3b7b7eaa1fe12cb2dd1eb54d0f8e-4250ded63ac12b4f-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[13:07:52 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/964?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[13:07:53 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/964?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[13:07:53 INF] The job 1 is successfully launched.
+[13:09:22 VRB] HandleCommand RunJobCommand
+[13:09:22 VRB] HandleQuery GetCheckUserCommand
+[13:09:22 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[13:09:22 VRB] HandleCommand GetJobInstanceIdCommand
+[13:09:22 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[13:09:22 VRB] HandleEvent RunJobEvent
+[13:09:22 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[13:09:22 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 965 --job-identifier 38001 --operation-parent-id "00-c60591dc33f53a3938a2b1d25691c838-b84c67b26ec8d49e-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[13:09:22 INF] Start process=True PID=7100 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 965 --job-identifier 38001 --operation-parent-id "00-c60591dc33f53a3938a2b1d25691c838-b84c67b26ec8d49e-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[13:09:22 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/965?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[13:09:23 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/965?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[13:09:23 INF] The job 38001 is successfully launched.
+[13:10:27 VRB] HandleCommand RunJobCommand
+[13:10:27 VRB] HandleQuery GetCheckUserCommand
+[13:10:27 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[13:10:27 VRB] HandleCommand GetJobInstanceIdCommand
+[13:10:27 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[13:10:27 VRB] HandleEvent RunJobEvent
+[13:10:27 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[13:10:27 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 966 --job-identifier 2 --operation-parent-id "00-19cee624309963dc4f8909b2a953ee9c-d2f2320da065a482-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[13:10:27 INF] Start process=True PID=16404 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 966 --job-identifier 2 --operation-parent-id "00-19cee624309963dc4f8909b2a953ee9c-d2f2320da065a482-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[13:10:28 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/966?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[13:10:29 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/966?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[13:10:29 INF] The job 2 is successfully launched.
+[13:11:53 VRB] HandleCommand RunJobCommand
+[13:11:53 VRB] HandleQuery GetCheckUserCommand
+[13:11:53 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[13:11:53 VRB] HandleCommand GetJobInstanceIdCommand
+[13:11:53 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[13:11:53 VRB] HandleEvent RunJobEvent
+[13:11:53 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[13:11:53 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 967 --job-identifier 38001 --operation-parent-id "00-d513cd549578bf1750eddf6a73c0762b-bbbfd74f70077985-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[13:11:53 INF] Start process=True PID=4296 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 967 --job-identifier 38001 --operation-parent-id "00-d513cd549578bf1750eddf6a73c0762b-bbbfd74f70077985-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[13:11:55 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/967?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[13:11:55 INF] The job 38001 is successfully launched.
+[12:16:56 VRB] HandleCommand RunJobCommand
+[12:16:56 VRB] HandleQuery GetCheckUserCommand
+[12:16:56 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[12:16:56 VRB] Refreshing token: old token expiration date=02/04/2025 13:04:50
+[12:16:56 VRB] Refreshed token: token expiration date=02/05/2025 12:13:55
+[12:16:56 VRB] HandleCommand GetJobInstanceIdCommand
+[12:16:56 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[12:16:56 VRB] Refreshing token: old token expiration date=02/04/2025 13:04:50
+[12:16:56 VRB] Refreshed token: token expiration date=02/05/2025 12:13:55
+[12:16:56 VRB] HandleEvent RunJobEvent
+[12:16:56 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[12:16:56 VRB] Refreshing token: old token expiration date=02/04/2025 13:04:50
+[12:16:57 VRB] Refreshed token: token expiration date=02/05/2025 12:13:56
+[12:16:57 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 971 --job-identifier 1 --operation-parent-id "00-7c61bd85007a03cc71a7edb5090522f4-4c70c67186509f6e-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[12:16:57 INF] Start process=True PID=8968 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 971 --job-identifier 1 --operation-parent-id "00-7c61bd85007a03cc71a7edb5090522f4-4c70c67186509f6e-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[12:16:57 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/971?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:16:58 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/971?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:17:00 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/971?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:17:00 INF] The job 1 is successfully launched.
+[12:21:42 VRB] HandleCommand RunJobCommand
+[12:21:42 VRB] HandleQuery GetCheckUserCommand
+[12:21:42 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[12:21:42 VRB] HandleCommand GetJobInstanceIdCommand
+[12:21:42 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[12:21:42 VRB] HandleEvent RunJobEvent
+[12:21:42 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[12:21:42 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 981 --job-identifier 1 --operation-parent-id "00-fe45da0f5f087be9dc9c1da8dbf0c744-a5fe1225e1c42139-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[12:21:42 INF] Start process=True PID=10384 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 981 --job-identifier 1 --operation-parent-id "00-fe45da0f5f087be9dc9c1da8dbf0c744-a5fe1225e1c42139-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[12:21:43 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/981?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:21:44 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/981?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:21:44 INF] The job 1 is successfully launched.
+[12:27:59 VRB] HandleCommand RunJobCommand
+[12:27:59 VRB] HandleQuery GetCheckUserCommand
+[12:27:59 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[12:27:59 VRB] HandleCommand GetJobInstanceIdCommand
+[12:27:59 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[12:28:00 VRB] HandleEvent RunJobEvent
+[12:28:00 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[12:28:00 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 982 --job-identifier 38001 --operation-parent-id "00-7900f0ef61a852c0b881f82eb209d9dc-fa4137dd937ff86e-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[12:28:00 INF] Start process=True PID=8960 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 982 --job-identifier 38001 --operation-parent-id "00-7900f0ef61a852c0b881f82eb209d9dc-fa4137dd937ff86e-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[12:28:00 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/982?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:28:01 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/982?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:28:01 INF] The job 38001 is successfully launched.
+[12:29:34 VRB] HandleCommand RunJobCommand
+[12:29:34 VRB] HandleQuery GetCheckUserCommand
+[12:29:34 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[12:29:34 VRB] HandleCommand GetJobInstanceIdCommand
+[12:29:34 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[12:29:34 VRB] HandleEvent RunJobEvent
+[12:29:34 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[12:29:34 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 983 --job-identifier 1 --operation-parent-id "00-7a8024775390b488fad2a08567c1fc9c-640650e361da7b5e-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[12:29:34 INF] Start process=True PID=9632 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 983 --job-identifier 1 --operation-parent-id "00-7a8024775390b488fad2a08567c1fc9c-640650e361da7b5e-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[12:29:34 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/983?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:29:35 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/983?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:29:36 INF] The job 1 is successfully launched.
+[12:29:40 VRB] HandleCommand RunJobCommand
+[12:29:40 VRB] HandleQuery GetCheckUserCommand
+[12:29:40 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[12:29:40 VRB] HandleCommand GetJobInstanceIdCommand
+[12:29:40 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[12:29:40 VRB] HandleEvent RunJobEvent
+[12:29:40 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[12:29:40 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 984 --job-identifier 2 --operation-parent-id "00-84787edc98b2d17f3d571ab8091eeaff-bebab9ae1316cad0-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[12:29:40 INF] Start process=True PID=10148 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 984 --job-identifier 2 --operation-parent-id "00-84787edc98b2d17f3d571ab8091eeaff-bebab9ae1316cad0-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[12:29:40 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/984?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:29:44 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/984?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:29:44 INF] The job 2 is successfully launched.
+[12:34:07 VRB] HandleCommand RunJobCommand
+[12:34:07 VRB] HandleQuery GetCheckUserCommand
+[12:34:07 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[12:34:07 VRB] HandleCommand GetJobInstanceIdCommand
+[12:34:07 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[12:34:07 VRB] HandleEvent RunJobEvent
+[12:34:07 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[12:34:07 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 985 --job-identifier 38001 --operation-parent-id "00-f86e5d1ab7221819bcaadc003f4ac4f8-517ce8577c7a484e-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[12:34:07 INF] Start process=True PID=6716 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 985 --job-identifier 38001 --operation-parent-id "00-f86e5d1ab7221819bcaadc003f4ac4f8-517ce8577c7a484e-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[12:34:08 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/985?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:34:09 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/985?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:34:09 INF] The job 38001 is successfully launched.
+[12:35:48 VRB] HandleCommand RunJobCommand
+[12:35:48 VRB] HandleQuery GetCheckUserCommand
+[12:35:48 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[12:35:48 VRB] HandleCommand GetJobInstanceIdCommand
+[12:35:48 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[12:35:48 VRB] HandleEvent RunJobEvent
+[12:35:48 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[12:35:48 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 986 --job-identifier 38001 --operation-parent-id "00-0546e1e2c2a3c23e088edf8854c962c7-175c85356a2fe376-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[12:35:48 INF] Start process=True PID=9512 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 986 --job-identifier 38001 --operation-parent-id "00-0546e1e2c2a3c23e088edf8854c962c7-175c85356a2fe376-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[12:35:49 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/986?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:35:50 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/986?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:35:50 INF] The job 38001 is successfully launched.
+[13:31:53 VRB] HandleCommand RunJobCommand
+[13:31:53 VRB] HandleQuery GetCheckUserCommand
+[13:31:53 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[13:31:53 VRB] Refreshing token: old token expiration date=02/05/2025 12:13:55
+[13:31:53 VRB] Refreshed token: token expiration date=02/05/2025 13:28:53
+[13:31:53 VRB] HandleCommand GetJobInstanceIdCommand
+[13:31:53 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[13:31:53 VRB] Refreshing token: old token expiration date=02/05/2025 12:13:55
+[13:31:53 VRB] Refreshed token: token expiration date=02/05/2025 13:28:53
+[13:31:53 VRB] HandleEvent RunJobEvent
+[13:31:53 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[13:31:53 VRB] Refreshing token: old token expiration date=02/05/2025 12:13:56
+[13:31:53 VRB] Refreshed token: token expiration date=02/05/2025 13:28:53
+[13:31:53 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 987 --job-identifier 1 --operation-parent-id "00-7fc8afea6242b2caa7961c0caae8628f-a07ab7f6f08eb788-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[13:31:53 INF] Start process=True PID=11452 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 987 --job-identifier 1 --operation-parent-id "00-7fc8afea6242b2caa7961c0caae8628f-a07ab7f6f08eb788-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[13:31:53 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/987?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[13:31:55 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/987?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[13:31:55 INF] The job 1 is successfully launched.
+[13:35:46 VRB] HandleCommand RunJobCommand
+[13:35:46 VRB] HandleQuery GetCheckUserCommand
+[13:35:46 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[13:35:46 VRB] HandleCommand GetJobInstanceIdCommand
+[13:35:46 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[13:35:46 VRB] HandleEvent RunJobEvent
+[13:35:46 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[13:35:46 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 988 --job-identifier 2 --operation-parent-id "00-eded43ad814919feba24ad4148ec7987-563027a48fef8463-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[13:35:46 INF] Start process=True PID=10324 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 988 --job-identifier 2 --operation-parent-id "00-eded43ad814919feba24ad4148ec7987-563027a48fef8463-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[13:35:46 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/988?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[13:35:47 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/988?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[13:35:47 INF] The job 2 is successfully launched.

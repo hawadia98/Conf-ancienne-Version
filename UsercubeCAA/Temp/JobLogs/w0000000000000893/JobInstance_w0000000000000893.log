@@ -1,0 +1,33 @@
+﻿[16:20:38 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/893?api-version=3.0&jobGroupId=42001&current=0&totalTask=0&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[16:20:38 VRB] Refreshed token: token expiration date=01/30/2025 16:17:37
+[16:20:38 VRB] HandleCommand ReserveTaskInstanceIdCommand
+[16:20:38 VRB] Reserve 4 next TaskInstanceId
+[16:20:38 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceId/4?api-version=1.0
+[16:20:38 VRB] Check the JobInstance state for JobInstance 893.
+[16:20:38 VRB] HandleQuery SelectJobInstanceByIdQuery
+[16:20:38 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/893?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[16:20:38 INF] ComputeCorrelationKeysTask: OUD_LDAP_ConnectorCorrelation (Level: 0, LaunchOrder: 0)
+    EntityType: OUD_LDAP_Entry
+
+[16:20:38 VRB] Check the instance state for Task OUD_LDAP_ConnectorCorrelation
+[16:20:38 VRB] HandleCommand TaskInstanceProgressCommand
+[16:20:38 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[16:20:38 INF] Launch task: ComputeCorrelationKeysTask: OUD_LDAP_ConnectorCorrelation, Task 1/4
+[16:20:38 VRB] HandleCommand RunTaskCommand
+[16:20:38 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/65003?api-version=4.0&jobInstanceId=893&jobLogLevel=Trace
+[16:20:38 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/893?api-version=3.0&jobGroupId=42001&current=0&totalTask=0&state=Error&resourceId=-1&cancelRequest=False&retry=False
+[16:20:38 ERR] Exception while running state machine for job: 42001
+System.Exception: Error while Runtask OUD_LDAP_ConnectorCorrelation
+ ---> System.Exception: Error while executing RuntaskCommand: 65003
+ ---> System.Exception: Task 65003 launch failed with status code 500 Internal Server Error 
+   at Usercube.Application.Jobs.HttpImpl.CommandHandlers.RunTaskCommandHandler.Handle(RunTaskCommand command, IProgress`1 progress, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Usercube.Application.Jobs.HttpImpl.CommandHandlers.RunTaskCommandHandler.Handle(RunTaskCommand command, IProgress`1 progress, CancellationToken cancellationToken)
+   at Usercube.Jobs.StateMachine.RunStateMachine.LaunchStepTask(JobStep step, QueryApiContext queryContext, TaskInstanceRef taskInstanceId, Int32 launchOrder, IInvokeJobProgress progress, Int32 totalStep, CommandApiContext commandContext, LogLevel jobLogLevel, Int32 taskTimeoutSupplement, CancellationToken token)
+   --- End of inner exception stack trace ---
+   at Usercube.Jobs.StateMachine.RunStateMachine.LaunchStepTask(JobStep step, QueryApiContext queryContext, TaskInstanceRef taskInstanceId, Int32 launchOrder, IInvokeJobProgress progress, Int32 totalStep, CommandApiContext commandContext, LogLevel jobLogLevel, Int32 taskTimeoutSupplement, CancellationToken token)
+   at Usercube.Jobs.StateMachine.RunStateMachine.LaunchStepsJob(Int32 repairLevel, Job job, ReserveTaskInstanceIdResult reserveInstanceResult, QueryApiContext queryContext, Int32 launchOrder, IInvokeJobProgress progress, Int32 totalStep, CommandApiContext commandContext, LogLevel jobLogLevel, Int32 taskTimeoutSupplement, CancellationToken token)
+   at Usercube.Jobs.StateMachine.RunStateMachine.Run(Job job, IInvokeJobProgress progress, QueryApiContext queryContext, CommandApiContext commandContext, LogLevel jobLogLevel, Int32 taskTimeoutSupplement, CancellationToken token)
+   at Usercube.InvokeJob.InvokeJobCommandHandler.Handle(InvokeJobCommand invokeJobCommand)
+[16:20:38 VRB] HandleCommand SendJobNotificationCommand
+[16:20:38 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/Job/Notification?api-version=1.0

@@ -1,0 +1,11 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Profile Identifier="Administrator" DisplayName_L1="Administrator" />
+  
+  <SettingsAccessControlRules Profile="Administrator" />
+
+  <!--TODO in a default scaffolding -->
+  <AccessControlRule Profile="Administrator" EntityType="Profile" Identifier="Administrator_Setting_Workflows*" DisplayName_L1="Administrator_Setting_Workflows*">
+    <Entry Permission="/AccessControl/Profile/Query" CanExecute="true" />
+  </AccessControlRule>
+</ConfigurationFile>

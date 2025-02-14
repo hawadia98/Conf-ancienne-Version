@@ -1,0 +1,21 @@
+﻿[11:21:05 VRB] Getting the previously tracked accounts from '../Work\PasswordReset\tracked-accounts-ADPacificaExportFulfillment.csv'...
+[11:21:05 VRB] 0 tracked accounts found
+[11:21:05 VRB] HandleQuery SelectProvisionerResourceTypeMappingByQueryQuery
+[11:21:05 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Connectors/Mapping/ResourceTypeMapping/ProvisionerResourceTypeMapping?api-version=2.0&Path=%2FConnectors%2FResourceTypeMapping%2FQuery&resourcetypes=2
+[11:21:05 VRB] Refreshed token: token expiration date=02/11/2025 11:18:04
+[11:21:06 VRB] HandleCommand FulfillLdapCommand
+[11:21:06 INF] Fulfill-Ldap started ResourceTypes=2 TaskInstanceId=6747
+[11:21:06 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/6747?api-version=1.0
+[11:21:06 DBG] Fetching provisioning orders api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=2
+[11:21:06 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=2
+[11:21:06 DBG] Fetching provisioning orders api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=2
+[11:21:06 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=2
+[11:21:06 VRB] Detected an account (4521351) activation ...
+[11:21:06 VRB] The account (4521351) was not tracked...
+[11:21:06 VRB] The activated account (4521351) is not tracked by the password reset system, Skipping...
+[11:21:06 VRB] ModifyRequest CN=tati.toto,OU=Pacifica,OU=Utilisateurs,DC=ca-pacificadev,DC=fr userAccountControl Replace 512
+[11:21:06 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Connectors/Provisioning/ProvisioningResults?api-version=1.0
+[11:21:06 DBG] Saved tracked password reset accounts
+[11:21:06 INF] Fulfillment process completed. Executed orders: 1/1 - Inserted: 0 | Updated: 1 | Deleted: 0 | Errors: 0
+[11:21:06 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/6747?api-version=1.0
+[11:21:06 INF] Fulfill-Ldap completed TaskInstanceId=6747

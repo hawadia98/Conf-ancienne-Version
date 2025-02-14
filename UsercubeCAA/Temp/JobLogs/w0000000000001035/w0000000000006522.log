@@ -1,0 +1,18 @@
+﻿[10:51:17 VRB] Getting the previously tracked accounts from '../Work\PasswordReset\tracked-accounts-ADPacificaExportFulfillment.csv'...
+[10:51:17 VRB] 0 tracked accounts found
+[10:51:17 VRB] HandleQuery SelectProvisionerResourceTypeMappingByQueryQuery
+[10:51:17 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Connectors/Mapping/ResourceTypeMapping/ProvisionerResourceTypeMapping?api-version=2.0&Path=%2FConnectors%2FResourceTypeMapping%2FQuery&resourcetypes=2
+[10:51:17 VRB] Refreshed token: token expiration date=02/11/2025 10:48:17
+[10:51:17 VRB] HandleCommand FulfillLdapCommand
+[10:51:17 INF] Fulfill-Ldap started ResourceTypes=2 TaskInstanceId=6522
+[10:51:17 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/6522?api-version=1.0
+[10:51:17 DBG] Fetching provisioning orders api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=2
+[10:51:17 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=2
+[10:51:17 DBG] Fetching provisioning orders api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=2
+[10:51:17 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=2
+[10:51:17 VRB] ModifyRequest CN=test.riri,OU=Pacifica,OU=Utilisateurs,DC=ca-pacificadev,DC=fr userAccountControl Replace 514
+[10:51:17 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Connectors/Provisioning/ProvisioningResults?api-version=1.0
+[10:51:18 DBG] Saved tracked password reset accounts
+[10:51:18 INF] Fulfillment process completed. Executed orders: 1/1 - Inserted: 0 | Updated: 1 | Deleted: 0 | Errors: 0
+[10:51:18 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/6522?api-version=1.0
+[10:51:18 INF] Fulfill-Ldap completed TaskInstanceId=6522

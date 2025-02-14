@@ -1,0 +1,22 @@
+﻿[21:01:31 VRB] HandleCommand FulfillInternalWorkflowsCommand
+[21:01:31 INF] Fulfill-InternalWorkflow started ResourceTypes=53,54 TaskInstanceId=3952
+[21:01:31 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/3952?api-version=1.0
+[21:01:31 VRB] Refreshed token: token expiration date=01/28/2025 20:58:31
+[21:01:31 DBG] Fetching provisioning orders api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=53&ResourceTypes=54
+[21:01:31 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=53&ResourceTypes=54
+[21:01:32 DBG] Fetching provisioning orders api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=53&ResourceTypes=54
+[21:01:32 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=53&ResourceTypes=54
+[21:01:32 DBG] Fetching provisioning orders api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=53&ResourceTypes=54
+[21:01:32 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=53&ResourceTypes=54
+[21:01:32 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Connectors/Provisioning/ProvisioningResults?api-version=1.0
+[21:01:32 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Workflows/Workflow?api-version=1.0&squery=SELECT%20Id%20WHERE%20Identifier%20%3D%20%22Directory_User_UpdateFromHR%22&path=/Workflows/Workflow/Query
+[21:01:32 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Workflows/ActivityTemplateTransition?api-version=1.0&squery=SELECT%20Id%20WHERE%20Identifier%20%3D%20%22Action-ActionPending-Execute%22&path=/Workflows/ActivityTemplateTransition/Query
+[21:01:32 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Workflows/WorkflowInstance?api-version=1.0
+[21:01:33 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Workflows/Workflow?api-version=1.0&squery=SELECT%20Id%20WHERE%20Identifier%20%3D%20%22Directory_User_CreateFromHR%22&path=/Workflows/Workflow/Query
+[21:01:33 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Workflows/ActivityTemplateTransition?api-version=1.0&squery=SELECT%20Id%20WHERE%20Identifier%20%3D%20%22Action-ActionPending-Execute%22&path=/Workflows/ActivityTemplateTransition/Query
+[21:01:33 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Workflows/WorkflowInstance?api-version=1.0
+[21:01:34 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Workflows/WorkflowInstance?api-version=1.0
+[21:01:35 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Connectors/Provisioning/ProvisioningResults?api-version=1.0
+[21:01:35 INF] Fulfillment process completed. Executed orders: 4/4 - Inserted: 2 | Updated: 2 | Deleted: 0 | Errors: 0
+[21:01:35 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/3952?api-version=1.0
+[21:01:35 INF] Fulfill-InternalWorkflow completed TaskInstanceId=3952

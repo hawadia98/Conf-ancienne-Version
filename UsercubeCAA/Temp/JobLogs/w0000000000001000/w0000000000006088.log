@@ -1,0 +1,23 @@
+﻿[11:13:31 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/6088?api-version=1.0
+[11:13:31 VRB] Refreshed token: token expiration date=02/10/2025 11:10:30
+[11:13:31 DBG] Start Process powershell.exe -NoProfile -NonInteractive -File C:/Applications/UsercubeCAA/Scripts/ApplicationMail/Applications_Reset_Files.ps1 null
+[11:13:31 INF] Start process=True PID=10916 powershell.exe -NoProfile -NonInteractive -File C:/Applications/UsercubeCAA/Scripts/ApplicationMail/Applications_Reset_Files.ps1
+[11:13:32 INF] The argument 'C:/Applications/UsercubeCAA/Scripts/ApplicationMail/Applications_Reset_Files.ps1' to the -File parameter does not exist. Provide the path to an existing '.ps1' file as an argument to the -File parameter.
+[11:13:32 INF] Windows PowerShell
+[11:13:32 INF] Copyright (C) Microsoft Corporation. All rights reserved.
+[11:13:32 INF] 
+[11:13:32 INF] Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+[11:13:32 INF] 
+[11:13:32 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/6088?api-version=1.0
+[11:13:32 ERR] Error in Invoke-ExpressionAgentSide
+System.Exception: PowerShell script C:/Applications/UsercubeCAA/Scripts/ApplicationMail/Applications_Reset_Files.ps1 execution failed with ExitCode : -196608
+   at Usercube.Jobs.ProcessService.RunPowerShellScriptSynchronously(String command, String workingDirectory, IFileFacade fileFacade)
+   at Usercube.InvokeExpressionAgentSide.InvokeExpressionAgentSideCommandHandler.Handle(InvokeExpressionAgentSideCommand invokeExpressionCommand)
+[11:13:32 FTL] PowerShell script C:/Applications/UsercubeCAA/Scripts/ApplicationMail/Applications_Reset_Files.ps1 execution failed with ExitCode : -196608
+System.Exception: PowerShell script C:/Applications/UsercubeCAA/Scripts/ApplicationMail/Applications_Reset_Files.ps1 execution failed with ExitCode : -196608
+   at Usercube.Jobs.ProcessService.RunPowerShellScriptSynchronously(String command, String workingDirectory, IFileFacade fileFacade)
+   at Usercube.InvokeExpressionAgentSide.InvokeExpressionAgentSideCommandHandler.Handle(InvokeExpressionAgentSideCommand invokeExpressionCommand)
+   at Usercube.InvokeExpressionAgentSide.InvokeExpressionAgentSideCommandHandler.Handle(InvokeExpressionAgentSideCommand invokeExpressionCommand)
+   at Usercube.InvokeExpressionAgentSide.InvokeExpressionAgentSideDecorator.<>c__DisplayClass0_0.<InvokeExpressionAgentSideTask>g__Invoke|1(TaskConfigurationContext context)
+   at Usercube.CommandLine.Impl.CommandLine`1.Resolve(String[] args, TContext context, Boolean ignoreUnknownArguments)
+   at Usercube.CommandLine.Tasks.TaskCommandLine.Run(String[] args, Boolean ignoreUnknownArguments)

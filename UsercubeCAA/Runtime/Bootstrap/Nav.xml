@@ -1,0 +1,6 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <!--
+  Left menu with all the connectors
+  -->
+  <MenuItem Identifier="Nav_Connectors" DisplayName_L1="Connectors" ParentMenuItem="Nav" />
+</ConfigurationFile>

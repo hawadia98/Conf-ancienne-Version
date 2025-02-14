@@ -1,0 +1,13 @@
+﻿[10:53:13 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/3625?api-version=1.0
+[10:53:13 VRB] Refreshed token: token expiration date=01/27/2025 10:50:13
+[10:53:13 DBG] Start Process powershell.exe -NoProfile -NonInteractive -File D:\UsercubeCAA\Scripts\HR\HR_UserUpdate_BulkResourceReconciliation.ps1 null
+[10:53:13 INF] Start process=True PID=6072 powershell.exe -NoProfile -NonInteractive -File D:\UsercubeCAA\Scripts\HR\HR_UserUpdate_BulkResourceReconciliation.ps1
+[10:53:13 INF] Custom configuration successfully loaded from D:\UsercubeCAA\Runtime\appsettings.json
+[10:53:13 INF] Custom configuration successfully loaded from D:\UsercubeCAA\Runtime\appsettings.agent.json
+[10:53:13 INF] Installation will run with following context variables :
+[10:53:13 INF] - scriptsPath : D:\UsercubeCAA\Scripts
+[10:53:13 INF] - confPath : D:\UsercubeCAA\Conf
+[10:53:13 INF] - apiUri : https://dev-fusion-iam.caa.group.gca
+[10:53:13 INF] 1
+[10:53:44 INF] [OK] Bulk reconciliation.
+[10:53:44 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/3625?api-version=1.0

@@ -1,0 +1,5 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Profile Identifier="Workforce/Workflows/Directory_Title/Administration" DisplayName_L1="Workforce/Workflows/Administrate Titles" IsComponent="true" />
+
+  <CreateUpdateDeleteAccessControlRules EntityType="Directory_Title" Profile="Workforce/Workflows/Directory_Title/Administration" />
+</ConfigurationFile>

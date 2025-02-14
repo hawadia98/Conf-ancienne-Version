@@ -1,0 +1,15 @@
+[15:17:14 DBG] MailSettings loaded:
+Enabled: True
+Host: 
+PickupDirectory: D:\UsercubeCAA\Mails
+Port: 0
+Username: 
+FromAddress: no-reply@caa.fr
+CatchAllAddress: 
+CatchAllCCAddress: 
+UseDefaultCredentials: False
+EnableSsl: False
+SecureSocketOption: 
+UseSpecifiedPickupDirectory: True
+EnableMailTesting: False
+AllowedDomains: none

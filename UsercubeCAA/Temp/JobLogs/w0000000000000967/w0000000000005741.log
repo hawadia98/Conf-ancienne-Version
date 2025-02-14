@@ -1,0 +1,17 @@
+﻿[13:11:55 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/5741?api-version=1.0
+[13:11:55 VRB] Refreshed token: token expiration date=02/04/2025 13:08:55
+[13:11:55 DBG] Start Process powershell.exe -NoProfile -NonInteractive -File D:/UsercubeCAA/Scripts/ADA/ADA_Export.ps1 null
+[13:11:55 INF] Start process=True PID=9600 powershell.exe -NoProfile -NonInteractive -File D:/UsercubeCAA/Scripts/ADA/ADA_Export.ps1
+[13:11:55 INF] https://dev-fusion-iam.caa.group.gca/connect/token
+[13:11:55 INF] eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZDQkMtSFM1MTIiLCJraWQiOiI1NTYwQTIyMkRFM0IwMkQ1OTgzMTE3RDU3QTIxQTYwRDNGMjlBRkIwIiwidHlwIjoiYXQrand0IiwiY3R5IjoiSldUIn0.siRzSgGRe-SQ7-3HvYPws9eJlJkYI08Mk7zy5jOyluDNzOp94aosnZzqisbgYcqRAJRzZfoHZOl0Fq8y-Ll4DpvJu1mVvfxiIk26a8Ymxi5QWFHhmEGhTu9mBypvCf5_UmGJ1y2nRTCVTIMhOZOq0eNI-SK7L_mtJ-ep_P_T4mFz1HQ1bVVtvOzYxE-ZOM9tuV2iMbVczS_dOXvPgr5Zjzz0dDxmeIQlc4902J-y2VdR148rubHj8z-kXbZKNPlQEFgYLXXRa5J69snPQSyZRWp7pRANTBvSkr8f5_PnbRCqzV6XTj1x3u_kdeFnW79DEfdsqm88oP7mg29oikTBbQ.OeENbPXE_NIIq9s5B1Aofg._6wIZsoYtjaG2bBOmZ-1UCF8utq6D9UZYzZSjXqUogJcLMjZlGt0MFQXmBHL3UT6TEvCtOSZY5J0YLgQRR12Fzac4x_qW0EI2FB_nVcGOVN6PGd1MPAIYSezqOjlkYTLKg-AHS6DrCc9wOF4KXW4xyCN9rc1MtkS75_U9zjtzTq_TE6NYHru5ILFUJiHOXTAZl13mHqwtG-NzhtY72rYAtsgoTZP8jqiVymvBvpmAhcvXzA67OCEvK-oIu3L2Zj6XMD1aKLauh7SYMNquP7L3pZgSH3xWqVp50gXbeiPMbJsKA4bbCD4uVsulpmoqR2dkHujHxctpGCK5VDz0M8v7JPRArwZo4YZhvzDziVusinLYLu6AWA6LRGDtyxhKWV-UfQT8k8QLdvaDm0F8qlQ9-z1RYvjjItqedKMEQTVJaN6coNb397LI2cA4dSMwgTu-DptKRAlEkPGZe24StYVMjeCoRTztq5VTsOieYMbZ0z0uL806b156UabR3TBf8WBUSFAJEmfsIt_vaz4kIb1XRbItQE8HEEn_tR9ZRUQiAH_YhVU2y9bFQdpP-A1grQ8NU2H-Z9FiX8Mj_Vurnr00VRw8caQ8yCunnrF_SExFKdAw2MkpdTSF4kmU0g9PstBQh2FrYxscZNEAy8xTLG7s0HNcHlIiuOzJIUNEXSygR8m_tBda3isetX6ek489cm6WkL1Or84svEUBaBpMaBq2_cpeZZbLUlivG610doOkHiSZVdY-mVgRhJZAV2H8dRozRrY_aaEL6s5MmZGNcsS0JG4P9jpHdRlZvLQUBJZQAHUtD8S47OKzogNpccVoLEqf-7Vepj4ODiY-YR7KB4Whsxtoqzn4udlWD24gXYnQuSqkxxLjyO9uVwYL3pVchkO0OUWX2_SsnnWqaQqO_jhnpZohFEl-lXXEKH3TEQjyfpQ2S4kWtbgxEC6hUJVx9RDHa6DMyrhtlozOWYcP0vkJocCUR1kMdcL5hEBm3xqBDAptHCfbgutE1kUcSf118FKxn6q99r5ndsNfiXG8p_BqcGTdVrWnZW_FZLFWZK0u4VrI-x-hUX2J_BCBytPVXag0L_LpLbmzNZ1zFudCxnBovFmyoCi3OUtdhpSmBivQM9bN-hGRJIvz3mP_G0B1XvJvIEdnnnqcVQCpB6h_qz7NbOM44IrBTI9PdqNEOdCVJ_QrraeJrSnOmjVCLsUOFloChxHPjq5KfTW0SghZ1TxBHgVcxxCxSKfdOruGWxifkE.HMsBf1h84eMf6RldMLqPWjmG4JiA2VAdNWkq1Tenxxg
+[13:11:56 INF] Najat
+[13:11:56 INF] Safa
+[13:11:56 INF] Leslie
+[13:11:56 INF] Amela
+[13:11:56 INF] Jennifer
+[13:11:56 INF] Amélie
+[13:11:56 INF] Man
+[13:11:56 INF] Nicolas
+[13:11:56 INF] Test
+[13:11:56 INF] Tati
+[13:11:56 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/5741?api-version=1.0

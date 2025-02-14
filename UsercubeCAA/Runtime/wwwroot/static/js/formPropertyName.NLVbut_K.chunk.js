@@ -1,0 +1,2 @@
+import{lo as o}from"./index.BmK4L5gP.js";function a(r){return r.ControlType===o.WorkflowCreateEntity||r.ControlType===o.WorkflowEditEntity?"Form":"MainForm"}const n={[o.WorkflowCreateSeveralRecordsEntity]:"RecordForm",[o.WorkflowUpdateSeveralRecordsEntity]:"RecordSharedForm"};function d(r,e){return r.ControlType===o.WorkflowUpdateSeveralRecordsEntity?e||!r.RecordUpdateForm?"RecordForm":"RecordUpdateForm":r.ControlType===o.WorkflowCreateSeveralRecordsEntity?"RecordSlaveForm":"RecordForm"}export{n as R,a,d as f};
+//# sourceMappingURL=formPropertyName.NLVbut_K.chunk.js.map

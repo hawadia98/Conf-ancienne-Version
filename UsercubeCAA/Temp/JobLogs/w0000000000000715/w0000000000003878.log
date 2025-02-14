@@ -1,0 +1,33 @@
+﻿[15:35:59 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/3878?api-version=1.0
+[15:36:00 VRB] Refreshed token: token expiration date=01/28/2025 15:33:00
+[15:36:00 DBG] Start Process powershell.exe -NoProfile -NonInteractive -File D:/UsercubeCAA/Scripts/RCI/RCI_Export_Person_API.ps1 null
+[15:36:00 INF] Start process=True PID=5436 powershell.exe -NoProfile -NonInteractive -File D:/UsercubeCAA/Scripts/RCI/RCI_Export_Person_API.ps1
+[15:36:00 INF] https://dev-fusion-iam.caa.group.gca/api/Resource/Directory_User?api-version=1.0&path=/Custom/Resources/Directory_User/View&QueryRootEntityType=Directory_User&squery=join MainRecord r join PresenceState p join r.Organization o join r.Manager mr join mr.MainRecord mrr join r.Company c select r.FirstName, r.LastName, r.EmployeeId, c.DisplayName, mrr.FirstName, mrr.LastName where (c.DisplayName != "CAAS" and o.DisplayName != "S80" and p.Identifier="P") order by Id asc&PageSize=10000&ContinuationToken=
+[15:36:00 INF] https://dev-fusion-iam.caa.group.gca/connect/token
+[15:36:01 INF] eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZDQkMtSFM1MTIiLCJraWQiOiI1NTYwQTIyMkRFM0IwMkQ1OTgzMTE3RDU3QTIxQTYwRDNGMjlBRkIwIiwidHlwIjoiYXQrand0IiwiY3R5IjoiSldUIn0.k1UPYoRlvCOulZiSlTJGOi3u4p5viix1qVGJh7tnQpuP2Nv3C0ILQt2NwxmdWbWBNQeNllrmyyK8awZY4SpgRSVg23_oE7ieh1OYchQ-jPfW9lLQF58Ei3l6k_j5SudaVpdVoDxwzLMf7p6PyJbp793d4QXCy-PI31SzpN3iA3wSwPmrj9HRwsa8GSFrCrzn5fgzErI9vR2bEoBNQetgr15s63vqUAyZV845EE6JFGXnBziuURREqwFUL9hr7k3q8r4ZwC56QErEPbDuDvIIIzDxwnFiCIeDBSc8Fg3ZvEJkIc9yF92W3Sf9RD1UG2R887PDYFTfpM7Aq47v07ejfw.vMHKdB4ua4pkNjYaVNlWFA.wNvK-SmrBKGEmYq2IhJRuw2UHx69whToR58ZxTdNceZcP6obheBvVts254HIfvKLClKWZVJ0i_8xROOSfvEozy71J5SIG1LdFD0w6lPfZ2vPM7E82Q4P2fZQtjUG0ujoN0MA-IzFPRT82qK8vXXwxynGLvz35q3vCiKQZuBuBlOoZqAhYZlUwi8y__HpB1SqjqfoEZGE0jXT-33jWKseRPSH3v61yXjjeK-WPV0wujtMe5oasT0B7Qa9JOkaayXXtBSt7NloGxjULeYf0LPbJiC60pPHCLsBMHWHCTAoVyvPktDQBxL7Ok7naXRhYKVVJGQSP5uZeqyzdFyhMdsOm5em8O3anLFc1l0EsLxYl9WfIcW-zNz-JAh2Rwpf-0q6pFBl29jLj9wgj4ozr2IXOUueYvUSZcMfbu2vNWXQnjRgze_qbXbIaMlBUXT51zfHYYt6M7clbjO1H8m8H5W_phiA0flvn2YIz1PV237h6sllhhhsKdJR5coPxziiXr9Tp4JkXF5IIMdxNI2dfh2FH-n9Fk6OzpV5trBZxUEnLlaick70MSUrMdcpGkgam8uAvbz-tjZZZEcoyiJmwwu33uhsZqWrxvlHKLIsBeOaQw3HKglfgUuf0siahQfctGzIYuDzFy4lBnABRtGSHuOkNgAf8_4pEBZSQvQKpycd5p7d-eJCFAflXrR_8FRBzgRr0VXexybtgl94BFbFtHBchbwxrtC0RX8VKPNdL_huQsgPrYHnD-RgYFi3mI2f1zl5FjBs7-zQnnLcn53pkqNk9owMNma100WuUrCqYBGnnIKmFTfVDVTRHl_bYkv8QkB7S5VotKxpJxsJejRDJ9sWNIepsYB_I33Y_3Bfh1p0MUEqE4aklaI26UYHOnWik8D63Hj_8BKb2NvSeIgvkqNzP72DJvKXlokeSd-egLLJQ9gfQotAl9koQP-R_26v_cj_KVweZ8_ZpuZ_ASMd-9mMmAB2UoinBclVk2lahNdOuEqi-yOf8ruy2G9XFX6q7TLnRtqD6B7Eeo9AH_oWBqGHNQhQmj2tGC5MKvMd3NzUqM5gHRmk_rSW61a16D_H_nyGdJ4dc9YltjxZjxy_3vqt5ITJsBVhb-Zv7KPbDT2kn9A-B4x5KXXVqPZYGK8FGIOAkugxnRsznzwQFmPZu-50JupnvjkcofoqCfXslrMF4wrtDxxtzKvn--YH3xlm3QcER9Csa-YyctcwS4xNOwk5bFtvlxE4f1R2BjLir6bbdCA._1-7fG3qheyhb7bf_UBp-fbOZqCumh2GqngkZWQt5zM
+[15:36:01 INF] New-Object : Exception calling ".ctor" with "3" argument(s): "Could not find a part of the path 
+[15:36:01 INF] 'C:\Applications\UsercubeCAA\Sources\RCI\Export\Export_RCI_Person.csv'."
+[15:36:01 INF] At D:\UsercubeCAA\Scripts\RCI\RCI_Export_Person_API.ps1:43 char:11
+[15:36:01 INF] + $writer = New-Object System.IO.StreamWriter($outputFile, $false, ([Sy ...
+[15:36:01 INF] +           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[15:36:01 INF]     + CategoryInfo          : InvalidOperation: (:) [New-Object], MethodInvocationException
+[15:36:01 INF]     + FullyQualifiedErrorId : ConstructorInvokedThrowException,Microsoft.PowerShell.Commands.NewObjectCommand
+[15:36:01 INF]  
+[15:36:01 INF] You cannot call a method on a null-valued expression.
+[15:36:01 INF] At D:\UsercubeCAA\Scripts\RCI\RCI_Export_Person_API.ps1:47 char:1
+[15:36:01 INF] + $writer.WriteLine('{0};{1};{2};{3};{4};{5}', $headers)
+[15:36:01 INF] + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[15:36:01 INF]     + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+[15:36:01 INF]     + FullyQualifiedErrorId : InvokeMethodOnNull
+[15:36:01 INF]  
+[15:36:02 INF] Jérôme BECHET A0002503253 SIRCA Fabrice STEBEL
+[15:36:02 INF] Error Usercube API
+[15:36:02 INF] You cannot call a method on a null-valued expression.
+[15:36:02 INF] You cannot call a method on a null-valued expression.
+[15:36:02 INF] At D:\UsercubeCAA\Scripts\RCI\RCI_Export_Person_API.ps1:99 char:5
+[15:36:02 INF] +     $writer.Close()
+[15:36:02 INF] +     ~~~~~~~~~~~~~~~
+[15:36:02 INF]     + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+[15:36:02 INF]     + FullyQualifiedErrorId : InvokeMethodOnNull
+[15:36:02 INF]  
+[15:36:02 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/3878?api-version=1.0

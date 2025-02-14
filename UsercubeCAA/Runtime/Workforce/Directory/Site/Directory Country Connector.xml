@@ -1,0 +1,18 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <EntityType Identifier="Directory_Country" DisplayName_L1="Country">
+    <Property Identifier="Identifier" DisplayName_L1="Code" Type="String" TargetColumnIndex="4" IsKey="true" />
+    <Property Identifier="DisplayName" DisplayName_L1="Name" TargetColumnIndex="5" Type="String" TemplateTransformation="OnePerLanguage" />
+    <Property Identifier="ISOCode" DisplayName_L1="ISO Code" Type="String" TargetColumnIndex="6" />
+
+    <Property Identifier="Regions" DisplayName_L1="Regions" Type="ForeignKey" />
+  </EntityType>
+
+  <DisplayEntityType PluralDisplayName_L1="Countries" IconCode="MapPin" Identifier="Directory_Country" Color="#95c18b" HideRoles="true">
+    <Property DisplayOrder="-1" IsRequired="true" Identifier="Identifier" />
+    <Property IsRequired="true" Identifier="DisplayName" />
+    <Property OutputType="BasicCollection" Identifier="Regions" />
+  </DisplayEntityType>
+
+  <CreateUpdateDeleteTemplate EntityType="Directory_Country" Profile="Administrator" />
+  <ConnectorMappings Connector="Directory" EntityType="Directory_Country" IsIncremental="1" Package="Usercube.Excel@0000001" />
+</ConfigurationFile>

@@ -1,0 +1,85 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <DisplayTable Identifier="CONNECTOR_IDENTIFIER_Entry" EntityType="CONNECTOR_IDENTIFIER_Entry" DisplayTableDesignElement="resourcetable" IsEntityTypeDefault="true">
+    <Column DefaultSortPriority="1" DisplayBinding="dn" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="5" />
+    <Column DisplayBinding="displayName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="2" />
+    <Column DisplayBinding="userPrincipalName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="4" />
+    <Column DisplayBinding="objectCategory" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="1" />
+  </DisplayTable>
+
+  <DisplayPropertyGroup Identifier="CONNECTOR_IDENTIFIER_General" DisplayName_L1="General" />
+  <DisplayPropertyGroup Identifier="CONNECTOR_IDENTIFIER_Address" DisplayName_L1="Address" />
+  <DisplayPropertyGroup Identifier="CONNECTOR_IDENTIFIER_Account" DisplayName_L1="Account" />
+  <DisplayPropertyGroup Identifier="CONNECTOR_IDENTIFIER_MemberOf" DisplayName_L1="Membership" />
+  <DisplayPropertyGroup Identifier="CONNECTOR_IDENTIFIER_Organization" DisplayName_L1="Organization" />
+  <DisplayPropertyGroup Identifier="CONNECTOR_IDENTIFIER_Object" DisplayName_L1="Object" />
+
+  <DisplayEntityType Identifier="CONNECTOR_IDENTIFIER_Entry">
+    <Property Identifier="displayName" Group="CONNECTOR_IDENTIFIER_General" DisplayOrder="100" />
+    <Property Identifier="givenName" Group="CONNECTOR_IDENTIFIER_General" DisplayOrder="101" />
+    <Property Identifier="initials" Group="CONNECTOR_IDENTIFIER_General" DisplayOrder="102" />
+    <Property Identifier="sn" Group="CONNECTOR_IDENTIFIER_General" DisplayOrder="103" />
+    <Property Identifier="description" Group="CONNECTOR_IDENTIFIER_General" DisplayOrder="104" />
+    <Property Identifier="thumbnailPhoto" Group="CONNECTOR_IDENTIFIER_General" DisplayOrder="105" />
+    <Property Identifier="telephoneNumber" Group="CONNECTOR_IDENTIFIER_General" DisplayOrder="106" />
+    <Property Identifier="mobile" Group="CONNECTOR_IDENTIFIER_General" DisplayOrder="107" />
+    <Property Identifier="mail" Group="CONNECTOR_IDENTIFIER_General" DisplayOrder="108" />
+
+    <Property Identifier="uid" Group="CONNECTOR_IDENTIFIER_Organization" DisplayOrder="200" />
+    <Property Identifier="employeeID" Group="CONNECTOR_IDENTIFIER_Organization" DisplayOrder="201" />
+    <Property Identifier="employeeNumber" Group="CONNECTOR_IDENTIFIER_Organization" DisplayOrder="202" />
+    <Property Identifier="employeeType" Group="CONNECTOR_IDENTIFIER_Organization" DisplayOrder="203" />
+    <Property Identifier="title" Group="CONNECTOR_IDENTIFIER_Organization" DisplayOrder="204" />
+    <Property Identifier="manager" Group="CONNECTOR_IDENTIFIER_Organization" DisplayOrder="205" />
+    <Property Identifier="assistant" OutputType="BasicCollection" Group="CONNECTOR_IDENTIFIER_Organization" DisplayOrder="206" />
+    <Property Identifier="company" Group="CONNECTOR_IDENTIFIER_Organization" DisplayOrder="207" />
+    <Property Identifier="division" Group="CONNECTOR_IDENTIFIER_Organization" DisplayOrder="208" />
+    <Property Identifier="department" Group="CONNECTOR_IDENTIFIER_Organization" DisplayOrder="209" />
+    <Property Identifier="businessCategory" Group="CONNECTOR_IDENTIFIER_Organization" DisplayOrder="210" />
+    <Property Identifier="assistantOf" OutputType="BasicCollection" Group="CONNECTOR_IDENTIFIER_Organization" DisplayOrder="211" />
+    <Property Identifier="directReports" OutputType="BasicCollection" Group="CONNECTOR_IDENTIFIER_Organization" DisplayOrder="212" />
+
+    <Property Identifier="userPrincipalName" Group="CONNECTOR_IDENTIFIER_Account" DisplayOrder="300" />
+    <Property Identifier="sAMAccountName" Group="CONNECTOR_IDENTIFIER_Account" DisplayOrder="301" />
+    <Property Identifier="groupType" Group="CONNECTOR_IDENTIFIER_Account" DisplayOrder="302" />
+    <Property Identifier="userAccountControl" Format="ToStringUserAccountControl" Group="CONNECTOR_IDENTIFIER_Account" DisplayOrder="303" />
+    <Property Identifier="userAccountControlBit2" Group="CONNECTOR_IDENTIFIER_Account" DisplayOrder="304" />
+    <Property Identifier="userAccountControlBit10" Group="CONNECTOR_IDENTIFIER_Account" DisplayOrder="305" />
+    <Property Identifier="accountExpires" Format="ParseSince1601Date" Group="CONNECTOR_IDENTIFIER_Account" DisplayOrder="306" />
+    <Property Identifier="lastLogonTimestamp" Format="ParseSince1601Date" Group="CONNECTOR_IDENTIFIER_Account" DisplayOrder="307" />
+    <Property Identifier="isUnused" Group="CONNECTOR_IDENTIFIER_Account" DisplayOrder="308" />
+    <Property Identifier="homeDirectory" Group="CONNECTOR_IDENTIFIER_Account" DisplayOrder="309" />
+    <Property Identifier="homeDrive" Group="CONNECTOR_IDENTIFIER_Account" DisplayOrder="310" />
+    <Property Identifier="scriptPath" Group="CONNECTOR_IDENTIFIER_Account" DisplayOrder="311" />
+    <Property Identifier="pwdLastSet" Group="CONNECTOR_IDENTIFIER_Account" DisplayOrder="312" />
+
+    <Property Identifier="member" OutputType="BasicCollection" Group="CONNECTOR_IDENTIFIER_MemberOf" DisplayOrder="400" />
+    <Property Identifier="memberOf" OutputType="BasicCollection" Group="CONNECTOR_IDENTIFIER_MemberOf" DisplayOrder="401" />
+
+    <Property Identifier="ou" Group="CONNECTOR_IDENTIFIER_Address" DisplayOrder="500" />
+    <Property Identifier="l" Group="CONNECTOR_IDENTIFIER_Address" DisplayOrder="501" />
+    <Property Identifier="st" Group="CONNECTOR_IDENTIFIER_Address" DisplayOrder="502" />
+    <Property Identifier="c" Group="CONNECTOR_IDENTIFIER_Address" DisplayOrder="503" />
+
+    <Property Identifier="dn" Group="CONNECTOR_IDENTIFIER_Object" DisplayOrder="600" />
+    <Property Identifier="rdn" Group="CONNECTOR_IDENTIFIER_Object" DisplayOrder="601" />
+    <Property Identifier="objectCategory" Group="CONNECTOR_IDENTIFIER_Object" DisplayOrder="602" />
+    <Property Identifier="objectGuid" Group="CONNECTOR_IDENTIFIER_Object" DisplayOrder="603" />
+    <Property Identifier="objectSid" Group="CONNECTOR_IDENTIFIER_Object" DisplayOrder="604" />
+    <Property Identifier="cn" Group="CONNECTOR_IDENTIFIER_Object" DisplayOrder="605" />
+    <Property Identifier="parentdn" Group="CONNECTOR_IDENTIFIER_Object" DisplayOrder="606" />
+    <Property Identifier="children" Group="CONNECTOR_IDENTIFIER_Object" DisplayOrder="607" />
+    <Property Identifier="comment" Group="CONNECTOR_IDENTIFIER_Object" DisplayOrder="608" />
+    <Property Identifier="extensionAttribute10" Group="CONNECTOR_IDENTIFIER_Object" DisplayOrder="609" />
+    <Property Identifier="extensionAttribute11" Group="CONNECTOR_IDENTIFIER_Object" DisplayOrder="610" />
+    <Property Identifier="whenCreated" Group="CONNECTOR_IDENTIFIER_Object" DisplayOrder="611" />
+  </DisplayEntityType>
+
+  <EntityPropertyExpression Identifier="CONNECTOR_IDENTIFIER_Entry_InternalDisplayName_L1" Expression="C#:resource:return resource.userPrincipalName ?? Usercube.Expressions.Functions.UtilExpressions.ToFormatedDN(resource.dn);" EntityType="CONNECTOR_IDENTIFIER_Entry" Property="InternalDisplayName" />
+
+  <Indicator EntityType="CONNECTOR_IDENTIFIER_Entry" Binding="userAccountControl" ComparisonOperator="Equal" Order="0">
+    <Item Value="514" Color="#161114" DisplayName_L1="Disabled Account" />
+  </Indicator>
+  <Indicator EntityType="CONNECTOR_IDENTIFIER_Entry" Binding="isUnused" ComparisonOperator="Equal" Order="0">
+    <Item Value="1" Color="#717D7E" DisplayName_L1="Unused Account" />
+  </Indicator>
+</ConfigurationFile>

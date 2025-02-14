@@ -1,0 +1,19 @@
+﻿[13:54:04 VRB] HandleCommand FulfillPowerShellCommand
+[13:54:04 INF] Fulfill-PowerShell started: WorkingDirectory=../Work\FulfillPowerShell Script=D:\UsercubeCAA\Scripts\ApplicationMail\Applications_Mail_Fulfill.ps1 TaskInstanceId=6283
+[13:54:04 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/6283?api-version=1.0
+[13:54:04 VRB] Refreshed token: token expiration date=02/10/2025 13:51:03
+[13:54:04 DBG] Fetching provisioning orders api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=53001&ResourceTypes=53002
+[13:54:04 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=53001&ResourceTypes=53002
+[13:54:05 DBG] Fetching provisioning orders api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=53001&ResourceTypes=53002
+[13:54:05 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=53001&ResourceTypes=53002
+[13:54:05 INF] Custom configuration successfully loaded from D:\UsercubeCAA\Runtime\appsettings.json
+[13:54:05 INF] Custom configuration successfully loaded from D:\UsercubeCAA\Runtime\appsettings.agent.json
+[13:54:05 INF] Installation will run with following context variables :
+[13:54:05 INF] - scriptsPath : D:\UsercubeCAA\Scripts
+[13:54:05 INF] - confPath : D:\UsercubeCAA\Conf
+[13:54:05 INF] - apiUri : https://dev-fusion-iam.caa.group.gca
+[13:54:07 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Connectors/Provisioning/ProvisioningResults?api-version=1.0
+[13:54:07 INF] Fulfill-PowerShell-SendResults completed Added=0 Modified=1 Deleted=0 Errors=0.
+[13:54:07 INF] Fulfillment process completed. Executed orders: 1/1 - Inserted: 0 | Updated: 1 | Deleted: 0 | Errors: 0
+[13:54:07 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/6283?api-version=1.0
+[13:54:07 INF] Fulfill-PowerShell completed: WorkingDirectory=../Work\FulfillPowerShell Script=D:\UsercubeCAA\Scripts\ApplicationMail\Applications_Mail_Fulfill.ps1 TaskInstanceId=6283

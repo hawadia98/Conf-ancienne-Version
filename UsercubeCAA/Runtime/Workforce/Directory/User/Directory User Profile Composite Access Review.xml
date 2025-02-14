@@ -1,0 +1,56 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <!--
+  There is a composite profile per action in the access review section.
+  -->
+
+  <AccessCertificationCampaignPolicy Identifier="Workforce/Manager" DisplayName_L1="Manager" />
+  <AccessCertificationCampaignPolicy Identifier="Workforce/ApplicationOwner" DisplayName_L1="Application Owner" />
+
+  <Profile Identifier="Workforce/AccessReview/Directory_User_ReviewRolesAsManager" DisplayName_L1="Workforce/Access Review/Review Roles as Manager" IsComponent="true" />
+  <AccessControlRule Identifier="Composite_AccessReview_Directory_User_ReviewRolesAsManager_AutoAssigned"
+                     DisplayName_L1="Composite_AccessReview_Directory_User_ReviewRolesAsManager_AutoAssigned"
+                     EntityType="AccessCertificationItem"
+                     Profile="Workforce/AccessReview/Directory_User_ReviewRolesAsManager">
+    <Filter Binding="Campaign.Policy.Identifier" Value="Workforce/Manager"/>
+    <Entry Permission="/Custom/AccessCertification/AutoAssigned/Directory_User" CanExecute="true" />
+  </AccessControlRule>
+
+  <Profile Identifier="Workforce/AccessReview/Directory_User_ReviewDelegatedRolesAsManager" DisplayName_L1="Workforce/Access Review/Review Delegated Roles as Manager" IsComponent="true" />
+  <AccessControlRule Identifier="Composite_AccessReview_Directory_User_ReviewRolesAsManager_ManualAssigned"
+                     DisplayName_L1="Composite_AccessReview_Directory_User_ReviewRolesAsManager_ManualAssigned"
+                     EntityType="AccessCertificationItem"
+                     Profile="Workforce/AccessReview/Directory_User_ReviewDelegatedRolesAsManager">
+    <Filter Binding="Campaign.Policy.Identifier" Value="Workforce/Manager"/>
+    <Entry Permission="/Custom/AccessCertification/ManualAssigned/Directory_User" CanExecute="true" />
+  </AccessControlRule>
+
+  <Profile Identifier="Workforce/AccessReview/Directory_User_ReviewRolesAsApplicationOwner" DisplayName_L1="Workforce/Access Review/Review Roles as Application Owner" IsComponent="true" />
+  <AccessControlRule Identifier="Composite_AccessReview_Directory_User_ReviewRoles_AutoAssigned_SingleRole"
+                     DisplayName_L1="Composite_AccessReview_Directory_User_ReviewRolesAsApplicationOwner_AutoAssigned"
+                     EntityType="AccessCertificationItem"
+                     Profile="Workforce/AccessReview/Directory_User_ReviewRolesAsApplicationOwner">
+    <Filter Binding="Campaign.Policy.Identifier" Value="Workforce/ApplicationOwner"/>
+    <Filter Binding="AssignedSingleRole.Role.Category.Id" Category="true"/>
+    <Entry Permission="/Custom/AccessCertification/AutoAssigned/Directory_User" CanExecute="true" />
+  </AccessControlRule>
+  <AccessControlRule Identifier="Composite_AccessReview_Directory_User_ReviewRoles_AutoAssigned_CompositeRole"
+                     DisplayName_L1="Composite_AccessReview_Directory_User_ReviewRolesAsApplicationOwner_AutoAssigned"
+                     EntityType="AccessCertificationItem"
+                     Profile="Workforce/AccessReview/Directory_User_ReviewRolesAsApplicationOwner">
+    <Filter Binding="Campaign.Policy.Identifier" Value="Workforce/ApplicationOwner"/>
+    <Filter Binding="AssignedCompositeRole.Role.Category.Id" Category="true"/>
+    <Entry Permission="/Custom/AccessCertification/AutoAssigned/Directory_User" CanExecute="true" />
+  </AccessControlRule>
+
+  <Profile Identifier="Workforce/AccessReview/Directory_User_ReviewDelegatedRolesAsApplicationOwner" DisplayName_L1="Workforce/Access Review/Review Delegated Roles as Application Owner" IsComponent="true" />
+  <AccessControlRule Identifier="Composite_AccessReview_Directory_User_ReviewRoles_ManualAssigned"
+                     DisplayName_L1="Composite_AccessReview_Directory_User_ReviewRolesAsApplicationOwner_ManualAssigned"
+                     EntityType="AccessCertificationItem"
+                     Profile="Workforce/AccessReview/Directory_User_ReviewDelegatedRolesAsApplicationOwner">
+    <Filter Binding="Campaign.Policy.Identifier" Value="Workforce/ApplicationOwner"/>
+    <Entry Permission="/Custom/AccessCertification/ManualAssigned/Directory_User" CanExecute="true" />
+  </AccessControlRule>
+
+  <Profile Identifier="Workforce/AccessReview/Directory_User_ManageAccessReviews" DisplayName_L1="Workforce/Access Review/Manage Access Reviews" IsComponent="true" />
+  <AccessReviewAdministrationAccessControlRules Profile="Workforce/AccessReview/Directory_User_ManageAccessReviews" />
+</ConfigurationFile>

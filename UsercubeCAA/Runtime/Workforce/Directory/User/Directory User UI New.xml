@@ -1,0 +1,124 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Form Identifier="Workflow_Directory_UserRecord_PersonalData_Base" EntityType="Directory_UserRecord">
+    <Control DisplayName_L1="Personal Data" OutputType="LayoutFieldset" Name="Personal Data">
+      <Control OutputType="LayoutContainer" HomonymEntityLink="Directory_UserRecord">
+        <Control DisplayName_L1="Full Name" OutputType="LayoutRowset" Name="Full Name">
+          <Control Binding="LastName" />
+          <Control Binding="FirstName" />
+        </Control>
+      </Control>
+      <Control Binding="BirthName" ColumnSize="4" />
+      <Control Binding="BirthDate" />
+      <Control Binding="Gender" ColumnSize="3" />
+      <Control Binding="PersonalTitle" ColumnSize="3" />
+      <!--<Control Binding="ProxyAddress" ColumnSize="8" />-->
+      <Control DisplayName_L1="Phone Numbers" OutputType="LayoutRowset" Name="Phone Numbers">
+        <Control Binding="PhoneNumber" />
+        <Control Binding="MobileNumber" />
+      </Control>
+      <Control Binding="VIP" />
+      <Control DisplayName_L1="Photo" OutputType="LayoutRowset" Name="Photo">
+        <Control Binding="User.Photo" InputType="Image" />
+      </Control>
+    </Control>
+  </Form>
+
+  <Form Identifier="Workflow_Directory_UserRecord_PersonalData_Base_WithoutPhoto" EntityType="Directory_UserRecord">
+    <Control DisplayName_L1="Personal Data" OutputType="LayoutFieldset" Name="Personal Data">
+      <Control OutputType="LayoutContainer" HomonymEntityLink="Directory_UserRecord">
+        <Control DisplayName_L1="Full Name" OutputType="LayoutRowset" Name="Full Name">
+          <Control Binding="LastName" />
+          <Control Binding="FirstName" />
+        </Control>
+      </Control>
+      <Control Binding="BirthName" ColumnSize="4" />
+      <Control Binding="BirthDate" />
+      <Control Binding="Gender" ColumnSize="3" />
+      <Control Binding="PersonalTitle" ColumnSize="3" />
+      <!--<Control Binding="ProxyAddress" ColumnSize="8" />-->
+      <Control DisplayName_L1="Phone Numbers" OutputType="LayoutRowset" Name="Phone Numbers">
+        <Control Binding="PhoneNumber" />
+        <Control Binding="MobileNumber" />
+      </Control>
+      <Control Binding="VIP" />
+    </Control>
+  </Form>
+
+  <Form Identifier="Workflow_Directory_User_Photo" EntityType="Directory_User">
+    <Control DisplayName_L1="Photo" OutputType="LayoutRowset" Name="Photo">
+      <Control Binding="Photo" InputType="Image" />
+    </Control>
+  </Form>
+
+  <Form Identifier="Workflow_Directory_UserRecord_Position_Base" EntityType="Directory_UserRecord">
+    <Control DisplayName_L1="Position" OutputType="LayoutFieldset" Name="Position">
+      <Control Binding="PositionIdentifier" ColumnSize="4" />
+      <Control Binding="JobTitle" />
+      <Control Binding="Title" />
+
+      <Control Binding="Manager" />
+      <Control Binding="IGAManager" />
+
+      <Control Binding="Organization" />
+      <Control Binding="Site" />
+      <Control Binding="Office" FilterBinding1="Directory_Office:Site" LinkedBinding1="Site" />
+      <Control Binding="OfficeNumber" ColumnSize="4" />
+      <Control Binding="PositionStartDate" />
+      <Control Binding="PositionEndDate" InputType="Date" />
+      <Control Binding="IsMainPosition" />
+    </Control>
+  </Form>
+
+  <Form Identifier="Workflow_Directory_User_NewInternal_Base" EntityType="Directory_UserRecord">
+    <Control OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_PersonalData_Base" />
+
+    <Control DisplayName_L1="Contract" OutputType="LayoutFieldset" Name="Contract">
+      <Control Binding="EmployeeId" ColumnSize="4" />
+      <Control Binding="UserType" />
+      <Control Binding="Subsidiary" />
+      <!--<Control Binding="Suspended" />-->
+      <Control Binding="ContractStartDate" />
+      <Control Binding="ContractEndDate" />
+      <Control Binding="AccessesExpirationDate" />
+    </Control>
+
+    <Control OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_Position_Base" />
+  </Form>
+
+  <Form Identifier="Workflow_Directory_User_NewExternal_Base" EntityType="Directory_UserRecord">
+    <Control OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_PersonalData_Base" />
+
+    <Control DisplayName_L1="Contract" OutputType="LayoutFieldset" Name="Contract">
+      <!--<Control Binding="EmployeeId" ColumnSize="4" />-->
+      <Control Binding="UserType" />
+      <Control Binding="Subsidiary" />
+      <Control Binding="ExternalCompany" />
+      <!--<Control Binding="Suspended" />-->
+      <Control Binding="ContractStartDate" />
+      <Control Binding="ContractEndDate" />
+      <Control Binding="AccessesExpirationDate" />
+    </Control>
+
+    <Control OutputType="TransformImport" EmbeddedForm="Workflow_Directory_UserRecord_Position_Base" />
+  </Form>
+
+  <Form Identifier="Workflow_Directory_User_New_Summary" EntityType="Directory_UserRecord">
+    <Control DisplayName_L1="Important Information" DisplayName_L2="Informations importantes" OutputType="LayoutFieldset" Name="Important Information">
+      <Control Binding="UserIdentifier" />
+      <Control Binding="Email" />
+      <Control Binding="Login" />
+    </Control>
+  </Form>
+
+  <WorkflowCreateRecordEntityForm Identifier="Workflow_Directory_User_NewInternal" EntityType="Workflow_Directory_User" MainProperty="Workflow_Directory_User:Directory_User" RecordProperty="Directory_User:Records" WorkflowRequestType="Self" Activity="Directory_User_NewInternal:Request" FormTitle_L1="New Employee">
+    <RecordControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_User_NewInternal_Base" />
+    <RecordSummaryControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_User_New_Summary" />
+  </WorkflowCreateRecordEntityForm>
+
+  <WorkflowCreateRecordEntityForm Identifier="Workflow_Directory_User_NewExternal" EntityType="Workflow_Directory_User" MainProperty="Workflow_Directory_User:Directory_User" RecordProperty="Directory_User:Records" WorkflowRequestType="Self" Activity="Directory_User_NewExternal:Request" FormTitle_L1="New Contractor">
+    <RecordControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_User_NewExternal_Base" />
+    <RecordSummaryControl OutputType="TransformImport" EmbeddedForm="Workflow_Directory_User_New_Summary" />
+  </WorkflowCreateRecordEntityForm>
+
+</ConfigurationFile>

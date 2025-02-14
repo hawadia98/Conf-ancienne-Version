@@ -1,0 +1,44 @@
+﻿[14:23:30 INF] PrepareSynchronization-ActiveDirectory started for Connector=3 SynchronizationMode=Complete WorkingDirectory=../Work\Collect
+[14:23:30 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Connectors/Connector/OpenSynchronizeSession?api-version=1.0
+[14:23:31 VRB] Refreshed token: token expiration date=02/07/2025 14:20:31
+Synchronization session created
+[14:23:31 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Connectors/Connector/3?api-version=2.0&squery=join%20EntityTypeMappings%20etm%20join%20EntityAssociationMappings%20eam%20join%20etm.EntityPropertyMappings%20epm%20join%20epm.EntityProperty%20ep%20join%20etm.EntityType%20et%20join%20eam.EntityAssociation%20ea%20join%20eam.EntityPropertyMapping1%20eam1%20join%20eam1.EntityProperty%20eamp1%20join%20eam.EntityPropertyMapping2%20eam2%20join%20eam2.EntityProperty%20eamp2%20join%20ea.Property1%20eap1%20join%20ea.Property2%20eap2%20join%20Connections%20c%20join%20c.Package%20p%20select%20Id%2Cetm.ConnectionTable%2Cet.Identifier%2Cepm.ConnectionColumn%2Cepm.IsPrimaryKey%2Ceam.ConnectionTable%2Ceam.Column1%2Ceam.Column2%2Cea.Identifier%2Cea.IsProperty1Collection%2Cea.IsProperty2Collection%2Cep.TargetColumnIndex%2Cep.Type%2Cep.Identifier%2Ceap1.Identifier%2Ceap1.Type%2Ceap2.Identifier%2Ceap2.Type%2Ceamp1.TargetColumnIndex%2Ceamp2.TargetColumnIndex%2Cc.Id%2Cc.Identifier%2Cp.Id%2Cp.Identifier%20where%20%28etm.ConnectionTable%20%21%3D%20null%20and%20%28epm.ConnectionColumn%20%21%3D%20null%20or%20epm.Format%25%3D%22concat%22%20or%20epm.Format%3D%22multivaluedtext%22%29%29&path=/Connectors/Connector/Query
+[14:23:31 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Connectors/Connector/CollationInfo?api-version=1.0
+[14:23:31 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/5871?api-version=1.0
+[14:23:31 DBG] ExtractionCommand InputFile=../Temp\ExportOutput\ADPacificaExportFulfillment_entries.csv OutputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_thumbnailPhoto
+[14:23:31 DBG] ExtractionCommand InputFile=../Temp\ExportOutput\ADPacificaExportFulfillment_entries.csv OutputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry
+[14:23:31 DBG] ExtractionCommand InputFile=../Temp\ExportOutput\ADPacificaExportFulfillment_manager.csv OutputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_manager
+[14:23:31 DBG] SortCommand InputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_manager OutputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_manager.sorted.csv
+[14:23:31 DBG] SortCommand InputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_thumbnailPhoto OutputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_thumbnailPhoto.sorted.csv
+[14:23:31 DBG] ExtractionCommand InputFile=../Temp\ExportOutput\ADPacificaExportFulfillment_entries.csv OutputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_assistant
+[14:23:31 DBG] ExtractionCommand InputFile=../Temp\ExportOutput\ADPacificaExportFulfillment_member.csv OutputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_member
+[14:23:31 DBG] SortCommand InputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_member OutputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_member.sorted.csv
+[14:23:31 DBG] SortCommand InputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_assistant OutputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_assistant.sorted.csv
+[14:23:31 DBG] ExtractionCommand InputFile=../Temp\ExportOutput\ADPacificaExportFulfillment_entries.csv OutputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_parentdn
+[14:23:31 WRN] In Line #13121 the value of the column "description" was truncated because of the length limit.
+[14:23:31 WRN] In Line #13154 the value of the column "description" was truncated because of the length limit.
+[14:23:32 DBG] SortCommand InputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry OutputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry.sorted.csv
+[14:23:32 DBG] SortCommand InputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_parentdn OutputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_parentdn.sorted.csv
+[14:23:32 DBG] UploadCommand InputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_thumbnailPhoto.sorted.csv
+[14:23:32 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Connectors/Connector/SynchronizeEntity?api-version=1.0
+[14:23:32 DBG] MoveFileCommand SourceFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_thumbnailPhoto.sorted.csv DestinationFile=D:\UsercubeCAA\Work\Collect\3\previous\ADPacifica_Entry_thumbnailPhoto.sorted.csv
+[14:23:32 DBG] UploadCommand InputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_manager.sorted.csv
+[14:23:32 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Connectors/Connector/SynchronizeEntity?api-version=1.0
+[14:23:32 DBG] MoveFileCommand SourceFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_manager.sorted.csv DestinationFile=D:\UsercubeCAA\Work\Collect\3\previous\ADPacifica_Entry_manager.sorted.csv
+[14:23:32 DBG] UploadCommand InputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_assistant.sorted.csv
+[14:23:32 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Connectors/Connector/SynchronizeEntity?api-version=1.0
+[14:23:32 DBG] MoveFileCommand SourceFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_assistant.sorted.csv DestinationFile=D:\UsercubeCAA\Work\Collect\3\previous\ADPacifica_Entry_assistant.sorted.csv
+[14:23:32 DBG] UploadCommand InputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_member.sorted.csv
+[14:23:32 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Connectors/Connector/SynchronizeEntity?api-version=1.0
+[14:23:32 DBG] MoveFileCommand SourceFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_member.sorted.csv DestinationFile=D:\UsercubeCAA\Work\Collect\3\previous\ADPacifica_Entry_member.sorted.csv
+[14:23:32 DBG] UploadCommand InputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_parentdn.sorted.csv
+[14:23:32 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Connectors/Connector/SynchronizeEntity?api-version=1.0
+[14:23:32 DBG] MoveFileCommand SourceFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry_parentdn.sorted.csv DestinationFile=D:\UsercubeCAA\Work\Collect\3\previous\ADPacifica_Entry_parentdn.sorted.csv
+[14:23:32 DBG] UploadCommand InputFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry.sorted.csv
+[14:23:33 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Connectors/Connector/SynchronizeEntity?api-version=1.0
+[14:23:33 DBG] MoveFileCommand SourceFile=D:\UsercubeCAA\Work\Collect\3\ADPacifica_Entry.sorted.csv DestinationFile=D:\UsercubeCAA\Work\Collect\3\previous\ADPacifica_Entry.sorted.csv
+[14:23:33 DBG] HttpClient.Send: DELETE https://dev-fusion-iam.caa.group.gca/api/Connectors/Connector/CloseSynchronizeSession/3/20250207132331_bb79d844-0261-4d1f-be4b-7c0a6e90bb9f?api-version=1.0&closeSessionMode=Success
+Synchronization session closed
+[14:23:33 INF] PrepareSynchronization completed CurrentCount=24 MaxCount=24 Sent=41986 Duplicated=29 NullPks=0
+[14:23:33 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/5871?api-version=1.0
+[14:23:33 INF] PrepareSynchronization-ActiveDirectory completed for Connector=3 SynchronizationMode=Complete WorkingDirectory=../Work\Collect

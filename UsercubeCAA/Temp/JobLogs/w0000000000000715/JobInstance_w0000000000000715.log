@@ -1,0 +1,60 @@
+﻿[15:35:57 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/715?api-version=3.0&jobGroupId=38002&current=0&totalTask=0&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[15:35:58 VRB] Refreshed token: token expiration date=01/28/2025 15:32:58
+[15:35:58 VRB] HandleQuery SelectConsolidateJobQuery
+[15:35:58 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/RunStateMachineJob?api-version=4.0&path=/Jobs/Job/Query&jobIdentifier=38002&repair=False&beginJobStep=-1&endJobStep=-1&forceSynchronizationProvisioning=False&retry=False&launchTaskType=0&taskIdentifier=&taskIdentifierContains=&beginTaskExcluded=&endTaskExcluded=&jobInstanceId=715&jobId=38002
+[15:35:59 VRB] HandleCommand ReserveTaskInstanceIdCommand
+[15:35:59 VRB] Reserve 3 next TaskInstanceId
+[15:35:59 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceId/3?api-version=1.0
+[15:35:59 VRB] Check the JobInstance state for JobInstance 715.
+[15:35:59 VRB] HandleQuery SelectJobInstanceByIdQuery
+[15:35:59 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/715?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[15:35:59 INF] InvokeExpressionTask: RCIPersonExportScript (Level: 0, LaunchOrder: 0)
+    Agent: CAA
+
+[15:35:59 VRB] Check the instance state for Task RCIPersonExportScript
+[15:35:59 VRB] HandleCommand TaskInstanceProgressCommand
+[15:35:59 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[15:35:59 INF] Launch task: InvokeExpressionTask: RCIPersonExportScript, Task 1/3
+[15:35:59 VRB] HandleCommand RunTaskCommand
+[15:35:59 INF] Launch InvokeExpressionTask : RCIPersonExportScript
+[15:35:59 DBG] Start Process dotnet Usercube-Invoke-ExpressionAgentSide.dll --progress-task-instance-id 3878 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --input-path "D:/UsercubeCAA/Scripts/RCI/RCI_Export_Person_API.ps1" --stdin null
+[15:35:59 INF] Start process=True PID=12244 dotnet Usercube-Invoke-ExpressionAgentSide.dll --progress-task-instance-id 3878 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --input-path "D:/UsercubeCAA/Scripts/RCI/RCI_Export_Person_API.ps1" --stdin
+[15:36:02 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/3878?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[15:36:02 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[15:36:02 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3878?api-version=2.0&jobInstanceId=715&taskId=61004&jobId=38002
+[15:36:02 INF] Task: RCIPersonExportScript Completed with state Completed
+[15:36:02 VRB] Check the JobInstance state for JobInstance 715.
+[15:36:02 VRB] HandleQuery SelectJobInstanceByIdQuery
+[15:36:02 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/715?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[15:36:02 INF] InvokeExpressionTask: RCIOrgaExportScript (Level: 1, LaunchOrder: 1)
+    Agent: CAA
+
+[15:36:02 VRB] Check the instance state for Task RCIOrgaExportScript
+[15:36:02 VRB] HandleCommand TaskInstanceProgressCommand
+[15:36:02 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[15:36:02 INF] Launch task: InvokeExpressionTask: RCIOrgaExportScript, Task 2/3
+[15:36:02 VRB] HandleCommand RunTaskCommand
+[15:36:02 INF] Launch InvokeExpressionTask : RCIOrgaExportScript
+[15:36:02 DBG] Start Process dotnet Usercube-Invoke-ExpressionAgentSide.dll --progress-task-instance-id 3879 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --input-path "D:/UsercubeCAA/Scripts/RCI/RCI_Export_Orga_API.ps1" --stdin null
+[15:36:02 INF] Start process=True PID=6556 dotnet Usercube-Invoke-ExpressionAgentSide.dll --progress-task-instance-id 3879 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --input-path "D:/UsercubeCAA/Scripts/RCI/RCI_Export_Orga_API.ps1" --stdin
+[15:36:04 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/3879?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[15:36:04 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[15:36:04 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3879?api-version=2.0&jobInstanceId=715&taskId=61003&jobId=38002
+[15:36:04 INF] Task: RCIOrgaExportScript Completed with state Completed
+[15:36:04 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/715?api-version=3.0&jobGroupId=38002&current=2&totalTask=3&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[15:36:04 INF] InvokeExpressionTask: RCIMailScript (Level: 2, LaunchOrder: 2)
+    Agent: CAA
+
+[15:36:04 VRB] Check the instance state for Task RCIMailScript
+[15:36:04 VRB] HandleCommand TaskInstanceProgressCommand
+[15:36:04 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[15:36:04 INF] Launch task: InvokeExpressionTask: RCIMailScript, Task 3/3
+[15:36:04 VRB] HandleCommand RunTaskCommand
+[15:36:04 INF] Launch InvokeExpressionTask : RCIMailScript
+[15:36:04 DBG] Start Process dotnet Usercube-Invoke-ExpressionAgentSide.dll --progress-task-instance-id 3880 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --input-path "D:/UsercubeCAA/Scripts/RCI/RCI_Mail_Orga_Person.ps1" --stdin null
+[15:36:04 INF] Start process=True PID=9568 dotnet Usercube-Invoke-ExpressionAgentSide.dll --progress-task-instance-id 3880 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --input-path "D:/UsercubeCAA/Scripts/RCI/RCI_Mail_Orga_Person.ps1" --stdin
+[15:36:05 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/3880?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[15:36:05 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[15:36:05 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3880?api-version=2.0&jobInstanceId=715&taskId=61002&jobId=38002
+[15:36:05 INF] Task: RCIMailScript Completed with state Completed
+[15:36:05 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/715?api-version=3.0&jobGroupId=38002&current=3&totalTask=3&state=Completed&resourceId=-1&cancelRequest=False&retry=False

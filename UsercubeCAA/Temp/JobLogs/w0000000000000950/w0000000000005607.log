@@ -1,0 +1,32 @@
+﻿[18:49:40 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/5607?api-version=1.0
+[18:49:40 VRB] Refreshed token: token expiration date=02/03/2025 18:46:39
+[18:49:40 DBG] Start Process powershell.exe -NoProfile -NonInteractive -File D:/UsercubeCAA/Scripts/ADA/ADA_Export.ps1 null
+[18:49:40 INF] Start process=True PID=12416 powershell.exe -NoProfile -NonInteractive -File D:/UsercubeCAA/Scripts/ADA/ADA_Export.ps1
+[18:49:42 INF] https://dev-fusion-iam.caa.group.gca/connect/token
+[18:49:42 INF] eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZDQkMtSFM1MTIiLCJraWQiOiI1NTYwQTIyMkRFM0IwMkQ1OTgzMTE3RDU3QTIxQTYwRDNGMjlBRkIwIiwidHlwIjoiYXQrand0IiwiY3R5IjoiSldUIn0.O5-Er64KRrT-BYS-guJ5c25ieR_EZQE81JtRuwdxzbhEK5jtt4B-ncW8TziYboIHKU2LNRhBzKSlI9SUGMK24rD3WbufFKSBGF3CxIzgjdIpqo1aYi8fewgZ6R-8Jhl3TOedsohx0MQRE1Hnh8qBYtVL7dFhvv5IMdxpvrA3iygeGwcFhFYFFV4SBHKwgEKk1loqnEJXA1RTBNjv5itN3Qd-fp7MD-hmg07tr46Gbafy-IaNxstKc8qJ7meWsB487DSZPH_e4wmVSlTJc2VMql5uXtx8EYzlzuVm-dR0HGZcV99RH3NBzUG4N4CrhFiuGIwcn9hEoZe9KDgIn89iWg.aIuxXVgWkmJ3g_mW7eqrXQ.HO5fHq09CLhni3kte8DR-J0JTVhcgQLTikvgRVvm0StT2G8jzfD02bAyGa2I4dWy1_p18-_GTTK5m_lnXoeJjVgKrp4oMPkiQJm1TjBb_KHDBactCPPFmV_Fh56OcJb3WpX_It8UIxfCZaeWtJRwT_1rya75Y67cqODAouGSTeB9tOPZ_vlPkMhv2adsdQyqUp8BvJZVoEkYDMrUKTmXH9tjNu8I6cHr2WsU6h8HxTRn293p4fAf-u-mitPYAilDb0JcaHpyT8noS0K0c90tQ38J7z790oUhZh1Nkel3qJyWc7rB_tW6dkZ5kaaexNH4eMLjiIqz5Jb0Lz8_oRZ3H5zT7O2lF7cy6BPSmXhJmDPW_jXC--zcVoVJbQJ1plgauCB012zdafMlsPYs5H2nxPHyNkdB2nD-kei-SjScjLYW1AmQG7SvbIpDE7eRK6wUTimU_g16t_cmDp06HyrqTWZbe53OlFkrf1RGGgzY59nJoIbW3pFb4feHeKRwABLTe_iBTasKzbBBngiVcus13bCP46NAMD39dpS22UQEV7BccF4qEW30L_ENS_oqfYrOWouxumWvk-B_4J0rV-C1rOQvnQ9i7aluyjYUrJAPgbWOarA9Z6D2A2hkfc0MNz27v1qteX3xjpaAwyMlXFncrai1DqgG-mhFM6Vp5Kf9r3kk4SOH2uLh8dMXRyCKbeZoNxQhvJ1UD5xjvQDjTAWsznSzFVrhvUVljEtD-OLjhIS2cpIxV2uuGXBudGXcmysEmDYp87URFGh1sw4OU1Fm5xvkD1cvacs2rqm4-Y-w4vdUjqwKszlC4sEmTvpmzdU9kAdbImucHPIlq2gGsAftv-HlfliuMkPiTruWIxQl7tonnWzSWpeeRLWUmwh-66G4lmj-lLK_kcFRLG50YJ7R8HxdgAKVRSnwOInyMzh8ZHHYntqrZeLltpKMjvw2jynZiXgIkmWTt8EheNlIXXoR2fWAkf_reZNwYXGDeyj7tvGHygHm44jB9_Et01FLnYwmMwVRGICt4vJBc-1uyhRnDSHQbYxpfHDtCf2Ojji5VozVdmUN3f8LNXAU4T2Pwl3X7k9SikBHSkNn7oRZalu-hf4GPlJHS0eGCgv-MnrFn2lAnsffzKd7maVwI73CyoTmgfYc1Dp3QjOesQZvHVHLZzBB2iCzekcN6C17O6bgpqI9aE8KI0ur9WtmxJtWn-5ohXkrElw2awuPPlpk5VkiPuY8U8HFB3Z5F6ujvIKXTUE.Au7fTIgVoHztLMumz2GTZhSxcxeJmS7NF1vpfo-WU7o
+[18:49:43 INF] New-Object : Exception calling ".ctor" with "3" argument(s): "Could not find a part of the path 
+[18:49:43 INF] 'C:\Applications\UsercubeCAA\Sources\ADA\Export\Export_ADA_02-03-2025.csv'."
+[18:49:43 INF] At D:\UsercubeCAA\Scripts\ADA\ADA_Export.ps1:37 char:11
+[18:49:43 INF] + $writer = New-Object System.IO.StreamWriter($outputFile, $false, ([Sy ...
+[18:49:43 INF] +           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[18:49:43 INF]     + CategoryInfo          : InvalidOperation: (:) [New-Object], MethodInvocationException
+[18:49:43 INF]     + FullyQualifiedErrorId : ConstructorInvokedThrowException,Microsoft.PowerShell.Commands.NewObjectCommand
+[18:49:43 INF]  
+[18:49:43 INF] You cannot call a method on a null-valued expression.
+[18:49:43 INF] At D:\UsercubeCAA\Scripts\ADA\ADA_Export.ps1:41 char:1
+[18:49:43 INF] + $writer.WriteLine('{0};{1};{2};{3};{4};{5};{6};{7};{8};{9};{10}', $he ...
+[18:49:43 INF] + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[18:49:43 INF]     + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+[18:49:43 INF]     + FullyQualifiedErrorId : InvokeMethodOnNull
+[18:49:43 INF]  
+[18:49:44 INF] Najat
+[18:49:44 INF] Error Usercube API
+[18:49:44 INF] You cannot call a method on a null-valued expression.
+[18:49:44 INF] You cannot call a method on a null-valued expression.
+[18:49:44 INF] At D:\UsercubeCAA\Scripts\ADA\ADA_Export.ps1:108 char:5
+[18:49:44 INF] +     $writer.Close()
+[18:49:44 INF] +     ~~~~~~~~~~~~~~~
+[18:49:44 INF]     + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+[18:49:44 INF]     + FullyQualifiedErrorId : InvokeMethodOnNull
+[18:49:44 INF]  
+[18:49:44 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/5607?api-version=1.0

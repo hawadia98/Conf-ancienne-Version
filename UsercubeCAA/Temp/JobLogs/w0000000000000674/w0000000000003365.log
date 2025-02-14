@@ -1,0 +1,5 @@
+﻿[17:09:20 INF] Update activity instance actors started.
+[17:09:20 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Workflows/WorkflowInstance/StartActivityInstanceActor?api-version=1.0
+[17:09:20 VRB] Refreshed token: token expiration date=01/26/2025 17:06:20
+[17:09:20 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/3365?api-version=1.0
+[17:09:20 INF] Update-ActivityInstanceActor completed.

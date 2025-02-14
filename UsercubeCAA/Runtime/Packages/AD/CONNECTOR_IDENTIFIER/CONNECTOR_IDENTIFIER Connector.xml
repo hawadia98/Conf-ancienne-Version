@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ConfigurationFile xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="urn:schemas-usercube-com:configuration">
+  <EntityType Identifier="CONNECTOR_IDENTIFIER_Entry" DisplayName_L1="CONNECTOR_DISPLAYNAMEL1 - Entry">
+    <Property Identifier="objectGuid" DisplayName_L1="objectGuid" TargetColumnIndex="4" Type="String" IsKey="true" />
+    <Property Identifier="dn" DisplayName_L1="dn" IsKey="true" TargetColumnIndex="0" Type="String" />
+    <Property Identifier="whenCreated" DisplayName_L1="whenCreated" TargetColumnIndex="5" Type="String" />
+    <Property Identifier="objectCategory" DisplayName_L1="objectCategory" TargetColumnIndex="6" Type="String" />
+    <Property Identifier="rdn" DisplayName_L1="rdn" TargetColumnIndex="7" Type="String" />
+    <Property Identifier="objectSid" DisplayName_L1="objectSid" TargetColumnIndex="8" Type="String" />
+    <Property Identifier="displayName" DisplayName_L1="displayName" TargetColumnIndex="9" Type="String" />
+
+    <Property Identifier="description" DisplayName_L1="description" TargetColumnIndex="1" Type="String" />
+    <Property Identifier="comment" DisplayName_L1="comment" TargetColumnIndex="2" Type="String" />
+
+    <Property Identifier="cn" DisplayName_L1="cn" TargetColumnIndex="10" Type="String" />
+    <Property Identifier="givenName" DisplayName_L1="givenName" TargetColumnIndex="11" Type="String" />
+    <Property Identifier="sn" DisplayName_L1="sn" TargetColumnIndex="12" Type="String" />
+    <Property Identifier="lastLogonTimestamp" DisplayName_L1="lastLogonTimestamp" TargetColumnIndex="13" Type="String" HistoryPrecision="10080" />
+    <Property Identifier="sAMAccountName" DisplayName_L1="sAMAccountName" TargetColumnIndex="14" Type="String" />
+    <Property Identifier="userAccountControl" DisplayName_L1="userAccountControl" TargetColumnIndex="15" Type="String" />
+    <Property Identifier="userAccountControlBit2" DisplayName_L1="userAccountControl AccountDisable" TargetColumnIndex="16" Type="String" />
+    <Property Identifier="userAccountControlBit10" DisplayName_L1="userAccountControl NormalAccount" TargetColumnIndex="17" Type="String" />
+    <Property Identifier="userPrincipalName" DisplayName_L1="userPrincipalName" TargetColumnIndex="18" Type="String" />
+    <Property Identifier="pwdLastSet" DisplayName_L1="pwdLastSet" TargetColumnIndex="19" Type="String" />
+
+    <Property Identifier="mail" DisplayName_L1="mail" TargetColumnIndex="20" Type="String" />
+
+    <Property Identifier="groupType" DisplayName_L1="groupType" TargetColumnIndex="21" Type="String" />
+    <Property Identifier="department" DisplayName_L1="department" TargetColumnIndex="22" Type="String" />
+    <Property Identifier="accountExpires" DisplayName_L1="accountExpires" TargetColumnIndex="23" Type="String" />
+    <Property Identifier="employeeNumber" DisplayName_L1="employeeNumber" TargetColumnIndex="24" Type="String" />
+    <Property Identifier="employeeID" DisplayName_L1="employeeID" TargetColumnIndex="25" Type="String" />
+    <Property Identifier="uid" DisplayName_L1="uid" TargetColumnIndex="26" Type="String" />
+    <Property Identifier="c" DisplayName_L1="c" TargetColumnIndex="27" Type="String" />
+    <Property Identifier="mobile" DisplayName_L1="mobile" TargetColumnIndex="28" Type="String" />
+    <Property Identifier="telephoneNumber" DisplayName_L1="telephoneNumber" TargetColumnIndex="29" Type="String" />
+    <Property Identifier="title" DisplayName_L1="title" TargetColumnIndex="30" Type="String" />
+    <Property Identifier="l" DisplayName_L1="l" TargetColumnIndex="31" Type="String" />
+    <Property Identifier="ou" DisplayName_L1="ou" TargetColumnIndex="32" Type="String" />
+    <Property Identifier="company" DisplayName_L1="company" TargetColumnIndex="33" Type="String" />
+    <Property Identifier="division" DisplayName_L1="division" TargetColumnIndex="34" Type="String" />
+
+    <Property Identifier="employeeType" DisplayName_L1="employeeType" TargetColumnIndex="35" Type="String" />
+    <Property Identifier="businessCategory" DisplayName_L1="businessCategory" TargetColumnIndex="36" Type="String" />
+    <Property Identifier="extensionAttribute10" DisplayName_L1="extensionAttribute10" TargetColumnIndex="37" Type="String" />
+    <Property Identifier="extensionAttribute11" DisplayName_L1="extensionAttribute11" TargetColumnIndex="38" Type="String" />
+    <Property Identifier="homeDirectory" DisplayName_L1="homeDirectory" TargetColumnIndex="39" Type="String" />
+    <Property Identifier="homeDrive" DisplayName_L1="homeDrive" TargetColumnIndex="40" Type="String" />
+    <Property Identifier="initials" DisplayName_L1="initials" TargetColumnIndex="41" Type="String" />
+    <Property Identifier="scriptPath" DisplayName_L1="scriptPath" TargetColumnIndex="42" Type="String" />
+    <Property Identifier="st" DisplayName_L1="st" TargetColumnIndex="43" Type="String" />
+    <Property Identifier="thumbnailPhoto" DisplayName_L1="thumbnailPhoto" Type="Binary" />
+    <Property Identifier="thumbnailPhotoTag" DisplayName_L1="thumbnailPhoto Tag" Type="Int32" TargetColumnIndex="44" />
+    <Property Identifier="isUnused" DisplayName_L1="isUnused" TargetColumnIndex="45" Type="Bool" />
+
+    <Property Identifier="parentdn" DisplayName_L1="parentdn" Type="ForeignKey" TargetColumnIndex="128" />
+    <Property Identifier="children" DisplayName_L1="children" Type="ForeignKey" />
+    <Property Identifier="member" DisplayName_L1="member" Type="ForeignKey" />
+    <Property Identifier="memberOf" DisplayName_L1="memberOf" Type="ForeignKey" />
+    <Property Identifier="manager" DisplayName_L1="manager" Type="ForeignKey" TargetColumnIndex="129" />
+    <Property Identifier="directReports" DisplayName_L1="directReports" Type="ForeignKey" />
+    <Property Identifier="assistant" DisplayName_L1="assistant" TargetColumnIndex="130" Type="ForeignKey" />
+    <Property Identifier="assistantOf" DisplayName_L1="assistantOf" Type="ForeignKey" />
+  </EntityType>
+
+  <EntityAssociation Identifier="CONNECTOR_IDENTIFIER_Entry_parentdn" DisplayName_L1="parentdn" IsProperty1Collection="true" Property2="CONNECTOR_IDENTIFIER_Entry:parentdn" Property1="CONNECTOR_IDENTIFIER_Entry:children" />
+  <EntityAssociation Identifier="CONNECTOR_IDENTIFIER_Entry_member" DisplayName_L1="member" IsProperty1Collection="true" IsProperty2Collection="true" Property1="CONNECTOR_IDENTIFIER_Entry:member" Property2="CONNECTOR_IDENTIFIER_Entry:memberOf" />
+  <EntityAssociation Identifier="CONNECTOR_IDENTIFIER_Entry_manager" DisplayName_L1="manager" IsProperty1Collection="true" Property2="CONNECTOR_IDENTIFIER_Entry:manager" Property1="CONNECTOR_IDENTIFIER_Entry:directReports" />
+  <EntityAssociation Identifier="CONNECTOR_IDENTIFIER_Entry_assistant" DisplayName_L1="assistant" IsProperty1Collection="true" Property2="CONNECTOR_IDENTIFIER_Entry:assistant" Property1="CONNECTOR_IDENTIFIER_Entry:assistantOf" />
+
+<!--  <Connector Identifier="CONNECTOR_IDENTIFIER" DisplayName_L1="CONNECTOR_IDENTIFIER" Agent="Default" CompleteJob="NotUsed" IncrementalJob="Used" />-->
+<!--  <Connection Connector="CONNECTOR_IDENTIFIER" DisplayName_L1="Connection Active Directory" Identifier="CONNECTION_IDENTIFIER" Package="Usercube.AD@0000001"/>-->
+  <Connection Connector="CONNECTOR_IDENTIFIER" DisplayName_L1="CONNECTOR_DISPLAYNAMEL1 Manual" Identifier="CONNECTION_IDENTIFIERManual" Package="Usercube.Manual@0000001"/>
+
+  <EntityTypeMapping Identifier="CONNECTOR_IDENTIFIER_Entry" Connector="CONNECTOR_IDENTIFIER" ConnectionTable="CONNECTION_IDENTIFIER_entries">
+    <Property Identifier="accountExpires" ConnectionColumn="accountExpires" />
+    <Property Identifier="c" ConnectionColumn="c" />
+    <Property Identifier="cn" ConnectionColumn="cn" />
+    <Property Identifier="comment" ConnectionColumn="comment" />
+    <Property Identifier="company" ConnectionColumn="company" />
+    <Property Identifier="department" ConnectionColumn="department" />
+    <Property Identifier="description" ConnectionColumn="description" />
+    <Property Identifier="displayName" ConnectionColumn="displayName" />
+    <Property Identifier="division" ConnectionColumn="division" />
+    <Property Identifier="dn" ConnectionColumn="dn" IsUniqueKey="true" />
+    <Property Identifier="employeeID" ConnectionColumn="employeeID" />
+    <Property Identifier="employeeNumber" ConnectionColumn="employeeNumber" />
+    <Property Identifier="employeeType" ConnectionColumn="employeeType" />
+    <Property Identifier="extensionAttribute10" ConnectionColumn="extensionAttribute10" />
+    <Property Identifier="extensionAttribute11" ConnectionColumn="extensionAttribute11" />
+    <Property Identifier="givenName" ConnectionColumn="givenName" />
+    <Property Identifier="groupType" ConnectionColumn="groupType" />
+    <Property Identifier="homeDirectory" ConnectionColumn="homeDirectory" />
+    <Property Identifier="homeDrive" ConnectionColumn="homeDrive" />
+    <Property Identifier="initials" ConnectionColumn="initials" />
+    <Property Identifier="l" ConnectionColumn="l" />
+    <Property Identifier="lastLogonTimestamp" ConnectionColumn="lastLogonTimestamp" />
+    <Property Identifier="mail" ConnectionColumn="mail" />
+    <Property Identifier="mobile" ConnectionColumn="mobile" />
+    <Property Identifier="objectCategory" ConnectionColumn="objectCategory" Format="rdn" />
+    <Property Identifier="objectGuid" ConnectionColumn="objectGUID" IsPrimaryKey="true" Format="guid" />
+    <Property Identifier="objectSid" ConnectionColumn="objectSid" IsUniqueKey="true" Format="sid"/>
+    <Property Identifier="ou" ConnectionColumn="ou" />
+    <Property Identifier="pwdLastSet" ConnectionColumn="pwdLastSet" Format="1601date" />
+    <Property Identifier="rdn" ConnectionColumn="name" />
+    <Property Identifier="sAMAccountName" ConnectionColumn="sAMAccountName" />
+    <Property Identifier="scriptPath" ConnectionColumn="scriptPath" />
+    <Property Identifier="sn" ConnectionColumn="sn" />
+    <Property Identifier="st" ConnectionColumn="st" />
+    <Property Identifier="telephoneNumber" ConnectionColumn="telephoneNumber" />
+    <Property Identifier="thumbnailPhoto" ConnectionColumn="thumbnailPhoto" Format="binary" />
+    <Property Identifier="title" ConnectionColumn="title" />
+    <Property Identifier="uid" ConnectionColumn="uid" />
+    <Property Identifier="userAccountControl" ConnectionColumn="userAccountControl" />
+    <Property Identifier="userPrincipalName" ConnectionColumn="userPrincipalName" />
+    <Property Identifier="userAccountControlBit2" ConnectionColumn="bit_userAccountControl_2" Format="bit:userAccountControl:2" />
+    <Property Identifier="userAccountControlBit10" ConnectionColumn="bit_userAccountControl_10" Format="bit:userAccountControl:10" />
+    <Property Identifier="whenCreated" ConnectionColumn="whenCreated" />
+  </EntityTypeMapping>
+
+  <EntityAssociationMapping Identifier="CONNECTOR_IDENTIFIER_Entry_parentdn" Column2="dn" Column1="parentdn" ConnectionTable="CONNECTION_IDENTIFIER_entries" EntityPropertyMapping1="CONNECTOR_IDENTIFIER_Entry:dn" EntityPropertyMapping2="CONNECTOR_IDENTIFIER_Entry:dn" Connector="CONNECTOR_IDENTIFIER" />
+  <EntityAssociationMapping Identifier="CONNECTOR_IDENTIFIER_Entry_member" Column1="dn" Column2="member" ConnectionTable="CONNECTION_IDENTIFIER_member" EntityPropertyMapping1="CONNECTOR_IDENTIFIER_Entry:dn" EntityPropertyMapping2="CONNECTOR_IDENTIFIER_Entry:dn" Connector="CONNECTOR_IDENTIFIER" />
+  <EntityAssociationMapping Identifier="CONNECTOR_IDENTIFIER_Entry_manager" Column2="dn" Column1="manager" ConnectionTable="CONNECTION_IDENTIFIER_manager" EntityPropertyMapping1="CONNECTOR_IDENTIFIER_Entry:dn" EntityPropertyMapping2="CONNECTOR_IDENTIFIER_Entry:dn" Connector="CONNECTOR_IDENTIFIER" />
+  <EntityAssociationMapping Identifier="CONNECTOR_IDENTIFIER_Entry_assistant" Column2="dn" Column1="assistant" ConnectionTable="CONNECTION_IDENTIFIER_assistant" EntityPropertyMapping1="CONNECTOR_IDENTIFIER_Entry:dn" EntityPropertyMapping2="CONNECTOR_IDENTIFIER_Entry:dn" Connector="CONNECTOR_IDENTIFIER" />
+
+  <EntityPropertyExpression Identifier="CONNECTOR_IDENTIFIER_Entry_isUnused" Expression="C#:resource:
+      if (resource.userAccountControl == null) {
+        return false;
+      }
+      if ((int.Parse(resource.userAccountControl) &amp; 2) != 0) {
+        return false;
+      }
+      if (resource.accountExpires != null &amp;&amp; resource.accountExpires != &quot;0&quot; &amp;&amp; resource.accountExpires != &quot;9223372036854775807&quot; &amp;&amp; Usercube.Expressions.Functions.UtilExpressions.ParseSince1601Date(resource.accountExpires) &lt; DateTime.UtcNow) {
+        return false;
+      }
+
+    return ((resource.lastLogonTimestamp == null) || (Usercube.Expressions.Functions.UtilExpressions.ParseSince1601Date(resource.lastLogonTimestamp) &lt; DateTime.UtcNow.AddMonths(-6)));
+  " EntityType="CONNECTOR_IDENTIFIER_Entry" Property="isUnused" />
+
+  <EntityPropertyExpression Identifier="CONNECTOR_IDENTIFIER_ThumbnailPhotoTag" Binding="thumbnailPhoto.Id" EntityType="CONNECTOR_IDENTIFIER_Entry" Property="thumbnailPhotoTag" />
+
+  <ViewTargetResourceTemplate EntityType="CONNECTOR_IDENTIFIER_Entry" Profile="Administrator" />
+
+  <TargetResourceReport EntityType="CONNECTOR_IDENTIFIER_Entry" />
+  <TargetResourceReportAccessControlRules EntityType="CONNECTOR_IDENTIFIER_Entry" Profile="Administrator" />
+  <TargetResourceReportMenus EntityType="CONNECTOR_IDENTIFIER_Entry" />
+</ConfigurationFile>

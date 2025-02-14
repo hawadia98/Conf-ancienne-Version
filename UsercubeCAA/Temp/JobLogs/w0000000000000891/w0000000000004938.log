@@ -1,0 +1,11 @@
+﻿[16:18:44 VRB] SourcesRootPaths loaded from the agent's configuration
+[16:18:44 VRB] Allowed paths for connections: D:\UsercubeCAA\Sources\
+[16:18:44 INF] Usercube-RefreshSchema started for Connection=34001
+[16:18:44 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/4938?api-version=1.0
+[16:18:44 VRB] Refreshed token: token expiration date=01/30/2025 16:15:43
+[16:18:44 VRB] HandleQuery SelectRefreshSchemaConnectionByIdQuery
+[16:18:44 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Connectors/Connection/34001?api-version=1.0&squery=join%20Package%20p%20select%20Id,%20Identifier,%20DisplayName_L1,%20p.Identifier&path=/Connectors/Connection/Query&QueryRootEntityType=Connection
+[16:18:44 VRB] HandleCommand UpdateConnectionCommand
+[16:18:44 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Connectors/Connection/34001?api-version=1.0
+[16:18:45 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/4938?api-version=1.0
+[16:18:45 INF] Usercube-RefreshSchema completed

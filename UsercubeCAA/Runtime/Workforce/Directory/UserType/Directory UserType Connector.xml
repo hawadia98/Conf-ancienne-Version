@@ -1,0 +1,50 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <EntityType Identifier="Directory_UserType" DisplayName_L1="User Type">
+    <Property Identifier="Identifier" DisplayName_L1="Code" Type="String" IsKey="true" TargetColumnIndex="4" />
+
+    <Property Identifier="DisplayName" DisplayName_L1="Name" Type="String" TargetColumnIndex="5" TemplateTransformation="OnePerLanguage" />
+
+    <Property Identifier="IsExternal" DisplayName_L1="External" Type="Bool" TargetColumnIndex="13" />
+
+    <!-- Suffix for email addresses, such as .ext for external -->
+    <Property Identifier="EmailSuffix" DisplayName_L1="Email Suffix" Type="String" TargetColumnIndex="6" />
+    <!-- Prefix for login such as X for external or P for partners -->
+    <Property Identifier="LoginPrefix" DisplayName_L1="Login Prefix" Type="String" TargetColumnIndex="7" />
+    <!-- Suffix for login such as _ext for external -->
+    <Property Identifier="LoginSuffix" DisplayName_L1="Login Suffix" Type="String" TargetColumnIndex="11" />
+
+    <!-- Prefix for unique identifier such as X for external or P for partners -->
+    <Property Identifier="UniqueIdentifierPrefix" DisplayName_L1="Unique Identifier Prefix" Type="String" TargetColumnIndex="8" />
+    <!-- Range start for the unique identifier  -->
+    <Property Identifier="UniqueIdentifierRangeStart" DisplayName_L1="Unique Identifier Range Start" Type="Int32" TargetColumnIndex="9" />
+    <!-- Range end for the unique identifier  -->
+    <Property Identifier="UniqueIdentifierRangeEnd" DisplayName_L1="Unique Identifier Range End" Type="Int32" TargetColumnIndex="10" />
+    <!-- Suffix for unique identifier such as X for external or P for partners -->
+    <Property Identifier="UniqueIdentifierSuffix" DisplayName_L1="Unique Identifier Suffix" Type="String" TargetColumnIndex="12" />
+
+    <Property Identifier="Category" DisplayName_L1="Category" Type="ForeignKey" TargetColumnIndex="128" />
+    <Property Identifier="UserRecords" DisplayName_L1="Users" Type="ForeignKey" />
+  </EntityType>
+
+  <DisplayEntityType PluralDisplayName_L1="User Types" Identifier="Directory_UserType" Color="#95c18b" HideRoles="true">
+    <Property DisplayOrder="-1" IsRequired="true" Identifier="Identifier" />
+    <Property IsRequired="true" Identifier="DisplayName" />
+    <Property Identifier="Category" InputType="Combobox" />
+    <Property OutputType="BasicCollection" Identifier="UserRecords" NavigationBinding="Directory_UserRecord:User" />
+  </DisplayEntityType>
+
+  <EntityAssociation Identifier="Directory_UserType_Category" IsProperty2Collection="true" Property1="Directory_UserType:Category" Property2="Directory_UserCategory:Types" />
+
+  <AccessControlPropertyGroup Identifier="Directory_UserType_Administration" DisplayName_L1="User Type - Administration Properties" />
+  <AccessControlEntityType Identifier="Directory_UserType">
+    <Property VisibilityGroup="Directory_UserType_Administration" Identifier="EmailSuffix" />
+    <Property VisibilityGroup="Directory_UserType_Administration" Identifier="LoginPrefix" />
+    <Property VisibilityGroup="Directory_UserType_Administration" Identifier="UniqueIdentifierPrefix" />
+    <Property VisibilityGroup="Directory_UserType_Administration" Identifier="UniqueIdentifierRangeStart" />
+    <Property VisibilityGroup="Directory_UserType_Administration" Identifier="UniqueIdentifierRangeEnd" />
+  </AccessControlEntityType>
+
+  <CreateUpdateDeleteTemplate EntityType="Directory_UserType" Profile="Administrator" />
+
+  <ConnectorMappings Connector="Directory" EntityType="Directory_UserType" IsIncremental="1" Package="Usercube.Excel@0000001" />
+</ConfigurationFile>

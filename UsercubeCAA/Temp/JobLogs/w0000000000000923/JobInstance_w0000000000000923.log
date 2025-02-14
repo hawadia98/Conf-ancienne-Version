@@ -1,0 +1,372 @@
+﻿[11:45:59 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/923?api-version=3.0&jobGroupId=4&current=0&totalTask=0&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[11:45:59 VRB] Refreshed token: token expiration date=01/31/2025 11:42:59
+[11:45:59 VRB] HandleQuery SelectConsolidateJobQuery
+[11:45:59 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/RunStateMachineJob?api-version=4.0&path=/Jobs/Job/Query&jobIdentifier=4&repair=False&beginJobStep=-1&endJobStep=-1&forceSynchronizationProvisioning=False&retry=False&launchTaskType=0&taskIdentifier=&taskIdentifierContains=&beginTaskExcluded=&endTaskExcluded=&jobInstanceId=923&jobId=4
+[11:45:59 VRB] HandleCommand ReserveTaskInstanceIdCommand
+[11:45:59 VRB] Reserve 25 next TaskInstanceId
+[11:45:59 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceId/25?api-version=1.0
+[11:45:59 VRB] Check the JobInstance state for JobInstance 923.
+[11:45:59 VRB] HandleQuery SelectJobInstanceByIdQuery
+[11:45:59 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/923?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:45:59 INF] InvokeExpressionTask: HR_Synchro_Incremental_Scaffolding_PreCollect (Level: 0, LaunchOrder: 0)
+    Agent: CAA
+
+[11:45:59 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_PreCollect
+[11:45:59 VRB] HandleCommand TaskInstanceProgressCommand
+[11:45:59 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:46:00 INF] Launch task: InvokeExpressionTask: HR_Synchro_Incremental_Scaffolding_PreCollect, Task 1/25
+[11:46:00 VRB] HandleCommand RunTaskCommand
+[11:46:00 INF] Launch InvokeExpressionTask : HR_Synchro_Incremental_Scaffolding_PreCollect
+[11:46:00 DBG] Start Process dotnet Usercube-Invoke-ExpressionAgentSide.dll --progress-task-instance-id 5222 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --input-path "D:\UsercubeCAA\Scripts\HR\HR_PreCollect.ps1" --stdin null
+[11:46:00 INF] Start process=True PID=5560 dotnet Usercube-Invoke-ExpressionAgentSide.dll --progress-task-instance-id 5222 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --input-path "D:\UsercubeCAA\Scripts\HR\HR_PreCollect.ps1" --stdin
+[11:46:01 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/5222?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[11:46:01 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:46:01 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5222?api-version=2.0&jobInstanceId=923&taskId=238&jobId=4
+[11:46:01 INF] Task: HR_Synchro_Incremental_Scaffolding_PreCollect Completed with state Completed
+[11:46:01 INF] ExportTask: HR_Synchro_Incremental_Scaffolding_Export_HR_User (Level: 1, LaunchOrder: 1)
+    Connector: HR
+    Mode: Incremental
+    ConnectionIdentifier: HRUser
+    ExportType: ExportCsv
+
+[11:46:01 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_Export_HR_User
+[11:46:01 VRB] HandleCommand TaskInstanceProgressCommand
+[11:46:01 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:46:01 INF] Launch task: ExportTask: HR_Synchro_Incremental_Scaffolding_Export_HR_User, Task 2/25
+[11:46:01 VRB] HandleCommand RunTaskCommand
+[11:46:01 INF] Launch ExportTask : HR_Synchro_Incremental_Scaffolding_Export_HR_User
+[11:46:01 DBG] Start Process dotnet Usercube-Export-Csv.dll --progress-task-instance-id 5223 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "HRUser" --path-incremental "D:\UsercubeCAA\Sources\RH\Incremental\RH_entrees.csv" --separator ";" --lines-to-skip "0" --stdin null
+[11:46:01 INF] Start process=True PID=4780 dotnet Usercube-Export-Csv.dll --progress-task-instance-id 5223 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "HRUser" --path-incremental "D:\UsercubeCAA\Sources\RH\Incremental\RH_entrees.csv" --separator ";" --lines-to-skip "0" --stdin
+[11:46:02 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/5223?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[11:46:02 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:46:02 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5223?api-version=2.0&jobInstanceId=923&taskId=235&jobId=4
+[11:46:02 INF] Task: HR_Synchro_Incremental_Scaffolding_Export_HR_User Completed with state Completed
+[11:46:02 VRB] Check the JobInstance state for JobInstance 923.
+[11:46:02 VRB] HandleQuery SelectJobInstanceByIdQuery
+[11:46:02 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/923?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:46:02 INF] ExportTask: HR_Synchro_Incremental_Scaffolding_Export_HR_UserUpdate (Level: 2, LaunchOrder: 2)
+    Connector: HR
+    Mode: Incremental
+    ConnectionIdentifier: HRUserUpdate
+    ExportType: ExportCsv
+
+[11:46:02 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_Export_HR_UserUpdate
+[11:46:02 VRB] HandleCommand TaskInstanceProgressCommand
+[11:46:02 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:46:02 INF] Launch task: ExportTask: HR_Synchro_Incremental_Scaffolding_Export_HR_UserUpdate, Task 3/25
+[11:46:02 VRB] HandleCommand RunTaskCommand
+[11:46:02 INF] Launch ExportTask : HR_Synchro_Incremental_Scaffolding_Export_HR_UserUpdate
+[11:46:02 DBG] Start Process dotnet Usercube-Export-Csv.dll --progress-task-instance-id 5224 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "HRUserUpdate" --path-incremental "D:\UsercubeCAA\Sources\RH\Incremental\RH_sorties_mobilitees.csv" --separator ";" --lines-to-skip "0" --stdin null
+[11:46:02 INF] Start process=True PID=13144 dotnet Usercube-Export-Csv.dll --progress-task-instance-id 5224 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "HRUserUpdate" --path-incremental "D:\UsercubeCAA\Sources\RH\Incremental\RH_sorties_mobilitees.csv" --separator ";" --lines-to-skip "0" --stdin
+[11:46:03 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/5224?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[11:46:03 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:46:03 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5224?api-version=2.0&jobInstanceId=923&taskId=236&jobId=4
+[11:46:03 INF] Task: HR_Synchro_Incremental_Scaffolding_Export_HR_UserUpdate Completed with state Completed
+[11:46:03 INF] ExportTask: HR_Synchro_Incremental_Scaffolding_Export_HR_LoadIUG (Level: 3, LaunchOrder: 3)
+    Connector: HR
+    Mode: Incremental
+    ConnectionIdentifier: HRLoadIUG
+    ExportType: ExportCsv
+
+[11:46:03 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_Export_HR_LoadIUG
+[11:46:03 VRB] HandleCommand TaskInstanceProgressCommand
+[11:46:03 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:46:03 INF] Launch task: ExportTask: HR_Synchro_Incremental_Scaffolding_Export_HR_LoadIUG, Task 4/25
+[11:46:03 VRB] HandleCommand RunTaskCommand
+[11:46:03 INF] Launch ExportTask : HR_Synchro_Incremental_Scaffolding_Export_HR_LoadIUG
+[11:46:03 DBG] Start Process dotnet Usercube-Export-Csv.dll --progress-task-instance-id 5225 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "HRLoadIUG" --path-incremental "D:\UsercubeCAA\Sources\RH\Incremental\Load_IUG.csv" --separator ";" --lines-to-skip "0" --stdin null
+[11:46:03 INF] Start process=True PID=7232 dotnet Usercube-Export-Csv.dll --progress-task-instance-id 5225 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "HRLoadIUG" --path-incremental "D:\UsercubeCAA\Sources\RH\Incremental\Load_IUG.csv" --separator ";" --lines-to-skip "0" --stdin
+[11:46:03 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/5225?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[11:46:04 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:46:04 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5225?api-version=2.0&jobInstanceId=923&taskId=234&jobId=4
+[11:46:04 INF] Task: HR_Synchro_Incremental_Scaffolding_Export_HR_LoadIUG Completed with state Completed
+[11:46:04 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/923?api-version=3.0&jobGroupId=4&current=4&totalTask=25&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[11:46:04 INF] PrepareSynchronizationChangesTask: HR_Synchro_Incremental_Scaffolding_PrepareSynchronization_HR (Level: 4, LaunchOrder: 4)
+    Synchronization Mode: Incremental
+    Connector: HR
+    Parent: HR_Synchro_Incremental_Scaffolding_Export_HR_LoadIUG, HR_Synchro_Incremental_Scaffolding_Export_HR_User, HR_Synchro_Incremental_Scaffolding_Export_HR_UserUpdate
+
+[11:46:04 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_PrepareSynchronization_HR
+[11:46:04 VRB] HandleCommand TaskInstanceProgressCommand
+[11:46:04 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:46:04 INF] Launch task: PrepareSynchronizationChangesTask: HR_Synchro_Incremental_Scaffolding_PrepareSynchronization_HR, Task 5/25
+[11:46:04 VRB] HandleCommand RunTaskCommand
+[11:46:04 INF] Launch PrepareSynchronizationChangesTask : HR_Synchro_Incremental_Scaffolding_PrepareSynchronization_HR
+[11:46:04 DBG] Start Process dotnet Usercube-Prepare-SynchronizationChange.dll --progress-task-instance-id 5226 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --connector 8 --working-directory "../Work\Collect" --sources-directory "../Temp\ExportOutput" --stdin null
+[11:46:04 INF] Start process=True PID=17192 dotnet Usercube-Prepare-SynchronizationChange.dll --progress-task-instance-id 5226 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --connector 8 --working-directory "../Work\Collect" --sources-directory "../Temp\ExportOutput" --stdin
+[11:46:04 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/5226?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[11:46:04 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:46:04 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5226?api-version=2.0&jobInstanceId=923&taskId=239&jobId=4
+[11:46:04 INF] Task: HR_Synchro_Incremental_Scaffolding_PrepareSynchronization_HR Completed with state Completed
+[11:46:04 VRB] Check the JobInstance state for JobInstance 923.
+[11:46:04 VRB] HandleQuery SelectJobInstanceByIdQuery
+[11:46:04 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/923?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:46:04 INF] SynchronizeChangesTask: HR_Synchro_Incremental_Scaffolding_Synchronize_HR_DoNotDeleteChange (Level: 5, LaunchOrder: 5)
+    Connector: HR
+    Force Provisioning: True
+    DoNotDeleteChange: True
+    Parent: HR_Synchro_Incremental_Scaffolding_PrepareSynchronization_HR
+
+[11:46:04 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_Synchronize_HR_DoNotDeleteChange
+[11:46:04 VRB] HandleCommand TaskInstanceProgressCommand
+[11:46:04 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:46:04 INF] Launch task: SynchronizeChangesTask: HR_Synchro_Incremental_Scaffolding_Synchronize_HR_DoNotDeleteChange, Task 6/25
+[11:46:04 VRB] HandleCommand RunTaskCommand
+[11:46:04 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/247?api-version=4.0&jobInstanceId=923&jobLogLevel=Trace
+[11:46:05 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:46:05 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5227?api-version=2.0&jobInstanceId=923&taskId=247&jobId=4
+[11:46:05 INF] Task: HR_Synchro_Incremental_Scaffolding_Synchronize_HR_DoNotDeleteChange Completed with state Completed
+[11:46:05 INF] UpdateEntityPropertyExpressionsTask: HR_Synchro_Incremental_Scaffolding_ComputeProperties_1 (Level: 6, LaunchOrder: 6)
+    AllEntities: True
+
+[11:46:05 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_ComputeProperties_1
+[11:46:05 VRB] HandleCommand TaskInstanceProgressCommand
+[11:46:05 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:46:05 INF] Launch task: UpdateEntityPropertyExpressionsTask: HR_Synchro_Incremental_Scaffolding_ComputeProperties_1, Task 7/25
+[11:46:05 VRB] HandleCommand RunTaskCommand
+[11:46:05 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/228?api-version=4.0&jobInstanceId=923&jobLogLevel=Trace
+[11:46:06 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:46:06 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5228?api-version=2.0&jobInstanceId=923&taskId=228&jobId=4
+[11:46:06 INF] Task: HR_Synchro_Incremental_Scaffolding_ComputeProperties_1 Completed with state Completed
+[11:46:06 INF] ComputeCorrelationKeysTask: HR_Synchro_Incremental_Scaffolding_ComputeCorrelationKeysy_Users (Level: 7, LaunchOrder: 7)
+    All Entities: True
+
+[11:46:06 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_ComputeCorrelationKeysy_Users
+[11:46:06 VRB] HandleCommand TaskInstanceProgressCommand
+[11:46:06 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:46:06 INF] Launch task: ComputeCorrelationKeysTask: HR_Synchro_Incremental_Scaffolding_ComputeCorrelationKeysy_Users, Task 8/25
+[11:46:06 VRB] HandleCommand RunTaskCommand
+[11:46:06 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/227?api-version=4.0&jobInstanceId=923&jobLogLevel=Trace
+[11:46:31 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:46:31 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5229?api-version=2.0&jobInstanceId=923&taskId=227&jobId=4
+[11:46:31 INF] Task: HR_Synchro_Incremental_Scaffolding_ComputeCorrelationKeysy_Users Completed with state Completed
+[11:46:31 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/923?api-version=3.0&jobGroupId=4&current=8&totalTask=25&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[11:46:31 VRB] Check the JobInstance state for JobInstance 923.
+[11:46:31 VRB] HandleQuery SelectJobInstanceByIdQuery
+[11:46:31 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/923?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:46:31 INF] ComputeRoleModelTask: HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_Users (Level: 8, LaunchOrder: 8)
+    EntityType: HR_User
+
+[11:46:31 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_Users
+[11:46:31 VRB] HandleCommand TaskInstanceProgressCommand
+[11:46:31 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:46:31 INF] Launch task: ComputeRoleModelTask: HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_Users, Task 9/25
+[11:46:31 VRB] HandleCommand RunTaskCommand
+[11:46:31 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/233?api-version=4.0&jobInstanceId=923&jobLogLevel=Trace
+[11:46:31 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:46:31 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5230?api-version=2.0&jobInstanceId=923&taskId=233&jobId=4
+[11:46:31 INF] Task: HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_Users Completed with state Completed
+[11:46:31 INF] GenerateProvisioningOrdersTask: HR_Synchro_Incremental_Scaffolding_Provisioning_Users (Level: 9, LaunchOrder: 9)
+    Force Provisioning: True
+    ResourceType: HR_User, HR_UserRecord
+
+[11:46:31 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_Provisioning_Users
+[11:46:31 VRB] HandleCommand TaskInstanceProgressCommand
+[11:46:31 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:46:31 INF] Launch task: GenerateProvisioningOrdersTask: HR_Synchro_Incremental_Scaffolding_Provisioning_Users, Task 10/25
+[11:46:31 VRB] HandleCommand RunTaskCommand
+[11:46:31 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/245?api-version=4.0&jobInstanceId=923&jobLogLevel=Trace
+[11:46:31 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:46:31 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5231?api-version=2.0&jobInstanceId=923&taskId=245&jobId=4
+[11:46:31 INF] Task: HR_Synchro_Incremental_Scaffolding_Provisioning_Users Completed with state Completed
+[11:46:31 INF] FulfillTask: HR_Synchro_Incremental_Scaffolding_Provisioner_Workflow (Level: 10, LaunchOrder: 10)
+    ConnectionIdentifier: HRWorkflows
+    FulfillmentType: FulfillInternalWorkflows
+    Parent: HR_Synchro_Incremental_Scaffolding_Provisioning_Users
+    ResourceType: HR_User, HR_UserRecord
+
+[11:46:31 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_Provisioner_Workflow
+[11:46:31 VRB] HandleCommand TaskInstanceProgressCommand
+[11:46:31 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:46:31 INF] The Task: HR_Synchro_Incremental_Scaffolding_Provisioner_Workflow has not been launched because no treatment is required.
+[11:46:31 INF] ComputeCorrelationKeysTask: HR_Synchro_Incremental_Scaffolding_ComputeCorrelationKeysy_LoadUIG (Level: 11, LaunchOrder: 11)
+    All Entities: True
+
+[11:46:31 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_ComputeCorrelationKeysy_LoadUIG
+[11:46:31 VRB] HandleCommand TaskInstanceProgressCommand
+[11:46:31 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:46:31 INF] Launch task: ComputeCorrelationKeysTask: HR_Synchro_Incremental_Scaffolding_ComputeCorrelationKeysy_LoadUIG, Task 12/25
+[11:46:31 VRB] HandleCommand RunTaskCommand
+[11:46:31 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/226?api-version=4.0&jobInstanceId=923&jobLogLevel=Trace
+[11:46:55 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:46:55 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5233?api-version=2.0&jobInstanceId=923&taskId=226&jobId=4
+[11:46:55 INF] Task: HR_Synchro_Incremental_Scaffolding_ComputeCorrelationKeysy_LoadUIG Completed with state Completed
+[11:46:55 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/923?api-version=3.0&jobGroupId=4&current=12&totalTask=25&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[11:46:55 VRB] Check the JobInstance state for JobInstance 923.
+[11:46:55 VRB] HandleQuery SelectJobInstanceByIdQuery
+[11:46:55 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/923?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:46:55 INF] ComputeRoleModelTask: HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_LoadUIG_1 (Level: 12, LaunchOrder: 12)
+    EntityType: HR_LoadIUG
+
+[11:46:55 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_LoadUIG_1
+[11:46:55 VRB] HandleCommand TaskInstanceProgressCommand
+[11:46:55 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:46:55 INF] Launch task: ComputeRoleModelTask: HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_LoadUIG_1, Task 13/25
+[11:46:55 VRB] HandleCommand RunTaskCommand
+[11:46:55 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/230?api-version=4.0&jobInstanceId=923&jobLogLevel=Trace
+[11:46:55 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:46:55 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5234?api-version=2.0&jobInstanceId=923&taskId=230&jobId=4
+[11:46:55 INF] Task: HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_LoadUIG_1 Completed with state Completed
+[11:46:55 INF] InvokeExpressionTask: HR_Synchro_Incremental_Scaffolding_HR_LoadIUG_BulkResourceReconciliation (Level: 13, LaunchOrder: 13)
+    Agent: CAA
+
+[11:46:55 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_HR_LoadIUG_BulkResourceReconciliation
+[11:46:55 VRB] HandleCommand TaskInstanceProgressCommand
+[11:46:55 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:46:55 INF] Launch task: InvokeExpressionTask: HR_Synchro_Incremental_Scaffolding_HR_LoadIUG_BulkResourceReconciliation, Task 14/25
+[11:46:55 VRB] HandleCommand RunTaskCommand
+[11:46:55 INF] Launch InvokeExpressionTask : HR_Synchro_Incremental_Scaffolding_HR_LoadIUG_BulkResourceReconciliation
+[11:46:55 DBG] Start Process dotnet Usercube-Invoke-ExpressionAgentSide.dll --progress-task-instance-id 5235 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --input-path "D:\UsercubeCAA\Scripts\HR\HR_LoadIUG_BulkResourceReconciliation.ps1" --stdin null
+[11:46:55 INF] Start process=True PID=8892 dotnet Usercube-Invoke-ExpressionAgentSide.dll --progress-task-instance-id 5235 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --input-path "D:\UsercubeCAA\Scripts\HR\HR_LoadIUG_BulkResourceReconciliation.ps1" --stdin
+[11:47:26 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/5235?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[11:47:26 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:47:26 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5235?api-version=2.0&jobInstanceId=923&taskId=23003&jobId=4
+[11:47:26 INF] Task: HR_Synchro_Incremental_Scaffolding_HR_LoadIUG_BulkResourceReconciliation Completed with state Completed
+[11:47:26 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/923?api-version=3.0&jobGroupId=4&current=14&totalTask=25&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[11:47:26 VRB] Check the JobInstance state for JobInstance 923.
+[11:47:26 VRB] HandleQuery SelectJobInstanceByIdQuery
+[11:47:26 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/923?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:47:26 INF] ComputeRoleModelTask: HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_LoadUIG_2 (Level: 14, LaunchOrder: 14)
+    EntityType: HR_LoadIUG
+
+[11:47:26 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_LoadUIG_2
+[11:47:26 VRB] HandleCommand TaskInstanceProgressCommand
+[11:47:26 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:47:26 INF] Launch task: ComputeRoleModelTask: HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_LoadUIG_2, Task 15/25
+[11:47:26 VRB] HandleCommand RunTaskCommand
+[11:47:26 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/231?api-version=4.0&jobInstanceId=923&jobLogLevel=Trace
+[11:47:26 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:47:26 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5236?api-version=2.0&jobInstanceId=923&taskId=231&jobId=4
+[11:47:26 INF] Task: HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_LoadUIG_2 Completed with state Completed
+[11:47:26 INF] GenerateProvisioningOrdersTask: HR_Synchro_Incremental_Scaffolding_Provisioning_LoadUIG (Level: 15, LaunchOrder: 15)
+    Force Provisioning: True
+    ResourceType: HR_UserRecord_LoadUIG, HR_User_LoadUIG
+
+[11:47:26 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_Provisioning_LoadUIG
+[11:47:26 VRB] HandleCommand TaskInstanceProgressCommand
+[11:47:26 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:47:26 INF] Launch task: GenerateProvisioningOrdersTask: HR_Synchro_Incremental_Scaffolding_Provisioning_LoadUIG, Task 16/25
+[11:47:26 VRB] HandleCommand RunTaskCommand
+[11:47:26 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/243?api-version=4.0&jobInstanceId=923&jobLogLevel=Trace
+[11:47:27 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:47:27 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5237?api-version=2.0&jobInstanceId=923&taskId=243&jobId=4
+[11:47:27 INF] Task: HR_Synchro_Incremental_Scaffolding_Provisioning_LoadUIG Completed with state Completed
+[11:47:27 INF] FulfillTask: HR_Synchro_Incremental_Scaffolding_Provisioner_LoadUIG (Level: 16, LaunchOrder: 16)
+    ConnectionIdentifier: HRDatabase
+    FulfillmentType: FulfillInternalResource
+    Parent: HR_Synchro_Incremental_Scaffolding_Provisioning_LoadUIG
+    ResourceType: HR_UserRecord_LoadUIG, HR_User_LoadUIG
+
+[11:47:27 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_Provisioner_LoadUIG
+[11:47:27 VRB] HandleCommand TaskInstanceProgressCommand
+[11:47:27 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:47:27 INF] The Task: HR_Synchro_Incremental_Scaffolding_Provisioner_LoadUIG has not been launched because no treatment is required.
+[11:47:27 INF] ComputeRoleModelTask: HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_UserUpdate_1 (Level: 17, LaunchOrder: 17)
+    EntityType: HR_UserUpdate
+
+[11:47:27 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_UserUpdate_1
+[11:47:27 VRB] HandleCommand TaskInstanceProgressCommand
+[11:47:27 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:47:27 INF] Launch task: ComputeRoleModelTask: HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_UserUpdate_1, Task 18/25
+[11:47:27 VRB] HandleCommand RunTaskCommand
+[11:47:27 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/23001?api-version=4.0&jobInstanceId=923&jobLogLevel=Trace
+[11:47:27 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:47:27 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5239?api-version=2.0&jobInstanceId=923&taskId=23001&jobId=4
+[11:47:27 INF] Task: HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_UserUpdate_1 Completed with state Completed
+[11:47:27 INF] InvokeExpressionTask: HR_Synchro_Incremental_Scaffolding_HR_UserUpdate_BulkResourceReconciliation (Level: 18, LaunchOrder: 18)
+    Agent: CAA
+
+[11:47:27 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_HR_UserUpdate_BulkResourceReconciliation
+[11:47:27 VRB] HandleCommand TaskInstanceProgressCommand
+[11:47:27 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:47:27 INF] Launch task: InvokeExpressionTask: HR_Synchro_Incremental_Scaffolding_HR_UserUpdate_BulkResourceReconciliation, Task 19/25
+[11:47:27 VRB] HandleCommand RunTaskCommand
+[11:47:27 INF] Launch InvokeExpressionTask : HR_Synchro_Incremental_Scaffolding_HR_UserUpdate_BulkResourceReconciliation
+[11:47:27 DBG] Start Process dotnet Usercube-Invoke-ExpressionAgentSide.dll --progress-task-instance-id 5240 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --input-path "D:\UsercubeCAA\Scripts\HR\HR_UserUpdate_BulkResourceReconciliation.ps1" --stdin null
+[11:47:27 INF] Start process=True PID=6280 dotnet Usercube-Invoke-ExpressionAgentSide.dll --progress-task-instance-id 5240 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --input-path "D:\UsercubeCAA\Scripts\HR\HR_UserUpdate_BulkResourceReconciliation.ps1" --stdin
+[11:47:58 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/5240?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[11:47:58 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:47:58 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5240?api-version=2.0&jobInstanceId=923&taskId=23004&jobId=4
+[11:47:58 INF] Task: HR_Synchro_Incremental_Scaffolding_HR_UserUpdate_BulkResourceReconciliation Completed with state Completed
+[11:47:58 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/923?api-version=3.0&jobGroupId=4&current=19&totalTask=25&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[11:47:58 VRB] Check the JobInstance state for JobInstance 923.
+[11:47:58 VRB] HandleQuery SelectJobInstanceByIdQuery
+[11:47:58 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/923?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:47:58 INF] ComputeRoleModelTask: HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_UserUpdate_2 (Level: 19, LaunchOrder: 19)
+    EntityType: HR_UserUpdate
+
+[11:47:58 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_UserUpdate_2
+[11:47:58 VRB] HandleCommand TaskInstanceProgressCommand
+[11:47:58 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:47:58 INF] Launch task: ComputeRoleModelTask: HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_UserUpdate_2, Task 20/25
+[11:47:58 VRB] HandleCommand RunTaskCommand
+[11:47:58 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/23002?api-version=4.0&jobInstanceId=923&jobLogLevel=Trace
+[11:47:58 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:47:58 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5241?api-version=2.0&jobInstanceId=923&taskId=23002&jobId=4
+[11:47:58 INF] Task: HR_Synchro_Incremental_Scaffolding_ComputeProvisioningPolicy_UserUpdate_2 Completed with state Completed
+[11:47:58 INF] GenerateProvisioningOrdersTask: HR_Synchro_Incremental_Scaffolding_Provisioning_UserUpdate (Level: 20, LaunchOrder: 20)
+    Force Provisioning: True
+    ResourceType: HR_UserUpdate
+
+[11:47:58 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_Provisioning_UserUpdate
+[11:47:58 VRB] HandleCommand TaskInstanceProgressCommand
+[11:47:58 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:47:58 INF] Launch task: GenerateProvisioningOrdersTask: HR_Synchro_Incremental_Scaffolding_Provisioning_UserUpdate, Task 21/25
+[11:47:58 VRB] HandleCommand RunTaskCommand
+[11:47:58 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/244?api-version=4.0&jobInstanceId=923&jobLogLevel=Trace
+[11:47:58 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:47:58 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5242?api-version=2.0&jobInstanceId=923&taskId=244&jobId=4
+[11:47:58 INF] Task: HR_Synchro_Incremental_Scaffolding_Provisioning_UserUpdate Completed with state Completed
+[11:47:58 INF] FulfillTask: HR_Synchro_Incremental_Scaffolding_Provisioner_Workflow_UserUpdate (Level: 21, LaunchOrder: 21)
+    ConnectionIdentifier: HRWorkflows
+    FulfillmentType: FulfillInternalWorkflows
+    Parent: HR_Synchro_Incremental_Scaffolding_Provisioning_UserUpdate
+    ResourceType: HR_UserUpdate
+
+[11:47:58 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_Provisioner_Workflow_UserUpdate
+[11:47:58 VRB] HandleCommand TaskInstanceProgressCommand
+[11:47:58 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:47:58 INF] The Task: HR_Synchro_Incremental_Scaffolding_Provisioner_Workflow_UserUpdate has not been launched because no treatment is required.
+[11:47:58 INF] UpdateEntityPropertyExpressionsTask: HR_Synchro_Incremental_Scaffolding_ComputeProperties_2 (Level: 22, LaunchOrder: 22)
+    AllEntities: True
+
+[11:47:58 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_ComputeProperties_2
+[11:47:58 VRB] HandleCommand TaskInstanceProgressCommand
+[11:47:58 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:47:58 INF] Launch task: UpdateEntityPropertyExpressionsTask: HR_Synchro_Incremental_Scaffolding_ComputeProperties_2, Task 23/25
+[11:47:58 VRB] HandleCommand RunTaskCommand
+[11:47:58 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/229?api-version=4.0&jobInstanceId=923&jobLogLevel=Trace
+[11:48:00 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:48:00 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5244?api-version=2.0&jobInstanceId=923&taskId=229&jobId=4
+[11:48:00 INF] Task: HR_Synchro_Incremental_Scaffolding_ComputeProperties_2 Completed with state Completed
+[11:48:00 INF] InvokeExpressionTask: HR_Synchro_Incremental_Scaffolding_Reset_HR_Files (Level: 23, LaunchOrder: 23)
+    Agent: CAA
+
+[11:48:00 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_Reset_HR_Files
+[11:48:00 VRB] HandleCommand TaskInstanceProgressCommand
+[11:48:00 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:48:00 INF] Launch task: InvokeExpressionTask: HR_Synchro_Incremental_Scaffolding_Reset_HR_Files, Task 24/25
+[11:48:00 VRB] HandleCommand RunTaskCommand
+[11:48:00 INF] Launch InvokeExpressionTask : HR_Synchro_Incremental_Scaffolding_Reset_HR_Files
+[11:48:00 DBG] Start Process dotnet Usercube-Invoke-ExpressionAgentSide.dll --progress-task-instance-id 5245 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --input-path "D:\UsercubeCAA\Scripts\HR\HR_Reset_Files.ps1" --stdin null
+[11:48:00 INF] Start process=True PID=10028 dotnet Usercube-Invoke-ExpressionAgentSide.dll --progress-task-instance-id 5245 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --input-path "D:\UsercubeCAA\Scripts\HR\HR_Reset_Files.ps1" --stdin
+[11:48:01 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/5245?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[11:48:01 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:48:01 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5245?api-version=2.0&jobInstanceId=923&taskId=246&jobId=4
+[11:48:01 INF] Task: HR_Synchro_Incremental_Scaffolding_Reset_HR_Files Completed with state Completed
+[11:48:01 VRB] Check the JobInstance state for JobInstance 923.
+[11:48:01 VRB] HandleQuery SelectJobInstanceByIdQuery
+[11:48:01 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/923?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:48:01 INF] SetInternalUserProfilesTask: HR_Synchro_Incremental_Scaffolding_SetInternalUserProfiles (Level: 24, LaunchOrder: 24)
+    EntityType: Directory_User
+
+[11:48:01 VRB] Check the instance state for Task HR_Synchro_Incremental_Scaffolding_SetInternalUserProfiles
+[11:48:01 VRB] HandleCommand TaskInstanceProgressCommand
+[11:48:01 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:48:01 INF] Launch task: SetInternalUserProfilesTask: HR_Synchro_Incremental_Scaffolding_SetInternalUserProfiles, Task 25/25
+[11:48:01 VRB] HandleCommand RunTaskCommand
+[11:48:01 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/27001?api-version=4.0&jobInstanceId=923&jobLogLevel=Trace
+[11:48:02 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:48:02 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5246?api-version=2.0&jobInstanceId=923&taskId=27001&jobId=4
+[11:48:02 INF] Task: HR_Synchro_Incremental_Scaffolding_SetInternalUserProfiles Completed with state Completed
+[11:48:02 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/923?api-version=3.0&jobGroupId=4&current=25&totalTask=25&state=Completed&resourceId=-1&cancelRequest=False&retry=False

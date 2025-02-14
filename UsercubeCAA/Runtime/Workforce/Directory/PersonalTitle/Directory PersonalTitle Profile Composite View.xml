@@ -1,0 +1,7 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Profile Identifier="Workforce/Directory/Directory_PersonalTitle/View" DisplayName_L1="Workforce/Directory/View Personal Titles" IsComponent="true" />
+
+  <AccessControlRule Profile="Workforce/Directory/Directory_PersonalTitle/View" EntityType="Directory_PersonalTitle" Identifier="Composite_Directory_Directory_PersonalTitle_View_*" DisplayName_L1="Composite_Directory_Directory_PersonalTitle_View_*" TemplateTransformation="AllowLinkedEntities;Directory_PersonalTitle;/Custom/Resources/Directory_PersonalTitle/View">
+    <Entry Permission="/Custom/Resources/Directory_PersonalTitle/View" CanExecute="true" />
+  </AccessControlRule>
+</ConfigurationFile>

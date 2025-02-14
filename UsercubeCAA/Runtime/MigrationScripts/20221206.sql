@@ -1,0 +1,1 @@
+-- empty script to force the execution of the predefined script due to the renaming of a permission

@@ -1,0 +1,163 @@
+﻿[12:00:02 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/789?api-version=3.0&jobGroupId=2&current=0&totalTask=0&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[12:00:02 VRB] Refreshed token: token expiration date=01/29/2025 11:57:02
+[12:00:03 VRB] HandleQuery SelectConsolidateJobQuery
+[12:00:03 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/RunStateMachineJob?api-version=4.0&path=/Jobs/Job/Query&jobIdentifier=2&repair=False&beginJobStep=-1&endJobStep=-1&forceSynchronizationProvisioning=False&retry=False&launchTaskType=0&taskIdentifier=&taskIdentifierContains=&beginTaskExcluded=&endTaskExcluded=&jobInstanceId=789&jobId=2
+[12:00:03 VRB] HandleCommand ReserveTaskInstanceIdCommand
+[12:00:03 VRB] Reserve 10 next TaskInstanceId
+[12:00:03 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceId/10?api-version=1.0
+[12:00:03 VRB] Check the JobInstance state for JobInstance 789.
+[12:00:03 VRB] HandleQuery SelectJobInstanceByIdQuery
+[12:00:03 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/789?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:00:03 INF] ExportTask: Catalog_Synchro_Complete_Scaffolding_Export_ApplicationCatalogExport (Level: 0, LaunchOrder: 0)
+    Connector: Catalog
+    Mode: Complete
+    ConnectionIdentifier: ApplicationCatalogExport
+    ExportType: ExportCsv
+
+[12:00:03 VRB] Check the instance state for Task Catalog_Synchro_Complete_Scaffolding_Export_ApplicationCatalogExport
+[12:00:03 VRB] HandleCommand TaskInstanceProgressCommand
+[12:00:03 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:00:03 INF] Launch task: ExportTask: Catalog_Synchro_Complete_Scaffolding_Export_ApplicationCatalogExport, Task 1/10
+[12:00:03 VRB] HandleCommand RunTaskCommand
+[12:00:03 INF] Launch ExportTask : Catalog_Synchro_Complete_Scaffolding_Export_ApplicationCatalogExport
+[12:00:03 DBG] Start Process dotnet Usercube-Export-Csv.dll --progress-task-instance-id 4429 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "ApplicationCatalogExport" --raw-files-path "D:\UsercubeCAA\Sources\Catalogue\Complete\Applications.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin null
+[12:00:03 INF] Start process=True PID=16228 dotnet Usercube-Export-Csv.dll --progress-task-instance-id 4429 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "ApplicationCatalogExport" --raw-files-path "D:\UsercubeCAA\Sources\Catalogue\Complete\Applications.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin
+[12:00:04 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/4429?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[12:00:04 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[12:00:04 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4429?api-version=2.0&jobInstanceId=789&taskId=219&jobId=2
+[12:00:04 INF] Task: Catalog_Synchro_Complete_Scaffolding_Export_ApplicationCatalogExport Completed with state Completed
+[12:00:04 INF] ExportTask: Catalog_Synchro_Complete_Scaffolding_Export_ProfileCatalogExport (Level: 1, LaunchOrder: 1)
+    Connector: Catalog
+    Mode: Complete
+    ConnectionIdentifier: ProfileCatalogExport
+    ExportType: ExportCsv
+
+[12:00:04 VRB] Check the instance state for Task Catalog_Synchro_Complete_Scaffolding_Export_ProfileCatalogExport
+[12:00:04 VRB] HandleCommand TaskInstanceProgressCommand
+[12:00:04 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:00:05 INF] Launch task: ExportTask: Catalog_Synchro_Complete_Scaffolding_Export_ProfileCatalogExport, Task 2/10
+[12:00:05 VRB] HandleCommand RunTaskCommand
+[12:00:05 INF] Launch ExportTask : Catalog_Synchro_Complete_Scaffolding_Export_ProfileCatalogExport
+[12:00:05 DBG] Start Process dotnet Usercube-Export-Csv.dll --progress-task-instance-id 4430 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "ProfileCatalogExport" --raw-files-path "D:\UsercubeCAA\Sources\Catalogue\Complete\Profiles.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin null
+[12:00:05 INF] Start process=True PID=4428 dotnet Usercube-Export-Csv.dll --progress-task-instance-id 4430 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "ProfileCatalogExport" --raw-files-path "D:\UsercubeCAA\Sources\Catalogue\Complete\Profiles.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin
+[12:00:05 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/4430?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[12:00:05 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[12:00:05 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4430?api-version=2.0&jobInstanceId=789&taskId=220&jobId=2
+[12:00:05 INF] Task: Catalog_Synchro_Complete_Scaffolding_Export_ProfileCatalogExport Completed with state Completed
+[12:00:05 VRB] Check the JobInstance state for JobInstance 789.
+[12:00:05 VRB] HandleQuery SelectJobInstanceByIdQuery
+[12:00:05 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/789?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:00:05 INF] PrepareSynchronizationTask: Catalog_Synchro_Complete_Scaffolding_PrepareSynchronization_Catalog (Level: 2, LaunchOrder: 2)
+    Synchronization Mode: Complete
+    Connector: Catalog
+    Parent: Catalog_Synchro_Complete_Scaffolding_Export_ApplicationCatalogExport, Catalog_Synchro_Complete_Scaffolding_Export_ProfileCatalogExport
+
+[12:00:05 VRB] Check the instance state for Task Catalog_Synchro_Complete_Scaffolding_PrepareSynchronization_Catalog
+[12:00:05 VRB] HandleCommand TaskInstanceProgressCommand
+[12:00:06 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:00:06 INF] Launch task: PrepareSynchronizationTask: Catalog_Synchro_Complete_Scaffolding_PrepareSynchronization_Catalog, Task 3/10
+[12:00:06 VRB] HandleCommand RunTaskCommand
+[12:00:06 INF] Launch PrepareSynchronizationTask : Catalog_Synchro_Complete_Scaffolding_PrepareSynchronization_Catalog
+[12:00:06 DBG] Start Process dotnet Usercube-Prepare-Synchronization.dll --progress-task-instance-id 4431 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --connector 6 --working-directory "../Work\Collect" --sources-directory "../Temp\ExportOutput" --synchronization-mode "Complete" --stdin null
+[12:00:06 INF] Start process=True PID=8944 dotnet Usercube-Prepare-Synchronization.dll --progress-task-instance-id 4431 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --connector 6 --working-directory "../Work\Collect" --sources-directory "../Temp\ExportOutput" --synchronization-mode "Complete" --stdin
+[12:00:07 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/4431?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[12:00:07 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[12:00:07 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4431?api-version=2.0&jobInstanceId=789&taskId=221&jobId=2
+[12:00:07 INF] Task: Catalog_Synchro_Complete_Scaffolding_PrepareSynchronization_Catalog Completed with state Completed
+[12:00:07 INF] SynchronizeTask: Catalog_Synchro_Complete_Scaffolding_Synchronize_Catalog (Level: 3, LaunchOrder: 3)
+    Connector: Catalog
+    Parent: Catalog_Synchro_Complete_Scaffolding_PrepareSynchronization_Catalog
+
+[12:00:07 VRB] Check the instance state for Task Catalog_Synchro_Complete_Scaffolding_Synchronize_Catalog
+[12:00:07 VRB] HandleCommand TaskInstanceProgressCommand
+[12:00:07 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:00:07 INF] Launch task: SynchronizeTask: Catalog_Synchro_Complete_Scaffolding_Synchronize_Catalog, Task 4/10
+[12:00:07 VRB] HandleCommand RunTaskCommand
+[12:00:07 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/224?api-version=4.0&jobInstanceId=789&jobLogLevel=Trace
+[12:00:07 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[12:00:07 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4432?api-version=2.0&jobInstanceId=789&taskId=224&jobId=2
+[12:00:07 INF] Task: Catalog_Synchro_Complete_Scaffolding_Synchronize_Catalog Completed with state Completed
+[12:00:07 INF] UpdateEntityPropertyExpressionsTask: Catalog_Synchro_Complete_Scaffolding_ComputeProperties (Level: 4, LaunchOrder: 4)
+    AllEntities: True
+
+[12:00:07 VRB] Check the instance state for Task Catalog_Synchro_Complete_Scaffolding_ComputeProperties
+[12:00:07 VRB] HandleCommand TaskInstanceProgressCommand
+[12:00:07 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:00:07 INF] Launch task: UpdateEntityPropertyExpressionsTask: Catalog_Synchro_Complete_Scaffolding_ComputeProperties, Task 5/10
+[12:00:07 VRB] HandleCommand RunTaskCommand
+[12:00:07 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/217?api-version=4.0&jobInstanceId=789&jobLogLevel=Trace
+[12:00:08 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[12:00:08 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4433?api-version=2.0&jobInstanceId=789&taskId=217&jobId=2
+[12:00:08 INF] Task: Catalog_Synchro_Complete_Scaffolding_ComputeProperties Completed with state Completed
+[12:00:08 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/789?api-version=3.0&jobGroupId=2&current=5&totalTask=10&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[12:00:08 VRB] Check the JobInstance state for JobInstance 789.
+[12:00:08 VRB] HandleQuery SelectJobInstanceByIdQuery
+[12:00:08 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/789?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:00:08 INF] ComputeCorrelationKeysTask: Catalog_Synchro_Complete_Scaffolding_ComputeCorrelationKeys (Level: 5, LaunchOrder: 5)
+    All Entities: True
+
+[12:00:08 VRB] Check the instance state for Task Catalog_Synchro_Complete_Scaffolding_ComputeCorrelationKeys
+[12:00:08 VRB] HandleCommand TaskInstanceProgressCommand
+[12:00:08 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:00:09 INF] Launch task: ComputeCorrelationKeysTask: Catalog_Synchro_Complete_Scaffolding_ComputeCorrelationKeys, Task 6/10
+[12:00:09 VRB] HandleCommand RunTaskCommand
+[12:00:09 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/216?api-version=4.0&jobInstanceId=789&jobLogLevel=Trace
+[12:00:45 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[12:00:45 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4434?api-version=2.0&jobInstanceId=789&taskId=216&jobId=2
+[12:00:45 INF] Task: Catalog_Synchro_Complete_Scaffolding_ComputeCorrelationKeys Completed with state Completed
+[12:00:45 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/789?api-version=3.0&jobGroupId=2&current=6&totalTask=10&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[12:00:45 VRB] Check the JobInstance state for JobInstance 789.
+[12:00:45 VRB] HandleQuery SelectJobInstanceByIdQuery
+[12:00:45 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/789?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:00:45 INF] ComputeRoleModelTask: Catalog_Synchro_Complete_Scaffolding_ComputeProvisioningPolicy (Level: 6, LaunchOrder: 6)
+    EntityType: Catalog_Application, Catalog_Profile
+
+[12:00:45 VRB] Check the instance state for Task Catalog_Synchro_Complete_Scaffolding_ComputeProvisioningPolicy
+[12:00:45 VRB] HandleCommand TaskInstanceProgressCommand
+[12:00:45 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:00:45 INF] Launch task: ComputeRoleModelTask: Catalog_Synchro_Complete_Scaffolding_ComputeProvisioningPolicy, Task 7/10
+[12:00:45 VRB] HandleCommand RunTaskCommand
+[12:00:45 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/218?api-version=4.0&jobInstanceId=789&jobLogLevel=Trace
+[12:00:46 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[12:00:46 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4435?api-version=2.0&jobInstanceId=789&taskId=218&jobId=2
+[12:00:46 INF] Task: Catalog_Synchro_Complete_Scaffolding_ComputeProvisioningPolicy Completed with state Completed
+[12:00:46 INF] GenerateProvisioningOrdersTask: Catalog_Synchro_Complete_Scaffolding_Provisioning (Level: 7, LaunchOrder: 7)
+    Force Provisioning: True
+    ResourceType: Catalog_Application, Catalog_Profile
+
+[12:00:46 VRB] Check the instance state for Task Catalog_Synchro_Complete_Scaffolding_Provisioning
+[12:00:46 VRB] HandleCommand TaskInstanceProgressCommand
+[12:00:46 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:00:46 INF] Launch task: GenerateProvisioningOrdersTask: Catalog_Synchro_Complete_Scaffolding_Provisioning, Task 8/10
+[12:00:46 VRB] HandleCommand RunTaskCommand
+[12:00:46 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/223?api-version=4.0&jobInstanceId=789&jobLogLevel=Trace
+[12:00:46 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[12:00:46 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4436?api-version=2.0&jobInstanceId=789&taskId=223&jobId=2
+[12:00:46 INF] Task: Catalog_Synchro_Complete_Scaffolding_Provisioning Completed with state Completed
+[12:00:46 INF] FulfillTask: Catalog_Synchro_Complete_Scaffolding_Provisioner_Database (Level: 8, LaunchOrder: 8)
+    ConnectionIdentifier: HRDatabase
+    FulfillmentType: FulfillInternalResource
+    ResourceType: Catalog_Application, Catalog_Profile
+
+[12:00:46 VRB] Check the instance state for Task Catalog_Synchro_Complete_Scaffolding_Provisioner_Database
+[12:00:46 VRB] HandleCommand TaskInstanceProgressCommand
+[12:00:46 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:00:46 INF] Launch task: FulfillTask: Catalog_Synchro_Complete_Scaffolding_Provisioner_Database, Task 9/10
+[12:00:46 VRB] HandleCommand RunTaskCommand
+[12:00:46 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/222?api-version=4.0&jobInstanceId=789&jobLogLevel=Trace
+[12:00:47 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[12:00:47 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4437?api-version=2.0&jobInstanceId=789&taskId=222&jobId=2
+[12:00:47 INF] Task: Catalog_Synchro_Complete_Scaffolding_Provisioner_Database Completed with state Completed
+[12:00:47 INF] BuildRoleModelTask: Catalog_Synchro_Complete_Scaffolding_ApplyRoleMappings (Level: 9, LaunchOrder: 9)
+    Connector: Catalog
+
+[12:00:47 VRB] Check the instance state for Task Catalog_Synchro_Complete_Scaffolding_ApplyRoleMappings
+[12:00:47 VRB] HandleCommand TaskInstanceProgressCommand
+[12:00:47 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:00:47 INF] Launch task: BuildRoleModelTask: Catalog_Synchro_Complete_Scaffolding_ApplyRoleMappings, Task 10/10
+[12:00:47 VRB] HandleCommand RunTaskCommand
+[12:00:47 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/215?api-version=4.0&jobInstanceId=789&jobLogLevel=Trace
+[12:00:49 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[12:00:49 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4438?api-version=2.0&jobInstanceId=789&taskId=215&jobId=2
+[12:00:49 INF] Task: Catalog_Synchro_Complete_Scaffolding_ApplyRoleMappings Completed with state Completed
+[12:00:49 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/789?api-version=3.0&jobGroupId=2&current=10&totalTask=10&state=Completed&resourceId=-1&cancelRequest=False&retry=False

@@ -1,0 +1,7 @@
+﻿[11:13:30 INF] Export-Csv started for Path=D:\UsercubeCAA\Sources\ApplicationMail\Incremental\MailAccounts_Profiles.csv
+[11:13:30 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/6085?api-version=1.0
+[11:13:30 VRB] Refreshed token: token expiration date=02/10/2025 11:10:29
+[11:13:30 VRB] HandleQuery SelectEntityTypeMappingByConnectionIdentifierQuery
+[11:13:30 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Connectors/EntityTypeMapping?api-version=1.0&connectionIdentifier=&squery=join%20EntityPropertyMappings%20epm%20join%20epm.EntityProperty%20ep%20select%20ConnectionTable%2CC0%2Cepm.ConnectionColumn%2Cepm.Format%2Cep.Identifier%2C%20ep.Type%20where%20ConnectionTable%3D%22AccountProfilesMailExport%22&path=/Connectors/EntityTypeMapping/Query&QueryRootEntityType=EntityTypeMapping
+[11:13:31 INF] Export completed TotalLines=0
+[11:13:31 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/6085?api-version=1.0

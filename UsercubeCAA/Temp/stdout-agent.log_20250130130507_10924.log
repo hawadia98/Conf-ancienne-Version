@@ -1,0 +1,29 @@
+[14:06:27 DBG] MailSettings loaded:
+Enabled: True
+Host: 
+PickupDirectory: D:\UsercubeCAA\Mails
+Port: 0
+Username: 
+FromAddress: no-reply@caa.fr
+CatchAllAddress: 
+CatchAllCCAddress: 
+UseDefaultCredentials: False
+EnableSsl: False
+SecureSocketOption: 
+UseSpecifiedPickupDirectory: True
+EnableMailTesting: False
+AllowedDomains: none
+[14:06:28 VRB] HandleCommand RunJobCommand
+[14:06:28 VRB] HandleQuery GetCheckUserCommand
+[14:06:28 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUser/administrator?api-version=1.0
+[14:06:28 VRB] Refreshed token: token expiration date=01/30/2025 14:03:28
+[14:06:28 VRB] HandleCommand GetJobInstanceIdCommand
+[14:06:28 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/GetJobInstanceId?api-version=1.0
+[14:06:28 VRB] Refreshed token: token expiration date=01/30/2025 14:03:28
+[14:06:28 VRB] HandleEvent RunJobEvent
+[14:06:28 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting/GetFeatureFlags?api-version=1.0
+[14:06:28 VRB] Refreshed token: token expiration date=01/30/2025 14:03:27
+[14:06:28 DBG] Start Process dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 841 --job-identifier 40002 --operation-parent-id "00-fac071bed8b015304ff4ddb4e843afbc-82093f0d370e9547-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin 
+[14:06:28 INF] Start process=True PID=16028 dotnet Usercube-Invoke-Job.dll --user-id -1 --log-level 0 --progress-job-instance-id 841 --job-identifier 40002 --operation-parent-id "00-fac071bed8b015304ff4ddb4e843afbc-82093f0d370e9547-00" --api-url "https://dev-fusion-iam.caa.group.gca/" --feature-flags "{}" --api-client-id "Job" --stdin
+[14:06:29 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/841?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[14:06:30 INF] The job 40002 is successfully launched.

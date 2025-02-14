@@ -1,0 +1,62 @@
+﻿[15:31:07 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/861?api-version=3.0&jobGroupId=42002&current=0&totalTask=0&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[15:31:08 VRB] Refreshed token: token expiration date=01/30/2025 15:28:08
+[15:31:08 VRB] HandleQuery SelectConsolidateJobQuery
+[15:31:08 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/RunStateMachineJob?api-version=4.0&path=/Jobs/Job/Query&jobIdentifier=42002&repair=False&beginJobStep=-1&endJobStep=-1&forceSynchronizationProvisioning=False&retry=False&launchTaskType=0&taskIdentifier=&taskIdentifierContains=&beginTaskExcluded=&endTaskExcluded=&jobInstanceId=861&jobId=42002
+[15:31:08 VRB] HandleCommand ReserveTaskInstanceIdCommand
+[15:31:08 VRB] Reserve 12 next TaskInstanceId
+[15:31:08 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceId/12?api-version=1.0
+[15:31:08 VRB] Check the JobInstance state for JobInstance 861.
+[15:31:08 VRB] HandleQuery SelectJobInstanceByIdQuery
+[15:31:08 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/861?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[15:31:08 INF] ExportTask: OUD_LDAP_Synchronize_Complete_Scaffolding_Export_OUD_LDAP_Complete_OUDLDAPExportFulfillment (Level: 0, LaunchOrder: 0)
+    Connector: OUD_LDAP
+    Mode: Complete
+    ConnectionIdentifier: OUDLDAPExportFulfillment
+    ExportType: ExportLdap
+    ContinueOnError:  True
+
+[15:31:08 VRB] Check the instance state for Task OUD_LDAP_Synchronize_Complete_Scaffolding_Export_OUD_LDAP_Complete_OUDLDAPExportFulfillment
+[15:31:08 VRB] HandleCommand TaskInstanceProgressCommand
+[15:31:08 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[15:31:08 INF] Launch task: ExportTask: OUD_LDAP_Synchronize_Complete_Scaffolding_Export_OUD_LDAP_Complete_OUDLDAPExportFulfillment, Task 1/12
+[15:31:08 VRB] HandleCommand RunTaskCommand
+[15:31:08 INF] Launch ExportTask : OUD_LDAP_Synchronize_Complete_Scaffolding_Export_OUD_LDAP_Complete_OUDLDAPExportFulfillment
+[15:31:08 DBG] Start Process dotnet Usercube-Export-Ldap.dll --progress-task-instance-id 4870 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "OUDLDAPExportFulfillment" --server "10.240.124.112:2201" --auth-type "Basic" --enable-ssl "True" --no-signing "False" --controls "PagedResult" --tables "entries" "member" --sync-dn "o=unixauthcaashp" "o=unixauthcaashp" --sync-filter "(objectclass=*)" "(&(member=*)(objectclass=*))" --sync-scope "Subtree" "Subtree" --timeout 30 --sizeLimit 5000 --timeLimit 5 --stdin null
+[15:31:08 INF] Start process=True PID=11796 dotnet Usercube-Export-Ldap.dll --progress-task-instance-id 4870 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "OUDLDAPExportFulfillment" --server "10.240.124.112:2201" --auth-type "Basic" --enable-ssl "True" --no-signing "False" --controls "PagedResult" --tables "entries" "member" --sync-dn "o=unixauthcaashp" "o=unixauthcaashp" --sync-filter "(objectclass=*)" "(&(member=*)(objectclass=*))" --sync-scope "Subtree" "Subtree" --timeout 30 --sizeLimit 5000 --timeLimit 5 --stdin
+[15:31:11 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/4870?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[15:31:11 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[15:31:11 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4870?api-version=2.0&jobInstanceId=861&taskId=65015&jobId=42002
+[15:31:12 INF] Task: OUD_LDAP_Synchronize_Complete_Scaffolding_Export_OUD_LDAP_Complete_OUDLDAPExportFulfillment Completed with state Completed
+[15:31:12 VRB] Check the JobInstance state for JobInstance 861.
+[15:31:12 VRB] HandleQuery SelectJobInstanceByIdQuery
+[15:31:12 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/861?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[15:31:12 INF] PrepareSynchronizationTask: OUD_LDAP_Synchronize_Complete_Scaffolding_PrepareSynchronization_OUD_LDAP_Complete (Level: 1, LaunchOrder: 1)
+    Synchronization Mode: Complete
+    Connector: OUD_LDAP
+    Parent: OUD_LDAP_Synchronize_Complete_Scaffolding_Export_OUD_LDAP_Complete_OUDLDAPExportFulfillment
+
+[15:31:12 VRB] Check the instance state for Task OUD_LDAP_Synchronize_Complete_Scaffolding_PrepareSynchronization_OUD_LDAP_Complete
+[15:31:12 VRB] HandleCommand TaskInstanceProgressCommand
+[15:31:12 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[15:31:12 INF] Launch task: PrepareSynchronizationTask: OUD_LDAP_Synchronize_Complete_Scaffolding_PrepareSynchronization_OUD_LDAP_Complete, Task 2/12
+[15:31:12 VRB] HandleCommand RunTaskCommand
+[15:31:12 INF] Launch PrepareSynchronizationTask : OUD_LDAP_Synchronize_Complete_Scaffolding_PrepareSynchronization_OUD_LDAP_Complete
+[15:31:12 DBG] Start Process dotnet Usercube-Prepare-Synchronization.dll --progress-task-instance-id 4871 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --connector 34001 --working-directory "../Work\Collect" --sources-directory "../Temp\ExportOutput" --synchronization-mode "Complete" --stdin null
+[15:31:12 INF] Start process=True PID=7188 dotnet Usercube-Prepare-Synchronization.dll --progress-task-instance-id 4871 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --connector 34001 --working-directory "../Work\Collect" --sources-directory "../Temp\ExportOutput" --synchronization-mode "Complete" --stdin
+[15:31:15 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/4871?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[15:31:15 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[15:31:15 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4871?api-version=2.0&jobInstanceId=861&taskId=65019&jobId=42002
+[15:31:15 INF] Task: OUD_LDAP_Synchronize_Complete_Scaffolding_PrepareSynchronization_OUD_LDAP_Complete Completed with state Error
+[15:31:15 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/861?api-version=3.0&jobGroupId=42002&current=2&totalTask=12&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[15:31:15 ERR] The task: 'OUD_LDAP_Synchronize_Complete_Scaffolding_PrepareSynchronization_OUD_LDAP_Complete' finished in an errored state
+[15:31:15 VRB] HandleCommand SendJobNotificationCommand
+[15:31:15 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/Job/Notification?api-version=1.0
+[15:31:21 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/861?api-version=3.0&jobGroupId=42002&current=2&totalTask=12&state=Error&resourceId=-1&cancelRequest=False&retry=False
+[15:31:21 ERR] Exception while running state machine for job: 42002
+System.ApplicationException: Task not completed: Instance state = Error
+   at Usercube.Jobs.StateMachine.RunStateMachine.CheckEndInstanceState(InstanceState state, IInvokeJobProgress progress)
+   at Usercube.InvokeJob.InvokeJobCommandHandler.Handle(InvokeJobCommand invokeJobCommand)
+[15:31:21 ERR] Task not completed: Instance state = Error
+System.ApplicationException: Task not completed: Instance state = Error
+   at Usercube.Jobs.StateMachine.RunStateMachine.CheckEndInstanceState(InstanceState state, IInvokeJobProgress progress)
+   at Usercube.InvokeJob.InvokeJobCommandHandler.Handle(InvokeJobCommand invokeJobCommand)

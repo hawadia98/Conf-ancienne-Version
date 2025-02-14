@@ -1,0 +1,40 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <EntityType Identifier="Directory_Organization" DisplayName_L1="Department">
+    <Property Identifier="Identifier" DisplayName_L1="Code" Type="String" IsKey="true" TargetColumnIndex="4" />
+    <Property Identifier="DisplayName" DisplayName_L1="Name" Type="String" TargetColumnIndex="5" TemplateTransformation="OnePerLanguage" />
+
+    <!--TODO: generate a property per language-->
+    <Property Identifier="FullName" DisplayName_L1="Full Name" Type="String" TargetColumnIndex="0" />
+
+    <Property Identifier="Manager" DisplayName_L1="Manager" Type="ForeignKey" TargetColumnIndex="129" />
+    <Property Identifier="Assistant" DisplayName_L1="Assistant" Type="ForeignKey" TargetColumnIndex="130" />
+
+    <Property Identifier="Parent" DisplayName_L1="Parent Department" Type="ForeignKey" TargetColumnIndex="128" />
+    <Property Identifier="Children" DisplayName_L1="Nested Departments" Type="ForeignKey" />
+
+    <Property Identifier="Type" DisplayName_L1="Type" Type="ForeignKey" TargetColumnIndex="131" />
+
+    <Property Identifier="UserRecords" DisplayName_L1="Users" Type="ForeignKey" />
+  </EntityType>
+
+  <DisplayEntityType PluralDisplayName_L1="Departments" IconCode="Suitcase" Identifier="Directory_Organization" Color="#95c18b">
+    <Property DisplayOrder="-1" IsRequired="true" Identifier="Identifier" />
+    <Property IsRequired="true" Identifier="DisplayName" />
+    <Property OutputType="BasicCollection" Identifier="Children" />
+    <Property OutputType="BasicCollection" Identifier="UserRecords" NavigationBinding="Directory_UserRecord:User" />
+  </DisplayEntityType>
+
+  <EntityAssociation Identifier="Directory_Organization_Parent" IsProperty2Collection="true" Property1="Directory_Organization:Parent" Property2="Directory_Organization:Children" />
+
+  <EntityAssociation Identifier="Directory_Organization_Assistant" IsProperty2Collection="true" Property1="Directory_Organization:Assistant" Property2="Directory_User:AssistantOf" />
+  <EntityAssociation Identifier="Directory_Organization_Manager" IsProperty2Collection="true" Property1="Directory_Organization:Manager" Property2="Directory_User:ManagedOrganizations" />
+
+  <!-- The path is not initialized immediately -->
+  <EntityPropertyExpression Identifier="Directory_Organization_FullName" Expression="C#:organization:return (organization.Parent == null ? null : (organization.Parent.FullName + &quot; / &quot;)) + organization.DisplayName;" EntityType="Directory_Organization" Property="FullName" />
+
+  <EntityPropertyExpression Identifier="Directory_Organization_InternalDisplayName_L1" Binding="FullName" EntityType="Directory_Organization" Property="InternalDisplayName" Priority="1" />
+
+  <CreateUpdateDeleteTemplate EntityType="Directory_Organization" Profile="Administrator" />
+  <ConnectorMappings Connector="Directory" EntityType="Directory_Organization" IsIncremental="1" Package="Usercube.Excel@0000001" />
+
+</ConfigurationFile>

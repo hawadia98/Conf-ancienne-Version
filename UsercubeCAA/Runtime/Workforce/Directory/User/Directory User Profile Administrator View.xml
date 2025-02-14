@@ -1,0 +1,48 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <AccessControlRule Profile="Administrator" EntityType="Directory_User" Identifier="Administrator_Directory_User_ViewResources_*" DisplayName_L1="Administrator_Directory_User_ViewResources_*">
+        <Entry Permission="/Custom/Resources/Directory_User/ViewTargetResources" CanExecute="true" />
+        <Entry Permission="/Custom/Resources/Directory_User/ViewOwnedResources" CanExecute="true" />
+    </AccessControlRule>
+
+    <AccessControlRule Profile="Administrator" EntityType="Category" Identifier="Administrator_Category_Directory_Directory_User_ViewResources_*" DisplayName_L1="Administrator_Category_Directory_Directory_User_ViewResources_*">
+        <Entry Permission="/Custom/Resources/Directory_User" />
+    </AccessControlRule>
+
+    <AccessControlRule Profile="Administrator" EntityType="CompositeRole" Identifier="Administrator_CompositeRole_Directory_Directory_User_ViewResources_*" DisplayName_L1="Administrator_CompositeRole_Directory_Directory_User_ViewResources_*">
+        <Entry Permission="/Custom/Resources/Directory_User" />
+    </AccessControlRule>
+
+    <AccessControlRule Profile="Administrator" EntityType="SingleRole" Identifier="Administrator_SingleRole_Directory_Directory_User_ViewResources_*" DisplayName_L1="Administrator_SingleRole_Directory_Directory_User_ViewResources_*">
+        <Entry Permission="/Custom/Resources/Directory_User" />
+    </AccessControlRule>
+
+    <AccessControlRule Profile="Administrator" EntityType="ResourceType" Identifier="Administrator_ResourceType_Directory_Directory_User_ViewResources_*" DisplayName_L1="Administrator_ResourceType_Directory_Directory_User_ViewResources_*">
+        <Entry Permission="/Custom/Resources/Directory_User" />
+    </AccessControlRule>
+
+    <AccessControlRule Profile="Administrator" EntityType="Policy" Identifier="Administrator_Policy_Directory_Directory_User_ViewResources_*" DisplayName_L1="Administrator_Policy_Directory_Directory_User_ViewResources_*">
+        <Entry Permission="/Custom/Resources/Directory_User" />
+    </AccessControlRule>
+
+    <AccessControlRule Profile="Administrator" EntityType="AssignedCompositeRole" Identifier="Administrator_AssignedCompositeRole_Directory_Directory_User_ViewResources_*" DisplayName_L1="Administrator_AssignedCompositeRole_Directory_Directory_User_ViewResources_*">
+        <Entry Permission="/Custom/Resources/Directory_User" />
+    </AccessControlRule>
+
+    <AccessControlRule Profile="Administrator" EntityType="AssignedSingleRole" Identifier="Administrator_AssignedSingleRole_Directory_Directory_User_ViewResources_*" DisplayName_L1="Administrator_AssignedSingleRole_Directory_Directory_User_ViewResources_*">
+        <Entry Permission="/Custom/Resources/Directory_User" />
+    </AccessControlRule>
+
+    <AccessControlRule Profile="Administrator" EntityType="AssignedResourceType" Identifier="Administrator_AssignedResourceType_Directory_Directory_User_ViewResources_*" DisplayName_L1="Administrator_AssignedResourceType_Directory_Directory_User_ViewResources_*">
+        <Entry Permission="/Custom/Resources/Directory_User" />
+    </AccessControlRule>
+
+    <AccessControlRule Profile="Administrator" EntityType="AssignedResourceNavigation" Identifier="Administrator_AssignedResourceNavigation_Directory_Directory_User_ViewResources_*" DisplayName_L1="Administrator_AssignedResourceNavigation_Directory_Directory_User_ViewResources_*">
+        <Entry Permission="/Custom/Resources/Directory_User" />
+    </AccessControlRule>
+
+    <AccessControlRule Profile="Administrator" EntityType="AssignedResourceScalar" Identifier="Administrator_AssignedResourceScalar_Directory_Directory_User_ViewResources_*" DisplayName_L1="Administrator_AssignedResourceScalar_Directory_Directory_User_ViewResources_*">
+        <Entry Permission="/Custom/Resources/Directory_User" />
+    </AccessControlRule>
+
+</ConfigurationFile>

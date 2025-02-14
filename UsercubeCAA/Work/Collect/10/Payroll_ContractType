@@ -1,0 +1,16 @@
+﻿CODE,CONTRAT,TYPE D'UTILISATEUR
+Collaborateur CA,Collaborateur CA,RCA
+Compte générique,Compte générique,CS
+Compte RPA,Compte RPA,CS
+Compte technique,Compte technique,CS
+CDI,Contrat à durée indéterminée,IN
+CDD,Contrat à durée déterminée,IN
+Stagiaire,Stagiaire,IN
+Auxiliaire été,Auxiliaire été,IN
+Apprenti,Apprenti,IN
+Interne international,Interne international,IN
+Externe Forfait,Externe Forfait,EP
+Externe Régie,Externe Régie,EP
+Externe international,Externe international,EP
+Partenaire Pack-Solutions,Partenaire Pack-Solutions,EP
+Partenaire TMA,Partenaire TMA,EP

@@ -1,0 +1,24 @@
+﻿[17:08:21 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/672?api-version=3.0&jobGroupId=37002&current=0&totalTask=0&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[17:08:22 VRB] Refreshed token: token expiration date=01/26/2025 17:05:22
+[17:08:22 VRB] HandleQuery SelectConsolidateJobQuery
+[17:08:22 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/RunStateMachineJob?api-version=4.0&path=/Jobs/Job/Query&jobIdentifier=37002&repair=False&beginJobStep=-1&endJobStep=-1&forceSynchronizationProvisioning=False&retry=False&launchTaskType=0&taskIdentifier=&taskIdentifierContains=&beginTaskExcluded=&endTaskExcluded=&jobInstanceId=672&jobId=37002
+[17:08:22 VRB] HandleCommand ReserveTaskInstanceIdCommand
+[17:08:22 VRB] Reserve 1 next TaskInstanceId
+[17:08:22 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceId/1?api-version=1.0
+[17:08:22 VRB] Check the JobInstance state for JobInstance 672.
+[17:08:22 VRB] HandleQuery SelectJobInstanceByIdQuery
+[17:08:22 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/672?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:08:22 INF] UpdateEntityPropertyExpressionsTask: Administration_UpdateEntityPropertyExpressions_CAA (Level: 0, LaunchOrder: 0)
+    AllEntities: True
+
+[17:08:22 VRB] Check the instance state for Task Administration_UpdateEntityPropertyExpressions_CAA
+[17:08:22 VRB] HandleCommand TaskInstanceProgressCommand
+[17:08:22 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:08:22 INF] Launch task: UpdateEntityPropertyExpressionsTask: Administration_UpdateEntityPropertyExpressions_CAA, Task 1/1
+[17:08:22 VRB] HandleCommand RunTaskCommand
+[17:08:22 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/60002?api-version=4.0&jobInstanceId=672&jobLogLevel=Trace
+[17:08:27 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:08:27 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3362?api-version=2.0&jobInstanceId=672&taskId=60002&jobId=37002
+[17:08:27 INF] Task: Administration_UpdateEntityPropertyExpressions_CAA Completed with state Completed
+[17:08:27 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/672?api-version=3.0&jobGroupId=37002&current=1&totalTask=1&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[17:08:27 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/672?api-version=3.0&jobGroupId=37002&current=1&totalTask=1&state=Completed&resourceId=-1&cancelRequest=False&retry=False

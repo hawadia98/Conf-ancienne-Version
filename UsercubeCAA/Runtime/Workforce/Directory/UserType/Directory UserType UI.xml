@@ -1,0 +1,27 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <DisplayTable Identifier="Directory_UserType" EntityType="Directory_UserType" DisplayTableDesignElement="table" IsEntityTypeDefault="true">
+    <Column DefaultSortPriority="1" DisplayBinding="DisplayName" IsDisplayInSummaryView="true" IsResizable="true" IsSortable="true" CanBeFiltered="true" ColumnSize="8" />
+    <Column DisplayBinding="Category.DisplayName" DisplayName_L1="Category" IsDisplayInSummaryView="true" IsResizable="true" CanBeFiltered="true" ColumnSize="4" />
+  </DisplayTable>
+
+  <ResourceViewEntityForm Identifier="View_Directory_UserType" EntityType="Directory_UserType" Menu="View_Directory_UserType" IsDefaultViewForm="true">
+    <Control DisplayName_L1="General Data" OutputType="LayoutFieldset" Name="General Data">
+      <Control Binding="Identifier" />
+      <Control Binding="DisplayName" />
+      <Control Binding="Category" />
+      <Control Binding="UserRecords" />
+    </Control>
+
+    <Control DisplayName_L1="Technical Data" OutputType="LayoutFieldset" Name="Technical Data">
+      <Control Binding="UniqueIdentifierPrefix" />
+      <Control Binding="UniqueIdentifierSuffix" />
+      <Control Binding="UniqueIdentifierRangeStart" />
+      <Control Binding="UniqueIdentifierRangeEnd" />
+
+      <Control Binding="EmailSuffix" />
+      <Control Binding="LoginPrefix" />
+      <Control Binding="LoginSuffix" />
+    </Control>
+  </ResourceViewEntityForm>
+</ConfigurationFile>

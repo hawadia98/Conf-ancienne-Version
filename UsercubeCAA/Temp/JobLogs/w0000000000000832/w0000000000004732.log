@@ -1,0 +1,49 @@
+﻿[12:45:00 VRB] HandleQuery SelectProvisionerResourceTypeMappingByQueryQuery
+[12:45:00 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Connectors/Mapping/ResourceTypeMapping/ProvisionerResourceTypeMapping?api-version=2.0&Path=%2FConnectors%2FResourceTypeMapping%2FQuery&resourcetypes=45001
+[12:45:00 VRB] Refreshed token: token expiration date=01/30/2025 12:42:00
+[12:45:01 VRB] HandleCommand FulfillLdapCommand
+[12:45:01 INF] Fulfill-Ldap started ResourceTypes=45001 TaskInstanceId=4732
+[12:45:01 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/4732?api-version=1.0
+[12:45:01 DBG] Fetching provisioning orders api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=45001
+[12:45:01 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=45001
+[12:45:01 DBG] Fetching provisioning orders api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=45001
+[12:45:01 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=45001
+[12:45:01 VRB] AddRequest cn=GXXXX,OU=users,DC=AHMA,DC=HAB,DC=CAAS objectclass Set user, accountExpires Set 133834284000000000, cn Set GXXXX, displayName Set GXXXX Pascale, givenName Set Pascale, mail Set pascale.gxxxx@ca-assurances.fr, sn Set GXXXX
+[12:45:01 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Connectors/Provisioning/ProvisioningResults?api-version=1.0
+[12:45:02 DBG] Saved tracked password reset accounts
+[12:45:02 VRB] HandleQuery SelectPasswordResetContextsByIdsQuery
+[12:45:02 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Server/PasswordReset/GetNotificationContexts?api-version=1.0
+[12:45:02 VRB] HandleQuery SelectLanguageByQueryQuery
+[12:45:02 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Language?api-version=1.0
+[12:45:02 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Setting?api-version=1.0&squery=select%20Id,%20Identifier,%20C1,%20C2%20where%20Identifier=%22MailSettings%22&Path=/Metadata/Setting/Query
+[12:45:02 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Metadata/Language?api-version=1.0
+[12:45:02 VRB] ModifyRequest cn=GXXXX,OU=users,DC=AHMA,DC=HAB,DC=CAAS userPassword Replace Usercube@2025
+[12:45:02 ERR] Password Request Failed : An operation error occurred. 00002077: SvcErr: DSID-0338073B, problem 5012 (DIR_ERROR), data 8237
+.
+ Response Message: 00002077: SvcErr: DSID-0338073B, problem 5012 (DIR_ERROR), data 8237
+
+ Response Code: OperationsError
+System.DirectoryServices.Protocols.DirectoryOperationException: An operation error occurred. 00002077: SvcErr: DSID-0338073B, problem 5012 (DIR_ERROR), data 8237
+
+   at System.DirectoryServices.Protocols.LdapConnection.ConstructResponseAsync(Int32 messageId, LdapOperation operation, ResultAll resultType, TimeSpan requestTimeOut, Boolean exceptionOnTimeOut, Boolean sync)
+   at System.DirectoryServices.Protocols.LdapConnection.SendRequest(DirectoryRequest request, TimeSpan requestTimeout)
+   at System.DirectoryServices.Protocols.LdapConnection.SendRequest(DirectoryRequest request)
+   at Usercube.PasswordReset.Ldap.LdapPoolExtensions.SendPasswordRequest(LdapConnection connection, DirectoryRequest request, ILogger logger)
+[12:45:02 WRN] The password could not be reset for [cn=GXXXX,OU=users,DC=AHMA,DC=HAB,DC=CAAS], so no notification will be sent.
+Usercube.PasswordReset.Exceptions.PasswordOperationException: Unknown AD/LDAP Error
+ ---> System.DirectoryServices.Protocols.DirectoryOperationException: An operation error occurred. 00002077: SvcErr: DSID-0338073B, problem 5012 (DIR_ERROR), data 8237
+
+   at System.DirectoryServices.Protocols.LdapConnection.ConstructResponseAsync(Int32 messageId, LdapOperation operation, ResultAll resultType, TimeSpan requestTimeOut, Boolean exceptionOnTimeOut, Boolean sync)
+   at System.DirectoryServices.Protocols.LdapConnection.SendRequest(DirectoryRequest request, TimeSpan requestTimeout)
+   at System.DirectoryServices.Protocols.LdapConnection.SendRequest(DirectoryRequest request)
+   at Usercube.PasswordReset.Ldap.LdapPoolExtensions.SendPasswordRequest(LdapConnection connection, DirectoryRequest request, ILogger logger)
+   --- End of inner exception stack trace ---
+   at Usercube.PasswordReset.Ldap.LdapPoolExtensions.SendPasswordRequest(LdapConnection connection, DirectoryRequest request, ILogger logger)
+   at Usercube.PasswordReset.Ldap.LdapPoolExtensions.LdapResetPassword(ILdapPool ldapPool, String dn, String newPassword, ILogger logger)
+   at Usercube.PasswordReset.Ldap.LdapPoolExtensions.ResetPassword(ILdapPool ldapPool, String dn, String newPassword, Boolean mustChange, ILogger logger)
+   at Usercube.PasswordReset.Ldap.LdapPasswordServiceBase.InitializePassword(LdapResetRequestContext account, String newPassword, Boolean mustChange)
+   at Usercube.PasswordReset.Mail.OneWayPasswordResetRequestor`1.TryResetPassword(TResetRequestContext account, PasswordResetSetting settings, Boolean asPasswordInitialization, String newPassword)
+[12:45:02 VRB] Tracking accounts (2735948) ...
+[12:45:02 INF] Fulfillment process completed. Executed orders: 1/1 - Inserted: 1 | Updated: 0 | Deleted: 0 | Errors: 0
+[12:45:02 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/4732?api-version=1.0
+[12:45:02 INF] Fulfill-Ldap completed TaskInstanceId=4732

@@ -1,0 +1,202 @@
+﻿[12:01:20 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/821?api-version=3.0&jobGroupId=40002&current=0&totalTask=0&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[12:01:20 VRB] Refreshed token: token expiration date=01/30/2025 11:58:19
+[12:01:20 VRB] HandleQuery SelectConsolidateJobQuery
+[12:01:20 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/RunStateMachineJob?api-version=4.0&path=/Jobs/Job/Query&jobIdentifier=40002&repair=False&beginJobStep=-1&endJobStep=-1&forceSynchronizationProvisioning=False&retry=False&launchTaskType=0&taskIdentifier=&taskIdentifierContains=&beginTaskExcluded=&endTaskExcluded=&jobInstanceId=821&jobId=40002
+[12:01:21 VRB] HandleCommand ReserveTaskInstanceIdCommand
+[12:01:21 VRB] Reserve 13 next TaskInstanceId
+[12:01:21 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceId/13?api-version=1.0
+[12:01:21 VRB] Check the JobInstance state for JobInstance 821.
+[12:01:21 VRB] HandleQuery SelectJobInstanceByIdQuery
+[12:01:21 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/821?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:01:21 INF] ExportTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_Export_AHMA_LDAP_Complete_AhmaLDAPExportFulfillment (Level: 0, LaunchOrder: 0)
+    Connector: AHMA_LDAP
+    Mode: Complete
+    ConnectionIdentifier: AhmaLDAPExportFulfillment
+    ExportType: ExportLdap
+    ContinueOnError:  True
+
+[12:01:21 VRB] Check the instance state for Task AHMA_LDAP_Synchronize_Complete_Scaffolding_Export_AHMA_LDAP_Complete_AhmaLDAPExportFulfillment
+[12:01:21 VRB] HandleCommand TaskInstanceProgressCommand
+[12:01:21 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:01:21 INF] Launch task: ExportTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_Export_AHMA_LDAP_Complete_AhmaLDAPExportFulfillment, Task 1/13
+[12:01:21 VRB] HandleCommand RunTaskCommand
+[12:01:21 INF] Launch ExportTask : AHMA_LDAP_Synchronize_Complete_Scaffolding_Export_AHMA_LDAP_Complete_AhmaLDAPExportFulfillment
+[12:01:21 DBG] Start Process dotnet Usercube-Export-Ldap.dll --progress-task-instance-id 4632 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "AhmaLDAPExportFulfillment" --server "10.108.202.54:389" --auth-type "Basic" --enable-ssl "False" --no-signing "False" --controls "PagedResult" --tables "entries" "member" "manager" --sync-dn "DC=AHMA,DC=HAB,DC=CAAS" "DC=AHMA,DC=HAB,DC=CAAS" "DC=AHMA,DC=HAB,DC=CAAS" --sync-filter "(objectclass=*)" "(&(member=*)(objectclass=*))" "(&(manager=*)(objectclass=*))" --sync-scope "Subtree" "Subtree" "Subtree" --timeout 30 --sizeLimit 5000 --timeLimit 5 --stdin null
+[12:01:21 INF] Start process=True PID=15296 dotnet Usercube-Export-Ldap.dll --progress-task-instance-id 4632 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "AhmaLDAPExportFulfillment" --server "10.108.202.54:389" --auth-type "Basic" --enable-ssl "False" --no-signing "False" --controls "PagedResult" --tables "entries" "member" "manager" --sync-dn "DC=AHMA,DC=HAB,DC=CAAS" "DC=AHMA,DC=HAB,DC=CAAS" "DC=AHMA,DC=HAB,DC=CAAS" --sync-filter "(objectclass=*)" "(&(member=*)(objectclass=*))" "(&(manager=*)(objectclass=*))" --sync-scope "Subtree" "Subtree" "Subtree" --timeout 30 --sizeLimit 5000 --timeLimit 5 --stdin
+[12:01:23 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/4632?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[12:01:23 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[12:01:23 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4632?api-version=2.0&jobInstanceId=821&taskId=63015&jobId=40002
+[12:01:23 INF] Task: AHMA_LDAP_Synchronize_Complete_Scaffolding_Export_AHMA_LDAP_Complete_AhmaLDAPExportFulfillment Completed with state Completed
+[12:01:23 INF] PrepareSynchronizationTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_PrepareSynchronization_AHMA_LDAP_Complete (Level: 1, LaunchOrder: 1)
+    Synchronization Mode: Complete
+    Connector: AHMA_LDAP
+    Parent: AHMA_LDAP_Synchronize_Complete_Scaffolding_Export_AHMA_LDAP_Complete_AhmaLDAPExportFulfillment
+
+[12:01:23 VRB] Check the instance state for Task AHMA_LDAP_Synchronize_Complete_Scaffolding_PrepareSynchronization_AHMA_LDAP_Complete
+[12:01:23 VRB] HandleCommand TaskInstanceProgressCommand
+[12:01:23 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:01:23 INF] Launch task: PrepareSynchronizationTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_PrepareSynchronization_AHMA_LDAP_Complete, Task 2/13
+[12:01:23 VRB] HandleCommand RunTaskCommand
+[12:01:23 INF] Launch PrepareSynchronizationTask : AHMA_LDAP_Synchronize_Complete_Scaffolding_PrepareSynchronization_AHMA_LDAP_Complete
+[12:01:23 DBG] Start Process dotnet Usercube-Prepare-Synchronization.dll --progress-task-instance-id 4633 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --connector 32001 --working-directory "../Work\Collect" --sources-directory "../Temp\ExportOutput" --synchronization-mode "Complete" --stdin null
+[12:01:23 INF] Start process=True PID=7980 dotnet Usercube-Prepare-Synchronization.dll --progress-task-instance-id 4633 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --connector 32001 --working-directory "../Work\Collect" --sources-directory "../Temp\ExportOutput" --synchronization-mode "Complete" --stdin
+[12:01:25 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/4633?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[12:01:25 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[12:01:25 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4633?api-version=2.0&jobInstanceId=821&taskId=63019&jobId=40002
+[12:01:25 INF] Task: AHMA_LDAP_Synchronize_Complete_Scaffolding_PrepareSynchronization_AHMA_LDAP_Complete Completed with state Completed
+[12:01:25 VRB] Check the JobInstance state for JobInstance 821.
+[12:01:25 VRB] HandleQuery SelectJobInstanceByIdQuery
+[12:01:25 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/821?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:01:25 INF] SynchronizeTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_Synchronize_AHMA_LDAP (Level: 2, LaunchOrder: 2)
+    Connector: AHMA_LDAP
+    Parent: AHMA_LDAP_Synchronize_Complete_Scaffolding_PrepareSynchronization_AHMA_LDAP_Complete
+
+[12:01:25 VRB] Check the instance state for Task AHMA_LDAP_Synchronize_Complete_Scaffolding_Synchronize_AHMA_LDAP
+[12:01:25 VRB] HandleCommand TaskInstanceProgressCommand
+[12:01:25 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:01:25 INF] Launch task: SynchronizeTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_Synchronize_AHMA_LDAP, Task 3/13
+[12:01:25 VRB] HandleCommand RunTaskCommand
+[12:01:25 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/63021?api-version=4.0&jobInstanceId=821&jobLogLevel=Trace
+[12:01:27 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[12:01:27 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4634?api-version=2.0&jobInstanceId=821&taskId=63021&jobId=40002
+[12:01:27 INF] Task: AHMA_LDAP_Synchronize_Complete_Scaffolding_Synchronize_AHMA_LDAP Completed with state Completed
+[12:01:27 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/821?api-version=3.0&jobGroupId=40002&current=3&totalTask=13&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[12:01:27 VRB] Check the JobInstance state for JobInstance 821.
+[12:01:27 VRB] HandleQuery SelectJobInstanceByIdQuery
+[12:01:27 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/821?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:01:27 INF] UpdateEntityPropertyExpressionsTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_UpdateEntityPropertyExpressions1 (Level: 3, LaunchOrder: 3)
+    EntityType: AHMA_LDAP_Entry, Directory_User
+
+[12:01:27 VRB] Check the instance state for Task AHMA_LDAP_Synchronize_Complete_Scaffolding_UpdateEntityPropertyExpressions1
+[12:01:27 VRB] HandleCommand TaskInstanceProgressCommand
+[12:01:27 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:01:27 INF] Launch task: UpdateEntityPropertyExpressionsTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_UpdateEntityPropertyExpressions1, Task 4/13
+[12:01:27 VRB] HandleCommand RunTaskCommand
+[12:01:27 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/63023?api-version=4.0&jobInstanceId=821&jobLogLevel=Trace
+[12:01:28 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[12:01:28 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4635?api-version=2.0&jobInstanceId=821&taskId=63023&jobId=40002
+[12:01:28 INF] Task: AHMA_LDAP_Synchronize_Complete_Scaffolding_UpdateEntityPropertyExpressions1 Completed with state Completed
+[12:01:28 INF] ComputeCorrelationKeysTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_ComputeCorrelationKeys1_AllEntities (Level: 4, LaunchOrder: 4)
+    EntityType: AHMA_LDAP_Entry, Directory_User
+
+[12:01:28 VRB] Check the instance state for Task AHMA_LDAP_Synchronize_Complete_Scaffolding_ComputeCorrelationKeys1_AllEntities
+[12:01:28 VRB] HandleCommand TaskInstanceProgressCommand
+[12:01:28 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:01:28 INF] Launch task: ComputeCorrelationKeysTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_ComputeCorrelationKeys1_AllEntities, Task 5/13
+[12:01:28 VRB] HandleCommand RunTaskCommand
+[12:01:28 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/63012?api-version=4.0&jobInstanceId=821&jobLogLevel=Trace
+[12:01:37 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[12:01:37 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4636?api-version=2.0&jobInstanceId=821&taskId=63012&jobId=40002
+[12:01:37 INF] Task: AHMA_LDAP_Synchronize_Complete_Scaffolding_ComputeCorrelationKeys1_AllEntities Completed with state Completed
+[12:01:37 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/821?api-version=3.0&jobGroupId=40002&current=5&totalTask=13&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[12:01:37 VRB] Check the JobInstance state for JobInstance 821.
+[12:01:37 VRB] HandleQuery SelectJobInstanceByIdQuery
+[12:01:37 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/821?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:01:38 INF] ComputeRoleModelTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_ComputeRoleModel1 (Level: 5, LaunchOrder: 5)
+    EntityType: Directory_User
+
+[12:01:38 VRB] Check the instance state for Task AHMA_LDAP_Synchronize_Complete_Scaffolding_ComputeRoleModel1
+[12:01:38 VRB] HandleCommand TaskInstanceProgressCommand
+[12:01:38 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:01:38 INF] Launch task: ComputeRoleModelTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_ComputeRoleModel1, Task 6/13
+[12:01:38 VRB] HandleCommand RunTaskCommand
+[12:01:38 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/63014?api-version=4.0&jobInstanceId=821&jobLogLevel=Trace
+[12:01:43 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[12:01:43 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4637?api-version=2.0&jobInstanceId=821&taskId=63014&jobId=40002
+[12:01:43 INF] Task: AHMA_LDAP_Synchronize_Complete_Scaffolding_ComputeRoleModel1 Completed with state Completed
+[12:01:43 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/821?api-version=3.0&jobGroupId=40002&current=6&totalTask=13&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[12:01:43 VRB] Check the JobInstance state for JobInstance 821.
+[12:01:43 VRB] HandleQuery SelectJobInstanceByIdQuery
+[12:01:43 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/821?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:01:43 INF] ComputeRiskScoresTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_ComputeRiskScores1 (Level: 6, LaunchOrder: 6)
+    EntityType: Directory_User
+
+[12:01:43 VRB] Check the instance state for Task AHMA_LDAP_Synchronize_Complete_Scaffolding_ComputeRiskScores1
+[12:01:43 VRB] HandleCommand TaskInstanceProgressCommand
+[12:01:43 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:01:43 INF] Launch task: ComputeRiskScoresTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_ComputeRiskScores1, Task 7/13
+[12:01:43 VRB] HandleCommand RunTaskCommand
+[12:01:43 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/63013?api-version=4.0&jobInstanceId=821&jobLogLevel=Trace
+[12:01:44 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[12:01:44 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4638?api-version=2.0&jobInstanceId=821&taskId=63013&jobId=40002
+[12:01:44 INF] Task: AHMA_LDAP_Synchronize_Complete_Scaffolding_ComputeRiskScores1 Completed with state Completed
+[12:01:44 INF] GenerateProvisioningOrdersTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_GenerateProvisioningOrders1 (Level: 7, LaunchOrder: 7)
+    ResourceType: AHMA_LDAP_Entry_NominativeUser
+
+[12:01:44 VRB] Check the instance state for Task AHMA_LDAP_Synchronize_Complete_Scaffolding_GenerateProvisioningOrders1
+[12:01:44 VRB] HandleCommand TaskInstanceProgressCommand
+[12:01:44 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:01:44 INF] Launch task: GenerateProvisioningOrdersTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_GenerateProvisioningOrders1, Task 8/13
+[12:01:44 VRB] HandleCommand RunTaskCommand
+[12:01:44 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/63017?api-version=4.0&jobInstanceId=821&jobLogLevel=Trace
+[12:01:45 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[12:01:45 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4639?api-version=2.0&jobInstanceId=821&taskId=63017&jobId=40002
+[12:01:45 INF] Task: AHMA_LDAP_Synchronize_Complete_Scaffolding_GenerateProvisioningOrders1 Completed with state Completed
+[12:01:45 INF] FulfillTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_Fulfill1 (Level: 8, LaunchOrder: 8)
+    ConnectionIdentifier: AhmaLDAPExportFulfillment
+    FulfillmentType: FulfillLdap
+    ContinueOnError: True
+    Parent: AHMA_LDAP_Synchronize_Complete_Scaffolding_GenerateProvisioningOrders1
+    ResourceType: AHMA_LDAP_Entry_NominativeUser
+
+[12:01:45 VRB] Check the instance state for Task AHMA_LDAP_Synchronize_Complete_Scaffolding_Fulfill1
+[12:01:45 VRB] HandleCommand TaskInstanceProgressCommand
+[12:01:45 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:01:45 INF] The Task: AHMA_LDAP_Synchronize_Complete_Scaffolding_Fulfill1 has not been launched because no treatment is required.
+[12:01:45 INF] UpdateClassificationTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_UpdateClassification (Level: 9, LaunchOrder: 9)
+    EntityType: AHMA_LDAP_Entry
+
+[12:01:45 VRB] Check the instance state for Task AHMA_LDAP_Synchronize_Complete_Scaffolding_UpdateClassification
+[12:01:45 VRB] HandleCommand TaskInstanceProgressCommand
+[12:01:45 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:01:45 INF] Launch task: UpdateClassificationTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_UpdateClassification, Task 10/13
+[12:01:45 VRB] HandleCommand RunTaskCommand
+[12:01:45 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/63022?api-version=4.0&jobInstanceId=821&jobLogLevel=Trace
+[12:01:46 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[12:01:46 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4641?api-version=2.0&jobInstanceId=821&taskId=63022&jobId=40002
+[12:01:46 INF] Task: AHMA_LDAP_Synchronize_Complete_Scaffolding_UpdateClassification Completed with state Completed
+[12:01:46 VRB] Check the JobInstance state for JobInstance 821.
+[12:01:46 VRB] HandleQuery SelectJobInstanceByIdQuery
+[12:01:46 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/821?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:01:47 INF] UpdateParametersContextDisplayNamesTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_UpdateParametersContextDisplayNames (Level: 10, LaunchOrder: 10)
+
+[12:01:47 VRB] Check the instance state for Task AHMA_LDAP_Synchronize_Complete_Scaffolding_UpdateParametersContextDisplayNames
+[12:01:47 VRB] HandleCommand TaskInstanceProgressCommand
+[12:01:47 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:01:47 INF] Launch task: UpdateParametersContextDisplayNamesTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_UpdateParametersContextDisplayNames, Task 11/13
+[12:01:47 VRB] HandleCommand RunTaskCommand
+[12:01:47 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/63024?api-version=4.0&jobInstanceId=821&jobLogLevel=Trace
+[12:01:47 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[12:01:47 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4642?api-version=2.0&jobInstanceId=821&taskId=63024&jobId=40002
+[12:01:47 INF] Task: AHMA_LDAP_Synchronize_Complete_Scaffolding_UpdateParametersContextDisplayNames Completed with state Completed
+[12:01:47 INF] SendRoleModelNotificationsTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_SendRoleModelNotifications (Level: 11, LaunchOrder: 11)
+
+[12:01:47 VRB] Check the instance state for Task AHMA_LDAP_Synchronize_Complete_Scaffolding_SendRoleModelNotifications
+[12:01:47 VRB] HandleCommand TaskInstanceProgressCommand
+[12:01:47 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:01:47 INF] Launch task: SendRoleModelNotificationsTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_SendRoleModelNotifications, Task 12/13
+[12:01:47 VRB] HandleCommand RunTaskCommand
+[12:01:47 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/63020?api-version=4.0&jobInstanceId=821&jobLogLevel=Trace
+[12:01:49 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[12:01:49 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4643?api-version=2.0&jobInstanceId=821&taskId=63020&jobId=40002
+[12:01:49 INF] Task: AHMA_LDAP_Synchronize_Complete_Scaffolding_SendRoleModelNotifications Completed with state Completed
+[12:01:49 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/821?api-version=3.0&jobGroupId=40002&current=12&totalTask=13&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[12:01:49 VRB] Check the JobInstance state for JobInstance 821.
+[12:01:49 VRB] HandleQuery SelectJobInstanceByIdQuery
+[12:01:49 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/821?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:01:49 INF] MaintainIndexesTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_MaintainIndexes (Level: 12, LaunchOrder: 12)
+    Rebuild Threshold: 0
+    Reorganize Threshold: 0
+    Page Count: 0
+    Update Statistics Threshold: 0
+
+[12:01:49 VRB] Check the instance state for Task AHMA_LDAP_Synchronize_Complete_Scaffolding_MaintainIndexes
+[12:01:49 VRB] HandleCommand TaskInstanceProgressCommand
+[12:01:49 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:01:49 INF] Launch task: MaintainIndexesTask: AHMA_LDAP_Synchronize_Complete_Scaffolding_MaintainIndexes, Task 13/13
+[12:01:49 VRB] HandleCommand RunTaskCommand
+[12:01:49 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/63018?api-version=4.0&jobInstanceId=821&jobLogLevel=Trace
+[12:01:53 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[12:01:53 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/4644?api-version=2.0&jobInstanceId=821&taskId=63018&jobId=40002
+[12:01:53 INF] Task: AHMA_LDAP_Synchronize_Complete_Scaffolding_MaintainIndexes Completed with state Completed
+[12:01:53 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/821?api-version=3.0&jobGroupId=40002&current=13&totalTask=13&state=Completed&resourceId=-1&cancelRequest=False&retry=False

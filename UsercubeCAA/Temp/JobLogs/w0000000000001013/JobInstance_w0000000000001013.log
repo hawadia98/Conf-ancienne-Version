@@ -1,0 +1,32 @@
+﻿[13:38:26 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/1013?api-version=3.0&jobGroupId=5&current=0&totalTask=0&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[13:38:26 VRB] Refreshed token: token expiration date=02/10/2025 13:35:25
+[13:38:26 VRB] HandleQuery SelectConsolidateJobQuery
+[13:38:26 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/RunStateMachineJob?api-version=4.0&path=/Jobs/Job/Query&jobIdentifier=5&repair=False&beginJobStep=-1&endJobStep=-1&forceSynchronizationProvisioning=False&retry=False&launchTaskType=0&taskIdentifier=&taskIdentifierContains=&beginTaskExcluded=&endTaskExcluded=&jobInstanceId=1013&jobId=5
+[13:38:27 VRB] HandleCommand ReserveTaskInstanceIdCommand
+[13:38:27 VRB] Reserve 26 next TaskInstanceId
+[13:38:27 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceId/26?api-version=1.0
+[13:38:27 VRB] Check the JobInstance state for JobInstance 1013.
+[13:38:27 VRB] HandleQuery SelectJobInstanceByIdQuery
+[13:38:27 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/1013?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[13:38:27 INF] InvokeExpressionTask: Payroll_Synchro_Complete_Scaffolding_PreCollect (Level: 0, LaunchOrder: 0)
+    Agent: CAA
+
+[13:38:27 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_PreCollect
+[13:38:27 VRB] HandleCommand TaskInstanceProgressCommand
+[13:38:27 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[13:38:27 INF] Launch task: InvokeExpressionTask: Payroll_Synchro_Complete_Scaffolding_PreCollect, Task 1/26
+[13:38:27 VRB] HandleCommand RunTaskCommand
+[13:38:27 INF] Launch InvokeExpressionTask : Payroll_Synchro_Complete_Scaffolding_PreCollect
+[13:38:27 DBG] Start Process dotnet Usercube-Invoke-ExpressionAgentSide.dll --progress-task-instance-id 6158 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --input-path "D:\UsercubeCAA\Scripts\Payroll\Payroll_PreCollect.ps1" --stdin null
+[13:38:27 INF] Start process=True PID=17304 dotnet Usercube-Invoke-ExpressionAgentSide.dll --progress-task-instance-id 6158 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --input-path "D:\UsercubeCAA\Scripts\Payroll\Payroll_PreCollect.ps1" --stdin
+[13:38:37 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/6158?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[13:38:37 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[13:38:37 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/6158?api-version=2.0&jobInstanceId=1013&taskId=265&jobId=5
+[13:38:37 INF] Task: Payroll_Synchro_Complete_Scaffolding_PreCollect Completed with state Completed
+[13:38:37 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/1013?api-version=3.0&jobGroupId=5&current=1&totalTask=26&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[13:38:37 INF] The server notifies the job is canceled.
+[13:38:37 VRB] Check the JobInstance state for JobInstance 1013.
+[13:38:37 VRB] HandleQuery SelectJobInstanceByIdQuery
+[13:38:37 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/1013?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[13:38:37 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/1013?api-version=3.0&jobGroupId=5&current=1&totalTask=26&state=Completed&resourceId=-1&cancelRequest=False&retry=False
+[13:38:37 INF] The server notifies the job is canceled.

@@ -1,0 +1,13 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <EntityType Identifier="Directory_ReservedIdentifier" DisplayName_L1="Reserved Unique Identifier">
+    <Property Identifier="Value" DisplayName_L1="Value" Type="String" TargetColumnIndex="4" IsKey="true" />
+    <Property Identifier="Description" DisplayName_L1="Description" Type="String" TargetColumnIndex="0" />
+  </EntityType>
+
+  <DisplayEntityType PluralDisplayName_L1="Reserved Unique Identifiers" Identifier="Directory_ReservedIdentifier" HideRoles="true">
+    <Property DisplayOrder="-1" IsRequired="true" Identifier="Value" />
+  </DisplayEntityType>
+
+  <CreateUpdateDeleteTemplate EntityType="Directory_ReservedIdentifier" Profile="Administrator" />
+  <ConnectorMappings Connector="Directory" EntityType="Directory_ReservedIdentifier" IsIncremental="1" Package="Usercube.Excel@0000001" />
+</ConfigurationFile>

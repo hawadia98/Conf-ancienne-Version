@@ -1,0 +1,8 @@
+﻿Usercube
+
+version : 6.1.001
+date    : 2024-04-22 13:19:17
+build   : 249664
+commit  : 9048f6c85456039e96421e8bcf64462718589b43
+branch  : release/6.1.0
+user    : VssAdministrator

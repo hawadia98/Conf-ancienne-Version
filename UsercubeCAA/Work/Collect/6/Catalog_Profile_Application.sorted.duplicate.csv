@@ -1,0 +1,50 @@
+﻿381,Admin,CUCM
+808,Administrateur,SentinelOne
+818,Auditeur,EASY
+54,GS_A_CA-PACIFICA_PACIFICA_PRD-SPO-S15-Encadrement,MyPlace_CAA
+57,GS_A_CA-PACIFICA_PACIFICA_PRD-SPO-S15-Visiteurs,MyPlace_CAA
+843,G_INF_CLIOSA,Décisionnel - Infocentre
+1232,G_INF_DPRDMP,Décisionnel - Infocentre
+121,Groupe Pacifica - Consultation flux Pacifica,DIAPASON Production
+120,Groupe Pacifica - Import virements manuels Pacifica,DIAPASON Production
+119,Groupe Pacifica - Signataire flux Pacifica,DIAPASON Production
+1166,MOA,Microsoft Dynamics CRM
+118,PACIFICA - Contréleurs CS,DIAPASON Production
+59,PACIFICA - Contréleurs CS Prélévements,DIAPASON Production
+117,PACIFICA - Saisisseurs CS,DIAPASON Production
+92,PACIFICA - Saisisseurs DFI,DIAPASON Recette
+115,PACIFICA - Saisisseurs DSIN,DIAPASON Production
+114,PACIFICA - Saisisseurs UGO,DIAPASON Production
+89,PACIFICA - Signataires Directeur Général,DIAPASON Recette
+112,PACIFICA - Signataires Directeurs,DIAPASON Production
+111,PACIFICA - Signataires Directeurs Adjoints,DIAPASON Production
+86,PACIFICA - Signataires Responsables,DIAPASON Recette
+95,PACIFICA - Signataires Validation Centrale,DIAPASON Recette
+834,PACIFICA_interne,ARTEFIS
+63,PCKR12_ASSISTANT_ COMPTABILITé_ SOCIALE,Oracle R12 Recette
+65,PCKR12_DFI_ASSISTANTE,Oracle R12 Recette
+665,PCKR12_DFI_CONTRéLE DE GESTION,Oracle R12
+66,PCKR12_DFI_MOA,Oracle R12 Recette
+668,PCKR12_DFI_PARTENARIAT,Oracle R12
+670,PCKR12_DFI_REPORT PLACEMENT,Oracle R12
+672,PCKR12_DFI_RESPONSABLE CGGP,Oracle R12
+71,PCKR12_DFI_RESPONSABLE RPR,Oracle R12 Recette
+68,PCKR12_DFI_RéASSURANCE,Oracle R12 Recette
+74,PCKR12_DFI_RéSULTATS TEC COM,Oracle R12 Recette
+703,PCKR12_PACIFICA_ASSISTANT_DIRECTION_SINISTRE,Oracle R12
+679,PCKR12_PACIFICA_RESPONSABLE_DIRECTION_FINANCIERE,Oracle R12
+681,PCKR12_PACIFICA_RESPONSABLE_DIRECTION_SINISTRE,Oracle R12
+72,PCKR12_RESPONSABLE_COMPTABILITé_SOCIALE,Oracle R12 Recette
+64,PCK_CAAS_CSP_FACTURATION,Oracle R12 Recette
+500,SIR-Production-UGS DIJON-S14,Oracle R12
+576,SIRR12_SIRCA_RESPONSABLE_DIRECTION_SINISTRE,Oracle R12
+811,Utilisateur,Mon empreinte digital
+93,VIAREN - Consultation flux Pacifica,DIAPASON Production
+84,VIAREN - Contréleurs,DIAPASON Recette
+83,VIAREN - Saisisseurs,DIAPASON Recette
+82,VIAREN - Signataire flux Pacifica,DIAPASON Recette
+81,VIAREN - Signataires Directeur Général,DIAPASON Recette
+80,VIAREN - Signataires Directeurs,DIAPASON Recette
+79,VIAREN - Signataires Directeurs Adjoints,DIAPASON Recette
+103,VIAREN - Signataires Responsables,DIAPASON Production
+77,VIAREN - Signataires Validation Centrale,DIAPASON Recette

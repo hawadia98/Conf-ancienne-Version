@@ -1,0 +1,11 @@
+﻿[11:24:49 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/5080?api-version=1.0
+[11:24:49 VRB] Refreshed token: token expiration date=01/31/2025 11:21:48
+[11:24:49 DBG] Start Process powershell.exe -NoProfile -NonInteractive -File D:\UsercubeCAA\Scripts\HR\HR_Reset_Files.ps1 null
+[11:24:49 INF] Start process=True PID=17028 powershell.exe -NoProfile -NonInteractive -File D:\UsercubeCAA\Scripts\HR\HR_Reset_Files.ps1
+[11:24:50 INF] Custom configuration successfully loaded from D:\UsercubeCAA\Runtime\appsettings.json
+[11:24:50 INF] Custom configuration successfully loaded from D:\UsercubeCAA\Runtime\appsettings.agent.json
+[11:24:50 INF] Installation will run with following context variables :
+[11:24:50 INF] - scriptsPath : D:\UsercubeCAA\Scripts
+[11:24:50 INF] - confPath : D:\UsercubeCAA\Conf
+[11:24:50 INF] - apiUri : https://dev-fusion-iam.caa.group.gca
+[11:24:50 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/5080?api-version=1.0

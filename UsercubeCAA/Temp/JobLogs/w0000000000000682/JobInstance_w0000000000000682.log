@@ -1,0 +1,440 @@
+﻿[17:14:46 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/682?api-version=3.0&jobGroupId=5&current=0&totalTask=0&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[17:14:46 VRB] Refreshed token: token expiration date=01/26/2025 17:11:46
+[17:14:46 VRB] HandleQuery SelectConsolidateJobQuery
+[17:14:46 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/RunStateMachineJob?api-version=4.0&path=/Jobs/Job/Query&jobIdentifier=5&repair=False&beginJobStep=-1&endJobStep=-1&forceSynchronizationProvisioning=False&retry=False&launchTaskType=0&taskIdentifier=&taskIdentifierContains=&beginTaskExcluded=&endTaskExcluded=&jobInstanceId=682&jobId=5
+[17:14:47 VRB] HandleCommand ReserveTaskInstanceIdCommand
+[17:14:47 VRB] Reserve 26 next TaskInstanceId
+[17:14:47 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceId/26?api-version=1.0
+[17:14:47 VRB] Check the JobInstance state for JobInstance 682.
+[17:14:47 VRB] HandleQuery SelectJobInstanceByIdQuery
+[17:14:47 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/682?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:14:47 INF] InvokeExpressionTask: Payroll_Synchro_Complete_Scaffolding_PreCollect (Level: 0, LaunchOrder: 0)
+    Agent: CAA
+
+[17:14:47 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_PreCollect
+[17:14:47 VRB] HandleCommand TaskInstanceProgressCommand
+[17:14:47 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:14:47 INF] Launch task: InvokeExpressionTask: Payroll_Synchro_Complete_Scaffolding_PreCollect, Task 1/26
+[17:14:47 VRB] HandleCommand RunTaskCommand
+[17:14:47 INF] Launch InvokeExpressionTask : Payroll_Synchro_Complete_Scaffolding_PreCollect
+[17:14:47 DBG] Start Process dotnet Usercube-Invoke-ExpressionAgentSide.dll --progress-task-instance-id 3436 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --input-path "D:\UsercubeCAA\Scripts\Payroll\Payroll_PreCollect.ps1" --stdin null
+[17:14:47 INF] Start process=True PID=10504 dotnet Usercube-Invoke-ExpressionAgentSide.dll --progress-task-instance-id 3436 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --input-path "D:\UsercubeCAA\Scripts\Payroll\Payroll_PreCollect.ps1" --stdin
+[17:14:55 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/3436?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[17:14:55 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:14:55 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3436?api-version=2.0&jobInstanceId=682&taskId=265&jobId=5
+[17:14:55 INF] Task: Payroll_Synchro_Complete_Scaffolding_PreCollect Completed with state Completed
+[17:14:55 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/682?api-version=3.0&jobGroupId=5&current=1&totalTask=26&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[17:14:55 VRB] Check the JobInstance state for JobInstance 682.
+[17:14:55 VRB] HandleQuery SelectJobInstanceByIdQuery
+[17:14:55 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/682?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:14:55 INF] ExportTask: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_CompanyType (Level: 1, LaunchOrder: 1)
+    Connector: Payroll
+    Mode: Complete
+    ConnectionIdentifier: PayrollCompanyType
+    ExportType: ExportCsv
+
+[17:14:55 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_Export_Payroll_CompanyType
+[17:14:55 VRB] HandleCommand TaskInstanceProgressCommand
+[17:14:55 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:14:55 INF] Launch task: ExportTask: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_CompanyType, Task 2/26
+[17:14:55 VRB] HandleCommand RunTaskCommand
+[17:14:55 INF] Launch ExportTask : Payroll_Synchro_Complete_Scaffolding_Export_Payroll_CompanyType
+[17:14:55 DBG] Start Process dotnet Usercube-Export-Csv.dll --progress-task-instance-id 3437 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "PayrollCompanyType" --raw-files-path "D:\UsercubeCAA\Sources\Paie\Complete\TYPE DE SOCIETE.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin null
+[17:14:55 INF] Start process=True PID=8220 dotnet Usercube-Export-Csv.dll --progress-task-instance-id 3437 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "PayrollCompanyType" --raw-files-path "D:\UsercubeCAA\Sources\Paie\Complete\TYPE DE SOCIETE.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin
+[17:14:56 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/3437?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[17:14:56 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:14:56 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3437?api-version=2.0&jobInstanceId=682&taskId=255&jobId=5
+[17:14:56 INF] Task: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_CompanyType Completed with state Completed
+[17:14:56 INF] ExportTask: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Company (Level: 2, LaunchOrder: 2)
+    Connector: Payroll
+    Mode: Complete
+    ConnectionIdentifier: PayrollCompany
+    ExportType: ExportCsv
+
+[17:14:56 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Company
+[17:14:56 VRB] HandleCommand TaskInstanceProgressCommand
+[17:14:56 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:14:56 INF] Launch task: ExportTask: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Company, Task 3/26
+[17:14:56 VRB] HandleCommand RunTaskCommand
+[17:14:56 INF] Launch ExportTask : Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Company
+[17:14:56 DBG] Start Process dotnet Usercube-Export-Csv.dll --progress-task-instance-id 3438 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "PayrollCompany" --raw-files-path "D:\UsercubeCAA\Sources\Paie\Complete\SOCIETE.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin null
+[17:14:56 INF] Start process=True PID=6628 dotnet Usercube-Export-Csv.dll --progress-task-instance-id 3438 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "PayrollCompany" --raw-files-path "D:\UsercubeCAA\Sources\Paie\Complete\SOCIETE.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin
+[17:14:57 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/3438?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[17:14:57 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:14:57 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3438?api-version=2.0&jobInstanceId=682&taskId=254&jobId=5
+[17:14:57 INF] Task: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Company Completed with state Completed
+[17:14:57 INF] ExportTask: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_ContractType (Level: 3, LaunchOrder: 3)
+    Connector: Payroll
+    Mode: Complete
+    ConnectionIdentifier: PayrollContractType
+    ExportType: ExportCsv
+
+[17:14:57 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_Export_Payroll_ContractType
+[17:14:57 VRB] HandleCommand TaskInstanceProgressCommand
+[17:14:57 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:14:57 INF] Launch task: ExportTask: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_ContractType, Task 4/26
+[17:14:57 VRB] HandleCommand RunTaskCommand
+[17:14:57 INF] Launch ExportTask : Payroll_Synchro_Complete_Scaffolding_Export_Payroll_ContractType
+[17:14:57 DBG] Start Process dotnet Usercube-Export-Csv.dll --progress-task-instance-id 3439 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "PayrollContractType" --raw-files-path "D:\UsercubeCAA\Sources\Paie\Complete\CONTRAT.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin null
+[17:14:57 INF] Start process=True PID=2216 dotnet Usercube-Export-Csv.dll --progress-task-instance-id 3439 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "PayrollContractType" --raw-files-path "D:\UsercubeCAA\Sources\Paie\Complete\CONTRAT.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin
+[17:14:57 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/3439?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[17:14:57 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:14:57 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3439?api-version=2.0&jobInstanceId=682&taskId=256&jobId=5
+[17:14:57 INF] Task: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_ContractType Completed with state Completed
+[17:14:57 VRB] Check the JobInstance state for JobInstance 682.
+[17:14:57 VRB] HandleQuery SelectJobInstanceByIdQuery
+[17:14:57 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/682?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:14:57 INF] ExportTask: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_UserType (Level: 4, LaunchOrder: 4)
+    Connector: Payroll
+    Mode: Complete
+    ConnectionIdentifier: PayrollUserType
+    ExportType: ExportCsv
+
+[17:14:57 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_Export_Payroll_UserType
+[17:14:57 VRB] HandleCommand TaskInstanceProgressCommand
+[17:14:57 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:14:57 INF] Launch task: ExportTask: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_UserType, Task 5/26
+[17:14:57 VRB] HandleCommand RunTaskCommand
+[17:14:57 INF] Launch ExportTask : Payroll_Synchro_Complete_Scaffolding_Export_Payroll_UserType
+[17:14:57 DBG] Start Process dotnet Usercube-Export-Csv.dll --progress-task-instance-id 3440 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "PayrollUserType" --raw-files-path "D:\UsercubeCAA\Sources\Paie\Complete\TYPE D'UTILISATEUR.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin null
+[17:14:57 INF] Start process=True PID=6828 dotnet Usercube-Export-Csv.dll --progress-task-instance-id 3440 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "PayrollUserType" --raw-files-path "D:\UsercubeCAA\Sources\Paie\Complete\TYPE D'UTILISATEUR.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin
+[17:14:58 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/3440?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[17:14:58 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:14:58 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3440?api-version=2.0&jobInstanceId=682&taskId=264&jobId=5
+[17:14:58 INF] Task: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_UserType Completed with state Completed
+[17:14:58 INF] ExportTask: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Function (Level: 5, LaunchOrder: 5)
+    Connector: Payroll
+    Mode: Complete
+    ConnectionIdentifier: PayrollFunction
+    ExportType: ExportCsv
+
+[17:14:58 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Function
+[17:14:58 VRB] HandleCommand TaskInstanceProgressCommand
+[17:14:58 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:14:58 INF] Launch task: ExportTask: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Function, Task 6/26
+[17:14:58 VRB] HandleCommand RunTaskCommand
+[17:14:58 INF] Launch ExportTask : Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Function
+[17:14:58 DBG] Start Process dotnet Usercube-Export-Csv.dll --progress-task-instance-id 3441 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "PayrollFunction" --raw-files-path "D:\UsercubeCAA\Sources\Paie\Complete\FONCTION.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin null
+[17:14:58 INF] Start process=True PID=5476 dotnet Usercube-Export-Csv.dll --progress-task-instance-id 3441 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "PayrollFunction" --raw-files-path "D:\UsercubeCAA\Sources\Paie\Complete\FONCTION.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin
+[17:14:59 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/3441?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[17:14:59 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:14:59 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3441?api-version=2.0&jobInstanceId=682&taskId=257&jobId=5
+[17:14:59 INF] Task: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Function Completed with state Completed
+[17:14:59 INF] ExportTask: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Site (Level: 6, LaunchOrder: 6)
+    Connector: Payroll
+    Mode: Complete
+    ConnectionIdentifier: PayrollSite
+    ExportType: ExportCsv
+
+[17:14:59 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Site
+[17:14:59 VRB] HandleCommand TaskInstanceProgressCommand
+[17:14:59 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:14:59 INF] Launch task: ExportTask: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Site, Task 7/26
+[17:14:59 VRB] HandleCommand RunTaskCommand
+[17:14:59 INF] Launch ExportTask : Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Site
+[17:14:59 DBG] Start Process dotnet Usercube-Export-Csv.dll --progress-task-instance-id 3442 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "PayrollSite" --raw-files-path "D:\UsercubeCAA\Sources\Paie\Complete\LIEU DE TRAVAIL.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin null
+[17:14:59 INF] Start process=True PID=2560 dotnet Usercube-Export-Csv.dll --progress-task-instance-id 3442 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "PayrollSite" --raw-files-path "D:\UsercubeCAA\Sources\Paie\Complete\LIEU DE TRAVAIL.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin
+[17:15:00 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/3442?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[17:15:00 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:15:00 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3442?api-version=2.0&jobInstanceId=682&taskId=259&jobId=5
+[17:15:00 INF] Task: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Site Completed with state Completed
+[17:15:00 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/682?api-version=3.0&jobGroupId=5&current=7&totalTask=26&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[17:15:00 VRB] Check the JobInstance state for JobInstance 682.
+[17:15:00 VRB] HandleQuery SelectJobInstanceByIdQuery
+[17:15:00 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/682?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:15:00 INF] ExportTask: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_TranscoSite (Level: 7, LaunchOrder: 7)
+    Connector: Payroll
+    Mode: Complete
+    ConnectionIdentifier: PayrollTranscoSite
+    ExportType: ExportCsv
+
+[17:15:00 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_Export_Payroll_TranscoSite
+[17:15:00 VRB] HandleCommand TaskInstanceProgressCommand
+[17:15:00 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:15:00 INF] Launch task: ExportTask: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_TranscoSite, Task 8/26
+[17:15:00 VRB] HandleCommand RunTaskCommand
+[17:15:00 INF] Launch ExportTask : Payroll_Synchro_Complete_Scaffolding_Export_Payroll_TranscoSite
+[17:15:00 DBG] Start Process dotnet Usercube-Export-Csv.dll --progress-task-instance-id 3443 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "PayrollTranscoSite" --raw-files-path "D:\UsercubeCAA\Sources\Paie\Complete\cmn_location.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin null
+[17:15:00 INF] Start process=True PID=10092 dotnet Usercube-Export-Csv.dll --progress-task-instance-id 3443 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "PayrollTranscoSite" --raw-files-path "D:\UsercubeCAA\Sources\Paie\Complete\cmn_location.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin
+[17:15:01 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/3443?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[17:15:01 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:15:01 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3443?api-version=2.0&jobInstanceId=682&taskId=261&jobId=5
+[17:15:01 INF] Task: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_TranscoSite Completed with state Completed
+[17:15:01 INF] ExportTask: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Organization (Level: 8, LaunchOrder: 8)
+    Connector: Payroll
+    Mode: Complete
+    ConnectionIdentifier: PayrollOrganization
+    ExportType: ExportCsv
+
+[17:15:01 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Organization
+[17:15:01 VRB] HandleCommand TaskInstanceProgressCommand
+[17:15:01 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:15:01 INF] Launch task: ExportTask: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Organization, Task 9/26
+[17:15:01 VRB] HandleCommand RunTaskCommand
+[17:15:01 INF] Launch ExportTask : Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Organization
+[17:15:01 DBG] Start Process dotnet Usercube-Export-Csv.dll --progress-task-instance-id 3444 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "PayrollOrganization" --raw-files-path "D:\UsercubeCAA\Sources\Paie\Complete\DIRECTION.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin null
+[17:15:01 INF] Start process=True PID=8160 dotnet Usercube-Export-Csv.dll --progress-task-instance-id 3444 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "PayrollOrganization" --raw-files-path "D:\UsercubeCAA\Sources\Paie\Complete\DIRECTION.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin
+[17:15:02 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/3444?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[17:15:02 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:15:02 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3444?api-version=2.0&jobInstanceId=682&taskId=258&jobId=5
+[17:15:02 INF] Task: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Organization Completed with state Completed
+[17:15:02 INF] ExportTask: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_TranscoOrganization (Level: 9, LaunchOrder: 9)
+    Connector: Payroll
+    Mode: Complete
+    ConnectionIdentifier: PayrollTranscoOrganization
+    ExportType: ExportCsv
+
+[17:15:02 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_Export_Payroll_TranscoOrganization
+[17:15:02 VRB] HandleCommand TaskInstanceProgressCommand
+[17:15:02 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:15:02 INF] Launch task: ExportTask: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_TranscoOrganization, Task 10/26
+[17:15:02 VRB] HandleCommand RunTaskCommand
+[17:15:02 INF] Launch ExportTask : Payroll_Synchro_Complete_Scaffolding_Export_Payroll_TranscoOrganization
+[17:15:02 DBG] Start Process dotnet Usercube-Export-Csv.dll --progress-task-instance-id 3445 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "PayrollTranscoOrganization" --raw-files-path "D:\UsercubeCAA\Sources\Paie\Complete\cmn_department.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin null
+[17:15:02 INF] Start process=True PID=9192 dotnet Usercube-Export-Csv.dll --progress-task-instance-id 3445 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "PayrollTranscoOrganization" --raw-files-path "D:\UsercubeCAA\Sources\Paie\Complete\cmn_department.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin
+[17:15:03 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/3445?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[17:15:03 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:15:03 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3445?api-version=2.0&jobInstanceId=682&taskId=260&jobId=5
+[17:15:03 INF] Task: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_TranscoOrganization Completed with state Completed
+[17:15:03 VRB] Check the JobInstance state for JobInstance 682.
+[17:15:03 VRB] HandleQuery SelectJobInstanceByIdQuery
+[17:15:03 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/682?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:15:03 INF] ExportTask: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_User (Level: 10, LaunchOrder: 10)
+    Connector: Payroll
+    Mode: Complete
+    ConnectionIdentifier: PayrollUser
+    ExportType: ExportCsv
+
+[17:15:03 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_Export_Payroll_User
+[17:15:03 VRB] HandleCommand TaskInstanceProgressCommand
+[17:15:03 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:15:03 INF] Launch task: ExportTask: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_User, Task 11/26
+[17:15:03 VRB] HandleCommand RunTaskCommand
+[17:15:03 INF] Launch ExportTask : Payroll_Synchro_Complete_Scaffolding_Export_Payroll_User
+[17:15:03 DBG] Start Process dotnet Usercube-Export-Csv.dll --progress-task-instance-id 3446 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "PayrollUser" --raw-files-path "D:\UsercubeCAA\Sources\Paie\Complete\Paie.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin null
+[17:15:03 INF] Start process=True PID=3980 dotnet Usercube-Export-Csv.dll --progress-task-instance-id 3446 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "PayrollUser" --raw-files-path "D:\UsercubeCAA\Sources\Paie\Complete\Paie.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin
+[17:15:04 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/3446?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[17:15:04 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:15:04 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3446?api-version=2.0&jobInstanceId=682&taskId=262&jobId=5
+[17:15:04 INF] Task: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_User Completed with state Completed
+[17:15:04 INF] ExportTask: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_UserRecord (Level: 11, LaunchOrder: 11)
+    Connector: Payroll
+    Mode: Complete
+    ConnectionIdentifier: PayrollUserRecord
+    ExportType: ExportCsv
+
+[17:15:04 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_Export_Payroll_UserRecord
+[17:15:04 VRB] HandleCommand TaskInstanceProgressCommand
+[17:15:04 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:15:04 INF] Launch task: ExportTask: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_UserRecord, Task 12/26
+[17:15:04 VRB] HandleCommand RunTaskCommand
+[17:15:04 INF] Launch ExportTask : Payroll_Synchro_Complete_Scaffolding_Export_Payroll_UserRecord
+[17:15:04 DBG] Start Process dotnet Usercube-Export-Csv.dll --progress-task-instance-id 3447 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "PayrollUserRecord" --raw-files-path "D:\UsercubeCAA\Sources\Paie\Complete\Paie.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin null
+[17:15:04 INF] Start process=True PID=7072 dotnet Usercube-Export-Csv.dll --progress-task-instance-id 3447 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "PayrollUserRecord" --raw-files-path "D:\UsercubeCAA\Sources\Paie\Complete\Paie.csv" --separator ";" --lines-to-skip "0" --ignore-cookies --stdin
+[17:15:05 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/3447?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[17:15:05 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:15:05 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3447?api-version=2.0&jobInstanceId=682&taskId=263&jobId=5
+[17:15:05 INF] Task: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_UserRecord Completed with state Completed
+[17:15:05 VRB] Check the JobInstance state for JobInstance 682.
+[17:15:05 VRB] HandleQuery SelectJobInstanceByIdQuery
+[17:15:05 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/682?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:15:05 INF] PrepareSynchronizationTask: Payroll_Synchro_Complete_Scaffolding_PrepareSynchronization_Payroll (Level: 12, LaunchOrder: 12)
+    Synchronization Mode: Complete
+    Connector: Payroll
+    Parent: Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Company, Payroll_Synchro_Complete_Scaffolding_Export_Payroll_CompanyType, Payroll_Synchro_Complete_Scaffolding_Export_Payroll_ContractType, Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Function, Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Organization, Payroll_Synchro_Complete_Scaffolding_Export_Payroll_Site, Payroll_Synchro_Complete_Scaffolding_Export_Payroll_TranscoOrganization, Payroll_Synchro_Complete_Scaffolding_Export_Payroll_TranscoSite, Payroll_Synchro_Complete_Scaffolding_Export_Payroll_User, Payroll_Synchro_Complete_Scaffolding_Export_Payroll_UserRecord, Payroll_Synchro_Complete_Scaffolding_Export_Payroll_UserType
+
+[17:15:05 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_PrepareSynchronization_Payroll
+[17:15:05 VRB] HandleCommand TaskInstanceProgressCommand
+[17:15:05 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:15:05 INF] Launch task: PrepareSynchronizationTask: Payroll_Synchro_Complete_Scaffolding_PrepareSynchronization_Payroll, Task 13/26
+[17:15:05 VRB] HandleCommand RunTaskCommand
+[17:15:05 INF] Launch PrepareSynchronizationTask : Payroll_Synchro_Complete_Scaffolding_PrepareSynchronization_Payroll
+[17:15:05 DBG] Start Process dotnet Usercube-Prepare-Synchronization.dll --progress-task-instance-id 3448 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --connector 10 --working-directory "../Work\Collect" --sources-directory "../Temp\ExportOutput" --synchronization-mode "Complete" --stdin null
+[17:15:05 INF] Start process=True PID=16204 dotnet Usercube-Prepare-Synchronization.dll --progress-task-instance-id 3448 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --connector 10 --working-directory "../Work\Collect" --sources-directory "../Temp\ExportOutput" --synchronization-mode "Complete" --stdin
+[17:15:07 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/3448?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[17:15:07 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:15:07 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3448?api-version=2.0&jobInstanceId=682&taskId=266&jobId=5
+[17:15:07 INF] Task: Payroll_Synchro_Complete_Scaffolding_PrepareSynchronization_Payroll Completed with state Completed
+[17:15:07 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/682?api-version=3.0&jobGroupId=5&current=13&totalTask=26&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[17:15:07 INF] SynchronizeTask: Payroll_Synchro_Complete_Scaffolding_Synchronize_Payroll (Level: 13, LaunchOrder: 13)
+    Connector: Payroll
+    Parent: Payroll_Synchro_Complete_Scaffolding_PrepareSynchronization_Payroll
+
+[17:15:07 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_Synchronize_Payroll
+[17:15:07 VRB] HandleCommand TaskInstanceProgressCommand
+[17:15:07 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:15:07 INF] Launch task: SynchronizeTask: Payroll_Synchro_Complete_Scaffolding_Synchronize_Payroll, Task 14/26
+[17:15:07 VRB] HandleCommand RunTaskCommand
+[17:15:07 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/271?api-version=4.0&jobInstanceId=682&jobLogLevel=Trace
+[17:15:09 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:15:09 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3449?api-version=2.0&jobInstanceId=682&taskId=271&jobId=5
+[17:15:09 INF] Task: Payroll_Synchro_Complete_Scaffolding_Synchronize_Payroll Completed with state Completed
+[17:15:09 VRB] Check the JobInstance state for JobInstance 682.
+[17:15:09 VRB] HandleQuery SelectJobInstanceByIdQuery
+[17:15:09 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/682?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:15:09 INF] UpdateEntityPropertyExpressionsTask: Payroll_Synchro_Complete_Scaffolding_ComputeProperties_1 (Level: 14, LaunchOrder: 14)
+    AllEntities: True
+
+[17:15:09 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_ComputeProperties_1
+[17:15:09 VRB] HandleCommand TaskInstanceProgressCommand
+[17:15:09 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:15:09 INF] Launch task: UpdateEntityPropertyExpressionsTask: Payroll_Synchro_Complete_Scaffolding_ComputeProperties_1, Task 15/26
+[17:15:09 VRB] HandleCommand RunTaskCommand
+[17:15:09 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/250?api-version=4.0&jobInstanceId=682&jobLogLevel=Trace
+[17:15:11 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:15:11 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3450?api-version=2.0&jobInstanceId=682&taskId=250&jobId=5
+[17:15:11 INF] Task: Payroll_Synchro_Complete_Scaffolding_ComputeProperties_1 Completed with state Completed
+[17:15:11 INF] ComputeCorrelationKeysTask: Payroll_Synchro_Complete_Scaffolding_ComputeCorrelationKeys_1 (Level: 15, LaunchOrder: 15)
+    All Entities: True
+
+[17:15:11 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_ComputeCorrelationKeys_1
+[17:15:11 VRB] HandleCommand TaskInstanceProgressCommand
+[17:15:11 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:15:11 INF] Launch task: ComputeCorrelationKeysTask: Payroll_Synchro_Complete_Scaffolding_ComputeCorrelationKeys_1, Task 16/26
+[17:15:11 VRB] HandleCommand RunTaskCommand
+[17:15:11 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/248?api-version=4.0&jobInstanceId=682&jobLogLevel=Trace
+[17:15:40 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:15:40 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3451?api-version=2.0&jobInstanceId=682&taskId=248&jobId=5
+[17:15:40 INF] Task: Payroll_Synchro_Complete_Scaffolding_ComputeCorrelationKeys_1 Completed with state Completed
+[17:15:40 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/682?api-version=3.0&jobGroupId=5&current=16&totalTask=26&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[17:15:40 VRB] Check the JobInstance state for JobInstance 682.
+[17:15:40 VRB] HandleQuery SelectJobInstanceByIdQuery
+[17:15:40 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/682?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:15:40 INF] ComputeRoleModelTask: Payroll_Synchro_Complete_Scaffolding_ComputeProvisioningPolicy_1 (Level: 16, LaunchOrder: 16)
+    EntityType: Payroll_Company, Payroll_CompanyType, Payroll_ContractType, Payroll_Function, Payroll_Organization, Payroll_Site, Payroll_TranscoOrganization, Payroll_TranscoSite, Payroll_User, Payroll_UserRecord, Payroll_UserType
+
+[17:15:40 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_ComputeProvisioningPolicy_1
+[17:15:40 VRB] HandleCommand TaskInstanceProgressCommand
+[17:15:40 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:15:40 INF] Launch task: ComputeRoleModelTask: Payroll_Synchro_Complete_Scaffolding_ComputeProvisioningPolicy_1, Task 17/26
+[17:15:40 VRB] HandleCommand RunTaskCommand
+[17:15:40 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/252?api-version=4.0&jobInstanceId=682&jobLogLevel=Trace
+[17:15:53 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:15:53 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3452?api-version=2.0&jobInstanceId=682&taskId=252&jobId=5
+[17:15:53 INF] Task: Payroll_Synchro_Complete_Scaffolding_ComputeProvisioningPolicy_1 Completed with state Completed
+[17:15:53 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/682?api-version=3.0&jobGroupId=5&current=17&totalTask=26&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[17:15:53 VRB] Check the JobInstance state for JobInstance 682.
+[17:15:53 VRB] HandleQuery SelectJobInstanceByIdQuery
+[17:15:53 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/682?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:15:53 INF] GenerateProvisioningOrdersTask: Payroll_Synchro_Complete_Scaffolding_Provisioning_1 (Level: 17, LaunchOrder: 17)
+    Force Provisioning: True
+    ResourceType: Payroll_Company, Payroll_CompanyType, Payroll_ContractType, Payroll_Function, Payroll_Organization, Payroll_Site, Payroll_TranscoOrganization, Payroll_TranscoSite, Payroll_User, Payroll_UserRecord, Payroll_UserType
+
+[17:15:53 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_Provisioning_1
+[17:15:53 VRB] HandleCommand TaskInstanceProgressCommand
+[17:15:53 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:15:53 INF] Launch task: GenerateProvisioningOrdersTask: Payroll_Synchro_Complete_Scaffolding_Provisioning_1, Task 18/26
+[17:15:53 VRB] HandleCommand RunTaskCommand
+[17:15:53 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/269?api-version=4.0&jobInstanceId=682&jobLogLevel=Trace
+[17:15:54 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:15:54 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3453?api-version=2.0&jobInstanceId=682&taskId=269&jobId=5
+[17:15:54 INF] Task: Payroll_Synchro_Complete_Scaffolding_Provisioning_1 Completed with state Completed
+[17:15:54 INF] FulfillTask: Payroll_Synchro_Complete_Scaffolding_Provisioner_Database_1 (Level: 18, LaunchOrder: 18)
+    ConnectionIdentifier: HRDatabase
+    FulfillmentType: FulfillInternalResource
+    Parent: Payroll_Synchro_Complete_Scaffolding_Provisioning_1
+    ResourceType: Payroll_Company, Payroll_CompanyType, Payroll_ContractType, Payroll_Function, Payroll_Organization, Payroll_Site, Payroll_TranscoOrganization, Payroll_TranscoSite, Payroll_User, Payroll_UserRecord, Payroll_UserType
+
+[17:15:54 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_Provisioner_Database_1
+[17:15:54 VRB] HandleCommand TaskInstanceProgressCommand
+[17:15:54 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:15:54 INF] Launch task: FulfillTask: Payroll_Synchro_Complete_Scaffolding_Provisioner_Database_1, Task 19/26
+[17:15:54 VRB] HandleCommand RunTaskCommand
+[17:15:54 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/267?api-version=4.0&jobInstanceId=682&jobLogLevel=Trace
+[17:15:56 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:15:56 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3454?api-version=2.0&jobInstanceId=682&taskId=267&jobId=5
+[17:15:56 INF] Task: Payroll_Synchro_Complete_Scaffolding_Provisioner_Database_1 Completed with state Completed
+[17:15:56 VRB] Check the JobInstance state for JobInstance 682.
+[17:15:56 VRB] HandleQuery SelectJobInstanceByIdQuery
+[17:15:56 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/682?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:15:56 INF] UpdateEntityPropertyExpressionsTask: Payroll_Synchro_Complete_Scaffolding_ComputeProperties_2 (Level: 19, LaunchOrder: 19)
+    AllEntities: True
+
+[17:15:56 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_ComputeProperties_2
+[17:15:56 VRB] HandleCommand TaskInstanceProgressCommand
+[17:15:56 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:15:56 INF] Launch task: UpdateEntityPropertyExpressionsTask: Payroll_Synchro_Complete_Scaffolding_ComputeProperties_2, Task 20/26
+[17:15:56 VRB] HandleCommand RunTaskCommand
+[17:15:56 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/251?api-version=4.0&jobInstanceId=682&jobLogLevel=Trace
+[17:15:58 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:15:58 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3455?api-version=2.0&jobInstanceId=682&taskId=251&jobId=5
+[17:15:58 INF] Task: Payroll_Synchro_Complete_Scaffolding_ComputeProperties_2 Completed with state Completed
+[17:15:58 INF] ComputeCorrelationKeysTask: Payroll_Synchro_Complete_Scaffolding_ComputeCorrelationKeys_2 (Level: 20, LaunchOrder: 20)
+    All Entities: True
+
+[17:15:58 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_ComputeCorrelationKeys_2
+[17:15:58 VRB] HandleCommand TaskInstanceProgressCommand
+[17:15:58 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:15:58 INF] Launch task: ComputeCorrelationKeysTask: Payroll_Synchro_Complete_Scaffolding_ComputeCorrelationKeys_2, Task 21/26
+[17:15:58 VRB] HandleCommand RunTaskCommand
+[17:15:58 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/249?api-version=4.0&jobInstanceId=682&jobLogLevel=Trace
+[17:16:26 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:16:26 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3456?api-version=2.0&jobInstanceId=682&taskId=249&jobId=5
+[17:16:26 INF] Task: Payroll_Synchro_Complete_Scaffolding_ComputeCorrelationKeys_2 Completed with state Completed
+[17:16:26 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/682?api-version=3.0&jobGroupId=5&current=21&totalTask=26&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[17:16:26 VRB] Check the JobInstance state for JobInstance 682.
+[17:16:26 VRB] HandleQuery SelectJobInstanceByIdQuery
+[17:16:26 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/682?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:16:26 INF] ComputeRoleModelTask: Payroll_Synchro_Complete_Scaffolding_ComputeProvisioningPolicy_2 (Level: 21, LaunchOrder: 21)
+    EntityType: Payroll_Company, Payroll_CompanyType, Payroll_ContractType, Payroll_Function, Payroll_Organization, Payroll_Site, Payroll_TranscoOrganization, Payroll_TranscoSite, Payroll_User, Payroll_UserRecord, Payroll_UserType
+
+[17:16:26 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_ComputeProvisioningPolicy_2
+[17:16:26 VRB] HandleCommand TaskInstanceProgressCommand
+[17:16:26 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:16:26 INF] Launch task: ComputeRoleModelTask: Payroll_Synchro_Complete_Scaffolding_ComputeProvisioningPolicy_2, Task 22/26
+[17:16:26 VRB] HandleCommand RunTaskCommand
+[17:16:26 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/253?api-version=4.0&jobInstanceId=682&jobLogLevel=Trace
+[17:16:28 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:16:28 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3457?api-version=2.0&jobInstanceId=682&taskId=253&jobId=5
+[17:16:28 INF] Task: Payroll_Synchro_Complete_Scaffolding_ComputeProvisioningPolicy_2 Completed with state Completed
+[17:16:29 VRB] Check the JobInstance state for JobInstance 682.
+[17:16:29 VRB] HandleQuery SelectJobInstanceByIdQuery
+[17:16:29 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/682?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:16:29 INF] GenerateProvisioningOrdersTask: Payroll_Synchro_Complete_Scaffolding_Provisioning_2 (Level: 22, LaunchOrder: 22)
+    Force Provisioning: True
+    ResourceType: Payroll_Company, Payroll_CompanyType, Payroll_ContractType, Payroll_Function, Payroll_Organization, Payroll_Site, Payroll_TranscoOrganization, Payroll_TranscoSite, Payroll_User, Payroll_UserRecord, Payroll_UserType
+
+[17:16:29 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_Provisioning_2
+[17:16:29 VRB] HandleCommand TaskInstanceProgressCommand
+[17:16:29 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:16:29 INF] Launch task: GenerateProvisioningOrdersTask: Payroll_Synchro_Complete_Scaffolding_Provisioning_2, Task 23/26
+[17:16:29 VRB] HandleCommand RunTaskCommand
+[17:16:29 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/270?api-version=4.0&jobInstanceId=682&jobLogLevel=Trace
+[17:16:29 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:16:29 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3458?api-version=2.0&jobInstanceId=682&taskId=270&jobId=5
+[17:16:29 INF] Task: Payroll_Synchro_Complete_Scaffolding_Provisioning_2 Completed with state Completed
+[17:16:29 INF] FulfillTask: Payroll_Synchro_Complete_Scaffolding_Provisioner_Database_2 (Level: 23, LaunchOrder: 23)
+    ConnectionIdentifier: HRDatabase
+    FulfillmentType: FulfillInternalResource
+    Parent: Payroll_Synchro_Complete_Scaffolding_Provisioning_2
+    ResourceType: Payroll_Company, Payroll_CompanyType, Payroll_ContractType, Payroll_Function, Payroll_Organization, Payroll_Site, Payroll_TranscoOrganization, Payroll_TranscoSite, Payroll_User, Payroll_UserRecord, Payroll_UserType
+
+[17:16:29 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_Provisioner_Database_2
+[17:16:29 VRB] HandleCommand TaskInstanceProgressCommand
+[17:16:29 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:16:29 INF] The Task: Payroll_Synchro_Complete_Scaffolding_Provisioner_Database_2 has not been launched because no treatment is required.
+[17:16:29 INF] InvokeSqlCommandTask: Payroll_Synchro_Complete_Scaffolding_Generate_IamLogin (Level: 24, LaunchOrder: 24)
+
+[17:16:29 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_Generate_IamLogin
+[17:16:29 VRB] HandleCommand TaskInstanceProgressCommand
+[17:16:29 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:16:29 INF] Launch task: InvokeSqlCommandTask: Payroll_Synchro_Complete_Scaffolding_Generate_IamLogin, Task 25/26
+[17:16:29 VRB] HandleCommand RunTaskCommand
+[17:16:29 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/26001?api-version=4.0&jobInstanceId=682&jobLogLevel=Trace
+[17:16:30 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:16:30 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3460?api-version=2.0&jobInstanceId=682&taskId=26001&jobId=5
+[17:16:30 INF] Task: Payroll_Synchro_Complete_Scaffolding_Generate_IamLogin Completed with state Completed
+[17:16:30 INF] SetInternalUserProfilesTask: Payroll_Synchro_Complete_Scaffolding_SetInternalUserProfiles (Level: 25, LaunchOrder: 25)
+    EntityType: Directory_User
+
+[17:16:30 VRB] Check the instance state for Task Payroll_Synchro_Complete_Scaffolding_SetInternalUserProfiles
+[17:16:30 VRB] HandleCommand TaskInstanceProgressCommand
+[17:16:30 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:16:30 INF] Launch task: SetInternalUserProfilesTask: Payroll_Synchro_Complete_Scaffolding_SetInternalUserProfiles, Task 26/26
+[17:16:30 VRB] HandleCommand RunTaskCommand
+[17:16:30 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/27002?api-version=4.0&jobInstanceId=682&jobLogLevel=Trace
+[17:16:31 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:16:31 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3461?api-version=2.0&jobInstanceId=682&taskId=27002&jobId=5
+[17:16:31 INF] Task: Payroll_Synchro_Complete_Scaffolding_SetInternalUserProfiles Completed with state Completed
+[17:16:31 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/682?api-version=3.0&jobGroupId=5&current=26&totalTask=26&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[17:16:31 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/682?api-version=3.0&jobGroupId=5&current=26&totalTask=26&state=Completed&resourceId=-1&cancelRequest=False&retry=False

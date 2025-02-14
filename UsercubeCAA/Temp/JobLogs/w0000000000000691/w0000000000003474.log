@@ -1,0 +1,7 @@
+﻿[09:26:09 INF] Export-Csv started for Path=D:\UsercubeCAA\Sources\RH\Incremental\RH_sorties_mobilitees.csv
+[09:26:09 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/3474?api-version=1.0
+[09:26:10 VRB] Refreshed token: token expiration date=01/27/2025 09:23:10
+[09:26:10 VRB] HandleQuery SelectEntityTypeMappingByConnectionIdentifierQuery
+[09:26:10 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Connectors/EntityTypeMapping?api-version=1.0&connectionIdentifier=&squery=join%20EntityPropertyMappings%20epm%20join%20epm.EntityProperty%20ep%20select%20ConnectionTable%2CC0%2Cepm.ConnectionColumn%2Cepm.Format%2Cep.Identifier%2C%20ep.Type%20where%20ConnectionTable%3D%22HRUserUpdate%22&path=/Connectors/EntityTypeMapping/Query&QueryRootEntityType=EntityTypeMapping
+[09:26:10 INF] Export completed TotalLines=0
+[09:26:10 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/3474?api-version=1.0

@@ -1,0 +1,25 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Profile Identifier="Workforce/Self/Self_ResourcesUpdate/Request" DisplayName_L1="Workforce/Self Service/Update My Permissions" IsComponent="true" />
+  <Profile Identifier="Workforce/Self/Self_ResourcesUpdate/Review" DisplayName_L1="Workforce/Self Service/Update My Permissions (review)" IsComponent="true" />
+
+  <BasketRulesControlRules Profile="Workforce/Self/Self_ResourcesUpdate/Request"/>
+  <BasketRulesControlRules Profile="Workforce/Self/Self_ResourcesUpdate/Review" />
+
+  <AccessControlRule Profile="Workforce/Self/Self_ResourcesUpdate/Request" EntityType="Workflow_Directory_User" Identifier="Composite_Workflows_Directory_Self_ResourcesUpdate_Request*" DisplayName_L1="Composite_Workflows_Directory_Self_ResourcesUpdate_Request*" TemplateTransformation="AllowLinkedEntities;Directory_User;/Custom/Workflows/Self_ResourcesUpdate/Request">
+    <Filter Binding="Directory_User.Id" CurrentUser="true" />
+
+    <Entry Permission="/Custom/Workflows/Self_ResourcesUpdate/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Self_ResourcesUpdate/Request/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Self_ResourcesUpdate/Request/Purged" CanExecute="true" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Self/Self_ResourcesUpdate/Review" EntityType="Workflow_Directory_User" Identifier="Composite_Workflows_Directory_Self_ResourcesUpdate_Review*" DisplayName_L1="Composite_Workflows_Directory_Self_ResourcesUpdate_Review*" TemplateTransformation="AllowLinkedEntities;Directory_User;/Custom/Workflows/Self_ResourcesUpdate/Review">
+    <Entry Permission="/Custom/Workflows/Self_ResourcesUpdate/Review/ReviewPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Self_ResourcesUpdate/Review/RefinePending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Self_ResourcesUpdate/Review/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Self_ResourcesUpdate/Review/Purged" CanExecute="true" />
+  </AccessControlRule>
+
+  <WorkflowAccessControlRules Profile="Workforce/Self/Self_ResourcesUpdate/Review" EntityType="Workflow_Directory_User" />
+</ConfigurationFile>

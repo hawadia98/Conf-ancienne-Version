@@ -1,0 +1,14 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <NotificationAspect Identifier="Directory_User_ManageContracts" ExpressionBinding="Workflow_Directory_User:Directory_User" RazorFile_L1="Directory/User/Directory User Notification ManageContracts.cshtml" CssFile="Notifications.css">
+    <PointCut Activity="Directory_User_ManageContracts:Persist" ActivityState="Persist-Invoked" Mode="After" />
+    <Recipient Type="Profile" />
+  </NotificationAspect>
+
+  <Profile Identifier="Workforce/Notifications/Directory_User_ManageContracts" DisplayName_L1="Workforce/Notifications/Manage Contracts" IsComponent="true" />
+  
+  <AccessControlRule Profile="Workforce/Notifications/Directory_User_ManageContracts" EntityType="Directory_User" Identifier="Composite_Notifications_Directory_User_ManageContracts*" DisplayName_L1="Composite_Notifications_Directory_User_ManageContracts*">
+    <Entry Permission="/Custom/WorkflowsNotifications/Directory_User_ManageContracts/Persist/Invoked" />
+  </AccessControlRule>
+
+</ConfigurationFile>

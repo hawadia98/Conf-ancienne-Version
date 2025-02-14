@@ -1,0 +1,6 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <ConfigurationVersionSetting Version="6.0" Description="Usercube" />
+  <AppDisplaySetting ApplicationName="Netwrix Usercube" LogoFile="logo.png" FaviconFile="favicon.ico" BannerColor="#FFFFFF" BannerGradientColor="#FFFFFF" BannerSelectedTabColor="#FF0000" BannerTextColor="#000000" PrimaryColor="#0068DA" SecondaryColor="#5E666E" />
+
+  <Language Code="en-US" IndicatorNumber="1" />
+</ConfigurationFile>

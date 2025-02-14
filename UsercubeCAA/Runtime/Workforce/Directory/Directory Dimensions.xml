@@ -1,0 +1,55 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Dimension Identifier="Organization0" DisplayName_L1="Department" EntityType="Directory_Organization" ColumnMapping="0" IsHierarchical="true" ParentProperty="Parent" />
+  <Dimension Identifier="Title0" DisplayName_L1="Title" EntityType="Directory_Title" ColumnMapping="1" />
+  <Dimension Identifier="Site0" DisplayName_L1="Site" EntityType="Directory_Site" ColumnMapping="2" />
+  <Dimension Identifier="Country0" DisplayName_L1="Country" EntityType="Directory_Country" ColumnMapping="3" />
+  <Dimension Identifier="UserCategory0" DisplayName_L1="User Category" EntityType="Directory_UserCategory" ColumnMapping="4" />
+  <Dimension Identifier="OrganizationType0" DisplayName_L1="Department Type" EntityType="Directory_OrganizationType" ColumnMapping="5" />
+  <Dimension Identifier="Subsidiary0" DisplayName_L1="Subsidiary" EntityType="Directory_Subsidiary" ColumnMapping="6" />
+  <Dimension Identifier="ExternalCompany0" DisplayName_L1="External Company" EntityType="Directory_ExternalCompany" ColumnMapping="7" />
+  <Dimension Identifier="User0" DisplayName_L1="User" EntityType="Directory_User" ColumnMapping="8" IsExcludedFromRoleMining="true" />
+
+  <!--TODO: we need the max/min dates-->
+  <ContextRule Identifier="Directory_User" DisplayName_L1="Directory_User" Policy="Default" ResourcesBinding="Records" ResourcesStartExpression="C#:record:return record.StartDate ?? record.PositionStartDate ?? record.ContractStartDate;" ResourcesEndExpression="C#:record:return record.EndDate ?? record.PositionEndDate ?? record.ContractEndDate;" SourceEntityType="Directory_User" ExcludeExpression="C#:record:return record.IsDraft.GetValueOrDefault();" RiskFactorType="Max"
+               B0="Directory_UserRecord:Organization"
+               B1="Directory_UserRecord:Title"
+               B2="Directory_UserRecord:Site"
+               B3="Directory_UserRecord:Site.Region.Country"
+               B4="Directory_UserRecord:UserType.Category"
+               B5="Directory_UserRecord:Organization.Type"
+               B6="Directory_UserRecord:Subsidiary"
+               B7="Directory_UserRecord:ExternalCompany"
+               ResourceCertificationComparisonBinding="Directory_UserRecord:IsActivePosition"
+               ResourceCertificationComparisonOperator="Equal"
+               ResourceCertificationComparisonValue="1"
+               />
+
+  <RecordSection Identifier="Directory_UserRecord_Default" DisplayName_L1="User Properties" SourceEntityType="Directory_User" ResourceEntityType="Directory_UserRecord" StartProperty="StartDate" EndProperty="EndDate" InstanceKeyExpression="C#:record:return record.StartDate.HasValue ? record.StartDate.Value.ToString(&quot;yyyyMMdd&quot;) : string.Empty;">
+    <Property Property="RecordIdentifier" IsExcluded="true" />
+  </RecordSection>
+
+  <RecordSection Identifier="Directory_UserRecord_Contract" DisplayName_L1="Contract Properties" SourceEntityType="Directory_User" ResourceEntityType="Directory_UserRecord" StartProperty="ContractStartDate" EndProperty="EffectiveEndDate" IsDefaultBoundariesSection="true" InstanceKeyExpression="C#:record:return record.ContractIdentifier;" ExtensionKind="ValuesAround">
+    <Property Property="ContractIdentifier"/>
+    <Property Property="ContractEndDate"/>
+    <Property Property="UserType"/>
+    <Property Property="ExternalCompany"/>
+    <Property Property="Subsidiary"/>
+  </RecordSection>
+
+  <RecordSection Identifier="Directory_UserRecord_Position" DisplayName_L1="Position Properties" SourceEntityType="Directory_User" ResourceEntityType="Directory_UserRecord" StartProperty="PositionStartDate" EndProperty="PositionEndDate" InstanceKeyExpression="C#:record:return record.PositionIdentifier;" ExtensionKind="ValuesAround">
+    <Property Property="PositionIdentifier" />
+    <Property Property="JobTitle" />
+    <Property Property="OfficeNumber" />
+    <Property Property="Organization" />
+    <Property Property="Site"/>
+    <Property Property="Title" />
+    <Property Property="Office" />
+    <Property Property="Manager" />
+    <Property Property="IGAManager" />
+    <Property Property="EffectiveIGAManager" />
+    <Property Property="IsMainPosition" />
+    <Property Property="IsActivePosition" />
+  </RecordSection>
+
+</ConfigurationFile>

@@ -1,0 +1,40 @@
+﻿[17:09:16 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/674?api-version=3.0&jobGroupId=37003&current=0&totalTask=0&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[17:09:16 VRB] Refreshed token: token expiration date=01/26/2025 17:06:16
+[17:09:17 VRB] HandleQuery SelectConsolidateJobQuery
+[17:09:17 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/RunStateMachineJob?api-version=4.0&path=/Jobs/Job/Query&jobIdentifier=37003&repair=False&beginJobStep=-1&endJobStep=-1&forceSynchronizationProvisioning=False&retry=False&launchTaskType=0&taskIdentifier=&taskIdentifierContains=&beginTaskExcluded=&endTaskExcluded=&jobInstanceId=674&jobId=37003
+[17:09:17 VRB] HandleCommand ReserveTaskInstanceIdCommand
+[17:09:17 VRB] Reserve 2 next TaskInstanceId
+[17:09:17 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceId/2?api-version=1.0
+[17:09:17 VRB] Check the JobInstance state for JobInstance 674.
+[17:09:17 VRB] HandleQuery SelectJobInstanceByIdQuery
+[17:09:17 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/674?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:09:17 INF] SetInternalUserProfilesTask: Administration_UpdateProfiles_CAA_SetInternalUserProfiles (Level: 0, LaunchOrder: 0)
+    EntityType: Directory_User
+
+[17:09:17 VRB] Check the instance state for Task Administration_UpdateProfiles_CAA_SetInternalUserProfiles
+[17:09:17 VRB] HandleCommand TaskInstanceProgressCommand
+[17:09:17 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:09:17 INF] Launch task: SetInternalUserProfilesTask: Administration_UpdateProfiles_CAA_SetInternalUserProfiles, Task 1/2
+[17:09:17 VRB] HandleCommand RunTaskCommand
+[17:09:17 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/60004?api-version=4.0&jobInstanceId=674&jobLogLevel=Trace
+[17:09:19 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:09:19 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3364?api-version=2.0&jobInstanceId=674&taskId=60004&jobId=37003
+[17:09:19 INF] Task: Administration_UpdateProfiles_CAA_SetInternalUserProfiles Completed with state Completed
+[17:09:19 VRB] Check the JobInstance state for JobInstance 674.
+[17:09:19 VRB] HandleQuery SelectJobInstanceByIdQuery
+[17:09:19 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/674?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[17:09:19 INF] ActivityInstanceActorTask: Administration_UpdateProfiles_CAA_ActivityInstanceActor (Level: 1, LaunchOrder: 1)
+
+[17:09:19 VRB] Check the instance state for Task Administration_UpdateProfiles_CAA_ActivityInstanceActor
+[17:09:19 VRB] HandleCommand TaskInstanceProgressCommand
+[17:09:19 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[17:09:19 INF] Launch task: ActivityInstanceActorTask: Administration_UpdateProfiles_CAA_ActivityInstanceActor, Task 2/2
+[17:09:19 VRB] HandleCommand RunTaskCommand
+[17:09:19 INF] Launch ActivityInstanceActorTask : Administration_UpdateProfiles_CAA_ActivityInstanceActor
+[17:09:19 DBG] Start Process dotnet Usercube-Update-ActivityInstanceActor.dll --progress-task-instance-id 3365 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --stdin null
+[17:09:19 INF] Start process=True PID=16564 dotnet Usercube-Update-ActivityInstanceActor.dll --progress-task-instance-id 3365 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --stdin
+[17:09:20 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/3365?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[17:09:20 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[17:09:20 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/3365?api-version=2.0&jobInstanceId=674&taskId=60003&jobId=37003
+[17:09:20 INF] Task: Administration_UpdateProfiles_CAA_ActivityInstanceActor Completed with state Completed
+[17:09:20 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/674?api-version=3.0&jobGroupId=37003&current=2&totalTask=2&state=Completed&resourceId=-1&cancelRequest=False&retry=False

@@ -1,0 +1,17 @@
+﻿[11:36:11 VRB] HandleCommand FulfillInternalWorkflowsCommand
+[11:36:11 INF] Fulfill-InternalWorkflow started ResourceTypes=53,54 TaskInstanceId=5177
+[11:36:11 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/5177?api-version=1.0
+[11:36:11 VRB] Refreshed token: token expiration date=01/31/2025 11:33:11
+[11:36:11 DBG] Fetching provisioning orders api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=53&ResourceTypes=54
+[11:36:11 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=53&ResourceTypes=54
+[11:36:12 DBG] Fetching provisioning orders api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=53&ResourceTypes=54
+[11:36:12 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=53&ResourceTypes=54
+[11:36:12 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Connectors/Provisioning/ProvisioningResults?api-version=1.0
+[11:36:12 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Workflows/Workflow?api-version=1.0&squery=SELECT%20Id%20WHERE%20Identifier%20%3D%20%22Directory_User_UpdateFromHR%22&path=/Workflows/Workflow/Query
+[11:36:12 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Workflows/ActivityTemplateTransition?api-version=1.0&squery=SELECT%20Id%20WHERE%20Identifier%20%3D%20%22Action-ActionPending-Execute%22&path=/Workflows/ActivityTemplateTransition/Query
+[11:36:12 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Workflows/WorkflowInstance?api-version=1.0
+[11:36:12 ERR] Error while invoking the Workflow API: {"error":"Changes are not allowed"}
+[11:36:12 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Connectors/Provisioning/ProvisioningResults?api-version=1.0
+[11:36:12 INF] Fulfillment process completed. Executed orders: 3/3 - Inserted: 0 | Updated: 3 | Deleted: 0 | Errors: 1
+[11:36:12 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/5177?api-version=1.0
+[11:36:12 INF] Fulfill-InternalWorkflow completed TaskInstanceId=5177

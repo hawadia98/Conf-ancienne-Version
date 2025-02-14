@@ -1,0 +1,2 @@
+﻿dn,manager
+"uid=test,ou=Nominatifs,ou=caas,ou=People,o=unixauthcaashp","uid=mongo,ou=Applicatifs,ou=caas,ou=People,o=unixauthcaashp"

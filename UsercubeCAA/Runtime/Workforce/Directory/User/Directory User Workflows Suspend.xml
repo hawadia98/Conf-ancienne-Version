@@ -1,0 +1,21 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <Workflow Identifier="Directory_User_Suspend" DisplayName_L1="User - Suspend" VariablesType="Workflow_Directory_User">
+    <Activity Identifier="Request"  DisplayName_L1="Request" Template="ActionWithRefine" />
+    <Activity Identifier="Persist"  DisplayName_L1="Commit" Template="Persist" WorkflowOverviewDisable="1"/>
+  </Workflow>
+
+  <Workflow Identifier="Directory_User_Reactivate" DisplayName_L1="User - Reactivate" VariablesType="Workflow_Directory_User">
+    <Activity Identifier="Request"  DisplayName_L1="Request" Template="ActionWithRefine" />
+    <Activity Identifier="Persist"  DisplayName_L1="Commit" Template="Persist" WorkflowOverviewDisable="1"/>
+  </Workflow>
+
+  <!--TODO: use Literal-->
+  <AddChangeAspect Identifier="Directory_UserRecord_Suspend_Leave" Binding="Workflow_Directory_User:Directory_User.Records.Suspended" ExpressionBinding="Workflow_Directory_User:Directory_User" Expression="C#:person:return true;">
+    <PointCut Activity="Directory_User_Suspend:Persist" ActivityState="Persist-Invoked" Mode="Before" />
+  </AddChangeAspect>
+
+  <AddChangeAspect Identifier="Directory_UserRecord_Reactivate_Leave" Binding="Workflow_Directory_User:Directory_User.Records.Suspended" ExpressionBinding="Workflow_Directory_User:Directory_User" Expression="C#:person:return false;">
+    <PointCut Activity="Directory_User_Reactivate:Persist" ActivityState="Persist-Invoked" Mode="Before" />
+  </AddChangeAspect>
+</ConfigurationFile>

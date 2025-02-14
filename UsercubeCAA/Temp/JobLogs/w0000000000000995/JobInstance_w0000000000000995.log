@@ -1,0 +1,229 @@
+﻿[15:03:22 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/995?api-version=3.0&jobGroupId=19&current=0&totalTask=0&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[15:03:23 VRB] Refreshed token: token expiration date=02/07/2025 15:00:22
+[15:03:23 VRB] HandleQuery SelectConsolidateJobQuery
+[15:03:23 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/RunStateMachineJob?api-version=4.0&path=/Jobs/Job/Query&jobIdentifier=19&repair=False&beginJobStep=-1&endJobStep=-1&forceSynchronizationProvisioning=False&retry=False&launchTaskType=0&taskIdentifier=&taskIdentifierContains=&beginTaskExcluded=&endTaskExcluded=&jobInstanceId=995&jobId=19
+[15:03:23 VRB] HandleCommand ReserveTaskInstanceIdCommand
+[15:03:23 VRB] Reserve 15 next TaskInstanceId
+[15:03:23 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceId/15?api-version=1.0
+[15:03:23 VRB] Check the JobInstance state for JobInstance 995.
+[15:03:23 VRB] HandleQuery SelectJobInstanceByIdQuery
+[15:03:23 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/995?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[15:03:23 INF] ExportTask: ADPacifica_Synchro_Complete_Scaffolding_Export_ADPacifica_Complete_ADPacificaExportFulfillment (Level: 0, LaunchOrder: 0)
+    Connector: ADPacifica
+    Mode: Complete
+    ConnectionIdentifier: ADPacificaExportFulfillment
+    ExportType: ExportActiveDirectory
+    ContinueOnError:  True
+
+[15:03:23 VRB] Check the instance state for Task ADPacifica_Synchro_Complete_Scaffolding_Export_ADPacifica_Complete_ADPacificaExportFulfillment
+[15:03:23 VRB] HandleCommand TaskInstanceProgressCommand
+[15:03:23 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[15:03:23 INF] Launch task: ExportTask: ADPacifica_Synchro_Complete_Scaffolding_Export_ADPacifica_Complete_ADPacificaExportFulfillment, Task 1/15
+[15:03:23 VRB] HandleCommand RunTaskCommand
+[15:03:23 INF] Launch ExportTask : ADPacifica_Synchro_Complete_Scaffolding_Export_ADPacifica_Complete_ADPacificaExportFulfillment
+[15:03:23 DBG] Start Process dotnet Usercube-Export-ActiveDirectory.dll --progress-task-instance-id 5970 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --ignore-cookies --cookie-path "../Work\ExportCookies" --connection-identifier "ADPacificaExportFulfillment" --retry-delay 10 --server "10.110.242.67:636" --sync-dn "DC=ca-pacificadev,DC=fr" --sync-filter "(objectclass=*)" --auth-type "Basic" --enable-ssl --stdin null
+[15:03:23 INF] Start process=True PID=15612 dotnet Usercube-Export-ActiveDirectory.dll --progress-task-instance-id 5970 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --ignore-cookies --cookie-path "../Work\ExportCookies" --connection-identifier "ADPacificaExportFulfillment" --retry-delay 10 --server "10.110.242.67:636" --sync-dn "DC=ca-pacificadev,DC=fr" --sync-filter "(objectclass=*)" --auth-type "Basic" --enable-ssl --stdin
+[15:03:28 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/5970?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[15:03:28 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[15:03:28 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5970?api-version=2.0&jobInstanceId=995&taskId=138&jobId=19
+[15:03:28 INF] Task: ADPacifica_Synchro_Complete_Scaffolding_Export_ADPacifica_Complete_ADPacificaExportFulfillment Completed with state Completed
+[15:03:28 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/995?api-version=3.0&jobGroupId=19&current=1&totalTask=15&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[15:03:28 VRB] Check the JobInstance state for JobInstance 995.
+[15:03:28 VRB] HandleQuery SelectJobInstanceByIdQuery
+[15:03:28 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/995?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[15:03:28 INF] PrepareSynchronizationActiveDirectoryTask: ADPacifica_Synchro_Complete_Scaffolding_PrepareSynchronizationActiveDirectory_ADPacifica_Complete (Level: 1, LaunchOrder: 1)
+    Synchronization Mode: Complete
+    Connector: ADPacifica
+    Parent: ADPacifica_Synchro_Complete_Scaffolding_Export_ADPacifica_Complete_ADPacificaExportFulfillment
+
+[15:03:28 VRB] Check the instance state for Task ADPacifica_Synchro_Complete_Scaffolding_PrepareSynchronizationActiveDirectory_ADPacifica_Complete
+[15:03:28 VRB] HandleCommand TaskInstanceProgressCommand
+[15:03:28 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[15:03:28 INF] Launch task: PrepareSynchronizationActiveDirectoryTask: ADPacifica_Synchro_Complete_Scaffolding_PrepareSynchronizationActiveDirectory_ADPacifica_Complete, Task 2/15
+[15:03:28 VRB] HandleCommand RunTaskCommand
+[15:03:28 INF] Launch PrepareSynchronizationActiveDirectoryTask : ADPacifica_Synchro_Complete_Scaffolding_PrepareSynchronizationActiveDirectory_ADPacifica_Complete
+[15:03:28 DBG] Start Process dotnet Usercube-Prepare-SynchronizationActiveDirectory.dll --progress-task-instance-id 5971 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --connector 3 --working-directory "../Work\Collect" --sources-directory "../Temp\ExportOutput" --synchronization-mode "Complete" --stdin null
+[15:03:28 INF] Start process=True PID=5392 dotnet Usercube-Prepare-SynchronizationActiveDirectory.dll --progress-task-instance-id 5971 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --connector 3 --working-directory "../Work\Collect" --sources-directory "../Temp\ExportOutput" --synchronization-mode "Complete" --stdin
+[15:03:31 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/5971?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[15:03:31 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[15:03:31 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5971?api-version=2.0&jobInstanceId=995&taskId=142&jobId=19
+[15:03:31 INF] Task: ADPacifica_Synchro_Complete_Scaffolding_PrepareSynchronizationActiveDirectory_ADPacifica_Complete Completed with state Completed
+[15:03:31 VRB] Check the JobInstance state for JobInstance 995.
+[15:03:31 VRB] HandleQuery SelectJobInstanceByIdQuery
+[15:03:31 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/995?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[15:03:31 INF] SynchronizeActiveDirectoryTask: ADPacifica_Synchro_Complete_Scaffolding_SynchronizeActiveDirectory_ADPacifica (Level: 2, LaunchOrder: 2)
+    Connector: ADPacifica
+    Parent: ADPacifica_Synchro_Complete_Scaffolding_PrepareSynchronizationActiveDirectory_ADPacifica_Complete
+
+[15:03:31 VRB] Check the instance state for Task ADPacifica_Synchro_Complete_Scaffolding_SynchronizeActiveDirectory_ADPacifica
+[15:03:31 VRB] HandleCommand TaskInstanceProgressCommand
+[15:03:31 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[15:03:31 INF] Launch task: SynchronizeActiveDirectoryTask: ADPacifica_Synchro_Complete_Scaffolding_SynchronizeActiveDirectory_ADPacifica, Task 3/15
+[15:03:31 VRB] HandleCommand RunTaskCommand
+[15:03:31 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/144?api-version=4.0&jobInstanceId=995&jobLogLevel=Trace
+[15:03:31 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[15:03:31 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5972?api-version=2.0&jobInstanceId=995&taskId=144&jobId=19
+[15:03:31 INF] Task: ADPacifica_Synchro_Complete_Scaffolding_SynchronizeActiveDirectory_ADPacifica Completed with state Completed
+[15:03:31 INF] UpdateEntityPropertyExpressionsTask: ADPacifica_Synchro_Complete_Scaffolding_UpdateEntityPropertyExpressions1 (Level: 3, LaunchOrder: 3)
+    EntityType: ADPacifica_Entry, Directory_User
+
+[15:03:31 VRB] Check the instance state for Task ADPacifica_Synchro_Complete_Scaffolding_UpdateEntityPropertyExpressions1
+[15:03:31 VRB] HandleCommand TaskInstanceProgressCommand
+[15:03:31 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[15:03:31 INF] Launch task: UpdateEntityPropertyExpressionsTask: ADPacifica_Synchro_Complete_Scaffolding_UpdateEntityPropertyExpressions1, Task 4/15
+[15:03:31 VRB] HandleCommand RunTaskCommand
+[15:03:31 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/145?api-version=4.0&jobInstanceId=995&jobLogLevel=Trace
+[15:03:32 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[15:03:32 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5973?api-version=2.0&jobInstanceId=995&taskId=145&jobId=19
+[15:03:32 INF] Task: ADPacifica_Synchro_Complete_Scaffolding_UpdateEntityPropertyExpressions1 Completed with state Completed
+[15:03:32 INF] ComputeCorrelationKeysTask: ADPacifica_Synchro_Complete_Scaffolding_ComputeCorrelationKeys1_AllEntities (Level: 4, LaunchOrder: 4)
+    EntityType: ADPacifica_Entry, Directory_User
+
+[15:03:32 VRB] Check the instance state for Task ADPacifica_Synchro_Complete_Scaffolding_ComputeCorrelationKeys1_AllEntities
+[15:03:32 VRB] HandleCommand TaskInstanceProgressCommand
+[15:03:32 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[15:03:32 INF] Launch task: ComputeCorrelationKeysTask: ADPacifica_Synchro_Complete_Scaffolding_ComputeCorrelationKeys1_AllEntities, Task 5/15
+[15:03:32 VRB] HandleCommand RunTaskCommand
+[15:03:32 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/135?api-version=4.0&jobInstanceId=995&jobLogLevel=Trace
+[15:03:43 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[15:03:43 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5974?api-version=2.0&jobInstanceId=995&taskId=135&jobId=19
+[15:03:43 INF] Task: ADPacifica_Synchro_Complete_Scaffolding_ComputeCorrelationKeys1_AllEntities Completed with state Completed
+[15:03:43 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/995?api-version=3.0&jobGroupId=19&current=5&totalTask=15&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[15:03:43 VRB] Check the JobInstance state for JobInstance 995.
+[15:03:43 VRB] HandleQuery SelectJobInstanceByIdQuery
+[15:03:43 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/995?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[15:03:43 INF] ComputeRoleModelTask: ADPacifica_Synchro_Complete_Scaffolding_ComputeRoleModel1 (Level: 5, LaunchOrder: 5)
+    EntityType: Directory_User
+
+[15:03:43 VRB] Check the instance state for Task ADPacifica_Synchro_Complete_Scaffolding_ComputeRoleModel1
+[15:03:43 VRB] HandleCommand TaskInstanceProgressCommand
+[15:03:43 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[15:03:43 INF] Launch task: ComputeRoleModelTask: ADPacifica_Synchro_Complete_Scaffolding_ComputeRoleModel1, Task 6/15
+[15:03:43 VRB] HandleCommand RunTaskCommand
+[15:03:43 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/137?api-version=4.0&jobInstanceId=995&jobLogLevel=Trace
+[15:03:47 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[15:03:47 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5975?api-version=2.0&jobInstanceId=995&taskId=137&jobId=19
+[15:03:47 INF] Task: ADPacifica_Synchro_Complete_Scaffolding_ComputeRoleModel1 Completed with state Completed
+[15:03:47 VRB] Check the JobInstance state for JobInstance 995.
+[15:03:47 VRB] HandleQuery SelectJobInstanceByIdQuery
+[15:03:47 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/995?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[15:03:47 INF] ComputeRiskScoresTask: ADPacifica_Synchro_Complete_Scaffolding_ComputeRiskScores1 (Level: 6, LaunchOrder: 6)
+    EntityType: Directory_User
+
+[15:03:47 VRB] Check the instance state for Task ADPacifica_Synchro_Complete_Scaffolding_ComputeRiskScores1
+[15:03:47 VRB] HandleCommand TaskInstanceProgressCommand
+[15:03:47 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[15:03:47 INF] Launch task: ComputeRiskScoresTask: ADPacifica_Synchro_Complete_Scaffolding_ComputeRiskScores1, Task 7/15
+[15:03:47 VRB] HandleCommand RunTaskCommand
+[15:03:47 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/136?api-version=4.0&jobInstanceId=995&jobLogLevel=Trace
+[15:03:48 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[15:03:48 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5976?api-version=2.0&jobInstanceId=995&taskId=136&jobId=19
+[15:03:48 INF] Task: ADPacifica_Synchro_Complete_Scaffolding_ComputeRiskScores1 Completed with state Completed
+[15:03:48 INF] GenerateProvisioningOrdersTask: ADPacifica_Synchro_Complete_Scaffolding_GenerateProvisioningOrders1 (Level: 7, LaunchOrder: 7)
+    ResourceType: ADPacifica_NominativeUser
+
+[15:03:48 VRB] Check the instance state for Task ADPacifica_Synchro_Complete_Scaffolding_GenerateProvisioningOrders1
+[15:03:48 VRB] HandleCommand TaskInstanceProgressCommand
+[15:03:48 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[15:03:48 INF] Launch task: GenerateProvisioningOrdersTask: ADPacifica_Synchro_Complete_Scaffolding_GenerateProvisioningOrders1, Task 8/15
+[15:03:48 VRB] HandleCommand RunTaskCommand
+[15:03:48 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/140?api-version=4.0&jobInstanceId=995&jobLogLevel=Trace
+[15:03:48 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[15:03:48 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5977?api-version=2.0&jobInstanceId=995&taskId=140&jobId=19
+[15:03:48 INF] Task: ADPacifica_Synchro_Complete_Scaffolding_GenerateProvisioningOrders1 Completed with state Completed
+[15:03:48 INF] FulfillTask: ADPacifica_Synchro_Complete_Scaffolding_Fulfill1 (Level: 8, LaunchOrder: 8)
+    ConnectionIdentifier: ADPacificaExportFulfillment
+    FulfillmentType: FulfillLdap
+    ContinueOnError: True
+    Parent: ADPacifica_Synchro_Complete_Scaffolding_GenerateProvisioningOrders1
+    ResourceType: ADPacifica_NominativeUser
+
+[15:03:48 VRB] Check the instance state for Task ADPacifica_Synchro_Complete_Scaffolding_Fulfill1
+[15:03:48 VRB] HandleCommand TaskInstanceProgressCommand
+[15:03:48 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[15:03:48 INF] The Task: ADPacifica_Synchro_Complete_Scaffolding_Fulfill1 has not been launched because no treatment is required.
+[15:03:48 INF] UpdateParametersContextDisplayNamesTask: ADPacifica_Synchro_Complete_Scaffolding_UpdateParametersContextDisplayNames (Level: 9, LaunchOrder: 9)
+
+[15:03:48 VRB] Check the instance state for Task ADPacifica_Synchro_Complete_Scaffolding_UpdateParametersContextDisplayNames
+[15:03:48 VRB] HandleCommand TaskInstanceProgressCommand
+[15:03:48 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[15:03:48 INF] Launch task: UpdateParametersContextDisplayNamesTask: ADPacifica_Synchro_Complete_Scaffolding_UpdateParametersContextDisplayNames, Task 10/15
+[15:03:48 VRB] HandleCommand RunTaskCommand
+[15:03:48 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/146?api-version=4.0&jobInstanceId=995&jobLogLevel=Trace
+[15:03:48 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[15:03:48 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5979?api-version=2.0&jobInstanceId=995&taskId=146&jobId=19
+[15:03:48 INF] Task: ADPacifica_Synchro_Complete_Scaffolding_UpdateParametersContextDisplayNames Completed with state Completed
+[15:03:48 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/995?api-version=3.0&jobGroupId=19&current=10&totalTask=15&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[15:03:48 INF] SendRoleModelNotificationsTask: ADPacifica_Synchro_Complete_Scaffolding_SendRoleModelNotifications (Level: 10, LaunchOrder: 10)
+
+[15:03:48 VRB] Check the instance state for Task ADPacifica_Synchro_Complete_Scaffolding_SendRoleModelNotifications
+[15:03:48 VRB] HandleCommand TaskInstanceProgressCommand
+[15:03:48 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[15:03:48 INF] Launch task: SendRoleModelNotificationsTask: ADPacifica_Synchro_Complete_Scaffolding_SendRoleModelNotifications, Task 11/15
+[15:03:48 VRB] HandleCommand RunTaskCommand
+[15:03:48 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/143?api-version=4.0&jobInstanceId=995&jobLogLevel=Trace
+[15:03:50 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[15:03:50 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5980?api-version=2.0&jobInstanceId=995&taskId=143&jobId=19
+[15:03:50 INF] Task: ADPacifica_Synchro_Complete_Scaffolding_SendRoleModelNotifications Completed with state Completed
+[15:03:50 VRB] Check the JobInstance state for JobInstance 995.
+[15:03:50 VRB] HandleQuery SelectJobInstanceByIdQuery
+[15:03:50 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/995?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[15:03:50 INF] MaintainIndexesTask: ADPacifica_Synchro_Complete_Scaffolding_MaintainIndexes (Level: 11, LaunchOrder: 11)
+    Rebuild Threshold: 0
+    Reorganize Threshold: 0
+    Page Count: 0
+    Update Statistics Threshold: 0
+
+[15:03:50 VRB] Check the instance state for Task ADPacifica_Synchro_Complete_Scaffolding_MaintainIndexes
+[15:03:50 VRB] HandleCommand TaskInstanceProgressCommand
+[15:03:50 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[15:03:50 INF] Launch task: MaintainIndexesTask: ADPacifica_Synchro_Complete_Scaffolding_MaintainIndexes, Task 12/15
+[15:03:50 VRB] HandleCommand RunTaskCommand
+[15:03:50 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/141?api-version=4.0&jobInstanceId=995&jobLogLevel=Trace
+[15:03:54 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[15:03:54 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5981?api-version=2.0&jobInstanceId=995&taskId=141&jobId=19
+[15:03:54 INF] Task: ADPacifica_Synchro_Complete_Scaffolding_MaintainIndexes Completed with state Completed
+[15:03:54 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/995?api-version=3.0&jobGroupId=19&current=12&totalTask=15&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[15:03:54 VRB] Check the JobInstance state for JobInstance 995.
+[15:03:54 VRB] HandleQuery SelectJobInstanceByIdQuery
+[15:03:54 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/995?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[15:03:54 INF] ComputeRoleModelTask: ADPacifica_ComputeRoleModel_CAA (Level: 12, LaunchOrder: 12)
+    EntityType: ADPacifica_Entry
+
+[15:03:54 VRB] Check the instance state for Task ADPacifica_ComputeRoleModel_CAA
+[15:03:54 VRB] HandleCommand TaskInstanceProgressCommand
+[15:03:54 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[15:03:54 INF] Launch task: ComputeRoleModelTask: ADPacifica_ComputeRoleModel_CAA, Task 13/15
+[15:03:54 VRB] HandleCommand RunTaskCommand
+[15:03:54 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/132?api-version=4.0&jobInstanceId=995&jobLogLevel=Trace
+[15:03:54 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[15:03:54 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5982?api-version=2.0&jobInstanceId=995&taskId=132&jobId=19
+[15:03:54 INF] Task: ADPacifica_ComputeRoleModel_CAA Completed with state Completed
+[15:03:54 INF] GenerateProvisioningOrdersTask: ADPacifica_GenerateProvisioningOrders_CAA (Level: 13, LaunchOrder: 13)
+    Force Provisioning: True
+    ResourceType: ADPacifica_To_Directory_UserRecord
+
+[15:03:54 VRB] Check the instance state for Task ADPacifica_GenerateProvisioningOrders_CAA
+[15:03:54 VRB] HandleCommand TaskInstanceProgressCommand
+[15:03:54 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[15:03:54 INF] Launch task: GenerateProvisioningOrdersTask: ADPacifica_GenerateProvisioningOrders_CAA, Task 14/15
+[15:03:54 VRB] HandleCommand RunTaskCommand
+[15:03:54 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/134?api-version=4.0&jobInstanceId=995&jobLogLevel=Trace
+[15:03:54 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[15:03:54 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5983?api-version=2.0&jobInstanceId=995&taskId=134&jobId=19
+[15:03:54 INF] Task: ADPacifica_GenerateProvisioningOrders_CAA Completed with state Completed
+[15:03:54 INF] FulfillTask: ADPacifica_Fulfill_CAA (Level: 14, LaunchOrder: 14)
+    ConnectionIdentifier: HRDatabase
+    FulfillmentType: FulfillInternalResource
+    ResourceType: ADPacifica_To_Directory_UserRecord
+
+[15:03:54 VRB] Check the instance state for Task ADPacifica_Fulfill_CAA
+[15:03:54 VRB] HandleCommand TaskInstanceProgressCommand
+[15:03:54 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[15:03:54 INF] Launch task: FulfillTask: ADPacifica_Fulfill_CAA, Task 15/15
+[15:03:54 VRB] HandleCommand RunTaskCommand
+[15:03:54 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/133?api-version=4.0&jobInstanceId=995&jobLogLevel=Trace
+[15:03:55 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[15:03:55 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5984?api-version=2.0&jobInstanceId=995&taskId=133&jobId=19
+[15:03:55 INF] Task: ADPacifica_Fulfill_CAA Completed with state Completed
+[15:03:55 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/995?api-version=3.0&jobGroupId=19&current=15&totalTask=15&state=Completed&resourceId=-1&cancelRequest=False&retry=False

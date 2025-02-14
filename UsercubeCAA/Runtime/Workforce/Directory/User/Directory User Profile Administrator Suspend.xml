@@ -1,0 +1,17 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <AccessControlRule Profile="Administrator" EntityType="Workflow_Directory_User" Identifier="Administrator_Workflows_Directory_User_Suspend_*" DisplayName_L1="Administrator_Workflows_Directory_User_Suspend_*">
+    <!-- The filter enabled this workflow only of active users -->
+    <Filter Binding="Directory_User.Records.Suspended" Value="0" />
+    <Entry Permission="/Custom/Workflows/Directory_User_Suspend/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_Suspend/Request/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_Suspend/Request/Purged" CanExecute="true" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Administrator" EntityType="Workflow_Directory_User" Identifier="Administrator_Workflows_Directory_User_Reactivate_*" DisplayName_L1="Administrator_Workflows_Directory_User_Reactivate_*">
+    <!-- The filter enabled this workflow only of suspended users -->
+    <Filter Binding="Directory_User.Records.Suspended" Value="1" />
+    <Entry Permission="/Custom/Workflows/Directory_User_Reactivate/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_Reactivate/Request/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_Reactivate/Request/Purged" CanExecute="true" />
+  </AccessControlRule>
+</ConfigurationFile>

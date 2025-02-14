@@ -1,0 +1,22 @@
+USE UsercubeCAA
+GO
+
+ALTER DATABASE UsercubeCAA
+MODIFY FILE
+(
+    NAME = UsercubeCAA_log,
+	MAXSIZE  = UNLIMITED,
+    SIZE = 1000MB,
+    FILEGROWTH = 10%
+);
+GO
+
+ALTER DATABASE UsercubeCAA
+MODIFY FILE
+(
+    NAME = UsercubeCAA,
+	MAXSIZE  = UNLIMITED,
+    SIZE = 5000MB,
+    FILEGROWTH = 10%
+);
+GO

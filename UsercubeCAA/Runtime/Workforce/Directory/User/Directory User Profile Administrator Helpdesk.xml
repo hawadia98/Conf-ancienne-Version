@@ -1,0 +1,15 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <AccessControlRule Profile="Administrator" EntityType="Workflow_Directory_User" Identifier="Administrator_Workflows_Directory_User_Helpdesk_*" DisplayName_L1="Administrator_Workflows_Directory_User_Helpdesk_*">
+    <Entry Permission="/Custom/Workflows/Helpdesk_Directory_User_New/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Helpdesk_Directory_User_New/Request/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Helpdesk_Directory_User_New/Request/Purged" CanExecute="true" />
+
+    <Entry Permission="/Custom/Workflows/Helpdesk_Directory_User_FixRecord/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Helpdesk_Directory_User_FixRecord/Request/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Helpdesk_Directory_User_FixRecord/Request/Purged" CanExecute="true" />
+
+    <Entry Permission="/Custom/Workflows/Helpdesk_Directory_User_Delete/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Helpdesk_Directory_User_Delete/Request/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Helpdesk_Directory_User_Delete/Request/Purged" CanExecute="true" />
+  </AccessControlRule>
+</ConfigurationFile>

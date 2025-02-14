@@ -1,0 +1,7 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <!-- Create jobs in the connectors' UI -->
+  <CreateConnectorsJobs/>
+
+  <!--It's a password less OpenId client => it won't be usable until the admin generates the secret -->
+  <OpenIdClient Identifier="Job" DisplayName_L1="ClientId for Jobs" Profile="Administrator" />
+</ConfigurationFile>

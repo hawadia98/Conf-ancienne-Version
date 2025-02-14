@@ -1,0 +1,13 @@
+﻿[11:18:00 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/5002?api-version=1.0
+[11:18:00 VRB] Refreshed token: token expiration date=01/31/2025 11:14:59
+[11:18:00 DBG] Start Process powershell.exe -NoProfile -NonInteractive -File D:\UsercubeCAA\Scripts\HR\HR_PreCollect.ps1 null
+[11:18:00 INF] Start process=True PID=10196 powershell.exe -NoProfile -NonInteractive -File D:\UsercubeCAA\Scripts\HR\HR_PreCollect.ps1
+[11:18:03 INF] Custom configuration successfully loaded from D:\UsercubeCAA\Runtime\appsettings.json
+[11:18:03 INF] Custom configuration successfully loaded from D:\UsercubeCAA\Runtime\appsettings.agent.json
+[11:18:03 INF] Installation will run with following context variables :
+[11:18:03 INF] - scriptsPath : D:\UsercubeCAA\Scripts
+[11:18:03 INF] - confPath : D:\UsercubeCAA\Conf
+[11:18:03 INF] - apiUri : https://dev-fusion-iam.caa.group.gca
+[11:18:03 INF] WARNING: One or more headers were not specified. Default names starting with "H" have been used in place of any missing
+[11:18:03 INF]  headers.
+[11:18:04 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/5002?api-version=1.0

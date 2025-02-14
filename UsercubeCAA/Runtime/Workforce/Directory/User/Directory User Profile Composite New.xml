@@ -1,0 +1,52 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <Profile Identifier="Workforce/Workflows/Directory_User_NewExternal/Request" DisplayName_L1="Workforce/Workflows/New Contractor" IsComponent="true" />
+  <Profile Identifier="Workforce/Workflows/Directory_User_NewExternal/Review" DisplayName_L1="Workforce/Workflows/New Contractor (review)" IsComponent="true" TemplateTransformation="NewExternalWorkflowIsReviewRequired" />
+  <Profile Identifier="Workforce/Workflows/Directory_User_NewInternal/Request" DisplayName_L1="Workforce/Workflows/New Employee" IsComponent="true" />
+  <Profile Identifier="Workforce/Workflows/Directory_User_NewInternal/Review" DisplayName_L1="Workforce/Workflows/New Employee (review)" IsComponent="true" TemplateTransformation="NewInternalWorkflowIsReviewRequired" />
+
+  <Profile Identifier="Workforce/Workflows/Directory_User/HandleForward" DisplayName_L1="Workforce/Workflows/Handle Forwarded Workforce Requests" IsComponent="true" />
+
+  <BasketRulesControlRules Profile="Workforce/Workflows/Directory_User_NewExternal/Request"/>
+  <BasketRulesControlRules Profile="Workforce/Workflows/Directory_User_NewExternal/Review" TemplateTransformation="NewExternalWorkflowIsReviewRequired"/>
+  <BasketRulesControlRules Profile="Workforce/Workflows/Directory_User_NewInternal/Request"/>
+  <BasketRulesControlRules Profile="Workforce/Workflows/Directory_User_NewInternal/Review" TemplateTransformation="NewInternalWorkflowIsReviewRequired"/>
+
+  <AccessControlRule Profile="Workforce/Workflows/Directory_User_NewExternal/Request" EntityType="Workflow_Directory_User" Identifier="Composite_Workflows_Directory_User_NewExternal_Request*" DisplayName_L1="Composite_Workflows_Directory_User_NewExternal_Request*" TemplateTransformation="AllowLinkedEntities;Directory_User;/Custom/Workflows/Directory_User_NewExternal/Request">
+    <Filter Binding="Directory_User.Records.UserType.IsExternal" Value="1" />
+
+    <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Request/Purged" CanExecute="true" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Workflows/Directory_User_NewExternal/Review" EntityType="Workflow_Directory_User" Identifier="Composite_Workflows_Directory_User_NewExternal_Review*" DisplayName_L1="Composite_Workflows_Directory_User_NewExternal_Review*" TemplateTransformation="AllowLinkedEntities;Directory_User;/Custom/Workflows/Directory_User_NewExternal/Review;NewExternalWorkflowIsReviewRequired">
+    <!--TODO filter on UserType to restrict the combo?-->
+    <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Review/ReviewPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Review/RefinePending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Review/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_NewExternal/Review/Purged" CanExecute="true" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Workflows/Directory_User_NewInternal/Request" EntityType="Workflow_Directory_User" Identifier="Composite_Workflows_Directory_User_NewInternal_Request*" DisplayName_L1="Composite_Workflows_Directory_User_NewInternal_Request*" TemplateTransformation="AllowLinkedEntities;Directory_User;/Custom/Workflows/Directory_User_NewInternal/Request">
+    <Filter Binding="Directory_User.Records.UserType.IsExternal" Value="0" TemplateTransformation="KeepRule"/>
+
+    <Entry Permission="/Custom/Workflows/Directory_User_NewInternal/Request/ActionPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_NewInternal/Request/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_NewInternal/Request/Purged" CanExecute="true" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Workflows/Directory_User_NewInternal/Review" EntityType="Workflow_Directory_User" Identifier="Composite_Workflows_Directory_User_NewInternal_Review*" DisplayName_L1="Composite_Workflows_Directory_User_NewInternal_Review*" TemplateTransformation="AllowLinkedEntities;Directory_User;/Custom/Workflows/Directory_User_NewInternal/Review;NewInternalWorkflowIsReviewRequired">
+    <!--TODO filter on UserType to restrict the combo?-->
+    <Entry Permission="/Custom/Workflows/Directory_User_NewInternal/Review/ReviewPending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_NewInternal/Review/RefinePending" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_NewInternal/Review/Aborted" CanExecute="true" />
+    <Entry Permission="/Custom/Workflows/Directory_User_NewInternal/Review/Purged" CanExecute="true" />
+  </AccessControlRule>
+
+  <WorkflowAccessControlRules Profile="Workforce/Workflows/Directory_User_NewInternal/Review" EntityType="Workflow_Directory_User" TemplateTransformation="NewInternalWorkflowIsReviewRequired" />
+
+  <WorkflowAccessControlRules Profile="Workforce/Workflows/Directory_User_NewExternal/Review" EntityType="Workflow_Directory_User" TemplateTransformation="NewExternalWorkflowIsReviewRequired" />
+
+  <WorkflowAccessControlRules Profile="Workforce/Workflows/Directory_User/HandleForward" EntityType="Workflow_Directory_User" />
+
+</ConfigurationFile>

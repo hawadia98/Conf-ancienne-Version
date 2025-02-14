@@ -1,0 +1,97 @@
+﻿[11:13:28 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/1000?api-version=3.0&jobGroupId=46002&current=0&totalTask=0&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[11:13:28 VRB] Refreshed token: token expiration date=02/10/2025 11:10:27
+[11:13:28 VRB] HandleQuery SelectConsolidateJobQuery
+[11:13:28 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/RunStateMachineJob?api-version=4.0&path=/Jobs/Job/Query&jobIdentifier=46002&repair=False&beginJobStep=-1&endJobStep=-1&forceSynchronizationProvisioning=False&retry=False&launchTaskType=0&taskIdentifier=&taskIdentifierContains=&beginTaskExcluded=&endTaskExcluded=&jobInstanceId=1000&jobId=46002
+[11:13:29 VRB] HandleCommand ReserveTaskInstanceIdCommand
+[11:13:29 VRB] Reserve 10 next TaskInstanceId
+[11:13:29 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceId/10?api-version=1.0
+[11:13:29 VRB] Check the JobInstance state for JobInstance 1000.
+[11:13:29 VRB] HandleQuery SelectJobInstanceByIdQuery
+[11:13:29 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/1000?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:13:29 INF] ExportTask: Applications_Mail_Synchronize_Incremental_Export_ApplicationMail_Incremental_AccountMailExport (Level: 0, LaunchOrder: 0)
+    Connector: ApplicationMail
+    Mode: Incremental
+    ConnectionIdentifier: AccountMailExport
+    ExportType: ExportCsv
+    ContinueOnError:  True
+
+[11:13:29 VRB] Check the instance state for Task Applications_Mail_Synchronize_Incremental_Export_ApplicationMail_Incremental_AccountMailExport
+[11:13:29 VRB] HandleCommand TaskInstanceProgressCommand
+[11:13:29 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:13:29 INF] ExportTask: Applications_Mail_Synchronize_Incremental_Export_ApplicationMail_Incremental_AccountProfilesMailExport (Level: 0, LaunchOrder: 1)
+    Connector: ApplicationMail
+    Mode: Incremental
+    ConnectionIdentifier: AccountProfilesMailExport
+    ExportType: ExportCsv
+    ContinueOnError:  True
+
+[11:13:29 VRB] Check the instance state for Task Applications_Mail_Synchronize_Incremental_Export_ApplicationMail_Incremental_AccountProfilesMailExport
+[11:13:29 VRB] HandleCommand TaskInstanceProgressCommand
+[11:13:29 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:13:29 INF] Launch task: ExportTask: Applications_Mail_Synchronize_Incremental_Export_ApplicationMail_Incremental_AccountMailExport, Task 1/10
+[11:13:29 INF] Launch task: ExportTask: Applications_Mail_Synchronize_Incremental_Export_ApplicationMail_Incremental_AccountProfilesMailExport, Task 2/10
+[11:13:29 VRB] HandleCommand RunTaskCommand
+[11:13:29 VRB] HandleCommand RunTaskCommand
+[11:13:29 INF] Launch ExportTask : Applications_Mail_Synchronize_Incremental_Export_ApplicationMail_Incremental_AccountProfilesMailExport
+[11:13:29 INF] Launch ExportTask : Applications_Mail_Synchronize_Incremental_Export_ApplicationMail_Incremental_AccountMailExport
+[11:13:29 DBG] Start Process dotnet Usercube-Export-Csv.dll --progress-task-instance-id 6085 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "AccountProfilesMailExport" --path-incremental "D:\UsercubeCAA\Sources\ApplicationMail\Incremental\MailAccounts_Profiles.csv" --separator ";" --lines-to-skip "0" --stdin null
+[11:13:29 DBG] Start Process dotnet Usercube-Export-Csv.dll --progress-task-instance-id 6084 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "AccountMailExport" --path-incremental "D:\UsercubeCAA\Sources\ApplicationMail\Incremental\MailAccounts.csv" --separator ";" --lines-to-skip "0" --stdin null
+[11:13:29 INF] Start process=True PID=13800 dotnet Usercube-Export-Csv.dll --progress-task-instance-id 6085 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "AccountProfilesMailExport" --path-incremental "D:\UsercubeCAA\Sources\ApplicationMail\Incremental\MailAccounts_Profiles.csv" --separator ";" --lines-to-skip "0" --stdin
+[11:13:29 INF] Start process=True PID=15924 dotnet Usercube-Export-Csv.dll --progress-task-instance-id 6084 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "AccountMailExport" --path-incremental "D:\UsercubeCAA\Sources\ApplicationMail\Incremental\MailAccounts.csv" --separator ";" --lines-to-skip "0" --stdin
+[11:13:31 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/6085?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[11:13:31 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/6084?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[11:13:31 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:13:31 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/6085?api-version=2.0&jobInstanceId=1000&taskId=69006&jobId=46002
+[11:13:31 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:13:31 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/6084?api-version=2.0&jobInstanceId=1000&taskId=69005&jobId=46002
+[11:13:31 INF] Task: Applications_Mail_Synchronize_Incremental_Export_ApplicationMail_Incremental_AccountProfilesMailExport Completed with state Completed
+[11:13:31 INF] Task: Applications_Mail_Synchronize_Incremental_Export_ApplicationMail_Incremental_AccountMailExport Completed with state Completed
+[11:13:31 INF] PrepareSynchronizationChangesTask: Applications_Mail_Synchronize_Incremental_PrepareSynchronizationChanges_ApplicationMail_Incremental (Level: 1, LaunchOrder: 2)
+    Synchronization Mode: Incremental
+    Connector: ApplicationMail
+    Parent: Applications_Mail_Synchronize_Incremental_Export_ApplicationMail_Incremental_AccountMailExport, Applications_Mail_Synchronize_Incremental_Export_ApplicationMail_Incremental_AccountProfilesMailExport
+
+[11:13:31 VRB] Check the instance state for Task Applications_Mail_Synchronize_Incremental_PrepareSynchronizationChanges_ApplicationMail_Incremental
+[11:13:31 VRB] HandleCommand TaskInstanceProgressCommand
+[11:13:31 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:13:31 INF] The Task: Applications_Mail_Synchronize_Incremental_PrepareSynchronizationChanges_ApplicationMail_Incremental has not been launched because no treatment is required.
+[11:13:31 INF] SynchronizeChangesTask: Applications_Mail_Synchronize_Incremental_SynchronizeChanges_ApplicationMail (Level: 2, LaunchOrder: 3)
+    Connector: ApplicationMail
+    Force Provisioning: True
+    Parent: Applications_Mail_Synchronize_Incremental_PrepareSynchronizationChanges_ApplicationMail_Incremental
+
+[11:13:31 VRB] Check the instance state for Task Applications_Mail_Synchronize_Incremental_SynchronizeChanges_ApplicationMail
+[11:13:31 VRB] HandleCommand TaskInstanceProgressCommand
+[11:13:31 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:13:31 INF] The Task: Applications_Mail_Synchronize_Incremental_SynchronizeChanges_ApplicationMail has not been launched because no treatment is required.
+[11:13:31 INF] InvokeExpressionTask: Reset_Files_Applications_Mail (Level: 3, LaunchOrder: 4)
+    Agent: CAA
+
+[11:13:31 VRB] Check the instance state for Task Reset_Files_Applications_Mail
+[11:13:31 VRB] HandleCommand TaskInstanceProgressCommand
+[11:13:31 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:13:31 INF] Launch task: InvokeExpressionTask: Reset_Files_Applications_Mail, Task 5/10
+[11:13:31 VRB] HandleCommand RunTaskCommand
+[11:13:31 INF] Launch InvokeExpressionTask : Reset_Files_Applications_Mail
+[11:13:31 DBG] Start Process dotnet Usercube-Invoke-ExpressionAgentSide.dll --progress-task-instance-id 6088 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --input-path "C:/Applications/UsercubeCAA/Scripts/ApplicationMail/Applications_Reset_Files.ps1" --stdin null
+[11:13:31 INF] Start process=True PID=5892 dotnet Usercube-Invoke-ExpressionAgentSide.dll --progress-task-instance-id 6088 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --input-path "C:/Applications/UsercubeCAA/Scripts/ApplicationMail/Applications_Reset_Files.ps1" --stdin
+[11:13:32 ERR] Error while running Task 67022 Task: 'Reset_Files_Applications_Mail'
+System.ApplicationException: Error while running Task 67022
+   at Usercube.Application.Jobs.HttpImpl.CommandHandlers.RunTaskCommandHandler.Handle(RunTaskCommand command, IProgress`1 progress, CancellationToken cancellationToken)
+   at Usercube.Jobs.StateMachine.RunStateMachine.LaunchStepTask(JobStep step, QueryApiContext queryContext, TaskInstanceRef taskInstanceId, Int32 launchOrder, IInvokeJobProgress progress, Int32 totalStep, CommandApiContext commandContext, LogLevel jobLogLevel, Int32 taskTimeoutSupplement, CancellationToken token)
+[11:13:32 VRB] Check the instance state for Task Reset_Files_Applications_Mail
+[11:13:32 VRB] HandleCommand TaskInstanceProgressCommand
+[11:13:32 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:13:32 INF] Task: Reset_Files_Applications_Mail Completed with state Error
+[11:13:32 ERR] The task: 'Reset_Files_Applications_Mail' finished in an errored state
+[11:13:32 VRB] HandleCommand SendJobNotificationCommand
+[11:13:32 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/Job/Notification?api-version=1.0
+[11:13:32 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/1000?api-version=3.0&jobGroupId=46002&current=5&totalTask=10&state=Error&resourceId=-1&cancelRequest=False&retry=False
+[11:13:32 ERR] Exception while running state machine for job: 46002
+System.ApplicationException: Task not completed: Instance state = Error
+   at Usercube.Jobs.StateMachine.RunStateMachine.CheckEndInstanceState(InstanceState state, IInvokeJobProgress progress)
+   at Usercube.InvokeJob.InvokeJobCommandHandler.Handle(InvokeJobCommand invokeJobCommand)
+[11:13:32 ERR] Task not completed: Instance state = Error
+System.ApplicationException: Task not completed: Instance state = Error
+   at Usercube.Jobs.StateMachine.RunStateMachine.CheckEndInstanceState(InstanceState state, IInvokeJobProgress progress)
+   at Usercube.InvokeJob.InvokeJobCommandHandler.Handle(InvokeJobCommand invokeJobCommand)

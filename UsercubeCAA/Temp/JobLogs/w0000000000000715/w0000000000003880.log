@@ -1,0 +1,6 @@
+﻿[15:36:04 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/3880?api-version=1.0
+[15:36:04 VRB] Refreshed token: token expiration date=01/28/2025 15:33:03
+[15:36:04 DBG] Start Process powershell.exe -NoProfile -NonInteractive -File D:/UsercubeCAA/Scripts/RCI/RCI_Mail_Orga_Person.ps1 null
+[15:36:04 INF] Start process=True PID=14788 powershell.exe -NoProfile -NonInteractive -File D:/UsercubeCAA/Scripts/RCI/RCI_Mail_Orga_Person.ps1
+[15:36:05 INF] e-mail avec pieces jointes a ete enregistre dans : D:\UsercubeCAA\Mails\message_45b96750-4dd2-43f5-b26c-d6d56a8f31bc.eml
+[15:36:05 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/3880?api-version=1.0

@@ -1,0 +1,26 @@
+﻿[13:11:53 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/967?api-version=3.0&jobGroupId=38001&current=0&totalTask=0&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[13:11:54 VRB] Refreshed token: token expiration date=02/04/2025 13:08:54
+[13:11:54 VRB] HandleQuery SelectConsolidateJobQuery
+[13:11:54 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/RunStateMachineJob?api-version=4.0&path=/Jobs/Job/Query&jobIdentifier=38001&repair=False&beginJobStep=-1&endJobStep=-1&forceSynchronizationProvisioning=False&retry=False&launchTaskType=0&taskIdentifier=&taskIdentifierContains=&beginTaskExcluded=&endTaskExcluded=&jobInstanceId=967&jobId=38001
+[13:11:54 VRB] HandleCommand ReserveTaskInstanceIdCommand
+[13:11:54 VRB] Reserve 1 next TaskInstanceId
+[13:11:54 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceId/1?api-version=1.0
+[13:11:54 VRB] Check the JobInstance state for JobInstance 967.
+[13:11:54 VRB] HandleQuery SelectJobInstanceByIdQuery
+[13:11:54 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/967?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[13:11:54 INF] InvokeExpressionTask: ADAExportScript (Level: 0, LaunchOrder: 0)
+    Agent: CAA
+
+[13:11:54 VRB] Check the instance state for Task ADAExportScript
+[13:11:54 VRB] HandleCommand TaskInstanceProgressCommand
+[13:11:54 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[13:11:54 INF] Launch task: InvokeExpressionTask: ADAExportScript, Task 1/1
+[13:11:54 VRB] HandleCommand RunTaskCommand
+[13:11:54 INF] Launch InvokeExpressionTask : ADAExportScript
+[13:11:54 DBG] Start Process dotnet Usercube-Invoke-ExpressionAgentSide.dll --progress-task-instance-id 5741 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --input-path "D:/UsercubeCAA/Scripts/ADA/ADA_Export.ps1" --stdin null
+[13:11:54 INF] Start process=True PID=8476 dotnet Usercube-Invoke-ExpressionAgentSide.dll --progress-task-instance-id 5741 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --input-path "D:/UsercubeCAA/Scripts/ADA/ADA_Export.ps1" --stdin
+[13:11:56 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/5741?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[13:11:56 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[13:11:56 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5741?api-version=2.0&jobInstanceId=967&taskId=61001&jobId=38001
+[13:11:56 INF] Task: ADAExportScript Completed with state Completed
+[13:11:56 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/967?api-version=3.0&jobGroupId=38001&current=1&totalTask=1&state=Completed&resourceId=-1&cancelRequest=False&retry=False

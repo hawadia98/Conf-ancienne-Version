@@ -1,0 +1,7 @@
+﻿IF COL_LENGTH('dbo.UP_RiskRules', 'Order') IS NULL
+BEGIN
+ALTER TABLE "UP_RiskRules" ADD "Order" INT NULL;
+END
+GO
+UPDATE "UP_RiskRules" SET "Order"=0 WHERE "Order" IS NULL;
+ALTER TABLE "UP_RiskRules" ALTER COLUMN "Order" INT NOT NULL;

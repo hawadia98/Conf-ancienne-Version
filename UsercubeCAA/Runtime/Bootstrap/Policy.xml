@@ -1,0 +1,8 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <!--
+  The default policy that can be used for all the roles and rules.
+  -->
+  <Policy Identifier="Default" DisplayName_L1="Default Policy" IsProvisioningEnabled="true" IsSimulationEnabled="true" />
+
+</ConfigurationFile>

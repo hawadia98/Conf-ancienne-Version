@@ -1,0 +1,24 @@
+2025-02-01 18:01:32.967 +01:00 [VRB] HandleCommand GetLogJobInstanceCommand
+2025-02-01 18:01:32.970 +01:00 [DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+2025-02-01 18:01:32.970 +01:00 [VRB] Refreshing token: old token expiration date="2025-01-31T11:16:10.2320709Z"
+2025-02-01 18:01:33.022 +01:00 [VRB] Refreshed token: token expiration date="2025-02-01T17:58:33.0223691Z"
+2025-02-01 18:01:54.988 +01:00 [VRB] HandleCommand GetLogJobInstanceCommand
+2025-02-01 18:01:54.988 +01:00 [DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+2025-02-01 18:02:02.104 +01:00 [VRB] HandleCommand GetLogJobInstanceCommand
+2025-02-01 18:02:02.109 +01:00 [DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+2025-02-01 18:02:20.667 +01:00 [VRB] HandleCommand GetLogJobInstanceCommand
+2025-02-01 18:02:20.667 +01:00 [DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+2025-02-01 18:34:13.951 +01:00 [VRB] HandleCommand GetLogJobInstanceCommand
+2025-02-01 18:34:13.951 +01:00 [DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+2025-02-01 18:34:22.142 +01:00 [VRB] HandleCommand GetLogJobInstanceCommand
+2025-02-01 18:34:22.143 +01:00 [DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+2025-02-01 18:34:29.230 +01:00 [VRB] HandleCommand GetLogJobInstanceCommand
+2025-02-01 18:34:29.230 +01:00 [DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+2025-02-01 18:34:36.250 +01:00 [VRB] HandleCommand GetLogJobInstanceCommand
+2025-02-01 18:34:36.250 +01:00 [DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+2025-02-01 18:34:42.208 +01:00 [VRB] HandleCommand GetLogJobInstanceCommand
+2025-02-01 18:34:42.208 +01:00 [DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+2025-02-01 18:34:48.803 +01:00 [VRB] HandleCommand GetLogJobInstanceCommand
+2025-02-01 18:34:48.803 +01:00 [DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0
+2025-02-01 18:36:07.773 +01:00 [VRB] HandleCommand GetLogJobInstanceCommand
+2025-02-01 18:36:07.773 +01:00 [DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/GetCheckUserForLog/administrator?api-version=1.0

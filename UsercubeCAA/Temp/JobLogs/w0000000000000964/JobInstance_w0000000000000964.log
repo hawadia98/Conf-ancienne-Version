@@ -1,0 +1,102 @@
+﻿[13:07:52 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/964?api-version=3.0&jobGroupId=1&current=0&totalTask=0&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[13:07:52 VRB] Refreshed token: token expiration date=02/04/2025 13:04:52
+[13:07:52 VRB] HandleQuery SelectConsolidateJobQuery
+[13:07:52 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/RunStateMachineJob?api-version=4.0&path=/Jobs/Job/Query&jobIdentifier=1&repair=False&beginJobStep=-1&endJobStep=-1&forceSynchronizationProvisioning=False&retry=False&launchTaskType=0&taskIdentifier=&taskIdentifierContains=&beginTaskExcluded=&endTaskExcluded=&jobInstanceId=964&jobId=1
+[13:07:52 VRB] HandleCommand ReserveTaskInstanceIdCommand
+[13:07:52 VRB] Reserve 6 next TaskInstanceId
+[13:07:52 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceId/6?api-version=1.0
+[13:07:53 VRB] Check the JobInstance state for JobInstance 964.
+[13:07:53 VRB] HandleQuery SelectJobInstanceByIdQuery
+[13:07:53 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/964?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[13:07:53 INF] UpdateEntityPropertyExpressionsTask: Catalog_Accounts_Provisioning_Scaffolding_ComputeProperties (Level: 0, LaunchOrder: 0)
+    AllEntities: True
+
+[13:07:53 VRB] Check the instance state for Task Catalog_Accounts_Provisioning_Scaffolding_ComputeProperties
+[13:07:53 VRB] HandleCommand TaskInstanceProgressCommand
+[13:07:53 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[13:07:53 INF] Launch task: UpdateEntityPropertyExpressionsTask: Catalog_Accounts_Provisioning_Scaffolding_ComputeProperties, Task 1/6
+[13:07:53 VRB] HandleCommand RunTaskCommand
+[13:07:53 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/211?api-version=4.0&jobInstanceId=964&jobLogLevel=Trace
+[13:07:55 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[13:07:55 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5721?api-version=2.0&jobInstanceId=964&taskId=211&jobId=1
+[13:07:55 INF] Task: Catalog_Accounts_Provisioning_Scaffolding_ComputeProperties Completed with state Completed
+[13:07:55 VRB] Check the JobInstance state for JobInstance 964.
+[13:07:55 VRB] HandleQuery SelectJobInstanceByIdQuery
+[13:07:55 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/964?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[13:07:55 INF] ComputeCorrelationKeysTask: Catalog_Accounts_Provisioning_Scaffolding_ComputeCorrelationKeys (Level: 1, LaunchOrder: 1)
+    All Entities: True
+
+[13:07:55 VRB] Check the instance state for Task Catalog_Accounts_Provisioning_Scaffolding_ComputeCorrelationKeys
+[13:07:55 VRB] HandleCommand TaskInstanceProgressCommand
+[13:07:55 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[13:07:55 INF] Launch task: ComputeCorrelationKeysTask: Catalog_Accounts_Provisioning_Scaffolding_ComputeCorrelationKeys, Task 2/6
+[13:07:55 VRB] HandleCommand RunTaskCommand
+[13:07:55 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/210?api-version=4.0&jobInstanceId=964&jobLogLevel=Trace
+[13:08:21 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[13:08:21 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5722?api-version=2.0&jobInstanceId=964&taskId=210&jobId=1
+[13:08:21 INF] Task: Catalog_Accounts_Provisioning_Scaffolding_ComputeCorrelationKeys Completed with state Completed
+[13:08:21 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/964?api-version=3.0&jobGroupId=1&current=2&totalTask=6&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[13:08:21 VRB] Check the JobInstance state for JobInstance 964.
+[13:08:21 VRB] HandleQuery SelectJobInstanceByIdQuery
+[13:08:21 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/964?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[13:08:21 INF] ComputeRoleModelTask: Catalog_Accounts_Provisioning_Scaffolding_ComputeProvisioningPolicy (Level: 2, LaunchOrder: 2)
+    EntityType: Directory_User
+
+[13:08:21 VRB] Check the instance state for Task Catalog_Accounts_Provisioning_Scaffolding_ComputeProvisioningPolicy
+[13:08:21 VRB] HandleCommand TaskInstanceProgressCommand
+[13:08:21 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[13:08:21 INF] Launch task: ComputeRoleModelTask: Catalog_Accounts_Provisioning_Scaffolding_ComputeProvisioningPolicy, Task 3/6
+[13:08:21 VRB] HandleCommand RunTaskCommand
+[13:08:21 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/212?api-version=4.0&jobInstanceId=964&jobLogLevel=Trace
+[13:08:25 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[13:08:25 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5723?api-version=2.0&jobInstanceId=964&taskId=212&jobId=1
+[13:08:25 INF] Task: Catalog_Accounts_Provisioning_Scaffolding_ComputeProvisioningPolicy Completed with state Completed
+[13:08:25 VRB] Check the JobInstance state for JobInstance 964.
+[13:08:25 VRB] HandleQuery SelectJobInstanceByIdQuery
+[13:08:25 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/964?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[13:08:25 INF] GenerateProvisioningOrdersTask: Catalog_Accounts_Provisioning_Scaffolding_GenerateProvisioningOrders (Level: 3, LaunchOrder: 3)
+    Force Provisioning: True
+    ResourceType: ARCS, ARSAT, ARTEFIS, ASSTECQ, Abel Entreprise, Accès aux locaux, Administration infrastructures, Administration locale Poste de travail, Algosec, Alpaga, AlpagaPortailCR, Annuaire intranet, Argus Cold, Assuretat, BDOC Design, BigDataAssurance-Production, CARISMA, CASIRIS, CLASSIFIER, CLIPEX, CMS Opentrust Badge, CUCM, Confluence, Console WAS RCI_RCU, Customsweb, DAS2, DDE, DIAPASON Production, DIAPASON Recette, Demande d'intervention, Décisionnel - Infocentre, Décisionnel - QlikView, EASY, EMBLEM, ESTO, Encadrement UGS, Etat de perte (EDP), Evolan Designer, Evolan Postal Mail, FCCS, Filezilla Server VIAVITA, Formliasse, GED, GENESYS, Hermes, IRCA, ITESOFT, Imprimantes, JENKINS, KEYCLOAK_IDP, MANTIS Excilys, MEGA, Microsoft Dynamics CRM, Mon empreinte digital, MyJobs, OCEAN, Oracle Answers, PILOT, PKI Carioca, Pacifica Active Directory SIA - CyberArk, Pivotal VIAVITA, Quality Center, RCP Scope, Remetrica, ResQ, Réclamations, SAS Console, SAS Guide, SBC, SEP, SONAR, SUD2, SVI, SVN, SentinelOne, Sightcall, Sésame Formation, Sésame Production, TFS, Tableau de répartition (TDR), Tenable, Triskell
+
+[13:08:25 VRB] Check the instance state for Task Catalog_Accounts_Provisioning_Scaffolding_GenerateProvisioningOrders
+[13:08:25 VRB] HandleCommand TaskInstanceProgressCommand
+[13:08:25 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[13:08:25 INF] Launch task: GenerateProvisioningOrdersTask: Catalog_Accounts_Provisioning_Scaffolding_GenerateProvisioningOrders, Task 4/6
+[13:08:25 VRB] HandleCommand RunTaskCommand
+[13:08:25 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/214?api-version=4.0&jobInstanceId=964&jobLogLevel=Trace
+[13:08:25 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[13:08:25 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5724?api-version=2.0&jobInstanceId=964&taskId=214&jobId=1
+[13:08:25 INF] Task: Catalog_Accounts_Provisioning_Scaffolding_GenerateProvisioningOrders Completed with state Completed
+[13:08:25 INF] FulfillTask: Catalog_Accounts_Provisioning_Scaffolding_Fulfill (Level: 4, LaunchOrder: 4)
+    ConnectionIdentifier: AccountCatalogFulfill
+    FulfillmentType: UpdateManualProvisioningTicket
+    ResourceType: ARCS, ARSAT, ARTEFIS, ASSTECQ, Abel Entreprise, Accès aux locaux, Administration infrastructures, Administration locale Poste de travail, Algosec, Alpaga, AlpagaPortailCR, Annuaire intranet, Argus Cold, Assuretat, BDOC Design, BigDataAssurance-Production, CARISMA, CASIRIS, CLASSIFIER, CLIPEX, CMS Opentrust Badge, CUCM, Confluence, Console WAS RCI_RCU, Customsweb, DAS2, DDE, DIAPASON Production, DIAPASON Recette, Demande d'intervention, Décisionnel - Infocentre, Décisionnel - QlikView, EASY, EMBLEM, ESTO, Encadrement UGS, Etat de perte (EDP), Evolan Designer, Evolan Postal Mail, FCCS, Filezilla Server VIAVITA, Formliasse, GED, GENESYS, Hermes, IRCA, ITESOFT, Imprimantes, JENKINS, KEYCLOAK_IDP, MANTIS Excilys, MEGA, Microsoft Dynamics CRM, Mon empreinte digital, MyJobs, OCEAN, Oracle Answers, PILOT, PKI Carioca, Pacifica Active Directory SIA - CyberArk, Pivotal VIAVITA, Quality Center, RCP Scope, Remetrica, ResQ, Réclamations, SAS Console, SAS Guide, SBC, SEP, SONAR, SUD2, SVI, SVN, SentinelOne, Sightcall, Sésame Formation, Sésame Production, TFS, Tableau de répartition (TDR), Tenable, Triskell
+
+[13:08:25 VRB] Check the instance state for Task Catalog_Accounts_Provisioning_Scaffolding_Fulfill
+[13:08:25 VRB] HandleCommand TaskInstanceProgressCommand
+[13:08:25 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[13:08:25 INF] FulfillTask: Catalog_Accounts_Provisioning_Scaffolding_Fulfill (Level: 4, LaunchOrder: 4)
+    ConnectionIdentifier: AccountCatalogFulfill
+    FulfillmentType: UpdateFulfillmentState
+    ResourceType: ARCS, ARSAT, ARTEFIS, ASSTECQ, Abel Entreprise, Accès aux locaux, Administration infrastructures, Administration locale Poste de travail, Algosec, Alpaga, AlpagaPortailCR, Annuaire intranet, Argus Cold, Assuretat, BDOC Design, BigDataAssurance-Production, CARISMA, CASIRIS, CLASSIFIER, CLIPEX, CMS Opentrust Badge, CUCM, Confluence, Console WAS RCI_RCU, Customsweb, DAS2, DDE, DIAPASON Production, DIAPASON Recette, Demande d'intervention, Décisionnel - Infocentre, Décisionnel - QlikView, EASY, EMBLEM, ESTO, Encadrement UGS, Etat de perte (EDP), Evolan Designer, Evolan Postal Mail, FCCS, Filezilla Server VIAVITA, Formliasse, GED, GENESYS, Hermes, IRCA, ITESOFT, Imprimantes, JENKINS, KEYCLOAK_IDP, MANTIS Excilys, MEGA, Microsoft Dynamics CRM, Mon empreinte digital, MyJobs, OCEAN, Oracle Answers, PILOT, PKI Carioca, Pacifica Active Directory SIA - CyberArk, Pivotal VIAVITA, Quality Center, RCP Scope, Remetrica, ResQ, Réclamations, SAS Console, SAS Guide, SBC, SEP, SONAR, SUD2, SVI, SVN, SentinelOne, Sightcall, Sésame Formation, Sésame Production, TFS, Tableau de répartition (TDR), Tenable, Triskell
+
+[13:08:25 VRB] Check the instance state for Task Catalog_Accounts_Provisioning_Scaffolding_Fulfill
+[13:08:25 VRB] HandleCommand TaskInstanceProgressCommand
+[13:08:25 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[13:08:26 INF] Launch task: FulfillTask: Catalog_Accounts_Provisioning_Scaffolding_Fulfill, Task 5/6
+[13:08:26 VRB] HandleCommand RunTaskCommand
+[13:08:26 INF] Launch FulfillTask : Catalog_Accounts_Provisioning_Scaffolding_Fulfill
+[13:08:26 DBG] Start Process dotnet Usercube-UpdateManualProvisioningTicket.dll --progress-task-instance-id 5725 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --resource-types "5" "6" "7" "8" "9" "10" "11" "12" "13" "14" "15" "16" "18" "19" "20" "21" "22" "23" "24" "25" "26" "27" "30" "31" "32" "33" "34" "35" "36" "37" "38" "39" "40" "41" "42" "43" "44" "45" "46" "47" "48" "49" "50" "51" "58" "59" "60" "61" "62" "63" "64" "65" "66" "67" "68" "69" "71" "72" "73" "74" "86" "88" "89" "90" "91" "92" "93" "94" "95" "96" "97" "98" "99" "100" "101" "102" "103" "104" "105" "106" "107" "108" --task-instance-id 5725 --stdin null
+[13:08:26 INF] Launch task: FulfillTask: Catalog_Accounts_Provisioning_Scaffolding_Fulfill, Task 6/6
+[13:08:26 VRB] HandleCommand RunTaskCommand
+[13:08:26 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/213?api-version=4.0&jobInstanceId=964&jobLogLevel=Trace
+[13:08:26 INF] Start process=True PID=7980 dotnet Usercube-UpdateManualProvisioningTicket.dll --progress-task-instance-id 5725 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --resource-types "5" "6" "7" "8" "9" "10" "11" "12" "13" "14" "15" "16" "18" "19" "20" "21" "22" "23" "24" "25" "26" "27" "30" "31" "32" "33" "34" "35" "36" "37" "38" "39" "40" "41" "42" "43" "44" "45" "46" "47" "48" "49" "50" "51" "58" "59" "60" "61" "62" "63" "64" "65" "66" "67" "68" "69" "71" "72" "73" "74" "86" "88" "89" "90" "91" "92" "93" "94" "95" "96" "97" "98" "99" "100" "101" "102" "103" "104" "105" "106" "107" "108" --task-instance-id 5725 --stdin
+[13:08:27 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[13:08:27 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5726?api-version=2.0&jobInstanceId=964&taskId=213&jobId=1
+[13:08:27 INF] Task: Catalog_Accounts_Provisioning_Scaffolding_Fulfill Completed with state Completed
+[13:08:29 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/5725?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[13:08:29 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[13:08:29 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5725?api-version=2.0&jobInstanceId=964&taskId=213&jobId=1
+[13:08:29 INF] Task: Catalog_Accounts_Provisioning_Scaffolding_Fulfill Completed with state Completed
+[13:08:29 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/964?api-version=3.0&jobGroupId=1&current=6&totalTask=6&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[13:08:29 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/964?api-version=3.0&jobGroupId=1&current=6&totalTask=6&state=Completed&resourceId=-1&cancelRequest=False&retry=False

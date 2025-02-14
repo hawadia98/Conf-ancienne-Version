@@ -1,0 +1,80 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <!--
+  Profiles to view the users, their special properties and their resources.
+  -->
+  <Profile Identifier="Workforce/Self/View" DisplayName_L1="Workforce/Self Service/View My Data" IsComponent="true" />
+  <Profile Identifier="Workforce/Self/ViewResources" DisplayName_L1="Workforce/Self Service/View My Permissions" IsComponent="true" />
+
+  <AccessControlRule Profile="Workforce/Self/View" EntityType="Directory_User" Identifier="Composite_Directory_Self_View_*" DisplayName_L1="Composite_Directory_Self_View_*" TemplateTransformation="AllowLinkedEntities;Directory_User;/Custom/Resources/Directory_User/Self">
+    <Filter Binding="Id" CurrentUser="true" />
+
+    <Entry Permission="/Custom/Resources/Directory_User/Self" CanExecute="true" TemplateTransformation="ApplyFullAccessProperties;Administrator"/>
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Self/ViewResources" EntityType="Directory_User" Identifier="Composite_Directory_Self_ViewResources_*" DisplayName_L1="Composite_Directory_Self_ViewResources_*">
+    <Filter Binding="Id" CurrentUser="true" />
+
+    <Entry Permission="/Custom/Resources/Directory_User/SelfOwnedResources" CanExecute="true" />
+    <Entry Permission="/Custom/Resources/Directory_User/SelfTargetResources" CanExecute="true" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Self/ViewResources" EntityType="Category" Identifier="Composite_Category_Directory_Self_ViewResources_*" DisplayName_L1="Composite_Category_Directory_Self_ViewResources_*">
+    <Entry Permission="/Custom/Resources/Directory_User/Self" />
+    <Entry Permission="/Custom/Resources/Directory_User/SelfOwnedResources" />
+    <Entry Permission="/Custom/Resources/Directory_User/SelfTargetResources" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Self/ViewResources" EntityType="CompositeRole" Identifier="Composite_CompositeRole_Directory_Self_ViewResources_*" DisplayName_L1="Composite_CompositeRole_Directory_Self_ViewResources_*">
+    <Entry Permission="/Custom/Resources/Directory_User/Self" />
+    <Entry Permission="/Custom/Resources/Directory_User/SelfOwnedResources" />
+    <Entry Permission="/Custom/Resources/Directory_User/SelfTargetResources" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Self/ViewResources" EntityType="SingleRole" Identifier="Composite_SingleRole_Directory_Self_ViewResources_*" DisplayName_L1="Composite_SingleRole_Directory_Self_ViewResources_*">
+    <Entry Permission="/Custom/Resources/Directory_User/Self" />
+    <Entry Permission="/Custom/Resources/Directory_User/SelfOwnedResources" />
+    <Entry Permission="/Custom/Resources/Directory_User/SelfTargetResources" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Self/ViewResources" EntityType="ResourceType" Identifier="Composite_ResourceType_Directory_Self_ViewResources_*" DisplayName_L1="Composite_ResourceType_Directory_Self_ViewResources_*">
+    <Entry Permission="/Custom/Resources/Directory_User/Self" />
+    <Entry Permission="/Custom/Resources/Directory_User/SelfOwnedResources" />
+    <Entry Permission="/Custom/Resources/Directory_User/SelfTargetResources" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Self/ViewResources" EntityType="Policy" Identifier="Composite_Policy_Directory_Self_ViewResources_*" DisplayName_L1="Composite_Policy_Directory_Self_ViewResources_*">
+    <Entry Permission="/Custom/Resources/Directory_User/Self" />
+    <Entry Permission="/Custom/Resources/Directory_User/SelfOwnedResources" />
+    <Entry Permission="/Custom/Resources/Directory_User/SelfTargetResources" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Self/ViewResources" EntityType="AssignedCompositeRole" Identifier="Composite_AssignedCompositeRole_Directory_Self_ViewResources_*" DisplayName_L1="Composite_AssignedCompositeRole_Directory_Self_ViewResources_*">
+    <Entry Permission="/Custom/Resources/Directory_User/Self" />
+    <Entry Permission="/Custom/Resources/Directory_User/SelfOwnedResources" />
+    <Entry Permission="/Custom/Resources/Directory_User/SelfTargetResources" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Self/ViewResources" EntityType="AssignedSingleRole" Identifier="Composite_AssignedSingleRole_Directory_Self_ViewResources_*" DisplayName_L1="Composite_AssignedSingleRole_Directory_Self_ViewResources_*">
+    <Entry Permission="/Custom/Resources/Directory_User/Self" />
+    <Entry Permission="/Custom/Resources/Directory_User/SelfOwnedResources" />
+    <Entry Permission="/Custom/Resources/Directory_User/SelfTargetResources" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Self/ViewResources" EntityType="AssignedResourceType" Identifier="Composite_AssignedResourceType_Directory_Self_ViewResources_*" DisplayName_L1="Composite_AssignedResourceType_Directory_Self_ViewResources_*">
+    <Entry Permission="/Custom/Resources/Directory_User/Self" />
+    <Entry Permission="/Custom/Resources/Directory_User/SelfOwnedResources" />
+    <Entry Permission="/Custom/Resources/Directory_User/SelfTargetResources" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Self/ViewResources" EntityType="AssignedResourceNavigation" Identifier="Composite_AssignedResourceNavigation_Directory_Self_ViewResources_*" DisplayName_L1="Composite_AssignedResourceNavigation_Directory_Self_ViewResources_*">
+    <Entry Permission="/Custom/Resources/Directory_User/Self" />
+    <Entry Permission="/Custom/Resources/Directory_User/SelfOwnedResources" />
+    <Entry Permission="/Custom/Resources/Directory_User/SelfTargetResources" />
+  </AccessControlRule>
+
+  <AccessControlRule Profile="Workforce/Self/ViewResources" EntityType="AssignedResourceScalar" Identifier="Composite_AssignedResourceScalar_Directory_Self_ViewResources_*" DisplayName_L1="Composite_AssignedResourceScalar_Directory_Self_ViewResources_*">
+    <Entry Permission="/Custom/Resources/Directory_User/Self" />
+    <Entry Permission="/Custom/Resources/Directory_User/SelfOwnedResources" />
+    <Entry Permission="/Custom/Resources/Directory_User/SelfTargetResources" />
+  </AccessControlRule>
+</ConfigurationFile>

@@ -1,0 +1,26 @@
+﻿[14:57:29 VRB] Getting the previously tracked accounts from '../Work\PasswordReset\tracked-accounts-ADPacificaExportFulfillment.csv'...
+[14:57:29 VRB] 0 tracked accounts found
+[14:57:29 VRB] HandleQuery SelectProvisionerResourceTypeMappingByQueryQuery
+[14:57:29 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Connectors/Mapping/ResourceTypeMapping/ProvisionerResourceTypeMapping?api-version=2.0&Path=%2FConnectors%2FResourceTypeMapping%2FQuery&resourcetypes=2
+[14:57:29 VRB] Refreshed token: token expiration date=02/07/2025 14:54:29
+[14:57:29 VRB] HandleCommand FulfillLdapCommand
+[14:57:29 INF] Fulfill-Ldap started ResourceTypes=2 TaskInstanceId=5928
+[14:57:29 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/5928?api-version=1.0
+[14:57:29 DBG] Fetching provisioning orders api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=2
+[14:57:29 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=2
+[14:57:29 DBG] Fetching provisioning orders api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=2
+[14:57:29 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/ResourceTypeProvisioner/ResourceTypeProvisioningData?api-version=2.0&ResourceTypes=2
+[14:57:29 VRB] AddRequest CN=test.riri,OU=Pacifica,OU=Utilisateurs,DC=ca-pacificadev,DC=fr objectclass Set user, accountExpires Set 134904708000000000, cn Set test.riri, company Set PACIFICA, displayName Set RIRI Test, givenName Set Test, mail Set test.riri@ca-pacifica.fr, sAMAccountName Set test.riri, sn Set RIRI, title Set 9, useraccountcontrol Set 514, userPrincipalName Set test.riri@ca-pacifica.fr
+[14:57:29 ERR] DirectoryOperationException 00000524: UpdErr: DSID-031A11DA, problem 6005 (ENTRY_EXISTS), data 0
+ AddRequest CN=test.riri,OU=Pacifica,OU=Utilisateurs,DC=ca-pacificadev,DC=fr objectclass Set user, accountExpires Set 134904708000000000, cn Set test.riri, company Set PACIFICA, displayName Set RIRI Test, givenName Set Test, mail Set test.riri@ca-pacifica.fr, sAMAccountName Set test.riri, sn Set RIRI, title Set 9, useraccountcontrol Set 514, userPrincipalName Set test.riri@ca-pacifica.fr
+System.DirectoryServices.Protocols.DirectoryOperationException: The object exists. 00000524: UpdErr: DSID-031A11DA, problem 6005 (ENTRY_EXISTS), data 0
+
+   at System.DirectoryServices.Protocols.LdapConnection.ConstructResponseAsync(Int32 messageId, LdapOperation operation, ResultAll resultType, TimeSpan requestTimeOut, Boolean exceptionOnTimeOut, Boolean sync)
+   at System.DirectoryServices.Protocols.LdapConnection.SendRequest(DirectoryRequest request, TimeSpan requestTimeout)
+   at System.DirectoryServices.Protocols.LdapConnection.SendRequest(DirectoryRequest request)
+   at Usercube.Fulfill.Ldap.Impl.ResourceProvisioningActor.TrySendRequest(LdapConnection connection, DirectoryRequest request, AssignedResourceTypeRef assignedResourceTypeId, EntityTypeRef ownerType, ResourceRef ownerId, ProvisioningResult& result)
+[14:57:30 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Connectors/Provisioning/ProvisioningResults?api-version=1.0
+[14:57:30 DBG] Saved tracked password reset accounts
+[14:57:30 INF] Fulfillment process completed. Executed orders: 1/1 - Inserted: 1 | Updated: 0 | Deleted: 0 | Errors: 1
+[14:57:30 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/5928?api-version=1.0
+[14:57:30 INF] Fulfill-Ldap completed TaskInstanceId=5928

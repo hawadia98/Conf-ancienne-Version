@@ -1,0 +1,7 @@
+﻿[11:24:26 INF] Export-Csv started for Path=D:\UsercubeCAA\Sources\RH\Incremental\RH_sorties_mobilitees.csv
+[11:24:26 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/3664?api-version=1.0
+[11:24:26 VRB] Refreshed token: token expiration date=01/27/2025 11:21:25
+[11:24:26 WRN] The server notifies that the job is no longer in operation with the state: Stop
+[11:24:26 WRN] The task was canceled because the job is not running.
+[11:24:26 WRN] Export-Csv aborted for Path=D:\UsercubeCAA\Sources\RH\Incremental\RH_sorties_mobilitees.csv
+[11:24:26 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/3664?api-version=1.0

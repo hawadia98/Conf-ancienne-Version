@@ -1,0 +1,33 @@
+﻿[15:36:03 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/3879?api-version=1.0
+[15:36:03 VRB] Refreshed token: token expiration date=01/28/2025 15:33:03
+[15:36:03 DBG] Start Process powershell.exe -NoProfile -NonInteractive -File D:/UsercubeCAA/Scripts/RCI/RCI_Export_Orga_API.ps1 null
+[15:36:03 INF] Start process=True PID=17000 powershell.exe -NoProfile -NonInteractive -File D:/UsercubeCAA/Scripts/RCI/RCI_Export_Orga_API.ps1
+[15:36:03 INF] https://dev-fusion-iam.caa.group.gca/api/Resource/Directory_Organization?api-version=1.0&path=/Custom/Resources/Directory_Organization/View&QueryRootEntityType=Directory_Organization&squery=join Parent p join Company c join c.Type ct join Manager m join m.MainRecord mr select FullName, c.DisplayName, p.FullName, DisplayName, mr.FirstName, mr.LastName, ct.DisplayName where (p.FullName !=% " " and ct.DisplayName != "CDS") order by Id asc&PageSize=10000&ContinuationToken=
+[15:36:03 INF] https://dev-fusion-iam.caa.group.gca/connect/token
+[15:36:03 INF] eyJhbGciOiJSU0EtT0FFUCIsImVuYyI6IkEyNTZDQkMtSFM1MTIiLCJraWQiOiI1NTYwQTIyMkRFM0IwMkQ1OTgzMTE3RDU3QTIxQTYwRDNGMjlBRkIwIiwidHlwIjoiYXQrand0IiwiY3R5IjoiSldUIn0.r36KJzpW89gTgVn9SAJQscC_xgwYfwhoiFUXLUgYZxXqJn-ZXwiAoMErxy55JV-q4kXhO2S1P4wamOCO50I2zyBn3yKd2ePhAIitkSfvO6GgglaWbEcovh8zVwRcN7V1fBgpe_b6dZqEHST1nWcFZok-cOxKxFRYXoWzNenb0bCCgiqB_0QZarAbqeDpk1ZCTivIsiVaTEdQN1RuACjXYXo6tt0mH5tZ_gPcof5yvrP33Yr_5U0hOjF8rIpP7fYgU_hlOVJ67YfC3qtN8s5zHziBokZ_gfgBK-3NPTMJwSJHkFWQJkmhP6dmcs3sEQ5AWuvFHBsq5PgRYRCfv4Ay9Q.73HmGPea_yX_x8ofC4H68A.6uUxhn00ZMiBFATSp-hA3dhnVEOnIecgTdAT4zSmlALwU1O4YyxYH4UsOj5HJUP34EIA20D_XOE9xV88G9FKmmzud7W5Q0VbADT8NsDe_gXuMu_HE-crbuQDPtrea-xhVfZwJJnFdZ5RwzMJRL0mjMAPZ8-t4v7jVtHWGhb4lit7utpxghdZ4qdka-TaZ0Rtuuxa6-HNW2cdlza-Q_8YThQXEV4uf09SMTVoDnWJLnlI_Ra8dNmnZjDmL7Uij3Lc4V_a5HW6DlVeYejQV2d_TVBALm1BJNMKu2G0fSsNSXjBnMbap8MuE0hsU2w-70Uo0lbU5XPfx_-AhmNYOmy6JcQW3IzF9G4POOXrUXOSCLc8rhNafzn2EaeZUSr44YUI475elhTYphjsTKuAJGMlDGD7xA_2S9_fQQ42MTzHt4M5m4h7gnUZZl8M_LoA2us61GZs_7cIo8yPpDzsgM92Im7QhG1NnUfbsrouwBiPvcOSaKFtXBwbTWWkDprAj5qcTWhhCs2CiYheXQaDu5AKjqT7-cngycmT7HgVCeyDzfZnCArGbLPpPc1cXye_fOWb6xEeOCowvStVY2i54unYAdcZ4YIViBbp69LXoUPICReCgASum5D56fSSn4kmTMW8N-ocegpw65VmJCbMs8xgpUO77bOTO0trTUWTRq7XwzD-0emlc_0pEDaNIUwAFiGoVzr9ubmifCFxdQncl8JUBOZx7FxhYNzue9WsLbTPyzD9Ff3Xcm7d--naciBuqFVU82-wjDZ_YtAKXZ_-Rc-cYvLiOhLeuF4NwJnlOlK4_c7vLjJY5mbd1OAJDd5yxHbL17d5jSAD17hONHPs27wvy7_crnvoA-Ms3pUBsxwUJgPhqduvitf0pkJA0U4wCmH0Nw5NJXLf1VEWlaMt-xMYB_qfeSe9H9s4eFtrnj40gFhaKou00Wl-7d-Y2BLoU7827FWP9F6HRrJGF5l4pF7CLvllMEnR_InbgoRdZITCP4c8tq8HEL9JBu0DCu25QturRLK_zRWA-LhejD2A0Ce2SpS1KfwkXQcQ2QWyPPwI1ApOXhozq16Tq9tm2SH8QJcKS6vNQ4gXlLaBDB1BZ52dyp_nCqX6h-KH02v_oksKGUeM4xN75pDpckxCNUIdJ9JashtT_kcg_UV-dRrJRVCSBST5U3S3FnjggzthH5RcClVSCrEM_5F8SNyNwwBsoJHm_MHqHQ8nxE4dgV6QqRw3W2Uq7nQ8uBGlf0vtFLrcjQM.KgT60rNU3HIGU0-aH564AVRSpclIuh34NJ9wyKc7eRI
+[15:36:03 INF] New-Object : Exception calling ".ctor" with "3" argument(s): "Could not find a part of the path 
+[15:36:03 INF] 'C:\Applications\UsercubeCAA\Sources\RCI\Export\Export_RCI_Orga.csv'."
+[15:36:03 INF] At D:\UsercubeCAA\Scripts\RCI\RCI_Export_Orga_API.ps1:43 char:11
+[15:36:03 INF] + $writer = New-Object System.IO.StreamWriter($outputFile, $false, ([Sy ...
+[15:36:03 INF] +           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[15:36:03 INF]     + CategoryInfo          : InvalidOperation: (:) [New-Object], MethodInvocationException
+[15:36:03 INF]     + FullyQualifiedErrorId : ConstructorInvokedThrowException,Microsoft.PowerShell.Commands.NewObjectCommand
+[15:36:03 INF]  
+[15:36:03 INF] You cannot call a method on a null-valued expression.
+[15:36:03 INF] At D:\UsercubeCAA\Scripts\RCI\RCI_Export_Orga_API.ps1:47 char:1
+[15:36:03 INF] + $writer.WriteLine('{0};{1};{2};{3};{4}', $headers)
+[15:36:03 INF] + ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+[15:36:03 INF]     + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+[15:36:03 INF]     + FullyQualifiedErrorId : InvokeMethodOnNull
+[15:36:03 INF]  
+[15:36:04 INF] CREDIT AGRICOLE ASSURANCES SOLUTIONS / DIRECTION GENERALE / AUTRES FILIALES / CALI EUROPE / CALI EUROPE SUCCURSALE France CREDIT AGRICOLE ASSURANCES SOLUTIONS CREDIT AGRICOLE ASSURANCES SOLUTIONS / DIRECTION GENERALE / AUTRES FILIALES / CALI EUROPE CALI EUROPE SUCCURSALE France Responsable$Nicolas$JUIN$1
+[15:36:04 INF] Error Usercube API
+[15:36:04 INF] You cannot call a method on a null-valued expression.
+[15:36:04 INF] You cannot call a method on a null-valued expression.
+[15:36:04 INF] At D:\UsercubeCAA\Scripts\RCI\RCI_Export_Orga_API.ps1:99 char:5
+[15:36:04 INF] +     $writer.Close()
+[15:36:04 INF] +     ~~~~~~~~~~~~~~~
+[15:36:04 INF]     + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+[15:36:04 INF]     + FullyQualifiedErrorId : InvokeMethodOnNull
+[15:36:04 INF]  
+[15:36:04 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/3879?api-version=1.0

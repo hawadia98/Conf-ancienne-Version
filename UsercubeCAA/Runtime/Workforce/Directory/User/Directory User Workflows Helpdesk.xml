@@ -1,0 +1,32 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+  <!--
+  Workflows for the helpdesk team
+  -->
+
+  <Workflow Identifier="Helpdesk_Directory_User_New" DisplayName_L1="User - New (helpdesk)" VariablesType="Workflow_Directory_User">
+    <Activity Identifier="Request"  DisplayName_L1="Request" Template="ActionWithRefine" />
+    <Activity Identifier="Persist"  DisplayName_L1="Commit" Template="Persist" />
+  </Workflow>
+
+  <Workflow Identifier="Helpdesk_Directory_User_FixRecord" DisplayName_L1="User - Repair data (helpdesk)" VariablesType="Workflow_Directory_User">
+    <Activity Identifier="Request"  DisplayName_L1="Request" Template="ActionWithRefine" />
+    <Activity Identifier="Persist"  DisplayName_L1="Commit" Template="Persist" />
+  </Workflow>
+
+  <Workflow Identifier="Helpdesk_Directory_User_Delete" DisplayName_L1="User - Delete User (helpdesk)" VariablesType="Workflow_Directory_User">
+    <Activity Identifier="Request"  DisplayName_L1="Request" Template="ActionWithRefine" />
+    <Activity Identifier="Persist"  DisplayName_L1="Commit" Template="Persist" />
+  </Workflow>
+
+  <AssertValueRequiredAspect Identifier="Directory_User_Helpdesk_ValueRequired_LastName" Binding="Workflow_Directory_User:Directory_User.Records.LastName"
+                             Message_L1="The last name is required">
+    <PointCut Activity="Helpdesk_Directory_User_New:Request" ActivityState="ActionWithRefine-Executed" Mode="Before" />
+    <PointCut Activity="Helpdesk_Directory_User_FixRecord:Request" ActivityState="ActionWithRefine-Executed" Mode="Before" />
+  </AssertValueRequiredAspect>
+
+  <AssertValueRequiredAspect Identifier="Directory_User_Helpdesk_ValueRequired_FirstName" Binding="Workflow_Directory_User:Directory_User.Records.FirstName"
+                             Message_L1="The first name is required">
+    <PointCut Activity="Helpdesk_Directory_User_New:Request" ActivityState="ActionWithRefine-Executed" Mode="Before" />
+    <PointCut Activity="Helpdesk_Directory_User_FixRecord:Request" ActivityState="ActionWithRefine-Executed" Mode="Before" />
+  </AssertValueRequiredAspect>
+</ConfigurationFile>

@@ -1,0 +1,86 @@
+﻿[11:15:43 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/1001?api-version=3.0&jobGroupId=6&current=0&totalTask=0&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[11:15:43 VRB] Refreshed token: token expiration date=02/10/2025 11:12:43
+[11:15:43 VRB] HandleQuery SelectConsolidateJobQuery
+[11:15:43 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/RunStateMachineJob?api-version=4.0&path=/Jobs/Job/Query&jobIdentifier=6&repair=False&beginJobStep=-1&endJobStep=-1&forceSynchronizationProvisioning=False&retry=False&launchTaskType=0&taskIdentifier=&taskIdentifierContains=&beginTaskExcluded=&endTaskExcluded=&jobInstanceId=1001&jobId=6
+[11:15:43 VRB] HandleCommand ReserveTaskInstanceIdCommand
+[11:15:43 VRB] Reserve 12 next TaskInstanceId
+[11:15:43 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceId/12?api-version=1.0
+[11:15:44 VRB] Check the JobInstance state for JobInstance 1001.
+[11:15:44 VRB] HandleQuery SelectJobInstanceByIdQuery
+[11:15:44 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/1001?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:15:44 INF] ExportTask: Procurement_Synchro_Complete_Scaffolding_Export_Procurement_EB (Level: 0, LaunchOrder: 0)
+    Connector: Procurement
+    Mode: Complete
+    ConnectionIdentifier: ProcurementEB
+    ExportType: ExportCsv
+
+[11:15:44 VRB] Check the instance state for Task Procurement_Synchro_Complete_Scaffolding_Export_Procurement_EB
+[11:15:44 VRB] HandleCommand TaskInstanceProgressCommand
+[11:15:44 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:15:44 INF] Launch task: ExportTask: Procurement_Synchro_Complete_Scaffolding_Export_Procurement_EB, Task 1/12
+[11:15:44 VRB] HandleCommand RunTaskCommand
+[11:15:44 INF] Launch ExportTask : Procurement_Synchro_Complete_Scaffolding_Export_Procurement_EB
+[11:15:44 DBG] Start Process dotnet Usercube-Export-Csv.dll --progress-task-instance-id 6094 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "ProcurementEB" --raw-files-path "D:\UsercubeCAA\Sources\Achat\Complete\Achat.csv" --separator "," --lines-to-skip "0" --ignore-cookies --stdin null
+[11:15:44 INF] Start process=True PID=3428 dotnet Usercube-Export-Csv.dll --progress-task-instance-id 6094 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --output-path "../Temp\ExportOutput" --connection-identifier "ProcurementEB" --raw-files-path "D:\UsercubeCAA\Sources\Achat\Complete\Achat.csv" --separator "," --lines-to-skip "0" --ignore-cookies --stdin
+[11:15:45 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/6094?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[11:15:45 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:15:45 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/6094?api-version=2.0&jobInstanceId=1001&taskId=275&jobId=6
+[11:15:45 INF] Task: Procurement_Synchro_Complete_Scaffolding_Export_Procurement_EB Completed with state Completed
+[11:15:45 INF] PrepareSynchronizationTask: Procurement_Synchro_Complete_Scaffolding_PrepareSynchronization_Procurement (Level: 1, LaunchOrder: 1)
+    Synchronization Mode: Complete
+    Connector: Procurement
+    Parent: Procurement_Synchro_Complete_Scaffolding_Export_Procurement_EB
+
+[11:15:45 VRB] Check the instance state for Task Procurement_Synchro_Complete_Scaffolding_PrepareSynchronization_Procurement
+[11:15:45 VRB] HandleCommand TaskInstanceProgressCommand
+[11:15:45 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:15:45 INF] Launch task: PrepareSynchronizationTask: Procurement_Synchro_Complete_Scaffolding_PrepareSynchronization_Procurement, Task 2/12
+[11:15:45 VRB] HandleCommand RunTaskCommand
+[11:15:45 INF] Launch PrepareSynchronizationTask : Procurement_Synchro_Complete_Scaffolding_PrepareSynchronization_Procurement
+[11:15:45 DBG] Start Process dotnet Usercube-Prepare-Synchronization.dll --progress-task-instance-id 6095 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --connector 11 --working-directory "../Work\Collect" --sources-directory "../Temp\ExportOutput" --synchronization-mode "Complete" --stdin null
+[11:15:45 INF] Start process=True PID=15828 dotnet Usercube-Prepare-Synchronization.dll --progress-task-instance-id 6095 --api-url "https://dev-fusion-iam.caa.group.gca/" --api-client-id "Job" --log-level 0 --connector 11 --working-directory "../Work\Collect" --sources-directory "../Temp\ExportOutput" --synchronization-mode "Complete" --stdin
+[11:15:46 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/6095?api-version=1.0&squery=join%20Task%20t%20select%20t.ContinueOnError%2C%20State&path=/Jobs/TaskInstance/Query&QueryRootEntityType=TaskInstance
+[11:15:46 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:15:46 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/6095?api-version=2.0&jobInstanceId=1001&taskId=276&jobId=6
+[11:15:46 INF] Task: Procurement_Synchro_Complete_Scaffolding_PrepareSynchronization_Procurement Completed with state Completed
+[11:15:46 VRB] Check the JobInstance state for JobInstance 1001.
+[11:15:46 VRB] HandleQuery SelectJobInstanceByIdQuery
+[11:15:46 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/1001?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[11:15:46 INF] SynchronizeTask: Procurement_Synchro_Complete_Scaffolding_Synchronize_Procurement (Level: 2, LaunchOrder: 2)
+    Connector: Procurement
+    Parent: Procurement_Synchro_Complete_Scaffolding_PrepareSynchronization_Procurement
+
+[11:15:46 VRB] Check the instance state for Task Procurement_Synchro_Complete_Scaffolding_Synchronize_Procurement
+[11:15:46 VRB] HandleCommand TaskInstanceProgressCommand
+[11:15:46 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:15:46 INF] Launch task: SynchronizeTask: Procurement_Synchro_Complete_Scaffolding_Synchronize_Procurement, Task 3/12
+[11:15:46 VRB] HandleCommand RunTaskCommand
+[11:15:46 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/279?api-version=4.0&jobInstanceId=1001&jobLogLevel=Trace
+[11:15:46 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[11:15:46 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/6096?api-version=2.0&jobInstanceId=1001&taskId=279&jobId=6
+[11:15:46 INF] Task: Procurement_Synchro_Complete_Scaffolding_Synchronize_Procurement Completed with state Completed
+[11:15:46 INF] UpdateEntityPropertyExpressionsTask: Procurement_Synchro_Complete_Scaffolding_ComputeProperties_1 (Level: 3, LaunchOrder: 3)
+    AllEntities: True
+
+[11:15:46 VRB] Check the instance state for Task Procurement_Synchro_Complete_Scaffolding_ComputeProperties_1
+[11:15:46 VRB] HandleCommand TaskInstanceProgressCommand
+[11:15:46 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[11:15:46 INF] Launch task: UpdateEntityPropertyExpressionsTask: Procurement_Synchro_Complete_Scaffolding_ComputeProperties_1, Task 4/12
+[11:15:46 VRB] HandleCommand RunTaskCommand
+[11:15:46 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/60008?api-version=4.0&jobInstanceId=1001&jobLogLevel=Trace
+[11:15:48 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/1001?api-version=3.0&jobGroupId=6&current=3&totalTask=12&state=Error&resourceId=-1&cancelRequest=False&retry=False
+[11:15:48 ERR] Exception while running state machine for job: 6
+System.Exception: Error while Runtask Procurement_Synchro_Complete_Scaffolding_ComputeProperties_1
+ ---> System.Exception: Error while executing RuntaskCommand: 60008
+ ---> System.Exception: Task 60008 launch failed with status code 500 Internal Server Error 
+   at Usercube.Application.Jobs.HttpImpl.CommandHandlers.RunTaskCommandHandler.Handle(RunTaskCommand command, IProgress`1 progress, CancellationToken cancellationToken)
+   --- End of inner exception stack trace ---
+   at Usercube.Application.Jobs.HttpImpl.CommandHandlers.RunTaskCommandHandler.Handle(RunTaskCommand command, IProgress`1 progress, CancellationToken cancellationToken)
+   at Usercube.Jobs.StateMachine.RunStateMachine.LaunchStepTask(JobStep step, QueryApiContext queryContext, TaskInstanceRef taskInstanceId, Int32 launchOrder, IInvokeJobProgress progress, Int32 totalStep, CommandApiContext commandContext, LogLevel jobLogLevel, Int32 taskTimeoutSupplement, CancellationToken token)
+   --- End of inner exception stack trace ---
+   at Usercube.Jobs.StateMachine.RunStateMachine.LaunchStepTask(JobStep step, QueryApiContext queryContext, TaskInstanceRef taskInstanceId, Int32 launchOrder, IInvokeJobProgress progress, Int32 totalStep, CommandApiContext commandContext, LogLevel jobLogLevel, Int32 taskTimeoutSupplement, CancellationToken token)
+   at Usercube.Jobs.StateMachine.RunStateMachine.LaunchStepsJob(Int32 repairLevel, Job job, ReserveTaskInstanceIdResult reserveInstanceResult, QueryApiContext queryContext, Int32 launchOrder, IInvokeJobProgress progress, Int32 totalStep, CommandApiContext commandContext, LogLevel jobLogLevel, Int32 taskTimeoutSupplement, CancellationToken token)
+   at Usercube.Jobs.StateMachine.RunStateMachine.Run(String jobIdentifier, IInvokeJobProgress progress, Int32 beginJobStep, Int32 endJobStep, String taskIdentifier, Boolean forceSynchronizationProvisioning, Boolean repair, Int32 taskTimeoutSupplement, TaskType launchTaskType, String taskIdentifierContains, String beginTaskExcluded, String endTaskExcluded, QueryApiContext queryContext, CommandApiContext commandContext, LogLevel jobLogLevel, Boolean retry, CancellationToken token)
+   at Usercube.InvokeJob.InvokeJobCommandHandler.Handle(InvokeJobCommand invokeJobCommand)
+[11:15:48 VRB] HandleCommand SendJobNotificationCommand
+[11:15:48 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/Job/Notification?api-version=1.0

@@ -1,0 +1,7 @@
+﻿[16:22:23 INF] Export-Csv started for Path=D:\UsercubeCAA\Sources\Catalogue\Complete\Applications.csv
+[16:22:23 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/4589?api-version=1.0
+[16:22:23 VRB] Refreshed token: token expiration date=01/29/2025 16:19:22
+[16:22:23 VRB] HandleQuery SelectEntityTypeMappingByConnectionIdentifierQuery
+[16:22:23 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Connectors/EntityTypeMapping?api-version=1.0&connectionIdentifier=&squery=join%20EntityPropertyMappings%20epm%20join%20epm.EntityProperty%20ep%20select%20ConnectionTable%2CC0%2Cepm.ConnectionColumn%2Cepm.Format%2Cep.Identifier%2C%20ep.Type%20where%20ConnectionTable%3D%22ApplicationCatalogExport%22&path=/Connectors/EntityTypeMapping/Query&QueryRootEntityType=EntityTypeMapping
+[16:22:23 INF] Export completed TotalLines=114
+[16:22:23 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progression/4589?api-version=1.0

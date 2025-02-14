@@ -1,0 +1,19 @@
+﻿<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+  <!--TODO: optimize the risks-->
+  <!--<Indicator EntityType="Directory_User" Binding="ResourceRiskScore.Score" ComparisonOperator="GreaterThanOrEqual" Order="0">
+    <Item Value="75" Color="#9D0E0E" DisplayName_L1="High risk" />
+    <Item Value="30" Color="#E37C14" DisplayName_L1="Medium risk" />
+  </Indicator>-->
+  <Indicator EntityType="Directory_User" Binding="MainRecord.VIP" ComparisonOperator="Equal" Order="1">
+    <Item Value="true" Color="#FFD700" DisplayName_L1="VIP"/>
+  </Indicator>
+  <Indicator EntityType="Directory_User" Binding="MainRecord.UserType.IsExternal" ComparisonOperator="Equal" Order="2">
+    <Item Value="true" Color="#2B758F" DisplayName_L1="External" />
+  </Indicator>
+  <Indicator EntityType="Directory_User" Binding="MainRecord.Suspended" ComparisonOperator="Equal" Order="3">
+    <Item Value="true" Color="#52152B" DisplayName_L1="Suspended" />
+  </Indicator>
+
+  <!--TODO: indicators for workflows => should be a scaffolding -->
+</ConfigurationFile>

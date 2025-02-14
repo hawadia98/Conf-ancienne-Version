@@ -1,0 +1,29 @@
+﻿[12:16:58 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/971?api-version=3.0&jobGroupId=1&current=0&totalTask=0&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[12:16:58 VRB] Refreshed token: token expiration date=02/05/2025 12:13:57
+[12:16:58 VRB] HandleQuery SelectConsolidateJobQuery
+[12:16:58 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/Job/RunStateMachineJob?api-version=4.0&path=/Jobs/Job/Query&jobIdentifier=1&repair=False&beginJobStep=-1&endJobStep=-1&forceSynchronizationProvisioning=False&retry=False&launchTaskType=0&taskIdentifier=&taskIdentifierContains=&beginTaskExcluded=&endTaskExcluded=&jobInstanceId=971&jobId=1
+[12:16:59 VRB] HandleCommand ReserveTaskInstanceIdCommand
+[12:16:59 VRB] Reserve 6 next TaskInstanceId
+[12:16:59 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceId/6?api-version=1.0
+[12:17:00 VRB] Check the JobInstance state for JobInstance 971.
+[12:17:00 VRB] HandleQuery SelectJobInstanceByIdQuery
+[12:17:00 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/971?api-version=2.0&squery=select%20State&path=/Jobs/JobInstance/Query&QueryRootEntityType=JobInstance
+[12:17:00 INF] UpdateEntityPropertyExpressionsTask: Catalog_Accounts_Provisioning_Scaffolding_ComputeProperties (Level: 0, LaunchOrder: 0)
+    AllEntities: True
+
+[12:17:00 VRB] Check the instance state for Task Catalog_Accounts_Provisioning_Scaffolding_ComputeProperties
+[12:17:00 VRB] HandleCommand TaskInstanceProgressCommand
+[12:17:00 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/Progress?api-version=2.0
+[12:17:00 INF] Launch task: UpdateEntityPropertyExpressionsTask: Catalog_Accounts_Provisioning_Scaffolding_ComputeProperties, Task 1/6
+[12:17:00 VRB] HandleCommand RunTaskCommand
+[12:17:00 DBG] HttpClient.Send: POST https://dev-fusion-iam.caa.group.gca/api/Job/Task/RunTask/211?api-version=4.0&jobInstanceId=971&jobLogLevel=Trace
+[12:17:05 VRB] HandleQuery SelectTaskInstanceInvokeJobQuery
+[12:17:05 DBG] HttpClient.Send: GET https://dev-fusion-iam.caa.group.gca/api/Job/TaskInstance/GetTaskInstanceInvokeJob/5750?api-version=2.0&jobInstanceId=971&taskId=211&jobId=1
+[12:17:05 INF] Task: Catalog_Accounts_Provisioning_Scaffolding_ComputeProperties Completed with state Stop
+[12:17:05 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/971?api-version=3.0&jobGroupId=1&current=1&totalTask=6&state=InProgress&resourceId=-1&cancelRequest=False&retry=False
+[12:17:05 INF] The server notifies the job is canceled.
+[12:17:05 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/JobInstance/Progression/971?api-version=3.0&jobGroupId=1&current=1&totalTask=6&state=Stop&resourceId=-1&cancelRequest=False&retry=False
+[12:17:05 INF] The server notifies the job is canceled.
+[12:17:05 INF] The job got shut down.
+[12:17:05 VRB] HandleCommand SendJobNotificationCommand
+[12:17:05 DBG] HttpClient.Send: PUT https://dev-fusion-iam.caa.group.gca/api/Job/Job/Notification?api-version=1.0
