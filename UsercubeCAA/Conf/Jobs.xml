@@ -29,4 +29,9 @@
     <InvokeExpressionTask Identifier="RCI_Export_Files_Notification" DisplayName_L1="RCI - notification" Agent="CAA" OpenIdClient="Job" InputPath="D:/UsercubeCAA/Scripts/RCI/RCI_Export_Notification.ps1" />
   </Job>
 
+  <Job Identifier="Metis_Add_HID_RED01" DisplayName_L1="Ajout d'une calculette de sécurité HID (compte RED01) " Agent="CAA">
+    <InvokeExpressionTask Identifier="Metis_Add_HID_RED01_InvokeExpression" DisplayName_L1="Ajout d'une calculette de sécurité HID (compte RED01)" Agent="CAA" OpenIdClient="Job" InputPath="D:/UsercubeCAA/Scripts/Metis/Metis_Add_HID_RED01.ps1" />
+  </Job>
+
+
 </ConfigurationFile>

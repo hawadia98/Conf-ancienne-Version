@@ -13,10 +13,16 @@ param (
     [string]$commentaires
 
 )
+$metis_client_id="a268bb38226296d875af8fc5b2d5ae4e"
+$metis_client_secret='je^P;|$UA0'
+$metis_username="ws.usercube"
+$metis_password="0.+G5%iu<WrN)R.[1v+v6<QDu5d:tp}>N]#sUc4c"
+$metis_token_url="https://rct-servicenow.pacifica.obs.partenaires.group.gca/oauth_token.do"
+$metis_request_url=""
 
 # Constantes
 $EnvironmentPath = Split-Path $PSScriptRoot -parent
-. "$EnvironmentPath\Environnement.ps1"
+. "$EnvironmentPath\Environment.ps1"
 . (Join-Path -Path $PSScriptRoot -ChildPath ".\Config-Metis.ps1")
 
 #Post add
@@ -29,9 +35,10 @@ $headers.Add("Content-Type", "application/x-www-form-urlencoded")
 $body = "client_id=$metis_client_id&client_secret=$metis_client_secret&username=$metis_username&password=$metis_password&grant_type=password"
 
 
-$response = Invoke-RestMethod $metis_token_url -Method 'POST' -Headers $headers -Proxy $proxy -SessionVariable session -Body $body
+$response = Invoke-RestMethod -Uri $metis_token_url -Method 'POST' -Headers $headers -Body $body
 $response | ConvertTo-Json
 $Authorization = "Bearer " + $response.access_token
+Write-Host  $response.access_token
 
 Clear-Variable headers
 Clear-Variable response
@@ -65,7 +72,7 @@ Write-Output $body_tmp
 
 $body = [System.Text.Encoding]::UTF8.GetBytes($body_tmp)
 
-$response = Invoke-RestMethod $metis_request_url -Method 'POST' -Proxy $proxy -Headers $headers -WebSession $session -Body $body
+$response = Invoke-RestMethod -Uri $metis_request_url -Method 'POST' -Headers $headers -Body $body
 $response | ConvertTo-Json
 
 if($response.result.status -eq "error"){

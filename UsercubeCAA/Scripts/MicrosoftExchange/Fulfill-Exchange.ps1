@@ -48,6 +48,9 @@ function Fulfill-Exchange {
 
     if ($script:environment -ne "Production") {
       $parameters.HiddenFromAddressListsEnabled = $true
+    
+      
+      #endregion
     }
 
     Enable-RemoteMailbox @parameters
@@ -55,6 +58,7 @@ function Fulfill-Exchange {
     if ($script:environment -eq "Production") {
       Set-RemoteMailbox -Identity $parameters.Identity -EmailAddressPolicyEnabled $true -DomainController $parameters.DomainController
     }
+    
   }
   elseif ($changeType -eq 'Deleted') {
     Disable-RemoteMailbox -Identity $samAccountName -Confirm:$false

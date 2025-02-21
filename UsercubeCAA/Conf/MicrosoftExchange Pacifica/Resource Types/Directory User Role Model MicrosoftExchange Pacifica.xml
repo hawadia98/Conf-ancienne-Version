@@ -1,15 +1,25 @@
 <ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+	<Category Policy="Default" Identifier="MicrosoftExchange" DisplayName_L1="MicrosoftExchange" />
 
 	<ResourceType Identifier="MicrosoftExchangePacifica_Mailbox_NominativeUser" DisplayName_L1="Boîte Microsoft Exchange Pacifica (nominative)" Policy="Default" TargetEntityType="MicrosoftExchangePacifica_Mailbox" Category="Accounts" SourceEntityType="Directory_User" ApprovalWorkflowType="One" DependsOn="ADPacifica_NominativeUser" BlockProvisioning="true">
-        <TypeRule Policy="Default" DA="Pacifica" TimeOffsetReference="Around" TimeOffsetBeforeReference="-10080" TimeOffsetAfterReference="43200" />
-        <TypeRule Policy="Default" DA="Sirca" TimeOffsetReference="Around" TimeOffsetBeforeReference="-10080" TimeOffsetAfterReference="43200" />
-        <TypeRule Policy="Default" DA="Viavita" TimeOffsetReference="Around" TimeOffsetBeforeReference="-10080" TimeOffsetAfterReference="43200" />
+        <TypeRule Policy="Default" DA="Pacifica" DC="NON" TimeOffsetReference="Around" TimeOffsetBeforeReference="-10080" TimeOffsetAfterReference="43200" />
+        <TypeRule Policy="Default" DA="Sirca" DC="NON" TimeOffsetReference="Around" TimeOffsetBeforeReference="-10080" TimeOffsetAfterReference="43200" />
+        <TypeRule Policy="Default" DA="Viavita" DC="NON" TimeOffsetReference="Around" TimeOffsetBeforeReference="-10080" TimeOffsetAfterReference="43200" />
+		<TypeRule Policy="Default" DA="Viaren" DC="NON" TimeOffsetReference="Around" TimeOffsetBeforeReference="-10080" TimeOffsetAfterReference="43200" />
 
 		<ScalarRule Property="SamAccountName" Expression="C#:record:return record.FirstName?.Simplify()?.ToLowerInvariant() + &quot;.&quot; + record.LastName?.Simplify()?.ToLowerInvariant();" />
 		<ScalarRule Property="PrimarySmtpAddress" Binding="PacificaEmail" />
+		
+		<NavigationRule Property="Database" Resource="0db9143a-5c90-43ac-8176-123dc16b2f13" SingleRole="BDD1" />
+    	<NavigationRule Property="Database" Resource="04c25434-f6c3-4849-bd87-cfd22f8c3b35" SingleRole="BDD2" />
+		<!-- <QueryRule Property="Database" Policy="Default" TargetMatchedConfidenceLevel="100" TargetBinding="MicrosoftExchangePacifica_Database:Name" 
+			SourceExpression="C#:record:return  &quot;EX19-DB01&quot;;" />
+		 -->
 	</ResourceType>
 
 	<ResourceTypeMapping Identifier="MicrosoftExchangePacifica_Mailbox_NominativeUser" Connection="MicrosoftExchangePacificaFulfillment" />
     <ResourceCorrelationRule ResourceType="MicrosoftExchangePacifica_Mailbox_NominativeUser" SourceExpression="C#:record:return record.FirstName?.Simplify()?.ToLowerInvariant() + &quot;.&quot; + record.LastName?.Simplify()?.ToLowerInvariant();" TargetBinding="SamAccountName" Policy="Default" SourceMatchedConfidenceLevel="100" />
 
+	<SingleRole Identifier="BDD1" DisplayName_L1="BDD1" DisplayName_L2="BDD1" Category="MicrosoftExchange" ApprovalWorkflowType="One" EntityType="Directory_User" Policy="Default" />
+  	<SingleRole Identifier="BDD2" DisplayName_L1="BDD2" DisplayName_L2="BDD2" Category="MicrosoftExchange" ApprovalWorkflowType="One" EntityType="Directory_User" Policy="Default" />
 </ConfigurationFile>

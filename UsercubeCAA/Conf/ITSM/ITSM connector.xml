@@ -1,0 +1,72 @@
+<ConfigurationFile xmlns="urn:schemas-usercube-com:configuration">
+
+    <Connector Identifier="ITSM" DisplayName_L1="ITSM" Agent="CAA" MaximumInsertedLines="500" MaximumUpdatedLines="500" MaximumDeletedLines="100" MaxPercentageInsertedLines="0" MaxPercentageUpdatedLines="0" MaxPercentageDeletedLines="0" />
+    <Connection Connector="ITSM" Identifier="ITSMFulfillment" DisplayName_L1 ="ITSM Fulfill" Package="Usercube.Powershell@0000001" />
+    <Connection Connector="ITSM" Identifier="RITMExport" DisplayName_L1="RITMExport" Package="Usercube.CSV@0000001" />
+
+
+    <EntityType Identifier="RITM" DisplayName_L1="RITM">
+        <Property Identifier="u_arrival_type" DisplayName_L1="Type d'utilisateur" TargetColumnIndex="1" Type="String" />
+		<Property Identifier="u_email" DisplayName_L1="Email Pacifica" IsKey="true" TargetColumnIndex="0" Type="String" />
+        <Property Identifier="u_phone_number" DisplayName_L1="Téléphone " TargetColumnIndex="2" Type="String" />
+        <Property Identifier="u_desk_location" DisplayName_L1="Location PC" TargetColumnIndex="3" Type="String" />
+		<Property Identifier="u_commentaires" DisplayName_L1="Commentaires" TargetColumnIndex="4" Type="String" />
+
+        <Property Identifier="u_type_de_pc" DisplayName_L1="Type de PC" Type="ForeignKey" />
+        <Property Identifier="u_master" DisplayName_L1="Master" Type="ForeignKey"  />
+		<Property Identifier="u_telephone_fixe" DisplayName_L1="telephone fixe" Type="ForeignKey"  />
+    </EntityType>
+
+    <EntityType Identifier="u_type_de_pc" DisplayName_L1="RITM - Type de pc">
+        <Property Identifier="Identifier" DisplayName_L1="Identifiant" IsKey="true" TargetColumnIndex="0" Type="String" />
+        <Property Identifier="DisplayName" DisplayName_L1="DisplayName" TargetColumnIndex="1" Type="String" />
+		
+        <Property Identifier="RITM" DisplayName_L1="RITM" Type="ForeignKey" />
+    </EntityType>
+    <EntityType Identifier="u_master" DisplayName_L1="RITM - master">
+        <Property Identifier="Identifier" DisplayName_L1="Identifiant" IsKey="true" TargetColumnIndex="0" Type="String" />
+        <Property Identifier="DisplayName" DisplayName_L1="DisplayName" TargetColumnIndex="1" Type="String" />
+		
+        <Property Identifier="RITM" DisplayName_L1="RITM" Type="ForeignKey" />
+    </EntityType>
+	<EntityType Identifier="u_telephone_fixe" DisplayName_L1="RITM - telephone_fixe">
+        <Property Identifier="Identifier" DisplayName_L1="Identifiant" IsKey="true" TargetColumnIndex="0" Type="String" />
+        <Property Identifier="DisplayName" DisplayName_L1="DisplayName" TargetColumnIndex="1" Type="String" />
+		
+        <Property Identifier="RITM" DisplayName_L1="RITM" Type="ForeignKey" />
+    </EntityType>
+	
+	<EntityTypeMapping Identifier="RITM" Connector="ITSM" ConnectionTable="RITMExport">
+		<Property Identifier="u_arrival_type" ConnectionColumn="u_arrival_type" />
+		<Property Identifier="u_email" ConnectionColumn="u_email" IsPrimaryKey="true" />
+		<Property Identifier="u_phone_number" ConnectionColumn="u_phone_number" />
+		<Property Identifier="u_desk_location" ConnectionColumn="u_desk_location" />
+		<Property Identifier="u_commentaires" ConnectionColumn="u_commentaires" />
+	</EntityTypeMapping>
+	
+    <EntityAssociation Identifier="RITM_u_type_de_pc" IsProperty1Collection="true" Property1="RITM:u_type_de_pc" Property2="u_type_de_pc:RITM" />
+    <EntityAssociationMapping Identifier="RITM_u_type_de_pc" Column1="Identifier" Column2="u_type_de_pc" ConnectionTable="RITMExport" EntityPropertyMapping1="RITM:u_email" EntityPropertyMapping2="u_type_de_pc:Identifier" Connector="ITSM" />
+    <EntityAssociation Identifier="RITM_u_master" IsProperty1Collection="true" Property1="RITM:u_master" Property2="u_master:RITM" />
+    <EntityAssociationMapping Identifier="RITM_u_master" Column1="Identifier" Column2="u_master" ConnectionTable="RITMExport" EntityPropertyMapping1="RITM:u_email" EntityPropertyMapping2="u_master:Identifier" Connector="ITSM" />
+	<EntityAssociation Identifier="RITM_u_telephone_fixe" IsProperty1Collection="true" Property1="RITM:u_telephone_fixe" Property2="u_telephone_fixe:RITM" />
+    <EntityAssociationMapping Identifier="RITM_u_telephone_fixe" Column1="Identifier" Column2="u_telephone_fixe" ConnectionTable="RITMExport" EntityPropertyMapping1="RITM:u_email" EntityPropertyMapping2="u_telephone_fixe:Identifier" Connector="ITSM" />
+
+    <CreateUpdateDeleteTemplate EntityType="RITM" Profile="Administrator" />
+    
+	<Dimension Identifier="u_type_de_pc0" DisplayName_L1="Type_de_PC" EntityType="u_type_de_pc" ColumnMapping="13"  />
+    <Dimension Identifier="u_master0" DisplayName_L1="Master" EntityType="u_master" ColumnMapping="6"  />
+	<Dimension Identifier="u_telephone_fixe0" DisplayName_L1="telephone_fixe" EntityType="u_telephone_fixe" ColumnMapping="7"  />
+  
+   
+   
+   
+    <Resource Id="-1000" Type="u_type_de_pc" C0="portable" C1="portable" DisplayName_L1="portable" />
+    <Resource Id="-1001" Type="u_type_de_pc" C0="fixe" C1="fixe" DisplayName_L1="fixe" />
+    <Resource Id="-1002" Type="u_type_de_pc" C0="sans_pc" C1="sans_pc" DisplayName_L1="sans_pc" />
+    <Resource Id="-1003" Type="u_master" C0="poste_standard" C1="poste_standard" DisplayName_L1="poste_standard" />
+    <Resource Id="-1004" Type="u_master" C0="Poste_dev_dotnet" C1="Poste_dev_dotnet" DisplayName_L1="Poste_dev_dotnet" />
+    <Resource Id="-1005" Type="u_telephone_fixe" C0="present" C1="present" DisplayName_L1="present" />
+	<Resource Id="-1006" Type="u_telephone_fixe" C0="a_fournir" C1="a_fournir" DisplayName_L1="a_fournir" />
+	<Resource Id="-1007" Type="u_telephone_fixe" C0="no" C1="no" DisplayName_L1="no" />
+    
+</ConfigurationFile>
